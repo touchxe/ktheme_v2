@@ -1,0 +1,60 @@
+---
+description: Playwright MCP로 E2E 시각적 QA를 수행. 유저처럼 클릭하며 렌더링 검증
+alwaysApply: false
+---
+
+# gstack /qa (Cursor Port)
+
+Claude Code의 `$B` 대신 Playwright MCP 사용.
+
+## 프로세스
+
+### 1. 타겟 URL 확인
+- 로컬 dev 서버 (`http://localhost:<port>`)
+- Preview 배포 (Vercel preview URL)
+- Production
+
+### 2. User Journey 정의
+`docs/qa/journeys.md`에 정의된 핵심 플로우들:
+- 로그인 → 대시보드
+- 회원가입 → 온보딩 완료
+- 결제 플로우
+- ...
+
+### 3. Playwright MCP 실행
+
+각 journey마다:
+```
+browser_navigate → <URL>
+browser_click → <selector>
+browser_type → <input>, <text>
+browser_wait_for → <condition>
+browser_screenshot → <checkpoint>.png
+```
+
+### 4. 검증 포인트
+
+- **렌더링**: 레이아웃 깨짐 없음 (오버플로우, 겹침)
+- **반응형**: viewport 375px / 768px / 1440px 각각 스크린샷
+- **다크모드**: 둘 다 캡처
+- **인터랙션**: 버튼 hover/focus 상태 작동
+- **에러 상태**: 잘못된 입력, 네트워크 오류 시 UX
+
+### 5. 리포트
+
+`.qa/report-YYYY-MM-DD.md`:
+```markdown
+# QA Report: [URL]
+
+## Journeys Tested
+- ✅ Login → Dashboard
+- ✅ Signup → Onboarding
+- ⚠️ Checkout — 모바일 375px에서 CTA 버튼 clip
+
+## Screenshots
+[각 체크포인트 링크]
+
+## Issues
+### ISSUE-001 [Medium]: Mobile checkout CTA clip
+...
+```

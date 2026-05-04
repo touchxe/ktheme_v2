@@ -1,0 +1,32 @@
+---
+description: 자신의 변경사항을 subagent 또는 리뷰어에게 보내기 전 self-check 수행
+alwaysApply: false
+---
+
+# Requesting Code Review
+
+## Self-check
+
+리뷰 요청 전 스스로 확인:
+- [ ] spec을 모두 충족했는가
+- [ ] verification 통과
+- [ ] diff가 작은가 (큰 diff는 여러 PR로 분리)
+- [ ] commit 메시지가 명확한가
+- [ ] 테스트 커버리지 충분한가
+
+## 리뷰 요청 형식
+
+```markdown
+## Summary
+[한 문단, 무엇을 왜 바꿨는지]
+
+## Changes
+- src/feature/x.ts: ...
+- src/feature/x.test.ts: ...
+
+## Verification
+[verification.mdc의 리포트 형식 그대로]
+
+## Concerns
+- [리뷰어가 특히 봐주길 원하는 부분]
+```

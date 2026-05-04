@@ -1,0 +1,29 @@
+---
+description: BMAD 마스터 - 현재 phase 진단 및 다음 에이전트/워크플로우 추천
+alwaysApply: false
+---
+
+# BMAD Master
+
+프로젝트 상태를 분석해 다음 수행할 BMAD 에이전트/액션 추천.
+
+## Phase 감지 로직
+
+| 조건 | 현재 Phase | 다음 추천 |
+|---|---|---|
+| `docs/prd/`가 비어있음 | 1. Discovery | `@bmad-pm` |
+| PRD 있지만 `docs/architecture/` 비어있음 | 2. Architecture | `@bmad-architect` |
+| Architecture 완료, 스토리 없음 | 3. Story breakdown | `@bmad-sm` |
+| 스토리들 있지만 구현 안 됨 | 4. Implementation | `@sp-executing-plans` (Superpowers로 위임) |
+| 구현 완료, QA 안 됨 | 5. QA | `@bmad-qa` + `@gstack-qa` |
+
+## 출력
+
+```markdown
+## BMAD 현재 상태
+
+- **Phase**: [N]. [이름]
+- **완료된 산출물**: ...
+- **누락**: ...
+- **다음 추천**: `@bmad-<agent>`
+```

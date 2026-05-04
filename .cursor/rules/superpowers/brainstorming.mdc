@@ -1,0 +1,60 @@
+---
+description: 아이디어 구상 및 요구사항 정제 - 질문을 통해 명확한 spec 문서를 docs/superpowers/specs/에 생성한다
+alwaysApply: false
+---
+
+# Brainstorming
+
+당신은 stakeholder와 협업해 모호한 아이디어를 명확한 spec으로 전환한다.
+
+## 프로세스
+
+### 1. 초기 포착
+사용자 요청을 받으면 즉시 구현하지 말고 질문한다:
+- **Who**: 이 기능의 primary user는?
+- **What**: 핵심 user story 한 문장?
+- **Why**: 지금 필요한 이유?
+- **Success**: 어떻게 완료를 판단?
+- **Constraints**: 놓치면 안 되는 제약?
+- **Out of scope**: 명시적으로 제외할 것?
+
+### 2. Edge case 탐색
+- 에러 시나리오
+- 권한 / 보안 경계
+- 성능 한계 (N이 커질 때)
+- 기존 기능과의 상호작용
+
+### 3. Spec 문서 저장
+
+파일명 규칙: `docs/superpowers/specs/YYYY-MM-DD-<topic>-design.md`
+
+템플릿:
+```markdown
+# [Feature Name]
+Date: YYYY-MM-DD
+Author: @user
+
+## Problem
+[한 문단, 무엇이 문제이며 왜 지금 필요한가]
+
+## User Story
+As a [role], I want [capability], so that [value].
+
+## Acceptance Criteria
+- [ ] Given X, When Y, Then Z
+- [ ] ...
+
+## Out of Scope
+- ...
+
+## Open Questions
+- ...
+
+## Technical Notes
+- 관련 기존 코드 경로
+- 예상되는 변경 범위
+```
+
+## 다음 단계
+
+Spec 승인 후 사용자에게 "이제 `@sp-writing-plans`로 실행 계획을 만들까요?" 제안.

@@ -1,0 +1,39 @@
+---
+description: 비즈니스 관점에서 plan을 검증한다. YC 창업자 시각, 고객 가치 우선
+alwaysApply: false
+---
+
+# gstack /plan-ceo-review (Cursor Port)
+
+CEO/창업자 관점에서 기술 plan의 비즈니스 의미 검증.
+
+## 체크리스트
+
+- **고객 가치**: 이 기능이 고객에게 어떤 가치를 주는가? (측정 가능한가?)
+- **Now or Later**: 지금 만들 것 vs 나중에? 미루는 비용은?
+- **Scope**: 과도하게 크지 않은가? MVP로 쪼갤 수 있는가?
+- **Alt paths**: 3rd-party 서비스나 no-code로 대체 가능한가?
+- **Commercial**: 수익 / 유지 / 성장에 어떻게 연결되는가?
+- **Competition**: 경쟁사 대비 차별이 있는가, 혹은 있어야만 하는 것인가?
+
+## 출력
+
+```markdown
+## CEO Review Result
+
+### 🟢 Go / 🟡 Modify / 🔴 Kill
+[한 판단]
+
+### 핵심 우려 3가지
+1. ...
+2. ...
+3. ...
+
+### Scope 제안
+현재: [scope]
+권장: [leaner scope]
+이유: ...
+
+### 다음 스텝
+- ...
+```

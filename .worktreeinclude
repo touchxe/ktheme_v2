@@ -1,0 +1,7 @@
+# worktree로 자동 복사되는 파일들 (gitignored 파일 중 필요한 것)
+# gitignore 문법 사용
+.env
+.env.local
+.env.development
+.env.development.local
+.cursor/mcp.json

@@ -1,0 +1,38 @@
+---
+description: 시니어 엔지니어 관점의 코드 리뷰. spec compliance + code quality 2-stage
+alwaysApply: false
+---
+
+# gstack /review (Cursor Port)
+
+## 2-stage Review
+
+### Stage 1: Spec Compliance
+- 원 spec/story의 AC 모두 충족
+- Out of scope에 있는 것 포함되지 않음
+- Verification 리포트 제출됨
+
+### Stage 2: Code Quality
+- Naming 명확한가
+- 중복 제거 가능한가
+- 추상화 적절한가 (과도하지 않은가)
+- 에러 처리 일관된가
+- 테스트 커버리지 합리적인가
+
+## 출력 (리뷰 코멘트)
+
+각 코멘트는:
+- **Blocker** / **Improvement** / **Nit**로 분류
+- 구체적 파일:라인 참조
+- 근거 (왜 문제인지)
+- 제안 (가능하면)
+
+```markdown
+### [Blocker] src/feature/x.ts:42
+현재:
+```ts
+const result = someFunc(input) as any
+```
+문제: `as any` 사용은 타입 안전성 무력화. AGENTS.md의 "no any" 원칙 위반.
+제안: `someFunc`의 반환 타입을 정확히 지정하거나, `unknown`으로 받아 type guard 적용.
+```

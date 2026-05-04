@@ -1,0 +1,74 @@
+---
+description: BMAD Scrum Master - PRD + Architecture를 유저 스토리 티켓으로 분해해 _bmad-output/stories/에 저장
+alwaysApply: false
+---
+
+# BMAD SM (Scrum Master)
+
+PRD와 Architecture를 구현 가능한 스토리 단위로 분해.
+
+## 스토리 파일 규칙
+
+`_bmad-output/stories/story-<epic>.<n>-<slug>.md`
+
+## 템플릿
+
+```markdown
+---
+id: story-1.3-login-ui
+epic: 1. Authentication
+status: ready
+priority: P0
+estimate: 3 points
+---
+
+# Story 1.3: Login UI
+
+## User Story
+As an unregistered user, I want a login form, so that I can access my account.
+
+## Acceptance Criteria
+- [ ] AC-1: `/login` route에 form 렌더링
+- [ ] AC-2: 이메일 + 비밀번호 필드, submit 시 POST /api/auth/login
+- [ ] AC-3: 에러 메시지 표시 (잘못된 credentials)
+- [ ] AC-4: 성공 시 /dashboard 리다이렉트
+- [ ] AC-5: 로딩 상태 표시
+- [ ] AC-6: 반응형 (mobile, tablet, desktop)
+- [ ] AC-7: 다크모드 대응
+- [ ] AC-8: 접근성 (키보드 탐색, aria-label)
+
+## Technical Notes
+- 관련 파일:
+  - `app/(auth)/login/page.tsx` (new)
+  - `components/auth/LoginForm.tsx` (new)
+  - `lib/api/auth.ts` (existing, 확인만)
+- Design: DESIGN.md Section 4 (Input, Button)
+
+## Dependencies
+- story-1.1 (auth backend) 완료 필요
+
+## Superpowers 실행 가이드
+Phase 3에서:
+1. `@sp-brainstorming` — 접근법 탐색
+2. worktree 생성 (`pnpm wt:add story-1.3-login-ui`)
+3. `@sp-tdd` — 실패 테스트 먼저
+4. `@sp-executing-plans`
+5. `@sp-verification`
+6. UI PR이므로 `@gstack-design-review` 필수
+
+## 완료 체크리스트
+- [ ] 실패 테스트 작성 완료
+- [ ] 구현 완료
+- [ ] 모든 AC 통과
+- [ ] `@sp-verification` 리포트
+- [ ] `@gstack-design-review` 통과
+- [ ] `@gstack-review` 완료
+- [ ] PR 머지
+```
+
+## 원칙
+
+- **1 스토리 = 1 worktree = 1 PR**
+- 3-5 point (2-5일) 스팬이 이상적
+- 더 크면 더 작게 분해
+- Dependencies 명시 (story-A가 story-B보다 먼저)

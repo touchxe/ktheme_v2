@@ -1,0 +1,53 @@
+# Dependencies
+node_modules/
+.pnpm-store/
+
+# Next.js
+.next/
+out/
+build/
+
+# Environment
+.env
+.env.local
+.env.*.local
+!.env.example
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Testing
+coverage/
+.nyc_output/
+playwright-report/
+test-results/
+
+# Logs
+*.log
+npm-debug.log*
+pnpm-debug.log*
+
+# Worktree artifacts (본인 worktree 외부에서 관리)
+.worktrees/
+.trees/
+.claude/worktrees/
+.groups/
+
+# Design review artifacts
+.design-review/screenshots/
+.design-shotgun/
+.design-html/
+.qa/
+
+# Superpowers session data (if any)
+.superpowers-session/
+
+# TypeScript
+*.tsbuildinfo
+next-env.d.ts

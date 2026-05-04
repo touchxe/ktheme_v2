@@ -1,0 +1,92 @@
+---
+description: Superpowers 프레임워크 부트스트랩 - 모든 개발 작업을 Brainstorm → Plan → Worktree → TDD → Verify 루프로 구조화한다
+alwaysApply: true
+---
+
+# Superpowers 부트스트랩
+
+모든 복잡한 개발 작업(단순 오타 수정 제외)은 Superpowers 루프를 따른다.
+이것은 "1% 규칙"이다 — 더 많은 토큰을 써서 훨씬 적은 총 토큰으로 올바른 결과를 얻는다.
+
+## 마스터 루프
+
+```
+┌─────────────────────────────────────────────────┐
+│  Brainstorming  (@sp-brainstorming)             │
+│  → docs/superpowers/specs/YYYY-MM-DD-<topic>.md │
+└───────────────┬─────────────────────────────────┘
+                ↓
+┌─────────────────────────────────────────────────┐
+│  Writing Plans  (@sp-writing-plans)             │
+│  → docs/superpowers/plans/YYYY-MM-DD-<topic>.md │
+│  → 2-5분 단위 task로 분해                       │
+└───────────────┬─────────────────────────────────┘
+                ↓
+┌─────────────────────────────────────────────────┐
+│  ⚠️ WORKTREE GATE (@sp-worktrees) ⚠️            │
+│  → 승인 즉시 pnpm wt:add <n>                 │
+│  → clean test baseline 검증 (필수)              │
+└───────────────┬─────────────────────────────────┘
+                ↓
+┌─────────────────────────────────────────────────┐
+│  Executing Plans  (@sp-executing-plans)         │
+│  → task마다 TDD 강제                            │
+│  → task 완료 시 verification                    │
+└───────────────┬─────────────────────────────────┘
+                ↓
+┌─────────────────────────────────────────────────┐
+│  Finishing  (@sp-finishing-branch)              │
+│  → review → merge → cleanup                     │
+└─────────────────────────────────────────────────┘
+```
+
+## 스킬 사용 규칙
+
+### 1. Brainstorming (`@sp-brainstorming`)
+새 기능을 구상할 때 첫 단계. 질문을 통해 요구사항을 정제하고
+`docs/superpowers/specs/` 에 spec 문서를 저장한다.
+
+### 2. Writing Plans (`@sp-writing-plans`)
+spec을 2-5분 단위 task로 분해. 각 task는:
+- 명확한 완료 기준 (verification 가능)
+- 독립적으로 실행 가능
+- 이전 task의 결과에 의존하지 않음 (ideally)
+
+### 3. Worktree (`@sp-worktrees`) — **필수 게이트**
+plan 승인 즉시 호출. 건너뛰지 말 것. 현재 main에서 작업하는 것은
+즉시 `git stash` 후 worktree로 이동한다.
+
+### 4. TDD (`@sp-tdd`) — **RED-GREEN-REFACTOR**
+- RED: 실패하는 테스트 먼저 작성
+- GREEN: 테스트를 통과하는 **최소** 구현
+- REFACTOR: 테스트가 보호하는 상태에서 정리
+- **테스트 없이 먼저 작성된 코드는 삭제한다**
+
+### 5. Systematic Debugging (`@sp-systematic-debugging`)
+버그 발견 시 즉시 호출. **절대 Phase 1 (reproduce + observe)을 건너뛰지 말 것.**
+- Phase 1: 재현 + 현상 관찰 (고치려 하지 말 것)
+- Phase 2: 가설 수립
+- Phase 3: 실험으로 가설 검증
+- Phase 4: 수정
+- **3회 실패 시 아키텍처 재검토**
+
+### 6. Verification (`@sp-verification`)
+"완료했습니다"라고 말하기 전에 실제 명령을 실행하고 출력을 캡처한다.
+- `pnpm test` 실행 → 출력 확인
+- `pnpm lint` 실행 → 0 에러 확인
+- `pnpm build` 실행 (필요시)
+- **가정이 아닌 증거로 말한다**
+
+## 단순 작업은 우회
+
+다음 작업은 Superpowers 루프를 생략:
+- 타입 오류 단일 수정
+- 오타 / 문법 교정
+- 명백한 이름 변경 (`renameSymbol` 수준)
+- 컴포넌트 import 경로 수정
+- CSS 속성 하나 변경
+
+## 메모리
+
+각 스킬은 독립된 `.cursor/rules/superpowers/<skill>.mdc`에 상세 정의되어 있다.
+description-triggered 방식으로 agent가 자동 호출하거나, 사용자가 `@sp-<skill>`로 명시 호출할 수 있다.

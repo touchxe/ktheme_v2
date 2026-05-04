@@ -1,0 +1,70 @@
+---
+description: 승인된 PNG 목업을 Pretext 기반으로 프로덕션 React/HTML로 변환한다
+alwaysApply: false
+---
+
+# gstack /design-html (Cursor Port)
+
+gpt-image-1이 생성한 PNG를 실제 프로덕션 프레임워크 코드로 변환.
+
+## 사전 요구사항
+
+- `/design-shotgun`에서 승인된 variant PNG
+- DESIGN.md 토큰이 `tailwind.config.ts`에 매핑됨
+- Pretext 30KB 번들이 `vendor/pretext.js`에 있음
+
+## 프로세스
+
+### 1. 이미지 분석
+PNG를 parse:
+- Layout 구조 파악 (grid, flex, positioning)
+- 텍스트 컨텐츠 추출 (OCR 또는 LLM vision)
+- 색상 샘플링 → DESIGN.md 토큰과 매칭
+- 컴포넌트 분류 (Hero, Card, Button, Input 등)
+
+### 2. 프레임워크 감지
+
+프로젝트 구조에서 자동 감지:
+- `app/` + `tsx` → Next.js 14 App Router (기본 가정)
+- `src/` + `.vue` → Vue
+- `src/routes/` → SvelteKit
+
+### 3. Semantic HTML 생성
+
+Pretext reflow 기반으로 computed text layout 생성:
+- 픽셀 퍼펙트 아닌 semantic 구조 우선
+- `<section>`, `<article>`, `<nav>` 등 적절한 태그
+- 접근성 (aria-label, alt)
+
+### 4. Tailwind 클래스 매핑
+
+하드코딩 금지, DESIGN.md 토큰만 사용:
+- `#5E6AD2` → `bg-brand-primary`
+- `font-size: 17px; line-height: 1.55` → `text-body-lg`
+- `padding: 20px` → `p-5`
+
+### 5. shadcn/ui 컴포넌트 활용
+
+가능한 곳은 shadcn 기본 사용:
+- `<Button>` 대신 인라인 커스텀 금지
+- `<Card>` / `<Input>` / `<Badge>` 등 표준 활용
+
+### 6. 검증
+
+```bash
+pnpm lint
+pnpm typecheck
+pnpm dev  # 시각 확인
+```
+
+### 7. Side-by-side 비교
+생성된 결과와 원본 PNG를 나란히 보여주며 차이 기록.
+불일치 시 사용자 결정:
+- "PNG가 맞다" → 코드 수정
+- "코드가 더 semantic하다" → PNG를 참조로만 유지
+
+## 산출물
+
+- `app/<route>/page.tsx` (또는 해당 프레임워크 파일)
+- `components/<N>.tsx` (추출된 컴포넌트들)
+- `.design-html/comparison.md` — PNG vs 코드 차이 기록

@@ -1,0 +1,68 @@
+---
+description: 디자인 시스템 강제 - 모든 UI 파일에서 docs/DESIGN.md를 참조하고 AI Slop 패턴을 회피한다
+globs:
+  - "app/**/*.tsx"
+  - "app/**/*.jsx"
+  - "components/**/*.tsx"
+  - "components/**/*.jsx"
+  - "**/*.css"
+  - "tailwind.config.ts"
+alwaysApply: true
+---
+
+# 디자인 시스템 강제 적용
+
+UI 코드를 작성하거나 수정할 때는 **반드시** 먼저 `docs/DESIGN.md`를 참조한다.
+이 파일은 프로젝트의 디자인 토큰과 패턴에 대한 single source of truth이다.
+
+## 작업 흐름
+
+1. **먼저 읽기**: `@docs/DESIGN.md`의 Section 2 (Color), 3 (Typography), 4 (Components)를 확인
+2. **Tailwind 우선**: 하드코딩된 색상/폰트 금지. `tailwind.config.ts`에 이미 DESIGN.md 토큰이 매핑되어 있음
+3. **shadcn/ui 컴포넌트**: 기본 shadcn variants 위에 DESIGN.md 기반 커스텀만 추가
+4. **검증**: 작성 후 Section 7 (Do's and Don'ts)의 AI Slop 블랙리스트에 걸리는지 self-check
+
+## 절대 금지 (AI Slop)
+
+아래 패턴이 감지되면 즉시 거부하고 다른 접근법을 제시한다:
+
+- **3-column feature grid**: `icon-in-colored-circle + bold title + 2-line description × 3` 패턴
+- **Purple/violet/indigo gradients**: `from-purple-*`, `from-indigo-*`, `from-violet-*` 조합
+- **Generic copy**: "Welcome to", "Unlock the power", "Streamline your", "Transform your"
+- **Centered everything on desktop**: 모든 섹션이 text-center로 정렬된 레이아웃
+- **Stock illustrations**: undraw, Storyset, freepik 등의 일러스트
+- **Icons in primary CTA buttons**: 주요 CTA에 아이콘 추가 금지
+
+## 색상 사용 규칙
+
+- Hex 리터럴(`#5E6AD2`) 직접 사용 금지 → `text-brand-primary` / `bg-brand-primary` 같은 Tailwind 클래스 사용
+- 다크모드 대응: `text-primary dark:text-primary-dark` 형태로 모두 쌍으로 정의
+- Semantic 색상은 의미에 맞게만 사용:
+  - `bg-success` → 완료/성공 상태
+  - `bg-danger` → 에러/삭제 경고
+  - brand 색상은 primary action에만
+
+## 타이포그래피 규칙
+
+- DESIGN.md Section 3의 스케일만 사용. 임의의 `text-[18px]` 금지
+- Heading은 `font-display`, 본문은 `font-body` (자동 적용됨)
+- letter-spacing은 스케일에 맞춰 자동 설정됨 (Tailwind config 참조)
+
+## 인터랙션 규칙
+
+- 모든 transition은 `duration-150 ease-out` 이하 (길어봐야 200ms)
+- Hover는 border 변경 + subtle translate만, 큰 scale 변경 금지
+- Focus ring은 DESIGN.md의 `--shadow-focus` (brand 색상 12% opacity) 사용
+
+## 체크리스트
+
+UI 컴포넌트 완성 전 self-verify:
+
+- [ ] docs/DESIGN.md를 참조했는가?
+- [ ] Hex 리터럴 대신 Tailwind 토큰을 사용했는가?
+- [ ] 다크모드가 대응되는가?
+- [ ] Responsive breakpoint가 모바일 우선인가?
+- [ ] AI Slop 블랙리스트에 걸리는 패턴이 없는가?
+- [ ] `font-display` / `font-body`가 올바른 위치에 적용되었는가?
+
+의심스러우면 `@gstack-design-review`를 호출해 자체 감사를 수행한다.

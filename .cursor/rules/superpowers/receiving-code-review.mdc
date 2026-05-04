@@ -1,0 +1,25 @@
+---
+description: 코드 리뷰 피드백을 받아 spec compliance + code quality 2-stage로 반영한다
+alwaysApply: false
+---
+
+# Receiving Code Review
+
+## 2-stage Processing
+
+### Stage 1: Spec Compliance
+피드백을 spec 대비 분류:
+- **Blocker**: spec 미충족 → 즉시 수정
+- **Improvement**: code quality (Stage 2)
+- **Nice-to-have**: 별도 task로 분리
+
+### Stage 2: Code Quality
+- Naming
+- 중복 제거
+- 추출 / 단순화
+
+## 응답 원칙
+
+- 모든 피드백에 명시적으로 응답 (수용 / 거부 + 이유)
+- 방어하지 않기 (피드백은 개선 신호)
+- 거부할 경우 technical reason 제시

@@ -1,0 +1,107 @@
+---
+description: OpenAI gpt-image-1로 UI 변종 3-6개를 병렬 생성해 localhost 비교 보드에 띄운다
+alwaysApply: false
+---
+
+# gstack /design-shotgun (Cursor Port)
+
+승인된 DESIGN.md를 기반으로 여러 UI 변종을 생성해 빠르게 방향 선택.
+Claude Code의 `$D` 래퍼 대신 **OpenAI gpt-image-1 직접 호출** 사용.
+
+## 사전 요구사항
+
+- `OPENAI_API_KEY` 환경변수 (`.env.local`에)
+- **Tier 2+ 결제 필요** (병렬 3+ 변종, 15 RPM)
+- 또는 Antigravity 사용 시 **Gemini Imagen 3** 무료 대체 가능
+
+## 프로세스
+
+### 1. Target 확정
+어떤 페이지/섹션의 목업을 생성할지:
+- Hero section
+- Pricing table
+- Dashboard overview
+- Sign-up flow
+- ...
+
+### 2. Prompt 생성
+DESIGN.md의 토큰을 구체적으로 포함한 프롬프트:
+
+```
+Create a [page type] UI mockup.
+
+Design system:
+- Primary color: #5E6AD2 (brand purple-blue)
+- Background: white / #FAFBFC subtle surfaces
+- Typography: Inter Display for headings (600 weight, -0.02em letter spacing),
+  Inter for body (400 weight, 1.5 line-height)
+- Border radius: 6px buttons, 8px cards
+- 1px borders in #EBEEF2, subtle shadows only
+
+Content: [구체적 카피]
+
+NO: gradient backgrounds, stock illustrations, generic "Welcome to" copy,
+3-column icon-bold-description grids.
+```
+
+### 3. 변종 생성 (3-6개)
+
+```bash
+# OpenAI API 호출 예시 (Node.js)
+for i in {1..4}; do
+  curl https://api.openai.com/v1/images/generations \
+    -H "Authorization: Bearer $OPENAI_API_KEY" \
+    -H "Content-Type: application/json" \
+    -d '{
+      "model": "gpt-image-1",
+      "prompt": "[Above prompt + variation hint]",
+      "size": "1536x1024",
+      "n": 1
+    }' > ".design-shotgun/variant-$i.json"
+done
+```
+
+각 변종은 약간씩 다른 방향:
+- Variant A: dense, data-heavy (Linear 스타일)
+- Variant B: airy, marketing-friendly (Stripe 스타일)
+- Variant C: editorial, bold typography
+- Variant D: minimal, focused
+
+### 4. 비교 보드 생성
+
+`.design-shotgun/board.html`:
+```html
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+  body { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; padding: 24px; font-family: Inter; }
+  .variant { border: 1px solid #EBEEF2; border-radius: 8px; overflow: hidden; }
+  .variant img { width: 100%; display: block; }
+  .variant .meta { padding: 16px; }
+</style>
+</head>
+<body>
+  <div class="variant">
+    <img src="variant-1.png">
+    <div class="meta">
+      <h3>Variant A — Dense</h3>
+      <button onclick="approve('A')">Approve</button>
+    </div>
+  </div>
+  <!-- ... -->
+</body>
+</html>
+```
+
+Playwright MCP로 `.design-shotgun/board.html` open.
+
+### 5. 사용자 승인 루프
+- 사용자가 하나 선택 (또는 "하나도 안 들어" → 프롬프트 수정 후 재생성)
+- 선택된 variant의 PNG → `/design-html`의 입력으로 전달
+
+## 주의
+
+- **이미지 생성 비용**: gpt-image-1은 standard 1024x1024 기준 $0.04/image
+- **저작권**: 생성된 이미지는 영감 / 방향 판단용. 실제 production은 `/design-html`이 HTML로 변환
+- **Rate limit**: Tier 1은 5 RPM이라 병렬 생성 시 Tier 2+ 필요

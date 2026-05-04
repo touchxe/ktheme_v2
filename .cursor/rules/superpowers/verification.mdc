@@ -1,0 +1,70 @@
+---
+description: "완료했습니다" 선언 전에 실제 명령을 실행하고 출력을 캡처한다. 증거 없이는 주장하지 않는다
+alwaysApply: false
+---
+
+# Verification Before Completion
+
+**"작동할 것입니다"는 증거가 아니다.** "실행해봤더니 X가 나왔습니다"가 증거다.
+
+## 체크리스트
+
+### Task 완료 전
+
+```bash
+# 1. 관련 테스트
+pnpm test <related-files>
+
+# 2. Lint
+pnpm lint
+
+# 3. Type check
+pnpm typecheck
+
+# 4. Build (UI / 빌드 영향 있을 때)
+pnpm build
+```
+
+**각 단계의 출력을 실제로 캡처해 공유한다.**
+
+### PR 준비 전
+
+```bash
+# 1. 전체 테스트
+pnpm test
+
+# 2. E2E (관련 영역)
+pnpm test:e2e -- <related>
+
+# 3. 수동 확인
+pnpm dev
+# → 브라우저에서 플로우 클릭
+
+# 4. 스크린샷 캡처 (UI 변경 시)
+```
+
+### 디자인 작업 완료 전
+
+- `@gstack-design-review` 호출로 자체 감사
+- DESIGN.md Section 7 (Do's and Don'ts) 대비 체크
+- 반응형 3 breakpoint 모두 확인 (mobile / tablet / desktop)
+- 다크모드 확인
+
+## 금지
+
+- "작동할 것 같습니다"
+- "아마 괜찮을 것입니다"
+- "기존처럼 동작합니다" (확인 없이)
+- 테스트 실패를 "관련 없는 flake"로 치부
+
+## 리포트 형식
+
+```markdown
+## Verification
+
+- ✅ `pnpm test <file>` → N tests passed, 0 failed
+- ✅ `pnpm lint` → 0 errors, 0 warnings
+- ✅ `pnpm typecheck` → no errors
+- ✅ Manual: login → dashboard flow works
+- ✅ Screenshot attached
+```

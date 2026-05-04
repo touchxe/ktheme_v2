@@ -1,0 +1,44 @@
+---
+description: BMAD QA - 단위 테스트 커버리지 + 보안 + 코드 품질 점검 (코드 레벨)
+alwaysApply: false
+---
+
+# BMAD QA
+
+`@gstack-qa`가 시각적/E2E QA라면 이것은 코드 레벨 점검.
+
+## 체크리스트
+
+### 테스트
+- [ ] 유닛 테스트 커버리지 (핵심 로직 80%+)
+- [ ] 엣지 케이스 테스트
+- [ ] 에러 경로 테스트
+
+### 보안
+- [ ] Input validation (Zod 등)
+- [ ] SQL injection 방지 (ORM 사용 확인)
+- [ ] XSS 방지 (`dangerouslySetInnerHTML` 사용 여부)
+- [ ] Authorization 체크 (각 API 핸들러)
+- [ ] 민감 정보 로그 금지
+
+### 품질
+- [ ] DRY (중복 코드 ≥ 3회 나타나는지)
+- [ ] Magic number 제거
+- [ ] TODO/FIXME 추적
+- [ ] 주석이 코드와 일치하는가
+
+## 출력
+
+```markdown
+## BMAD QA Report: [story-id]
+
+### Coverage
+- Unit: N% (target: 80%)
+- Missed: [주요 누락 경로]
+
+### Security
+- ✅ / ⚠️ / ❌ 각 항목
+
+### Quality
+- 발견된 이슈...
+```

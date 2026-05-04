@@ -1,0 +1,23 @@
+---
+description: Subagent 없이 순차적으로 plan을 실행한다 (Cursor/Antigravity의 병렬 subagent 부재 대응)
+alwaysApply: false
+---
+
+# Single-Flow Task Execution
+
+Cursor는 Composer 단일 context에서 실행한다.
+병렬 subagent가 필요한 경우 **Antigravity의 Agent Manager로 전환** 권장.
+
+## 순차 실행 전략
+
+1. Plan을 task 순서대로 실행
+2. 각 task 완료 시 fresh context처럼 재시작 (이전 task 결과만 요약)
+3. Context window 관리:
+   - 오래된 diff는 요약
+   - 관련 없는 파일은 unload
+4. task 간 verification
+
+## 병렬이 꼭 필요한 경우
+
+- 여러 독립 모듈 동시 구현 → worktree 분리 + Antigravity Agent Manager에서 각각 별도 agent 시작
+- `docs/superpowers/plans/`에 plan 분할 후 각 worktree에 배치

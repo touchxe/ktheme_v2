@@ -1,0 +1,125 @@
+---
+description: 라이브 URL을 Playwright MCP로 감사해 Design Score와 AI Slop Score를 생성한다. 80-item 체크리스트 기반 11-step 프로세스
+alwaysApply: false
+---
+
+# gstack /design-review (Cursor Port)
+
+Garry Tan의 gstack `/design-review` 스킬 포트. Claude Code의 `$B` Chromium daemon 대신 **Playwright MCP**를 사용한다.
+
+## 사전 요구사항
+
+1. Playwright MCP 설정 (`.cursor/mcp.json`에 등록)
+2. 대상 URL (로컬 `http://localhost:3010` 또는 배포 URL)
+3. Git working tree clean (변경사항 커밋됨)
+
+## 11-Step 프로세스
+
+### Step 1: Clean Tree Check
+```bash
+git status  # must be clean
+```
+
+### Step 2: First Impression
+Playwright MCP:
+```
+browser_navigate → <URL>
+browser_screenshot → save to .design-review/screenshots/01-first-impression.png
+```
+5초 동안 페이지를 "그냥 보는" 경험 기록. 무엇이 눈에 띄는가? 무엇이 혼란스러운가?
+
+### Step 3: DOM Extraction
+Playwright MCP로 `browser_evaluate` 실행:
+- 페이지의 모든 font-family, font-size, font-weight 추출
+- 사용된 모든 색상 (computed style) 집계
+- 터치 타겟 사이즈 측정 (`button`, `a`)
+- Heading hierarchy (h1-h6) 추출
+
+### Step 4-6: 10-Category Audit (80 items)
+
+**가중치 기반 스코어링**:
+
+| Category | Weight | 핵심 체크 |
+|---|---|---|
+| Hierarchy | 15% | h1→h6 논리성, 시각적 weight 계층 |
+| Typography | 15% | 폰트 패밀리 통일, 스케일 일관성, 가독성 (line-height 1.5+) |
+| Spacing | 15% | 8px 그리드, 섹션 간 breathing room, 컴포넌트 내부 패딩 일관성 |
+| Color | 10% | 팔레트 통일, 대비 WCAG AA+, 다크모드 대응 |
+| Interaction | 10% | Hover/focus/active 상태 명확, 트랜지션 짧음 |
+| Responsive | 10% | 3 breakpoints 모두 작동, 모바일 터치 타겟 44px+ |
+| Content | 10% | 카피 명확성, 제네릭 문구 부재 |
+| **AI Slop** | 5% | (아래 블랙리스트) |
+| Motion | 5% | 과도하지 않음, reduced-motion 존중 |
+| Performance | 5% | LCP, CLS, 이미지 최적화 |
+
+### Step 7: AI Slop Detection
+
+다음 패턴 감지 시 감점:
+- **3-column feature grid** (icon-in-colored-circle × 3)
+- **Purple/violet/indigo gradient backgrounds**
+- **Generic hero copy**: "Welcome to", "Unlock the power", "Streamline"
+- **Bento grid 남용** (12+ 칸)
+- **Over-rounded cards** (16px 초과)
+- **Stock illustrations** (undraw, Storyset)
+- **Centered everything** on desktop
+- **Purple-to-pink gradients** on CTAs
+
+### Step 8: Per-Page Audit
+각 페이지 (home, pricing, dashboard, settings 등) 개별 스크린샷 + 체크리스트.
+
+### Step 9: Interaction Flow Diff
+주요 user journey (예: 로그인 → 대시보드) 플로우 스크린샷 연속 캡처.
+
+### Step 10: Dual Headline Report
+
+`.design-review/report-YYYY-MM-DD.md` 생성:
+
+```markdown
+# Design Review: [Project] @ [URL]
+Date: YYYY-MM-DD
+
+## 🎨 Design Score: B+ (82/100)
+Breakdown: ...
+
+## 🤖 AI Slop Score: A- (92/100)
+검출된 패턴: ...
+
+## Top 10 Findings (Priority Order)
+
+### FINDING-001 [CRITICAL]: Hero copy is generic
+**Category**: Content
+**Evidence**: "Streamline your workflow with AI"
+**Impact**: -5 points
+**Fix**: [구체적 제안]
+
+### FINDING-002 ...
+```
+
+### Step 11: Fix Loop (CSS-first, Self-regulated)
+
+**각 FINDING 수정 방법**:
+1. CSS-first: Tailwind 클래스 변경만으로 해결 가능하면 먼저 시도
+2. JSX 변경은 2차 수단
+3. 각 fix마다:
+   ```bash
+   git add .
+   git commit -m "style(design): FINDING-001 - hero copy rewrite"
+   ```
+4. 재스크린샷으로 개선 확인
+
+**Self-regulation** (중요):
+- Revert 1회당 +15% weight to "stop signal"
+- JSX 대규모 변경은 +5%
+- **신호 합계 20% 초과 시 STOP** → 사용자에게 보고 후 판단
+- **30 fix hard cap**: 그 이상은 디자인 자체 문제 → `/design-consultation` 재시작 권장
+
+## 산출물
+
+- `.design-review/screenshots/` — 단계별 PNG
+- `.design-review/report-YYYY-MM-DD.md` — 최종 리포트
+- Git history — fix loop의 모든 원자 커밋
+
+## 주의
+
+- **완벽주의 금지**: Design A+ 달성이 목표가 아니라 AI Slop 제거 + 기본 품질 확보
+- **User 확인 후 진행**: 자동으로 배포 건드리지 말 것 (ship은 별도 스킬)

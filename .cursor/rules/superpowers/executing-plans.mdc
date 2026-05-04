@@ -1,0 +1,37 @@
+---
+description: Plan 문서를 task 단위로 실행한다. 각 task마다 TDD + verification 강제
+alwaysApply: false
+---
+
+# Executing Plans
+
+Plan의 각 task를 순차적으로 실행한다.
+
+## 프로세스
+
+### 현재 task 선택
+```
+docs/superpowers/plans/YYYY-MM-DD-<topic>-plan.md
+```
+에서 다음 미완료 task를 찾는다.
+
+### Task 실행 루프
+
+1. **Task 이해**: 파일 경로, 변경 내용, verification 기준 확인
+2. **Test first** (`@sp-tdd`): 실패 테스트 작성
+3. **Implement**: 테스트를 통과하는 최소 구현
+4. **Verify** (`@sp-verification`): 실제 명령 실행으로 완료 증명
+5. **Commit**: 명확한 커밋 메시지 (`feat(story-X): T-N description`)
+6. **Update plan**: task 체크박스 체크
+
+### 문제 발생 시
+
+- 테스트가 반복 실패하면 `@sp-systematic-debugging`
+- 원래 spec이 모호하면 brainstorming 단계로 back-propagate (새 session에서)
+- 예상보다 복잡하면 task를 더 작게 분해
+
+## 원칙
+
+- **One task at a time**: 여러 task를 동시에 건드리지 않는다
+- **Commit often**: task 완료마다 커밋 (revert 가능성 확보)
+- **Don't skip verification**: "작동할 것입니다"는 증거가 아니다

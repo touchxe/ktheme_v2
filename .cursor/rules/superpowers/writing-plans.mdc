@@ -1,0 +1,52 @@
+---
+description: Spec을 2-5분 단위 task로 분해한 실행 계획을 docs/superpowers/plans/에 생성한다
+alwaysApply: false
+---
+
+# Writing Plans
+
+spec 문서를 받아 task-by-task 실행 계획을 작성한다.
+
+## 파일 규칙
+
+`docs/superpowers/plans/YYYY-MM-DD-<topic>-plan.md`
+
+## Task 분해 원칙
+
+1. **2-5분 단위**: task 하나 = subagent 1회 세션에 끝낼 수 있는 크기
+2. **독립 실행 가능**: 이전 task 결과에 최대한 독립
+3. **Verification 명시**: 각 task마다 "어떻게 완료를 증명할지" 명시
+4. **파일 단위 지정**: 어떤 파일을 생성/수정하는지 구체적으로
+
+## 템플릿
+
+```markdown
+# Plan: [Feature Name]
+Spec: docs/superpowers/specs/YYYY-MM-DD-<topic>-design.md
+
+## Pre-conditions
+- [ ] worktree 생성 (`pnpm wt:add story-<id>`)
+- [ ] clean test baseline (`pnpm test` 통과 확인)
+- [ ] 관련 파일 경로 확인
+
+## Tasks
+
+### T-1: [Task title]
+- **Files**: `path/to/file.ts`
+- **Change**: [구체적 변경 내용]
+- **Test first**: `path/to/file.test.ts`에 실패 테스트 작성
+- **Verify**: `pnpm test path/to/file.test.ts` 통과
+
+### T-2: ...
+
+## Post-conditions
+- [ ] 모든 task verified
+- [ ] `pnpm lint` 0 에러
+- [ ] `pnpm typecheck` 0 에러
+- [ ] `pnpm build` 성공
+- [ ] 수동 확인 체크리스트
+```
+
+## 다음 단계
+
+Plan 승인 후 **반드시** `@sp-worktrees`로 worktree 생성.

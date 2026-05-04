@@ -1,0 +1,20 @@
+---
+description: 작업 시작 전 AGENTS.md와 관련 docs를 먼저 읽도록 강제
+alwaysApply: true
+---
+
+# AGENTS.md 우선 참조
+
+복잡한 작업을 시작할 때:
+
+1. 먼저 `@AGENTS.md`를 읽어 프로젝트 규약 확인
+2. UI 작업이면 `@docs/DESIGN.md` 추가로 확인
+3. 스토리 기반 구현이면 `@_bmad-output/stories/<id>.md` 확인
+4. 아키텍처 관련 의사결정이면 `@docs/architecture/overview.md` + 관련 ADR 확인
+
+## 사용자 요청 해석
+
+- "새 기능 만들어줘" → brainstorming → plan → worktree → implementation
+- "이 버그 고쳐줘" → systematic-debugging Phase 1 먼저
+- "디자인 감사" → `@gstack-design-review`
+- "배포" → `@gstack-ship` 사전 체크리스트 통과 필수

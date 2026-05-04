@@ -1,0 +1,35 @@
+---
+description: 브랜치 완료 후 머지 준비 - squash 정리, 최종 verification, PR 생성
+alwaysApply: false
+---
+
+# Finishing a Development Branch
+
+## 체크리스트
+
+1. **최종 verification** (`@sp-verification` 전체)
+2. **Squash 정리**:
+   ```bash
+   git rebase -i origin/main
+   # WIP 커밋 통합
+   # 의미 있는 단위로 정리
+   ```
+3. **Commit message 정리**: Conventional Commits
+4. **PR 생성**:
+   ```markdown
+   ## Summary
+   [무엇을 왜 바꿨는지]
+
+   ## Story
+   Closes #<story-id>
+
+   ## Changes
+   - ...
+
+   ## Verification
+   [verification report]
+
+   ## Screenshots
+   [UI 변경 시]
+   ```
+5. **Worktree 정리 예약**: 머지 후 `pnpm wt:remove <n>`
