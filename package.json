@@ -1,12 +1,12 @@
 {
-  "name": "{{PROJECT_NAME}}",
+  "name": "k-theme",
   "version": "0.1.0",
   "private": true,
-  "description": "{{PROJECT_DESCRIPTION}}",
+  "description": "케이테마 교회 웹사이트 — Next.js 14 + WordPress Headless CMS",
   "scripts": {
-    "dev": "next dev --port ${PORT:-3000}",
+    "dev": "next dev",
     "build": "next build",
-    "start": "next start --port ${PORT:-3000}",
+    "start": "next start",
     "lint": "next lint",
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
@@ -25,9 +25,7 @@
     "design:review": "echo 'Run: @gstack-design-review in Cursor with target URL'",
     "design:shotgun": "echo 'Run: @gstack-design-shotgun in Cursor (requires OPENAI_API_KEY)'",
 
-    "sp:init-dirs": "mkdir -p docs/superpowers/specs docs/superpowers/plans docs/plans",
-
-    "prepare": "[ -d .git ] && npm run sp:init-dirs || true"
+    "sp:init-dirs": "node -e \"const fs=require('fs');['docs/superpowers/specs','docs/superpowers/plans','docs/plans'].forEach(d=>fs.mkdirSync(d,{recursive:true}))\""
   },
   "dependencies": {
     "next": "14.2.0",

@@ -1,0 +1,81 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Brand */
+    --color-brand-primary: #5E6AD2;
+    --color-brand-hover: #7170FF;
+    --color-brand-subtle: #F4F5FB;
+
+    /* Surface (Light) */
+    --bg-page: #FFFFFF;
+    --bg-subtle: #FAFBFC;
+    --bg-card: #FFFFFF;
+    --bg-elevated: #FFFFFF;
+    --bg-nav: rgba(255, 255, 255, 0.85);
+
+    /* Text (Light) */
+    --text-primary: #0E0E10;
+    --text-secondary: #3C3E44;
+    --text-tertiary: #6B6F76;
+    --text-on-brand: #FFFFFF;
+
+    /* Border (Light) */
+    --border-default: #EBEEF2;
+    --border-strong: #D8DBE0;
+    --border-focus: var(--color-brand-primary);
+
+    /* Semantic */
+    --color-success: #4CB782;
+    --color-warning: #F2994A;
+    --color-danger: #F7425D;
+    --color-info: #0081F1;
+  }
+
+  .dark {
+    /* Surface (Dark) */
+    --bg-page: #08090A;
+    --bg-subtle: #0F1011;
+    --bg-card: #131416;
+    --bg-elevated: #1C1D1F;
+    --bg-nav: rgba(8, 9, 10, 0.85);
+
+    /* Text (Dark) */
+    --text-primary: #F7F8F8;
+    --text-secondary: #B4B5B8;
+    --text-tertiary: #8A8D93;
+    --text-on-brand: #FFFFFF;
+
+    /* Border (Dark) */
+    --border-default: #26272B;
+    --border-strong: #393A3E;
+    --border-focus: var(--color-brand-primary);
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    @apply antialiased;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply bg-bg-page text-text-primary;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+
+  ::selection {
+    background-color: rgba(94, 106, 210, 0.2);
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}

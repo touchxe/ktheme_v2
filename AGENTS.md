@@ -11,6 +11,11 @@
 - **기술 스택**: Next.js 14+ (App Router) / NestJS / PostgreSQL / Tailwind CSS + shadcn/ui / Anthropic Claude API
 - **패키지 매니저**: pnpm (worktree 최적화를 위해 `enableGlobalVirtualStore: true` 필수)
 
+## 로컬 환경 및 경로 설정
+
+- **WordPress Root**: `C:\Users\CEO\Local Sites\adm11\app\public`
+- **Theme Path**: `C:\Users\CEO\Local Sites\adm11\app\public\wp-content\themes\ktheme-developer`
+
 ## 빌드 / 테스트 / 실행 명령어
 
 ```bash
@@ -88,6 +93,26 @@ Antigravity: `.agent/skills/` 하위의 13개 스킬 (skainguyen1412 포트 기�
 2. **TDD 게이트**: 구현 코드 전에 실패 테스트 먼저. 테스트 없이 작성된 코드는 삭제하라.
 3. **verification 게이트**: "완료했습니다" 선언 전에 실제 명령 실행 + 출력 캡처.
 4. **디자인 게이트**: UI PR 전에 `@gstack-design-review` 최소 1회 실행.
+
+---
+
+## 🤝 하이브리드 워크플로우 (Antigravity + Codex)
+
+솔로 풀스택 개발 환경에서 높은 생산성을 내기 위해, 두 AI 에이전트를 병행 사용합니다.
+
+### 1. 역할 분담
+- **Antigravity (기획 및 관리)**: 
+  - `Manager View` 역할 수행
+  - 프로젝트 전체 구조 설계, 컴포넌트 리뷰 및 브라우저 통합 검증
+  - 코드 작성 전 TDD 규칙 점검 및 멀티에이전트 조율
+- **Codex (실행 및 코딩)**:
+  - 백그라운드 터미널(CLI) 및 앱을 통한 무거운 구현/리팩토링 전담
+  - SWE(Software Engineer) 수준의 깊은 논리 코딩 및 대량 파일 조작
+
+### 2. 핸드오프 (Handoff) 및 실행 프로토콜
+1. **명세(Spec) 작성**: Antigravity가 `docs/superpowers/specs/` 하위에 요구사항과 설계 명세서를 작성합니다.
+2. **백그라운드 위임**: Antigravity가 `.agent/skills/using-codex` 스킬을 통해 터미널에서 `codex "Implement [Task] based on [Spec]"` 명령어를 실행합니다.
+3. **병렬 검토**: Codex가 백그라운드에서 작업하는 동안 Antigravity는 다른 기획 작업을 하거나, 작업 완료 후 `git diff`로 결과를 통합 검증합니다.
 
 ---
 

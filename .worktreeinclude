@@ -5,3 +5,4 @@
 .env.development
 .env.development.local
 .cursor/mcp.json
+.kilo/
