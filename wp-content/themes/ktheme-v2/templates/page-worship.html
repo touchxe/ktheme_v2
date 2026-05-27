@@ -1,0 +1,50 @@
+<!-- wp:template-part {"slug":"header","tagName":"header"} /-->
+<!-- wp:group {"tagName":"main","className":"kt-page-shell","layout":{"type":"constrained"}} -->
+<main class="wp-block-group kt-page-shell">
+	<!-- wp:html -->
+	<section class="kt-page-hero">
+		<nav class="kt-breadcrumb" aria-label="현재 위치">
+			<a href="/"><svg class="kt-icon kt-icon--xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 11l9-8 9 8M5 10v10h14V10"/></svg>HOME</a>
+			<span>›</span>
+			<strong>예배</strong>
+		</nav>
+		<div class="kt-page-hero__body">
+			<div>
+				<h1>예배</h1>
+				<p>매주 드려지는 예배에 함께 참여하세요. 시간과 장소, 다시 듣기까지 한 페이지에서.</p>
+			</div>
+			<nav class="kt-page-tabs" aria-label="예배 하위 메뉴">
+				<a class="is-active" href="/worship/">전체</a>
+				<a href="/sunday-worship/">주일예배</a>
+				<a href="/wednesday-worship/">수요예배</a>
+				<a href="/dawn-prayer/">새벽예배</a>
+				<a href="/youth-worship/">청년예배</a>
+			</nav>
+		</div>
+	</section>
+	<!-- /wp:html -->
+	<!-- wp:post-content {"layout":{"type":"constrained"}} /-->
+	<!-- wp:query {"query":{"perPage":3,"pages":0,"offset":0,"postType":"ktheme_sermon","order":"desc","orderBy":"date","inherit":false},"className":"kt-content-query"} -->
+	<div class="wp-block-query kt-content-query">
+		<!-- wp:heading {"level":2,"className":"kt-query-heading"} -->
+		<h2 class="wp-block-heading kt-query-heading">최근 설교</h2>
+		<!-- /wp:heading -->
+		<!-- wp:post-template {"className":"kt-query-grid"} -->
+			<!-- wp:group {"className":"kt-query-card","layout":{"type":"constrained"}} -->
+			<div class="wp-block-group kt-query-card">
+				<!-- wp:post-featured-image {"isLink":true,"aspectRatio":"16/9"} /-->
+				<!-- wp:post-title {"isLink":true,"level":3} /-->
+				<!-- wp:post-excerpt {"moreText":""} /-->
+			</div>
+			<!-- /wp:group -->
+		<!-- /wp:post-template -->
+		<!-- wp:query-no-results -->
+			<!-- wp:paragraph {"className":"kt-empty"} -->
+			<p class="kt-empty">아직 등록된 설교가 없습니다.</p>
+			<!-- /wp:paragraph -->
+		<!-- /wp:query-no-results -->
+	</div>
+	<!-- /wp:query -->
+</main>
+<!-- /wp:group -->
+<!-- wp:template-part {"slug":"footer","tagName":"footer"} /-->

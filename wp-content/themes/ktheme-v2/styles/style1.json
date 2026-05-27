@@ -1,0 +1,20 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/theme.json",
+  "version": 3,
+  "title": "Style 1",
+  "settings": {
+    "color": {
+      "palette": [
+        { "slug": "ink-900", "name": "Ink 900", "color": "#0e1320" },
+        { "slug": "ink-800", "name": "Ink 800", "color": "#171c2c" },
+        { "slug": "ink-600", "name": "Ink 600", "color": "#384058" },
+        { "slug": "brand-500", "name": "Brand 500", "color": "#3a64f5" },
+        { "slug": "brand-600", "name": "Brand 600", "color": "#2a4fd6" },
+        { "slug": "accent-red", "name": "Accent Red", "color": "#e23b3b" },
+        { "slug": "paper", "name": "Paper", "color": "#f4f5f7" },
+        { "slug": "line", "name": "Line", "color": "#e5e7eb" },
+        { "slug": "base", "name": "Base", "color": "#ffffff" }
+      ]
+    }
+  }
+}

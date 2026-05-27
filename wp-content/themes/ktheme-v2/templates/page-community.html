@@ -1,0 +1,38 @@
+<!-- wp:template-part {"slug":"header","tagName":"header"} /-->
+<!-- wp:group {"tagName":"main","className":"kt-page-shell","layout":{"type":"constrained"}} -->
+<main class="wp-block-group kt-page-shell">
+	<!-- wp:group {"className":"kt-page-intro","layout":{"type":"constrained"}} -->
+	<div class="wp-block-group kt-page-intro">
+		<!-- wp:post-title {"level":1} /-->
+		<!-- wp:post-content {"layout":{"type":"constrained"}} /-->
+	</div>
+	<!-- /wp:group -->
+	<!-- wp:html -->
+	<section class="kt-template-section">
+		<div class="kt-section-head"><div><div class="kt-label">Community</div><h2 class="kt-section-title" style="font-size:34px">함께 자라는 공동체</h2></div></div>
+		<div class="kt-info-grid">
+			<a class="kt-info-card" href="/new-family-ministry/"><strong>새가족부</strong><span>처음 오신 분의 정착을 돕습니다.</span></a>
+			<a class="kt-info-card" href="/small-groups/"><strong>목장 모임</strong><span>삶을 나누는 소그룹 공동체입니다.</span></a>
+			<a class="kt-info-card" href="/children/"><strong>유·초등부</strong><span>다음세대 예배와 교육입니다.</span></a>
+			<a class="kt-info-card" href="/senior-ministry/"><strong>실버사역</strong><span>돌봄과 교제를 이어갑니다.</span></a>
+		</div>
+	</section>
+	<!-- /wp:html -->
+	<!-- wp:query {"query":{"perPage":3,"pages":0,"offset":0,"postType":"ktheme_event","order":"desc","orderBy":"date","inherit":false},"className":"kt-content-query"} -->
+	<div class="wp-block-query kt-content-query">
+		<!-- wp:heading {"level":2,"className":"kt-query-heading"} -->
+		<h2 class="wp-block-heading kt-query-heading">공동체 일정</h2>
+		<!-- /wp:heading -->
+		<!-- wp:post-template {"className":"kt-query-grid"} -->
+			<!-- wp:group {"className":"kt-query-card","layout":{"type":"constrained"}} -->
+			<div class="wp-block-group kt-query-card">
+				<!-- wp:post-title {"isLink":true,"level":3} /-->
+				<!-- wp:post-excerpt {"moreText":""} /-->
+			</div>
+			<!-- /wp:group -->
+		<!-- /wp:post-template -->
+	</div>
+	<!-- /wp:query -->
+</main>
+<!-- /wp:group -->
+<!-- wp:template-part {"slug":"footer","tagName":"footer"} /-->

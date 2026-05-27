@@ -1,0 +1,58 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/theme.json",
+  "version": 3,
+  "settings": {
+    "appearanceTools": true,
+    "layout": {
+      "contentSize": "1240px",
+      "wideSize": "1440px"
+    },
+    "color": {
+      "palette": [
+        { "slug": "ink-900", "name": "Ink 900", "color": "#0e1320" },
+        { "slug": "ink-800", "name": "Ink 800", "color": "#171c2c" },
+        { "slug": "ink-600", "name": "Ink 600", "color": "#384058" },
+        { "slug": "brand-500", "name": "Brand 500", "color": "#3a64f5" },
+        { "slug": "brand-600", "name": "Brand 600", "color": "#2a4fd6" },
+        { "slug": "accent-red", "name": "Accent Red", "color": "#e23b3b" },
+        { "slug": "paper", "name": "Paper", "color": "#f4f5f7" },
+        { "slug": "line", "name": "Line", "color": "#e5e7eb" },
+        { "slug": "base", "name": "Base", "color": "#ffffff" }
+      ]
+    },
+    "typography": {
+      "fluid": true,
+      "fontFamilies": [
+        {
+          "slug": "sans",
+          "name": "Pretendard",
+          "fontFamily": "\"Pretendard Variable\", Pretendard, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif"
+        }
+      ],
+      "fontSizes": [
+        { "slug": "small", "name": "Small", "size": "0.875rem" },
+        { "slug": "medium", "name": "Medium", "size": "1rem" },
+        { "slug": "large", "name": "Large", "size": "1.25rem" },
+        { "slug": "x-large", "name": "Extra Large", "size": "1.875rem" },
+        { "slug": "xx-large", "name": "2X Large", "size": "clamp(2.75rem, 6vw, 4rem)" }
+      ]
+    }
+  },
+  "styles": {
+    "color": {
+      "background": "var:preset|color|base",
+      "text": "var:preset|color|ink-900"
+    },
+    "typography": {
+      "fontFamily": "var:preset|font-family|sans",
+      "lineHeight": "1.65"
+    },
+    "spacing": {
+      "blockGap": "0"
+    }
+  },
+  "templateParts": [
+    { "name": "header", "title": "Header", "area": "header" },
+    { "name": "footer", "title": "Footer", "area": "footer" }
+  ]
+}
