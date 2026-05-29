@@ -2,42 +2,209 @@
 <div class="kt-topbar">
   <div class="kt-container kt-topbar__inner">
     <div><span class="kt-dot"></span>2026년 5월 25일 주일예배 · 오전 11:00 본당</div>
-<!-- /wp:html -->
-
-<!-- wp:navigation {"className":"kt-utility-nav","overlayMenu":"never","layout":{"type":"flex","justifyContent":"right"}} -->
-<!-- wp:navigation-link {"label":"새가족 등록","url":"/newcomers/","kind":"custom"} /-->
-<!-- wp:navigation-link {"label":"교회오시는길","url":"/location/","kind":"custom"} /-->
-<!-- wp:navigation-link {"label":"English","url":"/english/","kind":"custom"} /-->
-<!-- wp:navigation-link {"label":"로그인","url":"/wp-login.php","kind":"custom"} /-->
-<!-- /wp:navigation -->
-
-<!-- wp:html -->
+    <nav class="kt-utility-nav" aria-label="상단 메뉴">
+      <a href="/newcomers/">새가족 등록</a>
+      <a href="/location/">교회 오시는 길</a>
+      <a href="/english/">English</a>
+      <a href="/wp-login.php">로그인</a>
+    </nav>
   </div>
 </div>
-<header class="kt-header">
+
+<div class="kt-header">
   <div class="kt-container kt-header__inner">
     <a href="/" class="kt-brand">
       <img src="/wp-content/themes/ktheme-v2/assets/images/style1/logo.png" alt="가평교회" />
-      <span>가평교회 <small>GAPYEONG CHURCH</small></span>
+      <span>가평교회<small>GAPYEONG CHURCH</small></span>
     </a>
-<!-- /wp:html -->
 
-<!-- wp:navigation {"className":"kt-nav","overlayMenu":"mobile","layout":{"type":"flex","justifyContent":"center"}} -->
-<!-- wp:navigation-link {"label":"예배","url":"/worship/","kind":"custom","className":"is-active"} /-->
-<!-- wp:navigation-link {"label":"공동체","url":"/community/","kind":"custom"} /-->
-<!-- wp:navigation-link {"label":"양육","url":"/training/","kind":"custom"} /-->
-<!-- wp:navigation-link {"label":"미디어","url":"/media/","kind":"custom"} /-->
-<!-- wp:navigation-link {"label":"교회소개","url":"/about/","kind":"custom"} /-->
-<!-- wp:navigation-link {"label":"행정","url":"/admin-guide/","kind":"custom"} /-->
-<!-- /wp:navigation -->
+    <nav class="kt-nav" aria-label="주요 메뉴">
+      <ul class="kt-nav__list">
+        <li class="kt-nav__item">
+          <a class="kt-nav__link" href="/worship/"><span>예배</span><span class="kt-nav-live">LIVE</span></a>
+          <div class="kt-nav__dropdown">
+            <a href="/worship/">예배</a>
+            <a href="/worship-guide/">예배 안내</a>
+            <a href="/sunday-worship/">주일예배</a>
+            <a href="/wednesday-worship/">수요예배</a>
+            <a href="/dawn-prayer/">새벽기도</a>
+            <a href="/bulletin/">주보</a>
+          </div>
+        </li>
+        <li class="kt-nav__item">
+          <a class="kt-nav__link" href="/community/">공동체</a>
+          <div class="kt-nav__dropdown">
+            <a href="/community/">공동체</a>
+            <a href="/newcomers/">새가족</a>
+            <a href="/small-groups/">소그룹/구역</a>
+            <a href="/next-generation/">다음세대</a>
+            <a href="/youth-ministry/">청년부</a>
+            <a href="/senior-ministry/">장년/시니어</a>
+          </div>
+        </li>
+        <li class="kt-nav__item">
+          <a class="kt-nav__link" href="/training/">양육</a>
+          <div class="kt-nav__dropdown">
+            <a href="/training/">양육</a>
+            <a href="/new-family-course/">새가족 과정</a>
+            <a href="/bible-study/">성경공부</a>
+            <a href="/discipleship/">제자훈련</a>
+            <a href="/qt/">QT/묵상</a>
+          </div>
+        </li>
+        <li class="kt-nav__item">
+          <a class="kt-nav__link" href="/mission/">선교 안내</a>
+          <div class="kt-nav__dropdown">
+            <a href="/mission/">선교 안내</a>
+            <a href="/serve/">섬김 사역</a>
+            <a href="/support/">후원 안내</a>
+          </div>
+        </li>
+        <li class="kt-nav__item">
+          <a class="kt-nav__link" href="/media/">미디어</a>
+          <div class="kt-nav__dropdown">
+            <a href="/media/">미디어</a>
+            <a href="/news/">교회소식</a>
+            <a href="/denomination-news/">교단소식</a>
+            <a href="/sermons/">설교</a>
+            <a href="/albums/">행사앨범</a>
+            <a href="/videos/">영상</a>
+            <a href="/library/">자료실</a>
+          </div>
+        </li>
+        <li class="kt-nav__item">
+          <a class="kt-nav__link" href="/about/">교회소개</a>
+          <div class="kt-nav__dropdown">
+            <a href="/about/">교회소개</a>
+            <a href="/vision/">비전</a>
+            <a href="/people/">섬기는 사람들</a>
+            <a href="/history/">교회연혁</a>
+            <a href="/annual-schedule/">연간일정</a>
+            <a href="/location/">오시는 길</a>
+          </div>
+        </li>
+        <li class="kt-nav__item">
+          <a class="kt-nav__link" href="/admin-guide/">행정</a>
+          <div class="kt-nav__dropdown kt-nav__dropdown--right">
+            <a href="/admin-guide/">행정</a>
+            <a href="/giving/">온라인 헌금</a>
+            <a href="/documents/">증명서 발급</a>
+            <a href="/facility-request/">장소 사용 신청</a>
+            <a href="/vehicle-request/">차량 사용 신청</a>
+            <a href="/contact/">문의하기</a>
+          </div>
+        </li>
+      </ul>
+    </nav>
 
-<!-- wp:html -->
     <div class="kt-header__actions">
-      <button class="kt-icon-button" aria-label="검색">
+      <button class="kt-icon-button" type="button" aria-label="검색 열기" aria-controls="kt-header-search" aria-expanded="false" data-kt-search-toggle>
         <svg class="kt-icon kt-icon--sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
       </button>
       <a class="kt-header-register" href="/newcomers/">새가족 등록</a>
+      <button class="kt-mega-toggle" type="button" aria-label="전체 메뉴 열기" aria-controls="kt-mega-menu" aria-expanded="false" data-kt-mega-toggle>
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </div>
-</header>
+
+  <div class="kt-header-search" id="kt-header-search" aria-hidden="true">
+    <div class="kt-container kt-header-search__inner">
+      <form class="kt-header-search__form" role="search" method="get" action="/">
+        <label class="screen-reader-text" for="kt-header-search-input">검색어</label>
+        <input id="kt-header-search-input" type="search" name="s" placeholder="검색어를 입력하세요" autocomplete="off" />
+        <button type="submit">
+          <svg class="kt-icon kt-icon--sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+          <span>검색</span>
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <div class="kt-mega-menu" id="kt-mega-menu" aria-hidden="true">
+    <div class="kt-container kt-mega-menu__inner">
+      <div class="kt-mega-menu__head">
+        <strong>전체 메뉴</strong>
+        <span>가평교회의 예배, 공동체, 양육과 행정 안내를 한곳에서 확인하세요.</span>
+      </div>
+      <div class="kt-mega-menu__grid">
+        <section><h3><a href="/worship/">예배</a></h3><a href="/worship-guide/">예배 안내</a><a href="/sunday-worship/">주일예배</a><a href="/wednesday-worship/">수요예배</a><a href="/dawn-prayer/">새벽기도</a><a href="/bulletin/">주보</a></section>
+        <section><h3><a href="/community/">공동체</a></h3><a href="/newcomers/">새가족</a><a href="/small-groups/">소그룹/구역</a><a href="/next-generation/">다음세대</a><a href="/youth-ministry/">청년부</a><a href="/senior-ministry/">장년/시니어</a></section>
+        <section><h3><a href="/training/">양육</a></h3><a href="/new-family-course/">새가족 과정</a><a href="/bible-study/">성경공부</a><a href="/discipleship/">제자훈련</a><a href="/qt/">QT/묵상</a></section>
+        <section><h3><a href="/mission/">선교 안내</a></h3><a href="/serve/">섬김 사역</a><a href="/support/">후원 안내</a></section>
+        <section><h3><a href="/media/">미디어</a></h3><a href="/news/">교회소식</a><a href="/denomination-news/">교단소식</a><a href="/sermons/">설교</a><a href="/albums/">행사앨범</a><a href="/videos/">영상</a><a href="/library/">자료실</a></section>
+        <section><h3><a href="/about/">교회소개</a></h3><a href="/vision/">비전</a><a href="/people/">섬기는 사람들</a><a href="/history/">교회연혁</a><a href="/annual-schedule/">연간일정</a><a href="/location/">오시는 길</a></section>
+        <section><h3><a href="/admin-guide/">행정</a></h3><a href="/giving/">온라인 헌금</a><a href="/documents/">증명서 발급</a><a href="/facility-request/">장소 사용 신청</a><a href="/vehicle-request/">차량 사용 신청</a><a href="/contact/">문의하기</a></section>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function () {
+  var header = document.querySelector('.kt-header');
+  if (!header) return;
+  var button = header.querySelector('[data-kt-mega-toggle]');
+  var panel = header.querySelector('#kt-mega-menu');
+  var searchButton = header.querySelector('[data-kt-search-toggle]');
+  var searchPanel = header.querySelector('#kt-header-search');
+  var searchInput = header.querySelector('#kt-header-search-input');
+
+  function setMegaMenu(open) {
+    if (!button || !panel) return;
+    if (open) setSearch(false);
+    header.classList.toggle('is-mega-open', open);
+    button.setAttribute('aria-expanded', open ? 'true' : 'false');
+    button.setAttribute('aria-label', open ? '전체 메뉴 닫기' : '전체 메뉴 열기');
+    panel.setAttribute('aria-hidden', open ? 'false' : 'true');
+  }
+
+  function setSearch(open) {
+    if (!searchButton || !searchPanel) return;
+    if (open) setMegaMenu(false);
+    header.classList.toggle('is-search-open', open);
+    searchButton.setAttribute('aria-expanded', open ? 'true' : 'false');
+    searchButton.setAttribute('aria-label', open ? '검색 닫기' : '검색 열기');
+    searchPanel.setAttribute('aria-hidden', open ? 'false' : 'true');
+    if (open && searchInput) {
+      window.setTimeout(function () {
+        searchInput.focus();
+      }, 80);
+    }
+  }
+
+  if (button) {
+    button.addEventListener('click', function () {
+      setMegaMenu(!header.classList.contains('is-mega-open'));
+    });
+  }
+
+  if (searchButton) {
+    searchButton.addEventListener('click', function () {
+      setSearch(!header.classList.contains('is-search-open'));
+    });
+  }
+
+  document.addEventListener('click', function (event) {
+    if (!header.contains(event.target)) {
+      setMegaMenu(false);
+      setSearch(false);
+    }
+  });
+
+  document.addEventListener('keydown', function (event) {
+    if (event.key === 'Escape') {
+      setMegaMenu(false);
+      setSearch(false);
+    }
+  });
+
+  function syncHeaderScroll() {
+    header.classList.toggle('is-scrolled', window.scrollY > 8);
+  }
+
+  syncHeaderScroll();
+  window.addEventListener('scroll', syncHeaderScroll, { passive: true });
+})();
+</script>
 <!-- /wp:html -->

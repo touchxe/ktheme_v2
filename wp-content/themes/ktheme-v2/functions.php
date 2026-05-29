@@ -14,11 +14,11 @@ if ( ! function_exists( 'ktheme_v2_setup' ) ) {
 
 		register_nav_menus(
 			array(
-				'primary' => __( 'Header Primary Menu', 'ktheme-v2' ),
-				'utility' => __( 'Header Utility Menu', 'ktheme-v2' ),
-				'footer-worship' => __( 'Footer Worship Menu', 'ktheme-v2' ),
+				'primary'          => __( 'Header Primary Menu', 'ktheme-v2' ),
+				'utility'          => __( 'Header Utility Menu', 'ktheme-v2' ),
+				'footer-worship'   => __( 'Footer Worship Menu', 'ktheme-v2' ),
 				'footer-community' => __( 'Footer Community Menu', 'ktheme-v2' ),
-				'footer-links' => __( 'Footer Links Menu', 'ktheme-v2' ),
+				'footer-links'     => __( 'Footer Links Menu', 'ktheme-v2' ),
 			)
 		);
 	}
@@ -29,19 +29,19 @@ function ktheme_v2_register_content_types(): void {
 	register_post_type(
 		'ktheme_sermon',
 		array(
-			'labels' => array(
-				'name' => __( '설교', 'ktheme-v2' ),
-				'singular_name' => __( '설교', 'ktheme-v2' ),
-				'add_new_item' => __( '설교 추가', 'ktheme-v2' ),
-				'edit_item' => __( '설교 편집', 'ktheme-v2' ),
-				'all_items' => __( '모든 설교', 'ktheme-v2' ),
+			'labels'       => array(
+				'name'          => __( 'Sermons', 'ktheme-v2' ),
+				'singular_name' => __( 'Sermon', 'ktheme-v2' ),
+				'add_new_item'  => __( 'Add Sermon', 'ktheme-v2' ),
+				'edit_item'     => __( 'Edit Sermon', 'ktheme-v2' ),
+				'all_items'     => __( 'All Sermons', 'ktheme-v2' ),
 			),
-			'public' => true,
+			'public'       => true,
 			'show_in_rest' => true,
-			'menu_icon' => 'dashicons-video-alt3',
-			'has_archive' => 'sermons',
-			'rewrite' => array( 'slug' => 'sermons' ),
-			'supports' => array( 'title', 'editor', 'excerpt', 'thumbnail', 'custom-fields' ),
+			'menu_icon'    => 'dashicons-video-alt3',
+			'has_archive'  => 'sermons',
+			'rewrite'      => array( 'slug' => 'sermons' ),
+			'supports'     => array( 'title', 'editor', 'excerpt', 'thumbnail', 'custom-fields' ),
 		)
 	);
 
@@ -49,52 +49,52 @@ function ktheme_v2_register_content_types(): void {
 		'ktheme_sermon_series',
 		array( 'ktheme_sermon' ),
 		array(
-			'labels' => array(
-				'name' => __( '설교 시리즈', 'ktheme-v2' ),
-				'singular_name' => __( '설교 시리즈', 'ktheme-v2' ),
+			'labels'       => array(
+				'name'          => __( 'Sermon Series', 'ktheme-v2' ),
+				'singular_name' => __( 'Sermon Series', 'ktheme-v2' ),
 			),
-			'public' => true,
+			'public'       => true,
 			'hierarchical' => true,
 			'show_in_rest' => true,
-			'rewrite' => array( 'slug' => 'sermon-series' ),
+			'rewrite'      => array( 'slug' => 'sermon-series' ),
 		)
 	);
 
 	register_post_type(
 		'ktheme_event',
 		array(
-			'labels' => array(
-				'name' => __( '행사', 'ktheme-v2' ),
-				'singular_name' => __( '행사', 'ktheme-v2' ),
-				'add_new_item' => __( '행사 추가', 'ktheme-v2' ),
-				'edit_item' => __( '행사 편집', 'ktheme-v2' ),
-				'all_items' => __( '모든 행사', 'ktheme-v2' ),
+			'labels'       => array(
+				'name'          => __( 'Events', 'ktheme-v2' ),
+				'singular_name' => __( 'Event', 'ktheme-v2' ),
+				'add_new_item'  => __( 'Add Event', 'ktheme-v2' ),
+				'edit_item'     => __( 'Edit Event', 'ktheme-v2' ),
+				'all_items'     => __( 'All Events', 'ktheme-v2' ),
 			),
-			'public' => true,
+			'public'       => true,
 			'show_in_rest' => true,
-			'menu_icon' => 'dashicons-calendar-alt',
-			'has_archive' => 'events',
-			'rewrite' => array( 'slug' => 'events' ),
-			'supports' => array( 'title', 'editor', 'excerpt', 'thumbnail', 'custom-fields' ),
+			'menu_icon'    => 'dashicons-calendar-alt',
+			'has_archive'  => 'events',
+			'rewrite'      => array( 'slug' => 'events' ),
+			'supports'     => array( 'title', 'editor', 'excerpt', 'thumbnail', 'custom-fields' ),
 		)
 	);
 
 	register_post_type(
 		'ktheme_album',
 		array(
-			'labels' => array(
-				'name' => __( '갤러리 앨범', 'ktheme-v2' ),
-				'singular_name' => __( '갤러리 앨범', 'ktheme-v2' ),
-				'add_new_item' => __( '앨범 추가', 'ktheme-v2' ),
-				'edit_item' => __( '앨범 편집', 'ktheme-v2' ),
-				'all_items' => __( '모든 앨범', 'ktheme-v2' ),
+			'labels'       => array(
+				'name'          => __( 'Gallery Albums', 'ktheme-v2' ),
+				'singular_name' => __( 'Gallery Album', 'ktheme-v2' ),
+				'add_new_item'  => __( 'Add Album', 'ktheme-v2' ),
+				'edit_item'     => __( 'Edit Album', 'ktheme-v2' ),
+				'all_items'     => __( 'All Albums', 'ktheme-v2' ),
 			),
-			'public' => true,
+			'public'       => true,
 			'show_in_rest' => true,
-			'menu_icon' => 'dashicons-format-gallery',
-			'has_archive' => 'albums',
-			'rewrite' => array( 'slug' => 'albums' ),
-			'supports' => array( 'title', 'editor', 'excerpt', 'thumbnail', 'custom-fields' ),
+			'menu_icon'    => 'dashicons-format-gallery',
+			'has_archive'  => 'albums',
+			'rewrite'      => array( 'slug' => 'albums' ),
+			'supports'     => array( 'title', 'editor', 'excerpt', 'thumbnail', 'custom-fields' ),
 		)
 	);
 }
@@ -111,6 +111,577 @@ function ktheme_v2_maybe_flush_rewrite_rules(): void {
 	update_option( 'ktheme_v2_rewrite_version', $version );
 }
 add_action( 'init', 'ktheme_v2_maybe_flush_rewrite_rules', 20 );
+
+function ktheme_v2_text( string $encoded ): string {
+	$decoded = json_decode( '"' . $encoded . '"' );
+
+	return is_string( $decoded ) ? $decoded : $encoded;
+}
+
+function ktheme_v2_required_pages(): array {
+	return array(
+		array( 'title' => ktheme_v2_text( '\uAD50\uD68C\uC18C\uAC1C' ), 'slug' => 'about', 'template' => 'page-about' ),
+		array( 'title' => ktheme_v2_text( '\uBE44\uC804' ), 'slug' => 'vision' ),
+		array( 'title' => ktheme_v2_text( '\uC12C\uAE30\uB294 \uC0AC\uB78C\uB4E4' ), 'slug' => 'people' ),
+		array( 'title' => ktheme_v2_text( '\uAD50\uD68C\uC5F0\uD601' ), 'slug' => 'history' ),
+		array( 'title' => ktheme_v2_text( '\uC5F0\uAC04\uC77C\uC815' ), 'slug' => 'annual-schedule' ),
+		array( 'title' => ktheme_v2_text( '\uC624\uC2DC\uB294 \uAE38' ), 'slug' => 'location' ),
+		array( 'title' => ktheme_v2_text( '\uC608\uBC30' ), 'slug' => 'worship', 'template' => 'page-worship' ),
+		array( 'title' => ktheme_v2_text( '\uC608\uBC30 \uC548\uB0B4' ), 'slug' => 'worship-guide' ),
+		array( 'title' => ktheme_v2_text( '\uC8FC\uC77C\uC608\uBC30' ), 'slug' => 'sunday-worship' ),
+		array( 'title' => ktheme_v2_text( '\uC218\uC694\uC608\uBC30' ), 'slug' => 'wednesday-worship' ),
+		array( 'title' => ktheme_v2_text( '\uC0C8\uBCBD\uAE30\uB3C4' ), 'slug' => 'dawn-prayer' ),
+		array( 'title' => ktheme_v2_text( '\uC8FC\uBCF4' ), 'slug' => 'bulletin' ),
+		array( 'title' => ktheme_v2_text( '\uACF5\uB3D9\uCCB4' ), 'slug' => 'community', 'template' => 'page-community' ),
+		array( 'title' => ktheme_v2_text( '\uC0C8\uAC00\uC871' ), 'slug' => 'newcomers' ),
+		array( 'title' => ktheme_v2_text( '\uC18C\uADF8\uB8F9/\uAD6C\uC5ED' ), 'slug' => 'small-groups' ),
+		array( 'title' => ktheme_v2_text( '\uB2E4\uC74C\uC138\uB300' ), 'slug' => 'next-generation' ),
+		array( 'title' => ktheme_v2_text( '\uCCAD\uB144\uBD80' ), 'slug' => 'youth-ministry' ),
+		array( 'title' => ktheme_v2_text( '\uC7A5\uB144/\uC2DC\uB2C8\uC5B4' ), 'slug' => 'senior-ministry' ),
+		array( 'title' => ktheme_v2_text( '\uC591\uC721' ), 'slug' => 'training', 'template' => 'page-training' ),
+		array( 'title' => ktheme_v2_text( '\uC0C8\uAC00\uC871 \uACFC\uC815' ), 'slug' => 'new-family-course' ),
+		array( 'title' => ktheme_v2_text( '\uC131\uACBD\uACF5\uBD80' ), 'slug' => 'bible-study' ),
+		array( 'title' => ktheme_v2_text( '\uC81C\uC790\uD6C8\uB828' ), 'slug' => 'discipleship' ),
+		array( 'title' => ktheme_v2_text( 'QT/\uBB35\uC0C1' ), 'slug' => 'qt' ),
+		array( 'title' => ktheme_v2_text( '\uC120\uAD50 \uC548\uB0B4' ), 'slug' => 'mission' ),
+		array( 'title' => ktheme_v2_text( '\uC12C\uAE40 \uC0AC\uC5ED' ), 'slug' => 'serve' ),
+		array( 'title' => ktheme_v2_text( '\uD6C4\uC6D0 \uC548\uB0B4' ), 'slug' => 'support' ),
+		array( 'title' => ktheme_v2_text( '\uBBF8\uB514\uC5B4' ), 'slug' => 'media', 'template' => 'page-media' ),
+		array( 'title' => ktheme_v2_text( '\uAD50\uD68C\uC18C\uC2DD' ), 'slug' => 'news' ),
+		array( 'title' => ktheme_v2_text( '\uAD50\uB2E8\uC18C\uC2DD' ), 'slug' => 'denomination-news' ),
+		array( 'title' => ktheme_v2_text( '\uC601\uC0C1' ), 'slug' => 'videos' ),
+		array( 'title' => ktheme_v2_text( '\uC790\uB8CC\uC2E4' ), 'slug' => 'library' ),
+		array( 'title' => ktheme_v2_text( '\uD589\uC815' ), 'slug' => 'admin-guide', 'template' => 'page-admin-guide' ),
+		array( 'title' => ktheme_v2_text( '\uC628\uB77C\uC778 \uD5CC\uAE08' ), 'slug' => 'giving' ),
+		array( 'title' => ktheme_v2_text( '\uC99D\uBA85\uC11C \uBC1C\uAE09' ), 'slug' => 'documents' ),
+		array( 'title' => ktheme_v2_text( '\uC7A5\uC18C \uC0AC\uC6A9 \uC2E0\uCCAD' ), 'slug' => 'facility-request' ),
+		array( 'title' => ktheme_v2_text( '\uCC28\uB7C9 \uC0AC\uC6A9 \uC2E0\uCCAD' ), 'slug' => 'vehicle-request' ),
+		array( 'title' => ktheme_v2_text( '\uBB38\uC758\uD558\uAE30' ), 'slug' => 'contact' ),
+		array( 'title' => ktheme_v2_text( '\uB85C\uADF8\uC778' ), 'slug' => 'login' ),
+		array( 'title' => ktheme_v2_text( '\uD68C\uC6D0\uAC00\uC785' ), 'slug' => 'register' ),
+		array( 'title' => ktheme_v2_text( '\uAC1C\uC778\uC815\uBCF4\uCC98\uB9AC\uBC29\uCE68' ), 'slug' => 'privacy-policy' ),
+		array( 'title' => ktheme_v2_text( '\uC774\uBA54\uC77C \uBB34\uB2E8\uC218\uC9D1\uAC70\uBD80' ), 'slug' => 'email-policy' ),
+	);
+}
+
+function ktheme_v2_page_seed_content( string $title ): string {
+	return '<!-- wp:paragraph {"className":"kt-empty"} -->' .
+		'<p class="kt-empty">' . esc_html( $title . ' ' . ktheme_v2_text( '\uCF58\uD150\uCE20\uB97C \uC900\uBE44\uD558\uACE0 \uC788\uC2B5\uB2C8\uB2E4.' ) ) . '</p>' .
+		'<!-- /wp:paragraph -->';
+}
+
+function ktheme_v2_ensure_required_pages(): void {
+	if ( ! is_admin() || wp_doing_ajax() || wp_doing_cron() ) {
+		return;
+	}
+
+	$version = wp_get_theme()->get( 'Version' );
+	if ( get_option( 'ktheme_v2_required_pages_version' ) === $version ) {
+		return;
+	}
+
+	foreach ( ktheme_v2_required_pages() as $page ) {
+		$existing = get_page_by_path( $page['slug'] );
+
+		if ( ! $existing ) {
+			$page_id = wp_insert_post(
+				array(
+					'post_title'   => $page['title'],
+					'post_name'    => $page['slug'],
+					'post_status'  => 'publish',
+					'post_type'    => 'page',
+					'post_content' => ktheme_v2_page_seed_content( $page['title'] ),
+				),
+				true
+			);
+
+			if ( is_wp_error( $page_id ) ) {
+				continue;
+			}
+		} else {
+			$page_id = (int) $existing->ID;
+		}
+
+		if ( ! empty( $page['template'] ) ) {
+			$current_template = get_post_meta( $page_id, '_wp_page_template', true );
+			if ( '' === $current_template || 'default' === $current_template ) {
+				update_post_meta( $page_id, '_wp_page_template', $page['template'] );
+			}
+		}
+	}
+
+	update_option( 'ktheme_v2_required_pages_version', $version );
+}
+add_action( 'admin_init', 'ktheme_v2_ensure_required_pages' );
+
+function ktheme_v2_flat_child_page_slugs(): array {
+	return array(
+		'vision',
+		'people',
+		'history',
+		'annual-schedule',
+		'location',
+		'worship-guide',
+		'sunday-worship',
+		'wednesday-worship',
+		'dawn-prayer',
+		'bulletin',
+		'newcomers',
+		'small-groups',
+		'next-generation',
+		'youth-ministry',
+		'senior-ministry',
+		'new-family-course',
+		'bible-study',
+		'discipleship',
+		'qt',
+		'serve',
+		'support',
+		'news',
+		'denomination-news',
+		'videos',
+		'library',
+		'giving',
+		'documents',
+		'facility-request',
+		'vehicle-request',
+		'contact',
+	);
+}
+
+function ktheme_v2_use_flat_child_page_links( string $link, int $post_id ): string {
+	$page = get_post( $post_id );
+
+	if ( $page instanceof WP_Post && 'page' === $page->post_type && in_array( $page->post_name, ktheme_v2_flat_child_page_slugs(), true ) ) {
+		return home_url( user_trailingslashit( $page->post_name ) );
+	}
+
+	return $link;
+}
+add_filter( 'page_link', 'ktheme_v2_use_flat_child_page_links', 10, 2 );
+
+function ktheme_v2_resolve_flat_child_page_request( array $query_vars ): array {
+	if ( empty( $query_vars['pagename'] ) || ! is_string( $query_vars['pagename'] ) ) {
+		return $query_vars;
+	}
+
+	$slug = trim( $query_vars['pagename'], '/' );
+	if ( ! in_array( $slug, ktheme_v2_flat_child_page_slugs(), true ) ) {
+		return $query_vars;
+	}
+
+	$pages = get_posts(
+		array(
+			'name'           => $slug,
+			'post_type'      => 'page',
+			'post_status'    => 'publish',
+			'posts_per_page' => 1,
+			'fields'         => 'ids',
+		)
+	);
+
+	if ( empty( $pages ) ) {
+		return $query_vars;
+	}
+
+	$query_vars['page_id'] = (int) $pages[0];
+	unset( $query_vars['pagename'] );
+
+	return $query_vars;
+}
+add_filter( 'request', 'ktheme_v2_resolve_flat_child_page_request' );
+
+function ktheme_v2_resolve_flat_child_page_parse_request( WP $wp ): void {
+	$slug = trim( (string) $wp->request, '/' );
+
+	if ( ! in_array( $slug, ktheme_v2_flat_child_page_slugs(), true ) ) {
+		return;
+	}
+
+	global $wpdb;
+	$page_id = (int) $wpdb->get_var(
+		$wpdb->prepare(
+			"SELECT ID FROM {$wpdb->posts} WHERE post_type = 'page' AND post_name = %s AND post_status IN ('publish','private') ORDER BY ID ASC LIMIT 1",
+			$slug
+		)
+	);
+
+	if ( $page_id <= 0 ) {
+		return;
+	}
+
+	$wp->query_vars = array(
+		'page_id' => $page_id,
+	);
+}
+add_action( 'parse_request', 'ktheme_v2_resolve_flat_child_page_parse_request', 1 );
+
+function ktheme_v2_keep_flat_child_page_canonical( $redirect_url, string $requested_url ) {
+	$path = trim( (string) wp_parse_url( $requested_url, PHP_URL_PATH ), '/' );
+
+	if ( in_array( $path, ktheme_v2_flat_child_page_slugs(), true ) ) {
+		return false;
+	}
+
+	return $redirect_url;
+}
+add_filter( 'redirect_canonical', 'ktheme_v2_keep_flat_child_page_canonical', 10, 2 );
+
+function ktheme_v2_redirect_legacy_slugs(): void {
+	$path = trim( (string) wp_parse_url( $_SERVER['REQUEST_URI'] ?? '', PHP_URL_PATH ), '/' );
+
+	if ( 'ministries' === $path ) {
+		wp_safe_redirect( home_url( '/community/' ), 301 );
+		exit;
+	}
+}
+add_action( 'template_redirect', 'ktheme_v2_redirect_legacy_slugs' );
+
+function ktheme_v2_page_sections(): array {
+	return array(
+		'about'       => array(
+			'title'       => ktheme_v2_text( '\uAD50\uD68C\uC18C\uAC1C' ),
+			'description' => ktheme_v2_text( '\uAD50\uD68C\uC758 \uC815\uCCB4\uC131, \uBE44\uC804, \uC0AC\uB78C\uB4E4\uACFC \uC5F0\uD601\uC744 \uC548\uB0B4\uD569\uB2C8\uB2E4.' ),
+			'items'       => array(
+				array( 'label' => ktheme_v2_text( '\uAD50\uD68C\uC18C\uAC1C' ), 'slug' => 'about', 'description' => ktheme_v2_text( '\uAC00\uD3C9\uAD50\uD68C\uC758 \uC0AC\uC5ED \uBC29\uD5A5\uACFC \uC18C\uAC1C\uB97C \uD655\uC778\uD558\uC138\uC694.' ) ),
+				array( 'label' => ktheme_v2_text( '\uBE44\uC804' ), 'slug' => 'vision', 'description' => ktheme_v2_text( '\uAD50\uD68C\uAC00 \uD568\uAED8 \uD5A5\uD574\uAC00\uB294 \uBE44\uC804\uACFC \uAC00\uCE58\uB97C \uB098\uB215\uB2C8\uB2E4.' ) ),
+				array( 'label' => ktheme_v2_text( '\uC12C\uAE30\uB294 \uC0AC\uB78C\uB4E4' ), 'slug' => 'people', 'description' => ktheme_v2_text( '\uAC00\uD3C9\uAD50\uD68C\uB97C \uC12C\uAE30\uB294 \uC0AC\uB78C\uB4E4\uC744 \uC18C\uAC1C\uD569\uB2C8\uB2E4.' ) ),
+				array( 'label' => ktheme_v2_text( '\uAD50\uD68C\uC5F0\uD601' ), 'slug' => 'history', 'description' => ktheme_v2_text( '\uAC00\uD3C9\uAD50\uD68C\uAC00 \uAC78\uC5B4\uC628 \uC2DC\uAC04\uACFC \uAE30\uB85D\uC744 \uC815\uB9AC\uD588\uC2B5\uB2C8\uB2E4.' ) ),
+				array( 'label' => ktheme_v2_text( '\uC5F0\uAC04\uC77C\uC815' ), 'slug' => 'annual-schedule', 'description' => ktheme_v2_text( '\uC62C\uD574\uC758 \uC8FC\uC694 \uC0AC\uC5ED\uACFC \uC77C\uC815\uC744 \uD55C\uB208\uC5D0 \uBCF4\uC138\uC694.' ) ),
+				array( 'label' => ktheme_v2_text( '\uC624\uC2DC\uB294 \uAE38' ), 'slug' => 'location', 'description' => ktheme_v2_text( '\uC608\uBC30\uB2F9 \uC704\uCE58\uC640 \uBC29\uBB38 \uC548\uB0B4\uB97C \uD655\uC778\uD558\uC138\uC694.' ) ),
+			),
+		),
+		'worship'     => array(
+			'title'       => ktheme_v2_text( '\uC608\uBC30' ),
+			'description' => ktheme_v2_text( '\uC8FC\uC77C\uC608\uBC30\uBD80\uD130 \uC0C8\uBCBD\uAE30\uB3C4\uAE4C\uC9C0, \uD568\uAED8 \uC608\uBC30\uD558\uB294 \uC2DC\uAC04\uC744 \uC548\uB0B4\uD569\uB2C8\uB2E4.' ),
+			'items'       => array(
+				array( 'label' => ktheme_v2_text( '\uC608\uBC30' ), 'slug' => 'worship', 'description' => ktheme_v2_text( '\uAC00\uD3C9\uAD50\uD68C\uC758 \uC608\uBC30 \uD750\uB984\uACFC \uC548\uB0B4\uB97C \uD655\uC778\uD558\uC138\uC694.' ) ),
+				array( 'label' => ktheme_v2_text( '\uC608\uBC30 \uC548\uB0B4' ), 'slug' => 'worship-guide', 'description' => ktheme_v2_text( '\uCC98\uC74C \uBC29\uBB38\uD558\uB294 \uBD84\uB4E4\uC744 \uC704\uD55C \uC608\uBC30 \uC548\uB0B4\uC785\uB2C8\uB2E4.' ) ),
+				array( 'label' => ktheme_v2_text( '\uC8FC\uC77C\uC608\uBC30' ), 'slug' => 'sunday-worship', 'description' => ktheme_v2_text( '\uC8FC\uC77C\uC608\uBC30 \uC2DC\uAC04\uACFC \uC7A5\uC18C, \uC608\uBC30 \uC815\uBCF4\uB97C \uC548\uB0B4\uD569\uB2C8\uB2E4.' ) ),
+				array( 'label' => ktheme_v2_text( '\uC218\uC694\uC608\uBC30' ), 'slug' => 'wednesday-worship', 'description' => ktheme_v2_text( '\uC218\uC694\uC608\uBC30\uC640 \uAE30\uB3C4\uD68C \uC548\uB0B4\uB97C \uD655\uC778\uD558\uC138\uC694.' ) ),
+				array( 'label' => ktheme_v2_text( '\uC0C8\uBCBD\uAE30\uB3C4' ), 'slug' => 'dawn-prayer', 'description' => ktheme_v2_text( '\uD558\uB8E8\uB97C \uAE30\uB3C4\uB85C \uC5EC\uB294 \uC0C8\uBCBD\uAE30\uB3C4 \uC2DC\uAC04\uC744 \uC548\uB0B4\uD569\uB2C8\uB2E4.' ) ),
+				array( 'label' => ktheme_v2_text( '\uC8FC\uBCF4' ), 'slug' => 'bulletin', 'description' => ktheme_v2_text( '\uC8FC\uAC04 \uC608\uBC30 \uC21C\uC11C\uC640 \uAD50\uD68C \uC18C\uC2DD\uC744 \uD655\uC778\uD558\uC138\uC694.' ) ),
+			),
+		),
+		'community'   => array(
+			'title'       => ktheme_v2_text( '\uACF5\uB3D9\uCCB4' ),
+			'description' => ktheme_v2_text( '\uC0C8\uAC00\uC871, \uC18C\uADF8\uB8F9, \uB2E4\uC74C\uC138\uB300\uC640 \uCCAD\uB144\uBD80\uAC00 \uD568\uAED8 \uC790\uB77C\uAC00\uB294 \uACF5\uB3D9\uCCB4\uB97C \uC548\uB0B4\uD569\uB2C8\uB2E4.' ),
+			'items'       => array(
+				array( 'label' => ktheme_v2_text( '\uACF5\uB3D9\uCCB4' ), 'slug' => 'community', 'description' => ktheme_v2_text( '\uAC00\uD3C9\uAD50\uD68C\uC758 \uACF5\uB3D9\uCCB4 \uC0AC\uC5ED\uC744 \uD55C\uB208\uC5D0 \uBCF4\uC138\uC694.' ) ),
+				array( 'label' => ktheme_v2_text( '\uC0C8\uAC00\uC871' ), 'slug' => 'newcomers', 'description' => ktheme_v2_text( '\uCC98\uC74C \uC624\uC2E0 \uBD84\uB4E4\uC744 \uC704\uD55C \uB4F1\uB85D\uACFC \uC815\uCC29 \uACFC\uC815\uC744 \uC548\uB0B4\uD569\uB2C8\uB2E4.' ) ),
+				array( 'label' => ktheme_v2_text( '\uC18C\uADF8\uB8F9/\uAD6C\uC5ED' ), 'slug' => 'small-groups', 'description' => ktheme_v2_text( '\uC0B6\uC744 \uB098\uB204\uACE0 \uC11C\uB85C\uB97C \uB3CC\uBCF4\uB294 \uC18C\uADF8\uB8F9 \uACF5\uB3D9\uCCB4\uB97C \uC18C\uAC1C\uD569\uB2C8\uB2E4.' ) ),
+				array( 'label' => ktheme_v2_text( '\uB2E4\uC74C\uC138\uB300' ), 'slug' => 'next-generation', 'description' => ktheme_v2_text( '\uC544\uC774\uB4E4\uACFC \uCCAD\uC18C\uB144\uC774 \uBCF5\uC74C \uC548\uC5D0\uC11C \uC790\uB77C\uAC00\uB294 \uC608\uBC30\uC640 \uAD50\uC721\uC744 \uC548\uB0B4\uD569\uB2C8\uB2E4.' ) ),
+				array( 'label' => ktheme_v2_text( '\uCCAD\uB144\uBD80' ), 'slug' => 'youth-ministry', 'description' => ktheme_v2_text( '\uCCAD\uB144\uB4E4\uC774 \uBBFF\uC74C\uACFC \uC0B6\uC744 \uD568\uAED8 \uC138\uC6CC\uAC00\uB294 \uC790\uB9AC\uC785\uB2C8\uB2E4.' ) ),
+				array( 'label' => ktheme_v2_text( '\uC7A5\uB144/\uC2DC\uB2C8\uC5B4' ), 'slug' => 'senior-ministry', 'description' => ktheme_v2_text( '\uC7A5\uB144\uACFC \uC2DC\uB2C8\uC5B4 \uC131\uB3C4\uB4E4\uC744 \uC704\uD55C \uC0AC\uC5ED\uACFC \uBAA8\uC784\uC744 \uC548\uB0B4\uD569\uB2C8\uB2E4.' ) ),
+			),
+		),
+		'training'    => array(
+			'title'       => ktheme_v2_text( '\uC591\uC721' ),
+			'description' => ktheme_v2_text( '\uC0C8\uAC00\uC871 \uACFC\uC815\uBD80\uD130 \uC81C\uC790\uD6C8\uB828\uAE4C\uC9C0, \uBBFF\uC74C\uC758 \uC131\uC7A5\uC744 \uB3D5\uB294 \uC591\uC721 \uACFC\uC815\uC785\uB2C8\uB2E4.' ),
+			'items'       => array(
+				array( 'label' => ktheme_v2_text( '\uC591\uC721' ), 'slug' => 'training', 'description' => ktheme_v2_text( '\uC2E0\uC559\uC758 \uAE30\uCD08\uBD80\uD130 \uC131\uC7A5\uAE4C\uC9C0 \uD568\uAED8 \uAC78\uC5B4\uAC11\uB2C8\uB2E4.' ) ),
+				array( 'label' => ktheme_v2_text( '\uC0C8\uAC00\uC871 \uACFC\uC815' ), 'slug' => 'new-family-course', 'description' => ktheme_v2_text( '\uAD50\uD68C\uB97C \uC774\uD574\uD558\uACE0 \uACF5\uB3D9\uCCB4\uC5D0 \uC815\uCC29\uD558\uB294 \uACFC\uC815\uC785\uB2C8\uB2E4.' ) ),
+				array( 'label' => ktheme_v2_text( '\uC131\uACBD\uACF5\uBD80' ), 'slug' => 'bible-study', 'description' => ktheme_v2_text( '\uB9D0\uC500\uC744 \uAE4A\uC774 \uBC30\uC6B0\uACE0 \uC0B6\uC5D0 \uC801\uC6A9\uD558\uB294 \uACF5\uBD80\uC785\uB2C8\uB2E4.' ) ),
+				array( 'label' => ktheme_v2_text( '\uC81C\uC790\uD6C8\uB828' ), 'slug' => 'discipleship', 'description' => ktheme_v2_text( '\uC608\uC218\uB2D8\uC758 \uC81C\uC790\uB85C \uC0B4\uC544\uAC00\uB3C4\uB85D \uB3D5\uB294 \uD6C8\uB828 \uACFC\uC815\uC785\uB2C8\uB2E4.' ) ),
+				array( 'label' => ktheme_v2_text( 'QT/\uBB35\uC0C1' ), 'slug' => 'qt', 'description' => ktheme_v2_text( '\uB9E4\uC77C \uB9D0\uC500\uC73C\uB85C \uD558\uB8E8\uB97C \uC5EC\uB294 \uBB35\uC0C1 \uC790\uB8CC\uC785\uB2C8\uB2E4.' ) ),
+			),
+		),
+		'mission'     => array(
+			'title'       => ktheme_v2_text( '\uC120\uAD50 \uC548\uB0B4' ),
+			'description' => ktheme_v2_text( '\uAD6D\uB0B4\uC640 \uD574\uC678 \uC120\uAD50\uB97C \uD558\uB098\uC758 \uC120\uAD50 \uC548\uB0B4\uC5D0\uC11C \uD1B5\uD569\uD574 \uBCF4\uC5EC\uB4DC\uB9BD\uB2C8\uB2E4.' ),
+			'items'       => array(
+				array( 'label' => ktheme_v2_text( '\uC120\uAD50 \uC548\uB0B4' ), 'slug' => 'mission', 'description' => ktheme_v2_text( '\uAC00\uD3C9\uAD50\uD68C\uC758 \uC120\uAD50 \uBC29\uD5A5\uACFC \uD611\uB825 \uC0AC\uC5ED\uC744 \uC548\uB0B4\uD569\uB2C8\uB2E4.' ) ),
+				array( 'label' => ktheme_v2_text( '\uC12C\uAE40 \uC0AC\uC5ED' ), 'slug' => 'serve', 'description' => ktheme_v2_text( '\uAD50\uD68C\uC640 \uC9C0\uC5ED\uC744 \uC12C\uAE30\uB294 \uC0AC\uC5ED\uC744 \uC18C\uAC1C\uD569\uB2C8\uB2E4.' ) ),
+				array( 'label' => ktheme_v2_text( '\uD6C4\uC6D0 \uC548\uB0B4' ), 'slug' => 'support', 'description' => ktheme_v2_text( '\uC120\uAD50\uC640 \uC12C\uAE40\uC5D0 \uD568\uAED8\uD558\uB294 \uD6C4\uC6D0 \uBC29\uBC95\uC744 \uC548\uB0B4\uD569\uB2C8\uB2E4.' ) ),
+			),
+		),
+		'media'       => array(
+			'title'       => ktheme_v2_text( '\uBBF8\uB514\uC5B4' ),
+			'description' => ktheme_v2_text( '\uAD50\uD68C\uC18C\uC2DD, \uAD50\uB2E8\uC18C\uC2DD, \uC124\uAD50, \uC601\uC0C1\uACFC \uC790\uB8CC\uB97C \uD55C\uACF3\uC5D0\uC11C \uBCF4\uC138\uC694.' ),
+			'items'       => array(
+				array( 'label' => ktheme_v2_text( '\uBBF8\uB514\uC5B4' ), 'slug' => 'media', 'description' => ktheme_v2_text( '\uAC00\uD3C9\uAD50\uD68C\uC758 \uC8FC\uC694 \uCF58\uD150\uCE20\uB97C \uBAA8\uC544 \uBCF4\uC138\uC694.' ) ),
+				array( 'label' => ktheme_v2_text( '\uAD50\uD68C\uC18C\uC2DD' ), 'slug' => 'news', 'description' => ktheme_v2_text( '\uAD50\uD68C\uC758 \uC0C8\uB85C\uC6B4 \uC18C\uC2DD\uACFC \uACF5\uC9C0\uB97C \uC804\uD574\uB4DC\uB9BD\uB2C8\uB2E4.' ) ),
+				array( 'label' => ktheme_v2_text( '\uAD50\uB2E8\uC18C\uC2DD' ), 'slug' => 'denomination-news', 'description' => ktheme_v2_text( '\uAD50\uB2E8\uC758 \uC8FC\uC694 \uC18C\uC2DD\uC744 \uD568\uAED8 \uD655\uC778\uD558\uC138\uC694.' ) ),
+				array( 'label' => ktheme_v2_text( '\uC124\uAD50' ), 'slug' => 'sermons', 'description' => ktheme_v2_text( '\uC8FC\uC77C\uC608\uBC30\uC640 \uC8FC\uC694 \uC608\uBC30\uC758 \uB9D0\uC500\uC744 \uB2E4\uC2DC \uBCF4\uC138\uC694.' ) ),
+				array( 'label' => ktheme_v2_text( '\uD589\uC0AC\uC568\uBC94' ), 'slug' => 'albums', 'description' => ktheme_v2_text( '\uAD50\uD68C \uD589\uC0AC\uC640 \uACF5\uB3D9\uCCB4\uC758 \uC7A5\uBA74\uC744 \uC0AC\uC9C4\uC73C\uB85C \uB098\uB215\uB2C8\uB2E4.' ) ),
+				array( 'label' => ktheme_v2_text( '\uC601\uC0C1' ), 'slug' => 'videos', 'description' => ktheme_v2_text( '\uAD50\uD68C \uC0AC\uC5ED\uACFC \uC608\uBC30 \uC601\uC0C1\uC744 \uBAA8\uC544 \uBCF4\uC138\uC694.' ) ),
+				array( 'label' => ktheme_v2_text( '\uC790\uB8CC\uC2E4' ), 'slug' => 'library', 'description' => ktheme_v2_text( '\uC0AC\uC5ED\uACFC \uC2E0\uC559\uC0DD\uD65C\uC5D0 \uD544\uC694\uD55C \uC790\uB8CC\uB97C \uC81C\uACF5\uD569\uB2C8\uB2E4.' ) ),
+			),
+		),
+		'admin-guide' => array(
+			'title'       => ktheme_v2_text( '\uD589\uC815' ),
+			'description' => ktheme_v2_text( '\uD5CC\uAE08, \uC99D\uBA85\uC11C, \uACF5\uAC04\uACFC \uCC28\uB7C9 \uC2E0\uCCAD, \uBB38\uC758\uB97C \uC548\uB0B4\uD569\uB2C8\uB2E4.' ),
+			'items'       => array(
+				array( 'label' => ktheme_v2_text( '\uD589\uC815' ), 'slug' => 'admin-guide', 'description' => ktheme_v2_text( '\uAD50\uD68C \uD589\uC815 \uC0AC\uD56D\uACFC \uC8FC\uC694 \uC2E0\uCCAD \uCC3D\uAD6C\uB97C \uC548\uB0B4\uD569\uB2C8\uB2E4.' ) ),
+				array( 'label' => ktheme_v2_text( '\uC628\uB77C\uC778 \uD5CC\uAE08' ), 'slug' => 'giving', 'description' => ktheme_v2_text( '\uC628\uB77C\uC778 \uD5CC\uAE08 \uBC29\uBC95\uACFC \uACC4\uC88C \uC815\uBCF4\uB97C \uC548\uB0B4\uD569\uB2C8\uB2E4.' ) ),
+				array( 'label' => ktheme_v2_text( '\uC99D\uBA85\uC11C \uBC1C\uAE09' ), 'slug' => 'documents', 'description' => ktheme_v2_text( '\uAD50\uC801 \uBC0F \uD589\uC815 \uC99D\uBA85\uC11C \uBC1C\uAE09 \uC2E0\uCCAD\uC744 \uC548\uB0B4\uD569\uB2C8\uB2E4.' ) ),
+				array( 'label' => ktheme_v2_text( '\uC7A5\uC18C \uC0AC\uC6A9 \uC2E0\uCCAD' ), 'slug' => 'facility-request', 'description' => ktheme_v2_text( '\uAD50\uD68C \uACF5\uAC04 \uC0AC\uC6A9 \uC2E0\uCCAD \uC808\uCC28\uB97C \uC548\uB0B4\uD569\uB2C8\uB2E4.' ) ),
+				array( 'label' => ktheme_v2_text( '\uCC28\uB7C9 \uC0AC\uC6A9 \uC2E0\uCCAD' ), 'slug' => 'vehicle-request', 'description' => ktheme_v2_text( '\uAD50\uD68C \uCC28\uB7C9 \uC0AC\uC6A9 \uC2E0\uCCAD \uC548\uB0B4\uC785\uB2C8\uB2E4.' ) ),
+				array( 'label' => ktheme_v2_text( '\uBB38\uC758\uD558\uAE30' ), 'slug' => 'contact', 'description' => ktheme_v2_text( '\uAD50\uD68C\uC5D0 \uD544\uC694\uD55C \uBB38\uC758\uB97C \uB0A8\uACA8\uC8FC\uC138\uC694.' ) ),
+			),
+		),
+	);
+}
+
+function ktheme_v2_find_page_section( string $slug ): ?array {
+	foreach ( ktheme_v2_page_sections() as $section_slug => $section ) {
+		foreach ( $section['items'] as $item ) {
+			if ( $slug === $item['slug'] ) {
+				return array(
+					'slug'    => $section_slug,
+					'section' => $section,
+					'item'    => $item,
+				);
+			}
+		}
+	}
+
+	return null;
+}
+
+function ktheme_v2_render_page_hero_shortcode(): string {
+	if ( ! is_page() ) {
+		return '';
+	}
+
+	$page = get_queried_object();
+	if ( ! $page instanceof WP_Post ) {
+		return '';
+	}
+
+	$current_slug = $page->post_name;
+	$match        = ktheme_v2_find_page_section( $current_slug );
+	$title        = get_the_title( $page );
+	$description  = '';
+	$tabs         = '';
+
+	if ( null !== $match ) {
+		$section     = $match['section'];
+		$current     = $match['item'];
+		$title       = $current['label'];
+		$description = $current['description'] ?? $section['description'];
+
+		$tab_links = array();
+		foreach ( $section['items'] as $item ) {
+			$is_active   = $current_slug === $item['slug'];
+			$tab_links[] = sprintf(
+				'<a class="%1$s" href="%2$s"%3$s>%4$s</a>',
+				$is_active ? 'is-active' : '',
+				esc_url( home_url( user_trailingslashit( $item['slug'] ) ) ),
+				$is_active ? ' aria-current="page"' : '',
+				esc_html( $item['label'] )
+			);
+		}
+
+		$tabs = sprintf(
+			'<nav class="kt-page-tabs" aria-label="%s">%s</nav>',
+			esc_attr( $section['title'] . ' 하위 메뉴' ),
+			implode( '', $tab_links )
+		);
+	}
+
+	$breadcrumb = '<a href="' . esc_url( home_url( '/' ) ) . '"><svg class="kt-icon kt-icon--xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 11l9-8 9 8M5 10v10h14V10"/></svg>HOME</a>';
+	if ( null !== $match && $match['slug'] !== $current_slug ) {
+		$breadcrumb .= '<span>›</span><a href="' . esc_url( home_url( user_trailingslashit( $match['slug'] ) ) ) . '">' . esc_html( $match['section']['title'] ) . '</a>';
+	}
+	$breadcrumb .= '<span>›</span><strong>' . esc_html( $title ) . '</strong>';
+
+	$description_html = '' !== $description ? '<p>' . esc_html( $description ) . '</p>' : '';
+
+	return '<section class="kt-page-hero kt-shared-page-hero">' .
+		'<nav class="kt-breadcrumb" aria-label="' . esc_attr__( '현재 위치', 'ktheme-v2' ) . '">' . $breadcrumb . '</nav>' .
+		'<div class="kt-page-hero__body"><div><h1>' . esc_html( $title ) . '</h1>' . $description_html . '</div>' . wp_kses_post( $tabs ) . '</div>' .
+		'</section>';
+}
+add_shortcode( 'ktheme_page_hero', 'ktheme_v2_render_page_hero_shortcode' );
+
+function ktheme_v2_normalize_front_content_labels( string $block_content ): string {
+	if ( is_admin() ) {
+		return $block_content;
+	}
+
+	return str_replace( '포토갤러리 전체보기', '전체보기', $block_content );
+}
+add_filter( 'render_block', 'ktheme_v2_normalize_front_content_labels', 20 );
+
+function ktheme_v2_enqueue_front_animation_assets(): void {
+	if ( is_admin() || ! is_front_page() ) {
+		return;
+	}
+
+	wp_enqueue_script(
+		'ktheme-v2-gsap',
+		'https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js',
+		array(),
+		'3.13.0',
+		true
+	);
+}
+add_action( 'wp_enqueue_scripts', 'ktheme_v2_enqueue_front_animation_assets' );
+
+function ktheme_v2_render_home_hero_slider_script(): void {
+	if ( is_admin() || ! is_front_page() ) {
+		return;
+	}
+	?>
+	<script>
+	(function () {
+	  var hero = document.querySelector('.style1-static > section');
+	  if (!hero) return;
+
+	  var image = hero.querySelector('img.w-full.h-full.object-cover') || hero.querySelector('.kt-hero__media img');
+	  var content = hero.querySelector('[class*="md:col-span-7"]') || hero.querySelector('.kt-hero__inner > div');
+	  var side = hero.querySelector('[class*="md:col-span-5"]') || hero.querySelector('.kt-hero-side');
+	  if (!image || !content || !side) return;
+
+	  var eyebrow = content.querySelector('.inline-flex') || content.querySelector('.kt-eyebrow');
+	  var title = content.querySelector('h1');
+	  var copy = content.querySelector('p');
+	  var buttons = content.querySelectorAll('button, .kt-button');
+	  var metaItems = content.querySelectorAll('dl dd');
+	  var pager = side.querySelector('[class*="tracking-widest"]') || side.querySelector('.kt-hero-pager');
+	  var controlButtons = side.querySelectorAll('button');
+	  var previousButton = controlButtons[0];
+	  var nextButton = controlButtons[1];
+	  if (!title || !copy || !pager || !previousButton || !nextButton) return;
+
+	  var slides = [
+	    {
+	      image: '/wp-content/themes/ktheme-v2/assets/images/generated/church-generated-01.jpg',
+	      eyebrow: '2026 SPRING SERIES · VOL. 04',
+	      title: '말씀에 머무는 자리,<br />은혜가 흐르는 공동체',
+	      copy: '매주 새롭게 부어지는 은혜를 함께 누립니다. 예배와 말씀, 그리고 공동체 안에서 삶이 회복되는 자리로 여러분을 초대합니다.',
+	      meta: ['머무름의 영성', '시편 23:1-6', '정한결 담임목사'],
+	      primary: '이번 주 설교 보기',
+	      secondary: '예배 시간 안내'
+	    },
+	    {
+	      image: '/wp-content/themes/ktheme-v2/assets/images/generated/church-generated-08.jpg',
+	      eyebrow: 'WORSHIP TOGETHER · SUNDAY',
+	      title: '함께 예배하고,<br />함께 세워지는 시간',
+	      copy: '주일의 예배 자리에서 하나님을 높이고 서로를 격려합니다. 처음 오신 분들도 편안하게 참여할 수 있도록 안내합니다.',
+	      meta: ['주일예배', '오전 11:00 본당', '예배 안내'],
+	      primary: '주일예배 보기',
+	      secondary: '오시는 길'
+	    },
+	    {
+	      image: '/wp-content/themes/ktheme-v2/assets/images/generated/church-generated-03.jpg',
+	      eyebrow: 'NEXT GENERATION · FAITH',
+	      title: '다음 세대가 복음 안에서<br />자라나는 교회',
+	      copy: '아이들과 청소년, 청년들이 믿음과 삶을 함께 배워갑니다. 세대를 잇는 예배와 교육의 흐름을 만들어갑니다.',
+	      meta: ['다음세대', '교육과 예배', '공동체 사역'],
+	      primary: '다음세대 보기',
+	      secondary: '공동체 안내'
+	    },
+	    {
+	      image: '/wp-content/themes/ktheme-v2/assets/images/generated/church-generated-15.jpg',
+	      eyebrow: 'MISSION & SERVE · LOCAL',
+	      title: '지역과 세상을 섬기는<br />작은 발걸음',
+	      copy: '가평교회는 복음의 마음으로 이웃을 섬깁니다. 선교와 섬김의 자리에서 함께 기도하고 동역합니다.',
+	      meta: ['선교 안내', '지역 섬김', '후원과 동역'],
+	      primary: '선교 안내 보기',
+	      secondary: '섬김 사역'
+	    }
+	  ];
+
+	  var current = 0;
+	  var timer = null;
+	  var isAnimating = false;
+	  var prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+	  var animated = [image, eyebrow, title, copy].concat(Array.prototype.slice.call(metaItems));
+
+	  function setButtonLabel(button, label, preferLastNode) {
+	    if (!button || !label) return;
+	    var textNodes = Array.prototype.filter.call(button.childNodes, function (node) {
+	      return node.nodeType === Node.TEXT_NODE && node.textContent.trim();
+	    });
+	    var target = preferLastNode ? textNodes[textNodes.length - 1] : textNodes[0];
+	    if (target) {
+	      target.textContent = label;
+	    }
+	  }
+
+	  function applySlide(slide) {
+	    image.src = slide.image;
+	    if (eyebrow) {
+	      var line = eyebrow.querySelector('span');
+	      eyebrow.textContent = '';
+	      if (line) eyebrow.appendChild(line);
+	      eyebrow.appendChild(document.createTextNode(slide.eyebrow));
+	    }
+	    title.innerHTML = slide.title;
+	    copy.textContent = slide.copy;
+	    slide.meta.forEach(function (value, metaIndex) {
+	      if (metaItems[metaIndex]) metaItems[metaIndex].textContent = value;
+	    });
+	    setButtonLabel(buttons[0], slide.primary, true);
+	    setButtonLabel(buttons[1], slide.secondary, false);
+	  }
+
+	  function updatePager() {
+	    pager.innerHTML = String(current + 1).padStart(2, '0') + ' <span class="w-10 h-px bg-white/40"></span> ' + String(slides.length).padStart(2, '0');
+	  }
+
+	  function renderSlide(index, immediate) {
+	    if (isAnimating && !immediate) return;
+	    current = (index + slides.length) % slides.length;
+	    var slide = slides[current];
+	    var targets = animated.filter(Boolean);
+
+	    if (immediate || prefersReducedMotion || !window.gsap) {
+	      applySlide(slide);
+	      updatePager();
+	      return;
+	    }
+
+	    isAnimating = true;
+	    window.gsap.timeline({
+	      defaults: { ease: 'power2.out' },
+	      onComplete: function () {
+	        isAnimating = false;
+	      }
+	    })
+	      .to(targets, { opacity: 0, y: -8, duration: 0.18, stagger: 0.025, ease: 'power1.in' })
+	      .add(function () {
+	        applySlide(slide);
+	        updatePager();
+	      })
+	      .fromTo(image, { scale: 1.04 }, { scale: 1, opacity: 1, duration: 0.72, ease: 'power2.out' })
+	      .fromTo(targets, { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.42, stagger: 0.045 }, '<0.08');
+	  }
+
+	  function start() {
+	    window.clearInterval(timer);
+	    if (prefersReducedMotion) return;
+	    timer = window.setInterval(function () {
+	      renderSlide(current + 1);
+	    }, 6500);
+	  }
+
+	  previousButton.addEventListener('click', function (event) {
+	    event.preventDefault();
+	    renderSlide(current - 1);
+	    start();
+	  });
+
+	  nextButton.addEventListener('click', function (event) {
+	    event.preventDefault();
+	    renderSlide(current + 1);
+	    start();
+	  });
+
+	  hero.addEventListener('mouseenter', function () { window.clearInterval(timer); });
+	  hero.addEventListener('mouseleave', start);
+	  hero.addEventListener('focusin', function () { window.clearInterval(timer); });
+	  hero.addEventListener('focusout', start);
+
+	  renderSlide(0, true);
+	  start();
+	})();
+	</script>
+	<?php
+}
+add_action( 'wp_footer', 'ktheme_v2_render_home_hero_slider_script', 20 );
 
 function ktheme_v2_enqueue_assets(): void {
 	wp_enqueue_style(

@@ -1,13 +1,12 @@
 <!-- wp:template-part {"slug":"header","tagName":"header"} /-->
 <!-- wp:group {"tagName":"main","className":"kt-page-shell","layout":{"type":"constrained"}} -->
 <main class="wp-block-group kt-page-shell">
-	<!-- wp:template-part {"slug":"archive-hero-event"} /-->
-	<!-- wp:query {"query":{"perPage":9,"pages":0,"offset":0,"postType":"ktheme_event","order":"desc","orderBy":"date","inherit":true},"className":"kt-content-query"} -->
-	<div class="wp-block-query kt-content-query">
+	<!-- wp:template-part {"slug":"archive-hero"} /-->
+	<!-- wp:query {"query":{"perPage":10,"pages":0,"offset":0,"postType":"post","order":"desc","orderBy":"date","inherit":true},"className":"kt-content-query kt-archive-shell"} -->
+	<div class="wp-block-query kt-content-query kt-archive-shell">
 		<!-- wp:post-template {"className":"kt-query-grid"} -->
 			<!-- wp:group {"className":"kt-query-card","layout":{"type":"constrained"}} -->
 			<div class="wp-block-group kt-query-card">
-				<!-- wp:post-featured-image {"isLink":true,"aspectRatio":"4/3"} /-->
 				<!-- wp:post-title {"isLink":true,"level":3} /-->
 				<!-- wp:post-excerpt {"moreText":""} /-->
 			</div>
@@ -20,7 +19,7 @@
 		<!-- /wp:query-pagination -->
 		<!-- wp:query-no-results -->
 			<!-- wp:paragraph {"className":"kt-empty"} -->
-			<p class="kt-empty">아직 등록된 행사가 없습니다.</p>
+			<p class="kt-empty">아직 등록된 글이 없습니다.</p>
 			<!-- /wp:paragraph -->
 		<!-- /wp:query-no-results -->
 	</div>

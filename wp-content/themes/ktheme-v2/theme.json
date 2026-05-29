@@ -53,6 +53,20 @@
   },
   "templateParts": [
     { "name": "header", "title": "Header", "area": "header" },
-    { "name": "footer", "title": "Footer", "area": "footer" }
+    { "name": "footer", "title": "Footer", "area": "footer" },
+    { "name": "page-hero", "title": "Page Hero", "area": "uncategorized" },
+    { "name": "page-hero-about", "title": "About Page Hero", "area": "uncategorized" },
+    { "name": "page-hero-worship", "title": "Worship Page Hero", "area": "uncategorized" },
+    { "name": "page-hero-community", "title": "Community Page Hero", "area": "uncategorized" },
+    { "name": "page-hero-training", "title": "Training Page Hero", "area": "uncategorized" },
+    { "name": "page-hero-media", "title": "Media Page Hero", "area": "uncategorized" },
+    { "name": "page-hero-admin-guide", "title": "Admin Guide Page Hero", "area": "uncategorized" },
+    { "name": "page-hero-404", "title": "404 Page Hero", "area": "uncategorized" },
+    { "name": "archive-hero", "title": "Archive Hero", "area": "uncategorized" },
+    { "name": "archive-hero-sermon", "title": "Sermon Archive Hero", "area": "uncategorized" },
+    { "name": "archive-hero-event", "title": "Event Archive Hero", "area": "uncategorized" },
+    { "name": "archive-hero-album", "title": "Album Archive Hero", "area": "uncategorized" },
+    { "name": "search-hero", "title": "Search Hero", "area": "uncategorized" },
+    { "name": "single-hero", "title": "Single Hero", "area": "uncategorized" }
   ]
 }

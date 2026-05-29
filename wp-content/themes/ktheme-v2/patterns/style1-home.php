@@ -143,7 +143,7 @@
 
   <section class="kt-section">
     <div class="kt-container">
-      <div class="kt-section-head"><div><div class="kt-label">Community Moments</div><h2 class="kt-section-title" style="font-size:34px">우리의 한 주, 사진으로.</h2></div><a href="#" class="kt-more-link">포토갤러리 전체보기<svg class="kt-icon kt-icon--xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a></div>
+      <div class="kt-section-head"><div><div class="kt-label">Community Moments</div><h2 class="kt-section-title" style="font-size:34px">우리의 한 주, 사진으로.</h2></div><a href="#" class="kt-more-link">전체보기<svg class="kt-icon kt-icon--xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a></div>
       <div class="kt-gallery">
         <a class="span-3" href="#"><img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=600&q=80" alt="" /></a>
         <a class="span-3" href="#"><img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=600&q=80" alt="" /></a>

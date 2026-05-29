@@ -1,16 +1,7 @@
 <!-- wp:template-part {"slug":"header","tagName":"header"} /-->
 <!-- wp:group {"tagName":"main","className":"kt-page-shell","layout":{"type":"constrained"}} -->
 <main class="wp-block-group kt-page-shell">
-	<!-- wp:group {"className":"kt-page-intro","layout":{"type":"constrained"}} -->
-	<div class="wp-block-group kt-page-intro">
-		<!-- wp:heading {"level":1} -->
-		<h1 class="wp-block-heading">설교</h1>
-		<!-- /wp:heading -->
-		<!-- wp:paragraph {"className":"kt-page-intro__lead"} -->
-		<p class="kt-page-intro__lead">예배 가운데 선포된 말씀을 다시 듣고 묵상합니다.</p>
-		<!-- /wp:paragraph -->
-	</div>
-	<!-- /wp:group -->
+	<!-- wp:template-part {"slug":"archive-hero-sermon"} /-->
 	<!-- wp:query {"query":{"perPage":9,"pages":0,"offset":0,"postType":"ktheme_sermon","order":"desc","orderBy":"date","inherit":true},"className":"kt-content-query"} -->
 	<div class="wp-block-query kt-content-query">
 		<!-- wp:post-template {"className":"kt-query-grid"} -->
