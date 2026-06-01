@@ -16,6 +16,7 @@
     "activate:theme": "node scripts/activate-theme.mjs",
     "sync:pages": "node scripts/sync-wp-pages.mjs",
     "sync:worship": "node scripts/sync-worship-page.mjs",
+    "sync:design-library": "node scripts/sync-design-library-page.mjs",
 
     "wt:add": "node scripts/wt-add.mjs",
     "wt:list": "git worktree list",

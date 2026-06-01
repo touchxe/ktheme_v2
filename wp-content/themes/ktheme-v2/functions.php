@@ -157,6 +157,7 @@ function ktheme_v2_required_pages(): array {
 		array( 'title' => ktheme_v2_text( '\uC7A5\uC18C \uC0AC\uC6A9 \uC2E0\uCCAD' ), 'slug' => 'facility-request' ),
 		array( 'title' => ktheme_v2_text( '\uCC28\uB7C9 \uC0AC\uC6A9 \uC2E0\uCCAD' ), 'slug' => 'vehicle-request' ),
 		array( 'title' => ktheme_v2_text( '\uBB38\uC758\uD558\uAE30' ), 'slug' => 'contact' ),
+		array( 'title' => ktheme_v2_text( '\uB514\uC790\uC778 \uB77C\uC774\uBE0C\uB7EC\uB9AC' ), 'slug' => 'design-library', 'template' => 'page-design-library' ),
 		array( 'title' => ktheme_v2_text( '\uB85C\uADF8\uC778' ), 'slug' => 'login' ),
 		array( 'title' => ktheme_v2_text( '\uD68C\uC6D0\uAC00\uC785' ), 'slug' => 'register' ),
 		array( 'title' => ktheme_v2_text( '\uAC1C\uC778\uC815\uBCF4\uCC98\uB9AC\uBC29\uCE68' ), 'slug' => 'privacy-policy' ),
@@ -439,8 +440,131 @@ function ktheme_v2_find_page_section( string $slug ): ?array {
 	return null;
 }
 
+function ktheme_v2_page_hero_style_options(): array {
+	return array(
+		'clean'    => __( 'Clean', 'ktheme-v2' ),
+		'image'    => __( 'Image Background', 'ktheme-v2' ),
+		'kenburns' => __( 'Ken Burns', 'ktheme-v2' ),
+		'split'    => __( 'Split Right Visual', 'ktheme-v2' ),
+		'video'    => __( 'Video Background', 'ktheme-v2' ),
+	);
+}
+
+function ktheme_v2_sanitize_page_hero_style( string $style ): string {
+	return array_key_exists( $style, ktheme_v2_page_hero_style_options() ) ? $style : 'clean';
+}
+
+function ktheme_v2_sanitize_checkbox( $checked ): bool {
+	return (bool) $checked;
+}
+
+function ktheme_v2_page_hero_default_image(): string {
+	return 'https://images.unsplash.com/photo-1507692049790-de58290a4334?auto=format&fit=crop&w=1600&q=80';
+}
+
+function ktheme_v2_page_hero_settings(): array {
+	$style      = ktheme_v2_sanitize_page_hero_style( (string) get_theme_mod( 'ktheme_v2_page_hero_style', 'clean' ) );
+	$text_color = sanitize_hex_color( (string) get_theme_mod( 'ktheme_v2_page_hero_text_color', '' ) );
+
+	if ( ! $text_color ) {
+		$text_color = in_array( $style, array( 'image', 'kenburns', 'video' ), true ) ? '#ffffff' : '#0e1320';
+	}
+
+	return array(
+		'enabled'       => (bool) get_theme_mod( 'ktheme_v2_page_hero_enabled', true ),
+		'style'         => $style,
+		'image_url'     => esc_url_raw( (string) get_theme_mod( 'ktheme_v2_page_hero_image_url', ktheme_v2_page_hero_default_image() ) ),
+		'youtube_url'   => esc_url_raw( (string) get_theme_mod( 'ktheme_v2_page_hero_youtube_url', '' ) ),
+		'accent_color'  => sanitize_hex_color( (string) get_theme_mod( 'ktheme_v2_page_hero_accent_color', '#3a64f5' ) ) ?: '#3a64f5',
+		'text_color'    => $text_color,
+		'overlay_color' => sanitize_hex_color( (string) get_theme_mod( 'ktheme_v2_page_hero_overlay_color', '#0e1320' ) ) ?: '#0e1320',
+	);
+}
+
+function ktheme_v2_extract_youtube_id( string $url ): string {
+	if ( '' === $url ) {
+		return '';
+	}
+
+	$parts = wp_parse_url( $url );
+	if ( empty( $parts['host'] ) ) {
+		return '';
+	}
+
+	$host = strtolower( (string) $parts['host'] );
+	$path = trim( (string) ( $parts['path'] ?? '' ), '/' );
+
+	if ( false !== strpos( $host, 'youtu.be' ) ) {
+		return sanitize_text_field( strtok( $path, '/' ) );
+	}
+
+	if ( false !== strpos( $host, 'youtube.com' ) ) {
+		if ( 0 === strpos( $path, 'embed/' ) ) {
+			return sanitize_text_field( substr( $path, 6 ) );
+		}
+
+		if ( ! empty( $parts['query'] ) ) {
+			parse_str( $parts['query'], $query );
+			if ( ! empty( $query['v'] ) && is_string( $query['v'] ) ) {
+				return sanitize_text_field( $query['v'] );
+			}
+		}
+	}
+
+	return '';
+}
+
+function ktheme_v2_render_page_hero_media( string $style, array $settings ): string {
+	if ( 'clean' === $style || 'split' === $style ) {
+		return '';
+	}
+
+	if ( 'video' === $style ) {
+		$youtube_id = ktheme_v2_extract_youtube_id( $settings['youtube_url'] );
+		if ( '' !== $youtube_id ) {
+			$src = add_query_arg(
+				array(
+					'autoplay'       => '1',
+					'mute'           => '1',
+					'controls'       => '0',
+					'loop'           => '1',
+					'playlist'       => $youtube_id,
+					'playsinline'    => '1',
+					'modestbranding' => '1',
+					'rel'            => '0',
+				),
+				'https://www.youtube.com/embed/' . rawurlencode( $youtube_id )
+			);
+
+			return '<div class="kt-page-hero__media" aria-hidden="true"><iframe src="' . esc_url( $src ) . '" title="' . esc_attr__( 'Background video', 'ktheme-v2' ) . '" loading="lazy"></iframe></div>';
+		}
+	}
+
+	$image_url = '' !== $settings['image_url'] ? $settings['image_url'] : ktheme_v2_page_hero_default_image();
+
+	return '<div class="kt-page-hero__media" aria-hidden="true"><img src="' . esc_url( $image_url ) . '" alt="" /></div>';
+}
+
+function ktheme_v2_render_page_hero_visual( string $style, array $settings ): string {
+	if ( 'split' !== $style ) {
+		return '';
+	}
+
+	$image_url = '' !== $settings['image_url'] ? $settings['image_url'] : ktheme_v2_page_hero_default_image();
+
+	return '<div class="kt-page-hero__visual" aria-hidden="true">' .
+		'<img src="' . esc_url( $image_url ) . '" alt="" />' .
+		'<div class="kt-page-hero__side-card"><strong>' . esc_html__( '주일 안내', 'ktheme-v2' ) . '</strong><span>' . esc_html__( '1부 09:00 · 2부 11:00', 'ktheme-v2' ) . '</span></div>' .
+		'</div>';
+}
+
 function ktheme_v2_render_page_hero_shortcode(): string {
 	if ( ! is_page() ) {
+		return '';
+	}
+
+	$settings = ktheme_v2_page_hero_settings();
+	if ( ! $settings['enabled'] ) {
 		return '';
 	}
 
@@ -487,13 +611,138 @@ function ktheme_v2_render_page_hero_shortcode(): string {
 	$breadcrumb .= '<span>›</span><strong>' . esc_html( $title ) . '</strong>';
 
 	$description_html = '' !== $description ? '<p>' . esc_html( $description ) . '</p>' : '';
+	$style            = $settings['style'];
+	$classes          = array(
+		'kt-page-hero',
+		'kt-shared-page-hero',
+		'kt-shared-page-hero--' . $style,
+	);
+	$style_attr       = sprintf(
+		'--kt-page-hero-accent:%1$s;--kt-page-hero-text:%2$s;--kt-page-hero-overlay:%3$s;',
+		esc_attr( $settings['accent_color'] ),
+		esc_attr( $settings['text_color'] ),
+		esc_attr( $settings['overlay_color'] )
+	);
+	$media_html       = ktheme_v2_render_page_hero_media( $style, $settings );
+	$visual_html      = ktheme_v2_render_page_hero_visual( $style, $settings );
 
-	return '<section class="kt-page-hero kt-shared-page-hero">' .
+	return '<section class="' . esc_attr( implode( ' ', $classes ) ) . '" style="' . esc_attr( $style_attr ) . '">' .
+		$media_html .
 		'<nav class="kt-breadcrumb" aria-label="' . esc_attr__( '현재 위치', 'ktheme-v2' ) . '">' . $breadcrumb . '</nav>' .
-		'<div class="kt-page-hero__body"><div><h1>' . esc_html( $title ) . '</h1>' . $description_html . '</div>' . wp_kses_post( $tabs ) . '</div>' .
+		'<div class="kt-page-hero__body"><div><h1>' . esc_html( $title ) . '</h1>' . $description_html . '</div>' . $visual_html . wp_kses_post( $tabs ) . '</div>' .
 		'</section>';
 }
 add_shortcode( 'ktheme_page_hero', 'ktheme_v2_render_page_hero_shortcode' );
+
+function ktheme_v2_customize_register_page_hero( WP_Customize_Manager $wp_customize ): void {
+	$wp_customize->add_section(
+		'ktheme_v2_page_hero',
+		array(
+			'title'       => __( 'KTheme 공용 히어로', 'ktheme-v2' ),
+			'description' => __( '모든 페이지 템플릿에서 사용하는 테마 종속 공용 히어로 설정입니다.', 'ktheme-v2' ),
+			'priority'    => 35,
+		)
+	);
+
+	$wp_customize->add_setting(
+		'ktheme_v2_page_hero_enabled',
+		array(
+			'default'           => true,
+			'sanitize_callback' => 'ktheme_v2_sanitize_checkbox',
+		)
+	);
+
+	$wp_customize->add_control(
+		'ktheme_v2_page_hero_enabled',
+		array(
+			'label'   => __( '공용 히어로 표시', 'ktheme-v2' ),
+			'section' => 'ktheme_v2_page_hero',
+			'type'    => 'checkbox',
+		)
+	);
+
+	$wp_customize->add_setting(
+		'ktheme_v2_page_hero_style',
+		array(
+			'default'           => 'clean',
+			'sanitize_callback' => 'ktheme_v2_sanitize_page_hero_style',
+		)
+	);
+
+	$wp_customize->add_control(
+		'ktheme_v2_page_hero_style',
+		array(
+			'label'   => __( '히어로 스타일', 'ktheme-v2' ),
+			'section' => 'ktheme_v2_page_hero',
+			'type'    => 'select',
+			'choices' => ktheme_v2_page_hero_style_options(),
+		)
+	);
+
+	$wp_customize->add_setting(
+		'ktheme_v2_page_hero_image_url',
+		array(
+			'default'           => ktheme_v2_page_hero_default_image(),
+			'sanitize_callback' => 'esc_url_raw',
+		)
+	);
+
+	$wp_customize->add_control(
+		'ktheme_v2_page_hero_image_url',
+		array(
+			'label'       => __( '배경/우측 이미지 URL', 'ktheme-v2' ),
+			'description' => __( 'Image, Ken Burns, Split 스타일에서 사용합니다.', 'ktheme-v2' ),
+			'section'     => 'ktheme_v2_page_hero',
+			'type'        => 'url',
+		)
+	);
+
+	$wp_customize->add_setting(
+		'ktheme_v2_page_hero_youtube_url',
+		array(
+			'default'           => '',
+			'sanitize_callback' => 'esc_url_raw',
+		)
+	);
+
+	$wp_customize->add_control(
+		'ktheme_v2_page_hero_youtube_url',
+		array(
+			'label'       => __( '유튜브 배경 영상 URL', 'ktheme-v2' ),
+			'description' => __( 'Video Background 스타일에서 사용합니다.', 'ktheme-v2' ),
+			'section'     => 'ktheme_v2_page_hero',
+			'type'        => 'url',
+		)
+	);
+
+	foreach (
+		array(
+			'ktheme_v2_page_hero_accent_color'  => array( __( '강조 색상', 'ktheme-v2' ), '#3a64f5' ),
+			'ktheme_v2_page_hero_text_color'    => array( __( '텍스트 색상', 'ktheme-v2' ), '' ),
+			'ktheme_v2_page_hero_overlay_color' => array( __( '오버레이 색상', 'ktheme-v2' ), '#0e1320' ),
+		) as $setting_id => $config
+	) {
+		$wp_customize->add_setting(
+			$setting_id,
+			array(
+				'default'           => $config[1],
+				'sanitize_callback' => 'sanitize_hex_color',
+			)
+		);
+
+		$wp_customize->add_control(
+			new WP_Customize_Color_Control(
+				$wp_customize,
+				$setting_id,
+				array(
+					'label'   => $config[0],
+					'section' => 'ktheme_v2_page_hero',
+				)
+			)
+		);
+	}
+}
+add_action( 'customize_register', 'ktheme_v2_customize_register_page_hero' );
 
 function ktheme_v2_normalize_front_content_labels( string $block_content ): string {
 	if ( is_admin() ) {

@@ -3,7 +3,7 @@ Theme Name: KTheme V2
 Theme URI: https://juswer.mycafe24.com
 Author: KTheme
 Description: WordPress block theme based on the Style 1 church homepage design.
-Version: 0.3.16
+Version: 0.3.17
 Requires at least: 6.5
 Tested up to: 6.5
 Requires PHP: 7.4
@@ -980,6 +980,277 @@ svg {
 .kt-page-tabs .is-active {
   background: var(--kt-ink-900);
   color: white;
+}
+
+.kt-shared-page-hero {
+  --kt-page-hero-accent: var(--kt-brand-500);
+  --kt-page-hero-text: var(--kt-ink-900);
+  --kt-page-hero-overlay: #0e1320;
+  position: relative;
+  overflow: hidden;
+  color: var(--kt-page-hero-text);
+}
+
+.kt-shared-page-hero > :not(.kt-page-hero__media) {
+  position: relative;
+  z-index: 1;
+}
+
+.kt-page-hero__media {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: var(--kt-ink-900);
+}
+
+.kt-page-hero__media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, color-mix(in srgb, var(--kt-page-hero-overlay) 88%, transparent), color-mix(in srgb, var(--kt-page-hero-overlay) 45%, transparent) 58%, color-mix(in srgb, var(--kt-page-hero-overlay) 72%, transparent)),
+    linear-gradient(0deg, color-mix(in srgb, var(--kt-page-hero-overlay) 58%, transparent), transparent 64%);
+}
+
+.kt-page-hero__media img,
+.kt-page-hero__media iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  object-fit: cover;
+}
+
+.kt-page-hero__media iframe {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: max(100%, 177.78vh);
+  height: max(100%, 56.25vw);
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+.kt-shared-page-hero--clean {
+  background:
+    linear-gradient(90deg, color-mix(in srgb, var(--kt-page-hero-accent) 8%, transparent), transparent 48%),
+    white;
+}
+
+.kt-shared-page-hero--image,
+.kt-shared-page-hero--kenburns,
+.kt-shared-page-hero--video {
+  min-height: 430px;
+  border: 0;
+  border-radius: 8px;
+  padding: 42px;
+  color: var(--kt-page-hero-text);
+}
+
+.kt-shared-page-hero--image h1,
+.kt-shared-page-hero--kenburns h1,
+.kt-shared-page-hero--video h1,
+.kt-shared-page-hero--image p,
+.kt-shared-page-hero--kenburns p,
+.kt-shared-page-hero--video p,
+.kt-shared-page-hero--image .kt-breadcrumb,
+.kt-shared-page-hero--kenburns .kt-breadcrumb,
+.kt-shared-page-hero--video .kt-breadcrumb,
+.kt-shared-page-hero--image .kt-breadcrumb strong,
+.kt-shared-page-hero--kenburns .kt-breadcrumb strong,
+.kt-shared-page-hero--video .kt-breadcrumb strong {
+  color: var(--kt-page-hero-text);
+}
+
+.kt-shared-page-hero--image p,
+.kt-shared-page-hero--kenburns p,
+.kt-shared-page-hero--video p {
+  color: color-mix(in srgb, var(--kt-page-hero-text) 78%, transparent);
+}
+
+.kt-shared-page-hero--image .kt-breadcrumb span,
+.kt-shared-page-hero--kenburns .kt-breadcrumb span,
+.kt-shared-page-hero--video .kt-breadcrumb span {
+  color: rgba(255,255,255,0.48);
+}
+
+.kt-shared-page-hero--image .kt-page-tabs a,
+.kt-shared-page-hero--kenburns .kt-page-tabs a,
+.kt-shared-page-hero--video .kt-page-tabs a {
+  background: rgba(255,255,255,0.13);
+  color: white;
+  backdrop-filter: blur(10px);
+}
+
+.kt-shared-page-hero--image .kt-page-tabs .is-active,
+.kt-shared-page-hero--kenburns .kt-page-tabs .is-active,
+.kt-shared-page-hero--video .kt-page-tabs .is-active {
+  background: white;
+  color: var(--kt-ink-900);
+}
+
+.kt-shared-page-hero--kenburns .kt-page-hero__media img {
+  animation: kt-page-hero-kenburns 16s ease-in-out infinite alternate;
+  transform-origin: center;
+}
+
+@keyframes kt-page-hero-kenburns {
+  from {
+    transform: scale(1);
+  }
+
+  to {
+    transform: scale(1.12) translate3d(-1.8%, -1.2%, 0);
+  }
+}
+
+.kt-shared-page-hero--split {
+  border: 0;
+  border-radius: 8px;
+  background:
+    linear-gradient(120deg, color-mix(in srgb, var(--kt-page-hero-accent) 8%, transparent), transparent 44%),
+    #f8fafc;
+  padding: 34px;
+}
+
+.kt-shared-page-hero--split .kt-page-hero__body {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(260px, 380px);
+  align-items: center;
+  gap: 28px;
+}
+
+.kt-page-hero__visual {
+  position: relative;
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  min-height: 250px;
+  overflow: hidden;
+  border-radius: 8px;
+  background: var(--kt-paper);
+}
+
+.kt-page-hero__visual img {
+  width: 100%;
+  height: 100%;
+  min-height: 250px;
+  object-fit: cover;
+}
+
+.kt-page-hero__side-card {
+  position: absolute;
+  right: 14px;
+  bottom: 14px;
+  display: grid;
+  gap: 4px;
+  border-radius: 8px;
+  background: rgba(255,255,255,0.92);
+  padding: 14px 16px;
+  box-shadow: var(--kt-shadow-float);
+}
+
+.kt-page-hero__side-card strong {
+  color: var(--kt-ink-900);
+  font-size: 13px;
+}
+
+.kt-page-hero__side-card span {
+  color: var(--kt-ink-600);
+  font-size: 12px;
+}
+
+.kt-shared-page-hero--split .kt-page-tabs {
+  grid-column: 1;
+}
+
+.kt-design-library {
+  width: min(var(--kt-max), calc(100% - 48px));
+  margin-inline: auto;
+  padding: 72px 0 96px;
+}
+
+.kt-design-library__intro {
+  margin-bottom: 42px;
+}
+
+.kt-design-library__intro--sub {
+  margin: 72px 0 8px;
+  border-top: 1px solid var(--kt-line);
+  padding-top: 42px;
+}
+
+.kt-design-library__intro h1 {
+  margin: 8px 0 0;
+  font-size: clamp(38px, 6vw, 64px);
+  line-height: 1.05;
+  letter-spacing: -0.055em;
+}
+
+.kt-design-library__intro p {
+  max-width: 760px;
+  margin: 18px 0 0;
+  color: var(--kt-ink-600);
+  font-size: 15px;
+  line-height: 1.75;
+}
+
+.kt-design-library code,
+.kt-hero-demo__meta code {
+  border: 1px solid var(--kt-line);
+  border-radius: 6px;
+  background: var(--kt-paper);
+  padding: 3px 7px;
+  color: var(--kt-ink-700);
+  font-size: 12px;
+}
+
+.kt-hero-demo {
+  margin-top: 28px;
+  border: 1px solid var(--kt-line);
+  border-radius: 8px;
+  background: white;
+  overflow: hidden;
+}
+
+.kt-hero-demo__meta {
+  display: grid;
+  grid-template-columns: 48px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 18px;
+  border-bottom: 1px solid var(--kt-line);
+  background: #fbfcff;
+  padding: 18px 20px;
+}
+
+.kt-hero-demo__meta > span {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 999px;
+  background: var(--kt-ink-900);
+  color: white;
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.kt-hero-demo__meta h2 {
+  margin: 0;
+  font-size: 18px;
+  line-height: 1.25;
+  letter-spacing: -0.03em;
+}
+
+.kt-hero-demo__meta p {
+  margin: 4px 0 0;
+  color: var(--kt-ink-600);
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+.kt-hero-demo .kt-page-hero {
+  width: 100%;
+  box-sizing: border-box;
+  padding-inline: 28px;
 }
 
 .kt-status-page,
@@ -2178,6 +2449,17 @@ svg {
     flex-direction: column;
   }
 
+  .kt-shared-page-hero--split .kt-page-hero__body {
+    grid-template-columns: 1fr;
+  }
+
+  .kt-page-hero__visual,
+  .kt-shared-page-hero--split .kt-page-tabs {
+    grid-column: auto;
+    grid-row: auto;
+    width: 100%;
+  }
+
   .kt-page-tabs {
     width: 100%;
     overflow-x: auto;
@@ -2239,6 +2521,34 @@ svg {
   .kt-page-hero {
     width: min(100% - 32px, var(--kt-max));
     padding: 32px 0 36px;
+  }
+
+  .kt-shared-page-hero--image,
+  .kt-shared-page-hero--kenburns,
+  .kt-shared-page-hero--video,
+  .kt-shared-page-hero--split {
+    padding: 24px;
+  }
+
+  .kt-shared-page-hero--image,
+  .kt-shared-page-hero--kenburns,
+  .kt-shared-page-hero--video {
+    min-height: 460px;
+  }
+
+  .kt-design-library {
+    width: min(100% - 32px, var(--kt-max));
+    padding: 48px 0 72px;
+  }
+
+  .kt-hero-demo__meta {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .kt-hero-demo .kt-page-hero {
+    width: 100%;
+    padding-inline: 20px;
   }
 
   .kt-page-hero__body {
@@ -3453,4 +3763,3 @@ body:is(.page-id-67,.page-id-69) .kt-nav .wp-block-navigation__container > .wp-b
     grid-template-columns: 1fr;
   }
 }
-
