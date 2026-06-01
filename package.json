@@ -17,6 +17,7 @@
     "sync:pages": "node scripts/sync-wp-pages.mjs",
     "sync:worship": "node scripts/sync-worship-page.mjs",
     "sync:design-library": "node scripts/sync-design-library-page.mjs",
+    "cleanup:duplicate-pages": "node scripts/cleanup-duplicate-pages.mjs",
 
     "wt:add": "node scripts/wt-add.mjs",
     "wt:list": "git worktree list",

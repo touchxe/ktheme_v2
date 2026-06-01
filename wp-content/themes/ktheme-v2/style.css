@@ -3,7 +3,7 @@ Theme Name: KTheme V2
 Theme URI: https://juswer.mycafe24.com
 Author: KTheme
 Description: WordPress block theme based on the Style 1 church homepage design.
-Version: 0.3.17
+Version: 0.3.18
 Requires at least: 6.5
 Tested up to: 6.5
 Requires PHP: 7.4
@@ -1336,6 +1336,165 @@ svg {
   color: white;
 }
 
+.kt-about-page {
+  display: grid;
+  gap: 56px;
+  padding: 0 0 96px;
+}
+
+.kt-about-lead {
+  display: grid;
+  grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+  gap: 44px;
+  align-items: end;
+}
+
+.kt-about-lead h2,
+.kt-about-message h2,
+.kt-about-cta h2 {
+  margin: 8px 0 0;
+  color: var(--kt-ink-900);
+  font-size: clamp(32px, 4vw, 48px);
+  line-height: 1.12;
+  letter-spacing: -0.05em;
+}
+
+.kt-about-lead p,
+.kt-about-message p,
+.kt-about-cta p {
+  margin: 0;
+  color: var(--kt-ink-600);
+  font-size: 15px;
+  line-height: 1.85;
+}
+
+.kt-about-values,
+.kt-about-links {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.kt-about-values article,
+.kt-about-links a {
+  min-width: 0;
+  border: 1px solid var(--kt-line);
+  border-radius: 8px;
+  background: white;
+  padding: 24px;
+}
+
+.kt-about-values span,
+.kt-about-links span {
+  color: var(--kt-brand-600);
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.kt-about-values h3,
+.kt-about-links strong {
+  display: block;
+  margin: 12px 0 0;
+  color: var(--kt-ink-900);
+  font-size: 21px;
+  line-height: 1.3;
+  letter-spacing: -0.03em;
+}
+
+.kt-about-values p,
+.kt-about-links p {
+  margin: 10px 0 0;
+  color: var(--kt-ink-600);
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.kt-about-message {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(320px, 0.95fr);
+  gap: 36px;
+  align-items: center;
+  border-radius: 8px;
+  background: #f8fafc;
+  padding: 34px;
+}
+
+.kt-about-message__media {
+  overflow: hidden;
+  border-radius: 8px;
+  background: var(--kt-paper);
+  aspect-ratio: 16 / 11;
+}
+
+.kt-about-message__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.kt-about-message__body {
+  min-width: 0;
+}
+
+.kt-about-message__body p {
+  margin-top: 18px;
+}
+
+.kt-about-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 24px;
+}
+
+.kt-about-links a {
+  transition: border-color 160ms ease, box-shadow 160ms ease, transform 160ms ease;
+}
+
+.kt-about-links a:hover {
+  border-color: #cfd6e3;
+  box-shadow: var(--kt-shadow-card);
+  transform: translateY(-1px);
+}
+
+.kt-about-cta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 28px;
+  border: 1px solid var(--kt-line);
+  border-radius: 8px;
+  background: var(--kt-ink-900);
+  color: white;
+  padding: 34px;
+}
+
+.kt-about-cta h2 {
+  color: white;
+}
+
+.kt-about-cta p {
+  margin-top: 12px;
+  color: rgba(255,255,255,0.72);
+}
+
+.kt-about-cta .kt-card-label {
+  color: rgba(255,255,255,0.62);
+}
+
+.kt-about-cta .kt-action-link {
+  border-color: rgba(255,255,255,0.24);
+  background: transparent;
+  color: white;
+}
+
+.kt-about-cta .kt-action-link:hover {
+  background: white;
+  color: var(--kt-ink-900);
+}
+
 .kt-status-links {
   display: grid;
   gap: 8px;
@@ -2444,6 +2603,16 @@ svg {
     grid-template-columns: 1fr;
   }
 
+  .kt-about-lead,
+  .kt-about-message {
+    grid-template-columns: 1fr;
+  }
+
+  .kt-about-values,
+  .kt-about-links {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .kt-page-hero__body {
     align-items: flex-start;
     flex-direction: column;
@@ -2591,6 +2760,8 @@ svg {
   }
 
   .kt-info-grid,
+  .kt-about-values,
+  .kt-about-links,
   .kt-query-grid,
   .kt-worship-schedule,
   .kt-announcements__grid,
@@ -2602,8 +2773,15 @@ svg {
   }
 
   .kt-worship-band,
-  .kt-worship-cta {
+  .kt-worship-cta,
+  .kt-about-message,
+  .kt-about-cta {
     padding: 28px;
+  }
+
+  .kt-about-cta {
+    align-items: flex-start;
+    flex-direction: column;
   }
 
   .kt-gallery-feature {

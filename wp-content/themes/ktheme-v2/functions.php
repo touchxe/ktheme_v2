@@ -335,6 +335,17 @@ function ktheme_v2_redirect_legacy_slugs(): void {
 		wp_safe_redirect( home_url( '/community/' ), 301 );
 		exit;
 	}
+
+	$parts = array_values( array_filter( explode( '/', $path ) ) );
+	if ( 2 === count( $parts ) ) {
+		$legacy_parents = array( 'about', 'worship', 'community', 'training', 'media', 'admin-guide', 'mission' );
+		$child_slug     = $parts[1];
+
+		if ( in_array( $parts[0], $legacy_parents, true ) && in_array( $child_slug, ktheme_v2_flat_child_page_slugs(), true ) ) {
+			wp_safe_redirect( home_url( user_trailingslashit( $child_slug ) ), 301 );
+			exit;
+		}
+	}
 }
 add_action( 'template_redirect', 'ktheme_v2_redirect_legacy_slugs' );
 
@@ -582,7 +593,6 @@ function ktheme_v2_render_page_hero_shortcode(): string {
 	if ( null !== $match ) {
 		$section     = $match['section'];
 		$current     = $match['item'];
-		$title       = $current['label'];
 		$description = $current['description'] ?? $section['description'];
 
 		$tab_links = array();
