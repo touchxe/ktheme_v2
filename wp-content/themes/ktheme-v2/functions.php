@@ -785,7 +785,7 @@ function ktheme_v2_render_home_hero_slider_script(): void {
 	?>
 	<script>
 	(function () {
-	  var hero = document.querySelector('.style1-static > section');
+	  var hero = document.querySelector('.kt-hero') || document.querySelector('.style1-static > section');
 	  if (!hero) return;
 
 	  var image = hero.querySelector('img.w-full.h-full.object-cover') || hero.querySelector('.kt-hero__media img');
@@ -806,7 +806,7 @@ function ktheme_v2_render_home_hero_slider_script(): void {
 
 	  var slides = [
 	    {
-	      image: '/wp-content/themes/ktheme-v2/assets/images/generated/church-generated-01.jpg',
+	      image: 'https://images.unsplash.com/photo-1438232992991-995b7058bbb3?auto=format&fit=crop&w=1920&q=80',
 	      eyebrow: '2026 SPRING SERIES · VOL. 04',
 	      title: '말씀에 머무는 자리,<br />은혜가 흐르는 공동체',
 	      copy: '매주 새롭게 부어지는 은혜를 함께 누립니다. 예배와 말씀, 그리고 공동체 안에서 삶이 회복되는 자리로 여러분을 초대합니다.',
@@ -815,7 +815,7 @@ function ktheme_v2_render_home_hero_slider_script(): void {
 	      secondary: '예배 시간 안내'
 	    },
 	    {
-	      image: '/wp-content/themes/ktheme-v2/assets/images/generated/church-generated-08.jpg',
+	      image: 'https://images.unsplash.com/photo-1507692049790-de58290a4334?auto=format&fit=crop&w=1920&q=80',
 	      eyebrow: 'WORSHIP TOGETHER · SUNDAY',
 	      title: '함께 예배하고,<br />함께 세워지는 시간',
 	      copy: '주일의 예배 자리에서 하나님을 높이고 서로를 격려합니다. 처음 오신 분들도 편안하게 참여할 수 있도록 안내합니다.',
@@ -824,7 +824,7 @@ function ktheme_v2_render_home_hero_slider_script(): void {
 	      secondary: '오시는 길'
 	    },
 	    {
-	      image: '/wp-content/themes/ktheme-v2/assets/images/generated/church-generated-03.jpg',
+	      image: 'https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=1920&q=80',
 	      eyebrow: 'NEXT GENERATION · FAITH',
 	      title: '다음 세대가 복음 안에서<br />자라나는 교회',
 	      copy: '아이들과 청소년, 청년들이 믿음과 삶을 함께 배워갑니다. 세대를 잇는 예배와 교육의 흐름을 만들어갑니다.',
@@ -833,7 +833,7 @@ function ktheme_v2_render_home_hero_slider_script(): void {
 	      secondary: '공동체 안내'
 	    },
 	    {
-	      image: '/wp-content/themes/ktheme-v2/assets/images/generated/church-generated-15.jpg',
+	      image: 'https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=1920&q=80',
 	      eyebrow: 'MISSION & SERVE · LOCAL',
 	      title: '지역과 세상을 섬기는<br />작은 발걸음',
 	      copy: '가평교회는 복음의 마음으로 이웃을 섬깁니다. 선교와 섬김의 자리에서 함께 기도하고 동역합니다.',
