@@ -150,7 +150,7 @@ function ktheme_v2_required_pages(): array {
 		array( 'title' => ktheme_v2_text( '\uAD50\uD68C\uC18C\uC2DD' ), 'slug' => 'news' ),
 		array( 'title' => ktheme_v2_text( '\uAD50\uB2E8\uC18C\uC2DD' ), 'slug' => 'denomination-news' ),
 		array( 'title' => ktheme_v2_text( '\uC601\uC0C1' ), 'slug' => 'videos' ),
-		array( 'title' => ktheme_v2_text( '\uC790\uB8CC\uC2E4' ), 'slug' => 'library' ),
+		array( 'title' => ktheme_v2_text( '\uC790\uB8CC\uC2E4' ), 'slug' => 'library', 'template' => 'page-library' ),
 		array( 'title' => ktheme_v2_text( '\uD589\uC815' ), 'slug' => 'admin-guide', 'template' => 'page-admin-guide' ),
 		array( 'title' => ktheme_v2_text( '\uC628\uB77C\uC778 \uD5CC\uAE08' ), 'slug' => 'giving' ),
 		array( 'title' => ktheme_v2_text( '\uC99D\uBA85\uC11C \uBC1C\uAE09' ), 'slug' => 'documents' ),

@@ -2,28 +2,187 @@
 <!-- wp:group {"tagName":"main","className":"kt-page-shell","layout":{"type":"constrained"}} -->
 <main class="wp-block-group kt-page-shell">
 	<!-- wp:template-part {"slug":"page-hero"} /-->
-	<!-- wp:post-content {"layout":{"type":"constrained"}} /-->
-	<!-- wp:query {"query":{"perPage":3,"pages":0,"offset":0,"postType":"ktheme_sermon","order":"desc","orderBy":"date","inherit":false},"className":"kt-content-query"} -->
-	<div class="wp-block-query kt-content-query">
-		<!-- wp:heading {"level":2,"className":"kt-query-heading"} -->
-		<h2 class="wp-block-heading kt-query-heading">최근 설교</h2>
-		<!-- /wp:heading -->
-		<!-- wp:post-template {"className":"kt-query-grid"} -->
-			<!-- wp:group {"className":"kt-query-card","layout":{"type":"constrained"}} -->
-			<div class="wp-block-group kt-query-card">
-				<!-- wp:post-featured-image {"isLink":true,"aspectRatio":"16/9"} /-->
-				<!-- wp:post-title {"isLink":true,"level":3} /-->
-				<!-- wp:post-excerpt {"moreText":""} /-->
+	<!-- wp:html -->
+	<div class="kt-origin-page kt-worship-page">
+		<section class="kt-worship-live kt-origin-section">
+			<div class="kt-origin-grid kt-origin-grid--live">
+				<div>
+					<div class="kt-origin-section-head">
+						<div>
+							<span class="kt-live-badge">LIVE</span>
+							<h2>방송 중</h2>
+							<p>온라인 예배와 최근 말씀을 한 화면에서 확인합니다.</p>
+						</div>
+						<a class="kt-origin-link" href="/worship-guide/">예배 시간 안내</a>
+					</div>
+					<article class="kt-live-player">
+						<img src="/wp-content/themes/ktheme-v2/assets/images/generated/church-generated-01.jpg" alt="주일예배 실황 이미지" />
+						<div class="kt-live-player__overlay"></div>
+						<div class="kt-live-player__content">
+							<div class="kt-live-player__top">
+								<div>
+									<span>주일예배 시리즈 · VOL 04</span>
+									<strong>머무름의 영성을 세우기로</strong>
+								</div>
+								<span class="kt-live-badge">LIVE</span>
+							</div>
+							<div class="kt-live-player__bottom">
+								<div>
+									<h3>말씀 안에서<br />머무르기로 결심하다</h3>
+									<p>시 23:8-10 · 정한결 담임목사</p>
+								</div>
+								<a class="kt-play-button" href="/sermons/" aria-label="설교 보기">
+									<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+								</a>
+							</div>
+						</div>
+					</article>
+					<div class="kt-sermon-summary">
+						<div>
+							<span>주일예배 · Decision 정착을 세우기로</span>
+							<strong>말씀 안에서 머무르기로 결심하다</strong>
+						</div>
+						<div class="kt-sermon-actions" aria-label="설교 기능">
+							<a href="/sermons/" aria-label="저장">
+								<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
+							</a>
+							<a href="/sermons/" aria-label="공유">
+								<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.6 13.5 6.8 4M15.4 6.5l-6.8 4"/></svg>
+							</a>
+							<a href="/sermons/" aria-label="다운로드">
+								<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"/></svg>
+							</a>
+						</div>
+					</div>
+					<div class="kt-sermon-meta">
+						<span><b>설교</b> 시 23:8-10</span>
+						<span><b>설교자</b> 정한결 목사</span>
+						<span><b>방송일</b> 2026.04.26</span>
+					</div>
+					<p class="kt-origin-copy">머무름은 결심이며, 결심은 습관이 됩니다. 본문에서 말씀하시는 머무름의 영성은 바쁨 속에서 도리어 더 절실해집니다. 우리 일상의 호흡을 가다듬고 다시 한 번 그 자리에 머물기로 결심합니다.</p>
+					<div class="kt-origin-pills">
+						<a class="is-active" href="/worship-guide/">예배순서</a>
+						<a href="/sunday-worship/">주일예배</a>
+						<a href="/wednesday-worship/">수요예배</a>
+						<a href="/dawn-prayer/">새벽기도</a>
+					</div>
+				</div>
+				<aside>
+					<div class="kt-origin-section-head">
+						<div>
+							<h2>최근 설교</h2>
+							<p>등록된 예배 영상을 빠르게 탐색합니다.</p>
+						</div>
+						<a class="kt-origin-link" href="/sermons/">전체보기</a>
+					</div>
+					<div class="kt-recent-sermons">
+						<a href="/sermons/" class="kt-recent-sermon">
+							<img src="/wp-content/themes/ktheme-v2/assets/images/generated/church-generated-02.jpg" alt="" />
+							<span>주일예배</span>
+							<strong>Decision 정착을 세우기로</strong>
+							<small>정한결 목사 · 2026.04.26</small>
+						</a>
+						<a href="/sermons/" class="kt-recent-sermon">
+							<img src="/wp-content/themes/ktheme-v2/assets/images/generated/church-generated-03.jpg" alt="" />
+							<span>수요예배</span>
+							<strong>기다림 속에서 발견한 이름의 의미</strong>
+							<small>김다온 부목사 · 2026.04.23</small>
+						</a>
+						<a href="/sermons/" class="kt-recent-sermon">
+							<img src="/wp-content/themes/ktheme-v2/assets/images/generated/church-generated-04.jpg" alt="" />
+							<span>청년예배</span>
+							<strong>사랑은 가까운 자리부터 시작됩니다</strong>
+							<small>박은유 전도사 · 2026.04.20</small>
+						</a>
+						<a href="/sermons/" class="kt-recent-sermon">
+							<img src="/wp-content/themes/ktheme-v2/assets/images/generated/church-generated-05.jpg" alt="" />
+							<span>새벽예배</span>
+							<strong>광야에서 부르신 이름</strong>
+							<small>정한결 목사 · 2026.04.22</small>
+						</a>
+						<a href="/sermons/" class="kt-recent-sermon">
+							<img src="/wp-content/themes/ktheme-v2/assets/images/generated/church-generated-06.jpg" alt="" />
+							<span>다음세대</span>
+							<strong>아이의 손을 잡으신 예수님</strong>
+							<small>이수민 전도사 · 2026.04.19</small>
+						</a>
+					</div>
+				</aside>
 			</div>
-			<!-- /wp:group -->
-		<!-- /wp:post-template -->
-		<!-- wp:query-no-results -->
-			<!-- wp:paragraph {"className":"kt-empty"} -->
-			<p class="kt-empty">아직 등록된 설교가 없습니다.</p>
-			<!-- /wp:paragraph -->
-		<!-- /wp:query-no-results -->
+		</section>
+
+		<section class="kt-origin-section">
+			<div class="kt-origin-section-head">
+				<div>
+					<h2>설교 시리즈</h2>
+					<p>예배 흐름과 말씀 주제별 시리즈를 모았습니다.</p>
+				</div>
+				<a class="kt-origin-link" href="/sermons/">전체보기</a>
+			</div>
+			<div class="kt-series-grid">
+				<a href="/sermons/" class="kt-series-card"><img src="/wp-content/themes/ktheme-v2/assets/images/generated/church-generated-07.jpg" alt="" /><span>주일예배</span><strong>평안의 골짜기, 소망의 Psalm으로</strong><small>2026.01.13 - 2026.02.29</small></a>
+				<a href="/sermons/" class="kt-series-card"><img src="/wp-content/themes/ktheme-v2/assets/images/generated/church-generated-08.jpg" alt="" /><span>수요예배</span><strong>변화의 순간, 다윗 이야기</strong><small>2026.01.13 - 2026.02.29</small></a>
+				<a href="/sermons/" class="kt-series-card"><img src="/wp-content/themes/ktheme-v2/assets/images/generated/church-generated-09.jpg" alt="" /><span>새벽예배</span><strong>하나님께 드려진 자</strong><small>2026.01.13 - 2026.02.29</small></a>
+				<a href="/sermons/" class="kt-series-card"><img src="/wp-content/themes/ktheme-v2/assets/images/generated/church-generated-10.jpg" alt="" /><span>청년예배</span><strong>처음 사랑이 능력이다</strong><small>2026.01.13 - 2026.02.29</small></a>
+				<a href="/sermons/" class="kt-series-card"><img src="/wp-content/themes/ktheme-v2/assets/images/generated/church-generated-11.jpg" alt="" /><span>주일예배</span><strong>생명이 시작되기로</strong><small>2026.01.13 - 2026.02.29</small></a>
+				<a href="/sermons/" class="kt-series-card"><img src="/wp-content/themes/ktheme-v2/assets/images/generated/church-generated-12.jpg" alt="" /><span>새벽예배</span><strong>나는 하나님의 마음으로</strong><small>2026.01.13 - 2026.02.29</small></a>
+			</div>
+		</section>
+
+		<section class="kt-origin-section kt-origin-section--split">
+			<div>
+				<div class="kt-origin-section-head">
+					<div>
+						<h2>예배 VOD</h2>
+						<p>예배 유형별 다시보기를 제공합니다.</p>
+					</div>
+				</div>
+				<ul class="kt-origin-link-list">
+					<li><a href="/sunday-worship/">주일예배</a></li>
+					<li><a href="/wednesday-worship/">수요예배</a></li>
+					<li><a href="/dawn-prayer/">새벽예배</a></li>
+					<li><a href="/youth-ministry/">청년예배</a></li>
+					<li><a href="/worship-guide/">특별예배</a></li>
+				</ul>
+			</div>
+			<div>
+				<div class="kt-origin-section-head">
+					<div>
+						<h2>오늘의 예배</h2>
+						<p>2026.04.26 주일 기준 예배 안내</p>
+					</div>
+				</div>
+				<div class="kt-schedule-grid">
+					<div><span>오전 6:00</span><strong>매일기도회</strong><small>새벽기도실</small></div>
+					<div><span>오전 7:30</span><strong>예수아침</strong><small>청년부 모임</small></div>
+					<div><span>오전 9:30</span><strong>주일 1부</strong><small>본당</small></div>
+					<div><span>오전 11:00</span><strong>주일 2부</strong><small>본당</small></div>
+					<div><span>오후 1:30</span><strong>다음세대</strong><small>교육관</small></div>
+					<div><span>오후 3:00</span><strong>소그룹</strong><small>각 모임실</small></div>
+					<div><span>오후 5:00</span><strong>청년예배</strong><small>비전홀</small></div>
+					<div><span>오후 7:00</span><strong>저녁예배</strong><small>본당</small></div>
+				</div>
+			</div>
+		</section>
+
+		<section class="kt-origin-cta-grid">
+			<a href="/giving/" class="kt-origin-cta-card">
+				<span>
+					<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-4.5-7-10a4 4 0 0 1 7-2.5A4 4 0 0 1 19 11c0 5.5-7 10-7 10z"/></svg>
+				</span>
+				<strong>온라인 헌금</strong>
+				<p>주일헌금, 십일조, 감사헌금, 선교헌금을 안내합니다.</p>
+			</a>
+			<a href="/contact/" class="kt-origin-cta-card">
+				<span>
+					<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15a4 4 0 0 1-4 4H7l-4 4V5a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4z"/><path d="M8 9h8M8 13h5"/></svg>
+				</span>
+				<strong>문의하기</strong>
+				<p>예배와 온라인 참여에 관한 문의를 연결합니다.</p>
+			</a>
+		</section>
 	</div>
-	<!-- /wp:query -->
+	<!-- /wp:html -->
 </main>
 <!-- /wp:group -->
 <!-- wp:template-part {"slug":"footer","tagName":"footer"} /-->
