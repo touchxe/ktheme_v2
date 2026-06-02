@@ -10,7 +10,7 @@
 <main>
   <section class="kt-hero">
     <div class="kt-hero__media">
-      <img src="https://images.unsplash.com/photo-1438232992991-995b7058bbb3?auto=format&fit=crop&w=1920&q=80" alt="" />
+      <img src="/wp-content/themes/ktheme-v2/assets/images/generated/church-generated-01.jpg" alt="" />
       <div class="kt-hero__fade"></div>
     </div>
     <div class="kt-container kt-hero__inner">
@@ -82,7 +82,7 @@
       </div>
       <div class="kt-split-grid">
         <article class="kt-feature-card">
-          <div class="kt-feature-card__image"><img src="https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?auto=format&fit=crop&w=1200&q=80" alt="" /><span class="kt-feature-badge"><span></span>FEATURE</span></div>
+          <div class="kt-feature-card__image"><img src="/wp-content/themes/ktheme-v2/assets/images/generated/church-generated-02.jpg" alt="" /><span class="kt-feature-badge"><span></span>FEATURE</span></div>
           <div style="margin-top:20px;color:var(--kt-brand-600);font-size:12px;font-weight:800">청년부 · 05.25</div>
           <h3>서툴러도 괜찮아 — 청년들이 써내려간 한 학기의 고백</h3>
           <p>지난 한 학기, 청년부의 작은 묵상 노트들이 모여 한 권의 책이 되었습니다. 서로의 흔들림과 회복을 솔직하게 나눈 기록들을 함께 펼쳐봅니다.</p>
@@ -94,8 +94,8 @@
           <a href="#"><div class="kt-news-list__label" style="color:var(--kt-ink-600)">교회력</div><div class="kt-news-list__title">부활절 새벽기도회 마무리</div><div class="kt-news-list__date">05.10</div></a>
         </div>
         <div class="kt-side-cards">
-          <a href="#" class="kt-media-card"><div class="kt-media-card__image"><img src="https://images.unsplash.com/photo-1438232992991-995b7058bbb3?auto=format&fit=crop&w=600&q=80" alt="" /></div><div class="kt-card-label">미디어</div><h4>찬양사역팀의 새 EP가 발매되었습니다.</h4></a>
-          <a href="#" class="kt-media-card"><div class="kt-media-card__image"><img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=600&q=80" alt="" /></div><div class="kt-card-label">공동체</div><h4>목장 모임 — 다시 모이는 거실의 풍경</h4></a>
+          <a href="#" class="kt-media-card"><div class="kt-media-card__image"><img src="/wp-content/themes/ktheme-v2/assets/images/generated/church-generated-04.jpg" alt="" /></div><div class="kt-card-label">미디어</div><h4>찬양사역팀의 새 EP가 발매되었습니다.</h4></a>
+          <a href="#" class="kt-media-card"><div class="kt-media-card__image"><img src="/wp-content/themes/ktheme-v2/assets/images/generated/church-generated-05.jpg" alt="" /></div><div class="kt-card-label">공동체</div><h4>목장 모임 — 다시 모이는 거실의 풍경</h4></a>
         </div>
       </div>
     </div>
@@ -129,14 +129,14 @@
         <a href="#" class="kt-more-link kt-more-link--light">시리즈 전체보기<svg class="kt-icon kt-icon--xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
       </div>
       <div class="kt-sermon-grid">
-        <article class="kt-sermon-card"><div class="kt-sermon-card__image"><img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=1200&q=80" alt="" /></div><div class="kt-sermon-card__body"><div class="kt-sermon-card__top"><div class="kt-label">EP 03</div><button class="kt-play-button" aria-label="설교 재생"><svg class="kt-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></button></div><div><h3>머무름의 자리,<br />그 곁에서 듣는 음성</h3><div class="kt-sermon-meta">시 23:1-3 · 정한결 목사 <span></span>32분</div></div></div></article>
-        <article class="kt-sermon-card"><div class="kt-sermon-card__image"><img src="https://images.unsplash.com/photo-1507692049790-de58290a4334?auto=format&fit=crop&w=1200&q=80" alt="" /></div><div class="kt-sermon-card__body"><div class="kt-sermon-card__top"><div class="kt-label">EP 04</div><button class="kt-play-button" aria-label="설교 재생"><svg class="kt-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></button></div><div><h3>골짜기에서도<br />잔이 넘치는 사람</h3><div class="kt-sermon-meta">시 23:4-6 · 김다온 부목사 <span></span>28분</div></div></div></article>
+        <article class="kt-sermon-card"><div class="kt-sermon-card__image"><img src="/wp-content/themes/ktheme-v2/assets/images/generated/church-generated-06.jpg" alt="" /></div><div class="kt-sermon-card__body"><div class="kt-sermon-card__top"><div class="kt-label">EP 03</div><button class="kt-play-button" aria-label="설교 재생"><svg class="kt-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></button></div><div><h3>머무름의 자리,<br />그 곁에서 듣는 음성</h3><div class="kt-sermon-meta">시 23:1-3 · 정한결 목사 <span></span>32분</div></div></div></article>
+        <article class="kt-sermon-card"><div class="kt-sermon-card__image"><img src="/wp-content/themes/ktheme-v2/assets/images/generated/church-generated-07.jpg" alt="" /></div><div class="kt-sermon-card__body"><div class="kt-sermon-card__top"><div class="kt-label">EP 04</div><button class="kt-play-button" aria-label="설교 재생"><svg class="kt-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></button></div><div><h3>골짜기에서도<br />잔이 넘치는 사람</h3><div class="kt-sermon-meta">시 23:4-6 · 김다온 부목사 <span></span>28분</div></div></div></article>
       </div>
       <div class="kt-sermon-thumbs">
-        <a href="#" class="kt-sermon-thumb"><div><img src="https://images.unsplash.com/photo-1473177104440-ffee2f376098?auto=format&fit=crop&w=600&q=80" alt="" /><span>22:14</span></div><h4>광야에서 부르신 이름 — 출 3:1-10</h4><p>새벽예배 · 05.22</p></a>
-        <a href="#" class="kt-sermon-thumb"><div><img src="https://images.unsplash.com/photo-1502920917128-1aa500764cbd?auto=format&fit=crop&w=600&q=80" alt="" /><span>18:42</span></div><h4>기도가 멈추지 않는 집 — 행 2:42-47</h4><p>수요예배 · 05.23</p></a>
-        <a href="#" class="kt-sermon-thumb"><div><img src="https://images.unsplash.com/photo-1490127252417-7c393f993ee4?auto=format&fit=crop&w=600&q=80" alt="" /><span>35:08</span></div><h4>사랑은 가까운 자리부터 — 막 12:28-34</h4><p>청년예배 · 05.20</p></a>
-        <a href="#" class="kt-sermon-thumb"><div><img src="https://images.unsplash.com/photo-1492321936769-b49830bc1d1e?auto=format&fit=crop&w=600&q=80" alt="" /><span>12:36</span></div><h4>아이의 손 — 마 18:1-5</h4><p>유년부 · 05.19</p></a>
+        <a href="#" class="kt-sermon-thumb"><div><img src="/wp-content/themes/ktheme-v2/assets/images/generated/church-generated-09.jpg" alt="" /><span>22:14</span></div><h4>광야에서 부르신 이름 — 출 3:1-10</h4><p>새벽예배 · 05.22</p></a>
+        <a href="#" class="kt-sermon-thumb"><div><img src="/wp-content/themes/ktheme-v2/assets/images/generated/church-generated-10.jpg" alt="" /><span>18:42</span></div><h4>기도가 멈추지 않는 집 — 행 2:42-47</h4><p>수요예배 · 05.23</p></a>
+        <a href="#" class="kt-sermon-thumb"><div><img src="/wp-content/themes/ktheme-v2/assets/images/generated/church-generated-11.jpg" alt="" /><span>35:08</span></div><h4>사랑은 가까운 자리부터 — 막 12:28-34</h4><p>청년예배 · 05.20</p></a>
+        <a href="#" class="kt-sermon-thumb"><div><img src="/wp-content/themes/ktheme-v2/assets/images/generated/church-generated-12.jpg" alt="" /><span>12:36</span></div><h4>아이의 손 — 마 18:1-5</h4><p>유년부 · 05.19</p></a>
       </div>
     </div>
   </section>
@@ -145,13 +145,13 @@
     <div class="kt-container">
       <div class="kt-section-head"><div><div class="kt-label">Community Moments</div><h2 class="kt-section-title" style="font-size:34px">우리의 한 주, 사진으로.</h2></div><a href="#" class="kt-more-link">전체보기<svg class="kt-icon kt-icon--xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a></div>
       <div class="kt-gallery">
-        <a class="span-3" href="#"><img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=600&q=80" alt="" /></a>
-        <a class="span-3" href="#"><img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=600&q=80" alt="" /></a>
-        <a class="span-6 kt-gallery-feature" href="#"><img src="https://images.unsplash.com/photo-1466442929976-97f336a657be?auto=format&fit=crop&w=1200&q=80" alt="" /><span><strong>FEATURED</strong>부활절 새벽기도회 — 5,418명의 한 마음</span></a>
-        <a class="span-3" href="#"><img src="https://images.unsplash.com/photo-1519337265831-281ec6cc8514?auto=format&fit=crop&w=600&q=80" alt="" /></a>
-        <a class="span-3" href="#"><img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=600&q=80" alt="" /></a>
-        <a class="span-3" href="#"><img src="https://images.unsplash.com/photo-1542038784456-1ea8e935640e?auto=format&fit=crop&w=600&q=80" alt="" /></a>
-        <a class="span-3" href="#"><img src="https://images.unsplash.com/photo-1517816743773-6e0fd518b4a6?auto=format&fit=crop&w=600&q=80" alt="" /></a>
+        <a class="span-3" href="#"><img src="/wp-content/themes/ktheme-v2/assets/images/generated/church-generated-13.jpg" alt="" /></a>
+        <a class="span-3" href="#"><img src="/wp-content/themes/ktheme-v2/assets/images/generated/church-generated-14.jpg" alt="" /></a>
+        <a class="span-6 kt-gallery-feature" href="#"><img src="/wp-content/themes/ktheme-v2/assets/images/generated/church-generated-04.jpg" alt="" /><span><strong>FEATURED</strong>부활절 새벽기도회 — 5,418명의 한 마음</span></a>
+        <a class="span-3" href="#"><img src="/wp-content/themes/ktheme-v2/assets/images/generated/church-generated-15.jpg" alt="" /></a>
+        <a class="span-3" href="#"><img src="/wp-content/themes/ktheme-v2/assets/images/generated/church-generated-16.jpg" alt="" /></a>
+        <a class="span-3" href="#"><img src="/wp-content/themes/ktheme-v2/assets/images/generated/church-generated-17.jpg" alt="" /></a>
+        <a class="span-3" href="#"><img src="/wp-content/themes/ktheme-v2/assets/images/generated/church-generated-08.jpg" alt="" /></a>
       </div>
     </div>
   </section>
