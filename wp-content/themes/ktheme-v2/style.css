@@ -2205,7 +2205,7 @@ svg {
   grid-column: span 6;
 }
 
-.kt-gallery-feature {
+.kt-gallery .kt-gallery-feature {
   aspect-ratio: 8 / 3;
 }
 
@@ -2778,8 +2778,8 @@ svg {
     flex-direction: column;
   }
 
-  .kt-gallery-feature {
-    aspect-ratio: 4 / 3;
+  .kt-gallery .kt-gallery-feature {
+    aspect-ratio: 16 / 9;
   }
 
   .kt-gallery-feature span {
