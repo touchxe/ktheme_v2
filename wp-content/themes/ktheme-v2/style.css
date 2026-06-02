@@ -628,7 +628,7 @@ svg {
 
 .kt-hero__inner {
   position: relative;
-  min-height: 620px;
+  min-height: 420px;
   display: grid;
   grid-template-columns: minmax(0, 7fr) minmax(240px, 5fr);
   gap: 48px;
