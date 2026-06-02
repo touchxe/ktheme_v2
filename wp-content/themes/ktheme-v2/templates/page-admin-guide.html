@@ -1,17 +1,108 @@
 <!-- wp:template-part {"slug":"header","tagName":"header"} /-->
-<!-- wp:group {"tagName":"main","className":"kt-page-shell","layout":{"type":"constrained"}} -->
-<main class="wp-block-group kt-page-shell">
+<!-- wp:group {"tagName":"main","className":"kt-page-shell kt-admin-page","layout":{"type":"constrained"}} -->
+<main class="wp-block-group kt-page-shell kt-admin-page">
 	<!-- wp:template-part {"slug":"page-hero"} /-->
-	<!-- wp:post-content {"layout":{"type":"constrained"}} /-->
 	<!-- wp:html -->
-	<section class="kt-template-section">
-		<div class="kt-section-head"><div><div class="kt-label">Administration</div><h2 class="kt-section-title" style="font-size:34px">행정 안내</h2></div></div>
-		<div class="kt-info-grid">
-			<a class="kt-info-card" href="/giving/"><strong>온라인 헌금</strong><span>헌금 안내와 유의사항입니다.</span></a>
-			<a class="kt-info-card" href="/documents/"><strong>증명서 발급</strong><span>필요 서류와 신청 절차입니다.</span></a>
-			<a class="kt-info-card" href="/facility-request/"><strong>장소 사용 신청</strong><span>공간 사용 요청을 안내합니다.</span></a>
-			<a class="kt-info-card" href="/contact/"><strong>행정 문의</strong><span>필요한 서류와 절차를 문의합니다.</span></a>
+	<section class="kt-admin-section kt-admin-services">
+		<div class="kt-admin-section-head">
+			<h2>행정서비스</h2>
+			<a href="/admin-guide/">자세히보기 <svg class="kt-icon kt-icon--xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
 		</div>
+		<div class="kt-admin-service-grid">
+			<a href="/giving/" class="kt-admin-service">
+				<span class="kt-admin-service__icon is-rose"><svg class="kt-icon kt-icon--xl" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21s-7-4.5-7-10a4 4 0 0 1 7-2.5A4 4 0 0 1 19 11c0 5.5-7 10-7 10z"/></svg></span>
+				<strong>온라인 헌금</strong>
+			</a>
+			<a href="/documents/" class="kt-admin-service">
+				<span class="kt-admin-service__icon is-amber"><svg class="kt-icon kt-icon--xl" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M6 3h12v18l-3-2-3 2-3-2-3 2zM9 8h6M9 12h6M9 16h4"/></svg></span>
+				<strong>기부금 영수증</strong>
+			</a>
+			<a href="/vehicle-request/" class="kt-admin-service">
+				<span class="kt-admin-service__icon is-rose"><svg class="kt-icon kt-icon--xl" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M5 13l1-4h12l1 4M3 17h18M5 17v3M19 17v3M7 13h10"/></svg></span>
+				<strong>차량번호 등록</strong>
+			</a>
+			<a href="/facility-request/" class="kt-admin-service">
+				<span class="kt-admin-service__icon is-orange"><svg class="kt-icon kt-icon--xl" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 4h7v7H4zM13 4h7v7h-7zM4 13h7v7H4zM13 13h7v7h-7M14 17l1.5 1.5L18 16"/></svg></span>
+				<strong>장소예약</strong>
+			</a>
+			<a href="/vehicle-request/" class="kt-admin-service">
+				<span class="kt-admin-service__icon is-slate"><svg class="kt-icon kt-icon--xl" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M6 11l1-3h10l1 3M4 14h16v4H4zM7 18v2M17 18v2"/></svg></span>
+				<strong>차량사용</strong>
+			</a>
+			<a href="/facility-request/" class="kt-admin-service">
+				<span class="kt-admin-service__icon is-sky"><svg class="kt-icon kt-icon--xl" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 6V3M9 6h6M7 8h10v4a5 5 0 0 1-10 0zM7 20l5-4 5 4"/></svg></span>
+				<strong>결혼식 신청</strong>
+			</a>
+			<a href="/contact/" class="kt-admin-service">
+				<span class="kt-admin-service__icon is-teal"><svg class="kt-icon kt-icon--xl" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3l9 4v7c0 4-4 7-9 7s-9-3-9-7V7zM12 3v18"/></svg></span>
+				<strong>탐방신청</strong>
+			</a>
+			<a href="/contact/" class="kt-admin-service">
+				<span class="kt-admin-service__icon is-violet"><svg class="kt-icon kt-icon--xl" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M21 12a8 8 0 0 1-12.4 6.7L4 20l1.3-4.6A8 8 0 1 1 21 12zM9 12h.01M12 12h.01M15 12h.01"/></svg></span>
+				<strong>문의하기</strong>
+			</a>
+		</div>
+	</section>
+
+	<section class="kt-admin-section kt-admin-split">
+		<div class="kt-admin-panel">
+			<div class="kt-admin-section-head">
+				<h2>교우소식</h2>
+				<a href="/news/">자세히보기 <svg class="kt-icon kt-icon--xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+			</div>
+			<ul class="kt-admin-list">
+				<li><a href="#"><span><em>장례</em><strong>故 안정애 권사(타교인)</strong></span><svg class="kt-icon kt-icon--xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></a></li>
+				<li><a href="#"><span><em>개업</em><strong>곽승민, 오원욱 권사(미디어)</strong></span><svg class="kt-icon kt-icon--xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></a></li>
+				<li><a href="#"><span><em>결혼</em><strong>서범준 장로, 서근미 권사(화평) 장녀 주은</strong></span><svg class="kt-icon kt-icon--xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></a></li>
+				<li><a href="#"><span><em>장례</em><strong>故 최정금 권사(타교인)</strong></span><svg class="kt-icon kt-icon--xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></a></li>
+				<li><a href="#"><span><em>장례</em><strong>故 정금영 집사(타교인)</strong></span><svg class="kt-icon kt-icon--xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></a></li>
+			</ul>
+		</div>
+		<div class="kt-admin-panel">
+			<div class="kt-admin-section-head">
+				<h2>자주하는 질문</h2>
+				<a href="/contact/">자세히보기 <svg class="kt-icon kt-icon--xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+			</div>
+			<ul class="kt-admin-faq-list">
+				<li><a href="#"><b>Q</b><span><em>행정</em><strong>가평교회에 등록하려면 어떻게 해야하나요?</strong></span><svg class="kt-icon kt-icon--xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg></a></li>
+				<li><a href="#"><b>Q</b><span><em>행정</em><strong>헌금은 왜 어떻게 하는 건가요?</strong></span><svg class="kt-icon kt-icon--xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg></a></li>
+				<li><a href="#"><b>Q</b><span><em>행정</em><strong>헌금카드는 왜 써야하나요?</strong></span><svg class="kt-icon kt-icon--xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg></a></li>
+			</ul>
+		</div>
+	</section>
+
+	<section class="kt-admin-section">
+		<div class="kt-admin-section-head">
+			<h2>자료실</h2>
+			<a href="/library/">자세히보기 <svg class="kt-icon kt-icon--xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+		</div>
+		<div class="kt-admin-library-grid">
+			<a href="#" class="kt-admin-library-card"><span>자료</span><strong>2026 설 가정 예배문</strong><svg class="kt-icon kt-icon--md" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="5" y="3" width="14" height="18" rx="1"/><path d="M8 8h8M8 12h8M8 16h5"/></svg></a>
+			<a href="#" class="kt-admin-library-card"><span>자료</span><strong>2026-1 변화산 월 페이퍼</strong><svg class="kt-icon kt-icon--md" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="5" width="18" height="14" rx="1"/><circle cx="9" cy="11" r="2"/><path d="M3 17l5-5 5 5 3-3 5 5"/></svg></a>
+			<a href="#" class="kt-admin-library-card"><span>교육자료</span><strong>2026년 교회학교 &lt;믿음생활&gt; 시리즈 주제곡</strong><svg class="kt-icon kt-icon--md" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg></a>
+			<a href="#" class="kt-admin-library-card"><span>이미지</span><strong>믿음 안에 서(폰배경)</strong><svg class="kt-icon kt-icon--md" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="5" width="18" height="14" rx="1"/><circle cx="9" cy="11" r="2"/><path d="M3 17l5-5 5 5 3-3 5 5"/></svg></a>
+			<a href="#" class="kt-admin-library-card"><span>악보</span><strong>하나님의 손길(음원+악보)</strong><svg class="kt-icon kt-icon--md" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg></a>
+			<a href="#" class="kt-admin-library-card"><span>자료</span><strong>2026 가평교회 캘린더</strong><svg class="kt-icon kt-icon--md" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="5" y="3" width="14" height="18" rx="1"/><path d="M8 8h8M8 12h8M8 16h5"/></svg></a>
+		</div>
+	</section>
+
+	<a href="/news/" class="kt-admin-news-banner">
+		<span class="shape-one"></span>
+		<span class="shape-two"></span>
+		<span class="shape-three"></span>
+		<strong>새로운 소식 <svg class="kt-icon kt-icon--xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg></strong>
+		<small>가평교회의 모든 새소식을 전해드립니다!</small>
+	</a>
+
+	<section class="kt-admin-section kt-admin-cta-grid">
+		<a href="/community/" class="kt-admin-cta">
+			<span><strong>교우사업장 <svg class="kt-icon kt-icon--xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></strong><small>가평교회 성도의 교우사업장을 소개합니다.</small></span>
+			<i><svg class="kt-icon kt-icon--xl" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 21V8l9-5 9 5v13M9 21v-6h6v6M7 11h.01M11 11h.01M7 14h.01M11 14h.01M15 11h.01M15 14h.01"/></svg></i>
+		</a>
+		<a href="/giving/" class="kt-admin-cta">
+			<span><strong>온라인 헌금 <svg class="kt-icon kt-icon--xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></strong><small>헌금 봉헌도 편리하게, 온라인 헌금을 안내드립니다.</small></span>
+			<i class="is-rose"><svg class="kt-icon kt-icon--xl" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21s-7-4.5-7-10a4 4 0 0 1 7-2.5A4 4 0 0 1 19 11c0 5.5-7 10-7 10z"/></svg></i>
+		</a>
 	</section>
 	<!-- /wp:html -->
 </main>
