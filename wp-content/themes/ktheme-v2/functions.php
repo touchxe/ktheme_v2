@@ -128,7 +128,7 @@ function ktheme_v2_required_pages(): array {
 		array( 'title' => ktheme_v2_text( '\uC624\uC2DC\uB294 \uAE38' ), 'slug' => 'location' ),
 		array( 'title' => ktheme_v2_text( '\uC608\uBC30' ), 'slug' => 'worship', 'template' => 'page-worship' ),
 		array( 'title' => ktheme_v2_text( '\uC608\uBC30 \uC548\uB0B4' ), 'slug' => 'worship-guide' ),
-		array( 'title' => ktheme_v2_text( '\uC8FC\uC77C\uC608\uBC30' ), 'slug' => 'sunday-worship' ),
+		array( 'title' => ktheme_v2_text( '\uC8FC\uC77C\uC608\uBC30' ), 'slug' => 'sunday-worship', 'template' => 'page-sunday-worship' ),
 		array( 'title' => ktheme_v2_text( '\uC218\uC694\uC608\uBC30' ), 'slug' => 'wednesday-worship' ),
 		array( 'title' => ktheme_v2_text( '\uC0C8\uBCBD\uAE30\uB3C4' ), 'slug' => 'dawn-prayer' ),
 		array( 'title' => ktheme_v2_text( '\uC8FC\uBCF4' ), 'slug' => 'bulletin' ),
@@ -644,6 +644,104 @@ function ktheme_v2_render_page_hero_shortcode(): string {
 }
 add_shortcode( 'ktheme_page_hero', 'ktheme_v2_render_page_hero_shortcode' );
 
+function ktheme_v2_sermon_card_items(): array {
+	$image_base = get_template_directory_uri() . '/assets/images/generated/';
+
+	return array(
+		array(
+			'image'  => $image_base . 'church-generated-01.jpg',
+			'series' => '자리 지키기 "누가 왕인가"',
+			'title'  => '선한 일도 있었던 사람!(르호보암)',
+			'date'   => '2026.03.29',
+		),
+		array(
+			'image'  => $image_base . 'church-generated-02.jpg',
+			'series' => '자리 지키기 "누가 왕인가"',
+			'title'  => '왕다리는 불순종이다!(솔로몬)',
+			'date'   => '2026.03.22',
+		),
+		array(
+			'image'  => $image_base . 'church-generated-03.jpg',
+			'series' => '자리 지키기 "누가 왕인가"',
+			'title'  => '끝까지 하나님의 이름으로(다윗)',
+			'date'   => '2026.03.15',
+		),
+		array(
+			'image'  => $image_base . 'church-generated-04.jpg',
+			'series' => '자리 지키기 "누가 왕인가"',
+			'title'  => '"끝까지 있어야 할 자리예!"(사울)',
+			'date'   => '2026.03.07',
+		),
+		array(
+			'image'  => $image_base . 'church-generated-05.jpg',
+			'series' => '자유주제',
+			'title'  => '[주일설교] 부흥의 주인공 / 김한요 목사(얼바인 베델교회)',
+			'date'   => '2026.03.01',
+		),
+		array(
+			'image'  => $image_base . 'church-generated-06.jpg',
+			'series' => '자유주제',
+			'title'  => '[토요설교] 갈 바를 알지 못할 때 / 김한요 목사(얼바인 베델교회)',
+			'date'   => '2026.02.28',
+		),
+		array(
+			'image'  => $image_base . 'church-generated-07.jpg',
+			'series' => '2026-1차 변화산 "기다림은 낭비가 아닙니다"',
+			'title'  => '[2026-1차 변화산]6. 기다림은 함께 걷는 길입니다',
+			'date'   => '2026.02.28',
+		),
+		array(
+			'image'  => $image_base . 'church-generated-08.jpg',
+			'series' => '2026-1차 변화산 "기다림은 낭비가 아닙니다"',
+			'title'  => '[2026-1차 변화산]5. 기다림은 적극적인 순종입니다',
+			'date'   => '2026.02.27',
+		),
+		array(
+			'image'  => $image_base . 'church-generated-09.jpg',
+			'series' => '2026-1차 변화산 "기다림은 낭비가 아닙니다"',
+			'title'  => '[2026-1차 변화산]4. 기다림은 인내로 익는 열매입니다',
+			'date'   => '2026.02.26',
+		),
+	);
+}
+
+function ktheme_v2_render_sermon_item_card( array $item ): string {
+	$url = home_url( user_trailingslashit( 'sermons' ) );
+
+	return '<article class="kt-sermon-item-card">' .
+		'<a class="kt-sermon-item-card__media" href="' . esc_url( $url ) . '">' .
+			'<img src="' . esc_url( $item['image'] ) . '" alt="" loading="lazy" />' .
+			'<span class="kt-sermon-item-card__play" aria-hidden="true"></span>' .
+		'</a>' .
+		'<div class="kt-sermon-item-card__series">' . esc_html( $item['series'] ) . '</div>' .
+		'<h3 class="kt-sermon-item-card__title"><a href="' . esc_url( $url ) . '">' . esc_html( $item['title'] ) . '</a></h3>' .
+		'<time class="kt-sermon-item-card__date" datetime="' . esc_attr( str_replace( '.', '-', $item['date'] ) ) . '">' . esc_html( $item['date'] ) . '</time>' .
+		'</article>';
+}
+
+function ktheme_v2_render_sunday_worship_grid_shortcode(): string {
+	$cards = array_map( 'ktheme_v2_render_sermon_item_card', ktheme_v2_sermon_card_items() );
+
+	return '<section class="kt-sermon-feed kt-sermon-feed--static" aria-label="' . esc_attr__( '주일예배 설교 목록', 'ktheme-v2' ) . '">' .
+		'<div class="kt-sermon-item-grid">' . implode( '', $cards ) . '</div>' .
+		'<nav class="kt-sermon-pagination" aria-label="' . esc_attr__( '페이지', 'ktheme-v2' ) . '">' .
+			'<span aria-hidden="true">|‹</span><span aria-hidden="true">‹</span>' .
+			'<span class="page-numbers current" aria-current="page">1</span><a href="#">2</a><a href="#">3</a><a href="#">4</a><a href="#">5</a>' .
+			'<span aria-hidden="true">›</span><span aria-hidden="true">›|</span>' .
+		'</nav>' .
+		'</section>';
+}
+add_shortcode( 'ktheme_sunday_worship_grid', 'ktheme_v2_render_sunday_worship_grid_shortcode' );
+
+function ktheme_v2_body_classes( array $classes ): array {
+	if ( is_page( 'sunday-worship' ) ) {
+		$classes[] = 'kt-page-sunday-worship';
+	}
+
+	return $classes;
+}
+add_filter( 'body_class', 'ktheme_v2_body_classes' );
+
 function ktheme_v2_customize_register_page_hero( WP_Customize_Manager $wp_customize ): void {
 	$wp_customize->add_section(
 		'ktheme_v2_page_hero',
@@ -959,3 +1057,20 @@ function ktheme_v2_enqueue_assets(): void {
 }
 add_action( 'wp_enqueue_scripts', 'ktheme_v2_enqueue_assets' );
 add_action( 'enqueue_block_editor_assets', 'ktheme_v2_enqueue_assets' );
+
+function ktheme_v2_enqueue_design_library_assets(): void {
+	if ( is_admin() || ! is_page( 'design-library' ) ) {
+		return;
+	}
+
+	$script_path = get_theme_file_path( 'assets/js/design-library.js' );
+
+	wp_enqueue_script(
+		'ktheme-v2-design-library',
+		get_theme_file_uri( 'assets/js/design-library.js' ),
+		array(),
+		file_exists( $script_path ) ? (string) filemtime( $script_path ) : wp_get_theme()->get( 'Version' ),
+		true
+	);
+}
+add_action( 'wp_enqueue_scripts', 'ktheme_v2_enqueue_design_library_assets' );
