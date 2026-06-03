@@ -3,7 +3,7 @@ Theme Name: KTheme V2
 Theme URI: https://juswer.mycafe24.com
 Author: KTheme
 Description: WordPress block theme based on the Style 1 church homepage design.
-Version: 0.3.29
+Version: 0.3.30
 Requires at least: 6.5
 Tested up to: 6.5
 Requires PHP: 7.4
@@ -1253,6 +1253,18 @@ svg {
   padding-inline: 28px;
 }
 
+.kt-hero-demo .kt-shared-page-hero--image,
+.kt-hero-demo .kt-shared-page-hero--kenburns {
+  display: grid;
+  align-content: center;
+  padding-block: 42px;
+}
+
+.kt-hero-demo .kt-shared-page-hero--image .kt-breadcrumb,
+.kt-hero-demo .kt-shared-page-hero--kenburns .kt-breadcrumb {
+  margin: 0;
+}
+
 .kt-library-docbar {
   position: sticky;
   top: 0;
@@ -1757,16 +1769,15 @@ svg {
   place-items: center;
   border: 1px solid var(--kt-line);
   border-radius: 8px;
-  background:
-    linear-gradient(135deg, rgba(14,19,32,0.68), rgba(14,19,32,0.42)),
-    var(--kt-paper);
+  background: rgba(107,114,128,0.32);
   padding: 24px;
 }
 
 .kt-library-modal-card {
   width: min(420px, 100%);
+  border-radius: 12px;
   padding: 24px;
-  box-shadow: var(--kt-shadow-float);
+  box-shadow: 0 20px 25px -5px rgba(14,19,32,0.14), 0 8px 10px -6px rgba(14,19,32,0.14);
 }
 
 .kt-library-modal-card h3 {
@@ -1824,27 +1835,56 @@ svg {
   margin-top: 18px;
 }
 
-.kt-library-header-demo {
-  display: grid;
-  grid-template-columns: auto minmax(0, 1fr) auto;
-  align-items: center;
-  gap: 24px;
-  padding: 16px 18px;
+.kt-library-header-frame,
+.kt-library-mega-frame {
+  overflow: hidden;
+  border: 1px solid var(--kt-line);
+  border-radius: 8px;
+  background: white;
 }
 
-.kt-library-mini-nav {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-  gap: 18px;
-  color: var(--kt-ink-700);
-  font-size: 13px;
-  font-weight: 800;
+.kt-library-header-frame .kt-header {
+  position: relative;
+  top: auto;
+  z-index: 1;
+  border-bottom: 0;
+  box-shadow: none;
 }
 
-.kt-library-mini-nav a:hover {
-  color: var(--kt-brand-600);
+.kt-library-header-frame .kt-container,
+.kt-library-mega-frame .kt-container {
+  width: 100%;
+  padding-inline: 20px;
+}
+
+.kt-library-header-frame .kt-nav__list {
+  gap: 22px;
+}
+
+.kt-library-header-frame .kt-nav__dropdown {
+  z-index: 3;
+}
+
+.kt-library-header-frame .kt-header-register {
+  white-space: nowrap;
+}
+
+.kt-library-mega-sample.kt-mega-menu {
+  position: relative;
+  left: auto;
+  right: auto;
+  top: auto;
+  z-index: 1;
+  border-bottom: 0;
+  box-shadow: none;
+  opacity: 1;
+  transform: none;
+  pointer-events: auto;
+  visibility: visible;
+}
+
+.kt-library-mega-sample .kt-mega-menu__grid {
+  grid-template-columns: repeat(6, minmax(0, 1fr));
 }
 
 .kt-library-footer-demo {
@@ -1953,6 +1993,9 @@ svg {
 }
 
 .kt-library-token-demo {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
   min-height: 118px;
   border: 1px solid var(--kt-line);
   border-radius: 8px;
@@ -1960,22 +2003,53 @@ svg {
   padding: 18px;
 }
 
-.kt-library-token-demo span {
+.kt-library-token-demo > div {
+  display: grid;
+  min-width: 0;
+  align-content: start;
+  gap: 10px;
+}
+
+.kt-library-token-demo i {
   display: block;
-  width: 88px;
-  height: 54px;
+  width: min(100%, 96px);
+  height: 64px;
   border: 1px solid var(--kt-line);
   background: var(--kt-paper);
 }
 
-.kt-library-token-demo--round span:nth-child(1) {
-  border-radius: 6px;
+.kt-library-token-demo b,
+.kt-library-token-demo code {
+  min-width: 0;
 }
 
-.kt-library-token-demo--round span:nth-child(2) {
-  margin-top: -26px;
-  margin-left: 52px;
-  border-radius: 18px;
+.kt-library-token-demo--round > div:nth-child(1) i {
+  width: 64px;
+  height: 40px;
+  border-radius: 8px;
+}
+
+.kt-library-token-demo--round > div:nth-child(2) i {
+  width: 76px;
+  height: 52px;
+  border-radius: 12px;
+}
+
+.kt-library-token-demo--round > div:nth-child(3) i {
+  width: 88px;
+  height: 64px;
+  border-radius: 16px;
+}
+
+.kt-library-token-demo--round > div:nth-child(4) i {
+  width: 72px;
+  height: 72px;
+  border-radius: 999px;
+}
+
+.kt-library-shadow-card,
+.kt-library-shadow-float {
+  border: 1px solid rgba(14,19,32,0.08);
   background: white;
 }
 
@@ -1984,8 +2058,7 @@ svg {
 }
 
 .kt-library-shadow-float {
-  margin-top: -20px;
-  margin-left: 46px;
+  height: 72px;
   box-shadow: var(--kt-shadow-float);
 }
 
@@ -2065,6 +2138,52 @@ svg {
   color: white;
 }
 
+.kt-library-underline-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 24px;
+  border-bottom: 1px solid var(--kt-line);
+}
+
+.kt-library-underline-tabs a {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  color: var(--kt-ink-600);
+  font-size: 14px;
+  font-weight: 900;
+}
+
+.kt-library-underline-tabs a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 2px;
+  border-radius: 999px;
+  background: var(--kt-ink-900);
+  opacity: 0;
+  transform: scaleX(0.55);
+  transform-origin: center;
+  transition: opacity 150ms ease, transform 150ms ease;
+}
+
+.kt-library-underline-tabs a:hover,
+.kt-library-underline-tabs a:focus-visible,
+.kt-library-underline-tabs .is-active {
+  color: var(--kt-ink-900);
+}
+
+.kt-library-underline-tabs a:hover::after,
+.kt-library-underline-tabs a:focus-visible::after,
+.kt-library-underline-tabs .is-active::after {
+  opacity: 1;
+  transform: scaleX(1);
+}
+
 .kt-library-panel {
   min-height: 120px;
   border-radius: 8px;
@@ -2092,10 +2211,11 @@ svg {
 
 .kt-library-vod-list {
   display: grid;
-  overflow: hidden;
-  border: 1px solid var(--kt-line);
-  border-radius: 8px;
+  margin: 0;
+  padding: 0;
+  border-top: 2px solid var(--kt-ink-900);
   background: white;
+  list-style: none;
 }
 
 .kt-library-vod-list a {
@@ -2103,20 +2223,22 @@ svg {
   align-items: center;
   justify-content: space-between;
   gap: 14px;
-  min-height: 54px;
+  min-height: 58px;
   border-bottom: 1px solid var(--kt-line);
-  padding: 0 16px;
+  padding: 0;
   color: var(--kt-ink-800);
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 900;
 }
 
-.kt-library-vod-list a:last-child {
-  border-bottom: 0;
+.kt-library-vod-list a::after {
+  content: "›";
+  color: var(--kt-ink-600);
+  font-size: 20px;
+  line-height: 1;
 }
 
 .kt-library-vod-list a:hover {
-  background: var(--kt-paper);
   color: var(--kt-brand-700);
 }
 
@@ -2171,7 +2293,11 @@ svg {
 .kt-library-sermon-list a {
   display: grid;
   grid-template-columns: 96px minmax(0, 1fr);
-  gap: 12px;
+  grid-template-rows: auto auto auto;
+  align-content: start;
+  align-items: start;
+  column-gap: 12px;
+  row-gap: 3px;
   min-height: 86px;
   border: 1px solid var(--kt-line);
   border-radius: 14px;
@@ -2189,20 +2315,28 @@ svg {
 
 .kt-library-sermon-list span,
 .kt-library-series-pair span {
+  display: block;
+  margin: 0;
   color: var(--kt-brand-600);
   font-size: 11px;
   font-weight: 900;
+  line-height: 1.25;
 }
 
 .kt-library-sermon-list strong {
+  display: block;
+  margin: 0;
   color: var(--kt-ink-900);
   font-size: 13.5px;
-  line-height: 1.35;
+  line-height: 1.3;
 }
 
 .kt-library-sermon-list small {
+  display: block;
+  margin: 0;
   color: var(--kt-ink-600);
   font-size: 11px;
+  line-height: 1.25;
 }
 
 .kt-library-series-pair {
@@ -2314,8 +2448,10 @@ svg {
 }
 
 .kt-library-profile-grid img {
+  display: block;
   width: 80px;
   height: 80px;
+  margin-inline: auto;
   border-radius: 999px;
   object-fit: cover;
 }
@@ -2395,17 +2531,20 @@ svg {
 .kt-library-event-grid a {
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 16px;
+  min-height: 128px;
   border: 1px solid var(--kt-line);
   border-radius: 16px;
   background: white;
-  padding: 20px;
+  padding: 18px;
 }
 
 .kt-library-event-grid a > span {
   display: grid;
   width: 64px;
+  min-height: 78px;
   flex: 0 0 auto;
+  align-content: center;
   overflow: hidden;
   border: 1px solid var(--kt-line);
   border-radius: 12px;
@@ -2417,6 +2556,7 @@ svg {
   color: white;
   padding: 5px 0;
   font-size: 10px;
+  line-height: 1;
 }
 
 .kt-library-event-grid .is-dark b {
@@ -2424,15 +2564,23 @@ svg {
 }
 
 .kt-library-event-grid a > span strong {
-  margin-top: 8px;
+  margin: 6px 0 0;
   color: var(--kt-ink-900);
   font-size: 24px;
+  line-height: 1;
 }
 
 .kt-library-event-grid a > span small {
-  margin-bottom: 8px;
+  margin: 3px 0 7px;
   color: var(--kt-ink-600);
   font-size: 10px;
+  line-height: 1;
+}
+
+.kt-library-event-grid a > div {
+  display: grid;
+  align-content: center;
+  gap: 4px;
 }
 
 .kt-library-event-grid em {
@@ -2445,16 +2593,18 @@ svg {
 
 .kt-library-event-grid div > strong {
   display: block;
-  margin-top: 6px;
+  margin: 0;
   color: var(--kt-ink-900);
   font-size: 15px;
+  line-height: 1.32;
 }
 
 .kt-library-event-grid div > small {
   display: block;
-  margin-top: 8px;
+  margin: 0;
   color: var(--kt-ink-600);
   font-size: 12px;
+  line-height: 1.35;
 }
 
 .kt-library-quote-grid figure {
@@ -2740,9 +2890,11 @@ svg {
   position: fixed;
   inset: 0;
   z-index: 10000;
-  display: grid;
-  place-items: center;
-  padding: 20px;
+  display: flex;
+  min-height: 100%;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
 }
 
 .kt-library-modal[hidden] {
@@ -2753,27 +2905,70 @@ svg {
   position: absolute;
   inset: 0;
   border: 0;
-  background: rgba(14,19,32,0.62);
+  background: rgba(75,85,99,0.75);
   cursor: pointer;
 }
 
 .kt-library-modal__dialog {
   position: relative;
   z-index: 1;
-  width: min(460px, 100%);
+  width: min(520px, 100%);
+  border-radius: 12px;
+  background: white;
+  box-shadow: 0 20px 25px -5px rgba(14,19,32,0.16), 0 8px 10px -6px rgba(14,19,32,0.14);
+  padding: 24px;
+}
+
+.kt-library-modal__dialog h2 {
+  margin: 16px 0 0;
+  color: #111827;
+  font-size: 18px;
+  line-height: 1.45;
+  font-weight: 800;
+}
+
+.kt-library-modal__dialog p {
+  margin: 8px 0 0;
+  color: #6b7280;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.kt-library-modal__dialog .kt-buttons {
+  margin-top: 22px;
+}
+
+.kt-library-modal__icon {
+  display: grid;
+  width: 44px;
+  height: 44px;
+  place-items: center;
+  border-radius: 999px;
+  background: #dcfce7;
+  color: #16a34a;
+  font-size: 20px;
+  font-weight: 900;
 }
 
 .kt-library-modal__close {
   position: absolute;
-  right: 14px;
-  top: 14px;
-  width: 36px;
-  height: 36px;
-  border: 1px solid var(--kt-line);
+  right: 12px;
+  top: 12px;
+  width: 32px;
+  height: 32px;
+  border: 0;
   border-radius: 999px;
   background: white;
-  color: var(--kt-ink-900);
+  color: #9ca3af;
   cursor: pointer;
+  font-size: 22px;
+  line-height: 1;
+}
+
+.kt-library-modal__close:hover,
+.kt-library-modal__close:focus-visible {
+  color: #111827;
+  background: #f3f4f6;
 }
 
 .kt-library-modal-open {
@@ -3008,6 +3203,7 @@ svg {
 
   .kt-library-swatches,
   .kt-library-token-grid,
+  .kt-library-token-demo,
   .kt-library-icon-grid,
   .kt-library-card-row,
   .kt-library-card-grid,
@@ -3038,6 +3234,23 @@ svg {
 
   .kt-library-mini-nav {
     justify-content: flex-start;
+  }
+
+  .kt-library-header-frame .kt-header__inner {
+    height: auto;
+    min-height: 72px;
+    flex-wrap: wrap;
+    align-content: center;
+    padding-block: 12px;
+  }
+
+  .kt-library-header-frame .kt-nav {
+    width: 100%;
+    overflow-x: auto;
+  }
+
+  .kt-library-mega-sample .kt-mega-menu__grid {
+    grid-template-columns: 1fr;
   }
 
   .kt-library-orbit-hub {
