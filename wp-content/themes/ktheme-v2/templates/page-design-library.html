@@ -1,155 +1,345 @@
-<!-- wp:template-part {"slug":"header","tagName":"header"} /-->
+<!-- wp:html -->
+<header class="kt-library-docbar">
+	<div class="kt-library-docbar__inner">
+		<a class="kt-library-docbar__brand" href="/design-library/" aria-label="디자인 라이브러리">
+			<img src="/wp-content/themes/ktheme-v2/assets/images/style1/logo.png" alt="" />
+			<span><strong>가평교회 디자인 라이브러리</strong><small>Design System · v1.0 · Pretendard</small></span>
+		</a>
+		<nav class="kt-library-docbar__links" aria-label="디자인 라이브러리 관련 링크">
+			<a href="/worship/">예배 페이지</a>
+			<a class="is-primary" href="/design-library/#hero">히어로 시안 3종 <svg class="kt-icon kt-icon--xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+		</nav>
+	</div>
+</header>
+<!-- /wp:html -->
 <!-- wp:group {"tagName":"main","className":"kt-design-library","layout":{"type":"constrained"}} -->
 <main class="wp-block-group kt-design-library">
 	<!-- wp:html -->
-	<section class="kt-design-library__intro">
-		<span class="kt-card-label">Design Library</span>
-		<h1>공용 페이지 히어로</h1>
-		<p>테마 템플릿 파트 <code>parts/page-hero.html</code>와 사용자 설정으로 제어되는 5가지 히어로 스타일입니다.</p>
-	</section>
-
-	<section class="kt-hero-demo">
-		<div class="kt-hero-demo__meta">
-			<span>01</span>
-			<div>
-				<h2>Clean</h2>
-				<p>기본형 서브페이지에 사용하는 밝은 히어로입니다.</p>
-			</div>
-			<code>clean</code>
-		</div>
-		<section class="kt-page-hero kt-shared-page-hero kt-shared-page-hero--clean" style="--kt-page-hero-accent:#3a64f5;--kt-page-hero-text:#0e1320;--kt-page-hero-overlay:#0e1320;">
-			<nav class="kt-breadcrumb" aria-label="현재 위치">
-				<a href="/"><svg class="kt-icon kt-icon--xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 11l9-8 9 8M5 10v10h14V10"/></svg>HOME</a>
-				<span>›</span>
-				<strong>예배</strong>
+	<div class="kt-library-layout">
+		<aside class="kt-library-toc" aria-label="디자인 라이브러리 바로가기">
+			<nav>
+				<strong>Foundations</strong>
+				<a href="#colors">컬러</a>
+				<a href="#type">타이포그래피</a>
+				<a href="#tokens">라운드 · 섀도우 · 간격</a>
+				<a href="#icons">아이콘</a>
+				<strong>Components</strong>
+				<a href="#buttons">버튼</a>
+				<a href="#badges">배지 · 라벨</a>
+				<a href="#tabs">탭 · 필터</a>
+				<a href="#nav-bits">브레드크럼 · VOD 링크</a>
+				<a href="#cards">카드</a>
+				<a href="#value-circles">원형 가치 블록</a>
+				<a href="#orbit">오비트 · 허브</a>
+				<a href="#lists">리스트 · 일정</a>
+				<strong>Forms & Data</strong>
+				<a href="#forms">폼 · 입력</a>
+				<a href="#overlay">오버레이 · 모달</a>
+				<a href="#navigation">페이지네이션 · 아코디언 · 탭 패널</a>
+				<a href="#data">테이블 · 아바타 · 타임라인</a>
+				<a href="#feedback">알림 · 피드백</a>
+				<strong>Sections</strong>
+				<a href="#header">헤더 · 내비게이션</a>
+				<a href="#hero">페이지 히어로</a>
+				<a href="#footer">푸터</a>
 			</nav>
-			<div class="kt-page-hero__body">
-				<div>
-					<h1>예배</h1>
-					<p>매주 드려지는 예배 시간과 장소, 말씀 다시보기를 한 곳에서 확인합니다.</p>
-				</div>
-				<nav class="kt-page-tabs" aria-label="예배 하위 메뉴">
-					<a class="is-active" href="#">전체</a><a href="#">주일예배</a><a href="#">수요예배</a><a href="#">새벽기도</a>
-				</nav>
-			</div>
-		</section>
-	</section>
+		</aside>
 
-	<section class="kt-hero-demo">
-		<div class="kt-hero-demo__meta">
-			<span>02</span>
-			<div>
-				<h2>Image Background</h2>
-				<p>공동체와 새가족 페이지에 어울리는 이미지 배경형입니다.</p>
-			</div>
-			<code>image</code>
-		</div>
-		<section class="kt-page-hero kt-shared-page-hero kt-shared-page-hero--image" style="--kt-page-hero-accent:#3a64f5;--kt-page-hero-text:#ffffff;--kt-page-hero-overlay:#0e1320;">
-			<div class="kt-page-hero__media" aria-hidden="true"><img src="https://images.unsplash.com/photo-1507692049790-de58290a4334?auto=format&fit=crop&w=1600&q=80" alt="" /></div>
-			<nav class="kt-breadcrumb" aria-label="현재 위치">
-				<a href="/"><svg class="kt-icon kt-icon--xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 11l9-8 9 8M5 10v10h14V10"/></svg>HOME</a>
-				<span>›</span>
-				<strong>공동체</strong>
-			</nav>
-			<div class="kt-page-hero__body">
-				<div>
-					<h1>함께 걷는 믿음의 자리</h1>
-					<p>목장과 다음세대, 실버 사역이 서로를 돌보며 하나의 공동체로 이어집니다.</p>
-				</div>
-				<nav class="kt-page-tabs" aria-label="공동체 하위 메뉴">
-					<a class="is-active" href="#">전체</a><a href="#">목장</a><a href="#">다음세대</a><a href="#">실버사역</a>
-				</nav>
-			</div>
-		</section>
-	</section>
+		<div class="kt-library-content">
+			<section class="kt-library-intro">
+				<span class="kt-card-label">Design Library</span>
+				<h1>가평교회 테마 디자인 라이브러리</h1>
+				<p>source 디자인 라이브러리의 표시 구조와 동작을 유지하면서, 클래스와 마크업은 현재 테마의 <code>kt-*</code> 체계로 정리한 컴포넌트 문서입니다.</p>
+			</section>
 
-	<section class="kt-hero-demo">
-		<div class="kt-hero-demo__meta">
-			<span>03</span>
-			<div>
-				<h2>Ken Burns</h2>
-				<p>교회소개와 비전에 사용하는 느린 이미지 모션형입니다.</p>
-			</div>
-			<code>kenburns</code>
-		</div>
-		<section class="kt-page-hero kt-shared-page-hero kt-shared-page-hero--kenburns" style="--kt-page-hero-accent:#3a64f5;--kt-page-hero-text:#ffffff;--kt-page-hero-overlay:#0e1320;">
-			<div class="kt-page-hero__media" aria-hidden="true"><img src="https://images.unsplash.com/photo-1490122417551-6ee9691429d0?auto=format&fit=crop&w=1600&q=80" alt="" /></div>
-			<nav class="kt-breadcrumb" aria-label="현재 위치">
-				<a href="/"><svg class="kt-icon kt-icon--xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 11l9-8 9 8M5 10v10h14V10"/></svg>HOME</a>
-				<span>›</span>
-				<strong>교회소개</strong>
-			</nav>
-			<div class="kt-page-hero__body">
-				<div>
-					<h1>말씀이 머무는 공동체</h1>
-					<p>가평의 일상 속에서 예배하고, 서로를 돌보며, 다음 세대와 함께 자랍니다.</p>
+			<section id="colors" class="kt-library-block">
+				<div class="kt-library-block__head">
+					<div><span>Foundations</span><h2>컬러</h2></div>
+					<p>본문, 브랜드, 표면, 카테고리 색상입니다.</p>
 				</div>
-				<nav class="kt-page-tabs" aria-label="교회소개 하위 메뉴">
-					<a class="is-active" href="#">비전</a><a href="#">섬기는 사람들</a><a href="#">연혁</a><a href="#">오시는 길</a>
-				</nav>
-			</div>
-		</section>
-	</section>
+				<div class="kt-library-row">
+					<div class="kt-library-row__title"><strong>Ink</strong><span>텍스트와 어두운 배경</span></div>
+					<div class="kt-library-row__content kt-library-swatches">
+						<div><span class="kt-library-swatch" style="background:#0e1320;"></span><b>ink-900</b><code>#0E1320</code></div>
+						<div><span class="kt-library-swatch" style="background:#171c2c;"></span><b>ink-800</b><code>#171C2C</code></div>
+						<div><span class="kt-library-swatch" style="background:#222a3f;"></span><b>ink-700</b><code>#222A3F</code></div>
+						<div><span class="kt-library-swatch" style="background:#384058;"></span><b>ink-600</b><code>#384058</code></div>
+					</div>
+				</div>
+				<div class="kt-library-row">
+					<div class="kt-library-row__title"><strong>Brand</strong><span>강조와 링크</span></div>
+					<div class="kt-library-row__content kt-library-swatches">
+						<div><span class="kt-library-swatch" style="background:#3a64f5;"></span><b>brand-500</b><code>#3A64F5</code></div>
+						<div><span class="kt-library-swatch" style="background:#2a4fd6;"></span><b>brand-600</b><code>#2A4FD6</code></div>
+						<div><span class="kt-library-swatch" style="background:#1f3eb2;"></span><b>brand-700</b><code>#1F3EB2</code></div>
+						<div><span class="kt-library-swatch" style="background:#e23b3b;"></span><b>accent-red</b><code>#E23B3B</code></div>
+					</div>
+				</div>
+				<div class="kt-library-row">
+					<div class="kt-library-row__title"><strong>Surface</strong><span>면과 경계</span></div>
+					<div class="kt-library-row__content kt-library-swatches">
+						<div><span class="kt-library-swatch kt-library-swatch--border" style="background:#fff;"></span><b>white</b><code>#FFFFFF</code></div>
+						<div><span class="kt-library-swatch kt-library-swatch--border" style="background:#f4f5f7;"></span><b>paper</b><code>#F4F5F7</code></div>
+						<div><span class="kt-library-swatch kt-library-swatch--border" style="background:#e5e7eb;"></span><b>line</b><code>#E5E7EB</code></div>
+					</div>
+				</div>
+				<div class="kt-library-row">
+					<div class="kt-library-row__title"><strong>Category</strong><span>예배 분류</span></div>
+					<div class="kt-library-row__content kt-library-color-dots">
+						<span style="--c:#2a4fd6;">주일</span><span style="--c:#059669;">수요</span><span style="--c:#d97706;">청년</span><span style="--c:#e11d48;">새벽</span><span style="--c:#7c3aed;">다음세대</span><span style="--c:#0284c7;">기타</span>
+					</div>
+				</div>
+			</section>
 
-	<section class="kt-hero-demo">
-		<div class="kt-hero-demo__meta">
-			<span>04</span>
-			<div>
-				<h2>Split Right Visual</h2>
-				<p>오시는 길, 양육, 안내 페이지에 사용하는 정보형입니다.</p>
-			</div>
-			<code>split</code>
-		</div>
-		<section class="kt-page-hero kt-shared-page-hero kt-shared-page-hero--split" style="--kt-page-hero-accent:#3a64f5;--kt-page-hero-text:#0e1320;--kt-page-hero-overlay:#0e1320;">
-			<nav class="kt-breadcrumb" aria-label="현재 위치">
-				<a href="/"><svg class="kt-icon kt-icon--xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 11l9-8 9 8M5 10v10h14V10"/></svg>HOME</a>
-				<span>›</span>
-				<strong>오시는 길</strong>
-			</nav>
-			<div class="kt-page-hero__body">
-				<div>
-					<h1>교회 오시는 길</h1>
-					<p>대중교통, 주차, 셔틀 안내를 확인하고 편안하게 방문하세요.</p>
+			<section id="type" class="kt-library-block">
+				<div class="kt-library-block__head">
+					<div><span>Foundations</span><h2>타이포그래피</h2></div>
+					<p>Pretendard Variable을 기준으로 제목, 본문, 메타 텍스트를 분리합니다.</p>
 				</div>
-				<div class="kt-page-hero__visual" aria-hidden="true">
-					<img src="https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=900&q=80" alt="" />
-					<div class="kt-page-hero__side-card"><strong>주일 안내</strong><span>1부 09:00 · 2부 11:00</span></div>
-				</div>
-				<nav class="kt-page-tabs" aria-label="오시는 길 하위 메뉴">
-					<a class="is-active" href="#">주소</a><a href="#">대중교통</a><a href="#">주차 안내</a>
-				</nav>
-			</div>
-		</section>
-	</section>
+				<div class="kt-library-row"><div class="kt-library-row__title"><strong>Display</strong><span>56 / 900 / tight</span></div><div class="kt-library-row__content"><p class="kt-library-type-display">말씀이 삶이 되는 공동체</p></div></div>
+				<div class="kt-library-row"><div class="kt-library-row__title"><strong>Page Title</strong><span>44 / 900</span></div><div class="kt-library-row__content"><p class="kt-library-type-title">예배 안내</p></div></div>
+				<div class="kt-library-row"><div class="kt-library-row__title"><strong>Section</strong><span>28 / 900</span></div><div class="kt-library-row__content"><p class="kt-library-type-section">이번 주 주요 일정</p></div></div>
+				<div class="kt-library-row"><div class="kt-library-row__title"><strong>Body</strong><span>15 / 1.75</span></div><div class="kt-library-row__content"><p class="kt-library-type-body">가평교회는 예배와 양육, 공동체와 선교를 통해 지역과 다음세대를 섬깁니다.</p></div></div>
+			</section>
 
-	<section class="kt-hero-demo">
-		<div class="kt-hero-demo__meta">
-			<span>05</span>
-			<div>
-				<h2>Video Background</h2>
-				<p>미디어, 설교 허브에 사용하는 영상 배경형입니다.</p>
-			</div>
-			<code>video</code>
-		</div>
-		<section class="kt-page-hero kt-shared-page-hero kt-shared-page-hero--video" style="--kt-page-hero-accent:#3a64f5;--kt-page-hero-text:#ffffff;--kt-page-hero-overlay:#0e1320;">
-			<div class="kt-page-hero__media" aria-hidden="true"><iframe src="https://www.youtube.com/embed/ysz5S6PUM-U?autoplay=1&mute=1&controls=0&loop=1&playlist=ysz5S6PUM-U&playsinline=1&modestbranding=1&rel=0" title="Background video" loading="lazy"></iframe></div>
-			<nav class="kt-breadcrumb" aria-label="현재 위치">
-				<a href="/"><svg class="kt-icon kt-icon--xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 11l9-8 9 8M5 10v10h14V10"/></svg>HOME</a>
-				<span>›</span>
-				<strong>미디어</strong>
-			</nav>
-			<div class="kt-page-hero__body">
-				<div>
-					<h1>미디어</h1>
-					<p>예배 영상, 설교, 찬양, 사진 기록을 한 곳에서 다시 만납니다.</p>
+			<section id="tokens" class="kt-library-block">
+				<div class="kt-library-block__head">
+					<div><span>Foundations</span><h2>라운드 · 섀도우 · 간격</h2></div>
+					<p>source 라이브러리처럼 형태 토큰을 눈으로 비교합니다.</p>
 				</div>
-				<nav class="kt-page-tabs" aria-label="미디어 하위 메뉴">
-					<a class="is-active" href="#">전체</a><a href="#">설교</a><a href="#">앨범</a><a href="#">주보</a>
-				</nav>
-			</div>
-		</section>
-	</section>
+				<div class="kt-library-row">
+					<div class="kt-library-row__title"><strong>Round</strong><span>8, 12, 16, full</span></div>
+					<div class="kt-library-row__content kt-library-token-demo kt-library-token-demo--round">
+						<div><i style="border-radius:8px;"></i><b>lg · 8</b></div>
+						<div><i style="border-radius:12px;"></i><b>xl · 12</b></div>
+						<div><i style="border-radius:16px;"></i><b>2xl · 16</b></div>
+						<div><i style="border-radius:999px;"></i><b>full</b></div>
+					</div>
+				</div>
+				<div class="kt-library-row">
+					<div class="kt-library-row__title"><strong>Shadow</strong><span>card, overlay</span></div>
+					<div class="kt-library-row__content kt-library-token-demo">
+						<div><i class="kt-library-shadow-card"></i><b>card</b><code>--kt-shadow-card</code></div>
+						<div><i class="kt-library-shadow-float"></i><b>overlay</b><code>--kt-shadow-float</code></div>
+					</div>
+				</div>
+				<div class="kt-library-row">
+					<div class="kt-library-row__title"><strong>Spacing</strong><span>layout tokens</span></div>
+					<div class="kt-library-row__content kt-library-token-grid">
+						<div><span>컨테이너</span><strong>1240</strong><code>--kt-max</code></div>
+						<div><span>좌우 패딩</span><strong>24</strong><code>.kt-container</code></div>
+						<div><span>그리드</span><strong>12col</strong><code>gap 24</code></div>
+						<div><span>헤더 높이</span><strong>72</strong><code>.kt-header</code></div>
+						<div><span>섹션 간격</span><strong>72~96</strong><code>.kt-section</code></div>
+					</div>
+				</div>
+			</section>
+
+			<section id="icons" class="kt-library-block">
+				<div class="kt-library-block__head">
+					<div><span>Foundations</span><h2>아이콘</h2></div>
+					<p>source 라이브러리의 전체 아이콘 세트를 테마 SVG 스타일로 정리합니다.</p>
+				</div>
+				<div class="kt-library-row">
+					<div class="kt-library-row__title"><strong>Icon Set</strong><span>18 icons</span></div>
+					<div class="kt-library-row__content kt-library-icon-grid">
+						<span><svg class="kt-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><b>search</b></span>
+						<span><svg class="kt-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 11l9-8 9 8M5 10v10h14V10"/></svg><b>home</b></span>
+						<span><svg class="kt-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg><b>play</b></span>
+						<span><svg class="kt-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><b>clock</b></span>
+						<span><svg class="kt-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg><b>bookmark</b></span>
+						<span><svg class="kt-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.6 13.5 6.8 4M15.4 6.5l-6.8 4"/></svg><b>share</b></span>
+						<span><svg class="kt-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"/></svg><b>download</b></span>
+						<span><svg class="kt-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 21s-7-4.5-7-10a4 4 0 0 1 7-2.5A4 4 0 0 1 19 11c0 5.5-7 10-7 10z"/></svg><b>heart</b></span>
+						<span><svg class="kt-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M21 15a4 4 0 0 1-4 4H7l-4 4V5a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4z"/></svg><b>message</b></span>
+						<span><svg class="kt-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M9 6l6 6-6 6"/></svg><b>chevron</b></span>
+						<span><svg class="kt-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 5l7 7-7 7"/></svg><b>arrow</b></span>
+						<span><svg class="kt-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg><b>menu</b></span>
+						<span><svg class="kt-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-4.5-7-10a7 7 0 0 1 14 0c0 5.5-7 10-7 10z"/><circle cx="12" cy="11" r="2.5"/></svg><b>location</b></span>
+						<span><svg class="kt-icon" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg><b>pause</b></span>
+						<span><svg class="kt-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg><b>moon</b></span>
+						<span><svg class="kt-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg><b>calendar</b></span>
+						<span><svg class="kt-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg><b>check</b></span>
+						<span><svg class="kt-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.5-6 8-6s8 2 8 6"/></svg><b>user</b></span>
+					</div>
+				</div>
+			</section>
+
+			<section id="buttons" class="kt-library-block">
+				<div class="kt-library-block__head">
+					<div><span>Components</span><h2>버튼</h2></div>
+					<p>source 라이브러리의 primary, outline, icon-only, play 버튼을 동일한 역할로 구성합니다.</p>
+				</div>
+				<div class="kt-library-row"><div class="kt-library-row__title"><strong>Primary</strong><span>주요 행동</span></div><div class="kt-library-row__content kt-component-row"><a class="kt-button kt-button--dark" href="#">전체</a><a class="kt-button kt-button--brand" href="#">예배순서</a><a class="kt-button kt-button--dark" href="#">다시보기 <svg class="kt-icon kt-icon--xs" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></a></div></div>
+				<div class="kt-library-row"><div class="kt-library-row__title"><strong>Outline</strong><span>보조 행동</span></div><div class="kt-library-row__content kt-component-row"><a class="kt-header-register" href="#">새가족 등록</a><a class="kt-button kt-button--outline" href="#">방송순예배</a><a class="kt-button kt-button--outline" href="#">다음세대</a></div></div>
+				<div class="kt-library-row"><div class="kt-library-row__title"><strong>Icon Only</strong><span>도구형</span></div><div class="kt-library-row__content kt-component-row"><button class="kt-icon-button" type="button" aria-label="검색"><svg class="kt-icon kt-icon--sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></button><button class="kt-round-button kt-round-button--light" type="button" aria-label="저장"><svg class="kt-icon kt-icon--sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg></button><a class="kt-play-button" href="/sermons/" aria-label="설교 보기"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></a></div></div>
+			</section>
+
+			<section id="badges" class="kt-library-block">
+				<div class="kt-library-block__head"><div><span>Components</span><h2>배지 · 라벨</h2></div><p>상태, 분류, 작은 메타 정보를 표시합니다.</p></div>
+				<div class="kt-library-row"><div class="kt-library-row__title"><strong>Status</strong><span>상태 표시</span></div><div class="kt-library-row__content kt-component-row"><span class="kt-card-label">Worship</span><span class="kt-live-badge">LIVE</span><span class="kt-chip">주일예배</span><span class="kt-pill"><span class="kt-status-dot"></span>접수중</span><span class="kt-pill kt-pill--brand"><span class="kt-status-dot kt-status-dot--brand"></span>새가족</span><span class="kt-pill kt-pill--dark"><span class="kt-status-dot kt-status-dot--red"></span>긴급공지</span></div></div>
+				<div class="kt-library-row"><div class="kt-library-row__title"><strong>Category</strong><span>설교 분류</span></div><div class="kt-library-row__content kt-library-badge-set"><span>주일예배</span><span>수요예배</span><span>새벽예배</span><span>청년예배</span><span>다음세대</span></div></div>
+			</section>
+
+			<section id="tabs" class="kt-library-block">
+				<div class="kt-library-block__head"><div><span>Components</span><h2>탭 · 필터</h2></div><p>페이지 하위 메뉴, 필터, 작동형 탭 패널 3종입니다.</p></div>
+				<div class="kt-library-row"><div class="kt-library-row__title"><strong>Page Tabs</strong><span>하위 메뉴</span></div><div class="kt-library-row__content"><nav class="kt-page-tabs" aria-label="예배 하위 메뉴"><a class="is-active" href="#">전체</a><a href="#">주일예배</a><a href="#">수요예배</a><a href="#">새벽기도</a></nav></div></div>
+				<div class="kt-library-row"><div class="kt-library-row__title"><strong>Filter Tabs</strong><span>목록 필터</span></div><div class="kt-library-row__content"><nav class="kt-filter-tabs" aria-label="자료실 분류"><a class="is-active" href="#">전체</a><a href="#">공지</a><a href="#">행사</a><a href="#">자료</a></nav></div></div>
+				<div class="kt-library-row"><div class="kt-library-row__title"><strong>Tab Panel</strong><span>인터랙션</span></div><div class="kt-library-row__content"><div class="kt-library-tabpanel" data-kt-library-tabs><div class="kt-library-tablist" role="tablist"><button class="is-active" type="button" data-kt-library-tab="0">예배</button><button type="button" data-kt-library-tab="1">양육</button><button type="button" data-kt-library-tab="2">선교</button></div><div class="kt-library-panel" data-kt-library-panel="0">주일예배, 수요예배, 새벽기도 정보를 한 화면에 모읍니다.</div><div class="kt-library-panel" data-kt-library-panel="1" hidden>새가족 과정과 성경공부, 제자훈련 일정을 안내합니다.</div><div class="kt-library-panel" data-kt-library-panel="2" hidden>국내외 선교와 섬김 사역의 연결 흐름을 보여줍니다.</div></div></div></div>
+			</section>
+
+			<section id="nav-bits" class="kt-library-block">
+				<div class="kt-library-block__head"><div><span>Components</span><h2>브레드크럼 · VOD 링크</h2></div><p>worship 페이지의 VOD 리스트를 포함합니다.</p></div>
+				<div class="kt-library-row"><div class="kt-library-row__title"><strong>Breadcrumb</strong><span>현재 위치</span></div><div class="kt-library-row__content"><nav class="kt-breadcrumb" aria-label="현재 위치"><a href="/"><svg class="kt-icon kt-icon--xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 11l9-8 9 8M5 10v10h14V10"/></svg>HOME</a><span>/</span><a href="/worship/">예배</a><span>/</span><strong>주일예배</strong></nav></div></div>
+				<div class="kt-library-row"><div class="kt-library-row__title"><strong>VOD Links</strong><span>/worship/ 사용</span></div><div class="kt-library-row__content"><ul class="kt-library-vod-list"><li><a href="/sunday-worship/">주일예배</a></li><li><a href="/wednesday-worship/">수요예배</a></li><li><a href="/dawn-prayer/">새벽예배</a></li><li><a href="/youth-ministry/">청년예배</a></li><li><a href="/worship-guide/">특별예배</a></li></ul></div></div>
+			</section>
+
+			<section id="cards" class="kt-library-block">
+				<div class="kt-library-block__head"><div><span>Components</span><h2>카드</h2></div><p>source 카드 종류와 현재 라이브 테마 카드 종류를 모두 이름과 함께 표시합니다.</p></div>
+				<div class="kt-library-row"><div class="kt-library-row__title"><strong>Announcement Card</strong><span>홈 공지</span></div><div class="kt-library-row__content"><a class="kt-announcement-card" href="#"><span class="kt-announcement-card__icon"><svg class="kt-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></span><span><span class="kt-announcement-card__label">NOTICE</span><strong class="kt-announcement-card__title">이번 주 예배 안내</strong></span></a></div></div>
+				<div class="kt-library-row"><div class="kt-library-row__title"><strong>Simple / Info / Status</strong><span>기본 정보 카드</span></div><div class="kt-library-row__content kt-library-card-grid"><article class="kt-simple-card"><span class="kt-card-label">Notice</span><h3>여름 수련회 신청 안내</h3><p>신청 기간과 준비물을 확인해 주세요.</p></article><a class="kt-info-card" href="#"><strong>새가족</strong><span>처음 오신 분의 정착을 돕습니다.</span></a><div class="kt-status-card"><span class="kt-status-code">404</span><h2>페이지를 찾을 수 없습니다.</h2><p>주소를 확인하거나 주요 메뉴로 이동해 주세요.</p></div></div></div>
+				<div class="kt-library-row"><div class="kt-library-row__title"><strong>Data Cards</strong><span>숫자, 사람, 날짜</span></div><div class="kt-library-row__content kt-component-grid"><article class="kt-stat-card"><span>이번 주 등록</span><strong>24</strong><small>지난주 대비 +6</small></article><article class="kt-profile-card"><img src="/wp-content/themes/ktheme-v2/assets/images/generated/church-generated-03.jpg" alt="" /><div><strong>새가족 안내팀</strong><span>예배 전후로 안내합니다.</span></div></article><article class="kt-date-card"><div class="kt-date-card__date"><div><b>14</b><span>JUN</span></div></div><div class="kt-date-card__body"><strong>공동체 리더 모임</strong><span>오후 2:00 · 비전홀</span></div></article></div></div>
+				<div class="kt-library-row"><div class="kt-library-row__title"><strong>Media / Sermon</strong><span>이미지 카드</span></div><div class="kt-library-row__content kt-library-card-grid"><article class="kt-feature-card"><div class="kt-feature-card__image"><img src="/wp-content/themes/ktheme-v2/assets/images/generated/church-generated-04.jpg" alt="" /></div><h3>다음세대 예배</h3><p>아이들이 말씀 안에서 자라갑니다.</p></article><a class="kt-recent-sermon" href="/sermons/"><img src="/wp-content/themes/ktheme-v2/assets/images/generated/church-generated-05.jpg" alt="" /><span>주일예배</span><strong>평안의 골짜기, 소망의 Psalm으로</strong><small>2026.01.13</small></a><a class="kt-series-card" href="/sermons/"><img src="/wp-content/themes/ktheme-v2/assets/images/generated/church-generated-07.jpg" alt="" /><span>주일예배</span><strong>평안의 골짜기, 소망의 Psalm으로</strong><small>2026.01.13 - 2026.02.29</small></a></div></div>
+				<div class="kt-library-row"><div class="kt-library-row__title"><strong>Admin / CTA / Library</strong><span>운영 카드</span></div><div class="kt-library-row__content kt-library-card-grid"><a href="#" class="kt-admin-library-card"><span>자료</span><strong>2026 설 가정 예배문</strong><svg class="kt-icon kt-icon--md" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="5" y="3" width="14" height="18" rx="1"/><path d="M8 8h8M8 12h8M8 16h5"/></svg></a><a href="/giving/" class="kt-origin-cta-card"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-4.5-7-10a4 4 0 0 1 7-2.5A4 4 0 0 1 19 11c0 5.5-7 10-7 10z"/></svg></span><strong>온라인 헌금</strong><p>헌금 안내와 계좌 정보를 확인합니다.</p></a><a href="/library/" class="kt-library-card"><strong>자료실</strong><svg class="kt-icon kt-icon--md" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="5" y="3" width="14" height="18" rx="1"/><path d="M8 8h8M8 12h8M8 16h5"/></svg></a></div></div>
+				<div class="kt-library-source-card-area">
+					<div class="kt-library-card-section">
+						<div class="kt-library-card-section__title">설교 리스트 아이템 · 시리즈 카드</div>
+						<div class="kt-library-card-showcase kt-library-card-showcase--split">
+							<div class="kt-library-sermon-list">
+								<a href="/sermons/"><img src="/wp-content/themes/ktheme-v2/assets/images/generated/church-generated-05.jpg" alt="" /><span>주일예배</span><strong>평안의 골짜기, 소망의 Psalm으로</strong><small>2026.01.13</small></a>
+								<a href="/sermons/"><img src="/wp-content/themes/ktheme-v2/assets/images/generated/church-generated-06.jpg" alt="" /><span>수요예배</span><strong>말씀 앞에 머무는 사람</strong><small>2026.01.20</small></a>
+								<a href="/sermons/"><img src="/wp-content/themes/ktheme-v2/assets/images/generated/church-generated-07.jpg" alt="" /><span>청년예배</span><strong>함께 걷는 믿음의 길</strong><small>2026.01.27</small></a>
+							</div>
+							<div class="kt-library-series-pair">
+								<a href="/sermons/"><img src="/wp-content/themes/ktheme-v2/assets/images/generated/church-generated-01.jpg" alt="" /><span>주일예배</span><strong>예배 안으로</strong></a>
+								<a href="/sermons/"><img src="/wp-content/themes/ktheme-v2/assets/images/generated/church-generated-02.jpg" alt="" /><span>사순절</span><strong>머무름</strong></a>
+							</div>
+						</div>
+					</div>
+					<div class="kt-library-card-section">
+						<div class="kt-library-card-section__title">아이콘 피처 카드</div>
+						<div class="kt-library-feature-pair">
+							<a href="/giving/"><span><svg class="kt-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21s-7-4.5-7-10a4 4 0 0 1 7-2.5A4 4 0 0 1 19 11c0 5.5-7 10-7 10z"/></svg></span><div><strong>온라인 헌금</strong><p>모바일과 PC에서 간편하게 드릴 수 있도록 도와드립니다.</p></div></a>
+							<a href="/contact/"><span><svg class="kt-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span><div><strong>문의하기</strong><p>평일 9시-18시, 사역자가 빠르게 답변드립니다.</p></div></a>
+						</div>
+					</div>
+					<div class="kt-library-card-section">
+						<div class="kt-library-card-section__title">사역자 프로필 카드</div>
+						<div class="kt-library-profile-grid">
+							<article><img src="/wp-content/themes/ktheme-v2/assets/images/generated/church-generated-03.jpg" alt="" /><strong>정한결</strong><span>담임목사</span><p>말씀과 기도로 공동체를 섬깁니다.</p></article>
+							<article><img src="/wp-content/themes/ktheme-v2/assets/images/generated/church-generated-04.jpg" alt="" /><strong>김다온</strong><span>교육부 목사</span><p>다음 세대와 함께 자랍니다.</p></article>
+							<article><img src="/wp-content/themes/ktheme-v2/assets/images/generated/church-generated-08.jpg" alt="" /><strong>이성결</strong><span>찬양 전도사</span><p>예배를 음악으로 섬깁니다.</p></article>
+							<article><img src="/wp-content/themes/ktheme-v2/assets/images/generated/church-generated-09.jpg" alt="" /><strong>박소망</strong><span>행정 간사</span><p>교회 살림을 돕습니다.</p></article>
+						</div>
+					</div>
+					<div class="kt-library-card-section">
+						<div class="kt-library-card-section__title">통계 · 지표 카드</div>
+						<div class="kt-library-metric-grid">
+							<article><span class="is-blue"><svg class="kt-icon kt-icon--sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.5-6 8-6s8 2 8 6"/></svg></span><strong>1,240<small>명</small></strong><p>출석 성도</p></article>
+							<article><span class="is-green"><svg class="kt-icon kt-icon--sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span><strong>52<small>개</small></strong><p>활동 목장</p></article>
+							<article><span class="is-amber"><svg class="kt-icon kt-icon--sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></span><strong>14<small>회</small></strong><p>이번달 모임</p></article>
+							<article class="is-dark"><span><svg class="kt-icon kt-icon--sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-4.5-7-10a4 4 0 0 1 7-2.5A4 4 0 0 1 19 11c0 5.5-7 10-7 10z"/></svg></span><strong>53<small>년</small></strong><p>교회 역사</p></article>
+						</div>
+					</div>
+					<div class="kt-library-card-section">
+						<div class="kt-library-card-section__title">행사 · 날짜 블록 카드</div>
+						<div class="kt-library-event-grid">
+							<a href="#"><span><b>5월</b><strong>05</strong><small>일 · 주일</small></span><div><em>전교인 행사</em><strong>어린이주일 연합예배</strong><small>오전 11:00 · 본당</small></div><svg class="kt-icon kt-icon--sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M9 6l6 6-6 6"/></svg></a>
+							<a href="#"><span class="is-dark"><b>5월</b><strong>17</strong><small>토 · 수련</small></span><div><em>청년부</em><strong>봄 수련회 · 머무름</strong><small>가평 수양관</small></div><svg class="kt-icon kt-icon--sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M9 6l6 6-6 6"/></svg></a>
+						</div>
+					</div>
+					<div class="kt-library-card-section">
+						<div class="kt-library-card-section__title">간증 · 인용 카드</div>
+						<div class="kt-library-quote-grid">
+							<figure><svg class="kt-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M9.5 7C6 7 4 9.6 4 13v4h6v-6H7c0-2 .9-3 2.5-3zm10 0C16 7 14 9.6 14 13v4h6v-6h-3c0-2 .9-3 2.5-3z"/></svg><blockquote>가장 힘들 때 목장 식구들이 곁을 지켜 주었습니다. 혼자가 아니라는 사실이 가장 큰 위로였어요.</blockquote></figure>
+							<figure class="is-dark"><svg class="kt-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M9.5 7C6 7 4 9.6 4 13v4h6v-6H7c0-2 .9-3 2.5-3zm10 0C16 7 14 9.6 14 13v4h6v-6h-3c0-2 .9-3 2.5-3z"/></svg><blockquote>새벽예배에 나오기 시작하면서 하루가 달라졌습니다. 말씀으로 여는 아침이 삶을 붙들어 줍니다.</blockquote></figure>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<section id="value-circles" class="kt-library-block">
+				<div class="kt-library-block__head"><div><span>Components</span><h2>원형 가치 블록</h2></div><p>source의 겹침형, 중심 강조형, 삼각 배치형을 동일한 컴포넌트로 구성합니다.</p></div>
+				<div class="kt-library-row"><div class="kt-library-row__title"><strong>Overlap</strong><span>겹치는 원형</span></div><div class="kt-library-row__content"><div class="kt-library-value-overlap"><article><span>01 · WORSHIP</span><h3>예배</h3><p>삶의 중심에 예배를 둡니다.</p></article><article class="is-primary"><span>02 · COMMUNITY</span><h3>공동체</h3><p>서로의 삶을 나눕니다.</p></article><article><span>03 · MISSION</span><h3>섬김</h3><p>은혜를 열방으로 흘려보냅니다.</p></article></div></div></div>
+				<div class="kt-library-row"><div class="kt-library-row__title"><strong>Triangle</strong><span>비전 삼각형</span></div><div class="kt-library-row__content"><div class="kt-library-value-triangle"><article><span>01 · WORSHIP</span><h3>예배</h3><p>말씀 앞에 섭니다.</p></article><article><span>03 · MISSION</span><h3>선교</h3><p>이웃과 열방으로.</p></article><article class="is-primary"><span>02 · COMMUNITY</span><h3>공동체</h3><p>목장과 소그룹으로 삶을 나눕니다.</p></article></div></div></div>
+			</section>
+
+			<section id="orbit" class="kt-library-block">
+				<div class="kt-library-block__head"><div><span>Components</span><h2>오비트 · 허브</h2></div><p>원본의 정적 허브와 회전형 허브를 동일하게 재현합니다.</p></div>
+				<div class="kt-library-row"><div class="kt-library-row__title"><strong>Static Orbit</strong><span>6개 아이콘 허브</span></div><div class="kt-library-row__content"><div class="kt-library-orbit-hub"><div class="kt-library-orbit-ring is-lg"></div><div class="kt-library-orbit-ring is-sm"></div><div class="kt-library-orbit-center"><img src="/wp-content/themes/ktheme-v2/assets/images/style1/logo.png" alt="" /></div><span class="is-top"><svg class="kt-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><span class="is-upper-right"><svg class="kt-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></span><span class="is-lower-right"><svg class="kt-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span><span class="is-bottom"><svg class="kt-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.5-6 8-6s8 2 8 6"/></svg></span><span class="is-lower-left"><svg class="kt-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg></span><span class="is-upper-left"><svg class="kt-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></span></div></div></div>
+				<div class="kt-library-row"><div class="kt-library-row__title"><strong>Spinning Orbit</strong><span>동작형</span></div><div class="kt-library-row__content"><div class="kt-library-orbit-hub kt-library-orbit-hub--spin"><div class="kt-library-orbit-ring is-lg"></div><div class="kt-library-orbit-ring is-sm"></div><div class="kt-library-orbit-center is-brand"><img src="/wp-content/themes/ktheme-v2/assets/images/style1/logo.png" alt="" /></div><div class="kt-library-orbit-track"><span style="--a:0deg"><svg class="kt-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><span style="--a:60deg"><svg class="kt-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></span><span style="--a:120deg"><svg class="kt-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span><span style="--a:180deg"><svg class="kt-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.5-6 8-6s8 2 8 6"/></svg></span><span style="--a:240deg"><svg class="kt-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg></span><span style="--a:300deg"><svg class="kt-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></span></div></div></div></div>
+			</section>
+
+			<section id="lists" class="kt-library-block">
+				<div class="kt-library-block__head"><div><span>Components</span><h2>리스트 · 일정</h2></div><p>일정, 순서, 반복 링크를 1 row로 표시합니다.</p></div>
+				<div class="kt-library-row"><div class="kt-library-row__title"><strong>Schedule Grid</strong><span>예배 시간</span></div><div class="kt-library-row__content"><div class="kt-schedule-grid"><div><span>주일</span><strong>09:00 / 11:00</strong><small>본당</small></div><div><span>수요일</span><strong>19:30</strong><small>비전홀</small></div><div><span>새벽</span><strong>05:30</strong><small>기도실</small></div></div></div></div>
+				<div class="kt-library-row"><div class="kt-library-row__title"><strong>Timeline</strong><span>예배 흐름</span></div><div class="kt-library-row__content"><ul class="kt-timeline"><li><time>09:00</time><strong>1부 예배 준비</strong></li><li><time>11:00</time><strong>2부 예배 및 새가족 안내</strong></li><li><time>14:00</time><strong>공동체 리더 모임</strong></li></ul></div></div>
+			</section>
+
+			<section id="forms" class="kt-library-block">
+				<div class="kt-library-block__head"><div><span>Forms & Data</span><h2>폼 · 입력</h2></div><p>source 폼 요소 전체를 표시합니다.</p></div>
+				<div class="kt-library-row"><div class="kt-library-row__title"><strong>Text Fields</strong><span>input, select, textarea</span></div><div class="kt-library-row__content"><form class="kt-form-card"><div class="kt-library-form-grid"><div class="kt-field"><label for="kt-library-name">이름</label><input id="kt-library-name" type="text" value="홍길동" /></div><div class="kt-field"><label for="kt-library-phone">연락처</label><input id="kt-library-phone" type="tel" value="010-1234-5678" /></div></div><div class="kt-field"><label for="kt-library-group">신청 항목</label><select id="kt-library-group"><option>새가족 등록</option><option>양육 과정</option><option>봉사 신청</option></select></div><div class="kt-field"><label for="kt-library-message">메모</label><textarea id="kt-library-message">방문 예정 시간과 동행 인원을 남겨주세요.</textarea><small>실제 폼 플러그인에도 같은 시각 규칙을 적용합니다.</small></div><button class="kt-button kt-button--dark" type="button">신청하기</button></form></div></div>
+				<div class="kt-library-row"><div class="kt-library-row__title"><strong>Checks</strong><span>checkbox, radio, toggle</span></div><div class="kt-library-row__content kt-library-check-grid"><label><input type="checkbox" checked /> 개인정보 처리에 동의합니다.</label><label><input type="radio" name="kt-library-radio" checked /> 주일예배</label><label><input type="radio" name="kt-library-radio" /> 수요예배</label><label class="kt-library-switch"><input type="checkbox" checked /><span></span> 문자 안내 받기</label></div></div>
+				<div class="kt-library-row"><div class="kt-library-row__title"><strong>Search</strong><span>검색 입력</span></div><div class="kt-library-row__content"><form class="kt-header-search__form"><input type="search" placeholder="설교, 공지, 자료 검색" /><button type="button"><span>검색</span></button></form></div></div>
+			</section>
+
+			<section id="overlay" class="kt-library-block">
+				<div class="kt-library-block__head"><div><span>Forms & Data</span><h2>오버레이 · 모달</h2></div><p>원본처럼 버튼으로 열고, 닫기/ESC/backdrop으로 닫힙니다.</p></div>
+				<div class="kt-library-row"><div class="kt-library-row__title"><strong>Modal</strong><span>interactive</span></div><div class="kt-library-row__content"><button class="kt-button kt-button--dark" type="button" data-kt-library-modal-open="kt-library-modal">모달 열기</button><div class="kt-library-modal-preview"><div class="kt-library-modal-card" role="dialog" aria-label="새가족 등록 확인"><span class="kt-card-label">Confirm</span><h3>새가족 등록을 접수할까요?</h3><p>제출 후 안내팀에서 예배 시간과 방문 동선을 문자로 안내합니다.</p><div class="kt-buttons"><button class="kt-button kt-button--dark" type="button">접수하기</button><button class="kt-button kt-button--outline" type="button">취소</button></div></div></div></div></div>
+			</section>
+
+			<section id="navigation" class="kt-library-block">
+				<div class="kt-library-block__head"><div><span>Forms & Data</span><h2>페이지네이션 · 아코디언 · 탭 패널</h2></div><p>원본의 내비게이션 컴포넌트를 모두 작동형으로 표시합니다.</p></div>
+				<div class="kt-library-row"><div class="kt-library-row__title"><strong>Pagination</strong><span>목록 이동</span></div><div class="kt-library-row__content"><nav class="kt-pagination" aria-label="페이지"><a href="#">이전</a><span>1</span><a href="#">2</a><a href="#">3</a><a href="#">다음</a></nav><div class="kt-origin-pagination"><span>1</span><a href="#">2</a><a href="#">3</a></div></div></div>
+				<div class="kt-library-row"><div class="kt-library-row__title"><strong>Accordion</strong><span>FAQ</span></div><div class="kt-library-row__content"><div class="kt-library-faq"><details open><summary>처음 방문해도 예배에 참석할 수 있나요?</summary><p>네. 안내 데스크에서 예배실과 새가족 좌석을 안내받으실 수 있습니다.</p></details><details><summary>주차는 어디에 하나요?</summary><p>주일에는 안내 봉사자의 안내에 따라 교회 주변 지정 공간을 이용합니다.</p></details></div></div></div>
+				<div class="kt-library-row"><div class="kt-library-row__title"><strong>Tab Panel</strong><span>content switch</span></div><div class="kt-library-row__content"><div class="kt-library-tabpanel" data-kt-library-tabs><div class="kt-library-tablist" role="tablist"><button class="is-active" type="button" data-kt-library-tab="0">공지</button><button type="button" data-kt-library-tab="1">자료</button></div><div class="kt-library-panel" data-kt-library-panel="0">이번 주 공지와 예배 안내를 보여줍니다.</div><div class="kt-library-panel" data-kt-library-panel="1" hidden>주보, 가정예배문, 교육 자료를 보여줍니다.</div></div></div></div>
+			</section>
+
+			<section id="data" class="kt-library-block">
+				<div class="kt-library-block__head"><div><span>Forms & Data</span><h2>테이블 · 아바타 · 타임라인</h2></div><p>운영형 화면의 데이터 표시 패턴입니다.</p></div>
+				<div class="kt-library-row"><div class="kt-library-row__title"><strong>Table</strong><span>status table</span></div><div class="kt-library-row__content"><table class="kt-data-table"><thead><tr><th>사역</th><th>담당</th><th>상태</th></tr></thead><tbody><tr><td>주일예배</td><td>예배팀</td><td><span class="kt-pill kt-pill--brand">준비중</span></td></tr><tr><td>새가족반</td><td>양육팀</td><td><span class="kt-pill">접수중</span></td></tr><tr><td>중보기도</td><td>기도팀</td><td><span class="kt-pill kt-pill--dark">확정</span></td></tr></tbody></table></div></div>
+				<div class="kt-library-row"><div class="kt-library-row__title"><strong>Avatar Row</strong><span>담당자</span></div><div class="kt-library-row__content"><div class="kt-library-avatar-row"><img src="/wp-content/themes/ktheme-v2/assets/images/generated/church-generated-03.jpg" alt="" /><div><strong>새가족 안내팀</strong><span>담당 4명 · 이번 주 2부 예배</span></div><span class="kt-pill">배정 완료</span></div></div></div>
+				<div class="kt-library-row"><div class="kt-library-row__title"><strong>Progress</strong><span>진행률</span></div><div class="kt-library-row__content kt-library-progress-row"><div class="kt-progress"><div class="kt-progress__head"><span>새가족반 신청률</span><span>68%</span></div><div class="kt-progress__bar"><span style="width:68%;"></span></div></div><div class="kt-progress"><div class="kt-progress__head"><span>봉사팀 배정률</span><span>82%</span></div><div class="kt-progress__bar"><span style="width:82%;"></span></div></div></div></div>
+			</section>
+
+			<section id="feedback" class="kt-library-block">
+				<div class="kt-library-block__head"><div><span>Forms & Data</span><h2>알림 · 피드백</h2></div><p>알림, 토스트, 로딩, 스켈레톤, 빈 상태입니다.</p></div>
+				<div class="kt-library-row"><div class="kt-library-row__title"><strong>Alerts</strong><span>info, warning</span></div><div class="kt-library-row__content"><div class="kt-alert kt-alert--info"><span class="kt-alert__icon">i</span><div><strong>안내가 업데이트되었습니다.</strong>이번 주 예배 시간과 장소를 다시 확인해 주세요.</div></div><div class="kt-alert kt-alert--warning" style="margin-top:12px;"><span class="kt-alert__icon">!</span><div><strong>마감 임박</strong>양육 과정 신청은 이번 주 금요일에 마감됩니다.</div></div></div></div>
+				<div class="kt-library-row"><div class="kt-library-row__title"><strong>Toast</strong><span>interactive</span></div><div class="kt-library-row__content"><button class="kt-button kt-button--dark" type="button" data-kt-library-toast>토스트 보기</button><div class="kt-toast" style="margin-top:12px;"><span class="kt-toast__icon">✓</span><div><strong>저장 완료</strong>변경 내용이 임시 저장되었습니다.</div></div></div></div>
+				<div class="kt-library-row"><div class="kt-library-row__title"><strong>Loading</strong><span>spinner, skeleton, empty</span></div><div class="kt-library-row__content kt-library-feedback-grid"><span class="kt-library-spinner" aria-label="불러오는 중"></span><div class="kt-library-skeleton"><i></i><i></i><i></i></div><div class="kt-empty-state"><div><span class="kt-empty-state__icon"><svg class="kt-icon kt-icon--sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h10"/></svg></span><strong>표시할 게시물이 없습니다.</strong><p>조건을 바꾸거나 새 콘텐츠가 등록된 뒤 다시 확인해 주세요.</p></div></div></div></div>
+			</section>
+
+			<section id="header" class="kt-library-block">
+				<div class="kt-library-block__head"><div><span>Sections</span><h2>헤더 · 내비게이션</h2></div><p>라이브 테마의 메뉴와 source의 문서 헤더 구조를 맞춥니다.</p></div>
+				<div class="kt-library-row"><div class="kt-library-row__title"><strong>Header</strong><span>brand + nav</span></div><div class="kt-library-row__content"><div class="kt-library-header-demo"><div class="kt-brand"><img src="/wp-content/themes/ktheme-v2/assets/images/style1/logo.png" alt="" /><span>가평교회<small>GAPYEONG CHURCH</small></span></div><nav class="kt-library-mini-nav" aria-label="헤더 예시"><a href="/about/">교회소개</a><a href="/worship/">예배</a><a href="/community/">공동체</a><a href="/media/">미디어</a><a href="/admin-guide/">행정</a></nav><a class="kt-header-register" href="/newcomers/">새가족 등록</a></div></div></div>
+				<div class="kt-library-row"><div class="kt-library-row__title"><strong>Mega Menu</strong><span>section columns</span></div><div class="kt-library-row__content"><div class="kt-library-mega-demo"><section><h3>예배</h3><a href="/worship-guide/">예배 안내</a><a href="/sunday-worship/">주일예배</a><a href="/bulletin/">주보</a></section><section><h3>공동체</h3><a href="/newcomers/">새가족</a><a href="/small-groups/">소그룹/구역</a><a href="/next-generation/">다음세대</a></section><section><h3>미디어</h3><a href="/news/">교회소식</a><a href="/sermons/">설교</a><a href="/library/">자료실</a></section></div></div></div>
+			</section>
+
+			<section id="hero" class="kt-library-block">
+				<div class="kt-library-block__head"><div><span>Sections</span><h2>공용 페이지 히어로</h2></div><p>유지하는 히어로 타입은 1, 2, 3번입니다.</p></div>
+				<section class="kt-hero-demo"><div class="kt-hero-demo__meta"><span>01</span><div><h2>Clean</h2><p>기본형 서브페이지에 사용하는 밝은 히어로입니다.</p></div><code>clean</code></div><section class="kt-page-hero kt-shared-page-hero kt-shared-page-hero--clean" style="--kt-page-hero-accent:#3a64f5;--kt-page-hero-text:#0e1320;--kt-page-hero-overlay:#0e1320;"><nav class="kt-breadcrumb" aria-label="현재 위치"><a href="/"><svg class="kt-icon kt-icon--xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 11l9-8 9 8M5 10v10h14V10"/></svg>HOME</a><span>/</span><strong>예배</strong></nav><div class="kt-page-hero__body"><div><h1>예배</h1><p>매주 드려지는 예배 시간과 장소, 말씀 다시보기를 한곳에서 확인합니다.</p></div><nav class="kt-page-tabs" aria-label="예배 하위 메뉴"><a class="is-active" href="#">전체</a><a href="#">주일예배</a><a href="#">수요예배</a><a href="#">새벽기도</a></nav></div></section></section>
+				<section class="kt-hero-demo"><div class="kt-hero-demo__meta"><span>02</span><div><h2>Image Background</h2><p>공동체와 새가족 페이지에 어울리는 이미지 배경형입니다.</p></div><code>image</code></div><section class="kt-page-hero kt-shared-page-hero kt-shared-page-hero--image" style="--kt-page-hero-accent:#3a64f5;--kt-page-hero-text:#ffffff;--kt-page-hero-overlay:#0e1320;"><div class="kt-page-hero__media" aria-hidden="true"><img src="/wp-content/themes/ktheme-v2/assets/images/generated/church-generated-01.jpg" alt="" /></div><nav class="kt-breadcrumb" aria-label="현재 위치"><a href="/"><svg class="kt-icon kt-icon--xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 11l9-8 9 8M5 10v10h14V10"/></svg>HOME</a><span>/</span><strong>공동체</strong></nav><div class="kt-page-hero__body"><div><h1>함께 걷는 믿음의 자리</h1><p>목장과 다음세대, 시니어 사역이 서로를 돌보며 하나의 공동체로 이어집니다.</p></div><nav class="kt-page-tabs" aria-label="공동체 하위 메뉴"><a class="is-active" href="#">전체</a><a href="#">목장</a><a href="#">다음세대</a><a href="#">시니어</a></nav></div></section></section>
+				<section class="kt-hero-demo"><div class="kt-hero-demo__meta"><span>03</span><div><h2>Ken Burns</h2><p>교회소개와 비전에 사용하는 느린 이미지 모션형입니다.</p></div><code>kenburns</code></div><section class="kt-page-hero kt-shared-page-hero kt-shared-page-hero--kenburns" style="--kt-page-hero-accent:#3a64f5;--kt-page-hero-text:#ffffff;--kt-page-hero-overlay:#0e1320;"><div class="kt-page-hero__media" aria-hidden="true"><img src="/wp-content/themes/ktheme-v2/assets/images/generated/church-generated-02.jpg" alt="" /></div><nav class="kt-breadcrumb" aria-label="현재 위치"><a href="/"><svg class="kt-icon kt-icon--xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 11l9-8 9 8M5 10v10h14V10"/></svg>HOME</a><span>/</span><strong>교회소개</strong></nav><div class="kt-page-hero__body"><div><h1>말씀 위에 머무는 공동체</h1><p>가평의 일상 속에서 예배하고, 서로를 돌보며 다음세대를 함께 세워갑니다.</p></div><nav class="kt-page-tabs" aria-label="교회소개 하위 메뉴"><a class="is-active" href="#">비전</a><a href="#">섬기는 사람들</a><a href="#">연혁</a><a href="#">오시는 길</a></nav></div></section></section>
+			</section>
+
+			<section id="footer" class="kt-library-block">
+				<div class="kt-library-block__head"><div><span>Sections</span><h2>푸터</h2></div><p>source와 라이브 테마의 푸터 구조를 컬럼과 하단 정보로 표시합니다.</p></div>
+				<div class="kt-library-row"><div class="kt-library-row__title"><strong>Footer</strong><span>columns + bottom</span></div><div class="kt-library-row__content"><div class="kt-library-footer-demo"><div><strong>가평교회</strong><p>말씀이 삶이 되고, 공동체가 지역을 섬기는 교회입니다.</p></div><div><h4>예배</h4><a href="/worship/">예배 안내</a><a href="/sunday-worship/">주일예배</a><a href="/bulletin/">주보</a></div><div><h4>연결</h4><a href="/newcomers/">새가족 등록</a><a href="/location/">오시는 길</a><a href="/giving/">온라인 헌금</a></div><div class="kt-library-footer-bottom">08512 서울특별시 금천구 가산디지털1로 168 · TEL. 02-704-3300</div></div></div></div>
+			</section>
+		</div>
+	</div>
+
+	<div class="kt-library-modal" id="kt-library-modal" hidden>
+		<button class="kt-library-modal__backdrop" type="button" data-kt-library-modal-close aria-label="모달 닫기"></button>
+		<div class="kt-library-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="kt-library-modal-title">
+			<button class="kt-library-modal__close" type="button" data-kt-library-modal-close aria-label="닫기">×</button>
+			<span class="kt-card-label">Preview</span>
+			<h2 id="kt-library-modal-title">새가족 등록 확인</h2>
+			<p>접수 후 안내팀에서 예배 시간과 방문 동선을 문자로 안내합니다.</p>
+			<div class="kt-buttons"><button class="kt-button kt-button--dark" type="button">접수하기</button><button class="kt-button kt-button--outline" type="button" data-kt-library-modal-close>취소</button></div>
+		</div>
+	</div>
+	<div class="kt-library-toast-wrap" id="kt-library-toast-wrap" aria-live="polite"></div>
 	<!-- /wp:html -->
 </main>
 <!-- /wp:group -->
-<!-- wp:template-part {"slug":"footer","tagName":"footer"} /-->

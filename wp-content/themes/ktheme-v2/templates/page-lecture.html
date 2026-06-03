@@ -1,0 +1,376 @@
+<!-- wp:template-part {"slug":"header","tagName":"header"} /-->
+<!-- Generated from source/template_style1/lecture.html. Do not edit in WordPress. -->
+<!-- wp:html -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" />
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        fontFamily: { sans: ['"Pretendard Variable"', 'Pretendard', 'system-ui', 'sans-serif'] },
+        colors: {
+          ink: { 900: '#0e1320', 800: '#171c2c', 700: '#222a3f', 600: '#384058' },
+          brand: { 500: '#3a64f5', 600: '#2a4fd6', 700: '#1f3eb2' },
+          accent: { red: '#e23b3b', pink: '#ec4899' },
+          paper: '#f4f5f7',
+          line: '#e5e7eb',
+        },
+      },
+    },
+  };
+</script>
+<style>
+  html { font-family: 'Pretendard Variable', Pretendard, system-ui, sans-serif; }
+  body { -webkit-font-smoothing: antialiased; letter-spacing: -0.01em; }
+  .badge-live { background:#e23b3b; color:white; font-size:10px; font-weight:700; letter-spacing:0.05em; padding:2px 6px; border-radius:3px; }
+  .news-card-shadow { box-shadow: 0 1px 0 rgba(0,0,0,0.04), 0 18px 36px -24px rgba(14,19,32,0.18); }
+  .lecture-hero-fade { background: linear-gradient(90deg, rgba(14,19,32,0.85), rgba(14,19,32,0.35) 55%, transparent 90%); }
+</style>
+<style>
+.style1-static{min-height:100vh}
+.style1-static :where(h1,h2,h3,h4,p,ul,ol,figure){margin-block-start:0;margin-block-end:0}
+.style1-static img{max-width:100%}
+.style1-static .badge-live{display:inline-flex;align-items:center;justify-content:center;background:#e23b3b;color:#fff;font-size:10px;font-weight:800;line-height:1;letter-spacing:.05em;padding:3px 6px;border-radius:4px;white-space:nowrap}
+.style1-static header nav a .nav-live{margin-left:5px;transform:translateY(-7px);vertical-align:top}
+.style1-static .page-hero,.style1-static [data-page-hero]{border-bottom:1px solid #e5e7eb}
+.style1-static .kt-page-hero{width:min(1240px,calc(100% - 48px));margin-inline:auto;padding:40px 0 48px;border-bottom:1px solid #e5e7eb}
+.style1-static .kt-breadcrumb{display:flex;align-items:center;gap:8px;color:#384058;font-size:12px}
+.style1-static .kt-breadcrumb a{display:inline-flex;align-items:center;gap:6px;color:inherit}
+.style1-static .kt-breadcrumb strong{color:#0e1320;font-weight:700}
+.style1-static .kt-page-hero__body{display:flex;align-items:flex-end;justify-content:space-between;gap:32px;margin-top:24px}
+.style1-static .kt-page-hero h1{margin:0;font-size:clamp(44px,6vw,56px);line-height:1.05;font-weight:900;letter-spacing:-0.055em}
+.style1-static .kt-page-hero p{margin:14px 0 0;max-width:620px;color:#384058;font-size:14px;line-height:1.75}
+.style1-static .kt-page-tabs{display:flex;align-items:center;gap:4px;font-size:13px;font-weight:700;white-space:nowrap}
+.style1-static .kt-page-tabs a{display:grid;place-items:center;height:40px;padding:0 16px;border-radius:999px;color:#0e1320}
+.style1-static .kt-page-tabs a:hover{background:#f4f5f7}
+.style1-static .kt-page-tabs a.is-active{background:#0e1320;color:#fff}
+@media (max-width:767px){
+  .style1-static .grid.grid-cols-12{grid-template-columns:minmax(0,1fr)!important}
+  .style1-static [class*="col-span-"]{grid-column:auto!important}
+  .style1-static .gap-8,.style1-static .gap-10{gap:1.5rem!important}
+  .style1-static .kt-page-hero{width:min(100% - 32px,1240px);padding:32px 0 36px}
+  .style1-static .kt-page-hero__body{align-items:flex-start;flex-direction:column;margin-top:20px}
+  .style1-static .kt-page-hero h1{font-size:42px}
+  .style1-static .kt-page-tabs{width:100%;overflow-x:auto;padding-bottom:4px}
+}
+</style>
+<div class="style1-static bg-white text-ink-900">
+<!-- HERO (이름이 들어간 강의 슬라이드) -->
+<!-- ============== PAGE HERO ============== -->
+<section class="kt-page-hero kt-shared-page-hero">
+  <nav class="kt-breadcrumb" aria-label="현재 위치">
+    <a href="/"><svg class="kt-icon kt-icon--xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 11l9-8 9 8M5 10v10h14V10"/></svg>HOME</a>
+    <span>›</span>
+    <strong>강의</strong>
+  </nav>
+  <div class="kt-page-hero__body">
+    <div>
+      <h1>강의</h1>
+      <p>목회자 강의와 성경 공부 콘텐츠를 모아 신앙의 질문을 더 깊이 배우고 따라갈 수 있도록 돕습니다.</p>
+    </div>
+    <nav class="kt-page-tabs" aria-label="강의 하위 메뉴">
+      <a class="is-active" href="/lecture/">전체</a>
+      <a class="" href="/lecture/#classes">내 강의</a>
+      <a class="" href="/lecture/#roadmap">로드맵</a>
+      <a class="" href="/library/">자료실</a>
+      <a class="" href="/lecture/#faq">FAQ</a>
+    </nav>
+  </div>
+</section>
+
+<!-- 3 quick highlights -->
+<section class="bg-white border-b border-line">
+  <div class="max-w-[1100px] mx-auto px-6 py-12 grid md:grid-cols-3 gap-6">
+    <a href="#" class="group flex items-center gap-5">
+      <span class="w-16 h-16 rounded-full bg-paper grid place-items-center text-brand-600 shrink-0">
+        <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="10" r="2.5"/><path d="M3 20c.5-3.5 3-5.5 6-5.5s5.5 2 6 5.5"/></svg>
+      </span>
+      <div>
+        <div class="text-[15px] font-bold mb-1 group-hover:text-brand-600">일대일 제자훈련</div>
+        <div class="text-[12.5px] text-ink-600 leading-relaxed">1:1 제자훈련 신청하기<br/>양육자 보고서 제출하기</div>
+      </div>
+    </a>
+    <a href="#" class="group flex items-center gap-5">
+      <span class="w-16 h-16 rounded-full bg-paper grid place-items-center text-emerald-600 shrink-0">
+        <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 5h16v14H7l-3 3z"/><path d="M9 10c1-1 4-1 4 1s-2 2-2 3"/><circle cx="11" cy="16" r="0.5" fill="currentColor"/></svg>
+      </span>
+      <div>
+        <div class="text-[15px] font-bold mb-1 group-hover:text-emerald-600">QT</div>
+        <div class="text-[12.5px] text-ink-600 leading-relaxed">정한결 목사의 매일가평 365<br/>2026 하나님의 시선</div>
+      </div>
+    </a>
+    <a href="#" class="group flex items-center gap-5">
+      <span class="w-16 h-16 rounded-full bg-paper grid place-items-center text-violet-600 shrink-0">
+        <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 12a4 4 0 0 1 4-4h1v8H7a4 4 0 0 1-4-4z"/><path d="M21 12a4 4 0 0 0-4-4h-1v8h1a4 4 0 0 0 4-4z"/><path d="M12 4v3M9 6h6"/></svg>
+      </span>
+      <div>
+        <div class="text-[15px] font-bold mb-1 group-hover:text-violet-600">BIBLE PROJECT</div>
+        <div class="text-[12.5px] text-ink-600 leading-relaxed">성경통독을 위한<br/>성경개관 애니메이션</div>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- FILTER + SEARCH -->
+<section class="bg-paper py-12">
+  <div class="max-w-[1240px] mx-auto px-6">
+    <div class="grid grid-cols-12 gap-8 items-center">
+      <!-- left: avatar / class identity -->
+      <div class="col-span-12 md:col-span-3 flex items-center gap-4">
+        <div class="text-right">
+          <div class="text-[11px] font-bold tracking-widest text-ink-600">PASTOR'S</div>
+          <div class="text-[15px] font-extrabold tracking-tight">CLASS</div>
+        </div>
+        <div class="w-24 h-24 rounded-full bg-white overflow-hidden border border-line">
+          <img src="/wp-content/themes/ktheme-v2/assets/images/generated/church-generated-02.jpg" class="w-full h-full object-cover" alt=""/>
+        </div>
+      </div>
+
+      <!-- center: filter + search -->
+      <div class="col-span-12 md:col-span-9 grid md:grid-cols-12 gap-5">
+        <div class="md:col-span-3">
+          <div class="text-[11px] font-bold tracking-[0.25em] text-ink-600 mb-2">FILTER</div>
+          <button class="w-full bg-white border border-line rounded-lg px-3 h-11 flex items-center justify-between text-[13px]">
+            전체 <svg class="w-4 h-4 text-ink-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+        </div>
+        <div class="md:col-span-9">
+          <div class="text-[11px] font-bold tracking-[0.25em] text-ink-600 mb-2">SEARCH</div>
+          <div class="relative">
+            <input type="text" placeholder="원하는 강의를 검색해주세요." class="w-full bg-white border border-line rounded-lg px-4 h-11 text-[13px] outline-none focus:border-brand-500" />
+            <svg class="w-4 h-4 absolute right-4 top-1/2 -translate-y-1/2 text-ink-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+          </div>
+          <div class="mt-3 flex flex-wrap gap-1.5">
+            <button class="px-3 h-7 rounded-full border border-line bg-white text-[12px] hover:border-brand-500 hover:text-brand-600">일상</button><button class="px-3 h-7 rounded-full border border-line bg-white text-[12px] hover:border-brand-500 hover:text-brand-600">가정</button><button class="px-3 h-7 rounded-full border border-line bg-white text-[12px] hover:border-brand-500 hover:text-brand-600">관계</button><button class="px-3 h-7 rounded-full border border-line bg-white text-[12px] hover:border-brand-500 hover:text-brand-600">훈련</button><button class="px-3 h-7 rounded-full border border-line bg-white text-[12px] hover:border-brand-500 hover:text-brand-600">영성</button><button class="px-3 h-7 rounded-full border border-line bg-white text-[12px] hover:border-brand-500 hover:text-brand-600">회복</button><button class="px-3 h-7 rounded-full border border-line bg-white text-[12px] hover:border-brand-500 hover:text-brand-600">부부</button><button class="px-3 h-7 rounded-full border border-line bg-white text-[12px] hover:border-brand-500 hover:text-brand-600">육아</button><button class="px-3 h-7 rounded-full border border-line bg-white text-[12px] hover:border-brand-500 hover:text-brand-600">다음세대</button><button class="px-3 h-7 rounded-full border border-line bg-white text-[12px] hover:border-brand-500 hover:text-brand-600">예배</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- category tabs -->
+    <div class="mt-10 flex items-center justify-between border-b border-line pb-3">
+      <div class="flex items-center gap-2">
+        <button class="px-5 h-10 rounded-md text-[13.5px] font-bold border border-brand-600 text-brand-700 bg-white">전체</button><button class="px-5 h-10 rounded-md text-[13.5px] font-bold text-ink-600 hover:text-ink-900">성경</button><button class="px-5 h-10 rounded-md text-[13.5px] font-bold text-ink-600 hover:text-ink-900">신앙생활</button><button class="px-5 h-10 rounded-md text-[13.5px] font-bold text-ink-600 hover:text-ink-900">사역</button><button class="px-5 h-10 rounded-md text-[13.5px] font-bold text-ink-600 hover:text-ink-900">청년</button>
+      </div>
+      <button class="w-10 h-10 rounded-md bg-brand-600 text-white grid place-items-center hover:bg-brand-700">
+        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 0 1 15.7-6L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-15.7 6L3 16"/><path d="M3 21v-5h5"/></svg>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- COURSE GRID -->
+<section class="bg-white py-14">
+  <div class="max-w-[1240px] mx-auto px-6">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-7 gap-y-12">
+      
+      <a href="#" class="group block">
+        <div class="relative aspect-square overflow-hidden">
+          <img src="/wp-content/themes/ktheme-v2/assets/images/generated/church-generated-09.jpg" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" alt=""/>
+          <!-- top labels -->
+          <div class="absolute top-3 left-3 right-3 flex items-center justify-between">
+            <span class="inline-flex items-center gap-1.5 bg-black/70 text-white text-[11px] font-semibold px-2.5 py-1.5 rounded">
+              <svg class="w-3 h-3" viewBox="0 0 24 24" fill="currentColor"><rect x="3" y="6" width="14" height="12" rx="2"/><path d="M21 8l-4 3v2l4 3z"/></svg>
+              녹화 영상 강의
+            </span>
+            <span class="inline-flex items-center gap-1 bg-ink-700/85 text-white text-[11px] font-semibold px-2.5 py-1.5 rounded">
+              <span class="text-emerald-400">🌱</span>성장
+            </span>
+          </div>
+        </div>
+        <div class="mt-4 flex items-center justify-between">
+          <span class="inline-flex items-center bg-accent-pink text-white text-[11px] font-bold px-2.5 py-1 rounded">신청가능</span>
+          <a href="#" class="text-[12px] text-ink-600 hover:text-ink-900">자세히보기</a>
+        </div>
+        <div class="mt-3 text-[14.5px] font-bold leading-snug">[영상강의] Why Music In Worship?(26-봄)</div>
+        <div class="mt-2 text-[12.5px] text-ink-600 leading-relaxed">우리는 왜 예배에서 음악을 사용하는가?</div>
+      </a>
+      <a href="#" class="group block">
+        <div class="relative aspect-square overflow-hidden">
+          <img src="/wp-content/themes/ktheme-v2/assets/images/generated/church-generated-15.jpg" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" alt=""/>
+          <!-- top labels -->
+          <div class="absolute top-3 left-3 right-3 flex items-center justify-between">
+            <span class="inline-flex items-center gap-1.5 bg-black/70 text-white text-[11px] font-semibold px-2.5 py-1.5 rounded">
+              <svg class="w-3 h-3" viewBox="0 0 24 24" fill="currentColor"><rect x="3" y="6" width="14" height="12" rx="2"/><path d="M21 8l-4 3v2l4 3z"/></svg>
+              녹화 영상 강의
+            </span>
+            <span class="inline-flex items-center gap-1 bg-ink-700/85 text-white text-[11px] font-semibold px-2.5 py-1.5 rounded">
+              <span class="text-emerald-400">🌱</span>시작
+            </span>
+          </div>
+        </div>
+        <div class="mt-4 flex items-center justify-between">
+          <span class="inline-flex items-center bg-accent-pink text-white text-[11px] font-bold px-2.5 py-1 rounded">신청가능</span>
+          <a href="#" class="text-[12px] text-ink-600 hover:text-ink-900">자세히보기</a>
+        </div>
+        <div class="mt-3 text-[14.5px] font-bold leading-snug">[영상강의] 크리스천 베이직(필수)(26-봄)</div>
+        <div class="mt-2 text-[12.5px] text-ink-600 leading-relaxed">신앙생활의 12가지 필수적 본질을 통해 자신을 점검하고 삶에 적용해보는 과정</div>
+      </a>
+      <a href="#" class="group block">
+        <div class="relative aspect-square overflow-hidden">
+          <img src="/wp-content/themes/ktheme-v2/assets/images/generated/church-generated-10.jpg" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" alt=""/>
+          <!-- top labels -->
+          <div class="absolute top-3 left-3 right-3 flex items-center justify-between">
+            <span class="inline-flex items-center gap-1.5 bg-black/70 text-white text-[11px] font-semibold px-2.5 py-1.5 rounded">
+              <svg class="w-3 h-3" viewBox="0 0 24 24" fill="currentColor"><rect x="3" y="6" width="14" height="12" rx="2"/><path d="M21 8l-4 3v2l4 3z"/></svg>
+              녹화 영상 강의
+            </span>
+            <span class="inline-flex items-center gap-1 bg-ink-700/85 text-white text-[11px] font-semibold px-2.5 py-1.5 rounded">
+              <span class="text-emerald-400">🌱</span>시작
+            </span>
+          </div>
+        </div>
+        <div class="mt-4 flex items-center justify-between">
+          <span class="inline-flex items-center bg-accent-pink text-white text-[11px] font-bold px-2.5 py-1 rounded">신청가능</span>
+          <a href="#" class="text-[12px] text-ink-600 hover:text-ink-900">자세히보기</a>
+        </div>
+        <div class="mt-3 text-[14.5px] font-bold leading-snug">[영상강의] 치열한 도전(필수)(26-봄)</div>
+        <div class="mt-2 text-[12.5px] text-ink-600 leading-relaxed">교회의 본질을 생각하고 어떤 교회로 살지 다짐하는 과정</div>
+      </a>
+      <a href="#" class="group block">
+        <div class="relative aspect-square overflow-hidden">
+          <img src="/wp-content/themes/ktheme-v2/assets/images/generated/church-generated-14.jpg" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" alt=""/>
+          <!-- top labels -->
+          <div class="absolute top-3 left-3 right-3 flex items-center justify-between">
+            <span class="inline-flex items-center gap-1.5 bg-black/70 text-white text-[11px] font-semibold px-2.5 py-1.5 rounded">
+              <svg class="w-3 h-3" viewBox="0 0 24 24" fill="currentColor"><rect x="3" y="6" width="14" height="12" rx="2"/><path d="M21 8l-4 3v2l4 3z"/></svg>
+              녹화 영상 강의
+            </span>
+            <span class="inline-flex items-center gap-1 bg-ink-700/85 text-white text-[11px] font-semibold px-2.5 py-1.5 rounded">
+              <span class="text-emerald-400">🌱</span>시작
+            </span>
+          </div>
+        </div>
+        <div class="mt-4 flex items-center justify-between">
+          <span class="inline-flex items-center bg-accent-pink text-white text-[11px] font-bold px-2.5 py-1 rounded">신청가능</span>
+          <a href="#" class="text-[12px] text-ink-600 hover:text-ink-900">자세히보기</a>
+        </div>
+        <div class="mt-3 text-[14.5px] font-bold leading-snug">[영상강의] 구약개관(임직필수)(26-봄)</div>
+        <div class="mt-2 text-[12.5px] text-ink-600 leading-relaxed">구약의 기초와 뼈대 잡기</div>
+      </a>
+      <a href="#" class="group block">
+        <div class="relative aspect-square overflow-hidden">
+          <img src="/wp-content/themes/ktheme-v2/assets/images/generated/church-generated-07.jpg" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" alt=""/>
+          <!-- top labels -->
+          <div class="absolute top-3 left-3 right-3 flex items-center justify-between">
+            <span class="inline-flex items-center gap-1.5 bg-black/70 text-white text-[11px] font-semibold px-2.5 py-1.5 rounded">
+              <svg class="w-3 h-3" viewBox="0 0 24 24" fill="currentColor"><rect x="3" y="6" width="14" height="12" rx="2"/><path d="M21 8l-4 3v2l4 3z"/></svg>
+              녹화 영상 강의
+            </span>
+            <span class="inline-flex items-center gap-1 bg-ink-700/85 text-white text-[11px] font-semibold px-2.5 py-1.5 rounded">
+              <span class="text-emerald-400">🌱</span>시작
+            </span>
+          </div>
+        </div>
+        <div class="mt-4 flex items-center justify-between">
+          <span class="inline-flex items-center bg-accent-pink text-white text-[11px] font-bold px-2.5 py-1 rounded">신청가능</span>
+          <a href="#" class="text-[12px] text-ink-600 hover:text-ink-900">자세히보기</a>
+        </div>
+        <div class="mt-3 text-[14.5px] font-bold leading-snug">[영상강의] 신약개관(임직필수)(26-봄)</div>
+        <div class="mt-2 text-[12.5px] text-ink-600 leading-relaxed">신약 27권을 하나님 나라 관점에서 하나의 이야기로 이해하며, 성경을 폭넓고 통합적으로 읽는 방법을…</div>
+      </a>
+      <a href="#" class="group block">
+        <div class="relative aspect-square overflow-hidden">
+          <img src="/wp-content/themes/ktheme-v2/assets/images/generated/church-generated-14.jpg" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" alt=""/>
+          <!-- top labels -->
+          <div class="absolute top-3 left-3 right-3 flex items-center justify-between">
+            <span class="inline-flex items-center gap-1.5 bg-black/70 text-white text-[11px] font-semibold px-2.5 py-1.5 rounded">
+              <svg class="w-3 h-3" viewBox="0 0 24 24" fill="currentColor"><rect x="3" y="6" width="14" height="12" rx="2"/><path d="M21 8l-4 3v2l4 3z"/></svg>
+              녹화 영상 강의
+            </span>
+            <span class="inline-flex items-center gap-1 bg-ink-700/85 text-white text-[11px] font-semibold px-2.5 py-1.5 rounded">
+              <span class="text-emerald-400">🌱</span>시작
+            </span>
+          </div>
+        </div>
+        <div class="mt-4 flex items-center justify-between">
+          <span class="inline-flex items-center bg-accent-pink text-white text-[11px] font-bold px-2.5 py-1 rounded">신청가능</span>
+          <a href="#" class="text-[12px] text-ink-600 hover:text-ink-900">자세히보기</a>
+        </div>
+        <div class="mt-3 text-[14.5px] font-bold leading-snug">[영상강의] 하나님의 마음 알기(26-봄)</div>
+        <div class="mt-2 text-[12.5px] text-ink-600 leading-relaxed">가평교회의 목회철학을 각 사역 안에 하나의 흐름으로 연결합니다.</div>
+      </a>
+      <a href="#" class="group block">
+        <div class="relative aspect-square overflow-hidden">
+          <img src="/wp-content/themes/ktheme-v2/assets/images/generated/church-generated-14.jpg" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" alt=""/>
+          <!-- top labels -->
+          <div class="absolute top-3 left-3 right-3 flex items-center justify-between">
+            <span class="inline-flex items-center gap-1.5 bg-black/70 text-white text-[11px] font-semibold px-2.5 py-1.5 rounded">
+              <svg class="w-3 h-3" viewBox="0 0 24 24" fill="currentColor"><rect x="3" y="6" width="14" height="12" rx="2"/><path d="M21 8l-4 3v2l4 3z"/></svg>
+              녹화 영상 강의
+            </span>
+            <span class="inline-flex items-center gap-1 bg-ink-700/85 text-white text-[11px] font-semibold px-2.5 py-1.5 rounded">
+              <span class="text-emerald-400">🌱</span>시작
+            </span>
+          </div>
+        </div>
+        <div class="mt-4 flex items-center justify-between">
+          <span class="inline-flex items-center bg-accent-pink text-white text-[11px] font-bold px-2.5 py-1 rounded">신청가능</span>
+          <a href="#" class="text-[12px] text-ink-600 hover:text-ink-900">자세히보기</a>
+        </div>
+        <div class="mt-3 text-[14.5px] font-bold leading-snug">[영상강의] 믿음생활(26-봄)</div>
+        <div class="mt-2 text-[12.5px] text-ink-600 leading-relaxed">신앙생활을 하다가 가지게 되는 여러 질문과 고민들을 함께 나누고 배워가는 배움의 자리</div>
+      </a>
+      <a href="#" class="group block">
+        <div class="relative aspect-square overflow-hidden">
+          <img src="/wp-content/themes/ktheme-v2/assets/images/generated/church-generated-14.jpg" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" alt=""/>
+          <!-- top labels -->
+          <div class="absolute top-3 left-3 right-3 flex items-center justify-between">
+            <span class="inline-flex items-center gap-1.5 bg-black/70 text-white text-[11px] font-semibold px-2.5 py-1.5 rounded">
+              <svg class="w-3 h-3" viewBox="0 0 24 24" fill="currentColor"><rect x="3" y="6" width="14" height="12" rx="2"/><path d="M21 8l-4 3v2l4 3z"/></svg>
+              녹화 영상 강의
+            </span>
+            <span class="inline-flex items-center gap-1 bg-ink-700/85 text-white text-[11px] font-semibold px-2.5 py-1.5 rounded">
+              <span class="text-emerald-400">🌱</span>시작
+            </span>
+          </div>
+        </div>
+        <div class="mt-4 flex items-center justify-between">
+          <span class="inline-flex items-center bg-accent-pink text-white text-[11px] font-bold px-2.5 py-1 rounded">신청가능</span>
+          <a href="#" class="text-[12px] text-ink-600 hover:text-ink-900">자세히보기</a>
+        </div>
+        <div class="mt-3 text-[14.5px] font-bold leading-snug">[영상강의] 복음의 기초(26-봄)</div>
+        <div class="mt-2 text-[12.5px] text-ink-600 leading-relaxed">완전 초신자, 그리고 누군가에게 복음을 잘 설명할 수 없는 분들에게 복음의 기초를 안내</div>
+      </a>
+      <a href="#" class="group block">
+        <div class="relative aspect-square overflow-hidden">
+          <img src="/wp-content/themes/ktheme-v2/assets/images/generated/church-generated-15.jpg" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" alt=""/>
+          <!-- top labels -->
+          <div class="absolute top-3 left-3 right-3 flex items-center justify-between">
+            <span class="inline-flex items-center gap-1.5 bg-black/70 text-white text-[11px] font-semibold px-2.5 py-1.5 rounded">
+              <svg class="w-3 h-3" viewBox="0 0 24 24" fill="currentColor"><rect x="3" y="6" width="14" height="12" rx="2"/><path d="M21 8l-4 3v2l4 3z"/></svg>
+              녹화 영상 강의
+            </span>
+            <span class="inline-flex items-center gap-1 bg-ink-700/85 text-white text-[11px] font-semibold px-2.5 py-1.5 rounded">
+              <span class="text-emerald-400">🌱</span>성장
+            </span>
+          </div>
+        </div>
+        <div class="mt-4 flex items-center justify-between">
+          <span class="inline-flex items-center bg-accent-pink text-white text-[11px] font-bold px-2.5 py-1 rounded">신청가능</span>
+          <a href="#" class="text-[12px] text-ink-600 hover:text-ink-900">자세히보기</a>
+        </div>
+        <div class="mt-3 text-[14.5px] font-bold leading-snug">[영상강의] 알면 알수록 재미있는 성막 이야기(26-봄)</div>
+        <div class="mt-2 text-[12.5px] text-ink-600 leading-relaxed">하나님의 집, 성막의 세계로 들어오세요!</div>
+      </a>
+    </div>
+
+    <!-- pagination -->
+    <div class="mt-14 flex items-center justify-center gap-1 text-[13px]">
+      <button class="w-9 h-9 rounded border border-line grid place-items-center hover:bg-paper"><svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg></button>
+      <button class="w-9 h-9 rounded border border-brand-600 text-brand-700 font-bold grid place-items-center">1</button>
+      <button class="w-9 h-9 rounded border border-line grid place-items-center hover:bg-paper">2</button>
+      <button class="w-9 h-9 rounded border border-line grid place-items-center hover:bg-paper">3</button>
+      <button class="w-9 h-9 rounded border border-line grid place-items-center hover:bg-paper">4</button>
+      <button class="w-9 h-9 rounded border border-line grid place-items-center hover:bg-paper">5</button>
+      <button class="w-9 h-9 rounded border border-line grid place-items-center hover:bg-paper"><svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+</div>
+<!-- /wp:html -->
+<!-- wp:template-part {"slug":"footer","tagName":"footer"} /-->
