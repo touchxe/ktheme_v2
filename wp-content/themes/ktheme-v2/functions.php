@@ -708,27 +708,29 @@ function ktheme_v2_sermon_card_items(): array {
 function ktheme_v2_render_sermon_item_card( array $item ): string {
 	$url = home_url( user_trailingslashit( 'sermons' ) );
 
-	return '<article class="kt-sermon-item-card">' .
-		'<a class="kt-sermon-item-card__media" href="' . esc_url( $url ) . '">' .
+	return '<a class="kt-sermon-item-card kt-story-card kt-story-card--editorial" href="' . esc_url( $url ) . '">' .
+		'<span class="kt-story-card__media kt-sermon-item-card__media">' .
 			'<img src="' . esc_url( $item['image'] ) . '" alt="" loading="lazy" />' .
-			'<span class="kt-sermon-item-card__play" aria-hidden="true"></span>' .
-		'</a>' .
-		'<div class="kt-sermon-item-card__series">' . esc_html( $item['series'] ) . '</div>' .
-		'<h3 class="kt-sermon-item-card__title"><a href="' . esc_url( $url ) . '">' . esc_html( $item['title'] ) . '</a></h3>' .
-		'<time class="kt-sermon-item-card__date" datetime="' . esc_attr( str_replace( '.', '-', $item['date'] ) ) . '">' . esc_html( $item['date'] ) . '</time>' .
-		'</article>';
+		'</span>' .
+		'<span class="kt-story-card__body">' .
+			'<span class="kt-story-card__meta"><span>' . esc_html( $item['series'] ) . '</span><time datetime="' . esc_attr( str_replace( '.', '-', $item['date'] ) ) . '">' . esc_html( $item['date'] ) . '</time></span>' .
+			'<strong>' . esc_html( $item['title'] ) . '</strong>' .
+			'<span class="kt-story-card__link">Read More <svg class="kt-icon kt-icon--xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>' .
+		'</span>' .
+		'</a>';
 }
 
 function ktheme_v2_render_sunday_worship_grid_shortcode(): string {
 	$cards = array_map( 'ktheme_v2_render_sermon_item_card', ktheme_v2_sermon_card_items() );
+	$pagination = '<nav class="kt-sermon-pagination kt-component-pagination" aria-label="' . esc_attr__( 'Pagination', 'ktheme-v2' ) . '">' .
+		'<a class="kt-component-pagination__edge" href="#" aria-label="' . esc_attr__( 'Previous page', 'ktheme-v2' ) . '"><svg class="kt-icon kt-icon--xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" aria-hidden="true"><path d="M15 18 9 12l6-6"/></svg><span>' . esc_html( ktheme_v2_text( '\uC774\uC804' ) ) . '</span></a>' .
+		'<span class="page-numbers current" aria-current="page">1</span><a href="#">2</a><a href="#">3</a><a href="#">4</a><a href="#">5</a>' .
+		'<a class="kt-component-pagination__edge" href="#" aria-label="' . esc_attr__( 'Next page', 'ktheme-v2' ) . '"><span>' . esc_html( ktheme_v2_text( '\uB2E4\uC74C' ) ) . '</span><svg class="kt-icon kt-icon--xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></a>' .
+		'</nav>';
 
-	return '<section class="kt-sermon-feed kt-sermon-feed--static" aria-label="' . esc_attr__( '주일예배 설교 목록', 'ktheme-v2' ) . '">' .
+	return '<section class="kt-sermon-feed kt-sermon-feed--static" aria-label="' . esc_attr__( 'Sunday worship sermon list', 'ktheme-v2' ) . '">' .
 		'<div class="kt-sermon-item-grid">' . implode( '', $cards ) . '</div>' .
-		'<nav class="kt-sermon-pagination" aria-label="' . esc_attr__( '페이지', 'ktheme-v2' ) . '">' .
-			'<span aria-hidden="true">|‹</span><span aria-hidden="true">‹</span>' .
-			'<span class="page-numbers current" aria-current="page">1</span><a href="#">2</a><a href="#">3</a><a href="#">4</a><a href="#">5</a>' .
-			'<span aria-hidden="true">›</span><span aria-hidden="true">›|</span>' .
-		'</nav>' .
+		$pagination .
 		'</section>';
 }
 add_shortcode( 'ktheme_sunday_worship_grid', 'ktheme_v2_render_sunday_worship_grid_shortcode' );

@@ -76,8 +76,14 @@
     }
 
     lastFocus = document.activeElement;
+
+    if (modal.parentElement !== document.body) {
+      document.body.appendChild(modal);
+    }
+
     modal.hidden = false;
     document.documentElement.classList.add("kt-library-modal-open");
+    document.body.classList.add("kt-library-modal-open");
 
     var focusTarget = modal.querySelector("[data-kt-library-modal-close]") || modal.querySelector("button, a, input, select, textarea");
 
@@ -93,6 +99,7 @@
 
     modal.hidden = true;
     document.documentElement.classList.remove("kt-library-modal-open");
+    document.body.classList.remove("kt-library-modal-open");
 
     if (lastFocus && typeof lastFocus.focus === "function") {
       lastFocus.focus();
