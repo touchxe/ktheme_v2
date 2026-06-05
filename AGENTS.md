@@ -1,4 +1,4 @@
-# AGENTS.md — 프로젝트 마스터 매니페스트
+﻿# AGENTS.md — 프로젝트 마스터 매니페스트
 # ============================================================
 # 이 파일은 Cursor, Antigravity, GitHub Copilot, Gemini CLI 등
 # 모든 AI 코딩 에이전트가 공통으로 읽는 단일 source of truth입니다.
@@ -11,10 +11,11 @@
 - **기술 스택**: Next.js 14+ (App Router) / NestJS / PostgreSQL / Tailwind CSS + shadcn/ui / Anthropic Claude API
 - **패키지 매니저**: pnpm (worktree 최적화를 위해 `enableGlobalVirtualStore: true` 필수)
 
-## 로컬 환경 및 경로 설정
+## 서버 환경 및 배포 설정
 
-- **WordPress Root**: `C:\Users\CEO\Local Sites\adm11\app\public`
-- **Theme Path**: `C:\Users\CEO\Local Sites\adm11\app\public\wp-content\themes\ktheme-developer`
+- **Live Server**: `https://juswer.mycafe24.com`
+- **Live Theme Path**: `/wp-content/themes/ktheme-v2`
+- **배포 원칙**: 사용자가 "라이브 반영" 또는 "서버 반영"을 요청하면 `juswer.mycafe24.com`에 반영합니다.
 
 ## 빌드 / 테스트 / 실행 명령어
 
@@ -51,6 +52,20 @@ pnpm wt:launch            # 병렬 에이전트 런칭
 - Purple/violet/indigo gradient backgrounds
 - 제네릭 히어로 카피 ("Welcome to [X]", "Unlock the power of...")
 - Inter / Roboto / System UI 폰트 (디자인 시스템이 지정한 폰트만 사용)
+
+---
+
+## 🧭 사이트 IA / Slug 규칙 — 반드시 docs/SITE_IA_SLUG_RULES.md를 참조하라
+
+**메뉴, 페이지, archive, single, contact form 생성 또는 수정 전에 `docs/SITE_IA_SLUG_RULES.md`를 읽어야 합니다.**
+이 파일은 교회 홈페이지의 메뉴 구조, 사이트맵, slug 사전, 화면 타입 판단 규칙의 단일 기준입니다.
+
+- 페이지 생성 시 → slug 사전을 우선 사용하고, 한글 slug/공백/언더스코어를 사용하지 않습니다.
+- 메뉴 수정 시 → 1차 IA와 사이트맵을 기준으로 헤더/푸터 메뉴를 연결합니다.
+- 콘텐츠 목록이 필요한 경우 → archive + single 구조를 우선 검토합니다.
+- 등록, 문의, 신청, 요청 페이지 → contact form 또는 신청 폼 페이지로 구성합니다.
+- 국내 선교와 해외 선교는 `선교 안내 /mission/`에 통합하고, `선교소식` 메뉴는 만들지 않습니다.
+- `교단소식`은 미디어 하위 메뉴로 유지합니다.
 
 ---
 
@@ -101,7 +116,7 @@ Antigravity: `.agent/skills/` 하위의 13개 스킬 (skainguyen1412 포트 기�
 솔로 풀스택 개발 환경에서 높은 생산성을 내기 위해, 두 AI 에이전트를 병행 사용합니다.
 
 ### 1. 역할 분담
-- **Antigravity (기획 및 관리)**: 
+- **Antigravity (기획 및 관리)**:
   - `Manager View` 역할 수행
   - 프로젝트 전체 구조 설계, 컴포넌트 리뷰 및 브라우저 통합 검증
   - 코드 작성 전 TDD 규칙 점검 및 멀티에이전트 조율
@@ -154,7 +169,7 @@ Antigravity: `.agent/skills/` 하위의 13개 스킬 (skainguyen1412 포트 기�
 
 ## 📁 프로젝트 구조
 
-```
+```text
 {{PROJECT_NAME}}/
 ├── AGENTS.md                    ← 이 파일 (공통 매니페스트)
 ├── docs/

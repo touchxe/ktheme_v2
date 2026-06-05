@@ -3,8 +3,9 @@
 import { spawnSync } from 'node:child_process';
 import { existsSync, readFileSync, readdirSync, statSync } from 'node:fs';
 import { join, relative, resolve } from 'node:path';
+import { fileURLToPath } from 'node:url';
 
-const ROOT = resolve(new URL('..', import.meta.url).pathname);
+const ROOT = resolve(fileURLToPath(new URL('..', import.meta.url)));
 const ENV_FILE = join(ROOT, '.env.local');
 const THEME_ENTRIES = [
   'style.css',
@@ -109,7 +110,7 @@ console.log(`Theme root: ${themeRoot}`);
 console.log(`Theme files: ${files.length}`);
 
 for (const file of files) {
-  const rel = relative(themeRoot, file);
+  const rel = relative(themeRoot, file).split(/[\\/]+/).join('/');
   const remotePath = `${remoteThemePath}/${rel}`;
 
   if (dryRun) {

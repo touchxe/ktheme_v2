@@ -1,6 +1,10 @@
-const API_URL = 'http://adm11.local/wp-json/wp/v2';
-const USERNAME = 'touchmine';
-const APP_PASSWORD = 'Q3iA 9sUs afug WulD qVF8 cTqv';
+const API_URL = process.env.WP_API_URL;
+const USERNAME = process.env.WP_USERNAME;
+const APP_PASSWORD = process.env.WP_APP_PASSWORD;
+
+if (!API_URL || !USERNAME || !APP_PASSWORD) {
+  throw new Error('Missing WP_API_URL, WP_USERNAME, or WP_APP_PASSWORD.');
+}
 
 const credentials = Buffer.from(`${USERNAME}:${APP_PASSWORD}`).toString('base64');
 const headers = {

@@ -1,4 +1,7 @@
-$targetDir = "c:\Users\CEO\Local Sites\adm11\app\public\wp-content\themes\ktheme-developer\assets\images"
+$targetDir = $env:KTHEME_IMAGE_TARGET_DIR
+if (-not $targetDir) {
+    throw "KTHEME_IMAGE_TARGET_DIR is required."
+}
 if (-not (Test-Path -Path $targetDir)) {
     New-Item -ItemType Directory -Force -Path $targetDir | Out-Null
 }

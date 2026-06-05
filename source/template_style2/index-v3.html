@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>가평교회 — 사랑이 머무는 곳</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" />
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    darkMode: 'class',
+    theme: {
+      extend: {
+        fontFamily: {
+          sans: ['"Pretendard Variable"', 'Pretendard', 'system-ui', 'sans-serif'],
+        },
+        colors: {
+          ink: {
+            900: '#0e1320',
+            800: '#171c2c',
+            700: '#222a3f',
+            600: '#384058',
+          },
+          brand: {
+            500: '#3a64f5',
+            600: '#2a4fd6',
+            700: '#1f3eb2',
+          },
+          accent: {
+            red: '#e23b3b',
+          },
+          paper: '#f4f5f7',
+          line: '#e5e7eb',
+        },
+      },
+    },
+  };
+</script>
+<style>
+  html { font-family: 'Pretendard Variable', Pretendard, system-ui, sans-serif; }
+  body { -webkit-font-smoothing: antialiased; letter-spacing: -0.01em; }
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+  .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+  .hero-fade {
+    background: linear-gradient(90deg, rgba(14,19,32,0.92) 0%, rgba(14,19,32,0.75) 45%, rgba(14,19,32,0.25) 80%, rgba(14,19,32,0.05) 100%);
+  }
+  .marquee-shadow {
+    box-shadow: 0 18px 40px -20px rgba(14,19,32,0.25);
+  }
+  .news-card-shadow {
+    box-shadow: 0 1px 0 rgba(0,0,0,0.04), 0 18px 36px -24px rgba(14,19,32,0.18);
+  }
+  .play-pulse::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 9999px;
+    border: 2px solid rgba(255,255,255,0.6);
+    animation: pulse 2s ease-out infinite;
+  }
+  @keyframes pulse {
+    0% { transform: scale(1); opacity: 0.8; }
+    100% { transform: scale(1.6); opacity: 0; }
+  }
+  .badge-live {
+    background: #e23b3b;
+    color: white;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    padding: 2px 6px;
+    border-radius: 3px;
+  }
+  .ticker-mask {
+    mask-image: linear-gradient(90deg, transparent, black 6%, black 94%, transparent);
+  }
+  /* Brand logo mark */
+  .brand-mark {
+    background: conic-gradient(from 200deg at 50% 50%, #3a64f5, #5d7df9, #aab7fa, #3a64f5);
+  }
+</style>
+<script type="application/json" id="speaker-notes">[]</script>
+</head>
+<body class="bg-white text-ink-900">
+
+<!-- ============== TOP UTILITY BAR ============== -->
+<div class="hidden md:block border-b border-line text-[12px] text-ink-600">
+  <div class="max-w-[1240px] mx-auto px-6 h-9 flex items-center justify-between">
+    <div class="flex items-center gap-5">
+      <span class="flex items-center gap-1.5">
+        <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+        2026년 4월 26일 주일예배 · 오전 11:00 본당
+      </span>
+    </div>
+    <div class="flex items-center gap-5">
+      <a href="#" class="hover:text-ink-900">새가족 등록</a>
+      <span class="w-px h-3 bg-line"></span>
+      <a href="#" class="hover:text-ink-900">교회오시는길</a>
+      <span class="w-px h-3 bg-line"></span>
+      <a href="#" class="hover:text-ink-900">English</a>
+      <span class="w-px h-3 bg-line"></span>
+      <a href="#" class="hover:text-ink-900">로그인</a>
+    </div>
+  </div>
+</div>
+
+<!-- ============== HEADER / NAV ============== -->
+<header class="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-line">
+  <div class="max-w-[1240px] mx-auto px-6 h-[72px] flex items-center justify-between">
+    <a href="#" class="flex items-center gap-2.5">
+      <img src="assets/logo.png" alt="가평교회" class="w-10 h-10 object-contain" />
+      <span class="font-bold text-[19px] tracking-tight">가평교회 <span class="text-ink-600 font-medium text-[13px] tracking-normal ml-0.5">GAPYEONG CHURCH</span></span>
+    </a>
+
+    <nav class="hidden lg:flex items-center gap-9 text-[15px] font-semibold">
+      <a href="#" class="relative py-6 text-brand-600">
+        예배
+        <span class="absolute -top-0.5 -right-3 badge-live">LIVE</span>
+        <span class="absolute left-0 right-0 -bottom-px h-0.5 bg-brand-600"></span>
+      </a>
+      <a href="#" class="hover:text-brand-600">공동체</a>
+      <a href="#" class="hover:text-brand-600">양육</a>
+      <a href="#" class="hover:text-brand-600">미디어</a>
+      <a href="#" class="hover:text-brand-600">교회소개</a>
+      <a href="#" class="hover:text-brand-600">행정</a>
+    </nav>
+
+    <div class="flex items-center gap-3">
+      <button class="w-9 h-9 grid place-items-center rounded-full hover:bg-paper">
+        <svg class="w-[18px] h-[18px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      </button>
+      <button class="hidden md:inline-flex items-center gap-1.5 text-[13px] font-semibold px-3.5 h-9 rounded-full border border-ink-900 hover:bg-ink-900 hover:text-white">
+        새가족 등록
+      </button>
+      <button class="lg:hidden w-9 h-9 grid place-items-center rounded-full hover:bg-paper">
+        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- ============== HERO · V3 Asymmetric Grid ============== -->
+<section class="bg-paper">
+  <div class="max-w-[1240px] mx-auto px-6 py-12">
+    <div class="grid grid-cols-12 gap-4 lg:h-[640px] lg:[grid-template-rows:repeat(6,minmax(0,1fr))]">
+
+      <!-- Big media card -->
+      <div class="col-span-12 lg:col-span-8 lg:row-span-6 relative rounded-3xl overflow-hidden bg-ink-900 text-white min-h-[480px]">
+        <img src="https://images.unsplash.com/photo-1507692049790-de58290a4334?auto=format&fit=crop&w=1600&q=80" class="absolute inset-0 w-full h-full object-cover opacity-85" alt=""/>
+        <div class="absolute inset-0 bg-gradient-to-tr from-ink-900/90 via-ink-900/35 to-transparent"></div>
+
+        <div class="absolute top-7 left-7 right-7 flex items-center justify-between">
+          <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/10 backdrop-blur text-[11px] font-bold tracking-[0.2em] border border-white/20">
+            <span class="w-1.5 h-1.5 rounded-full bg-accent-red animate-pulse"></span>
+            ON AIR · 04.26 SUN 11:00
+          </span>
+          <span class="text-[12px] tracking-[0.3em] font-bold text-white/70">VOL · 04</span>
+        </div>
+
+        <div class="absolute bottom-7 left-7 right-7">
+          <div class="text-[11px] font-bold tracking-[0.3em] text-brand-500 mb-3">DECISION SERIES — EP 03</div>
+          <h1 class="text-[48px] xl:text-[56px] font-extrabold tracking-[-0.025em] leading-[0.98]">
+            머무름의 영성,<br/>그 곁에서 듣는 음성
+          </h1>
+          <div class="mt-5 flex items-center gap-5 text-[13px] text-white/80">
+            <span>시 23:1–3</span><span class="w-1 h-1 rounded-full bg-white/40"></span>
+            <span>정한결 담임목사</span><span class="w-1 h-1 rounded-full bg-white/40"></span>
+            <span>32분</span>
+          </div>
+          <div class="mt-7 flex items-center gap-3">
+            <button class="inline-flex items-center gap-2.5 bg-white text-ink-900 px-5 h-12 rounded-full font-bold text-[13px] hover:bg-white/90">
+              <svg viewBox="0 0 24 24" class="w-3.5 h-3.5" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+              지금 시청
+            </button>
+            <button class="inline-flex items-center gap-2 border border-white/40 text-white px-5 h-12 rounded-full font-semibold text-[13px] hover:bg-white/10">시리즈 보기</button>
+          </div>
+        </div>
+
+        <!-- center play -->
+        <button class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 relative grid place-items-center w-20 h-20 rounded-full bg-white/95 text-ink-900 play-pulse hover:bg-white">
+          <svg viewBox="0 0 24 24" class="w-7 h-7" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+        </button>
+      </div>
+
+      <!-- Verse of the week -->
+      <div class="col-span-12 lg:col-span-4 lg:row-span-3 bg-white rounded-3xl p-7 flex flex-col">
+        <div class="flex items-center justify-between mb-3">
+          <span class="text-[11px] font-bold tracking-[0.3em] text-brand-600">VERSE OF THE WEEK</span>
+          <span class="text-[11px] text-ink-600 font-semibold">시 23:1</span>
+        </div>
+        <p class="text-[22px] leading-[1.5] font-bold tracking-tight text-ink-900 mt-2">
+          여호와는 나의 목자시니<br/>내게 부족함이 없으리로다.
+        </p>
+        <div class="mt-auto flex items-center justify-between pt-4">
+          <span class="text-[12px] text-ink-600">개역개정 · 시편</span>
+          <a href="#" class="inline-flex items-center gap-1.5 text-[12px] font-semibold text-brand-600 hover:text-brand-700">
+            오늘의 묵상
+            <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Upcoming services -->
+      <div class="col-span-12 lg:col-span-4 lg:row-span-2 bg-ink-900 text-white rounded-3xl p-7">
+        <div class="flex items-center justify-between mb-4">
+          <span class="text-[11px] font-bold tracking-[0.3em] text-white/60">UPCOMING SERVICES</span>
+          <a href="#" class="text-[11px] text-white/60 font-semibold hover:text-white">전체 →</a>
+        </div>
+        <div class="space-y-2.5 text-[13px]">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-3">
+              <span class="w-1.5 h-1.5 rounded-full bg-accent-red"></span>
+              <span class="font-semibold">새벽예배</span>
+            </div>
+            <span class="text-white/60 font-mono">오늘 05:30</span>
+          </div>
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-3">
+              <span class="w-1.5 h-1.5 rounded-full bg-white/40"></span>
+              <span class="font-semibold">수요예배</span>
+            </div>
+            <span class="text-white/60 font-mono">04.23 · 19:30</span>
+          </div>
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-3">
+              <span class="w-1.5 h-1.5 rounded-full bg-brand-500"></span>
+              <span class="font-semibold">주일예배 2부</span>
+            </div>
+            <span class="text-brand-500 font-mono">04.26 · 11:00</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Newcomer CTA -->
+      <a href="#" class="col-span-12 lg:col-span-4 lg:row-span-1 bg-brand-600 text-white rounded-3xl px-6 py-5 lg:py-0 flex items-center justify-between hover:bg-brand-700 transition">
+        <div>
+          <div class="text-[11px] font-bold tracking-[0.25em] opacity-80">FOR NEWCOMERS</div>
+          <div class="text-[15px] font-bold mt-0.5">처음 오신 분, 환영합니다.</div>
+        </div>
+        <span class="w-10 h-10 rounded-full bg-white text-brand-600 grid place-items-center shrink-0">
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </span>
+      </a>
+    </div>
+
+    <!-- announcement strip -->
+    <div class="mt-4 grid grid-cols-1 md:grid-cols-3 gap-4">
+      <a href="#" class="group bg-white text-ink-900 rounded-2xl p-5 flex items-center gap-4 hover:news-card-shadow transition">
+        <span class="shrink-0 w-12 h-12 rounded-xl bg-paper grid place-items-center text-brand-600">
+          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 9h18"/></svg>
+        </span>
+        <div class="min-w-0">
+          <div class="text-[11px] font-bold text-brand-600 tracking-widest mb-1">NOTICE · 04.26</div>
+          <div class="text-[14px] font-semibold truncate">2026 봄학기 새가족반 등록이 시작되었습니다.</div>
+        </div>
+      </a>
+      <a href="#" class="group bg-white text-ink-900 rounded-2xl p-5 flex items-center gap-4 hover:news-card-shadow transition">
+        <span class="shrink-0 w-12 h-12 rounded-xl bg-paper grid place-items-center text-emerald-600">
+          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v6M12 22v-6M4.93 4.93l4.24 4.24M14.83 14.83l4.24 4.24M2 12h6M22 12h-6"/></svg>
+        </span>
+        <div class="min-w-0">
+          <div class="text-[11px] font-bold text-emerald-600 tracking-widest mb-1">EVENT · 05.10</div>
+          <div class="text-[14px] font-semibold truncate">전 교인 봄 야외예배 · 호숫가 캠퍼스</div>
+        </div>
+      </a>
+      <a href="#" class="group bg-white text-ink-900 rounded-2xl p-5 flex items-center gap-4 hover:news-card-shadow transition">
+        <span class="shrink-0 w-12 h-12 rounded-xl bg-paper grid place-items-center text-amber-600">
+          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a4 4 0 0 1-4 4H7l-4 4V5a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4z"/></svg>
+        </span>
+        <div class="min-w-0">
+          <div class="text-[11px] font-bold text-amber-600 tracking-widest mb-1">MISSION · 06.02</div>
+          <div class="text-[14px] font-semibold truncate">캄보디아 단기선교팀 동역자를 모집합니다.</div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============== WELCOME / QUICK LINKS ============== -->
+<section class="relative z-10 bg-white pt-16 pb-24">
+  <div class="max-w-[1240px] mx-auto px-6 text-center">
+    <div class="text-[12px] font-bold tracking-[0.3em] text-brand-600 mb-4">WELCOME TO GAPYEONG</div>
+    <h2 class="text-[34px] md:text-[44px] font-extrabold tracking-tight leading-tight">
+      이 곳에 처음 오신 모든 분을<br />
+      진심으로 환영합니다.
+    </h2>
+    <p class="mt-6 text-ink-600 max-w-xl mx-auto leading-relaxed text-[15px]">
+      가평교회는 1987년 시작된 작은 기도모임에서 출발했습니다. 지금도 그 처음 마음 그대로,
+      누구나 환대받고 누구든 회복되는 공동체를 꿈꿉니다.
+    </p>
+
+    <div class="mt-16 grid grid-cols-4 md:grid-cols-8 gap-y-10 gap-x-4 w-full">
+      <!-- quick links -->
+      <a class="group flex flex-col items-center gap-4" href="#">
+        <span class="w-20 h-20 rounded-full bg-brand-500/10 group-hover:bg-brand-500/20 grid place-items-center transition">
+          <svg class="w-9 h-9" viewBox="0 0 24 24" fill="none" stroke="#3a64f5" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/><path d="M10 20v-6h4v6"/></svg>
+        </span>
+        <span class="text-[14px] font-semibold">예배</span>
+      </a>
+      <a class="group flex flex-col items-center gap-4" href="#">
+        <span class="w-20 h-20 rounded-full bg-emerald-500/10 group-hover:bg-emerald-500/20 grid place-items-center transition">
+          <svg class="w-9 h-9" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="10" r="2.5"/><path d="M3 20c.5-3.5 3-5.5 6-5.5s5.5 2 6 5.5"/><path d="M14 20c.5-2.5 2-4 3-4s2.5 1.5 3 4"/></svg>
+        </span>
+        <span class="text-[14px] font-semibold">새가족</span>
+      </a>
+      <a class="group flex flex-col items-center gap-4" href="#">
+        <span class="w-20 h-20 rounded-full bg-rose-500/10 group-hover:bg-rose-500/20 grid place-items-center transition">
+          <svg class="w-9 h-9" viewBox="0 0 24 24" fill="none" stroke="#e11d48" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v12H7l-3 3z"/><path d="M8 10h8M8 13h5"/></svg>
+        </span>
+        <span class="text-[14px] font-semibold">중보기도</span>
+      </a>
+      <a class="group flex flex-col items-center gap-4" href="#">
+        <span class="w-20 h-20 rounded-full bg-amber-500/10 group-hover:bg-amber-500/20 grid place-items-center transition">
+          <svg class="w-9 h-9" viewBox="0 0 24 24" fill="none" stroke="#d97706" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="6" width="16" height="14" rx="2"/><path d="M4 10h16M9 6V4M15 6V4"/></svg>
+        </span>
+        <span class="text-[14px] font-semibold">교회력</span>
+      </a>
+      <a class="group flex flex-col items-center gap-4" href="#">
+        <span class="w-20 h-20 rounded-full bg-violet-500/10 group-hover:bg-violet-500/20 grid place-items-center transition">
+          <svg class="w-9 h-9" viewBox="0 0 24 24" fill="none" stroke="#7c3aed" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m10 9 5 3-5 3z" fill="#7c3aed"/></svg>
+        </span>
+        <span class="text-[14px] font-semibold">미디어</span>
+      </a>
+      <a class="group flex flex-col items-center gap-4" href="#">
+        <span class="w-20 h-20 rounded-full bg-pink-500/10 group-hover:bg-pink-500/20 grid place-items-center transition">
+          <svg class="w-9 h-9" viewBox="0 0 24 24" fill="none" stroke="#db2777" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4.5-7-10a4 4 0 0 1 7-2.5A4 4 0 0 1 19 11c0 5.5-7 10-7 10z"/></svg>
+        </span>
+        <span class="text-[14px] font-semibold">온라인 헌금</span>
+      </a>
+      <a class="group flex flex-col items-center gap-4" href="#">
+        <span class="w-20 h-20 rounded-full bg-sky-500/10 group-hover:bg-sky-500/20 grid place-items-center transition">
+          <svg class="w-9 h-9" viewBox="0 0 24 24" fill="none" stroke="#0284c7" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 3 2.5 15 0 18M12 3c-2.5 3-2.5 15 0 18"/></svg>
+        </span>
+        <span class="text-[14px] font-semibold">선교</span>
+      </a>
+      <a class="group flex flex-col items-center gap-4" href="#">
+        <span class="w-20 h-20 rounded-full bg-teal-500/10 group-hover:bg-teal-500/20 grid place-items-center transition">
+          <svg class="w-9 h-9" viewBox="0 0 24 24" fill="none" stroke="#0d9488" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 6v6c0 5 3.5 8.5 8 10 4.5-1.5 8-5 8-10V6z"/><path d="M12 8v8M8 12h8"/></svg>
+        </span>
+        <span class="text-[14px] font-semibold">교회소개</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============== NEWS + SERMON SPLIT ============== -->
+<section class="bg-white pb-24">
+  <div class="max-w-[1240px] mx-auto px-6">
+    <div class="flex items-end justify-between mb-8">
+      <div>
+        <div class="text-[12px] font-bold tracking-[0.3em] text-brand-600 mb-3">UPDATES</div>
+        <h2 class="text-[28px] md:text-[34px] font-extrabold tracking-tight">새로운 소식을 전합니다.</h2>
+      </div>
+      <a href="#" class="hidden md:inline-flex items-center gap-1.5 text-[13px] font-semibold text-ink-600 hover:text-ink-900">
+        전체보기
+        <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+
+    <div class="grid grid-cols-12 gap-5">
+      <!-- big feature -->
+      <article class="col-span-12 lg:col-span-6 group cursor-pointer">
+        <div class="relative aspect-[4/3] rounded-2xl overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?auto=format&fit=crop&w=1200&q=80" class="w-full h-full object-cover group-hover:scale-[1.02] transition duration-500" alt="" />
+          <span class="absolute top-4 left-4 inline-flex items-center gap-1.5 bg-white/95 backdrop-blur text-ink-900 px-3 py-1.5 rounded-full text-[11px] font-bold tracking-wide">
+            <span class="w-1.5 h-1.5 rounded-full bg-brand-500"></span>
+            FEATURE
+          </span>
+        </div>
+        <div class="mt-5">
+          <div class="text-[12px] font-semibold text-brand-600 mb-2">청년부 · 04.21</div>
+          <h3 class="text-[22px] font-bold leading-snug tracking-tight group-hover:text-brand-600">
+            서툴러도 괜찮아 — 청년들이 써내려간 한 학기의 고백
+          </h3>
+          <p class="mt-3 text-ink-600 text-[14px] leading-relaxed line-clamp-2">
+            지난 한 학기, 청년부의 작은 묵상 노트들이 모여 한 권의 책이 되었습니다.
+            서로의 흔들림과 회복을 솔직하게 나눈 기록들을 함께 펼쳐봅니다.
+          </p>
+        </div>
+      </article>
+
+      <!-- list column -->
+      <div class="col-span-12 lg:col-span-3 flex flex-col divide-y divide-line border border-line rounded-2xl overflow-hidden bg-white">
+        <a href="#" class="p-5 hover:bg-paper">
+          <div class="text-[11px] font-bold tracking-widest text-brand-600 mb-2">공지</div>
+          <div class="text-[14px] font-semibold leading-snug">2026 봄학기 양육과정 신청 안내 · 5/3 마감</div>
+          <div class="mt-3 text-[12px] text-ink-600">04.20</div>
+        </a>
+        <a href="#" class="p-5 hover:bg-paper">
+          <div class="text-[11px] font-bold tracking-widest text-emerald-600 mb-2">선교</div>
+          <div class="text-[14px] font-semibold leading-snug">캄보디아 단기선교 — 동역자 60명 모집</div>
+          <div class="mt-3 text-[12px] text-ink-600">04.18</div>
+        </a>
+        <a href="#" class="p-5 hover:bg-paper">
+          <div class="text-[11px] font-bold tracking-widest text-amber-600 mb-2">행사</div>
+          <div class="text-[14px] font-semibold leading-snug">전 교인 봄 야외예배 안내</div>
+          <div class="mt-3 text-[12px] text-ink-600">04.15</div>
+        </a>
+        <a href="#" class="p-5 hover:bg-paper bg-paper/30">
+          <div class="text-[11px] font-bold tracking-widest text-ink-600 mb-2">교회력</div>
+          <div class="text-[14px] font-semibold leading-snug">부활절 새벽기도회 마무리 — 감사를 나눕니다</div>
+          <div class="mt-3 text-[12px] text-ink-600">04.10</div>
+        </a>
+      </div>
+
+      <!-- right small cards -->
+      <div class="col-span-12 lg:col-span-3 flex flex-col gap-5">
+        <a href="#" class="group">
+          <div class="relative aspect-[5/4] rounded-2xl overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1438232992991-995b7058bbb3?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover group-hover:scale-[1.03] transition duration-500" alt="" />
+          </div>
+          <div class="mt-4">
+            <div class="text-[12px] font-semibold text-brand-600 mb-1.5">미디어</div>
+            <h4 class="text-[15px] font-bold leading-snug group-hover:text-brand-600">찬양사역팀의 새 EP가 발매되었습니다.</h4>
+          </div>
+        </a>
+        <a href="#" class="group">
+          <div class="relative aspect-[5/4] rounded-2xl overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover group-hover:scale-[1.03] transition duration-500" alt="" />
+          </div>
+          <div class="mt-4">
+            <div class="text-[12px] font-semibold text-brand-600 mb-1.5">공동체</div>
+            <h4 class="text-[15px] font-bold leading-snug group-hover:text-brand-600">목장 모임 — 다시 모이는 거실의 풍경</h4>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== NEW HERE STRIP ============== -->
+<section class="bg-paper py-20">
+  <div class="max-w-[1240px] mx-auto px-6">
+    <div class="grid grid-cols-12 items-center gap-8">
+      <div class="col-span-12 lg:col-span-3">
+        <div class="text-[12px] font-bold tracking-[0.3em] text-brand-600 mb-3">FOR NEWCOMERS</div>
+        <h3 class="text-[26px] md:text-[30px] font-extrabold tracking-tight leading-tight">
+          처음 오셨나요?
+        </h3>
+        <p class="mt-3 text-ink-600 text-[14px] leading-relaxed">
+          네 단계의 안내를 따라 자연스럽게 공동체에 함께해 보세요.
+        </p>
+        <button class="mt-6 inline-flex items-center gap-2 bg-ink-900 text-white px-5 h-11 rounded-full text-[13px] font-semibold hover:bg-ink-700">
+          새가족 등록하기
+          <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </button>
+      </div>
+
+      <div class="col-span-12 lg:col-span-9 grid grid-cols-2 md:grid-cols-4 gap-px bg-line rounded-2xl overflow-hidden">
+        <div class="bg-paper p-7">
+          <div class="flex items-center gap-3 mb-5">
+            <span class="w-10 h-10 rounded-full bg-white grid place-items-center text-brand-600 font-bold">01</span>
+            <span class="w-7 h-px bg-ink-600/30"></span>
+          </div>
+          <svg class="w-7 h-7 text-ink-700 mb-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 11l9-8 9 8M5 10v10h14V10"/></svg>
+          <div class="text-[15px] font-bold mb-1">예배에 참석</div>
+          <div class="text-[12.5px] text-ink-600 leading-relaxed">먼저 한 번의 예배로 인사드려요.</div>
+        </div>
+        <div class="bg-paper p-7">
+          <div class="flex items-center gap-3 mb-5">
+            <span class="w-10 h-10 rounded-full bg-white grid place-items-center text-brand-600 font-bold">02</span>
+            <span class="w-7 h-px bg-ink-600/30"></span>
+          </div>
+          <svg class="w-7 h-7 text-ink-700 mb-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 11h6M9 15h4"/><path d="M5 5h14v14H5z"/></svg>
+          <div class="text-[15px] font-bold mb-1">새가족 카드 작성</div>
+          <div class="text-[12.5px] text-ink-600 leading-relaxed">로비에서 또는 온라인으로.</div>
+        </div>
+        <div class="bg-paper p-7">
+          <div class="flex items-center gap-3 mb-5">
+            <span class="w-10 h-10 rounded-full bg-white grid place-items-center text-brand-600 font-bold">03</span>
+            <span class="w-7 h-px bg-ink-600/30"></span>
+          </div>
+          <svg class="w-7 h-7 text-ink-700 mb-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h18M5 8v12h14V8M3 8l3-4h12l3 4"/></svg>
+          <div class="text-[15px] font-bold mb-1">환영 선물 받기</div>
+          <div class="text-[12.5px] text-ink-600 leading-relaxed">작은 책과 손편지를 드려요.</div>
+        </div>
+        <div class="bg-paper p-7">
+          <div class="flex items-center gap-3 mb-5">
+            <span class="w-10 h-10 rounded-full bg-white grid place-items-center text-brand-600 font-bold">04</span>
+            <span class="w-7 h-px bg-ink-600/30"></span>
+          </div>
+          <svg class="w-7 h-7 text-ink-700 mb-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 21s-7-4.5-7-10a4 4 0 0 1 7-2.5A4 4 0 0 1 19 11c0 5.5-7 10-7 10z"/></svg>
+          <div class="text-[15px] font-bold mb-1">소그룹 매칭</div>
+          <div class="text-[12.5px] text-ink-600 leading-relaxed">가까운 목장에 연결돼요.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== DECISION / SERMON SERIES ============== -->
+<section class="bg-ink-900 text-white py-24">
+  <div class="max-w-[1240px] mx-auto px-6">
+    <div class="flex items-end justify-between mb-10">
+      <div>
+        <div class="text-[12px] font-bold tracking-[0.3em] text-brand-500 mb-3">DECISION SERIES</div>
+        <h2 class="text-[28px] md:text-[36px] font-extrabold tracking-tight">머무름의 사람이 되기로</h2>
+        <p class="mt-3 text-white/60 text-[14px] max-w-xl">2026년 봄, 시편 23편을 함께 묵상하며 우리가 머물러야 할 자리를 다시 찾아갑니다.</p>
+      </div>
+      <a href="#" class="hidden md:inline-flex items-center gap-1.5 text-[13px] font-semibold text-white/70 hover:text-white">
+        시리즈 전체보기
+        <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+
+    <!-- featured 2 sermons -->
+    <div class="grid md:grid-cols-2 gap-5">
+      <article class="group relative rounded-2xl overflow-hidden bg-ink-800">
+        <div class="aspect-[16/9] relative">
+          <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=1200&q=80" class="absolute inset-0 w-full h-full object-cover opacity-60" alt="" />
+          <div class="absolute inset-0 bg-gradient-to-t from-ink-900 via-ink-900/40 to-transparent"></div>
+          <div class="absolute inset-0 p-7 flex flex-col justify-between">
+            <div class="flex items-center justify-between">
+              <div class="text-[11px] tracking-widest font-bold text-brand-500">EP 03</div>
+              <button class="relative grid place-items-center w-14 h-14 rounded-full bg-white/95 text-ink-900 play-pulse">
+                <svg viewBox="0 0 24 24" class="w-5 h-5" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+              </button>
+            </div>
+            <div>
+              <h3 class="text-[26px] md:text-[30px] font-extrabold leading-tight tracking-tight">
+                머무름의 자리,<br/>그 곁에서 듣는 음성
+              </h3>
+              <div class="mt-4 flex items-center gap-3 text-[12px] text-white/70">
+                <span>시 23:1–3 · 정한결 목사</span>
+                <span class="w-1 h-1 rounded-full bg-white/40"></span>
+                <span>32분</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="group relative rounded-2xl overflow-hidden bg-ink-800">
+        <div class="aspect-[16/9] relative">
+          <img src="https://images.unsplash.com/photo-1507692049790-de58290a4334?auto=format&fit=crop&w=1200&q=80" class="absolute inset-0 w-full h-full object-cover opacity-55" alt="" />
+          <div class="absolute inset-0 bg-gradient-to-t from-ink-900 via-ink-900/40 to-transparent"></div>
+          <div class="absolute inset-0 p-7 flex flex-col justify-between">
+            <div class="flex items-center justify-between">
+              <div class="text-[11px] tracking-widest font-bold text-brand-500">EP 04</div>
+              <button class="relative grid place-items-center w-14 h-14 rounded-full bg-white/95 text-ink-900 play-pulse">
+                <svg viewBox="0 0 24 24" class="w-5 h-5" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+              </button>
+            </div>
+            <div>
+              <h3 class="text-[26px] md:text-[30px] font-extrabold leading-tight tracking-tight">
+                골짜기에서도<br/>잔이 넘치는 사람
+              </h3>
+              <div class="mt-4 flex items-center gap-3 text-[12px] text-white/70">
+                <span>시 23:4–6 · 김다온 부목사</span>
+                <span class="w-1 h-1 rounded-full bg-white/40"></span>
+                <span>28분</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <!-- thumbnails row -->
+    <div class="mt-5 grid grid-cols-2 md:grid-cols-4 gap-5">
+      <a href="#" class="group">
+        <div class="relative aspect-[16/10] rounded-xl overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1473177104440-ffee2f376098?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition" alt=""/>
+          <div class="absolute bottom-2 right-2 text-[11px] bg-black/70 px-1.5 py-0.5 rounded">22:14</div>
+        </div>
+        <div class="mt-3 text-[13px] font-semibold leading-snug">광야에서 부르신 이름 — 출 3:1–10</div>
+        <div class="mt-1 text-[11px] text-white/50">새벽예배 · 04.22</div>
+      </a>
+      <a href="#" class="group">
+        <div class="relative aspect-[16/10] rounded-xl overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1502920917128-1aa500764cbd?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition" alt=""/>
+          <div class="absolute bottom-2 right-2 text-[11px] bg-black/70 px-1.5 py-0.5 rounded">18:42</div>
+        </div>
+        <div class="mt-3 text-[13px] font-semibold leading-snug">기도가 멈추지 않는 집 — 행 2:42–47</div>
+        <div class="mt-1 text-[11px] text-white/50">수요예배 · 04.23</div>
+      </a>
+      <a href="#" class="group">
+        <div class="relative aspect-[16/10] rounded-xl overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1490127252417-7c393f993ee4?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition" alt=""/>
+          <div class="absolute bottom-2 right-2 text-[11px] bg-black/70 px-1.5 py-0.5 rounded">35:08</div>
+        </div>
+        <div class="mt-3 text-[13px] font-semibold leading-snug">사랑은 가까운 자리부터 — 막 12:28–34</div>
+        <div class="mt-1 text-[11px] text-white/50">청년예배 · 04.20</div>
+      </a>
+      <a href="#" class="group">
+        <div class="relative aspect-[16/10] rounded-xl overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1492321936769-b49830bc1d1e?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition" alt=""/>
+          <div class="absolute bottom-2 right-2 text-[11px] bg-black/70 px-1.5 py-0.5 rounded">12:36</div>
+        </div>
+        <div class="mt-3 text-[13px] font-semibold leading-snug">아이의 손 — 마 18:1–5</div>
+        <div class="mt-1 text-[11px] text-white/50">유년부 · 04.19</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============== PHOTO GALLERY ============== -->
+<section class="bg-white py-24">
+  <div class="max-w-[1240px] mx-auto px-6">
+    <div class="flex items-end justify-between mb-8">
+      <div>
+        <div class="text-[12px] font-bold tracking-[0.3em] text-brand-600 mb-3">COMMUNITY MOMENTS</div>
+        <h2 class="text-[28px] md:text-[34px] font-extrabold tracking-tight">우리의 한 주, 사진으로.</h2>
+      </div>
+      <a href="#" class="inline-flex items-center gap-1.5 text-[13px] font-semibold text-ink-600 hover:text-ink-900">
+        포토갤러리 전체보기
+        <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+
+    <div class="grid grid-cols-12 gap-3">
+      <a class="col-span-6 md:col-span-4 lg:col-span-3 aspect-[4/3] rounded-xl overflow-hidden group" href="#">
+        <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" alt=""/>
+      </a>
+      <a class="col-span-6 md:col-span-4 lg:col-span-3 aspect-[4/3] rounded-xl overflow-hidden group relative" href="#">
+        <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" alt=""/>
+      </a>
+      <a class="col-span-12 md:col-span-4 lg:col-span-6 aspect-[8/3] lg:aspect-[8/3] rounded-xl overflow-hidden group relative" href="#">
+        <img src="https://images.unsplash.com/photo-1466442929976-97f336a657be?auto=format&fit=crop&w=1200&q=80" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" alt=""/>
+        <div class="absolute bottom-0 inset-x-0 p-5 bg-gradient-to-t from-black/70 to-transparent text-white">
+          <div class="text-[11px] tracking-widest font-bold text-white/70 mb-1">FEATURED</div>
+          <div class="text-[16px] font-bold">부활절 새벽기도회 — 5,418명의 한 마음</div>
+        </div>
+      </a>
+      <a class="col-span-6 md:col-span-3 aspect-[4/3] rounded-xl overflow-hidden group" href="#">
+        <img src="https://images.unsplash.com/photo-1519337265831-281ec6cc8514?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" alt=""/>
+      </a>
+      <a class="col-span-6 md:col-span-3 aspect-[4/3] rounded-xl overflow-hidden group" href="#">
+        <img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" alt=""/>
+      </a>
+      <a class="col-span-6 md:col-span-3 aspect-[4/3] rounded-xl overflow-hidden group" href="#">
+        <img src="https://images.unsplash.com/photo-1542038784456-1ea8e935640e?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" alt=""/>
+      </a>
+      <a class="col-span-6 md:col-span-3 aspect-[4/3] rounded-xl overflow-hidden group" href="#">
+        <img src="https://images.unsplash.com/photo-1517816743773-6e0fd518b4a6?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" alt=""/>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============== GIVING + CONTACT ============== -->
+<section class="bg-paper">
+  <div class="max-w-[1240px] mx-auto px-6 py-16 grid md:grid-cols-2 gap-3">
+    <a href="#" class="group bg-white rounded-2xl p-8 md:p-10 flex items-start gap-6 hover:-translate-y-0.5 transition news-card-shadow">
+      <span class="shrink-0 w-14 h-14 rounded-2xl bg-brand-500/10 grid place-items-center text-brand-600">
+        <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 21s-7-4.5-7-10a4 4 0 0 1 7-2.5A4 4 0 0 1 19 11c0 5.5-7 10-7 10z"/></svg>
+      </span>
+      <div class="flex-1">
+        <div class="flex items-center gap-3 mb-2">
+          <h3 class="text-[22px] font-extrabold tracking-tight">온라인 헌금</h3>
+          <svg class="w-4 h-4 text-ink-600 group-hover:translate-x-1 transition" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </div>
+        <p class="text-ink-600 text-[14px] leading-relaxed">
+          모바일과 PC에서 간편하게 드릴 수 있도록 도와드립니다.
+          주일헌금, 십일조, 감사헌금, 선교헌금까지 한 곳에서.
+        </p>
+      </div>
+    </a>
+
+    <a href="#" class="group bg-white rounded-2xl p-8 md:p-10 flex items-start gap-6 hover:-translate-y-0.5 transition news-card-shadow">
+      <span class="shrink-0 w-14 h-14 rounded-2xl bg-emerald-500/10 grid place-items-center text-emerald-600">
+        <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15a4 4 0 0 1-4 4H7l-4 4V5a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4z"/><path d="M8 9h8M8 13h5"/></svg>
+      </span>
+      <div class="flex-1">
+        <div class="flex items-center gap-3 mb-2">
+          <h3 class="text-[22px] font-extrabold tracking-tight">문의하기</h3>
+          <svg class="w-4 h-4 text-ink-600 group-hover:translate-x-1 transition" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </div>
+        <p class="text-ink-600 text-[14px] leading-relaxed">
+          궁금한 점이 있으신가요? 평일 9시–18시, 친절한 사역자가
+          빠르게 답변드립니다. 카카오톡 채널도 운영 중입니다.
+        </p>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- ============== FOOTER ============== -->
+<footer class="bg-ink-900 text-white/70">
+  <div class="max-w-[1240px] mx-auto px-6 py-14">
+    <div class="grid md:grid-cols-12 gap-10">
+      <div class="md:col-span-4">
+        <div class="flex items-center gap-2.5 text-white">
+          <img src="assets/logo.png" alt="가평교회" class="w-9 h-9 object-contain" />
+          <span class="font-bold text-[16px]">가평교회 <span class="text-white/50 font-medium text-[12px] ml-1">GAPYEONG CHURCH</span></span>
+        </div>
+        <p class="mt-5 text-[13px] leading-relaxed">
+          08512 서울특별시 금천구 가산디지털1로 168 (우림라이온스밸리)<br />
+          TEL. 02-704-3300 &nbsp;·&nbsp; FAX. 02-704-3301
+        </p>
+        <p class="mt-4 text-[12px] text-white/40">© 2026 GAPYEONG CHURCH. ALL RIGHTS RESERVED.</p>
+      </div>
+
+      <div class="md:col-span-5 grid grid-cols-3 gap-6 text-[13px]">
+        <div>
+          <div class="text-white font-semibold mb-3">예배</div>
+          <ul class="space-y-2">
+            <li><a href="#" class="hover:text-white">주일예배</a></li>
+            <li><a href="#" class="hover:text-white">수요예배</a></li>
+            <li><a href="#" class="hover:text-white">새벽예배</a></li>
+            <li><a href="#" class="hover:text-white">청년예배</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="text-white font-semibold mb-3">공동체</div>
+          <ul class="space-y-2">
+            <li><a href="#" class="hover:text-white">새가족부</a></li>
+            <li><a href="#" class="hover:text-white">목장 모임</a></li>
+            <li><a href="#" class="hover:text-white">유·초등부</a></li>
+            <li><a href="#" class="hover:text-white">실버사역</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="text-white font-semibold mb-3">바로가기</div>
+          <ul class="space-y-2">
+            <li><a href="#" class="hover:text-white">개인정보처리방침</a></li>
+            <li><a href="#" class="hover:text-white">이메일 무단수집거부</a></li>
+            <li><a href="#" class="hover:text-white">오시는 길</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="md:col-span-3">
+        <div class="text-white font-semibold mb-3 text-[13px]">Family Site</div>
+        <button class="w-full bg-white/5 border border-white/10 rounded-lg px-4 h-11 flex items-center justify-between text-[13px] hover:bg-white/10">
+          관련 사이트 선택
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="mt-5 flex items-center gap-2">
+          <a href="#" class="w-9 h-9 rounded-full grid place-items-center bg-white/5 hover:bg-white/10"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M19.6 6.5c.7 1.3 1.1 2.8 1.1 4.4 0 4.4-3.4 9.2-9.5 9.2-1.9 0-3.6-.5-5.1-1.5.3 0 .5.1.8.1 1.5 0 3-.5 4.1-1.4-1.4 0-2.7-1-3.1-2.3.2 0 .4.1.6.1.3 0 .6 0 .9-.1-1.5-.3-2.6-1.6-2.6-3.2v0c.4.2.9.4 1.5.4-.9-.6-1.4-1.6-1.4-2.7 0-.6.2-1.2.4-1.7 1.6 2 4 3.3 6.7 3.4-.1-.2-.1-.5-.1-.7 0-1.8 1.5-3.3 3.3-3.3.9 0 1.8.4 2.4 1 .8-.2 1.5-.4 2.1-.8-.2.8-.8 1.4-1.4 1.8.7-.1 1.3-.3 1.9-.5-.4.6-1 1.2-1.6 1.6z"/></svg></a>
+          <a href="#" class="w-9 h-9 rounded-full grid place-items-center bg-white/5 hover:bg-white/10"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M23 6.2s-.2-1.6-.9-2.3c-.9-.9-1.9-.9-2.3-1C16.6 2.5 12 2.5 12 2.5s-4.6 0-7.8.4c-.5 0-1.5.1-2.3 1-.7.7-.9 2.3-.9 2.3S.7 8 .7 9.9v1.7c0 1.9.3 3.7.3 3.7s.2 1.6.9 2.3c.9.9 2.1.9 2.6 1 1.9.2 8 .3 8 .3s4.6 0 7.8-.4c.5 0 1.5-.1 2.3-1 .7-.7.9-2.3.9-2.3s.3-1.9.3-3.7V9.9C23.3 8 23 6.2 23 6.2zM9.5 13.6V7.7l5.9 3z"/></svg></a>
+          <a href="#" class="w-9 h-9 rounded-full grid place-items-center bg-white/5 hover:bg-white/10"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="4"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/></svg></a>
+          <a href="#" class="w-9 h-9 rounded-full grid place-items-center bg-white/5 hover:bg-white/10"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.5 2.9h-2.4v7A10 10 0 0 0 22 12z"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

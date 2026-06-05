@@ -1,0 +1,1677 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>가평교회 — 디자인 라이브러리</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" />
+<script src="https://cdn.jsdelivr.net/npm/tailwindcss-cdn@3.4.10/tailwindcss.js"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        fontFamily: { sans: ['"Pretendard Variable"', 'Pretendard', 'system-ui', 'sans-serif'] },
+        colors: {
+          ink: { 900: '#0e1320', 800: '#171c2c', 700: '#222a3f', 600: '#384058' },
+          brand: { 500: '#3a64f5', 600: '#2a4fd6', 700: '#1f3eb2' },
+          accent: { red: '#e23b3b' },
+          paper: '#f4f5f7',
+          line: '#e5e7eb',
+        },
+      },
+    },
+  };
+</script>
+<style>
+  html { font-family: 'Pretendard Variable', Pretendard, system-ui, sans-serif; scroll-behavior: smooth; scroll-padding-top: 96px; }
+  body { -webkit-font-smoothing: antialiased; letter-spacing: -0.01em; }
+  .badge-live { background:#e23b3b; color:white; font-size:10px; font-weight:700; letter-spacing:0.05em; padding:2px 6px; border-radius:3px; }
+  .news-card-shadow { box-shadow: 0 1px 0 rgba(0,0,0,0.04), 0 18px 36px -24px rgba(14,19,32,0.18); }
+  /* doc chrome */
+  .swatch { box-shadow: inset 0 0 0 1px rgba(14,19,32,0.06); }
+  .mono { font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: 11.5px; letter-spacing: 0; }
+  .toc a.active { color:#0e1320; font-weight:700; }
+  .toc a.active::before { opacity:1; transform: scaleY(1); }
+  .toc a::before { content:''; position:absolute; left:-13px; top:3px; bottom:3px; width:2px; background:#0e1320; border-radius:2px; opacity:0; transform: scaleY(0.3); transition:.2s; }
+  .specrow { display:grid; grid-template-columns: 168px 1fr; gap: 28px; }
+  @media (max-width: 900px){ .specrow{ grid-template-columns:1fr; gap:14px; } }
+
+  /* feedback animations */
+  @keyframes libShimmer { 0% { background-position: -200% 0; } 100% { background-position: 200% 0; } }
+  .lib-skel { background: linear-gradient(90deg, #eef0f3 25%, #e2e5ea 37%, #eef0f3 63%); background-size: 200% 100%; animation: libShimmer 1.4s ease-in-out infinite; }
+  @keyframes libSpin { to { transform: rotate(360deg); } }
+  .lib-spin { animation: libSpin .7s linear infinite; }
+  @keyframes libBounce { 0%,80%,100% { transform: translateY(0); opacity:.5; } 40% { transform: translateY(-5px); opacity:1; } }
+  .lib-dot { animation: libBounce 1.2s ease-in-out infinite; }
+  @keyframes libToastIn { from { transform: translateY(12px); opacity:0; } to { transform: translateY(0); opacity:1; } }
+  .lib-toast-in { animation: libToastIn .28s cubic-bezier(.2,.8,.2,1); }
+
+  /* orbit / hub */
+  @keyframes orbSpin { to { transform: rotate(360deg); } }
+  @keyframes orbSpinRev { to { transform: rotate(-360deg); } }
+  @keyframes orbPulse { 0% { transform: scale(.55); opacity:.55; } 100% { transform: scale(1.25); opacity:0; } }
+  .orb-track { position:absolute; inset:0; animation: orbSpin 26s linear infinite; }
+  .orb-track.rev { animation-direction: reverse; animation-duration: 34s; }
+  .orb-spoke { position:absolute; inset:0; transform: rotate(var(--a)); }
+  .orb-tile-pos { position:absolute; top:9%; left:50%; transform: translate(-50%,-50%); }
+  .orb-upright { transform: rotate(calc(-1 * var(--a))); }
+  .orb-upright-spin { animation: orbSpinRev 26s linear infinite; }
+  .orb-pulse { position:absolute; inset:0; border-radius:9999px; animation: orbPulse 3.6s ease-out infinite; }
+  @media (prefers-reduced-motion: reduce){ .orb-track, .orb-upright-spin, .orb-pulse { animation:none; } }
+</style>
+</head>
+<body class="bg-white text-ink-900">
+
+<template id="__bundler_thumbnail" data-bg-color="#2a4fd6">
+  <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+    <rect width="1200" height="800" fill="#2a4fd6"/>
+    <g fill="none" stroke="#ffffff" stroke-width="14" opacity="0.9">
+      <circle cx="600" cy="400" r="210"/>
+      <circle cx="600" cy="400" r="135"/>
+    </g>
+    <g fill="#ffffff">
+      <circle cx="600" cy="400" r="78"/>
+    </g>
+    <g fill="#2a4fd6">
+      <path d="M582 372 v56 l48 -28 z"/>
+    </g>
+    <g fill="#ffffff">
+      <rect x="540" y="595" width="120" height="120" rx="28"/>
+      <rect x="345" y="505" width="110" height="110" rx="26" opacity="0.85"/>
+      <rect x="745" y="505" width="110" height="110" rx="26" opacity="0.85"/>
+      <rect x="345" y="190" width="110" height="110" rx="26" opacity="0.7"/>
+      <rect x="745" y="190" width="110" height="110" rx="26" opacity="0.7"/>
+      <rect x="540" y="100" width="120" height="120" rx="28" opacity="0.6"/>
+    </g>
+  </svg>
+</template>
+
+<!-- ============ DOC TOP BAR ============ -->
+<header class="sticky top-0 z-50 bg-white/92 backdrop-blur border-b border-line">
+  <div class="max-w-[1320px] mx-auto px-6 h-16 flex items-center justify-between">
+    <div class="flex items-center gap-3">
+      <img src="assets/logo.png" alt="" class="w-8 h-8 object-contain" />
+      <div class="leading-none">
+        <div class="font-extrabold text-[16px] tracking-tight">가평교회 디자인 라이브러리</div>
+        <div class="text-[11px] text-ink-600 mt-1">Design System · v1.0 · Pretendard</div>
+      </div>
+    </div>
+    <div class="hidden md:flex items-center gap-2 text-[12.5px] font-semibold">
+      <a href="worship.html" class="px-3.5 h-9 rounded-full border border-line hover:bg-paper grid place-items-center">예배 페이지</a>
+      <a href="서브페이지 히어로 시안.html" class="px-3.5 h-9 rounded-full bg-ink-900 text-white grid place-items-center">히어로 시안 6종 →</a>
+    </div>
+  </div>
+</header>
+
+<div class="max-w-[1320px] mx-auto px-6 flex gap-12">
+
+  <!-- ============ STICKY TOC ============ -->
+  <aside class="hidden lg:block w-[180px] shrink-0">
+    <nav class="toc sticky top-24 py-10 text-[13px] text-ink-600 space-y-1">
+      <div class="text-[10px] font-bold tracking-[0.18em] text-ink-900/40 mb-2.5">FOUNDATIONS</div>
+      <a href="#colors" class="relative block py-1.5 hover:text-ink-900">컬러</a>
+      <a href="#type" class="relative block py-1.5 hover:text-ink-900">타이포그래피</a>
+      <a href="#tokens" class="relative block py-1.5 hover:text-ink-900">라운드 · 섀도우</a>
+      <a href="#icons" class="relative block py-1.5 hover:text-ink-900">아이콘</a>
+      <div class="text-[10px] font-bold tracking-[0.18em] text-ink-900/40 mb-2.5 mt-7">COMPONENTS</div>
+      <a href="#buttons" class="relative block py-1.5 hover:text-ink-900">버튼</a>
+      <a href="#badges" class="relative block py-1.5 hover:text-ink-900">뱃지 · 라벨</a>
+      <a href="#tabs" class="relative block py-1.5 hover:text-ink-900">탭 · 필터</a>
+      <a href="#nav-bits" class="relative block py-1.5 hover:text-ink-900">브레드크럼 · 링크</a>
+      <a href="#cards" class="relative block py-1.5 hover:text-ink-900">카드</a>
+      <a href="#value-circles" class="relative block py-1.5 hover:text-ink-900">원형 가치 블록</a>
+      <a href="#orbit" class="relative block py-1.5 hover:text-ink-900">오비트 · 허브</a>
+      <a href="#lists" class="relative block py-1.5 hover:text-ink-900">리스트 · 일정</a>
+      <div class="text-[10px] font-bold tracking-[0.18em] text-ink-900/40 mb-2.5 mt-7">FORMS & DATA</div>
+      <a href="#forms" class="relative block py-1.5 hover:text-ink-900">폼 · 입력</a>
+      <a href="#overlay" class="relative block py-1.5 hover:text-ink-900">오버레이 · 모달</a>
+      <a href="#navigation" class="relative block py-1.5 hover:text-ink-900">페이지네이션 · FAQ</a>
+      <a href="#data" class="relative block py-1.5 hover:text-ink-900">테이블 · 데이터</a>
+      <a href="#feedback" class="relative block py-1.5 hover:text-ink-900">알림 · 피드백</a>
+      <div class="text-[10px] font-bold tracking-[0.18em] text-ink-900/40 mb-2.5 mt-7">SECTIONS</div>
+      <a href="#header" class="relative block py-1.5 hover:text-ink-900">헤더 · 내비</a>
+      <a href="#hero" class="relative block py-1.5 hover:text-ink-900">페이지 히어로</a>
+      <a href="#footer" class="relative block py-1.5 hover:text-ink-900">푸터</a>
+    </nav>
+  </aside>
+
+  <!-- ============ CONTENT ============ -->
+  <main class="flex-1 min-w-0 py-12 space-y-24">
+
+    <!-- intro -->
+    <div class="max-w-[680px]">
+      <div class="text-[11px] font-bold tracking-[0.2em] text-brand-600 mb-3">DESIGN LIBRARY</div>
+      <h1 class="text-[42px] font-extrabold tracking-tight leading-[1.08]">공용 요소 · 컴포넌트 · 섹션</h1>
+      <p class="mt-4 text-ink-600 text-[15px] leading-relaxed">
+        가평교회 웹사이트를 구성하는 디자인 토큰과 재사용 가능한 컴포넌트, 페이지 섹션을 한 곳에 모았습니다.
+        모든 화면은 이 라이브러리의 조합으로 만들어집니다.
+      </p>
+    </div>
+
+    <!-- ===================================================== COLORS -->
+    <section id="colors" class="scroll-mt-24">
+      <div class="flex items-end justify-between border-b border-line pb-4 mb-8">
+        <div>
+          <div class="text-[11px] font-bold tracking-[0.18em] text-ink-600 mb-1.5">FOUNDATIONS</div>
+          <h2 class="text-[26px] font-extrabold tracking-tight">컬러</h2>
+        </div>
+        <p class="text-[13px] text-ink-600 hidden md:block max-w-[280px] text-right">잉크(중성) · 브랜드 블루 · 액센트 · 카테고리 컬러</p>
+      </div>
+
+      <div class="specrow mb-10">
+        <div class="text-[13px] font-bold pt-1">Ink — 텍스트 · 배경</div>
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+          <div><div class="swatch h-20 rounded-xl bg-ink-900"></div><div class="mt-2 text-[12px] font-semibold">ink-900</div><div class="mono text-ink-600">#0E1320</div></div>
+          <div><div class="swatch h-20 rounded-xl bg-ink-800"></div><div class="mt-2 text-[12px] font-semibold">ink-800</div><div class="mono text-ink-600">#171C2C</div></div>
+          <div><div class="swatch h-20 rounded-xl bg-ink-700"></div><div class="mt-2 text-[12px] font-semibold">ink-700</div><div class="mono text-ink-600">#222A3F</div></div>
+          <div><div class="swatch h-20 rounded-xl bg-ink-600"></div><div class="mt-2 text-[12px] font-semibold">ink-600</div><div class="mono text-ink-600">#384058</div></div>
+        </div>
+      </div>
+
+      <div class="specrow mb-10">
+        <div class="text-[13px] font-bold pt-1">Brand — 강조 · 링크</div>
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+          <div><div class="swatch h-20 rounded-xl bg-brand-500"></div><div class="mt-2 text-[12px] font-semibold">brand-500</div><div class="mono text-ink-600">#3A64F5</div></div>
+          <div><div class="swatch h-20 rounded-xl bg-brand-600"></div><div class="mt-2 text-[12px] font-semibold">brand-600</div><div class="mono text-ink-600">#2A4FD6</div></div>
+          <div><div class="swatch h-20 rounded-xl bg-brand-700"></div><div class="mt-2 text-[12px] font-semibold">brand-700</div><div class="mono text-ink-600">#1F3EB2</div></div>
+          <div><div class="swatch h-20 rounded-xl bg-accent-red"></div><div class="mt-2 text-[12px] font-semibold">accent-red</div><div class="mono text-ink-600">#E23B3B</div></div>
+        </div>
+      </div>
+
+      <div class="specrow mb-10">
+        <div class="text-[13px] font-bold pt-1">Surface — 면 · 경계</div>
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+          <div><div class="swatch h-20 rounded-xl bg-white"></div><div class="mt-2 text-[12px] font-semibold">white</div><div class="mono text-ink-600">#FFFFFF</div></div>
+          <div><div class="swatch h-20 rounded-xl bg-paper"></div><div class="mt-2 text-[12px] font-semibold">paper</div><div class="mono text-ink-600">#F4F5F7</div></div>
+          <div><div class="swatch h-20 rounded-xl bg-line"></div><div class="mt-2 text-[12px] font-semibold">line</div><div class="mono text-ink-600">#E5E7EB</div></div>
+          <div></div>
+        </div>
+      </div>
+
+      <div class="specrow">
+        <div class="text-[13px] font-bold pt-1">Category — 설교 분류</div>
+        <div class="flex flex-wrap gap-3">
+          <div class="text-center"><div class="swatch w-16 h-16 rounded-xl bg-brand-600"></div><div class="mt-1.5 text-[11px] font-semibold">주일</div></div>
+          <div class="text-center"><div class="swatch w-16 h-16 rounded-xl bg-emerald-600"></div><div class="mt-1.5 text-[11px] font-semibold">수요</div></div>
+          <div class="text-center"><div class="swatch w-16 h-16 rounded-xl bg-amber-600"></div><div class="mt-1.5 text-[11px] font-semibold">청년</div></div>
+          <div class="text-center"><div class="swatch w-16 h-16 rounded-xl bg-rose-600"></div><div class="mt-1.5 text-[11px] font-semibold">새벽</div></div>
+          <div class="text-center"><div class="swatch w-16 h-16 rounded-xl bg-violet-600"></div><div class="mt-1.5 text-[11px] font-semibold">유년부</div></div>
+          <div class="text-center"><div class="swatch w-16 h-16 rounded-xl bg-sky-600"></div><div class="mt-1.5 text-[11px] font-semibold">기타</div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================== TYPOGRAPHY -->
+    <section id="type" class="scroll-mt-24">
+      <div class="flex items-end justify-between border-b border-line pb-4 mb-8">
+        <div>
+          <div class="text-[11px] font-bold tracking-[0.18em] text-ink-600 mb-1.5">FOUNDATIONS</div>
+          <h2 class="text-[26px] font-extrabold tracking-tight">타이포그래피</h2>
+        </div>
+        <p class="text-[13px] text-ink-600 hidden md:block">Pretendard Variable · tracking -0.01em</p>
+      </div>
+
+      <div class="space-y-7">
+        <div class="specrow items-baseline border-b border-line/70 pb-6">
+          <div class="text-[12px] text-ink-600 pt-2"><span class="font-bold text-ink-900">Display</span><br/>56 / 800 / tight</div>
+          <div class="text-[56px] font-extrabold tracking-tight leading-none">예배 안으로</div>
+        </div>
+        <div class="specrow items-baseline border-b border-line/70 pb-6">
+          <div class="text-[12px] text-ink-600 pt-1"><span class="font-bold text-ink-900">H1 페이지</span><br/>44 / 800</div>
+          <div class="text-[44px] font-extrabold tracking-tight leading-tight">말씀 안에서 머무르기로</div>
+        </div>
+        <div class="specrow items-baseline border-b border-line/70 pb-6">
+          <div class="text-[12px] text-ink-600 pt-1"><span class="font-bold text-ink-900">H2 섹션</span><br/>22 / 800</div>
+          <div class="text-[22px] font-extrabold tracking-tight">설교 시리즈</div>
+        </div>
+        <div class="specrow items-baseline border-b border-line/70 pb-6">
+          <div class="text-[12px] text-ink-600 pt-1"><span class="font-bold text-ink-900">H3 카드</span><br/>20 / 800</div>
+          <div class="text-[20px] font-extrabold tracking-tight">오늘의 예배</div>
+        </div>
+        <div class="specrow items-baseline border-b border-line/70 pb-6">
+          <div class="text-[12px] text-ink-600 pt-1"><span class="font-bold text-ink-900">Body</span><br/>14 / 400 / 1.85</div>
+          <p class="text-[14px] leading-[1.85] text-ink-600 max-w-[560px]">머무름은 결심이며, 결심은 습관이 됩니다. 본문에서 말씀하시는 ‘머무름’의 영성은 바쁨 속에서 도리어 더 절실해집니다.</p>
+        </div>
+        <div class="specrow items-baseline border-b border-line/70 pb-6">
+          <div class="text-[12px] text-ink-600 pt-1"><span class="font-bold text-ink-900">Caption</span><br/>12 / 400</div>
+          <div class="text-[12px] text-ink-600">정한결 목사 · 2026.04.26</div>
+        </div>
+        <div class="specrow items-baseline">
+          <div class="text-[12px] text-ink-600 pt-1"><span class="font-bold text-ink-900">Overline</span><br/>11 / 700 / 0.18em</div>
+          <div class="text-[11px] font-bold tracking-[0.18em] text-brand-600">SUNDAY WORSHIP · VOL 04</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================== TOKENS -->
+    <section id="tokens" class="scroll-mt-24">
+      <div class="flex items-end justify-between border-b border-line pb-4 mb-8">
+        <div>
+          <div class="text-[11px] font-bold tracking-[0.18em] text-ink-600 mb-1.5">FOUNDATIONS</div>
+          <h2 class="text-[26px] font-extrabold tracking-tight">라운드 · 섀도우 · 간격</h2>
+        </div>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-12">
+        <div>
+          <div class="text-[13px] font-bold mb-4">Radius</div>
+          <div class="flex items-end gap-5">
+            <div class="text-center"><div class="w-20 h-20 bg-paper border border-line rounded-lg"></div><div class="mt-2 text-[12px] font-semibold">lg · 8</div></div>
+            <div class="text-center"><div class="w-20 h-20 bg-paper border border-line rounded-xl"></div><div class="mt-2 text-[12px] font-semibold">xl · 12</div></div>
+            <div class="text-center"><div class="w-20 h-20 bg-paper border border-line rounded-2xl"></div><div class="mt-2 text-[12px] font-semibold">2xl · 16</div></div>
+            <div class="text-center"><div class="w-20 h-20 bg-paper border border-line rounded-full"></div><div class="mt-2 text-[12px] font-semibold">full</div></div>
+          </div>
+        </div>
+        <div>
+          <div class="text-[13px] font-bold mb-4">Shadow</div>
+          <div class="flex items-end gap-6">
+            <div class="text-center"><div class="w-28 h-20 bg-white rounded-2xl news-card-shadow"></div><div class="mt-3 text-[12px] font-semibold">card</div><div class="mono text-ink-600">18px -24 blur</div></div>
+            <div class="text-center"><div class="w-28 h-20 bg-white rounded-2xl shadow-lg"></div><div class="mt-3 text-[12px] font-semibold">lg</div><div class="mono text-ink-600">overlay</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-12">
+        <div class="text-[13px] font-bold mb-4">Layout</div>
+        <div class="flex flex-wrap gap-3 text-[12.5px]">
+          <span class="px-3 py-2 rounded-lg bg-paper"><b class="font-semibold">컨테이너</b> <span class="mono text-ink-600">max-w 1240</span></span>
+          <span class="px-3 py-2 rounded-lg bg-paper"><b class="font-semibold">좌우 패딩</b> <span class="mono text-ink-600">px-6 (24)</span></span>
+          <span class="px-3 py-2 rounded-lg bg-paper"><b class="font-semibold">그리드</b> <span class="mono text-ink-600">12col · gap-6</span></span>
+          <span class="px-3 py-2 rounded-lg bg-paper"><b class="font-semibold">헤더 높이</b> <span class="mono text-ink-600">72</span></span>
+          <span class="px-3 py-2 rounded-lg bg-paper"><b class="font-semibold">섹션 간격</b> <span class="mono text-ink-600">py-14~20</span></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================== ICONS -->
+    <section id="icons" class="scroll-mt-24">
+      <div class="flex items-end justify-between border-b border-line pb-4 mb-8">
+        <div>
+          <div class="text-[11px] font-bold tracking-[0.18em] text-ink-600 mb-1.5">FOUNDATIONS</div>
+          <h2 class="text-[26px] font-extrabold tracking-tight">아이콘</h2>
+        </div>
+        <p class="text-[13px] text-ink-600 hidden md:block">선형 · stroke 2 · 라운드 캡</p>
+      </div>
+      <div class="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-9 gap-3">
+        <!-- each icon tile -->
+        <div class="aspect-square rounded-xl border border-line grid place-items-center text-ink-700 hover:border-ink-900 hover:text-ink-900"><svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></div>
+        <div class="aspect-square rounded-xl border border-line grid place-items-center text-ink-700 hover:border-ink-900 hover:text-ink-900"><svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 11l9-8 9 8M5 10v10h14V10"/></svg></div>
+        <div class="aspect-square rounded-xl border border-line grid place-items-center text-ink-700 hover:border-ink-900 hover:text-ink-900"><svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div>
+        <div class="aspect-square rounded-xl border border-line grid place-items-center text-ink-700 hover:border-ink-900 hover:text-ink-900"><svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
+        <div class="aspect-square rounded-xl border border-line grid place-items-center text-ink-700 hover:border-ink-900 hover:text-ink-900"><svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg></div>
+        <div class="aspect-square rounded-xl border border-line grid place-items-center text-ink-700 hover:border-ink-900 hover:text-ink-900"><svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.6 13.5 6.8 4M15.4 6.5l-6.8 4"/></svg></div>
+        <div class="aspect-square rounded-xl border border-line grid place-items-center text-ink-700 hover:border-ink-900 hover:text-ink-900"><svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12M7 8l5-5 5 5M5 21h14"/></svg></div>
+        <div class="aspect-square rounded-xl border border-line grid place-items-center text-ink-700 hover:border-ink-900 hover:text-ink-900"><svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 21s-7-4.5-7-10a4 4 0 0 1 7-2.5A4 4 0 0 1 19 11c0 5.5-7 10-7 10z"/></svg></div>
+        <div class="aspect-square rounded-xl border border-line grid place-items-center text-ink-700 hover:border-ink-900 hover:text-ink-900"><svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M21 15a4 4 0 0 1-4 4H7l-4 4V5a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4z"/></svg></div>
+        <div class="aspect-square rounded-xl border border-line grid place-items-center text-ink-700 hover:border-ink-900 hover:text-ink-900"><svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M9 6l6 6-6 6"/></svg></div>
+        <div class="aspect-square rounded-xl border border-line grid place-items-center text-ink-700 hover:border-ink-900 hover:text-ink-900"><svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></div>
+        <div class="aspect-square rounded-xl border border-line grid place-items-center text-ink-700 hover:border-ink-900 hover:text-ink-900"><svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg></div>
+        <div class="aspect-square rounded-xl border border-line grid place-items-center text-ink-700 hover:border-ink-900 hover:text-ink-900"><svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-4.5-7-10a7 7 0 0 1 14 0c0 5.5-7 10-7 10z"/><circle cx="12" cy="11" r="2.5"/></svg></div>
+        <div class="aspect-square rounded-xl border border-line grid place-items-center text-ink-700 hover:border-ink-900 hover:text-ink-900"><svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg></div>
+        <div class="aspect-square rounded-xl border border-line grid place-items-center text-ink-700 hover:border-ink-900 hover:text-ink-900"><svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg></div>
+        <div class="aspect-square rounded-xl border border-line grid place-items-center text-ink-700 hover:border-ink-900 hover:text-ink-900"><svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></div>
+        <div class="aspect-square rounded-xl border border-line grid place-items-center text-ink-700 hover:border-ink-900 hover:text-ink-900"><svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg></div>
+        <div class="aspect-square rounded-xl border border-line grid place-items-center text-ink-700 hover:border-ink-900 hover:text-ink-900"><svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.5-6 8-6s8 2 8 6"/></svg></div>
+      </div>
+    </section>
+
+    <!-- ===================================================== BUTTONS -->
+    <section id="buttons" class="scroll-mt-24">
+      <div class="flex items-end justify-between border-b border-line pb-4 mb-8">
+        <div>
+          <div class="text-[11px] font-bold tracking-[0.18em] text-ink-600 mb-1.5">COMPONENTS</div>
+          <h2 class="text-[26px] font-extrabold tracking-tight">버튼</h2>
+        </div>
+      </div>
+
+      <div class="space-y-8">
+        <div class="specrow items-center">
+          <div class="text-[13px] font-bold">Primary / Dark</div>
+          <div class="flex flex-wrap items-center gap-3">
+            <button class="px-4 h-10 rounded-full bg-ink-900 text-white text-[13px] font-semibold grid place-items-center">전체</button>
+            <button class="px-5 h-11 rounded-full bg-brand-600 text-white text-[14px] font-semibold">예배순서</button>
+            <button class="inline-flex items-center gap-1.5 px-5 h-11 rounded-full bg-ink-900 text-white text-[14px] font-semibold">
+              다시보기
+              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="specrow items-center">
+          <div class="text-[13px] font-bold">Outline</div>
+          <div class="flex flex-wrap items-center gap-3">
+            <button class="inline-flex items-center gap-1.5 px-3.5 h-9 rounded-full border border-ink-900 text-[13px] font-semibold hover:bg-ink-900 hover:text-white transition">새가족 등록</button>
+            <button class="px-4 h-9 rounded-full border border-line text-[13px] hover:bg-paper">방송순예배</button>
+            <button class="px-4 h-9 rounded-full border border-line text-[13px] hover:bg-paper">다섬</button>
+          </div>
+        </div>
+
+        <div class="specrow items-center">
+          <div class="text-[13px] font-bold">Icon · 원형</div>
+          <div class="flex flex-wrap items-center gap-3">
+            <button class="w-9 h-9 grid place-items-center rounded-full hover:bg-paper"><svg class="w-[18px] h-[18px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></button>
+            <button class="w-10 h-10 rounded-full border border-line grid place-items-center hover:bg-paper"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg></button>
+            <button class="w-10 h-10 rounded-full border border-line grid place-items-center hover:bg-paper"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.6 13.5 6.8 4M15.4 6.5l-6.8 4"/></svg></button>
+            <button class="relative grid place-items-center w-12 h-12 rounded-full bg-ink-900 text-white"><svg viewBox="0 0 24 24" class="w-5 h-5" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></button>
+          </div>
+        </div>
+
+        <div class="specrow items-center">
+          <div class="text-[13px] font-bold">Text · 더보기</div>
+          <div class="flex flex-wrap items-center gap-6">
+            <a href="#" class="inline-flex items-center gap-1 text-[13px] font-semibold text-brand-600">더보기 <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M6 9l6 6 6-6"/></svg></a>
+            <a href="#" class="inline-flex items-center gap-1.5 text-[13px] font-semibold text-ink-600 hover:text-ink-900">전체보기 →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================== BADGES -->
+    <section id="badges" class="scroll-mt-24">
+      <div class="flex items-end justify-between border-b border-line pb-4 mb-8">
+        <div>
+          <div class="text-[11px] font-bold tracking-[0.18em] text-ink-600 mb-1.5">COMPONENTS</div>
+          <h2 class="text-[26px] font-extrabold tracking-tight">뱃지 · 라벨</h2>
+        </div>
+      </div>
+      <div class="space-y-8">
+        <div class="specrow items-center">
+          <div class="text-[13px] font-bold">LIVE / 상태</div>
+          <div class="flex flex-wrap items-center gap-4">
+            <span class="badge-live">LIVE</span>
+            <span class="inline-flex items-center gap-1.5 text-[12px] text-ink-600"><span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>방송 예정</span>
+            <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-paper text-[11px] font-bold tracking-wide"><span class="w-1.5 h-1.5 rounded-full bg-accent-red animate-pulse"></span>ON AIR</span>
+          </div>
+        </div>
+        <div class="specrow items-center">
+          <div class="text-[13px] font-bold">카테고리 라벨</div>
+          <div class="flex flex-wrap items-center gap-5 text-[11px] font-bold">
+            <span class="text-brand-600">주일예배</span>
+            <span class="text-emerald-600">수요예배</span>
+            <span class="text-amber-600">청년예배</span>
+            <span class="text-rose-600">새벽예배</span>
+            <span class="text-violet-600">유년부</span>
+            <span class="text-sky-600">특별예배</span>
+          </div>
+        </div>
+        <div class="specrow items-center">
+          <div class="text-[13px] font-bold">Pill · 정보</div>
+          <div class="flex flex-wrap items-center gap-2.5">
+            <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white border border-line text-[11px] font-bold"><svg class="w-3.5 h-3.5 text-brand-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-4.5-7-10a7 7 0 0 1 14 0c0 5.5-7 10-7 10z"/><circle cx="12" cy="11" r="2.5"/></svg>본당 위치</span>
+            <span class="px-3 py-1.5 rounded-full bg-brand-500/10 text-brand-600 text-[11px] font-bold">VOL 04</span>
+            <span class="px-3 py-1.5 rounded-full bg-ink-900 text-white text-[11px] font-bold">EST. 1973</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================== TABS -->
+    <section id="tabs" class="scroll-mt-24">
+      <div class="flex items-end justify-between border-b border-line pb-4 mb-8">
+        <div>
+          <div class="text-[11px] font-bold tracking-[0.18em] text-ink-600 mb-1.5">COMPONENTS</div>
+          <h2 class="text-[26px] font-extrabold tracking-tight">탭 · 필터</h2>
+        </div>
+      </div>
+      <div class="space-y-8">
+        <div class="specrow items-center">
+          <div class="text-[13px] font-bold">서브 탭 (Pill)</div>
+          <div class="flex flex-wrap items-center gap-1 text-[13px] font-semibold">
+            <a href="#" class="px-4 h-10 rounded-full bg-ink-900 text-white grid place-items-center">전체</a>
+            <a href="#" class="px-4 h-10 rounded-full hover:bg-paper grid place-items-center">주일예배</a>
+            <a href="#" class="px-4 h-10 rounded-full hover:bg-paper grid place-items-center">수요예배</a>
+            <a href="#" class="px-4 h-10 rounded-full hover:bg-paper grid place-items-center">새벽예배</a>
+            <a href="#" class="px-4 h-10 rounded-full hover:bg-paper grid place-items-center">청년예배</a>
+          </div>
+        </div>
+        <div class="specrow items-center">
+          <div class="text-[13px] font-bold">필터 칩</div>
+          <div class="flex flex-wrap items-center gap-2 text-[13px]">
+            <button class="px-4 h-9 rounded-full bg-brand-600 text-white font-semibold">예배순서</button>
+            <button class="px-4 h-9 rounded-full border border-line hover:bg-paper">방송순예배</button>
+            <button class="px-4 h-9 rounded-full border border-line hover:bg-paper">선교회 예배</button>
+            <button class="px-4 h-9 rounded-full border border-line hover:bg-paper">라이브</button>
+            <button class="px-4 h-9 rounded-full border border-line hover:bg-paper">다섬</button>
+          </div>
+        </div>
+        <div class="specrow items-center">
+          <div class="text-[13px] font-bold">밑줄 탭 (Nav)</div>
+          <div class="flex items-center gap-8 text-[15px] font-semibold border-b border-line">
+            <a href="#" class="relative py-3 text-brand-600">예배<span class="absolute left-0 right-0 -bottom-px h-0.5 bg-brand-600"></span></a>
+            <a href="#" class="py-3 text-ink-600 hover:text-ink-900">공동체</a>
+            <a href="#" class="py-3 text-ink-600 hover:text-ink-900">양육</a>
+            <a href="#" class="py-3 text-ink-600 hover:text-ink-900">미디어</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================== NAV BITS -->
+    <section id="nav-bits" class="scroll-mt-24">
+      <div class="flex items-end justify-between border-b border-line pb-4 mb-8">
+        <div>
+          <div class="text-[11px] font-bold tracking-[0.18em] text-ink-600 mb-1.5">COMPONENTS</div>
+          <h2 class="text-[26px] font-extrabold tracking-tight">브레드크럼 · 링크 리스트</h2>
+        </div>
+      </div>
+      <div class="space-y-8">
+        <div class="specrow items-center">
+          <div class="text-[13px] font-bold">Breadcrumb</div>
+          <nav class="flex items-center gap-2 text-[12px] text-ink-600">
+            <a href="#" class="hover:text-ink-900 inline-flex items-center gap-1.5"><svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 11l9-8 9 8M5 10v10h14V10"/></svg>HOME</a>
+            <span class="text-line">›</span>
+            <a href="#" class="hover:text-ink-900">교회소개</a>
+            <span class="text-line">›</span>
+            <span class="text-ink-900 font-semibold">오시는 길</span>
+          </nav>
+        </div>
+        <div class="specrow">
+          <div class="text-[13px] font-bold pt-1">VOD 링크 리스트</div>
+          <ul class="border-t border-ink-900 divide-y divide-line max-w-[360px]">
+            <li><a href="#" class="flex items-center justify-between py-4 hover:text-brand-600"><span class="text-[14px] font-semibold">주일예배</span><svg class="w-3.5 h-3.5 text-ink-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M9 6l6 6-6 6"/></svg></a></li>
+            <li><a href="#" class="flex items-center justify-between py-4 hover:text-brand-600"><span class="text-[14px] font-semibold">수요예배</span><svg class="w-3.5 h-3.5 text-ink-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M9 6l6 6-6 6"/></svg></a></li>
+            <li><a href="#" class="flex items-center justify-between py-4 hover:text-brand-600"><span class="text-[14px] font-semibold">새벽예배</span><svg class="w-3.5 h-3.5 text-ink-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M9 6l6 6-6 6"/></svg></a></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================== CARDS -->
+    <section id="cards" class="scroll-mt-24">
+      <div class="flex items-end justify-between border-b border-line pb-4 mb-8">
+        <div>
+          <div class="text-[11px] font-bold tracking-[0.18em] text-ink-600 mb-1.5">COMPONENTS</div>
+          <h2 class="text-[26px] font-extrabold tracking-tight">카드</h2>
+        </div>
+      </div>
+
+      <!-- sermon list item + series card row -->
+      <div class="grid md:grid-cols-2 gap-12">
+        <div>
+          <div class="text-[13px] font-bold mb-4">설교 리스트 아이템</div>
+          <div class="border border-line rounded-2xl overflow-hidden divide-y divide-line">
+            <a href="#" class="flex gap-4 p-4 hover:bg-paper">
+              <div class="relative w-28 h-20 shrink-0 rounded-lg overflow-hidden bg-ink-900">
+                <img src="https://images.unsplash.com/photo-1507692049790-de58290a4334?auto=format&fit=crop&w=300&q=70" class="w-full h-full object-cover opacity-70" alt="" />
+                <div class="absolute inset-0 grid place-items-center"><svg viewBox="0 0 24 24" class="w-5 h-5 text-white" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div>
+              </div>
+              <div class="min-w-0 flex-1">
+                <div class="text-[11px] font-bold text-brand-600 mb-0.5">주일예배</div>
+                <div class="text-[13.5px] font-semibold leading-snug">머무름의 영성을 세우기로</div>
+                <div class="mt-2 text-[11px] text-ink-600">정한결 목사 · 2026.04.26</div>
+              </div>
+            </a>
+            <a href="#" class="flex gap-4 p-4 hover:bg-paper">
+              <div class="relative w-28 h-20 shrink-0 rounded-lg overflow-hidden bg-ink-900">
+                <img src="https://images.unsplash.com/photo-1466442929976-97f336a657be?auto=format&fit=crop&w=300&q=70" class="w-full h-full object-cover opacity-70" alt="" />
+                <div class="absolute inset-0 grid place-items-center"><svg viewBox="0 0 24 24" class="w-5 h-5 text-white" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div>
+              </div>
+              <div class="min-w-0 flex-1">
+                <div class="text-[11px] font-bold text-emerald-600 mb-0.5">수요예배</div>
+                <div class="text-[13.5px] font-semibold leading-snug">기다림 속에서 발견한 이름</div>
+                <div class="mt-2 text-[11px] text-ink-600">김다온 부목사 · 2026.04.23</div>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <div>
+          <div class="text-[13px] font-bold mb-4">시리즈 카드 (3:4)</div>
+          <div class="grid grid-cols-2 gap-4 max-w-[360px]">
+            <a href="#" class="group">
+              <div class="relative aspect-[3/4] rounded-xl overflow-hidden bg-ink-900">
+                <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=400&q=80" class="w-full h-full object-cover opacity-70 group-hover:opacity-100 group-hover:scale-105 transition duration-500" alt="" />
+                <div class="absolute inset-0 bg-gradient-to-t from-ink-900/85 to-transparent"></div>
+                <div class="absolute top-3 left-3 text-[10px] font-bold text-white/80 tracking-widest">주일예배</div>
+                <div class="absolute bottom-3 left-3 right-3 text-white text-[14px] font-extrabold leading-snug">평안의 골짜기</div>
+              </div>
+              <div class="mt-2.5 text-[11px] text-ink-600">2026.01 — 02</div>
+            </a>
+            <a href="#" class="group">
+              <div class="relative aspect-[3/4] rounded-xl overflow-hidden bg-ink-800">
+                <img src="https://images.unsplash.com/photo-1473177104440-ffee2f376098?auto=format&fit=crop&w=400&q=80" class="w-full h-full object-cover opacity-70 group-hover:opacity-100 group-hover:scale-105 transition duration-500" alt="" />
+                <div class="absolute inset-0 bg-gradient-to-t from-ink-900/85 to-transparent"></div>
+                <div class="absolute top-3 left-3 text-[10px] font-bold text-white/80 tracking-widest">수요예배</div>
+                <div class="absolute bottom-3 left-3 right-3 text-white text-[14px] font-extrabold leading-snug">다윗 이야기</div>
+              </div>
+              <div class="mt-2.5 text-[11px] text-ink-600">2026.01 — 02</div>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- icon feature card -->
+      <div class="mt-12">
+        <div class="text-[13px] font-bold mb-4">아이콘 피처 카드</div>
+        <div class="grid md:grid-cols-2 gap-3 max-w-[820px]">
+          <a href="#" class="group bg-white rounded-2xl p-8 flex items-start gap-6 hover:-translate-y-0.5 transition news-card-shadow border border-line">
+            <span class="shrink-0 w-14 h-14 rounded-2xl bg-brand-500/10 grid place-items-center text-brand-600"><svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 21s-7-4.5-7-10a4 4 0 0 1 7-2.5A4 4 0 0 1 19 11c0 5.5-7 10-7 10z"/></svg></span>
+            <div class="flex-1">
+              <div class="flex items-center gap-3 mb-2"><h3 class="text-[20px] font-extrabold tracking-tight">온라인 헌금</h3><svg class="w-4 h-4 text-ink-600 group-hover:translate-x-1 transition" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></div>
+              <p class="text-ink-600 text-[13.5px] leading-relaxed">모바일과 PC에서 간편하게 드릴 수 있도록 도와드립니다.</p>
+            </div>
+          </a>
+          <a href="#" class="group bg-white rounded-2xl p-8 flex items-start gap-6 hover:-translate-y-0.5 transition news-card-shadow border border-line">
+            <span class="shrink-0 w-14 h-14 rounded-2xl bg-emerald-500/10 grid place-items-center text-emerald-600"><svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15a4 4 0 0 1-4 4H7l-4 4V5a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4z"/><path d="M8 9h8M8 13h5"/></svg></span>
+            <div class="flex-1">
+              <div class="flex items-center gap-3 mb-2"><h3 class="text-[20px] font-extrabold tracking-tight">문의하기</h3><svg class="w-4 h-4 text-ink-600 group-hover:translate-x-1 transition" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></div>
+              <p class="text-ink-600 text-[13.5px] leading-relaxed">평일 9시–18시, 친절한 사역자가 빠르게 답변드립니다.</p>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <!-- profile / person cards -->
+      <div class="mt-12">
+        <div class="text-[13px] font-bold mb-4">사역자 프로필 카드</div>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-[820px]">
+          <div class="text-center bg-white border border-line rounded-2xl p-6 hover:border-ink-900/30 transition">
+            <div class="w-20 h-20 mx-auto rounded-full overflow-hidden bg-paper ring-1 ring-line"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80" class="w-full h-full object-cover" alt="" /></div>
+            <div class="mt-4 text-[15px] font-extrabold tracking-tight">정한결</div>
+            <div class="text-[12px] text-brand-600 font-semibold mt-0.5">담임목사</div>
+            <p class="mt-2.5 text-[11.5px] text-ink-600 leading-relaxed">말씀과 기도로 공동체를 섬깁니다.</p>
+          </div>
+          <div class="text-center bg-white border border-line rounded-2xl p-6 hover:border-ink-900/30 transition">
+            <div class="w-20 h-20 mx-auto rounded-full overflow-hidden bg-paper ring-1 ring-line"><img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=200&q=80" class="w-full h-full object-cover" alt="" /></div>
+            <div class="mt-4 text-[15px] font-extrabold tracking-tight">김다온</div>
+            <div class="text-[12px] text-brand-600 font-semibold mt-0.5">교육부 부목사</div>
+            <p class="mt-2.5 text-[11.5px] text-ink-600 leading-relaxed">다음 세대와 함께 자랍니다.</p>
+          </div>
+          <div class="text-center bg-white border border-line rounded-2xl p-6 hover:border-ink-900/30 transition">
+            <div class="w-20 h-20 mx-auto rounded-full overflow-hidden bg-paper ring-1 ring-line"><img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=200&q=80" class="w-full h-full object-cover" alt="" /></div>
+            <div class="mt-4 text-[15px] font-extrabold tracking-tight">이성결</div>
+            <div class="text-[12px] text-brand-600 font-semibold mt-0.5">찬양 전도사</div>
+            <p class="mt-2.5 text-[11.5px] text-ink-600 leading-relaxed">예배를 음악으로 섬깁니다.</p>
+          </div>
+          <div class="text-center bg-white border border-line rounded-2xl p-6 hover:border-ink-900/30 transition">
+            <div class="w-20 h-20 mx-auto rounded-full overflow-hidden bg-paper ring-1 ring-line"><img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=200&q=80" class="w-full h-full object-cover" alt="" /></div>
+            <div class="mt-4 text-[15px] font-extrabold tracking-tight">박소망</div>
+            <div class="text-[12px] text-brand-600 font-semibold mt-0.5">행정 간사</div>
+            <p class="mt-2.5 text-[11.5px] text-ink-600 leading-relaxed">교회 살림을 돌봅니다.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- stat / metric cards -->
+      <div class="mt-12">
+        <div class="text-[13px] font-bold mb-4">통계 · 지표 카드</div>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-3 max-w-[820px]">
+          <div class="bg-white border border-line rounded-2xl p-6">
+            <div class="flex items-center justify-between">
+              <span class="w-10 h-10 rounded-xl bg-brand-500/10 grid place-items-center text-brand-600"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.5-6 8-6s8 2 8 6"/></svg></span>
+              <span class="text-[11px] font-bold text-emerald-600 inline-flex items-center gap-0.5"><svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 15l7-7 7 7"/></svg>8%</span>
+            </div>
+            <div class="mt-4 text-[30px] font-extrabold tracking-tight leading-none">1,240<span class="text-[15px] text-ink-600 font-bold ml-1">명</span></div>
+            <div class="mt-1.5 text-[12px] text-ink-600">출석 성도</div>
+          </div>
+          <div class="bg-white border border-line rounded-2xl p-6">
+            <div class="flex items-center justify-between">
+              <span class="w-10 h-10 rounded-xl bg-emerald-500/10 grid place-items-center text-emerald-600"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M21 15a4 4 0 0 1-4 4H7l-4 4V5a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4z"/></svg></span>
+            </div>
+            <div class="mt-4 text-[30px] font-extrabold tracking-tight leading-none">52<span class="text-[15px] text-ink-600 font-bold ml-1">개</span></div>
+            <div class="mt-1.5 text-[12px] text-ink-600">활동 목장</div>
+          </div>
+          <div class="bg-white border border-line rounded-2xl p-6">
+            <div class="flex items-center justify-between">
+              <span class="w-10 h-10 rounded-xl bg-amber-500/10 grid place-items-center text-amber-600"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></span>
+            </div>
+            <div class="mt-4 text-[30px] font-extrabold tracking-tight leading-none">14<span class="text-[15px] text-ink-600 font-bold ml-1">회</span></div>
+            <div class="mt-1.5 text-[12px] text-ink-600">이달의 모임</div>
+          </div>
+          <div class="bg-ink-900 text-white rounded-2xl p-6">
+            <div class="flex items-center justify-between">
+              <span class="w-10 h-10 rounded-xl bg-white/10 grid place-items-center"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 21s-7-4.5-7-10a4 4 0 0 1 7-2.5A4 4 0 0 1 19 11c0 5.5-7 10-7 10z"/></svg></span>
+            </div>
+            <div class="mt-4 text-[30px] font-extrabold tracking-tight leading-none">53<span class="text-[15px] text-white/60 font-bold ml-1">년</span></div>
+            <div class="mt-1.5 text-[12px] text-white/60">교회 역사</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- event / date-block cards -->
+      <div class="mt-12">
+        <div class="text-[13px] font-bold mb-4">행사 · 날짜 블록 카드</div>
+        <div class="grid md:grid-cols-2 gap-3 max-w-[820px]">
+          <a href="#" class="group bg-white border border-line rounded-2xl p-5 flex gap-5 items-center hover:border-ink-900/30 transition">
+            <div class="shrink-0 w-16 text-center rounded-xl border border-line overflow-hidden">
+              <div class="bg-accent-red text-white text-[10px] font-bold py-1 tracking-wide">5월</div>
+              <div class="py-2"><div class="text-[24px] font-extrabold leading-none">05</div><div class="text-[10px] text-ink-600 mt-0.5">일 · 주일</div></div>
+            </div>
+            <div class="flex-1 min-w-0">
+              <div class="text-[11px] font-bold text-brand-600 mb-1">전교인 행사</div>
+              <div class="text-[15px] font-extrabold tracking-tight leading-snug">어린이주일 연합예배</div>
+              <div class="mt-1.5 text-[12px] text-ink-600 flex items-center gap-1.5"><svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>오전 11:00 · 본당</div>
+            </div>
+            <svg class="w-4 h-4 text-ink-600 group-hover:translate-x-1 transition" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M9 6l6 6-6 6"/></svg>
+          </a>
+          <a href="#" class="group bg-white border border-line rounded-2xl p-5 flex gap-5 items-center hover:border-ink-900/30 transition">
+            <div class="shrink-0 w-16 text-center rounded-xl border border-line overflow-hidden">
+              <div class="bg-ink-900 text-white text-[10px] font-bold py-1 tracking-wide">5월</div>
+              <div class="py-2"><div class="text-[24px] font-extrabold leading-none">17</div><div class="text-[10px] text-ink-600 mt-0.5">토 · 수련</div></div>
+            </div>
+            <div class="flex-1 min-w-0">
+              <div class="text-[11px] font-bold text-emerald-600 mb-1">청년부</div>
+              <div class="text-[15px] font-extrabold tracking-tight leading-snug">봄 수련회 · 머무름</div>
+              <div class="mt-1.5 text-[12px] text-ink-600 flex items-center gap-1.5"><svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-4.5-7-10a7 7 0 0 1 14 0c0 5.5-7 10-7 10z"/><circle cx="12" cy="11" r="2.5"/></svg>가평 수양관</div>
+            </div>
+            <svg class="w-4 h-4 text-ink-600 group-hover:translate-x-1 transition" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M9 6l6 6-6 6"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- quote / testimony card -->
+      <div class="mt-12">
+        <div class="text-[13px] font-bold mb-4">간증 · 인용 카드</div>
+        <div class="grid md:grid-cols-2 gap-3 max-w-[820px]">
+          <figure class="bg-paper rounded-2xl p-7">
+            <svg class="w-8 h-8 text-brand-500/30" viewBox="0 0 24 24" fill="currentColor"><path d="M9.5 7C6 7 4 9.6 4 13v4h6v-6H7c0-2 .9-3 2.5-3zm10 0C16 7 14 9.6 14 13v4h6v-6h-3c0-2 .9-3 2.5-3z"/></svg>
+            <blockquote class="mt-3 text-[15px] leading-relaxed font-medium text-ink-800">가장 힘들 때 목장 식구들이 곁을 지켜 주었습니다. 혼자가 아니라는 사실이 가장 큰 위로였어요.</blockquote>
+            <figcaption class="mt-5 flex items-center gap-3">
+              <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=120&q=80" class="w-9 h-9 rounded-full object-cover" alt="" />
+              <div><div class="text-[13px] font-bold">한지선 집사</div><div class="text-[11px] text-ink-600">3목장 · 2026 새가족</div></div>
+            </figcaption>
+          </figure>
+          <figure class="bg-ink-900 text-white rounded-2xl p-7">
+            <svg class="w-8 h-8 text-white/25" viewBox="0 0 24 24" fill="currentColor"><path d="M9.5 7C6 7 4 9.6 4 13v4h6v-6H7c0-2 .9-3 2.5-3zm10 0C16 7 14 9.6 14 13v4h6v-6h-3c0-2 .9-3 2.5-3z"/></svg>
+            <blockquote class="mt-3 text-[15px] leading-relaxed font-medium">새벽예배에 나오기 시작하면서 하루가 달라졌습니다. 말씀으로 여는 아침이 삶을 붙들어 줍니다.</blockquote>
+            <figcaption class="mt-5 flex items-center gap-3">
+              <img src="https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?auto=format&fit=crop&w=120&q=80" class="w-9 h-9 rounded-full object-cover" alt="" />
+              <div><div class="text-[13px] font-bold">조은혜 권사</div><div class="text-[11px] text-white/55">새벽기도 12년</div></div>
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+
+      <!-- full overlay featured card + CTA banner -->
+      <div class="mt-12">
+        <div class="text-[13px] font-bold mb-4">대표 이미지 카드 · CTA 배너</div>
+        <div class="grid md:grid-cols-5 gap-3 max-w-[820px]">
+          <a href="#" class="group md:col-span-3 relative rounded-2xl overflow-hidden min-h-[240px] flex flex-col justify-end">
+            <img src="https://images.unsplash.com/photo-1438232992991-995b7058bbb3?auto=format&fit=crop&w=900&q=80" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition duration-700" alt="" />
+            <div class="absolute inset-0 bg-gradient-to-t from-ink-900/90 via-ink-900/30 to-transparent"></div>
+            <div class="relative p-7 text-white">
+              <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/15 backdrop-blur text-[11px] font-bold mb-3"><span class="w-1.5 h-1.5 rounded-full bg-accent-red animate-pulse"></span>이번 주 설교</span>
+              <h3 class="text-[24px] font-extrabold tracking-tight leading-tight">머무름의 영성을 세우기로</h3>
+              <p class="mt-2 text-white/75 text-[13px]">정한결 목사 · 시편 23편 · 2026.04.26</p>
+            </div>
+          </a>
+          <div class="md:col-span-2 bg-brand-600 text-white rounded-2xl p-7 flex flex-col justify-between min-h-[240px]">
+            <div>
+              <span class="w-11 h-11 rounded-xl bg-white/15 grid place-items-center"><svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21s-7-4.5-7-10a4 4 0 0 1 7-2.5A4 4 0 0 1 19 11c0 5.5-7 10-7 10z"/></svg></span>
+              <h3 class="mt-5 text-[22px] font-extrabold tracking-tight leading-tight">함께 드리는<br/>온라인 헌금</h3>
+              <p class="mt-2 text-white/80 text-[13px] leading-relaxed">언제 어디서나 마음을 담아 드릴 수 있습니다.</p>
+            </div>
+            <button class="mt-6 inline-flex items-center justify-center gap-1.5 bg-white text-brand-700 font-bold text-[13.5px] h-11 rounded-full hover:bg-white/90 transition">헌금 드리기 <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 5l7 7-7 7"/></svg></button>
+          </div>
+        </div>
+      </div>
+
+      <!-- notice / list card -->
+      <div class="mt-12">
+        <div class="text-[13px] font-bold mb-4">공지 카드</div>
+        <div class="bg-white border border-line rounded-2xl overflow-hidden max-w-[820px]">
+          <div class="flex items-center justify-between px-6 py-4 border-b border-line">
+            <h3 class="text-[15px] font-extrabold tracking-tight">교회 소식</h3>
+            <a href="#" class="text-[12px] font-semibold text-ink-600 hover:text-ink-900">전체보기 →</a>
+          </div>
+          <ul class="divide-y divide-line">
+            <li><a href="#" class="flex items-center gap-4 px-6 py-3.5 hover:bg-paper"><span class="px-2 py-1 rounded-md bg-accent-red/10 text-accent-red text-[10px] font-bold shrink-0">필독</span><span class="flex-1 text-[13.5px] font-medium truncate">2026년 상반기 제직 세미나 신청 안내</span><span class="text-[11px] text-ink-600 shrink-0">04.28</span></a></li>
+            <li><a href="#" class="flex items-center gap-4 px-6 py-3.5 hover:bg-paper"><span class="px-2 py-1 rounded-md bg-brand-500/10 text-brand-600 text-[10px] font-bold shrink-0">행사</span><span class="flex-1 text-[13.5px] font-medium truncate">어린이주일 연합예배 및 축복기도</span><span class="text-[11px] text-ink-600 shrink-0">04.25</span></a></li>
+            <li><a href="#" class="flex items-center gap-4 px-6 py-3.5 hover:bg-paper"><span class="px-2 py-1 rounded-md bg-paper text-ink-600 text-[10px] font-bold shrink-0">일반</span><span class="flex-1 text-[13.5px] font-medium truncate">주차장 보수 공사에 따른 양해 부탁</span><span class="text-[11px] text-ink-600 shrink-0">04.22</span></a></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================== VALUE CIRCLES -->
+    <section id="value-circles" class="scroll-mt-24">
+      <div class="flex items-end justify-between border-b border-line pb-4 mb-8">
+        <div>
+          <div class="text-[11px] font-bold tracking-[0.18em] text-ink-600 mb-1.5">COMPONENTS</div>
+          <h2 class="text-[26px] font-extrabold tracking-tight">원형 가치 블록</h2>
+        </div>
+        <p class="text-[13px] text-ink-600 hidden md:block max-w-[300px] text-right">겹친 원으로 핵심 가치·강점 3종을 표현하는 섹션 블록</p>
+      </div>
+
+      <!-- V1 · 가로 겹침 · 컬러 강조 -->
+      <div class="text-[13px] font-bold mb-5">A · 가로 겹침 · 컬러 강조</div>
+      <div class="bg-paper rounded-2xl border border-line py-12 mb-10 grid place-items-center">
+        <div class="flex flex-col md:flex-row items-center justify-center md:-space-x-12 -space-y-12 md:space-y-0">
+          <div class="relative z-10 w-[240px] h-[240px] rounded-full bg-white border border-line flex flex-col items-center justify-center text-center px-9">
+            <span class="w-11 h-11 rounded-full bg-ink-900 grid place-items-center text-white"><svg class="w-[20px] h-[20px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.07-2.14-.22-4.05 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.15.43-2.29 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg></span>
+            <div class="mt-4 text-[10px] font-bold tracking-[0.18em] text-ink-600">01 · WORSHIP</div>
+            <h3 class="mt-1 text-[21px] font-extrabold tracking-tight">예배</h3>
+            <p class="mt-1.5 text-ink-600 text-[12px] leading-relaxed">삶의 중심에 예배를 둡니다.</p>
+          </div>
+          <div class="relative z-20 w-[260px] h-[260px] rounded-full bg-brand-600 text-white flex flex-col items-center justify-center text-center px-9 shadow-[0_30px_60px_-24px_rgba(42,79,214,0.6)]">
+            <span class="w-11 h-11 rounded-full bg-white/95 grid place-items-center text-brand-600"><svg class="w-[20px] h-[20px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>
+            <div class="mt-4 text-[10px] font-bold tracking-[0.18em] text-white/70">02 · COMMUNITY</div>
+            <h3 class="mt-1 text-[23px] font-extrabold tracking-tight">공동체</h3>
+            <p class="mt-1.5 text-white/80 text-[12px] leading-relaxed">서로의 삶을 나눕니다.</p>
+          </div>
+          <div class="relative z-10 w-[240px] h-[240px] rounded-full bg-ink-900 text-white flex flex-col items-center justify-center text-center px-9">
+            <span class="w-11 h-11 rounded-full bg-white/10 grid place-items-center text-white"><svg class="w-[20px] h-[20px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></span>
+            <div class="mt-4 text-[10px] font-bold tracking-[0.18em] text-white/55">03 · MISSION</div>
+            <h3 class="mt-1 text-[21px] font-extrabold tracking-tight">섬김</h3>
+            <p class="mt-1.5 text-white/65 text-[12px] leading-relaxed">은혜를 열방으로 흘려보냅니다.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- V2 · 고스트 아웃라인 -->
+      <div class="text-[13px] font-bold mb-5">B · 고스트 아웃라인</div>
+      <div class="bg-white rounded-2xl border border-line py-12 mb-10 grid place-items-center">
+        <div class="flex flex-col md:flex-row items-center justify-center md:-space-x-14 -space-y-14 md:space-y-0">
+          <div class="relative z-10 w-[250px] h-[250px] rounded-full bg-paper flex flex-col items-center justify-center text-center px-10">
+            <span class="w-11 h-11 rounded-full bg-ink-900/[0.06] grid place-items-center text-ink-900"><svg class="w-[20px] h-[20px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.07-2.14-.22-4.05 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.15.43-2.29 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg></span>
+            <div class="mt-4 text-[10px] font-bold tracking-[0.18em] text-ink-600">01 · WORSHIP</div>
+            <h3 class="mt-1 text-[21px] font-extrabold tracking-tight">예배</h3>
+            <p class="mt-1.5 text-ink-600 text-[12px] leading-relaxed">삶의 중심에 예배를 둡니다.</p>
+          </div>
+          <div class="relative z-30 w-[250px] h-[250px] rounded-full bg-brand-600 text-white flex flex-col items-center justify-center text-center px-10 shadow-[0_30px_60px_-24px_rgba(42,79,214,0.6)]">
+            <span class="w-11 h-11 rounded-full bg-white grid place-items-center text-brand-600"><svg class="w-[20px] h-[20px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>
+            <div class="mt-4 text-[10px] font-bold tracking-[0.18em] text-white/70">02 · COMMUNITY</div>
+            <h3 class="mt-1 text-[23px] font-extrabold tracking-tight">공동체</h3>
+            <p class="mt-1.5 text-white/80 text-[12px] leading-relaxed">서로의 삶을 나눕니다.</p>
+          </div>
+          <div class="relative z-20 w-[250px] h-[250px] rounded-full bg-white border border-brand-500 flex flex-col items-center justify-center text-center px-10">
+            <span class="w-11 h-11 rounded-full border border-brand-500 grid place-items-center text-brand-600"><svg class="w-[20px] h-[20px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></span>
+            <div class="mt-4 text-[10px] font-bold tracking-[0.18em] text-ink-600">03 · MISSION</div>
+            <h3 class="mt-1 text-[21px] font-extrabold tracking-tight">섬김</h3>
+            <p class="mt-1.5 text-ink-600 text-[12px] leading-relaxed">은혜를 열방으로 흘려보냅니다.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- V3 · 삼각 클러스터 -->
+      <div class="text-[13px] font-bold mb-5">C · 삼각 클러스터</div>
+      <div class="bg-paper rounded-2xl border border-line py-12 mb-10 overflow-x-auto">
+        <div class="relative mx-auto w-[500px] h-[430px]">
+          <div class="absolute top-[12px] left-[40px] z-10 w-[230px] h-[230px] rounded-full bg-white border border-line flex flex-col items-center justify-center text-center px-8">
+            <span class="w-10 h-10 rounded-full bg-ink-900 grid place-items-center text-white"><svg class="w-[18px] h-[18px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.07-2.14-.22-4.05 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.15.43-2.29 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg></span>
+            <div class="mt-3 text-[10px] font-bold tracking-[0.18em] text-ink-600">01 · WORSHIP</div>
+            <h3 class="mt-1 text-[20px] font-extrabold tracking-tight">예배</h3>
+            <p class="mt-1 text-ink-600 text-[11.5px] leading-relaxed">삶의 중심에<br/>예배를 둡니다.</p>
+          </div>
+          <div class="absolute top-[12px] left-[230px] z-10 w-[230px] h-[230px] rounded-full bg-ink-900 text-white flex flex-col items-center justify-center text-center px-8">
+            <span class="w-10 h-10 rounded-full bg-white/10 grid place-items-center text-white"><svg class="w-[18px] h-[18px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></span>
+            <div class="mt-3 text-[10px] font-bold tracking-[0.18em] text-white/55">03 · MISSION</div>
+            <h3 class="mt-1 text-[20px] font-extrabold tracking-tight">섬김</h3>
+            <p class="mt-1 text-white/65 text-[11.5px] leading-relaxed">은혜를 이웃과<br/>열방으로.</p>
+          </div>
+          <div class="absolute top-[180px] left-[135px] z-20 w-[230px] h-[230px] rounded-full bg-brand-600 text-white flex flex-col items-center justify-center text-center px-8 shadow-[0_30px_60px_-24px_rgba(42,79,214,0.6)]">
+            <span class="w-10 h-10 rounded-full bg-white grid place-items-center text-brand-600"><svg class="w-[18px] h-[18px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>
+            <div class="mt-3 text-[10px] font-bold tracking-[0.18em] text-white/70">02 · COMMUNITY</div>
+            <h3 class="mt-1 text-[21px] font-extrabold tracking-tight">공동체</h3>
+            <p class="mt-1 text-white/80 text-[11.5px] leading-relaxed">목장과 소그룹으로<br/>삶을 나눕니다.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- V4 · 모노톤 미니멀 -->
+      <div class="text-[13px] font-bold mb-5">D · 모노톤 미니멀</div>
+      <div class="bg-white rounded-2xl border border-line py-12 grid place-items-center">
+        <div class="flex flex-col md:flex-row items-center justify-center md:-space-x-10 -space-y-10 md:space-y-0">
+          <div class="relative z-10 w-[240px] h-[240px] rounded-full bg-white border border-line flex flex-col items-center justify-center text-center px-9">
+            <span class="w-11 h-11 rounded-full bg-paper grid place-items-center text-ink-700"><svg class="w-[20px] h-[20px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.07-2.14-.22-4.05 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.15.43-2.29 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg></span>
+            <div class="mt-4 text-[10px] font-bold tracking-[0.18em] text-ink-600">01 · WORSHIP</div>
+            <h3 class="mt-1 text-[21px] font-extrabold tracking-tight">예배</h3>
+            <p class="mt-1.5 text-ink-600 text-[12px] leading-relaxed">삶의 중심에 예배를 둡니다.</p>
+          </div>
+          <div class="relative z-20 w-[240px] h-[240px] rounded-full bg-ink-900 text-white flex flex-col items-center justify-center text-center px-9">
+            <span class="w-11 h-11 rounded-full bg-brand-600 grid place-items-center text-white"><svg class="w-[20px] h-[20px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>
+            <div class="mt-4 text-[10px] font-bold tracking-[0.18em] text-white/55">02 · COMMUNITY</div>
+            <h3 class="mt-1 text-[22px] font-extrabold tracking-tight">공동체</h3>
+            <p class="mt-1.5 text-white/65 text-[12px] leading-relaxed">서로의 삶을 나눕니다.</p>
+          </div>
+          <div class="relative z-10 w-[240px] h-[240px] rounded-full bg-paper border border-line flex flex-col items-center justify-center text-center px-9">
+            <span class="w-11 h-11 rounded-full bg-white grid place-items-center text-ink-700"><svg class="w-[20px] h-[20px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></span>
+            <div class="mt-4 text-[10px] font-bold tracking-[0.18em] text-ink-600">03 · MISSION</div>
+            <h3 class="mt-1 text-[21px] font-extrabold tracking-tight">섬김</h3>
+            <p class="mt-1.5 text-ink-600 text-[12px] leading-relaxed">은혜를 열방으로 흘려보냅니다.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================== ORBIT / HUB -->
+    <section id="orbit" class="scroll-mt-24">
+      <div class="flex items-end justify-between border-b border-line pb-4 mb-8">
+        <div>
+          <div class="text-[11px] font-bold tracking-[0.18em] text-ink-600 mb-1.5">COMPONENTS</div>
+          <h2 class="text-[26px] font-extrabold tracking-tight">오비트 · 허브</h2>
+        </div>
+        <p class="text-[13px] text-ink-600 hidden md:block max-w-[320px] text-right">중앙 로고를 둘러싼 채널·사역 아이콘 · 일부는 궤도를 따라 회전</p>
+      </div>
+
+      <!-- A · 정적 오비트 -->
+      <div class="text-[13px] font-bold mb-5">A · 정적 허브 &amp; 스포크</div>
+      <div class="bg-paper rounded-2xl border border-line py-10 mb-10 grid place-items-center overflow-hidden">
+        <div class="relative w-[460px] h-[460px] shrink-0">
+          <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[420px] h-[420px] rounded-full border border-line"></div>
+          <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[290px] h-[290px] rounded-full border border-line"></div>
+          <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[180px] h-[180px] rounded-full bg-white shadow-[0_20px_50px_-20px_rgba(14,19,32,0.3)] grid place-items-center">
+            <img src="assets/logo.png" alt="" class="w-14 h-14 object-contain" />
+          </div>
+          <!-- tiles at 60° steps -->
+          <div class="absolute" style="left:50%;top:8%;transform:translate(-50%,-50%)"><div class="w-16 h-16 rounded-2xl bg-white border border-line shadow-[0_12px_30px_-12px_rgba(14,19,32,0.28)] grid place-items-center text-brand-600"><svg class="w-7 h-7" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div></div>
+          <div class="absolute" style="left:86.5%;top:29%;transform:translate(-50%,-50%)"><div class="w-16 h-16 rounded-2xl bg-white border border-line shadow-[0_12px_30px_-12px_rgba(14,19,32,0.28)] grid place-items-center text-sky-600"><svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></div></div>
+          <div class="absolute" style="left:86.5%;top:71%;transform:translate(-50%,-50%)"><div class="w-16 h-16 rounded-2xl bg-white border border-line shadow-[0_12px_30px_-12px_rgba(14,19,32,0.28)] grid place-items-center text-rose-600"><svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div></div>
+          <div class="absolute" style="left:50%;top:92%;transform:translate(-50%,-50%)"><div class="w-16 h-16 rounded-2xl bg-white border border-line shadow-[0_12px_30px_-12px_rgba(14,19,32,0.28)] grid place-items-center text-emerald-600"><svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div></div>
+          <div class="absolute" style="left:13.5%;top:71%;transform:translate(-50%,-50%)"><div class="w-16 h-16 rounded-2xl bg-white border border-line shadow-[0_12px_30px_-12px_rgba(14,19,32,0.28)] grid place-items-center text-amber-600"><svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg></div></div>
+          <div class="absolute" style="left:13.5%;top:29%;transform:translate(-50%,-50%)"><div class="w-16 h-16 rounded-2xl bg-white border border-line shadow-[0_12px_30px_-12px_rgba(14,19,32,0.28)] grid place-items-center text-violet-600"><svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></div></div>
+        </div>
+      </div>
+
+      <!-- B · 회전 오비트 -->
+      <div class="text-[13px] font-bold mb-1.5">B · 회전 오비트 <span class="text-ink-600 font-medium">— 아이콘이 궤도를 따라 회전 (실제 브라우저에서 동작)</span></div>
+      <div class="bg-white rounded-2xl border border-line py-10 mb-10 grid place-items-center overflow-hidden">
+        <div class="relative w-[460px] h-[460px] shrink-0">
+          <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] rounded-full border border-dashed border-line"></div>
+          <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[260px] h-[260px] rounded-full border border-line"></div>
+          <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[170px] h-[170px] rounded-full bg-brand-600 text-white shadow-[0_24px_50px_-18px_rgba(42,79,214,0.7)] grid place-items-center">
+            <img src="assets/logo.png" alt="" class="w-12 h-12 object-contain brightness-0 invert" />
+          </div>
+          <div class="orb-track">
+            <div class="orb-spoke" style="--a:0deg"><div class="orb-tile-pos"><div class="orb-upright"><div class="orb-upright-spin"><div class="w-16 h-16 rounded-2xl bg-white border border-line shadow-[0_12px_30px_-12px_rgba(14,19,32,0.28)] grid place-items-center text-brand-600"><svg class="w-7 h-7" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div></div></div></div></div>
+            <div class="orb-spoke" style="--a:60deg"><div class="orb-tile-pos"><div class="orb-upright"><div class="orb-upright-spin"><div class="w-16 h-16 rounded-2xl bg-white border border-line shadow-[0_12px_30px_-12px_rgba(14,19,32,0.28)] grid place-items-center text-sky-600"><svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></div></div></div></div></div>
+            <div class="orb-spoke" style="--a:120deg"><div class="orb-tile-pos"><div class="orb-upright"><div class="orb-upright-spin"><div class="w-16 h-16 rounded-2xl bg-white border border-line shadow-[0_12px_30px_-12px_rgba(14,19,32,0.28)] grid place-items-center text-rose-600"><svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div></div></div></div></div>
+            <div class="orb-spoke" style="--a:180deg"><div class="orb-tile-pos"><div class="orb-upright"><div class="orb-upright-spin"><div class="w-16 h-16 rounded-2xl bg-white border border-line shadow-[0_12px_30px_-12px_rgba(14,19,32,0.28)] grid place-items-center text-emerald-600"><svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div></div></div></div></div>
+            <div class="orb-spoke" style="--a:240deg"><div class="orb-tile-pos"><div class="orb-upright"><div class="orb-upright-spin"><div class="w-16 h-16 rounded-2xl bg-white border border-line shadow-[0_12px_30px_-12px_rgba(14,19,32,0.28)] grid place-items-center text-amber-600"><svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg></div></div></div></div></div>
+            <div class="orb-spoke" style="--a:300deg"><div class="orb-tile-pos"><div class="orb-upright"><div class="orb-upright-spin"><div class="w-16 h-16 rounded-2xl bg-white border border-line shadow-[0_12px_30px_-12px_rgba(14,19,32,0.28)] grid place-items-center text-violet-600"><svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></div></div></div></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- C · 펄스 오비트 -->
+      <div class="text-[13px] font-bold mb-1.5">C · 펄스 오비트 <span class="text-ink-600 font-medium">— 중앙에서 신호가 퍼지는 펄스 링 + 4채널</span></div>
+      <div class="bg-ink-900 rounded-2xl py-10 grid place-items-center overflow-hidden">
+        <div class="relative w-[460px] h-[460px] shrink-0">
+          <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[360px] h-[360px] rounded-full border border-white/10"></div>
+          <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[240px] h-[240px] rounded-full border border-white/10"></div>
+          <!-- pulse rings -->
+          <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[360px] h-[360px]">
+            <div class="orb-pulse border border-brand-500/50" style="animation-delay:0s"></div>
+            <div class="orb-pulse border border-brand-500/50" style="animation-delay:1.2s"></div>
+            <div class="orb-pulse border border-brand-500/50" style="animation-delay:2.4s"></div>
+          </div>
+          <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[150px] h-[150px] rounded-full bg-white shadow-[0_24px_50px_-18px_rgba(0,0,0,0.6)] grid place-items-center">
+            <img src="assets/logo.png" alt="" class="w-12 h-12 object-contain" />
+          </div>
+          <!-- 4 channel tiles at N/E/S/W -->
+          <div class="absolute" style="left:50%;top:9%;transform:translate(-50%,-50%)"><div class="w-16 h-16 rounded-2xl bg-white shadow-[0_12px_30px_-10px_rgba(0,0,0,0.5)] grid place-items-center text-brand-600"><svg class="w-7 h-7" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div></div>
+          <div class="absolute" style="left:91%;top:50%;transform:translate(-50%,-50%)"><div class="w-16 h-16 rounded-2xl bg-white shadow-[0_12px_30px_-10px_rgba(0,0,0,0.5)] grid place-items-center text-sky-600"><svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></div></div>
+          <div class="absolute" style="left:50%;top:91%;transform:translate(-50%,-50%)"><div class="w-16 h-16 rounded-2xl bg-white shadow-[0_12px_30px_-10px_rgba(0,0,0,0.5)] grid place-items-center text-emerald-600"><svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div></div>
+          <div class="absolute" style="left:9%;top:50%;transform:translate(-50%,-50%)"><div class="w-16 h-16 rounded-2xl bg-white shadow-[0_12px_30px_-10px_rgba(0,0,0,0.5)] grid place-items-center text-rose-600"><svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================== LISTS / SCHEDULE -->
+    <section id="lists" class="scroll-mt-24">
+      <div class="flex items-end justify-between border-b border-line pb-4 mb-8">
+        <div>
+          <div class="text-[11px] font-bold tracking-[0.18em] text-ink-600 mb-1.5">COMPONENTS</div>
+          <h2 class="text-[26px] font-extrabold tracking-tight">일정 그리드</h2>
+        </div>
+      </div>
+      <div class="border-t border-ink-900 grid grid-cols-2 md:grid-cols-4 gap-y-7 gap-x-6 pt-6 max-w-[820px]">
+        <div><div class="text-[11px] text-ink-600 mb-1">오전 6:00</div><div class="text-[14.5px] font-bold">매일기도회 (새벽)</div><div class="text-[12px] text-ink-600 mt-0.5">시 23:1편</div></div>
+        <div><div class="text-[11px] text-ink-600 mb-1">오전 9:30</div><div class="text-[14.5px] font-bold">매일기도회 (본당)</div><div class="text-[12px] text-ink-600 mt-0.5">시 24:1편</div></div>
+        <div><div class="text-[11px] text-ink-600 mb-1">오전 11:00</div><div class="text-[14.5px] font-bold">주일예배 (본당)</div><div class="text-[12px] text-ink-600 mt-0.5">시 23:8–10</div></div>
+        <div><div class="text-[11px] text-ink-600 mb-1">오후 5:00</div><div class="text-[14.5px] font-bold">청년예배</div><div class="text-[12px] text-ink-600 mt-0.5">대학·청년부</div></div>
+      </div>
+    </section>
+
+    <!-- ===================================================== FORMS -->
+    <section id="forms" class="scroll-mt-24">
+      <div class="flex items-end justify-between border-b border-line pb-4 mb-8">
+        <div>
+          <div class="text-[11px] font-bold tracking-[0.18em] text-ink-600 mb-1.5">FORMS & DATA</div>
+          <h2 class="text-[26px] font-extrabold tracking-tight">폼 · 입력</h2>
+        </div>
+        <p class="text-[13px] text-ink-600 hidden md:block">등록 · 신청 · 검색</p>
+      </div>
+
+      <!-- text fields + states -->
+      <div class="specrow mb-10">
+        <div class="text-[13px] font-bold pt-1">텍스트 필드 · 상태</div>
+        <div class="grid sm:grid-cols-2 gap-x-8 gap-y-5 max-w-[640px]">
+          <label class="block">
+            <span class="block text-[12.5px] font-semibold mb-1.5">이름</span>
+            <input type="text" placeholder="홍길동" class="w-full h-11 px-3.5 rounded-xl border border-line bg-white text-[14px] placeholder:text-ink-600/50 focus:outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20" />
+          </label>
+          <label class="block">
+            <span class="block text-[12.5px] font-semibold mb-1.5">연락처 <span class="text-brand-600">*</span></span>
+            <input type="text" value="010-1234-5678" class="w-full h-11 px-3.5 rounded-xl border border-brand-500 bg-white text-[14px] focus:outline-none ring-2 ring-brand-500/20" />
+          </label>
+          <label class="block">
+            <span class="block text-[12.5px] font-semibold mb-1.5">이메일</span>
+            <input type="text" value="wrong-email" class="w-full h-11 px-3.5 rounded-xl border border-accent-red bg-white text-[14px] focus:outline-none ring-2 ring-accent-red/15" />
+            <span class="mt-1.5 flex items-center gap-1 text-[11.5px] text-accent-red font-medium"><svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v4M12 16h.01"/></svg>올바른 이메일 형식이 아닙니다.</span>
+          </label>
+          <label class="block">
+            <span class="block text-[12.5px] font-semibold mb-1.5 text-ink-600/60">교적번호 (비활성)</span>
+            <input type="text" disabled placeholder="자동 발급" class="w-full h-11 px-3.5 rounded-xl border border-line bg-paper text-[14px] text-ink-600/50 cursor-not-allowed" />
+          </label>
+        </div>
+      </div>
+
+      <!-- textarea + select -->
+      <div class="specrow mb-10">
+        <div class="text-[13px] font-bold pt-1">텍스트영역 · 셀렉트</div>
+        <div class="grid sm:grid-cols-2 gap-x-8 gap-y-5 max-w-[640px]">
+          <label class="block">
+            <span class="block text-[12.5px] font-semibold mb-1.5">기도 제목</span>
+            <textarea rows="3" placeholder="나누고 싶은 기도 제목을 적어주세요." class="w-full px-3.5 py-2.5 rounded-xl border border-line bg-white text-[14px] leading-relaxed placeholder:text-ink-600/50 resize-none focus:outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20"></textarea>
+          </label>
+          <label class="block">
+            <span class="block text-[12.5px] font-semibold mb-1.5">등록 부서</span>
+            <div class="relative">
+              <select class="w-full h-11 pl-3.5 pr-10 rounded-xl border border-line bg-white text-[14px] appearance-none focus:outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20">
+                <option>장년부</option><option>청년부</option><option>학생부</option><option>유년부</option>
+              </select>
+              <svg class="w-4 h-4 absolute right-3.5 top-1/2 -translate-y-1/2 text-ink-600 pointer-events-none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+            </div>
+            <span class="block text-[11.5px] text-ink-600 mt-1.5">현재 출석 중인 부서를 선택하세요.</span>
+          </label>
+        </div>
+      </div>
+
+      <!-- checkbox / radio / toggle -->
+      <div class="specrow mb-10">
+        <div class="text-[13px] font-bold pt-1">체크 · 라디오 · 토글</div>
+        <div class="flex flex-col gap-6 max-w-[640px]">
+          <div class="flex flex-wrap gap-6">
+            <label class="inline-flex items-center gap-2.5 cursor-pointer select-none">
+              <input type="checkbox" checked class="peer sr-only" />
+              <span class="w-5 h-5 rounded-md border border-line grid place-items-center peer-checked:bg-brand-600 peer-checked:border-brand-600 transition"><svg class="w-3 h-3 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></span>
+              <span class="text-[13.5px]">개인정보 수집·이용 동의</span>
+            </label>
+            <label class="inline-flex items-center gap-2.5 cursor-pointer select-none">
+              <input type="checkbox" class="peer sr-only" />
+              <span class="w-5 h-5 rounded-md border border-line grid place-items-center peer-checked:bg-brand-600 peer-checked:border-brand-600 transition"><svg class="w-3 h-3 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></span>
+              <span class="text-[13.5px]">문자 알림 수신 동의</span>
+            </label>
+          </div>
+          <div class="flex flex-wrap gap-6">
+            <label class="inline-flex items-center gap-2.5 cursor-pointer select-none">
+              <input type="radio" name="lib-gender" checked class="peer sr-only" />
+              <span class="w-5 h-5 rounded-full border border-line grid place-items-center peer-checked:border-brand-600 peer-checked:border-[6px] transition"></span>
+              <span class="text-[13.5px]">형제</span>
+            </label>
+            <label class="inline-flex items-center gap-2.5 cursor-pointer select-none">
+              <input type="radio" name="lib-gender" class="peer sr-only" />
+              <span class="w-5 h-5 rounded-full border border-line grid place-items-center peer-checked:border-brand-600 peer-checked:border-[6px] transition"></span>
+              <span class="text-[13.5px]">자매</span>
+            </label>
+          </div>
+          <div class="flex flex-wrap items-center gap-8">
+            <label class="inline-flex items-center gap-3 cursor-pointer select-none">
+              <input type="checkbox" checked class="peer sr-only" />
+              <span class="w-11 h-6 rounded-full bg-line peer-checked:bg-brand-600 transition relative after:content-[''] after:absolute after:top-0.5 after:left-0.5 after:w-5 after:h-5 after:rounded-full after:bg-white after:shadow after:transition peer-checked:after:translate-x-5"></span>
+              <span class="text-[13.5px]">주보 메일 구독</span>
+            </label>
+            <label class="inline-flex items-center gap-3 cursor-pointer select-none">
+              <input type="checkbox" class="peer sr-only" />
+              <span class="w-11 h-6 rounded-full bg-line peer-checked:bg-brand-600 transition relative after:content-[''] after:absolute after:top-0.5 after:left-0.5 after:w-5 after:h-5 after:rounded-full after:bg-white after:shadow after:transition peer-checked:after:translate-x-5"></span>
+              <span class="text-[13.5px] text-ink-600">새벽기도 알림</span>
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <!-- search + inline form -->
+      <div class="specrow">
+        <div class="text-[13px] font-bold pt-1">검색 · 인라인 폼</div>
+        <div class="flex flex-col gap-4 max-w-[640px]">
+          <div class="relative">
+            <svg class="w-[18px] h-[18px] absolute left-3.5 top-1/2 -translate-y-1/2 text-ink-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+            <input type="text" placeholder="설교 · 성경 본문 검색" class="w-full h-11 pl-11 pr-4 rounded-full border border-line bg-white text-[14px] placeholder:text-ink-600/50 focus:outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20" />
+          </div>
+          <form class="flex gap-2" onsubmit="return false">
+            <input type="text" placeholder="이메일로 주보 받기" class="flex-1 h-11 px-3.5 rounded-xl border border-line bg-white text-[14px] placeholder:text-ink-600/50 focus:outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20" />
+            <button class="px-5 h-11 rounded-xl bg-ink-900 text-white text-[13.5px] font-semibold shrink-0">구독</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================== OVERLAY -->
+    <section id="overlay" class="scroll-mt-24">
+      <div class="flex items-end justify-between border-b border-line pb-4 mb-8">
+        <div>
+          <div class="text-[11px] font-bold tracking-[0.18em] text-ink-600 mb-1.5">FORMS & DATA</div>
+          <h2 class="text-[26px] font-extrabold tracking-tight">오버레이 · 모달</h2>
+        </div>
+      </div>
+
+      <!-- modal (live demo) -->
+      <div class="specrow mb-10">
+        <div class="text-[13px] font-bold pt-1">모달 · 다이얼로그</div>
+        <div>
+          <button onclick="document.getElementById('lib-modal').classList.remove('hidden')" class="px-5 h-11 rounded-full bg-brand-600 text-white text-[14px] font-semibold">모달 열기</button>
+          <!-- static preview of modal -->
+          <div class="mt-5 relative rounded-2xl border border-line bg-paper overflow-hidden p-8 grid place-items-center">
+            <div class="w-full max-w-[400px] bg-white rounded-2xl shadow-lg border border-line overflow-hidden">
+              <div class="px-6 pt-6 pb-5">
+                <div class="flex items-start justify-between">
+                  <div class="w-11 h-11 rounded-full bg-brand-500/10 grid place-items-center text-brand-600"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s-7-4.5-7-10a4 4 0 0 1 7-2.5A4 4 0 0 1 19 11c0 5.5-7 10-7 10z"/></svg></div>
+                  <button class="w-8 h-8 grid place-items-center rounded-full hover:bg-paper text-ink-600"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
+                </div>
+                <h3 class="mt-3 text-[18px] font-extrabold tracking-tight">새가족 등록을 완료할까요?</h3>
+                <p class="mt-1.5 text-[13px] text-ink-600 leading-relaxed">등록 후 담당 사역자가 3일 이내에 연락드립니다.</p>
+              </div>
+              <div class="px-6 py-4 bg-paper/60 flex justify-end gap-2">
+                <button class="px-4 h-10 rounded-full border border-line bg-white text-[13px] font-semibold hover:bg-paper">취소</button>
+                <button class="px-4 h-10 rounded-full bg-brand-600 text-white text-[13px] font-semibold">등록 완료</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- tooltip / popover -->
+      <div class="specrow mb-10">
+        <div class="text-[13px] font-bold pt-1">툴팁 · 팝오버</div>
+        <div class="flex flex-wrap items-start gap-12 pt-6">
+          <div class="relative inline-flex flex-col items-center">
+            <span class="px-3 py-1.5 rounded-lg bg-ink-900 text-white text-[12px] font-medium whitespace-nowrap">매주 일요일 오전 11시</span>
+            <span class="w-2 h-2 bg-ink-900 rotate-45 -mt-1"></span>
+            <button class="mt-1 px-4 h-9 rounded-full border border-line text-[13px] font-semibold hover:bg-paper">예배 시간 ?</button>
+          </div>
+          <div class="relative inline-block">
+            <button class="px-4 h-9 rounded-full border border-line text-[13px] font-semibold hover:bg-paper">계좌 정보 ▾</button>
+            <div class="absolute left-0 mt-2 w-60 bg-white rounded-xl border border-line shadow-lg p-4">
+              <div class="text-[11px] font-bold text-brand-600 mb-1">헌금 계좌</div>
+              <div class="text-[14px] font-bold">국민 123456-78-901234</div>
+              <div class="text-[12px] text-ink-600 mt-0.5">예금주 · 가평교회</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- drawer -->
+      <div class="specrow">
+        <div class="text-[13px] font-bold pt-1">드로어 (모바일 메뉴)</div>
+        <div class="relative rounded-2xl border border-line bg-paper overflow-hidden h-[300px] flex">
+          <div class="flex-1"></div>
+          <aside class="w-[260px] bg-white border-l border-line shadow-lg flex flex-col">
+            <div class="px-5 h-14 flex items-center justify-between border-b border-line">
+              <span class="font-extrabold text-[15px]">메뉴</span>
+              <button class="w-8 h-8 grid place-items-center rounded-full hover:bg-paper text-ink-600"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
+            </div>
+            <nav class="flex-1 py-2 text-[14px] font-semibold">
+              <a href="#" class="flex items-center justify-between px-5 py-3 text-brand-600 bg-brand-500/5">예배<svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M9 6l6 6-6 6"/></svg></a>
+              <a href="#" class="flex items-center justify-between px-5 py-3 hover:bg-paper">공동체<svg class="w-3.5 h-3.5 text-ink-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M9 6l6 6-6 6"/></svg></a>
+              <a href="#" class="flex items-center justify-between px-5 py-3 hover:bg-paper">양육<svg class="w-3.5 h-3.5 text-ink-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M9 6l6 6-6 6"/></svg></a>
+              <a href="#" class="flex items-center justify-between px-5 py-3 hover:bg-paper">미디어<svg class="w-3.5 h-3.5 text-ink-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M9 6l6 6-6 6"/></svg></a>
+            </nav>
+            <div class="p-4 border-t border-line">
+              <button class="w-full h-11 rounded-full bg-ink-900 text-white text-[13.5px] font-semibold">새가족 등록</button>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================== NAVIGATION -->
+    <section id="navigation" class="scroll-mt-24">
+      <div class="flex items-end justify-between border-b border-line pb-4 mb-8">
+        <div>
+          <div class="text-[11px] font-bold tracking-[0.18em] text-ink-600 mb-1.5">FORMS & DATA</div>
+          <h2 class="text-[26px] font-extrabold tracking-tight">페이지네이션 · 아코디언 · 탭 패널</h2>
+        </div>
+      </div>
+
+      <!-- pagination -->
+      <div class="specrow mb-10">
+        <div class="text-[13px] font-bold pt-1">페이지네이션</div>
+        <div class="flex flex-col gap-6">
+          <div class="flex items-center gap-1.5 text-[13.5px] font-semibold">
+            <button class="w-9 h-9 grid place-items-center rounded-lg border border-line text-ink-600 hover:bg-paper"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M15 6l-6 6 6 6"/></svg></button>
+            <button class="w-9 h-9 grid place-items-center rounded-lg bg-ink-900 text-white">1</button>
+            <button class="w-9 h-9 grid place-items-center rounded-lg border border-line hover:bg-paper">2</button>
+            <button class="w-9 h-9 grid place-items-center rounded-lg border border-line hover:bg-paper">3</button>
+            <span class="w-9 h-9 grid place-items-center text-ink-600">…</span>
+            <button class="w-9 h-9 grid place-items-center rounded-lg border border-line hover:bg-paper">12</button>
+            <button class="w-9 h-9 grid place-items-center rounded-lg border border-line hover:bg-paper"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M9 6l6 6-6 6"/></svg></button>
+          </div>
+          <button class="self-start inline-flex items-center gap-2 px-5 h-11 rounded-full border border-line text-[13.5px] font-semibold hover:bg-paper">더 보기 <span class="text-ink-600">(24 / 142)</span></button>
+        </div>
+      </div>
+
+      <!-- accordion (interactive) -->
+      <div class="specrow mb-10">
+        <div class="text-[13px] font-bold pt-1">아코디언 (FAQ)</div>
+        <div class="max-w-[640px] border border-line rounded-2xl overflow-hidden divide-y divide-line" id="lib-accordion">
+          <details class="group" open>
+            <summary class="flex items-center justify-between gap-4 px-5 py-4 cursor-pointer list-none hover:bg-paper">
+              <span class="text-[14.5px] font-semibold">처음 방문하는데 어떻게 해야 하나요?</span>
+              <svg class="w-4 h-4 text-ink-600 shrink-0 transition group-open:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+            </summary>
+            <div class="px-5 pb-5 text-[13.5px] text-ink-600 leading-relaxed">예배 30분 전 1층 새가족 안내데스크로 오시면 사역자가 자리 안내와 예배 순서를 도와드립니다.</div>
+          </details>
+          <details class="group">
+            <summary class="flex items-center justify-between gap-4 px-5 py-4 cursor-pointer list-none hover:bg-paper">
+              <span class="text-[14.5px] font-semibold">주차는 가능한가요?</span>
+              <svg class="w-4 h-4 text-ink-600 shrink-0 transition group-open:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+            </summary>
+            <div class="px-5 pb-5 text-[13.5px] text-ink-600 leading-relaxed">본당 지하 주차장과 인근 공영주차장을 무료로 이용하실 수 있습니다. 주일에는 셔틀버스도 운행합니다.</div>
+          </details>
+          <details class="group">
+            <summary class="flex items-center justify-between gap-4 px-5 py-4 cursor-pointer list-none hover:bg-paper">
+              <span class="text-[14.5px] font-semibold">자녀와 함께 예배드릴 수 있나요?</span>
+              <svg class="w-4 h-4 text-ink-600 shrink-0 transition group-open:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+            </summary>
+            <div class="px-5 pb-5 text-[13.5px] text-ink-600 leading-relaxed">연령별 교회학교(영아부~고등부)가 본당과 같은 시간에 운영되며, 부모 예배 중 안전하게 돌봐드립니다.</div>
+          </details>
+        </div>
+      </div>
+
+      <!-- tab panel (interactive) -->
+      <div class="specrow">
+        <div class="text-[13px] font-bold pt-1">탭 패널 (콘텐츠 전환)</div>
+        <div class="max-w-[640px]" id="lib-tabpanel">
+          <div class="flex items-center gap-6 border-b border-line text-[14px] font-semibold" role="tablist">
+            <button class="lib-tab relative py-3 text-brand-600" data-tab="0">예배 안내<span class="lib-ind absolute left-0 right-0 -bottom-px h-0.5 bg-brand-600"></span></button>
+            <button class="lib-tab relative py-3 text-ink-600 hover:text-ink-900" data-tab="1">오시는 길</button>
+            <button class="lib-tab relative py-3 text-ink-600 hover:text-ink-900" data-tab="2">주차</button>
+          </div>
+          <div class="pt-5 text-[13.5px] text-ink-600 leading-relaxed">
+            <div class="lib-panel" data-panel="0">주일예배는 1부 오전 9시, 2부 오전 11시에 본당에서 드립니다. 수요예배는 저녁 7시 30분입니다.</div>
+            <div class="lib-panel hidden" data-panel="1">지하철 1호선 가산디지털단지역 4번 출구에서 도보 5분 거리에 위치해 있습니다.</div>
+            <div class="lib-panel hidden" data-panel="2">본당 지하 1~3층 주차장을 무료로 운영하며, 주일 오전에는 인근 학교 운동장도 개방됩니다.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================== DATA -->
+    <section id="data" class="scroll-mt-24">
+      <div class="flex items-end justify-between border-b border-line pb-4 mb-8">
+        <div>
+          <div class="text-[11px] font-bold tracking-[0.18em] text-ink-600 mb-1.5">FORMS & DATA</div>
+          <h2 class="text-[26px] font-extrabold tracking-tight">테이블 · 아바타 · 타임라인</h2>
+        </div>
+      </div>
+
+      <!-- table -->
+      <div class="specrow mb-12">
+        <div class="text-[13px] font-bold pt-1">테이블 (예배 시간표)</div>
+        <div class="max-w-[680px] border border-line rounded-2xl overflow-hidden">
+          <table class="w-full text-[13.5px]">
+            <thead>
+              <tr class="bg-paper text-ink-600 text-[12px] font-semibold text-left">
+                <th class="px-5 py-3 font-semibold">예배</th>
+                <th class="px-5 py-3 font-semibold">요일</th>
+                <th class="px-5 py-3 font-semibold">시간</th>
+                <th class="px-5 py-3 font-semibold text-right">장소</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-line">
+              <tr class="hover:bg-paper/60"><td class="px-5 py-3.5 font-semibold">주일 1부</td><td class="px-5 py-3.5 text-ink-600">일</td><td class="px-5 py-3.5 text-ink-600">09:00</td><td class="px-5 py-3.5 text-right text-ink-600">본당</td></tr>
+              <tr class="hover:bg-paper/60"><td class="px-5 py-3.5 font-semibold">주일 2부</td><td class="px-5 py-3.5 text-ink-600">일</td><td class="px-5 py-3.5 text-ink-600">11:00</td><td class="px-5 py-3.5 text-right text-ink-600">본당</td></tr>
+              <tr class="hover:bg-paper/60"><td class="px-5 py-3.5 font-semibold">수요예배</td><td class="px-5 py-3.5 text-ink-600">수</td><td class="px-5 py-3.5 text-ink-600">19:30</td><td class="px-5 py-3.5 text-right text-ink-600">본당</td></tr>
+              <tr class="hover:bg-paper/60"><td class="px-5 py-3.5 font-semibold">새벽기도</td><td class="px-5 py-3.5 text-ink-600">매일</td><td class="px-5 py-3.5 text-ink-600">06:00</td><td class="px-5 py-3.5 text-right text-ink-600">소예배실</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- avatars + progress -->
+      <div class="specrow mb-12">
+        <div class="text-[13px] font-bold pt-1">아바타 · 진행률</div>
+        <div class="flex flex-col gap-7">
+          <div class="flex items-center gap-8">
+            <div class="flex items-center -space-x-2.5">
+              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=80&q=80" class="w-10 h-10 rounded-full object-cover ring-2 ring-white" alt="" />
+              <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=80&q=80" class="w-10 h-10 rounded-full object-cover ring-2 ring-white" alt="" />
+              <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=80&q=80" class="w-10 h-10 rounded-full object-cover ring-2 ring-white" alt="" />
+              <span class="w-10 h-10 rounded-full bg-paper ring-2 ring-white grid place-items-center text-[12px] font-bold text-ink-600">+48</span>
+            </div>
+            <div class="flex items-center gap-3">
+              <span class="w-11 h-11 rounded-full bg-brand-600 text-white grid place-items-center font-bold text-[15px]">정</span>
+              <span class="w-11 h-11 rounded-full bg-emerald-600 text-white grid place-items-center font-bold text-[15px]">김</span>
+              <span class="w-11 h-11 rounded-full bg-paper border border-line grid place-items-center text-ink-600"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.5-6 8-6s8 2 8 6"/></svg></span>
+            </div>
+          </div>
+          <div class="max-w-[420px]">
+            <div class="flex items-center justify-between text-[12px] mb-1.5"><span class="font-semibold">건축헌금 목표</span><span class="text-ink-600">72%</span></div>
+            <div class="h-2.5 rounded-full bg-line overflow-hidden"><div class="h-full rounded-full bg-brand-600" style="width:72%"></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- timeline -->
+      <div class="specrow">
+        <div class="text-[13px] font-bold pt-1">타임라인 (연혁)</div>
+        <ol class="relative border-l-2 border-line pl-7 max-w-[520px] space-y-7">
+          <li class="relative">
+            <span class="absolute -left-[35px] top-0.5 w-4 h-4 rounded-full bg-brand-600 ring-4 ring-white"></span>
+            <div class="text-[12px] font-bold text-brand-600">1973</div>
+            <div class="text-[15px] font-extrabold tracking-tight mt-0.5">가평교회 설립</div>
+            <p class="text-[13px] text-ink-600 mt-1 leading-relaxed">성도 12명으로 가정 예배를 시작했습니다.</p>
+          </li>
+          <li class="relative">
+            <span class="absolute -left-[35px] top-0.5 w-4 h-4 rounded-full bg-ink-900 ring-4 ring-white"></span>
+            <div class="text-[12px] font-bold text-ink-600">1998</div>
+            <div class="text-[15px] font-extrabold tracking-tight mt-0.5">본당 입당 예배</div>
+            <p class="text-[13px] text-ink-600 mt-1 leading-relaxed">현재의 본당을 건축하고 입당했습니다.</p>
+          </li>
+          <li class="relative">
+            <span class="absolute -left-[35px] top-0.5 w-4 h-4 rounded-full bg-ink-900 ring-4 ring-white"></span>
+            <div class="text-[12px] font-bold text-ink-600">2024</div>
+            <div class="text-[15px] font-extrabold tracking-tight mt-0.5">온라인 예배 플랫폼 개설</div>
+            <p class="text-[13px] text-ink-600 mt-1 leading-relaxed">전 세대를 잇는 미디어 사역을 시작했습니다.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ===================================================== FEEDBACK -->
+    <section id="feedback" class="scroll-mt-24">
+      <div class="flex items-end justify-between border-b border-line pb-4 mb-8">
+        <div>
+          <div class="text-[11px] font-bold tracking-[0.18em] text-ink-600 mb-1.5">FORMS & DATA</div>
+          <h2 class="text-[26px] font-extrabold tracking-tight">알림 · 피드백</h2>
+        </div>
+      </div>
+
+      <!-- alert banners -->
+      <div class="specrow mb-10">
+        <div class="text-[13px] font-bold pt-1">알림 배너 · 4종</div>
+        <div class="flex flex-col gap-3 max-w-[640px]">
+          <div class="flex items-start gap-3 px-4 py-3.5 rounded-xl bg-brand-500/8 border border-brand-500/20">
+            <svg class="w-5 h-5 text-brand-600 shrink-0 mt-px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 16v-4M12 8h.01"/></svg>
+            <div class="flex-1 text-[13.5px]"><span class="font-bold">안내</span> · 이번 주 주일예배는 오전 11시 본당에서 드립니다.</div>
+            <button class="text-ink-600 hover:text-ink-900"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
+          </div>
+          <div class="flex items-start gap-3 px-4 py-3.5 rounded-xl bg-emerald-500/8 border border-emerald-500/20">
+            <svg class="w-5 h-5 text-emerald-600 shrink-0 mt-px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="m8.5 12.5 2.5 2.5 4.5-5"/></svg>
+            <div class="flex-1 text-[13.5px]"><span class="font-bold">완료</span> · 새가족 등록이 정상적으로 접수되었습니다.</div>
+            <button class="text-ink-600 hover:text-ink-900"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
+          </div>
+          <div class="flex items-start gap-3 px-4 py-3.5 rounded-xl bg-amber-500/10 border border-amber-500/25">
+            <svg class="w-5 h-5 text-amber-600 shrink-0 mt-px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/><path d="M12 9v4M12 17h.01"/></svg>
+            <div class="flex-1 text-[13.5px]"><span class="font-bold">주의</span> · 주차장 보수 공사로 토요일 오후 이용이 제한됩니다.</div>
+            <button class="text-ink-600 hover:text-ink-900"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
+          </div>
+          <div class="flex items-start gap-3 px-4 py-3.5 rounded-xl bg-accent-red/8 border border-accent-red/20">
+            <svg class="w-5 h-5 text-accent-red shrink-0 mt-px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v4M12 16h.01"/></svg>
+            <div class="flex-1 text-[13.5px]"><span class="font-bold">오류</span> · 신청 정보를 불러오지 못했습니다. 잠시 후 다시 시도해 주세요.</div>
+            <button class="text-ink-600 hover:text-ink-900"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
+          </div>
+        </div>
+      </div>
+
+      <!-- toast (live demo) -->
+      <div class="specrow mb-10">
+        <div class="text-[13px] font-bold pt-1">토스트 · 스낵바</div>
+        <div>
+          <button onclick="libToast()" class="px-5 h-11 rounded-full bg-ink-900 text-white text-[14px] font-semibold">토스트 띄우기</button>
+          <div class="mt-5 flex flex-col gap-3 max-w-[400px]">
+            <div class="flex items-center gap-3 px-4 py-3 rounded-xl bg-ink-900 text-white shadow-lg">
+              <svg class="w-5 h-5 text-emerald-400 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="m8.5 12.5 2.5 2.5 4.5-5"/></svg>
+              <span class="flex-1 text-[13.5px]">기도 제목이 저장되었습니다.</span>
+              <button class="text-white/60 hover:text-white text-[12px] font-semibold">실행취소</button>
+            </div>
+            <div class="flex items-center gap-3 px-4 py-3 rounded-xl bg-white border border-line shadow-lg max-w-[360px]">
+              <svg class="w-5 h-5 text-brand-600 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4z"/></svg>
+              <span class="flex-1 text-[13.5px]">주보가 이메일로 전송되었습니다.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- empty state -->
+      <div class="specrow mb-10">
+        <div class="text-[13px] font-bold pt-1">빈 상태</div>
+        <div class="max-w-[640px] grid sm:grid-cols-2 gap-3">
+          <div class="rounded-2xl border border-dashed border-line bg-paper/40 px-6 py-10 text-center">
+            <div class="w-14 h-14 mx-auto rounded-2xl bg-paper grid place-items-center text-ink-600"><svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></div>
+            <div class="mt-4 text-[15px] font-bold">검색 결과가 없습니다</div>
+            <p class="mt-1.5 text-[12.5px] text-ink-600 leading-relaxed">다른 키워드로 다시 검색해 보세요.</p>
+          </div>
+          <div class="rounded-2xl border border-dashed border-line bg-paper/40 px-6 py-10 text-center">
+            <div class="w-14 h-14 mx-auto rounded-2xl bg-paper grid place-items-center text-ink-600"><svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></div>
+            <div class="mt-4 text-[15px] font-bold">등록된 일정이 없습니다</div>
+            <p class="mt-1.5 text-[12.5px] text-ink-600 leading-relaxed mb-4">새로운 모임을 추가해 보세요.</p>
+            <button class="inline-flex items-center gap-1.5 px-4 h-9 rounded-full bg-ink-900 text-white text-[12.5px] font-semibold">+ 일정 추가</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- skeleton + spinner -->
+      <div class="specrow">
+        <div class="text-[13px] font-bold pt-1">스켈레톤 · 로딩</div>
+        <div class="max-w-[640px] flex flex-col gap-7">
+          <div class="flex gap-4">
+            <div class="w-28 h-20 rounded-lg lib-skel shrink-0"></div>
+            <div class="flex-1 flex flex-col justify-center gap-2.5">
+              <div class="h-3 rounded lib-skel w-1/3"></div>
+              <div class="h-3.5 rounded lib-skel w-3/4"></div>
+              <div class="h-3 rounded lib-skel w-1/2"></div>
+            </div>
+          </div>
+          <div class="flex items-center gap-6">
+            <span class="inline-block w-7 h-7 rounded-full border-[3px] border-line border-t-brand-600 lib-spin"></span>
+            <div class="flex items-center gap-1.5">
+              <span class="w-2 h-2 rounded-full bg-ink-900/70 lib-dot" style="animation-delay:0s"></span>
+              <span class="w-2 h-2 rounded-full bg-ink-900/70 lib-dot" style="animation-delay:.16s"></span>
+              <span class="w-2 h-2 rounded-full bg-ink-900/70 lib-dot" style="animation-delay:.32s"></span>
+            </div>
+            <span class="text-[12.5px] text-ink-600">불러오는 중…</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================== HEADER -->
+    <section id="header" class="scroll-mt-24">
+      <div class="flex items-end justify-between border-b border-line pb-4 mb-8">
+        <div>
+          <div class="text-[11px] font-bold tracking-[0.18em] text-ink-600 mb-1.5">SECTIONS</div>
+          <h2 class="text-[26px] font-extrabold tracking-tight">헤더 · 내비게이션</h2>
+        </div>
+      </div>
+      <!-- A · Default: utility bar + main nav -->
+      <div class="text-[13px] font-bold mb-4">A · 기본형 — 유틸리티 바 + 메인 내비</div>
+      <div class="rounded-2xl border border-line overflow-hidden">
+        <!-- utility bar -->
+        <div class="border-b border-line text-[12px] text-ink-600 bg-white">
+          <div class="px-6 h-9 flex items-center justify-between">
+            <span class="flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>2026년 4월 26일 주일예배 · 오전 11:00 본당</span>
+            <div class="hidden sm:flex items-center gap-4">
+              <a href="#" class="hover:text-ink-900">새가족 등록</a><span class="w-px h-3 bg-line"></span>
+              <a href="#" class="hover:text-ink-900">오시는 길</a><span class="w-px h-3 bg-line"></span>
+              <a href="#" class="hover:text-ink-900">로그인</a>
+            </div>
+          </div>
+        </div>
+        <!-- main nav -->
+        <div class="bg-white">
+          <div class="px-6 h-[72px] flex items-center justify-between">
+            <a href="#" class="flex items-center gap-2.5"><img src="assets/logo.png" alt="" class="w-10 h-10 object-contain" /><span class="font-bold text-[19px] tracking-tight">가평교회 <span class="text-ink-600 font-medium text-[13px] tracking-normal ml-0.5">GAPYEONG CHURCH</span></span></a>
+            <nav class="hidden lg:flex items-center gap-9 text-[15px] font-semibold">
+              <a href="#" class="relative py-6 text-brand-600">예배<span class="absolute -top-0.5 -right-3 badge-live">LIVE</span><span class="absolute left-0 right-0 -bottom-px h-0.5 bg-brand-600"></span></a>
+              <a href="#" class="hover:text-brand-600">공동체</a>
+              <a href="#" class="hover:text-brand-600">양육</a>
+              <a href="#" class="hover:text-brand-600">미디어</a>
+              <a href="#" class="hover:text-brand-600">교회소개</a>
+            </nav>
+            <div class="flex items-center gap-3">
+              <button class="w-9 h-9 grid place-items-center rounded-full hover:bg-paper"><svg class="w-[18px] h-[18px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></button>
+              <button class="inline-flex items-center gap-1.5 text-[13px] font-semibold px-3.5 h-9 rounded-full border border-ink-900 hover:bg-ink-900 hover:text-white transition">새가족 등록</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- B · Transparent overlay (dark, over hero image) -->
+      <div class="text-[13px] font-bold mb-4 mt-10">B · 다크 오버레이 — 이미지 히어로 위</div>
+      <div class="rounded-2xl overflow-hidden relative min-h-[180px] flex flex-col">
+        <img src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?auto=format&fit=crop&w=1400&q=80" class="absolute inset-0 w-full h-full object-cover" alt="" />
+        <div class="absolute inset-0 bg-gradient-to-b from-ink-900/75 to-ink-900/25"></div>
+        <div class="relative px-6 h-[72px] flex items-center justify-between text-white border-b border-white/15">
+          <a href="#" class="flex items-center gap-2.5"><img src="assets/logo.png" alt="" class="w-10 h-10 object-contain brightness-0 invert" /><span class="font-bold text-[19px] tracking-tight">가평교회 <span class="text-white/55 font-medium text-[13px] tracking-normal ml-0.5">GAPYEONG CHURCH</span></span></a>
+          <nav class="hidden lg:flex items-center gap-9 text-[15px] font-semibold">
+            <a href="#" class="relative py-6">예배<span class="absolute left-0 right-0 -bottom-px h-0.5 bg-white"></span></a>
+            <a href="#" class="text-white/75 hover:text-white">공동체</a>
+            <a href="#" class="text-white/75 hover:text-white">양육</a>
+            <a href="#" class="text-white/75 hover:text-white">미디어</a>
+            <a href="#" class="text-white/75 hover:text-white">교회소개</a>
+          </nav>
+          <div class="flex items-center gap-3">
+            <button class="w-9 h-9 grid place-items-center rounded-full hover:bg-white/10"><svg class="w-[18px] h-[18px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></button>
+            <button class="inline-flex items-center gap-1.5 text-[13px] font-semibold px-3.5 h-9 rounded-full border border-white/45 hover:bg-white hover:text-ink-900 transition">새가족 등록</button>
+          </div>
+        </div>
+        <div class="relative flex-1"></div>
+      </div>
+
+      <!-- C · Centered logo, split nav -->
+      <div class="text-[13px] font-bold mb-4 mt-10">C · 센터 로고 — 양쪽 분할 내비</div>
+      <div class="rounded-2xl border border-line overflow-hidden bg-white">
+        <div class="px-6 h-[84px] grid grid-cols-3 items-center">
+          <nav class="hidden lg:flex items-center gap-7 text-[14px] font-semibold justify-start">
+            <a href="#" class="text-brand-600">예배</a>
+            <a href="#" class="hover:text-brand-600">공동체</a>
+            <a href="#" class="hover:text-brand-600">양육</a>
+          </nav>
+          <a href="#" class="flex flex-col items-center justify-center">
+            <img src="assets/logo.png" alt="" class="w-9 h-9 object-contain" />
+            <span class="mt-1 font-extrabold text-[15px] tracking-tight">가평교회</span>
+            <span class="text-[9px] tracking-[0.25em] text-ink-600 font-semibold">GAPYEONG CHURCH</span>
+          </a>
+          <nav class="hidden lg:flex items-center gap-7 text-[14px] font-semibold justify-end">
+            <a href="#" class="hover:text-brand-600">미디어</a>
+            <a href="#" class="hover:text-brand-600">교회소개</a>
+            <a href="#" class="inline-flex items-center gap-1.5 px-3.5 h-9 rounded-full bg-ink-900 text-white">새가족 등록</a>
+          </nav>
+        </div>
+      </div>
+
+      <!-- D · Compact minimal -->
+      <div class="text-[13px] font-bold mb-4 mt-10">D · 컴팩트 — 유틸리티 바 없는 미니멀</div>
+      <div class="rounded-2xl border border-line overflow-hidden bg-white">
+        <div class="px-6 h-[60px] flex items-center justify-between">
+          <div class="flex items-center gap-9">
+            <a href="#" class="flex items-center gap-2"><img src="assets/logo.png" alt="" class="w-7 h-7 object-contain" /><span class="font-extrabold text-[16px] tracking-tight">가평교회</span></a>
+            <nav class="hidden lg:flex items-center gap-7 text-[13.5px] font-semibold text-ink-600">
+              <a href="#" class="text-ink-900">예배</a>
+              <a href="#" class="hover:text-ink-900">공동체</a>
+              <a href="#" class="hover:text-ink-900">양육</a>
+              <a href="#" class="hover:text-ink-900">미디어</a>
+              <a href="#" class="hover:text-ink-900">교회소개</a>
+            </nav>
+          </div>
+          <div class="flex items-center gap-2">
+            <button class="w-8 h-8 grid place-items-center rounded-full hover:bg-paper"><svg class="w-[17px] h-[17px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></button>
+            <button class="px-4 h-8 rounded-full bg-brand-600 text-white text-[12.5px] font-semibold">로그인</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================== HERO -->
+    <section id="hero" class="scroll-mt-24">
+      <div class="flex items-end justify-between border-b border-line pb-4 mb-8">
+        <div>
+          <div class="text-[11px] font-bold tracking-[0.18em] text-ink-600 mb-1.5">SECTIONS</div>
+          <h2 class="text-[26px] font-extrabold tracking-tight">페이지 히어로</h2>
+        </div>
+        <a href="서브페이지 히어로 시안.html" class="text-[12.5px] font-semibold text-brand-600 hover:text-brand-700">6종 시안 전체보기 →</a>
+      </div>
+
+      <!-- basic clean preview -->
+      <div class="rounded-2xl border border-line overflow-hidden relative">
+        <div class="absolute inset-0 pointer-events-none" style="background:linear-gradient(102deg, rgba(58,100,245,0.10) 0%, rgba(58,100,245,0.04) 26%, rgba(255,255,255,0) 56%)"></div>
+        <div class="relative px-8 pt-9 pb-10 bg-white">
+          <nav class="flex items-center gap-2 text-[12px] text-ink-600"><a href="#" class="hover:text-ink-900 inline-flex items-center gap-1.5"><svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 11l9-8 9 8M5 10v10h14V10"/></svg>HOME</a><span class="text-line">›</span><span class="text-ink-900 font-semibold">예배</span></nav>
+          <div class="mt-6 flex items-end justify-between gap-10 flex-wrap">
+            <div class="max-w-[520px]">
+              <h1 class="text-[48px] font-extrabold tracking-tight leading-[1.05]">예배</h1>
+              <p class="mt-3 text-ink-600 text-[15px]">매주 드려지는 예배 시간과 장소, 말씀 다시보기를 한 곳에서.</p>
+            </div>
+            <div class="flex items-center gap-1 text-[13px] font-semibold">
+              <a href="#" class="px-4 h-10 rounded-full bg-ink-900 text-white grid place-items-center">전체</a>
+              <a href="#" class="px-4 h-10 rounded-full hover:bg-paper grid place-items-center">주일예배</a>
+              <a href="#" class="px-4 h-10 rounded-full hover:bg-paper grid place-items-center">수요예배</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p class="mt-3 text-[12.5px] text-ink-600">S1 · Basic Clean 미리보기. Image / Ken Burns / Split / Video / Compact 변형은 시안 페이지 참고.</p>
+    </section>
+
+    <!-- ===================================================== FOOTER -->
+    <section id="footer" class="scroll-mt-24">
+      <div class="flex items-end justify-between border-b border-line pb-4 mb-8">
+        <div>
+          <div class="text-[11px] font-bold tracking-[0.18em] text-ink-600 mb-1.5">SECTIONS</div>
+          <h2 class="text-[26px] font-extrabold tracking-tight">푸터</h2>
+        </div>
+      </div>
+      <!-- A · Default multi-column dark -->
+      <div class="text-[13px] font-bold mb-4">A · 기본형 — 다크 멀티컬럼</div>
+      <div class="rounded-2xl overflow-hidden bg-ink-900 text-white/70">
+        <div class="px-8 py-12">
+          <div class="grid md:grid-cols-12 gap-10">
+            <div class="md:col-span-5">
+              <div class="flex items-center gap-2.5 text-white"><img src="assets/logo.png" alt="" class="w-9 h-9 object-contain" /><span class="font-bold text-[16px]">가평교회 <span class="text-white/50 font-medium text-[12px] ml-1">GAPYEONG CHURCH</span></span></div>
+              <p class="mt-5 text-[13px] leading-relaxed">08512 서울특별시 금천구 가산디지털1로 168<br />TEL. 02-704-3300 · FAX. 02-704-3301</p>
+              <p class="mt-4 text-[12px] text-white/40">© 2026 GAPYEONG CHURCH. ALL RIGHTS RESERVED.</p>
+            </div>
+            <div class="md:col-span-4 grid grid-cols-2 gap-6 text-[13px]">
+              <div><div class="text-white font-semibold mb-3">예배</div><ul class="space-y-2"><li><a href="#" class="hover:text-white">주일예배</a></li><li><a href="#" class="hover:text-white">수요예배</a></li><li><a href="#" class="hover:text-white">새벽예배</a></li></ul></div>
+              <div><div class="text-white font-semibold mb-3">바로가기</div><ul class="space-y-2"><li><a href="#" class="hover:text-white">개인정보처리방침</a></li><li><a href="#" class="hover:text-white">오시는 길</a></li></ul></div>
+            </div>
+            <div class="md:col-span-3">
+              <div class="text-white font-semibold mb-3 text-[13px]">Family Site</div>
+              <button class="w-full bg-white/5 border border-white/10 rounded-lg px-4 h-11 flex items-center justify-between text-[13px] hover:bg-white/10">관련 사이트 선택<svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button>
+              <div class="mt-5 flex items-center gap-2">
+                <a href="#" class="w-9 h-9 rounded-full grid place-items-center bg-white/5 hover:bg-white/10"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.5 2.9h-2.4v7A10 10 0 0 0 22 12z"/></svg></a>
+                <a href="#" class="w-9 h-9 rounded-full grid place-items-center bg-white/5 hover:bg-white/10"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M23 6.2s-.2-1.6-.9-2.3c-.9-.9-1.9-.9-2.3-1C16.6 2.5 12 2.5 12 2.5s-4.6 0-7.8.4c-.5 0-1.5.1-2.3 1-.7.7-.9 2.3-.9 2.3S.7 8 .7 9.9v1.7c0 1.9.3 3.7.3 3.7s.2 1.6.9 2.3c.9.9 2.1.9 2.6 1 1.9.2 8 .3 8 .3s4.6 0 7.8-.4c.5 0 1.5-.1 2.3-1 .7-.7.9-2.3.9-2.3s.3-1.9.3-3.7V9.9C23.3 8 23 6.2 23 6.2zM9.5 13.6V7.7l5.9 3z"/></svg></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- B · Light minimal -->
+      <div class="text-[13px] font-bold mb-4 mt-10">B · 라이트 미니멀 — 단일 라인</div>
+      <div class="rounded-2xl border border-line overflow-hidden bg-white">
+        <div class="px-8 py-7 flex flex-col md:flex-row md:items-center justify-between gap-5">
+          <div class="flex items-center gap-2.5"><img src="assets/logo.png" alt="" class="w-8 h-8 object-contain" /><span class="font-extrabold text-[15px] tracking-tight">가평교회</span></div>
+          <nav class="flex flex-wrap items-center gap-x-6 gap-y-2 text-[13px] font-semibold text-ink-600">
+            <a href="#" class="hover:text-ink-900">예배</a>
+            <a href="#" class="hover:text-ink-900">공동체</a>
+            <a href="#" class="hover:text-ink-900">미디어</a>
+            <a href="#" class="hover:text-ink-900">오시는 길</a>
+            <a href="#" class="hover:text-ink-900">개인정보처리방침</a>
+          </nav>
+          <p class="text-[12px] text-ink-600 shrink-0">© 2026 GAPYEONG CHURCH</p>
+        </div>
+      </div>
+
+      <!-- C · CTA band + slim footer -->
+      <div class="text-[13px] font-bold mb-4 mt-10">C · CTA 밴드 + 슬림 푸터</div>
+      <div class="rounded-2xl overflow-hidden">
+        <div class="bg-brand-600 text-white px-8 py-9 flex flex-col md:flex-row md:items-center justify-between gap-5">
+          <div>
+            <h3 class="text-[22px] font-extrabold tracking-tight leading-tight">이번 주, 함께 예배드려요</h3>
+            <p class="mt-1.5 text-white/80 text-[13.5px]">처음 오시는 분도 편안하게 맞이합니다.</p>
+          </div>
+          <div class="flex items-center gap-3 shrink-0">
+            <a href="#" class="inline-flex items-center gap-1.5 bg-white text-brand-700 font-bold text-[13.5px] px-5 h-11 rounded-full hover:bg-white/90 transition">새가족 등록 <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+            <a href="#" class="inline-flex items-center px-5 h-11 rounded-full border border-white/45 text-white font-semibold text-[13.5px] hover:bg-white/10 transition">오시는 길</a>
+          </div>
+        </div>
+        <div class="bg-ink-900 text-white/55 px-8 py-5 flex flex-col sm:flex-row items-center justify-between gap-3 text-[12px]">
+          <div class="flex items-center gap-2 text-white/80"><img src="assets/logo.png" alt="" class="w-6 h-6 object-contain" /><span class="font-semibold">가평교회</span></div>
+          <p>08512 서울특별시 금천구 가산디지털1로 168 · TEL. 02-704-3300</p>
+          <p>© 2026 GAPYEONG CHURCH</p>
+        </div>
+      </div>
+
+      <!-- D · Centered -->
+      <div class="text-[13px] font-bold mb-4 mt-10">D · 센터 정렬 — 로고·내비·소셜</div>
+      <div class="rounded-2xl border border-line overflow-hidden bg-paper">
+        <div class="px-8 py-12 text-center">
+          <a href="#" class="inline-flex flex-col items-center"><img src="assets/logo.png" alt="" class="w-10 h-10 object-contain" /><span class="mt-2 font-extrabold text-[16px] tracking-tight">가평교회</span><span class="text-[9px] tracking-[0.25em] text-ink-600 font-semibold mt-0.5">GAPYEONG CHURCH</span></a>
+          <nav class="mt-6 flex flex-wrap items-center justify-center gap-x-7 gap-y-2 text-[13.5px] font-semibold">
+            <a href="#" class="hover:text-brand-600">예배</a>
+            <a href="#" class="hover:text-brand-600">공동체</a>
+            <a href="#" class="hover:text-brand-600">양육</a>
+            <a href="#" class="hover:text-brand-600">미디어</a>
+            <a href="#" class="hover:text-brand-600">교회소개</a>
+          </nav>
+          <div class="mt-6 flex items-center justify-center gap-2.5">
+            <a href="#" class="w-9 h-9 rounded-full grid place-items-center bg-white border border-line hover:border-ink-900/30"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.5 2.9h-2.4v7A10 10 0 0 0 22 12z"/></svg></a>
+            <a href="#" class="w-9 h-9 rounded-full grid place-items-center bg-white border border-line hover:border-ink-900/30"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M23 6.2s-.2-1.6-.9-2.3c-.9-.9-1.9-.9-2.3-1C16.6 2.5 12 2.5 12 2.5s-4.6 0-7.8.4c-.5 0-1.5.1-2.3 1-.7.7-.9 2.3-.9 2.3S.7 8 .7 9.9v1.7c0 1.9.3 3.7.3 3.7s.2 1.6.9 2.3c.9.9 2.1.9 2.6 1 1.9.2 8 .3 8 .3s4.6 0 7.8-.4c.5 0 1.5-.1 2.3-1 .7-.7.9-2.3.9-2.3s.3-1.9.3-3.7V9.9C23.3 8 23 6.2 23 6.2zM9.5 13.6V7.7l5.9 3z"/></svg></a>
+            <a href="#" class="w-9 h-9 rounded-full grid place-items-center bg-white border border-line hover:border-ink-900/30"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17" cy="7" r="1" fill="currentColor" stroke="none"/></svg></a>
+          </div>
+          <p class="mt-7 text-[12px] text-ink-600">08512 서울특별시 금천구 가산디지털1로 168 · TEL. 02-704-3300<br />© 2026 GAPYEONG CHURCH. ALL RIGHTS RESERVED.</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="pt-8 border-t border-line text-[12px] text-ink-600">가평교회 디자인 라이브러리 · 모든 컴포넌트는 worship.html 및 히어로 시안에서 사용 중입니다.</div>
+  </main>
+</div>
+
+<!-- live modal overlay -->
+<div id="lib-modal" class="hidden fixed inset-0 z-[60] grid place-items-center p-4">
+  <div class="absolute inset-0 bg-ink-900/55 backdrop-blur-sm" onclick="document.getElementById('lib-modal').classList.add('hidden')"></div>
+  <div class="relative w-full max-w-[400px] bg-white rounded-2xl shadow-lg overflow-hidden">
+    <div class="px-6 pt-6 pb-5">
+      <div class="flex items-start justify-between">
+        <div class="w-11 h-11 rounded-full bg-brand-500/10 grid place-items-center text-brand-600"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s-7-4.5-7-10a4 4 0 0 1 7-2.5A4 4 0 0 1 19 11c0 5.5-7 10-7 10z"/></svg></div>
+        <button onclick="document.getElementById('lib-modal').classList.add('hidden')" class="w-8 h-8 grid place-items-center rounded-full hover:bg-paper text-ink-600"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
+      </div>
+      <h3 class="mt-3 text-[18px] font-extrabold tracking-tight">새가족 등록을 완료할까요?</h3>
+      <p class="mt-1.5 text-[13px] text-ink-600 leading-relaxed">등록 후 담당 사역자가 3일 이내에 연락드립니다.</p>
+    </div>
+    <div class="px-6 py-4 bg-paper/60 flex justify-end gap-2">
+      <button onclick="document.getElementById('lib-modal').classList.add('hidden')" class="px-4 h-10 rounded-full border border-line bg-white text-[13px] font-semibold hover:bg-paper">취소</button>
+      <button onclick="document.getElementById('lib-modal').classList.add('hidden')" class="px-4 h-10 rounded-full bg-brand-600 text-white text-[13px] font-semibold">등록 완료</button>
+    </div>
+  </div>
+</div>
+
+<!-- live toast container -->
+<div id="lib-toast-wrap" class="fixed bottom-6 left-1/2 -translate-x-1/2 z-[70] flex flex-col items-center gap-2 pointer-events-none"></div>
+
+<script>
+  // toast demo
+  function libToast() {
+    const wrap = document.getElementById('lib-toast-wrap');
+    const t = document.createElement('div');
+    t.className = 'lib-toast-in flex items-center gap-3 px-4 py-3 rounded-xl bg-ink-900 text-white shadow-lg pointer-events-auto';
+    t.innerHTML = '<svg class="w-5 h-5 text-emerald-400 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="m8.5 12.5 2.5 2.5 4.5-5"/></svg><span class="text-[13.5px]">기도 제목이 저장되었습니다.</span>';
+    wrap.appendChild(t);
+    setTimeout(() => { t.style.transition = 'opacity .3s, transform .3s'; t.style.opacity = '0'; t.style.transform = 'translateY(8px)'; setTimeout(() => t.remove(), 300); }, 2600);
+  }
+
+  // TOC scroll-spy
+  const links = [...document.querySelectorAll('.toc a')];
+  const map = new Map(links.map(a => [a.getAttribute('href').slice(1), a]));
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        links.forEach(l => l.classList.remove('active'));
+        map.get(e.target.id)?.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-20% 0px -70% 0px', threshold: 0 });
+  document.querySelectorAll('main section[id]').forEach(s => obs.observe(s));
+
+  // tab panel
+  const tabWrap = document.getElementById('lib-tabpanel');
+  if (tabWrap) {
+    const tabs = [...tabWrap.querySelectorAll('.lib-tab')];
+    const panels = [...tabWrap.querySelectorAll('.lib-panel')];
+    tabs.forEach(t => t.addEventListener('click', () => {
+      const i = +t.dataset.tab;
+      tabs.forEach(x => {
+        const on = x === t;
+        x.classList.toggle('text-brand-600', on);
+        x.classList.toggle('text-ink-600', !on);
+        x.querySelector('.lib-ind')?.remove();
+        if (on) { const s = document.createElement('span'); s.className = 'lib-ind absolute left-0 right-0 -bottom-px h-0.5 bg-brand-600'; x.appendChild(s); }
+      });
+      panels.forEach(p => p.classList.toggle('hidden', +p.dataset.panel !== i));
+    }));
+  }
+
+  // esc closes modal
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') document.getElementById('lib-modal')?.classList.add('hidden');
+  });
+</script>
+
+</body>
+</html>

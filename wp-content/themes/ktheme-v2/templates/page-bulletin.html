@@ -1,45 +1,60 @@
 <!-- wp:template-part {"slug":"header","tagName":"header"} /-->
-<!-- wp:html -->
-<section class="kt-page-hero kt-content-hero">
-  <nav class="kt-breadcrumb" aria-label="현재 위치">
-    <a href="/"><svg class="kt-icon kt-icon--xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 11l9-8 9 8M5 10v10h14V10"/></svg>HOME</a>
-    <span>›</span>
-    <strong>미디어</strong>
-  </nav>
-  <div class="kt-page-hero__body">
-    <div>
-      <h1>주보</h1>
-      <p>예배 순서와 교회 소식을 주보로 확인합니다.</p>
-    </div>
-    <nav class="kt-page-tabs" aria-label="주보 하위 메뉴">
-      <a class="" href="/media/">미디어</a>
-      <a class="is-active" href="/bulletin/">주보</a>
-      <a class="" href="/qt/">QT</a>
-      <a class="" href="/albums/">사진앨범</a>
-    </nav>
-  </div>
-</section>
-<!-- /wp:html -->
 <!-- wp:group {"tagName":"main","className":"kt-page-shell","layout":{"type":"constrained"}} -->
 <main class="wp-block-group kt-page-shell">
-  <!-- wp:post-content {"layout":{"type":"constrained"}} /-->
-  <!-- wp:html -->
-  <section class="kt-template-section">
-    <div class="kt-section-head">
-      <div>
-        <div class="kt-label">BULLETIN</div>
-        <h2 class="kt-section-title">이번 주 주보</h2>
-      </div>
-      <a class="kt-link-more" href="/contact/">자료 문의</a>
-    </div>
-    <div class="kt-info-grid">
-      <a class="kt-info-card" href="#"><strong>2026년 5월 25일 주보</strong><span>예배 순서, 교회 소식, 다음 주 안내를 확인합니다.</span></a>
-      <a class="kt-info-card" href="#"><strong>주보 다운로드</strong><span>PDF 파일 등록 시 다운로드 버튼으로 연결합니다.</span></a>
-      <a class="kt-info-card" href="/admin-guide/"><strong>교우소식</strong><span>장례, 결혼, 출산 등 공동체 소식을 안내합니다.</span></a>
-      <a class="kt-info-card" href="/worship/"><strong>예배안내</strong><span>예배 시간과 장소를 함께 확인합니다.</span></a>
-    </div>
-  </section>
-  <!-- /wp:html -->
+	<!-- wp:template-part {"slug":"page-hero"} /-->
+	<!-- wp:post-content {"layout":{"type":"constrained"}} /-->
+	<!-- wp:html -->
+	<section class="kt-template-section kt-bulletin-page" aria-labelledby="kt-bulletin-title">
+		<div class="kt-section-head">
+			<div>
+				<div class="kt-label">BULLETIN</div>
+				<h2 id="kt-bulletin-title" class="kt-section-title">주보</h2>
+			</div>
+			<a class="kt-link-more" href="/contact/">자료 문의</a>
+		</div>
+
+		<div class="kt-bulletin-feature-grid" aria-label="최신 주보">
+			<a href="#" class="kt-story-card kt-story-card--compact kt-bulletin-feature">
+				<span class="kt-story-card__media">
+					<img src="/wp-content/themes/ktheme-v2/assets/images/generated/church-generated-17.jpg" alt="" />
+				</span>
+				<span class="kt-story-card__body">
+					<span class="kt-story-card__meta"><span>최신 주보</span><span>2026.06.07</span></span>
+					<strong>2026년 6월 7일 주보</strong>
+					<span class="kt-story-card__copy">예배 순서, 교회 소식, 다음 주 안내를 PDF 첨부파일로 확인하실 수 있습니다.</span>
+					<span class="kt-bulletin-attachment">
+						<span class="kt-pill kt-pill--brand"><span class="kt-status-dot kt-status-dot--brand"></span>PDF</span>
+						<span class="kt-bulletin-attachment__name">gapyeong-bulletin-2026-06-07.pdf</span>
+						<span class="kt-story-card__link">다운로드 <svg class="kt-icon kt-icon--xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"/></svg></span>
+					</span>
+				</span>
+			</a>
+		</div>
+
+		<div class="kt-bulletin-list" aria-label="주보 첨부파일 목록">
+			<a class="kt-bulletin-file" href="#">
+				<span class="kt-bulletin-file__icon" aria-hidden="true"><svg class="kt-icon kt-icon--sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 15h6M9 11h2"/></svg></span>
+				<span class="kt-bulletin-file__body"><strong>2026년 5월 31일 주보</strong><small>PDF · 2.4MB · 예배 순서와 교회 소식</small></span>
+				<span class="kt-button kt-button--outline">다운로드 <svg class="kt-icon kt-icon--xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"/></svg></span>
+			</a>
+			<a class="kt-bulletin-file" href="#">
+				<span class="kt-bulletin-file__icon" aria-hidden="true"><svg class="kt-icon kt-icon--sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 15h6M9 11h2"/></svg></span>
+				<span class="kt-bulletin-file__body"><strong>2026년 5월 24일 주보</strong><small>PDF · 2.1MB · 예배 순서와 교회 소식</small></span>
+				<span class="kt-button kt-button--outline">다운로드 <svg class="kt-icon kt-icon--xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"/></svg></span>
+			</a>
+			<a class="kt-bulletin-file" href="#">
+				<span class="kt-bulletin-file__icon" aria-hidden="true"><svg class="kt-icon kt-icon--sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 15h6M9 11h2"/></svg></span>
+				<span class="kt-bulletin-file__body"><strong>2026년 5월 17일 주보</strong><small>PDF · 2.3MB · 예배 순서와 교회 소식</small></span>
+				<span class="kt-button kt-button--outline">다운로드 <svg class="kt-icon kt-icon--xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"/></svg></span>
+			</a>
+			<a class="kt-bulletin-file" href="#">
+				<span class="kt-bulletin-file__icon" aria-hidden="true"><svg class="kt-icon kt-icon--sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 15h6M9 11h2"/></svg></span>
+				<span class="kt-bulletin-file__body"><strong>2026년 5월 10일 주보</strong><small>PDF · 2.0MB · 예배 순서와 교회 소식</small></span>
+				<span class="kt-button kt-button--outline">다운로드 <svg class="kt-icon kt-icon--xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"/></svg></span>
+			</a>
+		</div>
+	</section>
+	<!-- /wp:html -->
 </main>
 <!-- /wp:group -->
 <!-- wp:template-part {"slug":"footer","tagName":"footer"} /-->

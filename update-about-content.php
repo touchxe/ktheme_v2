@@ -1,5 +1,10 @@
 <?php
-require_once('c:\Users\CEO\Local Sites\adm11\app\public\wp-load.php');
+$wp_load = getenv('WP_LOAD_PATH');
+if (!$wp_load) {
+    fwrite(STDERR, "WP_LOAD_PATH is required.\n");
+    exit(1);
+}
+require_once($wp_load);
 
 // about 페이지 찾기
 $about_page = get_page_by_path('about');

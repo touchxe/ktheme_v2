@@ -1,5 +1,10 @@
 <?php
-require_once('c:\Users\CEO\Local Sites\adm11\app\public\wp-load.php');
+$wp_load = getenv('WP_LOAD_PATH');
+if (!$wp_load) {
+    fwrite(STDERR, "WP_LOAD_PATH is required.\n");
+    exit(1);
+}
+require_once($wp_load);
 require_once( ABSPATH . 'wp-admin/includes/media.php' );
 require_once( ABSPATH . 'wp-admin/includes/file.php' );
 require_once( ABSPATH . 'wp-admin/includes/image.php' );
@@ -22,7 +27,12 @@ function upload_image_from_path($file_path, $title) {
     return $attachment_id;
 }
 
-$img_dir = 'C:\Users\CEO\.gemini\antigravity\brain\99cd0167-ac8f-4595-902d-0bbd9c3d4382\\';
+$img_dir = getenv('KTHEME_DEMO_IMAGE_DIR');
+if (!$img_dir) {
+    fwrite(STDERR, "KTHEME_DEMO_IMAGE_DIR is required.\n");
+    exit(1);
+}
+$img_dir = rtrim($img_dir, '/\\') . DIRECTORY_SEPARATOR;
 $img1 = upload_image_from_path($img_dir . 'sermon_faith_1777974615157.png', 'Sermon Faith');
 $img2 = upload_image_from_path($img_dir . 'sermon_plan_1777974629482.png', 'Sermon Plan');
 $img3 = upload_image_from_path($img_dir . 'sermon_prayer_1777974645700.png', 'Sermon Prayer');

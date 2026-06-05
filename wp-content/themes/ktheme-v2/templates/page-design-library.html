@@ -29,6 +29,7 @@
 				<a href="#tabs">탭 · 필터</a>
 				<a href="#nav-bits">브레드크럼 · VOD 링크</a>
 				<a href="#cards">카드</a>
+				<a href="#vision-patterns">비전 피처 · 타임라인</a>
 				<a href="#value-circles">원형 가치 블록</a>
 				<a href="#orbit">오비트 · 허브</a>
 				<a href="#lists">리스트 · 일정</a>
@@ -185,6 +186,7 @@
 				<div class="kt-library-block__head"><div><span>Components</span><h2>탭 · 필터</h2></div><p>페이지 하위 메뉴, 필터, 작동형 탭 패널 3종입니다.</p></div>
 				<div class="kt-library-row"><div class="kt-library-row__title"><strong>Page Tabs</strong><span>하위 메뉴</span></div><div class="kt-library-row__content"><nav class="kt-page-tabs" aria-label="예배 하위 메뉴"><a class="is-active" href="#">전체</a><a href="#">주일예배</a><a href="#">수요예배</a><a href="#">새벽기도</a></nav></div></div>
 				<div class="kt-library-row"><div class="kt-library-row__title"><strong>Filter Tabs</strong><span>목록 필터</span></div><div class="kt-library-row__content"><nav class="kt-filter-tabs" aria-label="자료실 분류"><a class="is-active" href="#">전체</a><a href="#">공지</a><a href="#">행사</a><a href="#">자료</a></nav></div></div>
+				<div class="kt-library-row"><div class="kt-library-row__title"><strong>Underline Tabs</strong><span>연도/섹션 전환</span></div><div class="kt-library-row__content"><nav class="kt-underline-tabs" aria-label="연혁 연도 예시"><a class="is-active" href="#">2020s</a><a href="#">2010s</a><a href="#">2000s</a><a href="#">1990s</a></nav></div></div>
 				<div class="kt-library-row"><div class="kt-library-row__title"><strong>Tab Panel</strong><span>인터랙션</span></div><div class="kt-library-row__content"><div class="kt-library-tabpanel" data-kt-library-tabs><div class="kt-library-tablist" role="tablist"><button class="is-active" type="button" data-kt-library-tab="0">예배</button><button type="button" data-kt-library-tab="1">양육</button><button type="button" data-kt-library-tab="2">선교</button></div><div class="kt-library-panel" data-kt-library-panel="0">주일예배, 수요예배, 새벽기도 정보를 한 화면에 모읍니다.</div><div class="kt-library-panel" data-kt-library-panel="1" hidden>새가족 과정과 성경공부, 제자훈련 일정을 안내합니다.</div><div class="kt-library-panel" data-kt-library-panel="2" hidden>국내외 선교와 섬김 사역의 연결 흐름을 보여줍니다.</div></div></div></div>
 			</section>
 
@@ -344,6 +346,93 @@
 							<figure><svg class="kt-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M9.5 7C6 7 4 9.6 4 13v4h6v-6H7c0-2 .9-3 2.5-3zm10 0C16 7 14 9.6 14 13v4h6v-6h-3c0-2 .9-3 2.5-3z"/></svg><blockquote>가장 힘들 때 목장 식구들이 곁을 지켜 주었습니다. 혼자가 아니라는 사실이 가장 큰 위로였어요.</blockquote></figure>
 							<figure class="is-dark"><svg class="kt-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M9.5 7C6 7 4 9.6 4 13v4h6v-6H7c0-2 .9-3 2.5-3zm10 0C16 7 14 9.6 14 13v4h6v-6h-3c0-2 .9-3 2.5-3z"/></svg><blockquote>새벽예배에 나오기 시작하면서 하루가 달라졌습니다. 말씀으로 여는 아침이 삶을 붙들어 줍니다.</blockquote></figure>
 						</div>
+					</div>
+				</div>
+			</section>
+
+			<section id="vision-patterns" class="kt-library-block">
+				<div class="kt-library-block__head"><div><span>Components</span><h2>비전 피처 · 타임라인</h2></div><p>비전 페이지에서 쓰는 아이콘형 피처 그리드와 연도별 타임라인을 라이브러리 컴포넌트로 보관합니다.</p></div>
+				<div class="kt-library-row kt-library-row--full">
+					<div class="kt-library-row__title"><strong>Vision Feature Grid</strong><span>2열 아이콘 피처 카드</span></div>
+					<div class="kt-library-row__content kt-library-vision-preview">
+						<div class="kt-vision-feature-grid">
+							<article class="kt-vision-feature-card">
+								<span>
+									<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><path d="M8 7h8"/></svg>
+								</span>
+								<div>
+									<h3>말씀으로 시작하는 예배</h3>
+									<p>주일과 주중 예배가 흩어진 삶의 자리까지 이어지도록 말씀 묵상과 기도 리듬을 돕습니다.</p>
+								</div>
+							</article>
+							<article class="kt-vision-feature-card">
+								<span>
+									<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-4.5-7-10a4 4 0 0 1 7-2.5A4 4 0 0 1 19 11c0 5.5-7 10-7 10z"/></svg>
+								</span>
+								<div>
+									<h3>서로를 세우는 목장</h3>
+									<p>작은 모임 안에서 삶을 나누고 기도 제목을 기억하며, 처음 온 분도 편안히 정착하도록 돕습니다.</p>
+								</div>
+							</article>
+							<article class="kt-vision-feature-card">
+								<span>
+									<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 21h18"/><path d="M5 21V7l8-4v18"/><path d="M19 21V11l-6-3"/><path d="M9 9v.01M9 13v.01M9 17v.01"/></svg>
+								</span>
+								<div>
+									<h3>다음세대를 위한 투자</h3>
+									<p>아이들과 청년들이 교회의 손님이 아니라 믿음의 주체로 자라가도록 예배와 훈련을 연결합니다.</p>
+								</div>
+							</article>
+							<article class="kt-vision-feature-card">
+								<span>
+									<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2v20"/><path d="M2 12h20"/><path d="M4.93 4.93l14.14 14.14"/><path d="M19.07 4.93 4.93 19.07"/></svg>
+								</span>
+								<div>
+									<h3>지역과 열방을 향한 선교</h3>
+									<p>교회 안의 은혜가 교회 밖의 필요를 만나도록 지역 돌봄과 선교 협력을 꾸준히 이어갑니다.</p>
+								</div>
+							</article>
+						</div>
+					</div>
+				</div>
+				<div class="kt-library-row kt-library-row--full">
+					<div class="kt-library-row__title"><strong>Vision Timeline</strong><span>연도별 실행 이력</span></div>
+					<div class="kt-library-row__content kt-library-vision-preview kt-library-vision-preview--timeline">
+						<section class="kt-vision-timeline" aria-labelledby="kt-library-vision-timeline-title">
+							<div class="kt-vision-section-head kt-vision-section-head--timeline">
+								<div>
+									<div class="kt-vision-kicker">Timeline</div>
+									<h2 id="kt-library-vision-timeline-title">비전을 실행으로 옮겨온 시간</h2>
+								</div>
+								<p>해마다 이어진 예배, 돌봄, 다음세대, 선교의 실천을 한눈에 확인할 수 있도록 정리했습니다.</p>
+							</div>
+							<div class="kt-vision-timeline__list">
+								<article class="kt-vision-timeline__item">
+									<time datetime="2026-04"><span>2026</span><strong>04</strong></time>
+									<span class="kt-vision-timeline__line" aria-hidden="true"></span>
+									<div class="kt-vision-timeline__body">
+										<h3>다음세대 신앙 자립 프로젝트</h3>
+										<p>심방, 기도, 생활 지원을 목장과 연결하고 협력 선교지의 기도 제목을 함께 나누었습니다.</p>
+									</div>
+								</article>
+								<article class="kt-vision-timeline__item">
+									<time datetime="2025-09"><span>2025</span><strong>09</strong></time>
+									<span class="kt-vision-timeline__line" aria-hidden="true"></span>
+									<div class="kt-vision-timeline__body">
+										<h3>목장별 지역 섬김 주간</h3>
+										<p>새가족과 환우 가정을 중심으로 통합 돌봄서비스를 시범 운영했습니다.</p>
+									</div>
+								</article>
+								<article class="kt-vision-timeline__item">
+									<time datetime="2024-03"><span>2024</span><strong>03</strong></time>
+									<span class="kt-vision-timeline__line" aria-hidden="true"></span>
+									<div class="kt-vision-timeline__body">
+										<h3>비전 선언문과 핵심 가치 정리</h3>
+										<p>새가족 정착 과정과 목장 연결 프로세스를 개선하고 다음세대 예배 환경을 정비했습니다.</p>
+									</div>
+								</article>
+							</div>
+						</section>
 					</div>
 				</div>
 			</section>

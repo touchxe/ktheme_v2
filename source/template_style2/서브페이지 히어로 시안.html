@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>가평교회 — 서브페이지 히어로 시안</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" />
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        fontFamily: {
+          sans: ['"Pretendard Variable"', 'Pretendard', 'system-ui', 'sans-serif'],
+        },
+        colors: {
+          ink: { 900: '#0e1320', 800: '#171c2c', 700: '#222a3f', 600: '#384058' },
+          brand: { 500: '#3a64f5', 600: '#2a4fd6', 700: '#1f3eb2' },
+          accent: { red: '#e23b3b' },
+          paper: '#f4f5f7',
+          line: '#e5e7eb',
+        },
+      },
+    },
+  };
+</script>
+<style>
+  html, body { font-family: 'Pretendard Variable', Pretendard, system-ui, sans-serif; letter-spacing: -0.01em; -webkit-font-smoothing: antialiased; }
+  .badge-live { background:#e23b3b; color:white; font-size:10px; font-weight:700; letter-spacing:0.05em; padding:2px 6px; border-radius:3px; }
+
+  /* Ken Burns slow zoom */
+  @keyframes kb { 0% { transform: scale(1) translate(0,0); } 100% { transform: scale(1.14) translate(-1.5%, -1.5%); } }
+  .kenburns img { animation: kb 18s ease-in-out infinite alternate; transform-origin: center; will-change: transform; }
+</style>
+</head>
+<body class="bg-[#f0eee9]">
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script type="text/babel" src="design-canvas.jsx"></script>
+<script type="text/babel" src="subpage-heroes.jsx"></script>
+
+<div id="root"></div>
+
+<script type="text/babel">
+  const { DesignCanvas, DCSection, DCArtboard } = window;
+  const {
+    HeroBasicClean,
+    HeroImageBg,
+    HeroKenBurns,
+    HeroSplitRight,
+    HeroVideoBg,
+    HeroCompact,
+  } = window;
+
+  function App() {
+    return (
+      <DesignCanvas
+        title="가평교회 — 서브페이지 히어로 시안"
+        subtitle="공용 .kt-page-hero 구조(브레드크럼 · 제목 · 설명 · 서브탭)를 기본으로, 페이지 성격에 맞춰 6가지 스타일로 변형."
+      >
+        <DCSection id="heroes" title="HERO 스타일 6종">
+          <DCArtboard id="s1" label="S1 · Basic Clean — 흰 배경 + 좌측 블루 틴트 (예배·일반)" width={1440} height={332}>
+            <HeroBasicClean />
+          </DCArtboard>
+
+          <DCArtboard id="s2" label="S2 · Image Background — 풀블리드 사진 + 네이비 오버레이 (공동체·새가족)" width={1440} height={446}>
+            <HeroImageBg />
+          </DCArtboard>
+
+          <DCArtboard id="s3" label="S3 · Ken Burns — 슬로우 줌 이미지 (교회소개·비전)" width={1440} height={446}>
+            <HeroKenBurns />
+          </DCArtboard>
+
+          <DCArtboard id="s4" label="S4 · Split Right Visual — 좌 텍스트 + 우 패널 (오시는 길·정보형)" width={1440} height={450}>
+            <HeroSplitRight />
+          </DCArtboard>
+
+          <DCArtboard id="s5" label="S5 · Video Background — 영상 루프 + 다크 오버레이 (미디어·설교 허브)" width={1440} height={498}>
+            <HeroVideoBg />
+          </DCArtboard>
+
+          <DCArtboard id="s6" label="S6 · Compact Clean — 저높이 미니멀 (정책·보조 페이지)" width={1440} height={282}>
+            <HeroCompact />
+          </DCArtboard>
+        </DCSection>
+      </DesignCanvas>
+    );
+  }
+
+  ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+</script>
+
+</body>
+</html>
