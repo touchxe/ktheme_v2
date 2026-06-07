@@ -98,6 +98,52 @@ svg {
   gap: 20px;
 }
 
+.kt-site-header-shell {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: rgba(255,255,255,0.95);
+  backdrop-filter: blur(12px);
+}
+
+header.wp-block-template-part:has(> .kt-topbar + .kt-header) {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: rgba(255,255,255,0.95);
+  backdrop-filter: blur(12px);
+}
+
+.admin-bar .kt-site-header-shell {
+  top: 32px;
+}
+
+.admin-bar header.wp-block-template-part:has(> .kt-topbar + .kt-header) {
+  top: 32px;
+}
+
+.kt-site-header-shell .kt-header {
+  position: relative;
+  top: auto;
+  z-index: 1;
+}
+
+header.wp-block-template-part:has(> .kt-topbar + .kt-header) .kt-header {
+  position: relative;
+  top: auto;
+  z-index: 1;
+}
+
+@media (max-width: 782px) {
+  .admin-bar .kt-site-header-shell {
+    top: 46px;
+  }
+
+  .admin-bar header.wp-block-template-part:has(> .kt-topbar + .kt-header) {
+    top: 46px;
+  }
+}
+
 .kt-utility-nav,
 .kt-utility-nav .wp-block-navigation__container {
   display: flex;
@@ -10903,7 +10949,10 @@ body:is(.page-id-67,.page-id-69) .kt-nav .wp-block-navigation__container > .wp-b
 }
 
 .kt-history-tabs {
+  flex-wrap: wrap;
+  overflow-x: visible;
   margin-top: -12px;
+  white-space: normal;
 }
 
 .kt-history-panel[hidden] {
@@ -10912,6 +10961,30 @@ body:is(.page-id-67,.page-id-69) .kt-nav .wp-block-navigation__container > .wp-b
 
 .kt-history-panel {
   min-width: 0;
+}
+
+.kt-history-list {
+  gap: 48px;
+  padding-top: 18px;
+}
+
+.kt-history-decade .kt-annual-month__rail strong {
+  font-size: clamp(36px, 4.4vw, 50px);
+  letter-spacing: -0.045em;
+}
+
+.kt-history-decade .kt-annual-month__rail span {
+  color: var(--kt-brand-700);
+  font-weight: 800;
+}
+
+.kt-history-list .kt-annual-list article {
+  grid-template-columns: 138px minmax(180px, 0.72fr) minmax(0, 1fr);
+  min-height: 58px;
+}
+
+.kt-history-list .kt-annual-list time {
+  letter-spacing: 0;
 }
 
 .kt-history-timeline {
@@ -11360,6 +11433,7 @@ body:is(.page-id-67,.page-id-69) .kt-nav .wp-block-navigation__container > .wp-b
   margin: 0;
   padding: 0;
   list-style: none;
+  border-bottom: 1px solid var(--kt-line);
 }
 
 .kt-location-route-list li {
@@ -11410,6 +11484,10 @@ body:is(.page-id-67,.page-id-69) .kt-nav .wp-block-navigation__container > .wp-b
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 16px;
+  padding-bottom: 0;
+}
+
+.kt-location-guide-section {
   padding-bottom: 0;
 }
 
@@ -11485,6 +11563,15 @@ body:is(.page-id-67,.page-id-69) .kt-nav .wp-block-navigation__container > .wp-b
   }
 
   .kt-annual-list article span {
+    grid-column: 2;
+  }
+
+  .kt-history-list .kt-annual-list article {
+    grid-template-columns: 132px minmax(0, 1fr);
+    gap: 8px 18px;
+  }
+
+  .kt-history-list .kt-annual-list article span {
     grid-column: 2;
   }
 
@@ -11583,6 +11670,15 @@ body:is(.page-id-67,.page-id-69) .kt-nav .wp-block-navigation__container > .wp-b
   }
 
   .kt-annual-list article span {
+    grid-column: auto;
+  }
+
+  .kt-history-list .kt-annual-list article {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+
+  .kt-history-list .kt-annual-list article span {
     grid-column: auto;
   }
 
@@ -12532,4 +12628,31 @@ body:is(.page-id-67,.page-id-69) .kt-nav .wp-block-navigation__container > .wp-b
   .kt-vision-cta__actions .kt-button {
     width: 100%;
   }
+}
+
+/* Subpage content heading scale */
+:root {
+  --kt-subpage-content-h2-size: 24px;
+  --kt-subpage-content-h2-weight: 600;
+  --kt-subpage-content-h2-line-height: 1.25;
+}
+
+.kt-page-shell .wp-block-post-content h2,
+.kt-page-shell .entry-content h2,
+.kt-page-shell .kt-subpage h2,
+.kt-page-shell .kt-origin-section-head h2,
+.kt-page-shell .kt-ministry-intro__content h2,
+.kt-page-shell .kt-ministry-section-head h2,
+.kt-page-shell .kt-ministry-contact__copy h2,
+.kt-page-shell .kt-photo-carousel__head h2,
+.kt-page-shell .kt-worship-band h2,
+.kt-page-shell .kt-worship-section h2,
+.kt-page-shell .kt-today-head h2,
+.kt-page-shell .kt-vision-section-head h2,
+.kt-page-shell .kt-vision-stats__content h2,
+.kt-page-shell .kt-vision-cta h2 {
+  font-size: var(--kt-subpage-content-h2-size);
+  font-weight: var(--kt-subpage-content-h2-weight);
+  line-height: var(--kt-subpage-content-h2-line-height);
+  letter-spacing: 0;
 }
