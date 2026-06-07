@@ -12632,9 +12632,10 @@ body:is(.page-id-67,.page-id-69) .kt-nav .wp-block-navigation__container > .wp-b
 
 /* Subpage content heading scale */
 :root {
-  --kt-subpage-content-h2-size: 24px;
-  --kt-subpage-content-h2-weight: 600;
+  --kt-subpage-content-h2-size: 20px;
+  --kt-subpage-content-h2-weight: 900;
   --kt-subpage-content-h2-line-height: 1.25;
+  --kt-subpage-content-h2-letter-spacing: -0.03em;
 }
 
 .kt-page-shell .wp-block-post-content h2,
@@ -12648,11 +12649,12 @@ body:is(.page-id-67,.page-id-69) .kt-nav .wp-block-navigation__container > .wp-b
 .kt-page-shell .kt-worship-band h2,
 .kt-page-shell .kt-worship-section h2,
 .kt-page-shell .kt-today-head h2,
+.kt-page-shell .kt-admin-section-head h2,
 .kt-page-shell .kt-vision-section-head h2,
 .kt-page-shell .kt-vision-stats__content h2,
 .kt-page-shell .kt-vision-cta h2 {
   font-size: var(--kt-subpage-content-h2-size);
   font-weight: var(--kt-subpage-content-h2-weight);
   line-height: var(--kt-subpage-content-h2-line-height);
-  letter-spacing: 0;
+  letter-spacing: var(--kt-subpage-content-h2-letter-spacing);
 }
