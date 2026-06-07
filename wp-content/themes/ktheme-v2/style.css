@@ -3,7 +3,7 @@ Theme Name: KTheme V2
 Theme URI: https://juswer.mycafe24.com
 Author: KTheme
 Description: WordPress block theme based on the Style 1 church homepage design.
-Version: 0.3.55
+Version: 0.3.59
 Requires at least: 6.5
 Tested up to: 6.5
 Requires PHP: 7.4
@@ -5727,6 +5727,872 @@ body.kt-library-modal-open {
   line-height: 1.65;
 }
 
+.kt-photo-carousel {
+  padding: 0 0 96px;
+}
+
+.kt-photo-carousel__head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 28px;
+  margin-bottom: 28px;
+}
+
+.kt-photo-carousel__head .kt-card-label {
+  display: block;
+  margin-top: 0;
+}
+
+.kt-photo-carousel__head h2 {
+  max-width: 680px;
+  margin: 10px 0 0;
+  color: var(--kt-ink-900);
+  font-size: clamp(28px, 4vw, 40px);
+  font-weight: 900;
+  line-height: 1.18;
+  letter-spacing: -0.045em;
+}
+
+.kt-photo-carousel__head p {
+  max-width: 560px;
+  margin: 14px 0 0;
+  color: var(--kt-ink-600);
+  font-size: 14px;
+  line-height: 1.75;
+}
+
+.kt-photo-carousel__controls {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  flex: 0 0 auto;
+}
+
+.kt-photo-carousel__button {
+  display: grid;
+  width: 40px;
+  height: 40px;
+  place-items: center;
+  border: 1px solid var(--kt-line);
+  border-radius: 8px;
+  background: white;
+  color: var(--kt-ink-900);
+  cursor: pointer;
+  transition: border-color 160ms ease, background-color 160ms ease, transform 160ms ease;
+}
+
+.kt-photo-carousel__button:hover,
+.kt-photo-carousel__button:focus-visible {
+  border-color: rgba(42,79,214,0.36);
+  background: var(--kt-paper);
+  outline: none;
+}
+
+.kt-photo-carousel__button:active {
+  transform: translateY(1px);
+}
+
+.kt-photo-carousel__viewport {
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+}
+
+.kt-photo-carousel__viewport::-webkit-scrollbar {
+  display: none;
+}
+
+.kt-photo-carousel__viewport:focus-visible {
+  outline: 3px solid rgba(42,79,214,0.16);
+  outline-offset: 6px;
+}
+
+.kt-photo-carousel__track {
+  display: grid;
+  grid-auto-columns: minmax(320px, 44%);
+  grid-auto-flow: column;
+  gap: 18px;
+}
+
+.kt-photo-carousel__slide {
+  min-width: 0;
+  margin: 0;
+  scroll-snap-align: start;
+}
+
+.kt-photo-carousel__image {
+  display: block;
+  overflow: hidden;
+  aspect-ratio: 16 / 10;
+  border-radius: 8px;
+  background: var(--kt-paper);
+}
+
+.kt-photo-carousel__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 500ms ease;
+}
+
+.kt-photo-carousel__slide:hover .kt-photo-carousel__image img {
+  transform: scale(1.025);
+}
+
+.kt-photo-carousel__caption {
+  display: grid;
+  gap: 8px;
+  padding-top: 16px;
+}
+
+.kt-photo-carousel__caption span {
+  color: var(--kt-brand-600);
+  font-size: 11px;
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.kt-photo-carousel__caption strong {
+  color: var(--kt-ink-900);
+  font-size: 19px;
+  font-weight: 900;
+  line-height: 1.35;
+  letter-spacing: -0.03em;
+}
+
+.kt-photo-carousel__caption small {
+  max-width: 92%;
+  color: var(--kt-ink-600);
+  font-size: 13px;
+  line-height: 1.65;
+}
+
+.kt-photo-carousel__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  margin-top: 24px;
+}
+
+.kt-photo-carousel__dots {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.kt-photo-carousel__dot {
+  display: grid;
+  width: 22px;
+  height: 22px;
+  place-items: center;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+}
+
+.kt-photo-carousel__dot span {
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: #c6cad2;
+  transition: width 160ms ease, background-color 160ms ease;
+}
+
+.kt-photo-carousel__dot.is-active span {
+  width: 18px;
+  border-radius: 999px;
+  background: var(--kt-brand-600);
+}
+
+.kt-photo-carousel__count {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--kt-ink-600);
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+}
+
+.kt-ministry-page {
+  display: grid;
+  gap: 84px;
+  padding: 48px 0 96px;
+}
+
+.kt-ministry-page + .kt-photo-carousel {
+  padding-top: 0;
+}
+
+.kt-photo-carousel + .kt-ministry-page {
+  padding-top: 0;
+}
+
+.kt-ministry-intro {
+  display: grid;
+  grid-template-columns: minmax(0, 0.95fr) minmax(420px, 1.05fr);
+  gap: clamp(34px, 6vw, 74px);
+  align-items: center;
+}
+
+.kt-ministry-intro__content h2,
+.kt-ministry-section-head h2,
+.kt-ministry-contact__copy h2 {
+  max-width: 720px;
+  margin: 10px 0 0;
+  color: var(--kt-ink-900);
+  font-size: clamp(28px, 4vw, 42px);
+  font-weight: 900;
+  line-height: 1.18;
+  letter-spacing: -0.045em;
+  text-wrap: balance;
+}
+
+.kt-ministry-intro__content p,
+.kt-ministry-section-head p,
+.kt-ministry-contact__copy p {
+  max-width: 610px;
+  margin: 18px 0 0;
+  color: var(--kt-ink-600);
+  font-size: 15px;
+  line-height: 1.75;
+}
+
+.kt-ministry-intro__media {
+  position: relative;
+  min-height: 390px;
+  overflow: hidden;
+  border-radius: 8px;
+  background: var(--kt-paper);
+}
+
+.kt-ministry-intro__media img {
+  width: 100%;
+  height: 100%;
+  min-height: 390px;
+  object-fit: cover;
+}
+
+.kt-ministry-intro__note {
+  position: absolute;
+  right: 18px;
+  bottom: 18px;
+  left: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  border: 1px solid rgba(255,255,255,0.22);
+  border-radius: 8px;
+  background: rgba(14,19,32,0.82);
+  color: white;
+  padding: 18px;
+  backdrop-filter: blur(12px);
+}
+
+.kt-ministry-intro__note strong {
+  flex: 0 0 auto;
+  font-size: 15px;
+  letter-spacing: -0.02em;
+}
+
+.kt-ministry-intro__note span {
+  color: rgba(255,255,255,0.76);
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+.kt-ministry-section-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 32px;
+  margin-bottom: 30px;
+}
+
+.kt-ministry-section-head .kt-card-label,
+.kt-ministry-contact__copy .kt-card-label {
+  display: block;
+  margin-top: 0;
+}
+
+.kt-ministry-overview__grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  border-top: 1px solid var(--kt-line);
+  border-bottom: 1px solid var(--kt-line);
+}
+
+.kt-ministry-overview__grid article {
+  min-width: 0;
+  padding: 28px 24px;
+}
+
+.kt-ministry-overview__grid article + article {
+  border-left: 1px solid var(--kt-line);
+}
+
+.kt-ministry-overview__grid span,
+.kt-ministry-link-grid span {
+  color: var(--kt-brand-600);
+  font-size: 11px;
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.kt-ministry-overview__grid strong {
+  display: block;
+  margin-top: 14px;
+  color: var(--kt-ink-900);
+  font-size: 20px;
+  font-weight: 900;
+  line-height: 1.32;
+  letter-spacing: -0.035em;
+}
+
+.kt-ministry-overview__grid p {
+  margin: 12px 0 0;
+  color: var(--kt-ink-600);
+  font-size: 13px;
+  line-height: 1.65;
+}
+
+.kt-ministry-journey__list {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border: 1px solid var(--kt-line);
+  border-radius: 8px;
+  background: white;
+  overflow: hidden;
+}
+
+.kt-ministry-journey__list li {
+  position: relative;
+  min-width: 0;
+  padding: 28px 22px 30px;
+}
+
+.kt-ministry-journey__list li + li {
+  border-left: 1px solid var(--kt-line);
+}
+
+.kt-ministry-journey__list li::after {
+  position: absolute;
+  top: 42px;
+  right: -8px;
+  z-index: 1;
+  width: 16px;
+  height: 16px;
+  border-top: 1px solid var(--kt-line);
+  border-right: 1px solid var(--kt-line);
+  background: white;
+  transform: rotate(45deg);
+  content: "";
+}
+
+.kt-ministry-journey__list li:last-child::after {
+  display: none;
+}
+
+.kt-ministry-journey__list span {
+  display: inline-grid;
+  width: 34px;
+  height: 34px;
+  place-items: center;
+  border-radius: 8px;
+  background: var(--kt-ink-900);
+  color: white;
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.kt-ministry-journey__list strong,
+.kt-ministry-link-grid strong {
+  display: block;
+  margin-top: 18px;
+  color: var(--kt-ink-900);
+  font-size: 17px;
+  font-weight: 900;
+  line-height: 1.35;
+  letter-spacing: -0.03em;
+}
+
+.kt-ministry-journey__list p,
+.kt-ministry-link-grid small {
+  display: block;
+  margin: 10px 0 0;
+  color: var(--kt-ink-600);
+  font-size: 13px;
+  line-height: 1.65;
+}
+
+.kt-ministry-link-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.kt-ministry-link-grid a {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  min-height: 210px;
+  border: 1px solid var(--kt-line);
+  border-radius: 8px;
+  background: white;
+  padding: 22px;
+  transition: border-color 180ms ease, box-shadow 180ms ease, transform 180ms ease;
+}
+
+.kt-ministry-link-grid a::after {
+  margin-top: auto;
+  padding-top: 22px;
+  color: var(--kt-ink-900);
+  font-size: 18px;
+  font-weight: 900;
+  line-height: 1;
+  content: "\2192";
+}
+
+.kt-ministry-link-grid a:hover,
+.kt-ministry-link-grid a:focus-visible {
+  border-color: rgba(42,79,214,0.36);
+  box-shadow: var(--kt-shadow-float);
+  outline: none;
+  transform: translateY(-2px);
+}
+
+.kt-ministry-faq__list {
+  display: grid;
+  border-top: 1px solid var(--kt-line);
+}
+
+.kt-ministry-faq details {
+  border-bottom: 1px solid var(--kt-line);
+  padding: 0;
+}
+
+.kt-ministry-faq summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  min-height: 68px;
+  color: var(--kt-ink-900);
+  font-size: 17px;
+  font-weight: 900;
+  letter-spacing: -0.025em;
+  cursor: pointer;
+}
+
+.kt-ministry-faq summary::-webkit-details-marker {
+  display: none;
+}
+
+.kt-ministry-faq summary::after {
+  flex: 0 0 auto;
+  color: var(--kt-brand-600);
+  font-size: 22px;
+  line-height: 1;
+  content: "+";
+}
+
+.kt-ministry-faq details[open] summary::after {
+  content: "-";
+}
+
+.kt-ministry-faq p {
+  max-width: 760px;
+  margin: -4px 0 22px;
+  color: var(--kt-ink-600);
+  font-size: 14px;
+  line-height: 1.75;
+}
+
+.kt-ministry-contact {
+  display: grid;
+  grid-template-columns: minmax(0, 0.8fr) minmax(420px, 1.2fr);
+  gap: clamp(30px, 5vw, 64px);
+  align-items: start;
+  border-top: 1px solid var(--kt-line);
+  padding-top: 64px;
+}
+
+.kt-ministry-contact__copy ul {
+  display: grid;
+  gap: 0;
+  margin: 34px 0 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--kt-line);
+}
+
+.kt-ministry-contact__copy li {
+  display: grid;
+  grid-template-columns: 86px minmax(0, 1fr);
+  gap: 14px;
+  border-bottom: 1px solid var(--kt-line);
+  padding: 16px 0;
+}
+
+.kt-ministry-contact__copy li strong {
+  color: var(--kt-ink-900);
+  font-size: 13px;
+}
+
+.kt-ministry-contact__copy li span {
+  color: var(--kt-ink-600);
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+.kt-ministry-form {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  border: 1px solid var(--kt-line);
+  border-radius: 8px;
+  background: white;
+  padding: 20px;
+  box-shadow: var(--kt-shadow-card);
+}
+
+.kt-ministry-form label {
+  display: grid;
+  gap: 7px;
+  min-width: 0;
+}
+
+.kt-ministry-form label span {
+  color: var(--kt-ink-700);
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.kt-ministry-form input,
+.kt-ministry-form select,
+.kt-ministry-form textarea {
+  width: 100%;
+  min-width: 0;
+  border: 1px solid var(--kt-line);
+  border-radius: 6px;
+  background: white;
+  color: var(--kt-ink-900);
+  font: inherit;
+  font-size: 14px;
+  outline: none;
+  transition: border-color 140ms ease, box-shadow 140ms ease;
+}
+
+.kt-ministry-form input,
+.kt-ministry-form select {
+  height: 42px;
+  padding: 0 12px;
+}
+
+.kt-ministry-form textarea {
+  resize: vertical;
+  padding: 12px;
+  line-height: 1.55;
+}
+
+.kt-ministry-form input:focus,
+.kt-ministry-form select:focus,
+.kt-ministry-form textarea:focus {
+  border-color: var(--kt-brand-600);
+  box-shadow: 0 0 0 3px rgba(42,79,214,0.12);
+}
+
+.kt-ministry-form__wide,
+.kt-ministry-form__check,
+.kt-ministry-form .kt-button {
+  grid-column: 1 / -1;
+}
+
+.kt-ministry-form__check {
+  display: flex !important;
+  align-items: center;
+  gap: 9px !important;
+  margin-top: 4px;
+}
+
+.kt-ministry-form__check input {
+  width: 16px;
+  height: 16px;
+  flex: 0 0 auto;
+}
+
+.kt-ministry-form__check span {
+  color: var(--kt-ink-600) !important;
+  font-size: 12.5px !important;
+  font-weight: 700 !important;
+}
+
+.kt-ministry-form .kt-button {
+  width: 100%;
+  border: 0;
+  cursor: pointer;
+}
+
+.kt-action-cta {
+  display: grid;
+  min-width: 0;
+  border: 1px solid var(--kt-line);
+  border-radius: 8px;
+  background: white;
+  color: var(--kt-ink-900);
+  overflow: hidden;
+}
+
+.kt-action-cta__body {
+  min-width: 0;
+}
+
+.kt-action-cta__body .kt-card-label {
+  display: block;
+  margin-top: 0;
+}
+
+.kt-action-cta h2 {
+  max-width: 720px;
+  margin: 10px 0 0;
+  color: inherit;
+  font-size: clamp(26px, 3.6vw, 40px);
+  font-weight: 900;
+  line-height: 1.18;
+  letter-spacing: -0.045em;
+  text-wrap: balance;
+}
+
+.kt-action-cta p {
+  max-width: 620px;
+  margin: 16px 0 0;
+  color: var(--kt-ink-600);
+  font-size: 14px;
+  line-height: 1.75;
+}
+
+.kt-action-cta__buttons {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.kt-action-cta__meta {
+  display: grid;
+  gap: 10px;
+}
+
+.kt-action-cta__meta span {
+  display: grid;
+  gap: 5px;
+  min-width: 0;
+  border-top: 1px solid var(--kt-line);
+  padding-top: 12px;
+}
+
+.kt-action-cta__meta strong {
+  color: var(--kt-ink-900);
+  font-size: 13px;
+  font-weight: 900;
+}
+
+.kt-action-cta__meta small {
+  color: var(--kt-ink-600);
+  font-size: 12.5px;
+  line-height: 1.55;
+}
+
+.kt-action-cta__option-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.kt-action-cta__option {
+  display: grid;
+  gap: 8px;
+  min-width: 0;
+  border: 1px solid var(--kt-line);
+  border-radius: 8px;
+  background: white;
+  padding: 16px;
+}
+
+.kt-action-cta__option svg {
+  color: var(--kt-brand-600);
+}
+
+.kt-action-cta__option strong {
+  color: var(--kt-ink-900);
+  font-size: 15px;
+  line-height: 1.35;
+}
+
+.kt-action-cta__option small {
+  color: var(--kt-ink-600);
+  font-size: 12.5px;
+  line-height: 1.55;
+}
+
+.kt-action-cta--inline {
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 28px;
+  padding: 30px;
+}
+
+.kt-action-cta--split {
+  grid-template-columns: minmax(0, 1fr) minmax(320px, 0.42fr);
+}
+
+.kt-action-cta--split .kt-action-cta__body {
+  padding: clamp(30px, 5vw, 52px);
+}
+
+.kt-action-cta--split .kt-action-cta__aside {
+  display: grid;
+  align-content: space-between;
+  gap: 26px;
+  border-left: 1px solid var(--kt-line);
+  background: var(--kt-paper);
+  padding: clamp(24px, 4vw, 36px);
+}
+
+.kt-action-cta--ministry {
+  box-shadow: var(--kt-shadow-card);
+}
+
+.kt-action-cta--cards {
+  gap: 24px;
+  background: var(--kt-paper);
+  padding: 30px;
+}
+
+.kt-action-cta--cards .kt-action-cta__body {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 28px;
+}
+
+.kt-action-cta--contact {
+  grid-template-columns: minmax(0, 0.92fr) minmax(280px, 0.48fr);
+  gap: 0;
+}
+
+.kt-action-cta--contact .kt-action-cta__body {
+  padding: 32px;
+}
+
+.kt-action-cta--contact .kt-action-cta__aside {
+  display: grid;
+  gap: 12px;
+  border-left: 1px solid var(--kt-line);
+  padding: 22px;
+}
+
+.kt-action-cta--contact .kt-action-cta__aside a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  min-height: 58px;
+  border: 1px solid var(--kt-line);
+  border-radius: 8px;
+  background: white;
+  padding: 14px 16px;
+  color: var(--kt-ink-900);
+  font-size: 14px;
+  font-weight: 900;
+}
+
+.kt-action-cta--dark {
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 28px;
+  border-color: var(--kt-ink-900);
+  background: var(--kt-ink-900);
+  color: white;
+  padding: 34px;
+}
+
+.kt-action-cta--dark p,
+.kt-action-cta--dark .kt-card-label {
+  color: rgba(255,255,255,0.72);
+}
+
+.kt-action-cta--dark .kt-button--outline {
+  border-color: rgba(255,255,255,0.28);
+  color: white;
+}
+
+.kt-action-cta--dark .kt-button--outline:hover,
+.kt-action-cta--dark .kt-button--outline:focus-visible {
+  background: rgba(255,255,255,0.08);
+}
+
+@media (max-width: 900px) {
+  .kt-action-cta--inline,
+  .kt-action-cta--split,
+  .kt-action-cta--contact,
+  .kt-action-cta--dark {
+    grid-template-columns: 1fr;
+  }
+
+  .kt-action-cta--split .kt-action-cta__aside,
+  .kt-action-cta--contact .kt-action-cta__aside {
+    border-top: 1px solid var(--kt-line);
+    border-left: 0;
+  }
+
+  .kt-action-cta--cards .kt-action-cta__body {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .kt-action-cta__option-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .kt-action-cta--inline,
+  .kt-action-cta--cards,
+  .kt-action-cta--dark {
+    padding: 22px;
+  }
+
+  .kt-action-cta--split .kt-action-cta__body,
+  .kt-action-cta--contact .kt-action-cta__body {
+    padding: 24px;
+  }
+
+  .kt-action-cta__buttons {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .kt-action-cta__buttons .kt-button {
+    width: 100%;
+  }
+}
+
 .kt-admin-section {
   margin-top: 64px;
 }
@@ -7596,6 +8462,41 @@ body.kt-library-modal-open {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
+  .kt-photo-carousel__track {
+    grid-auto-columns: minmax(300px, 64%);
+  }
+
+  .kt-ministry-intro,
+  .kt-ministry-contact {
+    grid-template-columns: 1fr;
+  }
+
+  .kt-ministry-overview__grid,
+  .kt-ministry-link-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .kt-ministry-overview__grid article:nth-child(odd) {
+    border-left: 0;
+  }
+
+  .kt-ministry-overview__grid article:nth-child(n + 3) {
+    border-top: 1px solid var(--kt-line);
+  }
+
+  .kt-ministry-journey__list {
+    grid-template-columns: 1fr;
+  }
+
+  .kt-ministry-journey__list li + li {
+    border-top: 1px solid var(--kt-line);
+    border-left: 0;
+  }
+
+  .kt-ministry-journey__list li::after {
+    display: none;
+  }
+
   .kt-gallery .span-3 {
     grid-column: span 6;
   }
@@ -7660,6 +8561,73 @@ body.kt-library-modal-open {
   .kt-design-library {
     width: min(100% - 32px, var(--kt-max));
     padding: 48px 0 72px;
+  }
+
+  .kt-photo-carousel {
+    padding-bottom: 72px;
+  }
+
+  .kt-photo-carousel__head,
+  .kt-photo-carousel__footer {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .kt-photo-carousel__controls {
+    width: 100%;
+    justify-content: flex-end;
+  }
+
+  .kt-photo-carousel__track {
+    grid-auto-columns: minmax(260px, 88%);
+    gap: 14px;
+  }
+
+  .kt-photo-carousel__caption strong {
+    font-size: 17px;
+  }
+
+  .kt-ministry-page {
+    gap: 58px;
+    padding: 36px 0 72px;
+  }
+
+  .kt-ministry-section-head,
+  .kt-ministry-intro__note {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .kt-ministry-intro__media,
+  .kt-ministry-intro__media img {
+    min-height: 320px;
+  }
+
+  .kt-ministry-overview__grid,
+  .kt-ministry-link-grid,
+  .kt-ministry-form {
+    grid-template-columns: 1fr;
+  }
+
+  .kt-ministry-overview__grid article,
+  .kt-ministry-overview__grid article + article,
+  .kt-ministry-overview__grid article:nth-child(n + 3) {
+    border-left: 0;
+    border-top: 1px solid var(--kt-line);
+  }
+
+  .kt-ministry-overview__grid article:first-child {
+    border-top: 0;
+  }
+
+  .kt-ministry-contact {
+    padding-top: 48px;
+  }
+
+  .kt-ministry-form__wide,
+  .kt-ministry-form__check,
+  .kt-ministry-form .kt-button {
+    grid-column: auto;
   }
 
   .kt-hero-demo__meta {

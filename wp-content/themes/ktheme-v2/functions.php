@@ -488,6 +488,11 @@ function ktheme_v2_render_header_shortcode(): string {
 	(function () {
 		var header = document.querySelector('.kt-header');
 		if (!header) return;
+		var topbar = header.previousElementSibling && header.previousElementSibling.classList.contains('kt-topbar') ? header.previousElementSibling : null;
+		var headerShell = topbar && header.parentElement !== document.body ? header.parentElement : null;
+		if (headerShell) {
+			headerShell.classList.add('kt-site-header-shell');
+		}
 		var button = header.querySelector('[data-kt-mega-toggle]');
 		var panel = header.querySelector('#kt-mega-menu');
 		var searchButton = header.querySelector('[data-kt-search-toggle]');
@@ -544,7 +549,11 @@ function ktheme_v2_render_header_shortcode(): string {
 		});
 
 		function syncHeaderScroll() {
-			header.classList.toggle('is-scrolled', window.scrollY > 8);
+			var isScrolled = window.scrollY > 8;
+			header.classList.toggle('is-scrolled', isScrolled);
+			if (headerShell) {
+				headerShell.classList.toggle('is-scrolled', isScrolled);
+			}
 		}
 
 		syncHeaderScroll();
@@ -706,11 +715,11 @@ function ktheme_v2_required_pages(): array {
 		array( 'title' => ktheme_v2_text( '\uC0C8\uBCBD\uAE30\uB3C4' ), 'slug' => 'dawn-prayer', 'template' => 'page-dawn-prayer' ),
 		array( 'title' => ktheme_v2_text( '\uC8FC\uBCF4' ), 'slug' => 'bulletin', 'template' => 'page-bulletin' ),
 		array( 'title' => ktheme_v2_text( '\uACF5\uB3D9\uCCB4' ), 'slug' => 'community', 'template' => 'page-community' ),
-		array( 'title' => ktheme_v2_text( '\uC0C8\uAC00\uC871' ), 'slug' => 'newcomers' ),
-		array( 'title' => ktheme_v2_text( '\uC18C\uADF8\uB8F9/\uAD6C\uC5ED' ), 'slug' => 'small-groups' ),
-		array( 'title' => ktheme_v2_text( '\uB2E4\uC74C\uC138\uB300' ), 'slug' => 'next-generation' ),
-		array( 'title' => ktheme_v2_text( '\uCCAD\uB144\uBD80' ), 'slug' => 'youth-ministry' ),
-		array( 'title' => ktheme_v2_text( '\uC7A5\uB144/\uC2DC\uB2C8\uC5B4' ), 'slug' => 'senior-ministry' ),
+		array( 'title' => ktheme_v2_text( '\uC0C8\uAC00\uC871' ), 'slug' => 'newcomers', 'template' => 'page-newcomers' ),
+		array( 'title' => ktheme_v2_text( '\uC18C\uADF8\uB8F9/\uAD6C\uC5ED' ), 'slug' => 'small-groups', 'template' => 'page-small-groups' ),
+		array( 'title' => ktheme_v2_text( '\uB2E4\uC74C\uC138\uB300' ), 'slug' => 'next-generation', 'template' => 'page-next-generation' ),
+		array( 'title' => ktheme_v2_text( '\uCCAD\uB144\uBD80' ), 'slug' => 'youth-ministry', 'template' => 'page-youth-ministry' ),
+		array( 'title' => ktheme_v2_text( '\uC7A5\uB144/\uC2DC\uB2C8\uC5B4' ), 'slug' => 'senior-ministry', 'template' => 'page-senior-ministry' ),
 		array( 'title' => ktheme_v2_text( '\uC591\uC721' ), 'slug' => 'training', 'template' => 'page-training' ),
 		array( 'title' => ktheme_v2_text( '\uC0C8\uAC00\uC871 \uACFC\uC815' ), 'slug' => 'new-family-course' ),
 		array( 'title' => ktheme_v2_text( '\uC131\uACBD\uACF5\uBD80' ), 'slug' => 'bible-study' ),
@@ -1372,6 +1381,303 @@ function ktheme_v2_render_sunday_worship_grid_shortcode(): string {
 		'</section>';
 }
 add_shortcode( 'ktheme_sunday_worship_grid', 'ktheme_v2_render_sunday_worship_grid_shortcode' );
+
+function ktheme_v2_photo_carousel_presets(): array {
+	$image_base = get_template_directory_uri() . '/assets/images/generated/';
+
+	return array(
+		'community' => array(
+			'eyebrow'     => 'Community Life',
+			'title'       => '공동체가 함께한 활동 사진',
+			'description' => '예배와 모임, 다음세대와 섬김의 자리에서 함께 자라가는 장면을 모았습니다.',
+			'items'       => array(
+				array(
+					'image'   => $image_base . 'church-generated-04.jpg',
+					'label'   => '소그룹',
+					'title'   => '삶을 나누는 목장 모임',
+					'caption' => '말씀과 식탁, 기도가 자연스럽게 이어지는 작은 공동체의 시간입니다.',
+				),
+				array(
+					'image'   => $image_base . 'church-generated-03.jpg',
+					'label'   => '다음세대',
+					'title'   => '믿음으로 자라는 다음세대',
+					'caption' => '아이들과 청소년이 예배와 교육 안에서 복음을 배웁니다.',
+				),
+				array(
+					'image'   => $image_base . 'church-generated-14.jpg',
+					'label'   => '새가족',
+					'title'   => '처음 오신 분을 환영하는 자리',
+					'caption' => '낯선 방문이 따뜻한 만남으로 이어지도록 함께 돕습니다.',
+				),
+				array(
+					'image'   => $image_base . 'church-generated-02.jpg',
+					'label'   => '청년부',
+					'title'   => '함께 기도하는 청년 공동체',
+					'caption' => '청년들이 말씀 앞에서 삶의 방향을 나누고 서로를 세웁니다.',
+				),
+				array(
+					'image'   => $image_base . 'church-generated-10.jpg',
+					'label'   => '양육',
+					'title'   => '배움으로 깊어지는 신앙',
+					'caption' => '새가족 과정과 성경공부를 통해 믿음의 기초를 다집니다.',
+				),
+				array(
+					'image'   => $image_base . 'church-generated-08.jpg',
+					'label'   => '섬김',
+					'title'   => '서로의 필요를 돌보는 손길',
+					'caption' => '교회 안팎의 필요를 살피며 실제적인 사랑을 나눕니다.',
+				),
+			),
+		),
+		'newcomers' => array(
+			'eyebrow'     => 'Welcome Moments',
+			'title'       => '처음 방문부터 정착까지 함께합니다',
+			'description' => '예배 전 안내, 새가족 과정, 소그룹 연결까지 새가족의 첫걸음을 돕는 장면들입니다.',
+			'items'       => array(
+				array(
+					'image'   => $image_base . 'church-generated-14.jpg',
+					'label'   => '환영',
+					'title'   => '예배 전 안내 데스크',
+					'caption' => '도착하면 안내팀이 예배실과 새가족석, 자녀 예배 동선을 함께 안내합니다.',
+				),
+				array(
+					'image'   => $image_base . 'church-generated-10.jpg',
+					'label'   => '과정',
+					'title'   => '새가족 과정',
+					'caption' => '교회의 비전과 신앙의 기초를 배우며 공동체를 자연스럽게 알아갑니다.',
+				),
+				array(
+					'image'   => $image_base . 'church-generated-04.jpg',
+					'label'   => '연결',
+					'title'   => '소그룹 연결',
+					'caption' => '삶의 자리와 연령대를 고려해 함께 걸어갈 공동체를 소개합니다.',
+				),
+				array(
+					'image'   => $image_base . 'church-generated-03.jpg',
+					'label'   => '가정',
+					'title'   => '자녀 동반 방문',
+					'caption' => '다음세대 예배와 교육 공간을 안내해 온 가족이 편안하게 예배할 수 있습니다.',
+				),
+			),
+		),
+		'small-groups' => array(
+			'eyebrow'     => 'Small Group Life',
+			'title'       => '삶을 나누고 서로를 돌보는 자리',
+			'description' => '예배의 고백이 일상의 돌봄으로 이어지도록 소그룹과 구역 모임이 함께 걷습니다.',
+			'items'       => array(
+				array(
+					'image'   => $image_base . 'church-generated-04.jpg',
+					'label'   => '목장',
+					'title'   => '가정과 일상에서 만나는 모임',
+					'caption' => '말씀을 나누고 서로의 기도 제목을 품는 작은 공동체입니다.',
+				),
+				array(
+					'image'   => $image_base . 'church-generated-12.jpg',
+					'label'   => '돌봄',
+					'title'   => '혼자 남지 않도록 살피는 연결',
+					'caption' => '새가족과 환우, 도움이 필요한 가정을 가까운 공동체가 함께 돌봅니다.',
+				),
+				array(
+					'image'   => $image_base . 'church-generated-14.jpg',
+					'label'   => '교제',
+					'title'   => '예배 후 이어지는 식탁과 대화',
+					'caption' => '짧은 인사에서 시작된 만남이 신앙의 동행으로 자랍니다.',
+				),
+				array(
+					'image'   => $image_base . 'church-generated-08.jpg',
+					'label'   => '섬김',
+					'title'   => '함께 움직이는 작은 섬김',
+					'caption' => '각 구역이 지역과 교회 안의 필요를 살피며 사랑을 실천합니다.',
+				),
+			),
+		),
+		'next-generation' => array(
+			'eyebrow'     => 'Next Generation',
+			'title'       => '아이들이 말씀 안에서 자라갑니다',
+			'description' => '영유아부터 청소년까지 연령에 맞는 예배와 교육으로 다음세대의 믿음을 세웁니다.',
+			'items'       => array(
+				array(
+					'image'   => $image_base . 'church-generated-03.jpg',
+					'label'   => '예배',
+					'title'   => '연령별 다음세대 예배',
+					'caption' => '아이들이 이해할 수 있는 언어로 말씀을 듣고 함께 찬양합니다.',
+				),
+				array(
+					'image'   => $image_base . 'church-generated-11.jpg',
+					'label'   => '교육',
+					'title'   => '복음의 기초를 배우는 시간',
+					'caption' => '성경 이야기와 활동을 통해 믿음의 고백을 일상과 연결합니다.',
+				),
+				array(
+					'image'   => $image_base . 'church-generated-10.jpg',
+					'label'   => '교사',
+					'title'   => '함께 기도하는 교사 공동체',
+					'caption' => '교사와 부모가 아이들의 신앙 성장을 위해 함께 기도합니다.',
+				),
+				array(
+					'image'   => $image_base . 'church-generated-15.jpg',
+					'label'   => '캠프',
+					'title'   => '여름성경학교와 수련회',
+					'caption' => '집중적인 예배와 교제를 통해 하나님을 더 깊이 만나는 시간을 갖습니다.',
+				),
+			),
+		),
+		'youth-ministry' => array(
+			'eyebrow'     => 'Young Adults',
+			'title'       => '청년들이 믿음과 삶을 함께 세웁니다',
+			'description' => '예배, 소그룹, 기도와 섬김을 통해 청년의 계절을 함께 걸어갑니다.',
+			'items'       => array(
+				array(
+					'image'   => $image_base . 'church-generated-02.jpg',
+					'label'   => '예배',
+					'title'   => '청년예배와 말씀 나눔',
+					'caption' => '삶의 질문을 말씀 앞에 가져오고 함께 응답하는 자리입니다.',
+				),
+				array(
+					'image'   => $image_base . 'church-generated-04.jpg',
+					'label'   => '소그룹',
+					'title'   => '관계가 깊어지는 순모임',
+					'caption' => '학교와 직장, 진로와 관계의 고민을 믿음 안에서 나눕니다.',
+				),
+				array(
+					'image'   => $image_base . 'church-generated-13.jpg',
+					'label'   => '찬양',
+					'title'   => '예배를 함께 세우는 섬김',
+					'caption' => '찬양과 미디어, 환대의 자리에서 청년들이 은사를 나눕니다.',
+				),
+				array(
+					'image'   => $image_base . 'church-generated-17.jpg',
+					'label'   => '선교',
+					'title'   => '지역과 세상을 향한 발걸음',
+					'caption' => '봉사와 단기 선교를 통해 복음을 삶의 자리로 가져갑니다.',
+				),
+			),
+		),
+		'senior-ministry' => array(
+			'eyebrow'     => 'Senior Ministry',
+			'title'       => '장년과 시니어의 믿음이 다음세대를 세웁니다',
+			'description' => '예배, 교제, 돌봄과 섬김을 통해 인생의 계절마다 함께 걷는 공동체입니다.',
+			'items'       => array(
+				array(
+					'image'   => $image_base . 'church-generated-12.jpg',
+					'label'   => '돌봄',
+					'title'   => '기도와 심방으로 이어지는 돌봄',
+					'caption' => '몸과 마음의 필요를 살피며 가까운 공동체가 함께 기도합니다.',
+				),
+				array(
+					'image'   => $image_base . 'church-generated-14.jpg',
+					'label'   => '교제',
+					'title'   => '함께 식탁을 나누는 모임',
+					'caption' => '주중 모임과 절기 행사를 통해 관계와 격려가 이어집니다.',
+				),
+				array(
+					'image'   => $image_base . 'church-generated-10.jpg',
+					'label'   => '배움',
+					'title'   => '말씀으로 깊어지는 신앙',
+					'caption' => '성경공부와 기도 모임으로 인생의 계절을 말씀 안에서 해석합니다.',
+				),
+				array(
+					'image'   => $image_base . 'church-generated-08.jpg',
+					'label'   => '섬김',
+					'title'   => '경험과 은사를 나누는 자리',
+					'caption' => '오랜 믿음의 경험이 교회와 다음세대를 세우는 섬김으로 이어집니다.',
+				),
+			),
+		),
+	);
+}
+
+function ktheme_v2_enqueue_photo_carousel_script(): void {
+	$script_path = get_theme_file_path( 'assets/js/photo-carousel.js' );
+
+	wp_enqueue_script(
+		'ktheme-v2-photo-carousel',
+		get_theme_file_uri( 'assets/js/photo-carousel.js' ),
+		array(),
+		file_exists( $script_path ) ? (string) filemtime( $script_path ) : wp_get_theme()->get( 'Version' ),
+		true
+	);
+}
+
+function ktheme_v2_render_photo_carousel_shortcode( $atts = array() ): string {
+	if ( ! is_array( $atts ) ) {
+		$atts = array();
+	}
+
+	$atts = shortcode_atts(
+		array(
+			'preset'      => 'community',
+			'eyebrow'     => '',
+			'title'       => '',
+			'description' => '',
+			'class'       => '',
+		),
+		$atts,
+		'ktheme_photo_carousel'
+	);
+
+	$presets = ktheme_v2_photo_carousel_presets();
+	$preset  = isset( $presets[ $atts['preset'] ] ) ? $presets[ $atts['preset'] ] : $presets['community'];
+	$items   = isset( $preset['items'] ) && is_array( $preset['items'] ) ? $preset['items'] : array();
+
+	if ( empty( $items ) ) {
+		return '';
+	}
+
+	ktheme_v2_enqueue_photo_carousel_script();
+
+	$title       = '' !== $atts['title'] ? $atts['title'] : $preset['title'];
+	$eyebrow     = '' !== $atts['eyebrow'] ? $atts['eyebrow'] : $preset['eyebrow'];
+	$description = '' !== $atts['description'] ? $atts['description'] : $preset['description'];
+	$section_id  = wp_unique_id( 'kt-photo-carousel-' );
+	$classes     = array_filter(
+		array(
+			'kt-photo-carousel',
+			'kt-photo-carousel--' . sanitize_html_class( (string) $atts['preset'] ),
+			sanitize_html_class( (string) $atts['class'] ),
+		)
+	);
+	$total       = count( $items );
+	$slides      = '';
+	$dots        = '';
+
+	foreach ( array_values( $items ) as $index => $item ) {
+		$slide_id = $section_id . '-slide-' . ( $index + 1 );
+		$label    = isset( $item['label'] ) ? (string) $item['label'] : '';
+		$caption  = isset( $item['caption'] ) ? (string) $item['caption'] : '';
+		$item_title = isset( $item['title'] ) ? (string) $item['title'] : '';
+
+		$slides .= '<figure class="kt-photo-carousel__slide" id="' . esc_attr( $slide_id ) . '" data-kt-carousel-slide>' .
+			'<span class="kt-photo-carousel__image"><img src="' . esc_url( (string) $item['image'] ) . '" alt="' . esc_attr( $item_title ) . '" loading="lazy" /></span>' .
+			'<figcaption class="kt-photo-carousel__caption">' .
+				( '' !== $label ? '<span>' . esc_html( $label ) . '</span>' : '' ) .
+				'<strong>' . esc_html( $item_title ) . '</strong>' .
+				( '' !== $caption ? '<small>' . esc_html( $caption ) . '</small>' : '' ) .
+			'</figcaption>' .
+		'</figure>';
+
+		$dots .= '<button class="kt-photo-carousel__dot" type="button" aria-label="' . esc_attr( sprintf( '%d번째 사진 보기', $index + 1 ) ) . '" aria-controls="' . esc_attr( $slide_id ) . '" data-kt-carousel-dot="' . esc_attr( (string) $index ) . '"><span></span></button>';
+	}
+
+	return '<section class="' . esc_attr( implode( ' ', $classes ) ) . '" aria-labelledby="' . esc_attr( $section_id . '-title' ) . '" data-kt-photo-carousel>' .
+		'<div class="kt-photo-carousel__head">' .
+			'<div><span class="kt-card-label">' . esc_html( $eyebrow ) . '</span><h2 id="' . esc_attr( $section_id . '-title' ) . '">' . esc_html( $title ) . '</h2>' .
+			( '' !== $description ? '<p>' . esc_html( $description ) . '</p>' : '' ) . '</div>' .
+			'<div class="kt-photo-carousel__controls">' .
+				'<button class="kt-photo-carousel__button" type="button" aria-label="' . esc_attr__( '이전 사진', 'ktheme-v2' ) . '" data-kt-carousel-prev><svg class="kt-icon kt-icon--sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" aria-hidden="true"><path d="M15 18 9 12l6-6"/></svg></button>' .
+				'<button class="kt-photo-carousel__button" type="button" aria-label="' . esc_attr__( '다음 사진', 'ktheme-v2' ) . '" data-kt-carousel-next><svg class="kt-icon kt-icon--sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></button>' .
+			'</div>' .
+		'</div>' .
+		'<div class="kt-photo-carousel__viewport" tabindex="0" data-kt-carousel-viewport>' .
+			'<div class="kt-photo-carousel__track" data-kt-carousel-track>' . $slides . '</div>' .
+		'</div>' .
+		'<div class="kt-photo-carousel__footer">' .
+			'<div class="kt-photo-carousel__dots" aria-label="' . esc_attr__( '사진 선택', 'ktheme-v2' ) . '">' . $dots . '</div>' .
+			'<div class="kt-photo-carousel__count" aria-live="polite"><span data-kt-carousel-current>01</span><span>/</span><span>' . esc_html( str_pad( (string) $total, 2, '0', STR_PAD_LEFT ) ) . '</span></div>' .
+		'</div>' .
+	'</section>';
+}
+add_shortcode( 'ktheme_photo_carousel', 'ktheme_v2_render_photo_carousel_shortcode' );
 
 function ktheme_v2_body_classes( array $classes ): array {
 	if ( is_page( array( 'sunday-worship', 'wednesday-worship', 'dawn-prayer' ) ) ) {
