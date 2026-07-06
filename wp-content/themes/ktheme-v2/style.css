@@ -3,7 +3,7 @@ Theme Name: KTheme V2
 Theme URI: https://juswer.mycafe24.com
 Author: KTheme
 Description: WordPress block theme based on the Style 1 church homepage design.
-Version: 0.3.59
+Version: 0.3.60
 Requires at least: 6.5
 Tested up to: 6.5
 Requires PHP: 7.4
@@ -213,7 +213,8 @@ header.wp-block-template-part:has(> .kt-topbar + .kt-header) .kt-header {
   align-items: center;
   gap: 10px;
   font-weight: 800;
-  font-size: 19px;
+  font-size: 20px;
+  line-height: 40px;
   letter-spacing: -0.03em;
 }
 
