@@ -6588,7 +6588,8 @@ body.kt-library-modal-open {
 
 .kt-ministry-testimonials .kt-library-quote-grid {
   max-width: none;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(240px, 1fr));
+  overflow-x: auto;
 }
 
 .kt-library-quote-grid figure cite {
@@ -8732,10 +8733,6 @@ body.kt-library-modal-open {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .kt-ministry-testimonials .kt-library-quote-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
   .kt-ministry-overview__grid article:nth-child(odd) {
     border-left: 0;
   }
@@ -8866,10 +8863,6 @@ body.kt-library-modal-open {
   .kt-ministry-overview__grid,
   .kt-ministry-link-grid,
   .kt-ministry-form {
-    grid-template-columns: 1fr;
-  }
-
-  .kt-ministry-testimonials .kt-library-quote-grid {
     grid-template-columns: 1fr;
   }
 

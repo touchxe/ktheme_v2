@@ -1100,3 +1100,82 @@ function ktheme_v2_enqueue_design_library_assets(): void {
 	);
 }
 add_action( 'wp_enqueue_scripts', 'ktheme_v2_enqueue_design_library_assets' );
+
+/**
+ * Photo Carousel Shortcode
+ * Usage: [ktheme_photo_carousel preset="small-groups" eyebrow="..." title="..." description="..."]
+ */
+function ktheme_v2_render_photo_carousel_shortcode( array $atts ): string {
+	$atts = shortcode_atts(
+		array(
+			'preset'      => 'default',
+			'eyebrow'     => 'Photo Gallery',
+			'title'       => '',
+			'description' => '',
+		),
+		$atts,
+		'ktheme_photo_carousel'
+	);
+
+	$preset_images = array(
+		'newcomers'      => array( '01', '02', '03', '04', '05' ),
+		'small-groups'   => array( '06', '07', '08', '09', '10' ),
+		'next-generation'=> array( '11', '12', '13', '14', '15' ),
+		'youth-ministry' => array( '02', '05', '08', '11', '14' ),
+		'senior-ministry'=> array( '03', '06', '09', '12', '16' ),
+		'default'        => array( '01', '04', '07', '10', '13', '16' ),
+	);
+
+	$images = $preset_images[ $atts['preset'] ] ?? $preset_images['default'];
+	$base   = get_theme_file_uri( 'assets/images/generated/' );
+
+	$slides_html = '';
+	$dots_html   = '';
+
+	foreach ( $images as $i => $num ) {
+		$src          = esc_url( $base . 'church-generated-' . $num . '.jpg' );
+		$current_attr = 0 === $i ? ' aria-current="true"' : '';
+		$active_class = 0 === $i ? ' is-active' : '';
+
+		$slides_html .= '<li class="kt-photo-carousel__slide" data-kt-carousel-slide>';
+		$slides_html .= '<span class="kt-photo-carousel__image">';
+		$slides_html .= '<img src="' . $src . '" alt="" loading="lazy" decoding="async" />';
+		$slides_html .= '</span>';
+		$slides_html .= '</li>';
+
+		$dots_html .= '<button class="kt-photo-carousel__dot' . $active_class . '" data-kt-carousel-dot="' . $i . '"' . $current_attr . ' aria-label="' . ( $i + 1 ) . '번 슬라이드"><span></span></button>';
+	}
+
+	$total     = count( $images );
+	$eyebrow   = esc_html( $atts['eyebrow'] );
+	$title     = esc_html( $atts['title'] );
+	$desc      = esc_html( $atts['description'] );
+	$title_tag = $title ? '<h2>' . $title . '</h2>' : '';
+	$desc_tag  = $desc ? '<p>' . $desc . '</p>' : '';
+
+	$svg_prev = '<svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M10 12L6 8l4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+	$svg_next = '<svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+
+	return '
+<section class="kt-photo-carousel" data-kt-photo-carousel>
+  <div class="kt-photo-carousel__head">
+    <div>
+      <span class="kt-card-label">' . $eyebrow . '</span>
+      ' . $title_tag . '
+      ' . $desc_tag . '
+    </div>
+    <div class="kt-photo-carousel__controls">
+      <button class="kt-photo-carousel__button" data-kt-carousel-prev aria-label="이전 슬라이드">' . $svg_prev . '</button>
+      <span class="kt-photo-carousel__count"><span data-kt-carousel-current>01</span> / ' . sprintf( '%02d', $total ) . '</span>
+      <button class="kt-photo-carousel__button" data-kt-carousel-next aria-label="다음 슬라이드">' . $svg_next . '</button>
+    </div>
+  </div>
+  <div class="kt-photo-carousel__viewport" data-kt-carousel-viewport tabindex="0" role="region" aria-label="사진 갤러리">
+    <ul class="kt-photo-carousel__track">' . $slides_html . '</ul>
+  </div>
+  <div class="kt-photo-carousel__footer">
+    <div class="kt-photo-carousel__dots">' . $dots_html . '</div>
+  </div>
+</section>';
+}
+add_shortcode( 'ktheme_photo_carousel', 'ktheme_v2_render_photo_carousel_shortcode' );
