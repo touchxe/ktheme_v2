@@ -1189,26 +1189,61 @@ function ktheme_v2_render_photo_carousel_shortcode( array $atts ): string {
 	$svg_prev = '<svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M10 12L6 8l4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>';
 	$svg_next = '<svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>';
 
-	return '
-<section class="kt-photo-carousel" data-kt-photo-carousel>
-  <div class="kt-photo-carousel__head">
-    <div>
-      <span class="kt-card-label">' . $eyebrow . '</span>
-      ' . $title_tag . '
-      ' . $desc_tag . '
-    </div>
-    <div class="kt-photo-carousel__controls">
-      <button class="kt-photo-carousel__button" data-kt-carousel-prev aria-label="이전 슬라이드">' . $svg_prev . '</button>
-      <span class="kt-photo-carousel__count"><span data-kt-carousel-current>01</span> / ' . sprintf( '%02d', $total ) . '</span>
-      <button class="kt-photo-carousel__button" data-kt-carousel-next aria-label="다음 슬라이드">' . $svg_next . '</button>
-    </div>
-  </div>
-  <div class="kt-photo-carousel__viewport" data-kt-carousel-viewport tabindex="0" role="region" aria-label="사진 갤러리">
-    <ul class="kt-photo-carousel__track">' . $slides_html . '</ul>
-  </div>
-  <div class="kt-photo-carousel__footer">
-    <div class="kt-photo-carousel__dots">' . $dots_html . '</div>
-  </div>
-</section>';
+	$markup  = '<section class="kt-photo-carousel" data-kt-photo-carousel>';
+	$markup .= '<div class="kt-photo-carousel__head"><div><span class="kt-card-label">' . $eyebrow . '</span>' . $title_tag . $desc_tag . '</div>';
+	$markup .= '<div class="kt-photo-carousel__controls"><button class="kt-photo-carousel__button" data-kt-carousel-prev aria-label="이전 슬라이드">' . $svg_prev . '</button>';
+	$markup .= '<span class="kt-photo-carousel__count"><span data-kt-carousel-current>01</span> / ' . sprintf( '%02d', $total ) . '</span>';
+	$markup .= '<button class="kt-photo-carousel__button" data-kt-carousel-next aria-label="다음 슬라이드">' . $svg_next . '</button></div></div>';
+	$markup .= '<div class="kt-photo-carousel__viewport" data-kt-carousel-viewport tabindex="0" role="region" aria-label="사진 갤러리"><ul class="kt-photo-carousel__track">' . $slides_html . '</ul></div>';
+	$markup .= '<div class="kt-photo-carousel__footer"><div class="kt-photo-carousel__dots">' . $dots_html . '</div></div>';
+	$markup .= '</section>';
+
+	// The [ktheme_photo_carousel] shortcode lives inside a Gutenberg
+	// "Shortcode" block, which is expanded while do_blocks() walks the page
+	// (before wpautop() runs). wpautop() then re-processes our already
+	// expanded, block-level-tag-heavy markup and injects stray <br>/<p> tags
+	// (e.g. an extra empty <p> after the header row), which broke the
+	// .kt-photo-carousel__head flex layout ("space-between" then pushed the
+	// controls away from the real right edge toward the phantom <p>).
+	//
+	// To make the carousel immune to this, return a plain-text placeholder
+	// token here (wpautop can't meaningfully mangle a tag-free string) and
+	// swap the real markup back in from an output buffer right before the
+	// page is sent to the browser, i.e. after every content filter has run.
+	$token = '@@KTHEME_CAROUSEL_' . substr( md5( $markup ), 0, 12 ) . '@@';
+	$GLOBALS['ktheme_v2_carousel_registry'][ $token ] = $markup;
+
+	return $token;
 }
 add_shortcode( 'ktheme_photo_carousel', 'ktheme_v2_render_photo_carousel_shortcode' );
+
+/**
+ * Starts an output buffer on the front end so the placeholder tokens from
+ * ktheme_v2_render_photo_carousel_shortcode() can be swapped back to real
+ * markup after wpautop() (and any other content filter) has already run.
+ */
+function ktheme_v2_maybe_buffer_carousel_output(): void {
+	if ( is_admin() ) {
+		return;
+	}
+	ob_start( 'ktheme_v2_restore_carousel_markup' );
+}
+add_action( 'template_redirect', 'ktheme_v2_maybe_buffer_carousel_output' );
+
+/**
+ * Output buffer callback: replaces carousel placeholder tokens with their
+ * real markup. Also strips any <p>...</p> wrapper that wpautop may have
+ * added around the (otherwise tag-free) token text.
+ */
+function ktheme_v2_restore_carousel_markup( string $html ): string {
+	if ( empty( $GLOBALS['ktheme_v2_carousel_registry'] ) ) {
+		return $html;
+	}
+
+	foreach ( $GLOBALS['ktheme_v2_carousel_registry'] as $token => $markup ) {
+		$html = preg_replace( '#<p>\s*' . preg_quote( $token, '#' ) . '\s*</p>#i', $markup, $html );
+		$html = str_replace( $token, $markup, $html );
+	}
+
+	return $html;
+}
