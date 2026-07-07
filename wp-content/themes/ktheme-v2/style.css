@@ -3,7 +3,7 @@ Theme Name: KTheme V2
 Theme URI: https://juswer.mycafe24.com
 Author: KTheme
 Description: WordPress block theme based on the Style 1 church homepage design.
-Version: 0.3.60
+Version: 0.3.62
 Requires at least: 6.5
 Tested up to: 6.5
 Requires PHP: 7.4
@@ -5576,32 +5576,108 @@ body.kt-library-modal-open {
   padding-top: 48px;
 }
 
-.kt-bulletin-feature-grid {
+.kt-bulletin-page .kt-bulletin-showcase {
   display: grid;
-  grid-template-columns: 1fr;
-  gap: 18px;
-  margin-bottom: 20px;
-}
-
-.kt-bulletin-feature {
-  grid-template-columns: 148px minmax(0, 1fr);
-  gap: 18px;
+  grid-template-columns: minmax(0, 1.9fr) minmax(320px, 0.95fr);
+  gap: 24px;
   align-items: stretch;
-  min-height: 168px;
-  padding: 14px;
+  margin-bottom: 44px;
 }
 
-.kt-bulletin-feature .kt-story-card__media {
-  width: 148px;
-  aspect-ratio: 1 / 1;
+.kt-bulletin-page .kt-bulletin-current {
+  display: grid;
+  grid-template-columns: minmax(240px, 0.92fr) minmax(0, 1fr);
+  gap: 0;
+  align-items: stretch;
+  min-height: 360px;
+  padding: 0;
+  overflow: hidden;
 }
 
-.kt-bulletin-feature .kt-story-card__body {
-  padding: 6px 6px 6px 0;
+.kt-bulletin-page .kt-bulletin-current .kt-story-card__media {
+  width: 100%;
+  min-height: 100%;
+  aspect-ratio: auto;
+  border-radius: 0;
 }
 
-.kt-bulletin-feature strong {
+.kt-bulletin-page .kt-bulletin-current .kt-story-card__body {
+  padding: 46px 42px;
+}
+
+.kt-bulletin-page .kt-bulletin-current strong {
+  max-width: 440px;
+  font-size: 30px;
+  line-height: 1.28;
+  letter-spacing: -0.03em;
+}
+
+.kt-bulletin-page .kt-bulletin-current .kt-story-card__copy {
+  max-width: 430px;
+  margin-top: 18px;
+  font-size: 15px;
+  line-height: 1.75;
+}
+
+.kt-bulletin-page .kt-bulletin-recent {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  border: 1px solid var(--kt-line);
+  border-radius: var(--kt-radius-lg);
+  background: white;
+  overflow: hidden;
+}
+
+.kt-bulletin-page .kt-bulletin-recent__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 24px 26px 18px;
+  border-bottom: 1px solid var(--kt-line);
+}
+
+.kt-bulletin-page .kt-bulletin-recent__head .kt-card-label {
+  margin-top: 0;
+  color: var(--kt-ink-900);
   font-size: 22px;
+  letter-spacing: -0.02em;
+}
+
+.kt-bulletin-page .kt-bulletin-recent__list {
+  flex: 1;
+  border: 0;
+  border-radius: 0;
+}
+
+.kt-bulletin-page .kt-bulletin-recent__list a {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 4px 16px;
+  padding: 22px 26px;
+}
+
+.kt-bulletin-page .kt-bulletin-recent__list .kt-news-list__label,
+.kt-bulletin-page .kt-bulletin-recent__list .kt-news-list__title {
+  grid-column: 1;
+}
+
+.kt-bulletin-page .kt-bulletin-recent__list .kt-news-list__date {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  align-self: center;
+  margin-top: 0;
+  font-variant-numeric: tabular-nums;
+}
+
+.kt-bulletin-page .kt-bulletin-archive-head {
+  margin-top: 0;
+  margin-bottom: 18px;
+}
+
+.kt-bulletin-page .kt-bulletin-archive-head .kt-section-title {
+  font-size: 26px;
 }
 
 .kt-bulletin-attachment {
@@ -5691,6 +5767,19 @@ body.kt-library-modal-open {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
+  .kt-bulletin-page .kt-bulletin-showcase {
+    grid-template-columns: 1fr;
+  }
+
+  .kt-bulletin-page .kt-bulletin-current {
+    grid-template-columns: minmax(180px, 0.85fr) minmax(0, 1fr);
+    min-height: 300px;
+  }
+
+  .kt-bulletin-page .kt-bulletin-current .kt-story-card__body {
+    padding: 32px;
+  }
+
   .kt-bulletin-file {
     grid-template-columns: 44px minmax(0, 1fr);
   }
@@ -5721,19 +5810,40 @@ body.kt-library-modal-open {
     padding-top: 36px;
   }
 
-  .kt-bulletin-feature {
-    grid-template-columns: 96px minmax(0, 1fr);
-    min-height: 0;
-    gap: 12px;
+  .kt-bulletin-page .kt-bulletin-showcase {
+    gap: 16px;
+    margin-bottom: 34px;
   }
 
-  .kt-bulletin-feature .kt-story-card__media {
-    width: 96px;
+  .kt-bulletin-page .kt-bulletin-current {
+    grid-template-columns: 1fr;
+    min-height: 0;
+  }
+
+  .kt-bulletin-page .kt-bulletin-current .kt-story-card__media {
+    min-height: 0;
     aspect-ratio: 4 / 5;
   }
 
-  .kt-bulletin-feature strong {
-    font-size: 16px;
+  .kt-bulletin-page .kt-bulletin-current .kt-story-card__body {
+    padding: 22px;
+  }
+
+  .kt-bulletin-page .kt-bulletin-current strong {
+    font-size: 22px;
+  }
+
+  .kt-bulletin-page .kt-bulletin-current .kt-story-card__copy {
+    font-size: 13px;
+  }
+
+  .kt-bulletin-page .kt-bulletin-recent__head,
+  .kt-bulletin-page .kt-bulletin-recent__list a {
+    padding-inline: 18px;
+  }
+
+  .kt-bulletin-page .kt-bulletin-recent__head .kt-card-label {
+    font-size: 18px;
   }
 
   .kt-bulletin-file {
@@ -6223,6 +6333,74 @@ body.kt-library-modal-open {
   transform: translateY(-2px);
 }
 
+.kt-community-page .kt-ministry-link-grid--five,
+.kt-community-page .kt-community-overview-grid {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+
+.kt-community-page .kt-ministry-link-grid--five a {
+  min-height: 236px;
+}
+
+.kt-community-page .kt-community-overview-grid article {
+  padding-inline: 20px;
+}
+
+@media (max-width: 1100px) {
+  .kt-community-page .kt-ministry-link-grid--five,
+  .kt-community-page .kt-community-overview-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .kt-community-page .kt-community-overview-grid article {
+    border-top: 0;
+    border-left: 1px solid var(--kt-line);
+  }
+
+  .kt-community-page .kt-community-overview-grid article:nth-child(3n + 1) {
+    border-left: 0;
+  }
+
+  .kt-community-page .kt-community-overview-grid article:nth-child(n + 4) {
+    border-top: 1px solid var(--kt-line);
+  }
+}
+
+@media (max-width: 900px) {
+  .kt-community-page .kt-ministry-link-grid--five,
+  .kt-community-page .kt-community-overview-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .kt-community-page .kt-community-overview-grid article {
+    border-left: 1px solid var(--kt-line);
+  }
+
+  .kt-community-page .kt-community-overview-grid article:nth-child(odd) {
+    border-left: 0;
+  }
+
+  .kt-community-page .kt-community-overview-grid article:nth-child(n + 3) {
+    border-top: 1px solid var(--kt-line);
+  }
+}
+
+@media (max-width: 640px) {
+  .kt-community-page .kt-ministry-link-grid--five,
+  .kt-community-page .kt-community-overview-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .kt-community-page .kt-community-overview-grid article,
+  .kt-community-page .kt-community-overview-grid article + article {
+    border-left: 0;
+  }
+
+  .kt-community-page .kt-community-overview-grid article + article {
+    border-top: 1px solid var(--kt-line);
+  }
+}
+
 .kt-ministry-faq__list {
   display: grid;
   border-top: 1px solid var(--kt-line);
@@ -6393,6 +6571,37 @@ body.kt-library-modal-open {
   width: 100%;
   border: 0;
   cursor: pointer;
+}
+
+/* Programs & Meeting Times / Leadership / Testimonials reuse the design-library
+   components (.kt-data-table, .kt-people-grid + .kt-people-card, .kt-library-quote-grid).
+   Only layout overrides needed for full-width ministry-page sections live here. */
+
+.kt-ministry-programs .kt-data-table {
+  margin-top: 4px;
+}
+
+.kt-ministry-leadership .kt-people-grid {
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  max-width: 720px;
+}
+
+.kt-ministry-testimonials .kt-library-quote-grid {
+  max-width: none;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.kt-library-quote-grid figure cite {
+  display: block;
+  margin-top: 14px;
+  color: var(--kt-ink-600);
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 700;
+}
+
+.kt-library-quote-grid figure.is-dark cite {
+  color: rgba(255, 255, 255, 0.7);
 }
 
 .kt-action-cta {
@@ -8523,6 +8732,10 @@ body.kt-library-modal-open {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
+  .kt-ministry-testimonials .kt-library-quote-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .kt-ministry-overview__grid article:nth-child(odd) {
     border-left: 0;
   }
@@ -8653,6 +8866,10 @@ body.kt-library-modal-open {
   .kt-ministry-overview__grid,
   .kt-ministry-link-grid,
   .kt-ministry-form {
+    grid-template-columns: 1fr;
+  }
+
+  .kt-ministry-testimonials .kt-library-quote-grid {
     grid-template-columns: 1fr;
   }
 

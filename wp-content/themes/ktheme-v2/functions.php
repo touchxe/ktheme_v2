@@ -14,16 +14,42 @@ if ( ! function_exists( 'ktheme_v2_setup' ) ) {
 
 		register_nav_menus(
 			array(
-				'primary'          => __( 'Header Primary Menu', 'ktheme-v2' ),
-				'utility'          => __( 'Header Utility Menu', 'ktheme-v2' ),
-				'footer-worship'   => __( 'Footer Worship Menu', 'ktheme-v2' ),
-				'footer-community' => __( 'Footer Community Menu', 'ktheme-v2' ),
-				'footer-links'     => __( 'Footer Links Menu', 'ktheme-v2' ),
+				'primary' => __( 'Header Primary Menu', 'ktheme-v2' ),
+				'utility' => __( 'Header Utility Menu', 'ktheme-v2' ),
+				'footer'  => __( 'Footer Menu', 'ktheme-v2' ),
 			)
 		);
 	}
 }
 add_action( 'after_setup_theme', 'ktheme_v2_setup' );
+
+function ktheme_v2_normalize_footer_menu_location(): void {
+	$locations = get_nav_menu_locations();
+	$legacy_footer_locations = array( 'footer-worship', 'footer-community', 'footer-links' );
+	$changed = false;
+
+	if ( empty( $locations['footer'] ) ) {
+		foreach ( $legacy_footer_locations as $legacy_location ) {
+			if ( ! empty( $locations[ $legacy_location ] ) ) {
+				$locations['footer'] = $locations[ $legacy_location ];
+				$changed = true;
+				break;
+			}
+		}
+	}
+
+	foreach ( $legacy_footer_locations as $legacy_location ) {
+		if ( isset( $locations[ $legacy_location ] ) ) {
+			unset( $locations[ $legacy_location ] );
+			$changed = true;
+		}
+	}
+
+	if ( $changed ) {
+		set_theme_mod( 'nav_menu_locations', $locations );
+	}
+}
+add_action( 'after_setup_theme', 'ktheme_v2_normalize_footer_menu_location', 20 );
 
 function ktheme_v2_register_content_types(): void {
 	register_post_type(
@@ -118,588 +144,6 @@ function ktheme_v2_text( string $encoded ): string {
 	return is_string( $decoded ) ? $decoded : $encoded;
 }
 
-function ktheme_v2_default_menu_items(): array {
-	return array(
-		array(
-			'title'    => ktheme_v2_text( '\uC608\uBC30' ),
-			'url'      => home_url( '/worship/' ),
-			'children' => array(
-				array( 'title' => ktheme_v2_text( '\uC608\uBC30 \uC548\uB0B4' ), 'url' => home_url( '/worship-guide/' ) ),
-				array( 'title' => ktheme_v2_text( '\uC8FC\uC77C\uC608\uBC30' ), 'url' => home_url( '/sunday-worship/' ) ),
-				array( 'title' => ktheme_v2_text( '\uC218\uC694\uC608\uBC30' ), 'url' => home_url( '/wednesday-worship/' ) ),
-				array( 'title' => ktheme_v2_text( '\uC0C8\uBCBD\uAE30\uB3C4' ), 'url' => home_url( '/dawn-prayer/' ) ),
-				array( 'title' => ktheme_v2_text( '\uC8FC\uBCF4' ), 'url' => home_url( '/bulletin/' ) ),
-			),
-		),
-		array(
-			'title'    => ktheme_v2_text( '\uACF5\uB3D9\uCCB4' ),
-			'url'      => home_url( '/community/' ),
-			'children' => array(
-				array( 'title' => ktheme_v2_text( '\uC0C8\uAC00\uC871' ), 'url' => home_url( '/newcomers/' ) ),
-				array( 'title' => ktheme_v2_text( '\uC18C\uADF8\uB8F9/\uAD6C\uC5ED' ), 'url' => home_url( '/small-groups/' ) ),
-				array( 'title' => ktheme_v2_text( '\uB2E4\uC74C\uC138\uB300' ), 'url' => home_url( '/next-generation/' ) ),
-				array( 'title' => ktheme_v2_text( '\uCCAD\uB144\uBD80' ), 'url' => home_url( '/youth-ministry/' ) ),
-				array( 'title' => ktheme_v2_text( '\uC7A5\uB144/\uC2DC\uB2C8\uC5B4' ), 'url' => home_url( '/senior-ministry/' ) ),
-			),
-		),
-		array(
-			'title'    => ktheme_v2_text( '\uC591\uC721' ),
-			'url'      => home_url( '/training/' ),
-			'children' => array(
-				array( 'title' => ktheme_v2_text( '\uC0C8\uAC00\uC871 \uACFC\uC815' ), 'url' => home_url( '/new-family-course/' ) ),
-				array( 'title' => ktheme_v2_text( '\uC131\uACBD\uACF5\uBD80' ), 'url' => home_url( '/bible-study/' ) ),
-				array( 'title' => ktheme_v2_text( '\uC81C\uC790\uD6C8\uB828' ), 'url' => home_url( '/discipleship/' ) ),
-				array( 'title' => ktheme_v2_text( 'QT/\uBB35\uC0C1' ), 'url' => home_url( '/qt/' ) ),
-			),
-		),
-		array(
-			'title'    => ktheme_v2_text( '\uC120\uAD50 & \uC12C\uAE40' ),
-			'url'      => home_url( '/mission/' ),
-			'children' => array(
-				array( 'title' => ktheme_v2_text( '\uC120\uAD50 \uC548\uB0B4' ), 'url' => home_url( '/mission/' ) ),
-				array( 'title' => ktheme_v2_text( '\uC12C\uAE40 \uC0AC\uC5ED' ), 'url' => home_url( '/serve/' ) ),
-				array( 'title' => ktheme_v2_text( '\uD6C4\uC6D0 \uC548\uB0B4' ), 'url' => home_url( '/support/' ) ),
-			),
-		),
-		array(
-			'title'    => ktheme_v2_text( '\uBBF8\uB514\uC5B4' ),
-			'url'      => home_url( '/media/' ),
-			'children' => array(
-				array( 'title' => ktheme_v2_text( '\uC124\uAD50' ), 'url' => home_url( '/sermons/' ) ),
-				array( 'title' => ktheme_v2_text( '\uAD50\uD68C\uC18C\uC2DD' ), 'url' => home_url( '/news/' ) ),
-				array( 'title' => ktheme_v2_text( '\uAD50\uB2E8\uC18C\uC2DD' ), 'url' => home_url( '/denomination-news/' ) ),
-				array( 'title' => ktheme_v2_text( '\uD589\uC0AC\uC568\uBC94' ), 'url' => home_url( '/albums/' ) ),
-				array( 'title' => ktheme_v2_text( '\uC601\uC0C1' ), 'url' => home_url( '/videos/' ) ),
-				array( 'title' => ktheme_v2_text( '\uC790\uB8CC\uC2E4' ), 'url' => home_url( '/library/' ) ),
-			),
-		),
-		array(
-			'title'    => ktheme_v2_text( '\uAD50\uD68C\uC18C\uAC1C' ),
-			'url'      => home_url( '/about/' ),
-			'children' => array(
-				array( 'title' => ktheme_v2_text( '\uBE44\uC804' ), 'url' => home_url( '/vision/' ) ),
-				array( 'title' => ktheme_v2_text( '\uC12C\uAE30\uB294 \uC0AC\uB78C\uB4E4' ), 'url' => home_url( '/people/' ) ),
-				array( 'title' => ktheme_v2_text( '\uAD50\uD68C\uC5F0\uD601' ), 'url' => home_url( '/history/' ) ),
-				array( 'title' => ktheme_v2_text( '\uC5F0\uAC04\uC77C\uC815' ), 'url' => home_url( '/annual-schedule/' ) ),
-				array( 'title' => ktheme_v2_text( '\uC624\uC2DC\uB294 \uAE38' ), 'url' => home_url( '/location/' ) ),
-			),
-		),
-		array(
-			'title'    => ktheme_v2_text( '\uD589\uC815' ),
-			'url'      => home_url( '/admin-guide/' ),
-			'children' => array(
-				array( 'title' => ktheme_v2_text( '\uC628\uB77C\uC778 \uD5CC\uAE08' ), 'url' => home_url( '/giving/' ) ),
-				array( 'title' => ktheme_v2_text( '\uC99D\uBA85\uC11C \uBC1C\uAE09' ), 'url' => home_url( '/documents/' ) ),
-				array( 'title' => ktheme_v2_text( '\uC7A5\uC18C \uC0AC\uC6A9 \uC2E0\uCCAD' ), 'url' => home_url( '/facility-request/' ) ),
-				array( 'title' => ktheme_v2_text( '\uCC28\uB7C9 \uC0AC\uC6A9 \uC2E0\uCCAD' ), 'url' => home_url( '/vehicle-request/' ) ),
-			),
-		),
-	);
-}
-
-function ktheme_v2_default_utility_items(): array {
-	return array(
-		array( 'title' => ktheme_v2_text( '\uC0C8\uAC00\uC871 \uB4F1\uB85D' ), 'url' => home_url( '/newcomers/' ) ),
-		array( 'title' => ktheme_v2_text( '\uC624\uC2DC\uB294 \uAE38' ), 'url' => home_url( '/location/' ) ),
-		array( 'title' => ktheme_v2_text( '\uC628\uB77C\uC778 \uD5CC\uAE08' ), 'url' => home_url( '/giving/' ) ),
-		array( 'title' => ktheme_v2_text( '\uB85C\uADF8\uC778' ), 'url' => home_url( '/wp-login.php' ) ),
-	);
-}
-
-function ktheme_v2_get_menu_object_for_location( string $theme_location, int $fallback_menu_id = 0 ) {
-	$locations = get_nav_menu_locations();
-
-	if ( ! empty( $locations[ $theme_location ] ) ) {
-		$menu = wp_get_nav_menu_object( $locations[ $theme_location ] );
-		if ( $menu ) {
-			return $menu;
-		}
-	}
-
-	if ( $fallback_menu_id > 0 ) {
-		$menu = wp_get_nav_menu_object( $fallback_menu_id );
-		if ( $menu ) {
-			return $menu;
-		}
-	}
-
-	return null;
-}
-
-function ktheme_v2_get_menu_tree( string $theme_location, int $fallback_menu_id = 0, array $fallback_items = array() ): array {
-	$menu = ktheme_v2_get_menu_object_for_location( $theme_location, $fallback_menu_id );
-
-	if ( ! $menu ) {
-		return $fallback_items;
-	}
-
-	$items = wp_get_nav_menu_items(
-		$menu,
-		array(
-			'update_post_term_cache' => false,
-		)
-	);
-
-	if ( empty( $items ) || ! is_array( $items ) ) {
-		return $fallback_items;
-	}
-
-	$nodes = array();
-	foreach ( $items as $item ) {
-		$id           = (int) $item->ID;
-		$parent       = (int) $item->menu_item_parent;
-		$nodes[ $id ] = array(
-			'id'       => $id,
-			'parent'   => $parent,
-			'title'    => wp_strip_all_tags( $item->title ),
-			'url'      => $item->url,
-			'target'   => $item->target,
-			'xfn'      => $item->xfn,
-			'object_id' => isset( $item->object_id ) ? (int) $item->object_id : 0,
-			'children' => array(),
-		);
-	}
-
-	$tree = array();
-	foreach ( $nodes as $id => &$node ) {
-		if ( $node['parent'] > 0 && isset( $nodes[ $node['parent'] ] ) ) {
-			$nodes[ $node['parent'] ]['children'][] = &$node;
-		} else {
-			$tree[] = &$node;
-		}
-	}
-	unset( $node );
-
-	return $tree;
-}
-
-function ktheme_v2_normalize_menu_path( string $url ): string {
-	$path = wp_parse_url( $url, PHP_URL_PATH );
-
-	if ( ! is_string( $path ) || '' === $path ) {
-		return '';
-	}
-
-	return user_trailingslashit( '/' . trim( rawurldecode( $path ), '/' ) );
-}
-
-function ktheme_v2_current_menu_path(): string {
-	$request_uri = isset( $_SERVER['REQUEST_URI'] ) ? wp_unslash( (string) $_SERVER['REQUEST_URI'] ) : '';
-	$path        = wp_parse_url( $request_uri, PHP_URL_PATH );
-
-	if ( ! is_string( $path ) || '' === $path ) {
-		return user_trailingslashit( '/' );
-	}
-
-	return user_trailingslashit( '/' . trim( rawurldecode( $path ), '/' ) );
-}
-
-function ktheme_v2_is_menu_item_active( array $item ): bool {
-	$object_id = isset( $item['object_id'] ) ? (int) $item['object_id'] : 0;
-
-	if ( $object_id > 0 && get_queried_object_id() === $object_id ) {
-		return true;
-	}
-
-	$url = isset( $item['url'] ) ? (string) $item['url'] : '';
-
-	if ( '' === $url || '#' === $url ) {
-		return false;
-	}
-
-	$item_path = ktheme_v2_normalize_menu_path( $url );
-
-	return '' !== $item_path && $item_path === ktheme_v2_current_menu_path();
-}
-
-function ktheme_v2_menu_link( array $item, string $class = '', bool $mark_active = false ): string {
-	$title = isset( $item['title'] ) ? (string) $item['title'] : '';
-	$url   = isset( $item['url'] ) ? (string) $item['url'] : '#';
-	$attrs = array(
-		'href' => esc_url( $url ),
-	);
-	$is_active = $mark_active && ktheme_v2_is_menu_item_active( $item );
-	$classes   = array_filter( array( $class, $is_active ? 'is-active' : '' ) );
-
-	if ( ! empty( $classes ) ) {
-		$attrs['class'] = implode( ' ', $classes );
-	}
-
-	if ( $is_active ) {
-		$attrs['aria-current'] = 'page';
-	}
-
-	if ( ! empty( $item['target'] ) ) {
-		$attrs['target'] = esc_attr( $item['target'] );
-	}
-
-	if ( ! empty( $item['xfn'] ) ) {
-		$attrs['rel'] = esc_attr( $item['xfn'] );
-	}
-
-	$attr_html = '';
-	foreach ( $attrs as $name => $value ) {
-		$attr_html .= ' ' . esc_attr( $name ) . '="' . $value . '"';
-	}
-
-	return '<a' . $attr_html . '>' . esc_html( $title ) . '</a>';
-}
-
-function ktheme_v2_render_utility_menu(): string {
-	$items = ktheme_v2_get_menu_tree( 'utility', 0, ktheme_v2_default_utility_items() );
-
-	if ( empty( $items ) ) {
-		return '';
-	}
-
-	$html = '<nav class="kt-utility-nav" aria-label="' . esc_attr__( '상단 메뉴', 'ktheme-v2' ) . '">';
-	foreach ( $items as $item ) {
-		$html .= ktheme_v2_menu_link( $item );
-	}
-	$html .= '</nav>';
-
-	return $html;
-}
-
-function ktheme_v2_render_primary_menu(): string {
-	$items = ktheme_v2_get_menu_tree( 'primary', 9, ktheme_v2_default_menu_items() );
-
-	if ( empty( $items ) ) {
-		return '';
-	}
-
-	$total = count( $items );
-	$html  = '<nav class="kt-nav" aria-label="' . esc_attr__( '주요 메뉴', 'ktheme-v2' ) . '"><ul class="kt-nav__list">';
-
-	foreach ( array_values( $items ) as $index => $item ) {
-		$children       = ! empty( $item['children'] ) && is_array( $item['children'] ) ? $item['children'] : array();
-		$dropdown_class = 'kt-nav__dropdown' . ( $index === $total - 1 ? ' kt-nav__dropdown--right' : '' );
-		$is_active      = ktheme_v2_is_menu_item_active( $item );
-
-		foreach ( $children as $child ) {
-			if ( ktheme_v2_is_menu_item_active( $child ) ) {
-				$is_active = true;
-				break;
-			}
-		}
-
-		$html .= '<li class="kt-nav__item' . ( $is_active ? ' is-active' : '' ) . '">';
-		$html .= '<a class="kt-nav__link" href="' . esc_url( (string) $item['url'] ) . '"><span>' . esc_html( (string) $item['title'] ) . '</span>';
-		if ( false !== strpos( (string) $item['url'], '/worship' ) ) {
-			$html .= '<span class="kt-nav-live">LIVE</span>';
-		}
-		$html .= '</a>';
-
-		if ( ! empty( $children ) ) {
-		$html .= '<div class="' . esc_attr( $dropdown_class ) . '">';
-			foreach ( $children as $child ) {
-				$html .= ktheme_v2_menu_link( $child, '', true );
-			}
-			$html .= '</div>';
-		}
-
-		$html .= '</li>';
-	}
-
-	$html .= '</ul></nav>';
-
-	return $html;
-}
-
-function ktheme_v2_render_mega_menu(): string {
-	$items = ktheme_v2_get_menu_tree( 'primary', 9, ktheme_v2_default_menu_items() );
-
-	if ( empty( $items ) ) {
-		return '';
-	}
-
-	$html  = '<div class="kt-mega-menu" id="kt-mega-menu" aria-hidden="true">';
-	$html .= '<div class="kt-container kt-mega-menu__inner">';
-	$html .= '<div class="kt-mega-menu__head"><strong>' . esc_html__( '전체 메뉴', 'ktheme-v2' ) . '</strong><span>' . esc_html__( '가평교회의 예배, 공동체, 양육과 행정 안내를 한곳에서 확인하세요.', 'ktheme-v2' ) . '</span></div>';
-	$html .= '<div class="kt-mega-menu__grid">';
-
-	foreach ( $items as $item ) {
-		$html .= '<section><h3>' . ktheme_v2_menu_link( $item ) . '</h3>';
-		if ( ! empty( $item['children'] ) && is_array( $item['children'] ) ) {
-			foreach ( $item['children'] as $child ) {
-				$html .= ktheme_v2_menu_link( $child );
-			}
-		}
-		$html .= '</section>';
-	}
-
-	$html .= '</div></div></div>';
-
-	return $html;
-}
-
-function ktheme_v2_compact_shortcode_html( string $html ): string {
-	$html = preg_replace( '/>\s+</', '><', trim( $html ) );
-
-	return str_replace( array( "\r", "\n", "\t" ), '', is_string( $html ) ? $html : '' );
-}
-
-function ktheme_v2_render_header_shortcode(): string {
-	ob_start();
-	?>
-	<div class="kt-topbar">
-		<div class="kt-container kt-topbar__inner">
-			<div><span class="kt-dot"></span><?php echo esc_html__( '주일예배 · 오전 11:00 본당', 'ktheme-v2' ); ?></div>
-			<?php echo ktheme_v2_render_utility_menu(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
-		</div>
-	</div>
-
-	<div class="kt-header">
-		<div class="kt-container kt-header__inner">
-			<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="kt-brand kt-brand--mark-only" aria-label="<?php echo esc_attr__( '가평교회 홈', 'ktheme-v2' ); ?>">
-				<img src="<?php echo esc_url( get_theme_file_uri( 'assets/images/logo-mark.svg' ) ); ?>" alt="<?php echo esc_attr__( '가평교회', 'ktheme-v2' ); ?>" />
-			</a>
-
-			<?php echo ktheme_v2_render_primary_menu(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
-
-			<div class="kt-header__actions">
-				<button class="kt-icon-button" type="button" aria-label="<?php echo esc_attr__( '검색 열기', 'ktheme-v2' ); ?>" aria-controls="kt-header-search" aria-expanded="false" data-kt-search-toggle>
-					<svg class="kt-icon kt-icon--sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
-				</button>
-				<a class="kt-header-register" href="<?php echo esc_url( home_url( '/newcomers/' ) ); ?>"><?php echo esc_html__( '새가족 등록', 'ktheme-v2' ); ?></a>
-				<button class="kt-mega-toggle" type="button" aria-label="<?php echo esc_attr__( '전체 메뉴 열기', 'ktheme-v2' ); ?>" aria-controls="kt-mega-menu" aria-expanded="false" data-kt-mega-toggle>
-					<span></span><span></span><span></span>
-				</button>
-			</div>
-		</div>
-
-		<div class="kt-header-search" id="kt-header-search" aria-hidden="true">
-			<div class="kt-container kt-header-search__inner">
-				<form class="kt-header-search__form" role="search" method="get" action="<?php echo esc_url( home_url( '/' ) ); ?>">
-					<label class="screen-reader-text" for="kt-header-search-input"><?php echo esc_html__( '검색어', 'ktheme-v2' ); ?></label>
-					<input id="kt-header-search-input" type="search" name="s" placeholder="<?php echo esc_attr__( '검색어를 입력하세요', 'ktheme-v2' ); ?>" autocomplete="off" />
-					<button type="submit">
-						<svg class="kt-icon kt-icon--sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
-						<span><?php echo esc_html__( '검색', 'ktheme-v2' ); ?></span>
-					</button>
-				</form>
-			</div>
-		</div>
-
-		<?php echo ktheme_v2_render_mega_menu(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
-	</div>
-
-	<script>
-	(function () {
-		var header = document.querySelector('.kt-header');
-		if (!header) return;
-		var topbar = header.previousElementSibling && header.previousElementSibling.classList.contains('kt-topbar') ? header.previousElementSibling : null;
-		var headerShell = topbar && header.parentElement !== document.body ? header.parentElement : null;
-		if (headerShell) {
-			headerShell.classList.add('kt-site-header-shell');
-		}
-		var button = header.querySelector('[data-kt-mega-toggle]');
-		var panel = header.querySelector('#kt-mega-menu');
-		var searchButton = header.querySelector('[data-kt-search-toggle]');
-		var searchPanel = header.querySelector('#kt-header-search');
-		var searchInput = header.querySelector('#kt-header-search-input');
-
-		function setMegaMenu(open) {
-			if (!button || !panel) return;
-			if (open) setSearch(false);
-			header.classList.toggle('is-mega-open', open);
-			button.setAttribute('aria-expanded', open ? 'true' : 'false');
-			button.setAttribute('aria-label', open ? '전체 메뉴 닫기' : '전체 메뉴 열기');
-			panel.setAttribute('aria-hidden', open ? 'false' : 'true');
-		}
-
-		function setSearch(open) {
-			if (!searchButton || !searchPanel) return;
-			if (open) setMegaMenu(false);
-			header.classList.toggle('is-search-open', open);
-			searchButton.setAttribute('aria-expanded', open ? 'true' : 'false');
-			searchButton.setAttribute('aria-label', open ? '검색 닫기' : '검색 열기');
-			searchPanel.setAttribute('aria-hidden', open ? 'false' : 'true');
-			if (open && searchInput) {
-				window.setTimeout(function () {
-					searchInput.focus();
-				}, 80);
-			}
-		}
-
-		if (button) {
-			button.addEventListener('click', function () {
-				setMegaMenu(!header.classList.contains('is-mega-open'));
-			});
-		}
-
-		if (searchButton) {
-			searchButton.addEventListener('click', function () {
-				setSearch(!header.classList.contains('is-search-open'));
-			});
-		}
-
-		document.addEventListener('click', function (event) {
-			if (!header.contains(event.target)) {
-				setMegaMenu(false);
-				setSearch(false);
-			}
-		});
-
-		document.addEventListener('keydown', function (event) {
-			if (event.key === 'Escape') {
-				setMegaMenu(false);
-				setSearch(false);
-			}
-		});
-
-		function syncHeaderScroll() {
-			var isScrolled = window.scrollY > 8;
-			header.classList.toggle('is-scrolled', isScrolled);
-			if (headerShell) {
-				headerShell.classList.toggle('is-scrolled', isScrolled);
-			}
-		}
-
-		syncHeaderScroll();
-		window.addEventListener('scroll', syncHeaderScroll, { passive: true });
-	})();
-	</script>
-	<?php
-	return ktheme_v2_compact_shortcode_html( (string) ob_get_clean() );
-}
-add_shortcode( 'ktheme_header', 'ktheme_v2_render_header_shortcode' );
-
-function ktheme_v2_render_dynamic_template_part_block( string $block_content, array $block ): string {
-	if ( 'core/html' !== ( $block['blockName'] ?? '' ) ) {
-		return $block_content;
-	}
-
-	$inner_html = (string) ( $block['innerHTML'] ?? $block_content );
-
-	if ( false !== strpos( $inner_html, 'data-ktheme-dynamic-header' ) ) {
-		return ktheme_v2_render_header_shortcode();
-	}
-
-	if ( false !== strpos( $inner_html, 'data-ktheme-dynamic-footer' ) ) {
-		return ktheme_v2_render_footer_shortcode();
-	}
-
-	return $block_content;
-}
-add_filter( 'render_block', 'ktheme_v2_render_dynamic_template_part_block', 10, 2 );
-
-function ktheme_v2_footer_menu_html( string $theme_location, string $fallback_title, array $fallback_items ): string {
-	$items = ktheme_v2_get_menu_tree( $theme_location, 0, $fallback_items );
-	if ( empty( $items ) ) {
-		return '';
-	}
-
-	$menu  = ktheme_v2_get_menu_object_for_location( $theme_location );
-	$title = $menu ? $menu->name : $fallback_title;
-	$html  = '<div><h4>' . esc_html( $title ) . '</h4><ul>';
-
-	foreach ( $items as $item ) {
-		$html .= '<li>' . ktheme_v2_menu_link( $item ) . '</li>';
-	}
-
-	$html .= '</ul></div>';
-
-	return $html;
-}
-
-function ktheme_v2_has_assigned_menu( string $theme_location ): bool {
-	$locations = get_nav_menu_locations();
-
-	return ! empty( $locations[ $theme_location ] ) && (bool) wp_get_nav_menu_object( $locations[ $theme_location ] );
-}
-
-function ktheme_v2_footer_primary_columns_html(): string {
-	$items = ktheme_v2_get_menu_tree( 'primary', 9, ktheme_v2_default_menu_items() );
-	if ( empty( $items ) ) {
-		return '';
-	}
-
-	$html = '';
-	foreach ( $items as $item ) {
-		$children = ! empty( $item['children'] ) && is_array( $item['children'] ) ? $item['children'] : array();
-		$links    = ! empty( $children ) ? $children : array( $item );
-
-		$html .= '<div><h4>' . esc_html( (string) $item['title'] ) . '</h4><ul>';
-		foreach ( $links as $link ) {
-			$html .= '<li>' . ktheme_v2_menu_link( $link ) . '</li>';
-		}
-		$html .= '</ul></div>';
-	}
-
-	return $html;
-}
-
-function ktheme_v2_render_footer_shortcode(): string {
-	$footer_worship = array_slice( ktheme_v2_default_menu_items()[0]['children'], 0 );
-	$footer_comm    = array_merge(
-		array_slice( ktheme_v2_default_menu_items()[1]['children'], 0, 3 ),
-		array_slice( ktheme_v2_default_menu_items()[2]['children'], 0, 2 )
-	);
-	$footer_links   = array(
-		array( 'title' => ktheme_v2_text( '\uAC1C\uC778\uC815\uBCF4\uCC98\uB9AC\uBC29\uCE68' ), 'url' => home_url( '/privacy-policy/' ) ),
-		array( 'title' => ktheme_v2_text( '\uC774\uBA54\uC77C \uBB34\uB2E8\uC218\uC9D1\uAC70\uBD80' ), 'url' => home_url( '/email-policy/' ) ),
-	);
-	$has_footer_menus = ktheme_v2_has_assigned_menu( 'footer-worship' ) || ktheme_v2_has_assigned_menu( 'footer-community' ) || ktheme_v2_has_assigned_menu( 'footer-links' );
-
-	ob_start();
-	?>
-	<div class="kt-footer">
-		<div class="kt-container kt-footer__grid">
-			<div class="kt-footer__brand">
-				<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="kt-brand kt-brand--mark-only" aria-label="<?php echo esc_attr__( '가평교회 홈', 'ktheme-v2' ); ?>">
-					<img src="<?php echo esc_url( get_theme_file_uri( 'assets/images/logo-mark-white.svg' ) ); ?>" alt="<?php echo esc_attr__( '가평교회', 'ktheme-v2' ); ?>" />
-				</a>
-				<p><?php echo esc_html__( '다음 세대와 함께 예배하고, 지역과 일상을 섬기는 교회입니다.', 'ktheme-v2' ); ?></p>
-			</div>
-
-			<nav class="kt-footer-menu-grid" aria-label="<?php echo esc_attr__( '푸터 주요 메뉴', 'ktheme-v2' ); ?>">
-				<?php
-				if ( $has_footer_menus ) {
-					echo ktheme_v2_footer_menu_html( 'footer-worship', ktheme_v2_text( '\uC608\uBC30' ), $footer_worship ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-					echo ktheme_v2_footer_menu_html( 'footer-community', ktheme_v2_text( '\uACF5\uB3D9\uCCB4/\uC591\uC721' ), $footer_comm ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-					echo ktheme_v2_footer_menu_html( 'footer-links', ktheme_v2_text( '\uC815\uCC45' ), $footer_links ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-				} else {
-					echo ktheme_v2_footer_primary_columns_html(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-				}
-				?>
-			</nav>
-
-			<div class="kt-footer__connect">
-				<h4><?php echo esc_html__( '바로가기', 'ktheme-v2' ); ?></h4>
-				<details class="kt-family-dropdown">
-					<summary>
-						<span><?php echo esc_html__( '패밀리 사이트', 'ktheme-v2' ); ?></span>
-						<svg class="kt-icon kt-icon--sm kt-family-dropdown__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
-					</summary>
-					<div class="kt-family-dropdown__menu">
-						<a href="#" target="_blank" rel="noopener"><?php echo esc_html__( '대한예수교장로회', 'ktheme-v2' ); ?></a>
-						<a href="#" target="_blank" rel="noopener"><?php echo esc_html__( '총회교육자원부', 'ktheme-v2' ); ?></a>
-						<a href="#" target="_blank" rel="noopener"><?php echo esc_html__( '한국기독공보', 'ktheme-v2' ); ?></a>
-					</div>
-				</details>
-				<div class="kt-social-links" aria-label="<?php echo esc_attr__( '주요 SNS 바로가기', 'ktheme-v2' ); ?>">
-					<a href="#" aria-label="YouTube"><svg class="kt-icon kt-icon--sm" viewBox="0 0 24 24" fill="currentColor"><path d="M23 6.2s-.2-1.6-.9-2.3c-.9-.9-1.9-.9-2.3-1C16.6 2.5 12 2.5 12 2.5s-4.6 0-7.8.4c-.5 0-1.5.1-2.3 1-.7.7-.9 2.3-.9 2.3S.7 8 .7 9.9v1.7c0 1.9.3 3.7.3 3.7s.2 1.6.9 2.3c.9.9 2.1.9 2.6 1 1.9.2 8 .3 8 .3s4.6 0 7.8-.4c.5 0 1.5-.1 2.3-1 .7-.7.9-2.3.9-2.3s.3-1.9.3-3.7V9.9C23.3 8 23 6.2 23 6.2zM9.5 13.6V7.7l5.9 3z"/></svg></a>
-					<a href="#" aria-label="Instagram"><svg class="kt-icon kt-icon--sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="4"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/></svg></a>
-					<a href="#" aria-label="Facebook"><svg class="kt-icon kt-icon--sm" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.5 2.9h-2.4v7A10 10 0 0 0 22 12z"/></svg></a>
-				</div>
-			</div>
-		</div>
-
-		<div class="kt-footer__bottom">
-			<div class="kt-container kt-footer__bottom-inner">
-				<p><?php echo esc_html__( '08512 서울특별시 금천구 가산디지털1로 168', 'ktheme-v2' ); ?></p>
-				<p><?php echo esc_html__( 'TEL. 02-704-3300 · FAX. 02-704-3301', 'ktheme-v2' ); ?></p>
-				<a class="kt-footer-dev-link" href="<?php echo esc_url( home_url( '/design-library/' ) ); ?>">DEV · Design Library</a>
-				<p><?php echo esc_html__( '© 2026 GAPYEONG CHURCH. ALL RIGHTS RESERVED.', 'ktheme-v2' ); ?></p>
-			</div>
-		</div>
-	</div>
-	<?php
-	return ktheme_v2_compact_shortcode_html( (string) ob_get_clean() );
-}
-add_shortcode( 'ktheme_footer', 'ktheme_v2_render_footer_shortcode' );
-
 function ktheme_v2_required_pages(): array {
 	return array(
 		array( 'title' => ktheme_v2_text( '\uAD50\uD68C\uC18C\uAC1C' ), 'slug' => 'about', 'template' => 'page-about' ),
@@ -711,15 +155,15 @@ function ktheme_v2_required_pages(): array {
 		array( 'title' => ktheme_v2_text( '\uC608\uBC30' ), 'slug' => 'worship', 'template' => 'page-worship' ),
 		array( 'title' => ktheme_v2_text( '\uC608\uBC30 \uC548\uB0B4' ), 'slug' => 'worship-guide' ),
 		array( 'title' => ktheme_v2_text( '\uC8FC\uC77C\uC608\uBC30' ), 'slug' => 'sunday-worship', 'template' => 'page-sunday-worship' ),
-		array( 'title' => ktheme_v2_text( '\uC218\uC694\uC608\uBC30' ), 'slug' => 'wednesday-worship', 'template' => 'page-wednesday-worship' ),
-		array( 'title' => ktheme_v2_text( '\uC0C8\uBCBD\uAE30\uB3C4' ), 'slug' => 'dawn-prayer', 'template' => 'page-dawn-prayer' ),
-		array( 'title' => ktheme_v2_text( '\uC8FC\uBCF4' ), 'slug' => 'bulletin', 'template' => 'page-bulletin' ),
+		array( 'title' => ktheme_v2_text( '\uC218\uC694\uC608\uBC30' ), 'slug' => 'wednesday-worship' ),
+		array( 'title' => ktheme_v2_text( '\uC0C8\uBCBD\uAE30\uB3C4' ), 'slug' => 'dawn-prayer' ),
+		array( 'title' => ktheme_v2_text( '\uC8FC\uBCF4' ), 'slug' => 'bulletin' ),
 		array( 'title' => ktheme_v2_text( '\uACF5\uB3D9\uCCB4' ), 'slug' => 'community', 'template' => 'page-community' ),
-		array( 'title' => ktheme_v2_text( '\uC0C8\uAC00\uC871' ), 'slug' => 'newcomers', 'template' => 'page-newcomers' ),
-		array( 'title' => ktheme_v2_text( '\uC18C\uADF8\uB8F9/\uAD6C\uC5ED' ), 'slug' => 'small-groups', 'template' => 'page-small-groups' ),
-		array( 'title' => ktheme_v2_text( '\uB2E4\uC74C\uC138\uB300' ), 'slug' => 'next-generation', 'template' => 'page-next-generation' ),
-		array( 'title' => ktheme_v2_text( '\uCCAD\uB144\uBD80' ), 'slug' => 'youth-ministry', 'template' => 'page-youth-ministry' ),
-		array( 'title' => ktheme_v2_text( '\uC7A5\uB144/\uC2DC\uB2C8\uC5B4' ), 'slug' => 'senior-ministry', 'template' => 'page-senior-ministry' ),
+		array( 'title' => ktheme_v2_text( '\uC0C8\uAC00\uC871' ), 'slug' => 'newcomers' ),
+		array( 'title' => ktheme_v2_text( '\uC18C\uADF8\uB8F9/\uAD6C\uC5ED' ), 'slug' => 'small-groups' ),
+		array( 'title' => ktheme_v2_text( '\uB2E4\uC74C\uC138\uB300' ), 'slug' => 'next-generation' ),
+		array( 'title' => ktheme_v2_text( '\uCCAD\uB144\uBD80' ), 'slug' => 'youth-ministry' ),
+		array( 'title' => ktheme_v2_text( '\uC7A5\uB144/\uC2DC\uB2C8\uC5B4' ), 'slug' => 'senior-ministry' ),
 		array( 'title' => ktheme_v2_text( '\uC591\uC721' ), 'slug' => 'training', 'template' => 'page-training' ),
 		array( 'title' => ktheme_v2_text( '\uC0C8\uAC00\uC871 \uACFC\uC815' ), 'slug' => 'new-family-course' ),
 		array( 'title' => ktheme_v2_text( '\uC131\uACBD\uACF5\uBD80' ), 'slug' => 'bible-study' ),
@@ -747,60 +191,6 @@ function ktheme_v2_required_pages(): array {
 	);
 }
 
-function ktheme_v2_page_parent_map(): array {
-	return array(
-		'vision'             => 'about',
-		'people'             => 'about',
-		'history'            => 'about',
-		'annual-schedule'    => 'about',
-		'location'           => 'about',
-		'worship-guide'      => 'worship',
-		'sunday-worship'     => 'worship',
-		'wednesday-worship'  => 'worship',
-		'dawn-prayer'        => 'worship',
-		'bulletin'           => 'worship',
-		'newcomers'          => 'community',
-		'small-groups'       => 'community',
-		'next-generation'    => 'community',
-		'youth-ministry'     => 'community',
-		'senior-ministry'    => 'community',
-		'new-family-course'  => 'training',
-		'bible-study'        => 'training',
-		'discipleship'       => 'training',
-		'qt'                 => 'training',
-		'serve'              => 'mission',
-		'support'            => 'mission',
-		'news'               => 'media',
-		'denomination-news'  => 'media',
-		'videos'             => 'media',
-		'library'            => 'media',
-		'giving'             => 'admin-guide',
-		'documents'          => 'admin-guide',
-		'facility-request'   => 'admin-guide',
-		'vehicle-request'    => 'admin-guide',
-		'contact'            => 'admin-guide',
-	);
-}
-
-function ktheme_v2_get_page_by_slug( string $slug ): ?WP_Post {
-	global $wpdb;
-
-	$page_id = (int) $wpdb->get_var(
-		$wpdb->prepare(
-			"SELECT ID FROM {$wpdb->posts} WHERE post_type = 'page' AND post_name = %s AND post_status NOT IN ('trash','auto-draft') ORDER BY CASE WHEN post_status = 'publish' THEN 0 ELSE 1 END, ID ASC LIMIT 1",
-			$slug
-		)
-	);
-
-	if ( $page_id <= 0 ) {
-		return null;
-	}
-
-	$page = get_post( $page_id );
-
-	return $page instanceof WP_Post ? $page : null;
-}
-
 function ktheme_v2_page_seed_content( string $title ): string {
 	return '<!-- wp:paragraph {"className":"kt-empty"} -->' .
 		'<p class="kt-empty">' . esc_html( $title . ' ' . ktheme_v2_text( '\uCF58\uD150\uCE20\uB97C \uC900\uBE44\uD558\uACE0 \uC788\uC2B5\uB2C8\uB2E4.' ) ) . '</p>' .
@@ -818,26 +208,15 @@ function ktheme_v2_ensure_required_pages(): void {
 	}
 
 	foreach ( ktheme_v2_required_pages() as $page ) {
-		$existing = ktheme_v2_get_page_by_slug( $page['slug'] );
+		$existing = get_page_by_path( $page['slug'] );
 
 		if ( ! $existing ) {
-			$parent_id = 0;
-			$parents   = ktheme_v2_page_parent_map();
-
-			if ( ! empty( $parents[ $page['slug'] ] ) ) {
-				$parent = ktheme_v2_get_page_by_slug( $parents[ $page['slug'] ] );
-				if ( $parent instanceof WP_Post ) {
-					$parent_id = (int) $parent->ID;
-				}
-			}
-
 			$page_id = wp_insert_post(
 				array(
 					'post_title'   => $page['title'],
 					'post_name'    => $page['slug'],
 					'post_status'  => 'publish',
 					'post_type'    => 'page',
-					'post_parent'  => $parent_id,
 					'post_content' => ktheme_v2_page_seed_content( $page['title'] ),
 				),
 				true
@@ -1263,9 +642,9 @@ function ktheme_v2_render_page_hero_shortcode(): string {
 
 	$breadcrumb = '<a href="' . esc_url( home_url( '/' ) ) . '"><svg class="kt-icon kt-icon--xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 11l9-8 9 8M5 10v10h14V10"/></svg>HOME</a>';
 	if ( null !== $match && $match['slug'] !== $current_slug ) {
-		$breadcrumb .= '<span>/</span><a href="' . esc_url( home_url( user_trailingslashit( $match['slug'] ) ) ) . '">' . esc_html( $match['section']['title'] ) . '</a>';
+		$breadcrumb .= '<span>›</span><a href="' . esc_url( home_url( user_trailingslashit( $match['slug'] ) ) ) . '">' . esc_html( $match['section']['title'] ) . '</a>';
 	}
-	$breadcrumb .= '<span>/</span><strong>' . esc_html( $title ) . '</strong>';
+	$breadcrumb .= '<span>›</span><strong>' . esc_html( $title ) . '</strong>';
 
 	$description_html = '' !== $description ? '<p>' . esc_html( $description ) . '</p>' : '';
 	$style            = $settings['style'];
@@ -1297,56 +676,56 @@ function ktheme_v2_sermon_card_items(): array {
 	return array(
 		array(
 			'image'  => $image_base . 'church-generated-01.jpg',
-			'series' => '머무름의 영성',
-			'title'  => '넓은 자리로 부르시는 하나님',
+			'series' => '자리 지키기 "누가 왕인가"',
+			'title'  => '선한 일도 있었던 사람!(르호보암)',
 			'date'   => '2026.03.29',
 		),
 		array(
 			'image'  => $image_base . 'church-generated-02.jpg',
-			'series' => '머무름의 영성',
-			'title'  => '기다리는 믿음의 시간',
+			'series' => '자리 지키기 "누가 왕인가"',
+			'title'  => '왕다리는 불순종이다!(솔로몬)',
 			'date'   => '2026.03.22',
 		),
 		array(
 			'image'  => $image_base . 'church-generated-03.jpg',
-			'series' => '머무름의 영성',
-			'title'  => '끝까지 하나님의 이름으로',
+			'series' => '자리 지키기 "누가 왕인가"',
+			'title'  => '끝까지 하나님의 이름으로(다윗)',
 			'date'   => '2026.03.15',
 		),
 		array(
 			'image'  => $image_base . 'church-generated-04.jpg',
-			'series' => '머무름의 영성',
-			'title'  => '끝까지 있어야 할 자리',
+			'series' => '자리 지키기 "누가 왕인가"',
+			'title'  => '"끝까지 있어야 할 자리예!"(사울)',
 			'date'   => '2026.03.07',
 		),
 		array(
 			'image'  => $image_base . 'church-generated-05.jpg',
 			'series' => '자유주제',
-			'title'  => '[주일설교] 부르심의 주인공',
+			'title'  => '[주일설교] 부흥의 주인공 / 김한요 목사(얼바인 베델교회)',
 			'date'   => '2026.03.01',
 		),
 		array(
 			'image'  => $image_base . 'church-generated-06.jpg',
 			'series' => '자유주제',
-			'title'  => '[수요설교] 가야 할 길을 바라볼 때',
+			'title'  => '[토요설교] 갈 바를 알지 못할 때 / 김한요 목사(얼바인 베델교회)',
 			'date'   => '2026.02.28',
 		),
 		array(
 			'image'  => $image_base . 'church-generated-07.jpg',
-			'series' => '2026 변화산',
-			'title'  => '[2026 변화산] 기다림은 함께 걷는 길입니다',
+			'series' => '2026-1차 변화산 "기다림은 낭비가 아닙니다"',
+			'title'  => '[2026-1차 변화산]6. 기다림은 함께 걷는 길입니다',
 			'date'   => '2026.02.28',
 		),
 		array(
 			'image'  => $image_base . 'church-generated-08.jpg',
-			'series' => '2026 변화산',
-			'title'  => '[2026 변화산] 기다림은 영적인 순종입니다',
+			'series' => '2026-1차 변화산 "기다림은 낭비가 아닙니다"',
+			'title'  => '[2026-1차 변화산]5. 기다림은 적극적인 순종입니다',
 			'date'   => '2026.02.27',
 		),
 		array(
 			'image'  => $image_base . 'church-generated-09.jpg',
-			'series' => '2026 변화산',
-			'title'  => '[2026 변화산] 기다림은 인내로 듣는 마음입니다',
+			'series' => '2026-1차 변화산 "기다림은 낭비가 아닙니다"',
+			'title'  => '[2026-1차 변화산]4. 기다림은 인내로 익는 열매입니다',
 			'date'   => '2026.02.26',
 		),
 	);
@@ -1355,337 +734,34 @@ function ktheme_v2_sermon_card_items(): array {
 function ktheme_v2_render_sermon_item_card( array $item ): string {
 	$url = home_url( user_trailingslashit( 'sermons' ) );
 
-	return '<a class="kt-sermon-item-card kt-story-card kt-story-card--editorial" href="' . esc_url( $url ) . '">' .
-		'<span class="kt-story-card__media kt-sermon-item-card__media">' .
+	return '<article class="kt-sermon-item-card">' .
+		'<a class="kt-sermon-item-card__media" href="' . esc_url( $url ) . '">' .
 			'<img src="' . esc_url( $item['image'] ) . '" alt="" loading="lazy" />' .
-		'</span>' .
-		'<span class="kt-story-card__body">' .
-			'<span class="kt-story-card__meta"><span>' . esc_html( $item['series'] ) . '</span><time datetime="' . esc_attr( str_replace( '.', '-', $item['date'] ) ) . '">' . esc_html( $item['date'] ) . '</time></span>' .
-			'<strong>' . esc_html( $item['title'] ) . '</strong>' .
-			'<span class="kt-story-card__link">Read More <svg class="kt-icon kt-icon--xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>' .
-		'</span>' .
-		'</a>';
+			'<span class="kt-sermon-item-card__play" aria-hidden="true"></span>' .
+		'</a>' .
+		'<div class="kt-sermon-item-card__series">' . esc_html( $item['series'] ) . '</div>' .
+		'<h3 class="kt-sermon-item-card__title"><a href="' . esc_url( $url ) . '">' . esc_html( $item['title'] ) . '</a></h3>' .
+		'<time class="kt-sermon-item-card__date" datetime="' . esc_attr( str_replace( '.', '-', $item['date'] ) ) . '">' . esc_html( $item['date'] ) . '</time>' .
+		'</article>';
 }
 
 function ktheme_v2_render_sunday_worship_grid_shortcode(): string {
 	$cards = array_map( 'ktheme_v2_render_sermon_item_card', ktheme_v2_sermon_card_items() );
-	$pagination = '<nav class="kt-sermon-pagination kt-component-pagination" aria-label="' . esc_attr__( 'Pagination', 'ktheme-v2' ) . '">' .
-		'<a class="kt-component-pagination__edge" href="#" aria-label="' . esc_attr__( 'Previous page', 'ktheme-v2' ) . '"><svg class="kt-icon kt-icon--xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" aria-hidden="true"><path d="M15 18 9 12l6-6"/></svg><span>' . esc_html( ktheme_v2_text( '\uC774\uC804' ) ) . '</span></a>' .
-		'<span class="page-numbers current" aria-current="page">1</span><a href="#">2</a><a href="#">3</a><a href="#">4</a><a href="#">5</a>' .
-		'<a class="kt-component-pagination__edge" href="#" aria-label="' . esc_attr__( 'Next page', 'ktheme-v2' ) . '"><span>' . esc_html( ktheme_v2_text( '\uB2E4\uC74C' ) ) . '</span><svg class="kt-icon kt-icon--xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></a>' .
-		'</nav>';
 
-	return '<section class="kt-sermon-feed kt-sermon-feed--static" aria-label="' . esc_attr__( 'Sunday worship sermon list', 'ktheme-v2' ) . '">' .
+	return '<section class="kt-sermon-feed kt-sermon-feed--static" aria-label="' . esc_attr__( '주일예배 설교 목록', 'ktheme-v2' ) . '">' .
 		'<div class="kt-sermon-item-grid">' . implode( '', $cards ) . '</div>' .
-		$pagination .
+		'<nav class="kt-sermon-pagination" aria-label="' . esc_attr__( '페이지', 'ktheme-v2' ) . '">' .
+			'<span aria-hidden="true">|‹</span><span aria-hidden="true">‹</span>' .
+			'<span class="page-numbers current" aria-current="page">1</span><a href="#">2</a><a href="#">3</a><a href="#">4</a><a href="#">5</a>' .
+			'<span aria-hidden="true">›</span><span aria-hidden="true">›|</span>' .
+		'</nav>' .
 		'</section>';
 }
 add_shortcode( 'ktheme_sunday_worship_grid', 'ktheme_v2_render_sunday_worship_grid_shortcode' );
 
-function ktheme_v2_photo_carousel_presets(): array {
-	$image_base = get_template_directory_uri() . '/assets/images/generated/';
-
-	return array(
-		'community' => array(
-			'eyebrow'     => 'Community Life',
-			'title'       => '공동체가 함께한 활동 사진',
-			'description' => '예배와 모임, 다음세대와 섬김의 자리에서 함께 자라가는 장면을 모았습니다.',
-			'items'       => array(
-				array(
-					'image'   => $image_base . 'church-generated-04.jpg',
-					'label'   => '소그룹',
-					'title'   => '삶을 나누는 목장 모임',
-					'caption' => '말씀과 식탁, 기도가 자연스럽게 이어지는 작은 공동체의 시간입니다.',
-				),
-				array(
-					'image'   => $image_base . 'church-generated-03.jpg',
-					'label'   => '다음세대',
-					'title'   => '믿음으로 자라는 다음세대',
-					'caption' => '아이들과 청소년이 예배와 교육 안에서 복음을 배웁니다.',
-				),
-				array(
-					'image'   => $image_base . 'church-generated-14.jpg',
-					'label'   => '새가족',
-					'title'   => '처음 오신 분을 환영하는 자리',
-					'caption' => '낯선 방문이 따뜻한 만남으로 이어지도록 함께 돕습니다.',
-				),
-				array(
-					'image'   => $image_base . 'church-generated-02.jpg',
-					'label'   => '청년부',
-					'title'   => '함께 기도하는 청년 공동체',
-					'caption' => '청년들이 말씀 앞에서 삶의 방향을 나누고 서로를 세웁니다.',
-				),
-				array(
-					'image'   => $image_base . 'church-generated-10.jpg',
-					'label'   => '양육',
-					'title'   => '배움으로 깊어지는 신앙',
-					'caption' => '새가족 과정과 성경공부를 통해 믿음의 기초를 다집니다.',
-				),
-				array(
-					'image'   => $image_base . 'church-generated-08.jpg',
-					'label'   => '섬김',
-					'title'   => '서로의 필요를 돌보는 손길',
-					'caption' => '교회 안팎의 필요를 살피며 실제적인 사랑을 나눕니다.',
-				),
-			),
-		),
-		'newcomers' => array(
-			'eyebrow'     => 'Welcome Moments',
-			'title'       => '처음 방문부터 정착까지 함께합니다',
-			'description' => '예배 전 안내, 새가족 과정, 소그룹 연결까지 새가족의 첫걸음을 돕는 장면들입니다.',
-			'items'       => array(
-				array(
-					'image'   => $image_base . 'church-generated-14.jpg',
-					'label'   => '환영',
-					'title'   => '예배 전 안내 데스크',
-					'caption' => '도착하면 안내팀이 예배실과 새가족석, 자녀 예배 동선을 함께 안내합니다.',
-				),
-				array(
-					'image'   => $image_base . 'church-generated-10.jpg',
-					'label'   => '과정',
-					'title'   => '새가족 과정',
-					'caption' => '교회의 비전과 신앙의 기초를 배우며 공동체를 자연스럽게 알아갑니다.',
-				),
-				array(
-					'image'   => $image_base . 'church-generated-04.jpg',
-					'label'   => '연결',
-					'title'   => '소그룹 연결',
-					'caption' => '삶의 자리와 연령대를 고려해 함께 걸어갈 공동체를 소개합니다.',
-				),
-				array(
-					'image'   => $image_base . 'church-generated-03.jpg',
-					'label'   => '가정',
-					'title'   => '자녀 동반 방문',
-					'caption' => '다음세대 예배와 교육 공간을 안내해 온 가족이 편안하게 예배할 수 있습니다.',
-				),
-			),
-		),
-		'small-groups' => array(
-			'eyebrow'     => 'Small Group Life',
-			'title'       => '삶을 나누고 서로를 돌보는 자리',
-			'description' => '예배의 고백이 일상의 돌봄으로 이어지도록 소그룹과 구역 모임이 함께 걷습니다.',
-			'items'       => array(
-				array(
-					'image'   => $image_base . 'church-generated-04.jpg',
-					'label'   => '목장',
-					'title'   => '가정과 일상에서 만나는 모임',
-					'caption' => '말씀을 나누고 서로의 기도 제목을 품는 작은 공동체입니다.',
-				),
-				array(
-					'image'   => $image_base . 'church-generated-12.jpg',
-					'label'   => '돌봄',
-					'title'   => '혼자 남지 않도록 살피는 연결',
-					'caption' => '새가족과 환우, 도움이 필요한 가정을 가까운 공동체가 함께 돌봅니다.',
-				),
-				array(
-					'image'   => $image_base . 'church-generated-14.jpg',
-					'label'   => '교제',
-					'title'   => '예배 후 이어지는 식탁과 대화',
-					'caption' => '짧은 인사에서 시작된 만남이 신앙의 동행으로 자랍니다.',
-				),
-				array(
-					'image'   => $image_base . 'church-generated-08.jpg',
-					'label'   => '섬김',
-					'title'   => '함께 움직이는 작은 섬김',
-					'caption' => '각 구역이 지역과 교회 안의 필요를 살피며 사랑을 실천합니다.',
-				),
-			),
-		),
-		'next-generation' => array(
-			'eyebrow'     => 'Next Generation',
-			'title'       => '아이들이 말씀 안에서 자라갑니다',
-			'description' => '영유아부터 청소년까지 연령에 맞는 예배와 교육으로 다음세대의 믿음을 세웁니다.',
-			'items'       => array(
-				array(
-					'image'   => $image_base . 'church-generated-03.jpg',
-					'label'   => '예배',
-					'title'   => '연령별 다음세대 예배',
-					'caption' => '아이들이 이해할 수 있는 언어로 말씀을 듣고 함께 찬양합니다.',
-				),
-				array(
-					'image'   => $image_base . 'church-generated-11.jpg',
-					'label'   => '교육',
-					'title'   => '복음의 기초를 배우는 시간',
-					'caption' => '성경 이야기와 활동을 통해 믿음의 고백을 일상과 연결합니다.',
-				),
-				array(
-					'image'   => $image_base . 'church-generated-10.jpg',
-					'label'   => '교사',
-					'title'   => '함께 기도하는 교사 공동체',
-					'caption' => '교사와 부모가 아이들의 신앙 성장을 위해 함께 기도합니다.',
-				),
-				array(
-					'image'   => $image_base . 'church-generated-15.jpg',
-					'label'   => '캠프',
-					'title'   => '여름성경학교와 수련회',
-					'caption' => '집중적인 예배와 교제를 통해 하나님을 더 깊이 만나는 시간을 갖습니다.',
-				),
-			),
-		),
-		'youth-ministry' => array(
-			'eyebrow'     => 'Young Adults',
-			'title'       => '청년들이 믿음과 삶을 함께 세웁니다',
-			'description' => '예배, 소그룹, 기도와 섬김을 통해 청년의 계절을 함께 걸어갑니다.',
-			'items'       => array(
-				array(
-					'image'   => $image_base . 'church-generated-02.jpg',
-					'label'   => '예배',
-					'title'   => '청년예배와 말씀 나눔',
-					'caption' => '삶의 질문을 말씀 앞에 가져오고 함께 응답하는 자리입니다.',
-				),
-				array(
-					'image'   => $image_base . 'church-generated-04.jpg',
-					'label'   => '소그룹',
-					'title'   => '관계가 깊어지는 순모임',
-					'caption' => '학교와 직장, 진로와 관계의 고민을 믿음 안에서 나눕니다.',
-				),
-				array(
-					'image'   => $image_base . 'church-generated-13.jpg',
-					'label'   => '찬양',
-					'title'   => '예배를 함께 세우는 섬김',
-					'caption' => '찬양과 미디어, 환대의 자리에서 청년들이 은사를 나눕니다.',
-				),
-				array(
-					'image'   => $image_base . 'church-generated-17.jpg',
-					'label'   => '선교',
-					'title'   => '지역과 세상을 향한 발걸음',
-					'caption' => '봉사와 단기 선교를 통해 복음을 삶의 자리로 가져갑니다.',
-				),
-			),
-		),
-		'senior-ministry' => array(
-			'eyebrow'     => 'Senior Ministry',
-			'title'       => '장년과 시니어의 믿음이 다음세대를 세웁니다',
-			'description' => '예배, 교제, 돌봄과 섬김을 통해 인생의 계절마다 함께 걷는 공동체입니다.',
-			'items'       => array(
-				array(
-					'image'   => $image_base . 'church-generated-12.jpg',
-					'label'   => '돌봄',
-					'title'   => '기도와 심방으로 이어지는 돌봄',
-					'caption' => '몸과 마음의 필요를 살피며 가까운 공동체가 함께 기도합니다.',
-				),
-				array(
-					'image'   => $image_base . 'church-generated-14.jpg',
-					'label'   => '교제',
-					'title'   => '함께 식탁을 나누는 모임',
-					'caption' => '주중 모임과 절기 행사를 통해 관계와 격려가 이어집니다.',
-				),
-				array(
-					'image'   => $image_base . 'church-generated-10.jpg',
-					'label'   => '배움',
-					'title'   => '말씀으로 깊어지는 신앙',
-					'caption' => '성경공부와 기도 모임으로 인생의 계절을 말씀 안에서 해석합니다.',
-				),
-				array(
-					'image'   => $image_base . 'church-generated-08.jpg',
-					'label'   => '섬김',
-					'title'   => '경험과 은사를 나누는 자리',
-					'caption' => '오랜 믿음의 경험이 교회와 다음세대를 세우는 섬김으로 이어집니다.',
-				),
-			),
-		),
-	);
-}
-
-function ktheme_v2_enqueue_photo_carousel_script(): void {
-	$script_path = get_theme_file_path( 'assets/js/photo-carousel.js' );
-
-	wp_enqueue_script(
-		'ktheme-v2-photo-carousel',
-		get_theme_file_uri( 'assets/js/photo-carousel.js' ),
-		array(),
-		file_exists( $script_path ) ? (string) filemtime( $script_path ) : wp_get_theme()->get( 'Version' ),
-		true
-	);
-}
-
-function ktheme_v2_render_photo_carousel_shortcode( $atts = array() ): string {
-	if ( ! is_array( $atts ) ) {
-		$atts = array();
-	}
-
-	$atts = shortcode_atts(
-		array(
-			'preset'      => 'community',
-			'eyebrow'     => '',
-			'title'       => '',
-			'description' => '',
-			'class'       => '',
-		),
-		$atts,
-		'ktheme_photo_carousel'
-	);
-
-	$presets = ktheme_v2_photo_carousel_presets();
-	$preset  = isset( $presets[ $atts['preset'] ] ) ? $presets[ $atts['preset'] ] : $presets['community'];
-	$items   = isset( $preset['items'] ) && is_array( $preset['items'] ) ? $preset['items'] : array();
-
-	if ( empty( $items ) ) {
-		return '';
-	}
-
-	ktheme_v2_enqueue_photo_carousel_script();
-
-	$title       = '' !== $atts['title'] ? $atts['title'] : $preset['title'];
-	$eyebrow     = '' !== $atts['eyebrow'] ? $atts['eyebrow'] : $preset['eyebrow'];
-	$description = '' !== $atts['description'] ? $atts['description'] : $preset['description'];
-	$section_id  = wp_unique_id( 'kt-photo-carousel-' );
-	$classes     = array_filter(
-		array(
-			'kt-photo-carousel',
-			'kt-photo-carousel--' . sanitize_html_class( (string) $atts['preset'] ),
-			sanitize_html_class( (string) $atts['class'] ),
-		)
-	);
-	$total       = count( $items );
-	$slides      = '';
-	$dots        = '';
-
-	foreach ( array_values( $items ) as $index => $item ) {
-		$slide_id = $section_id . '-slide-' . ( $index + 1 );
-		$label    = isset( $item['label'] ) ? (string) $item['label'] : '';
-		$caption  = isset( $item['caption'] ) ? (string) $item['caption'] : '';
-		$item_title = isset( $item['title'] ) ? (string) $item['title'] : '';
-
-		$slides .= '<figure class="kt-photo-carousel__slide" id="' . esc_attr( $slide_id ) . '" data-kt-carousel-slide>' .
-			'<span class="kt-photo-carousel__image"><img src="' . esc_url( (string) $item['image'] ) . '" alt="' . esc_attr( $item_title ) . '" loading="lazy" /></span>' .
-			'<figcaption class="kt-photo-carousel__caption">' .
-				( '' !== $label ? '<span>' . esc_html( $label ) . '</span>' : '' ) .
-				'<strong>' . esc_html( $item_title ) . '</strong>' .
-				( '' !== $caption ? '<small>' . esc_html( $caption ) . '</small>' : '' ) .
-			'</figcaption>' .
-		'</figure>';
-
-		$dots .= '<button class="kt-photo-carousel__dot" type="button" aria-label="' . esc_attr( sprintf( '%d번째 사진 보기', $index + 1 ) ) . '" aria-controls="' . esc_attr( $slide_id ) . '" data-kt-carousel-dot="' . esc_attr( (string) $index ) . '"><span></span></button>';
-	}
-
-	return '<section class="' . esc_attr( implode( ' ', $classes ) ) . '" aria-labelledby="' . esc_attr( $section_id . '-title' ) . '" data-kt-photo-carousel>' .
-		'<div class="kt-photo-carousel__head">' .
-			'<div><span class="kt-card-label">' . esc_html( $eyebrow ) . '</span><h2 id="' . esc_attr( $section_id . '-title' ) . '">' . esc_html( $title ) . '</h2>' .
-			( '' !== $description ? '<p>' . esc_html( $description ) . '</p>' : '' ) . '</div>' .
-			'<div class="kt-photo-carousel__controls">' .
-				'<button class="kt-photo-carousel__button" type="button" aria-label="' . esc_attr__( '이전 사진', 'ktheme-v2' ) . '" data-kt-carousel-prev><svg class="kt-icon kt-icon--sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" aria-hidden="true"><path d="M15 18 9 12l6-6"/></svg></button>' .
-				'<button class="kt-photo-carousel__button" type="button" aria-label="' . esc_attr__( '다음 사진', 'ktheme-v2' ) . '" data-kt-carousel-next><svg class="kt-icon kt-icon--sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></button>' .
-			'</div>' .
-		'</div>' .
-		'<div class="kt-photo-carousel__viewport" tabindex="0" data-kt-carousel-viewport>' .
-			'<div class="kt-photo-carousel__track" data-kt-carousel-track>' . $slides . '</div>' .
-		'</div>' .
-		'<div class="kt-photo-carousel__footer">' .
-			'<div class="kt-photo-carousel__dots" aria-label="' . esc_attr__( '사진 선택', 'ktheme-v2' ) . '">' . $dots . '</div>' .
-			'<div class="kt-photo-carousel__count" aria-live="polite"><span data-kt-carousel-current>01</span><span>/</span><span>' . esc_html( str_pad( (string) $total, 2, '0', STR_PAD_LEFT ) ) . '</span></div>' .
-		'</div>' .
-	'</section>';
-}
-add_shortcode( 'ktheme_photo_carousel', 'ktheme_v2_render_photo_carousel_shortcode' );
-
 function ktheme_v2_body_classes( array $classes ): array {
-	if ( is_page( array( 'sunday-worship', 'wednesday-worship', 'dawn-prayer' ) ) ) {
+	if ( is_page( 'sunday-worship' ) ) {
 		$classes[] = 'kt-page-sunday-worship';
-	}
-
-	if ( is_page( 'bulletin' ) ) {
-		$classes[] = 'kt-page-bulletin';
 	}
 
 	return $classes;
@@ -1749,7 +825,7 @@ function ktheme_v2_customize_register_page_hero( WP_Customize_Manager $wp_custom
 		'ktheme_v2_page_hero_image_url',
 		array(
 			'label'       => __( '배경/우측 이미지 URL', 'ktheme-v2' ),
-			'description' => __( 'Image, Ken Burns, Split 스타일에 사용합니다.', 'ktheme-v2' ),
+			'description' => __( 'Image, Ken Burns, Split 스타일에서 사용합니다.', 'ktheme-v2' ),
 			'section'     => 'ktheme_v2_page_hero',
 			'type'        => 'url',
 		)
@@ -1767,7 +843,7 @@ function ktheme_v2_customize_register_page_hero( WP_Customize_Manager $wp_custom
 		'ktheme_v2_page_hero_youtube_url',
 		array(
 			'label'       => __( '유튜브 배경 영상 URL', 'ktheme-v2' ),
-			'description' => __( 'Video Background 스타일에 사용합니다.', 'ktheme-v2' ),
+			'description' => __( 'Video Background 스타일에서 사용합니다.', 'ktheme-v2' ),
 			'section'     => 'ktheme_v2_page_hero',
 			'type'        => 'url',
 		)
