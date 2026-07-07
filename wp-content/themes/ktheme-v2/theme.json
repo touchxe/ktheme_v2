@@ -68,6 +68,7 @@
     { "name": "archive-hero-album", "title": "Album Archive Hero", "area": "uncategorized" },
     { "name": "search-hero", "title": "Search Hero", "area": "uncategorized" },
     { "name": "single-hero", "title": "Single Hero", "area": "uncategorized" },
-    { "name": "sermon-item-card", "title": "Sermon Item Card", "area": "uncategorized" }
+    { "name": "sermon-item-card", "title": "Sermon Item Card", "area": "uncategorized" },
+    { "name": "ministry-contact-modal", "title": "Ministry Contact Modal", "area": "uncategorized" }
   ]
 }

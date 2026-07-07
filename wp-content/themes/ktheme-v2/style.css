@@ -6605,6 +6605,18 @@ body.kt-library-modal-open {
   color: rgba(255, 255, 255, 0.7);
 }
 
+/* Shared ministry contact modal form (parts/ministry-contact-modal.html):
+   .kt-ministry-form is normally a 2-column card; inside the 400px modal
+   dialog it collapses to a single column with no extra border/shadow. */
+
+.kt-library-modal__dialog .kt-ministry-form {
+  grid-template-columns: 1fr;
+  margin-top: 20px;
+  border: 0;
+  box-shadow: none;
+  padding: 0;
+}
+
 .kt-action-cta {
   display: grid;
   min-width: 0;

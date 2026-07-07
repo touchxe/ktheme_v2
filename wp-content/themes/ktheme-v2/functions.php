@@ -1101,6 +1101,39 @@ function ktheme_v2_enqueue_design_library_assets(): void {
 }
 add_action( 'wp_enqueue_scripts', 'ktheme_v2_enqueue_design_library_assets' );
 
+function ktheme_v2_enqueue_ministry_page_assets(): void {
+	if ( is_admin() ) {
+		return;
+	}
+
+	$ministry_slugs = array( 'newcomers', 'small-groups', 'next-generation', 'youth-ministry', 'senior-ministry', 'community' );
+
+	if ( ! is_page( $ministry_slugs ) ) {
+		return;
+	}
+
+	$carousel_path = get_theme_file_path( 'assets/js/photo-carousel.js' );
+
+	wp_enqueue_script(
+		'ktheme-v2-photo-carousel',
+		get_theme_file_uri( 'assets/js/photo-carousel.js' ),
+		array(),
+		file_exists( $carousel_path ) ? (string) filemtime( $carousel_path ) : wp_get_theme()->get( 'Version' ),
+		true
+	);
+
+	$modal_path = get_theme_file_path( 'assets/js/ministry-contact-modal.js' );
+
+	wp_enqueue_script(
+		'ktheme-v2-ministry-contact-modal',
+		get_theme_file_uri( 'assets/js/ministry-contact-modal.js' ),
+		array(),
+		file_exists( $modal_path ) ? (string) filemtime( $modal_path ) : wp_get_theme()->get( 'Version' ),
+		true
+	);
+}
+add_action( 'wp_enqueue_scripts', 'ktheme_v2_enqueue_ministry_page_assets' );
+
 /**
  * Photo Carousel Shortcode
  * Usage: [ktheme_photo_carousel preset="small-groups" eyebrow="..." title="..." description="..."]
