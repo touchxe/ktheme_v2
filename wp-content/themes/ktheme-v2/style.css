@@ -10209,8 +10209,7 @@ body:is(.page-id-67,.page-id-69) .kt-nav .wp-block-navigation__container > .wp-b
 }
 
 .kt-mission-prayer-grid {
-  grid-template-columns: 1fr;
-  gap: 14px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   margin-top: 0;
 }
 
@@ -11819,6 +11818,10 @@ body:is(.page-id-67,.page-id-69) .kt-nav .wp-block-navigation__container > .wp-b
   .kt-origin-page {
     width: min(100% - 32px, var(--kt-max));
     padding-top: 34px;
+  }
+
+  .kt-mission-prayer-grid {
+    grid-template-columns: 1fr;
   }
 
   .kt-annual-page {
