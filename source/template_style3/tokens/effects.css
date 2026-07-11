@@ -1,0 +1,27 @@
+/* ============================================================
+   EFFECTS — 가평교회
+   라운드 · 섀도우 · 전환
+   ============================================================ */
+:root {
+  /* --- Radius --- */
+  --radius-sm: 3px;    /* 뱃지 */
+  --radius-md: 8px;    /* lg · 입력 */
+  --radius-lg: 12px;   /* xl · 타일 */
+  --radius-xl: 16px;   /* 2xl · 카드 */
+  --radius-full: 9999px; /* 알약형 버튼 */
+
+  /* --- Shadow --- */
+  --shadow-card: 0 1px 0 rgba(0, 0, 0, 0.04), 0 18px 36px -24px rgba(14, 19, 32, 0.18);
+  --shadow-marquee: 0 18px 40px -20px rgba(14, 19, 32, 0.25);
+  --shadow-lg: 0 10px 15px -3px rgba(14, 19, 32, 0.1), 0 4px 6px -4px rgba(14, 19, 32, 0.1);
+  --ring-inset: inset 0 0 0 1px rgba(14, 19, 32, 0.06); /* swatch/면 경계 */
+
+  /* --- Motion --- */
+  --ease-out: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --dur-fast: 0.18s;
+  --dur-base: 0.28s;
+
+  /* --- Overlay --- */
+  --hero-fade: linear-gradient(90deg, rgba(14,19,32,0.92) 0%, rgba(14,19,32,0.75) 45%, rgba(14,19,32,0.25) 80%, rgba(14,19,32,0.05) 100%);
+  --backdrop-blur: saturate(180%) blur(8px);
+}

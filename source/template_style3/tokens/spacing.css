@@ -1,0 +1,26 @@
+/* ============================================================
+   SPACING & LAYOUT — 가평교회
+   8px 기반 · 컨테이너 1240 · 12컬럼 그리드
+   ============================================================ */
+:root {
+  /* --- Spacing scale (8px base) --- */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;   /* 컨테이너 좌우 패딩 (px-6) */
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+  --space-9: 80px;
+
+  /* --- Layout --- */
+  --container-max: 1240px;     /* 본문 최대 폭 */
+  --container-wide: 1320px;    /* 문서/라이브러리 폭 */
+  --container-pad: 24px;       /* 좌우 패딩 */
+  --grid-cols: 12;
+  --grid-gap: 24px;
+  --header-h: 72px;            /* 고정 헤더 높이 */
+  --section-y: 56px;           /* 섹션 상하 여백(min) */
+  --section-y-lg: 80px;        /* 섹션 상하 여백(max) */
+}

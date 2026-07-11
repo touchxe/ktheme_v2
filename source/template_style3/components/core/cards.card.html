@@ -1,0 +1,45 @@
+<!-- @dsCard group="Components" viewport="700x300" name="Card · SermonCard" subtitle="범용 카드 면 / 설교 미디어 리스트 아이템" -->
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<link rel="stylesheet" href="../../styles.css" />
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script src="../../_ds_bundle.js"></script>
+<style>
+  body{margin:0;font-family:var(--font-sans);background:var(--paper);padding:24px;letter-spacing:var(--ls-base);}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:start;}
+  .list{background:var(--white);border:1px solid var(--line);border-radius:var(--radius-xl);overflow:hidden;}
+  .list > a + a{border-top:1px solid var(--line);}
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel">
+  const NS = window.가평교회 || Object.values(window).find(v => v && v.Card && v.SermonCard) || {};
+  const { Card, SermonCard } = NS;
+
+  function Demo(){
+    return (
+      <div className="grid">
+        <div className="list">
+          <SermonCard category="주일" title="머무름의 영성을 세우기로" speaker="정한결 목사" date="2026.04.26"
+            image="https://images.unsplash.com/photo-1507692049790-de58290a4334?auto=format&fit=crop&w=300&q=70" />
+          <SermonCard category="수요" title="기다림 속에서 발견한 이름" speaker="김다온 부목사" date="2026.04.23"
+            image="https://images.unsplash.com/photo-1466442929976-97f336a657be?auto=format&fit=crop&w=300&q=70" />
+        </div>
+        <Card elevated hover padding={28}>
+          <div style={{display:'flex',alignItems:'center',gap:10,marginBottom:8}}>
+            <h3 style={{margin:0,fontSize:20,fontWeight:800,letterSpacing:'-0.01em'}}>온라인 헌금</h3>
+          </div>
+          <p style={{margin:0,color:'var(--text-body)',fontSize:13.5,lineHeight:1.6}}>모바일과 PC에서 간편하게 드릴 수 있도록 도와드립니다.</p>
+        </Card>
+      </div>
+    );
+  }
+  ReactDOM.createRoot(document.getElementById('root')).render(<Demo/>);
+</script>
+</body>
+</html>

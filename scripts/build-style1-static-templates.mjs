@@ -150,7 +150,7 @@ function navItem(label, url, key, activeKey, extra = '') {
 function buildMainNav(activeKey) {
   const live = '<span class="badge-live nav-live">LIVE</span>';
   return `<nav class="hidden lg:flex items-center gap-6 xl:gap-8 text-[14px] xl:text-[15px] font-semibold">
-      ${navItem('예배', '/worship/', 'worship', activeKey, live)}
+      ${navItem('예배 안내', '/worship/', 'worship', activeKey, live)}
       ${navItem('공동체', '/community/', 'community', activeKey)}
       ${navItem('양육', '/training/', 'training', activeKey)}
       ${navItem('강의', '/lecture/', 'lecture', activeKey)}
@@ -170,7 +170,7 @@ function standardizeHeaderNav(html, activeKey) {
 
 const pageHeroMeta = {
   worship: {
-    title: '예배',
+    title: '예배 안내',
     description: '매주 드려지는 예배에 함께 참여하세요. 시간과 장소, 다시 듣기까지 한 페이지에서.',
     tabs: [
       ['전체', '/worship/', true],

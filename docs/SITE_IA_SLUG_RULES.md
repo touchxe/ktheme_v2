@@ -19,7 +19,7 @@
 | 1차 메뉴 | 대표 slug | 역할 |
 |---|---|---|
 | 교회소개 | `/about/` | 교회의 정체성, 비전, 사람, 역사, 위치 안내 |
-| 예배 | `/worship/` | 예배 시간, 예배 영상, 주보 안내 |
+| 예배 안내 | `/worship/` | 예배 시간, 예배 영상, 주보 안내 |
 | 공동체 | `/community/` | 새가족, 소그룹, 다음세대, 청년, 시니어 안내 |
 | 양육 | `/training/` | 양육 과정, 새가족 과정, 성경공부, 제자훈련, QT |
 | 선교·섬김 | `/mission/` | 국내/해외 통합 선교 안내, 섬김 사역, 후원 안내 |
@@ -59,7 +59,7 @@
 | 푸터 그룹 | 메뉴 |
 |---|---|
 | 교회소개 | 교회소개, 비전, 섬기는 사람들, 교회연혁, 연간일정, 오시는 길 |
-| 예배 | 예배 안내, 주일예배, 수요예배, 새벽기도, 주보 |
+| 예배 안내 | 주일예배, 수요예배, 새벽기도, 주보 |
 | 공동체/양육 | 새가족, 소그룹/구역, 다음세대, 청년부, 양육 안내, QT/묵상 |
 | 미디어/행정 | 교회소식, 교단소식, 설교, 행사앨범, 자료실, 온라인 헌금, 문의하기 |
 | 정책 | 개인정보처리방침, 이메일 무단수집거부 |
@@ -83,8 +83,7 @@
 │  ├─ 연간일정 /annual-schedule/
 │  └─ 오시는 길 /location/
 │
-├─ 예배 /worship/
-│  ├─ 예배 안내 /worship-guide/
+├─ 예배 안내 /worship/
 │  ├─ 주일예배 /sunday-worship/
 │  ├─ 수요예배 /wednesday-worship/
 │  ├─ 새벽기도 /dawn-prayer/
@@ -140,8 +139,7 @@
 | 교회연혁 | `history` | page |
 | 연간일정 | `annual-schedule` | page 또는 archive |
 | 오시는 길 | `location` | page |
-| 예배 | `worship` | page |
-| 예배 안내 | `worship-guide` | page |
+| 예배 안내 | `worship` | page |
 | 주일예배 | `sunday-worship` | archive/single 또는 page |
 | 수요예배 | `wednesday-worship` | archive/single 또는 page |
 | 새벽기도 | `dawn-prayer` | archive/single 또는 page |

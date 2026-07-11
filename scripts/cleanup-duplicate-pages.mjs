@@ -13,7 +13,6 @@ const officialPages = new Map([
   ['history', '교회연혁'],
   ['annual-schedule', '연간일정'],
   ['location', '오시는 길'],
-  ['worship-guide', '예배 안내'],
   ['sunday-worship', '주일예배'],
   ['wednesday-worship', '수요예배'],
   ['dawn-prayer', '새벽기도'],

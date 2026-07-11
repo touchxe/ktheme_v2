@@ -1,0 +1,17 @@
+<!-- @dsCard group="Spacing" viewport="700x170" subtitle="카드 그림자 · 오버레이 그림자" name="Shadow" -->
+<!DOCTYPE html><html lang="ko"><head><meta charset="UTF-8"><link rel="stylesheet" href="../styles.css">
+<style>
+  body{margin:0;font-family:var(--font-sans);background:var(--white);padding:28px;}
+  .row{display:flex;align-items:flex-end;gap:36px;}
+  .sw{text-align:center;}
+  .box{width:120px;height:78px;background:var(--white);border-radius:var(--radius-xl);}
+  .name{font-size:12px;font-weight:600;color:var(--text-strong);margin-top:14px;}
+  .mono{font-family:var(--font-mono);font-size:11px;color:var(--text-body);}
+</style></head>
+<body>
+  <div class="row">
+    <div class="sw"><div class="box" style="box-shadow:var(--shadow-card)"></div><div class="name">card</div><div class="mono">18px -24 blur</div></div>
+    <div class="sw"><div class="box" style="box-shadow:var(--shadow-marquee)"></div><div class="name">marquee</div><div class="mono">40px -20 blur</div></div>
+    <div class="sw"><div class="box" style="box-shadow:var(--shadow-lg)"></div><div class="name">lg</div><div class="mono">overlay</div></div>
+  </div>
+</body></html>

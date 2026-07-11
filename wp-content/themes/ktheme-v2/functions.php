@@ -121,10 +121,9 @@ function ktheme_v2_text( string $encoded ): string {
 function ktheme_v2_default_menu_items(): array {
 	return array(
 		array(
-			'title'    => ktheme_v2_text( '\uC608\uBC30' ),
+			'title'    => ktheme_v2_text( '\uC608\uBC30 \uC548\uB0B4' ),
 			'url'      => home_url( '/worship/' ),
 			'children' => array(
-				array( 'title' => ktheme_v2_text( '\uC608\uBC30 \uC548\uB0B4' ), 'url' => home_url( '/worship-guide/' ) ),
 				array( 'title' => ktheme_v2_text( '\uC8FC\uC77C\uC608\uBC30' ), 'url' => home_url( '/sunday-worship/' ) ),
 				array( 'title' => ktheme_v2_text( '\uC218\uC694\uC608\uBC30' ), 'url' => home_url( '/wednesday-worship/' ) ),
 				array( 'title' => ktheme_v2_text( '\uC0C8\uBCBD\uAE30\uB3C4' ), 'url' => home_url( '/dawn-prayer/' ) ),
@@ -708,8 +707,7 @@ function ktheme_v2_required_pages(): array {
 		array( 'title' => ktheme_v2_text( '\uAD50\uD68C\uC5F0\uD601' ), 'slug' => 'history' ),
 		array( 'title' => ktheme_v2_text( '\uC5F0\uAC04\uC77C\uC815' ), 'slug' => 'annual-schedule' ),
 		array( 'title' => ktheme_v2_text( '\uC624\uC2DC\uB294 \uAE38' ), 'slug' => 'location' ),
-		array( 'title' => ktheme_v2_text( '\uC608\uBC30' ), 'slug' => 'worship', 'template' => 'page-worship' ),
-		array( 'title' => ktheme_v2_text( '\uC608\uBC30 \uC548\uB0B4' ), 'slug' => 'worship-guide' ),
+		array( 'title' => ktheme_v2_text( '\uC608\uBC30 \uC548\uB0B4' ), 'slug' => 'worship', 'template' => 'page-worship' ),
 		array( 'title' => ktheme_v2_text( '\uC8FC\uC77C\uC608\uBC30' ), 'slug' => 'sunday-worship', 'template' => 'page-sunday-worship' ),
 		array( 'title' => ktheme_v2_text( '\uC218\uC694\uC608\uBC30' ), 'slug' => 'wednesday-worship', 'template' => 'page-wednesday-worship' ),
 		array( 'title' => ktheme_v2_text( '\uC0C8\uBCBD\uAE30\uB3C4' ), 'slug' => 'dawn-prayer', 'template' => 'page-dawn-prayer' ),
@@ -754,7 +752,6 @@ function ktheme_v2_page_parent_map(): array {
 		'history'            => 'about',
 		'annual-schedule'    => 'about',
 		'location'           => 'about',
-		'worship-guide'      => 'worship',
 		'sunday-worship'     => 'worship',
 		'wednesday-worship'  => 'worship',
 		'dawn-prayer'        => 'worship',
@@ -869,7 +866,6 @@ function ktheme_v2_flat_child_page_slugs(): array {
 		'history',
 		'annual-schedule',
 		'location',
-		'worship-guide',
 		'sunday-worship',
 		'wednesday-worship',
 		'dawn-prayer',
@@ -978,6 +974,11 @@ add_filter( 'redirect_canonical', 'ktheme_v2_keep_flat_child_page_canonical', 10
 function ktheme_v2_redirect_legacy_slugs(): void {
 	$path = trim( (string) wp_parse_url( $_SERVER['REQUEST_URI'] ?? '', PHP_URL_PATH ), '/' );
 
+	if ( 'worship-guide' === $path ) {
+		wp_safe_redirect( home_url( '/worship/' ), 301 );
+		exit;
+	}
+
 	if ( 'ministries' === $path ) {
 		wp_safe_redirect( home_url( '/community/' ), 301 );
 		exit;
@@ -1011,11 +1012,10 @@ function ktheme_v2_page_sections(): array {
 			),
 		),
 		'worship'     => array(
-			'title'       => ktheme_v2_text( '\uC608\uBC30' ),
+			'title'       => ktheme_v2_text( '\uC608\uBC30 \uC548\uB0B4' ),
 			'description' => ktheme_v2_text( '\uC8FC\uC77C\uC608\uBC30\uBD80\uD130 \uC0C8\uBCBD\uAE30\uB3C4\uAE4C\uC9C0, \uD568\uAED8 \uC608\uBC30\uD558\uB294 \uC2DC\uAC04\uC744 \uC548\uB0B4\uD569\uB2C8\uB2E4.' ),
 			'items'       => array(
-				array( 'label' => ktheme_v2_text( '\uC608\uBC30' ), 'slug' => 'worship', 'description' => ktheme_v2_text( '\uAC00\uD3C9\uAD50\uD68C\uC758 \uC608\uBC30 \uD750\uB984\uACFC \uC548\uB0B4\uB97C \uD655\uC778\uD558\uC138\uC694.' ) ),
-				array( 'label' => ktheme_v2_text( '\uC608\uBC30 \uC548\uB0B4' ), 'slug' => 'worship-guide', 'description' => ktheme_v2_text( '\uCC98\uC74C \uBC29\uBB38\uD558\uB294 \uBD84\uB4E4\uC744 \uC704\uD55C \uC608\uBC30 \uC548\uB0B4\uC785\uB2C8\uB2E4.' ) ),
+				array( 'label' => ktheme_v2_text( '\uC608\uBC30 \uC548\uB0B4' ), 'slug' => 'worship', 'description' => ktheme_v2_text( '\uAC00\uD3C9\uAD50\uD68C\uC758 \uC608\uBC30 \uD750\uB984\uACFC \uC548\uB0B4\uB97C \uD655\uC778\uD558\uC138\uC694.' ) ),
 				array( 'label' => ktheme_v2_text( '\uC8FC\uC77C\uC608\uBC30' ), 'slug' => 'sunday-worship', 'description' => ktheme_v2_text( '\uC8FC\uC77C\uC608\uBC30 \uC2DC\uAC04\uACFC \uC7A5\uC18C, \uC608\uBC30 \uC815\uBCF4\uB97C \uC548\uB0B4\uD569\uB2C8\uB2E4.' ) ),
 				array( 'label' => ktheme_v2_text( '\uC218\uC694\uC608\uBC30' ), 'slug' => 'wednesday-worship', 'description' => ktheme_v2_text( '\uC218\uC694\uC608\uBC30\uC640 \uAE30\uB3C4\uD68C \uC548\uB0B4\uB97C \uD655\uC778\uD558\uC138\uC694.' ) ),
 				array( 'label' => ktheme_v2_text( '\uC0C8\uBCBD\uAE30\uB3C4' ), 'slug' => 'dawn-prayer', 'description' => ktheme_v2_text( '\uD558\uB8E8\uB97C \uAE30\uB3C4\uB85C \uC5EC\uB294 \uC0C8\uBCBD\uAE30\uB3C4 \uC2DC\uAC04\uC744 \uC548\uB0B4\uD569\uB2C8\uB2E4.' ) ),
@@ -1290,6 +1290,271 @@ function ktheme_v2_render_page_hero_shortcode(): string {
 		'</section>';
 }
 add_shortcode( 'ktheme_page_hero', 'ktheme_v2_render_page_hero_shortcode' );
+
+function ktheme_v2_component_icon( string $name, string $class = 'kt-icon kt-icon--sm', string $stroke_width = '1.8' ): string {
+	$paths = array(
+		'arrow-right' => '<path d="M5 12h14M13 5l7 7-7 7"/>',
+		'map-pin'     => '<path d="M12 21s-7-4.5-7-11a7 7 0 1 1 14 0c0 6.5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/>',
+		'phone'       => '<path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.4 19.4 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.7.6 2.5a2 2 0 0 1-.5 2.1L8 9.5a16 16 0 0 0 6.5 6.5l1.2-1.2a2 2 0 0 1 2.1-.5c.8.3 1.6.5 2.5.6a2 2 0 0 1 1.7 2z"/>',
+	);
+
+	if ( ! isset( $paths[ $name ] ) ) {
+		return '';
+	}
+
+	return '<svg class="' . esc_attr( $class ) . '" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="' . esc_attr( $stroke_width ) . '" aria-hidden="true">' . $paths[ $name ] . '</svg>';
+}
+
+function ktheme_v2_component_section_head( array $args ): string {
+	$id          = isset( $args['id'] ) ? (string) $args['id'] : '';
+	$eyebrow     = isset( $args['eyebrow'] ) ? (string) $args['eyebrow'] : '';
+	$title       = isset( $args['title'] ) ? (string) $args['title'] : '';
+	$description = isset( $args['description'] ) ? (string) $args['description'] : '';
+	$action      = isset( $args['action'] ) && is_array( $args['action'] ) ? $args['action'] : array();
+
+	$html = '<div class="kt-origin-section-head"><div>';
+	if ( '' !== $eyebrow ) {
+		$html .= '<div class="kt-card-label">' . esc_html( $eyebrow ) . '</div>';
+	}
+	if ( '' !== $title ) {
+		$html .= '<h2' . ( '' !== $id ? ' id="' . esc_attr( $id ) . '"' : '' ) . '>' . esc_html( $title ) . '</h2>';
+	}
+	if ( '' !== $description ) {
+		$html .= '<p>' . esc_html( $description ) . '</p>';
+	}
+	$html .= '</div>';
+
+	if ( ! empty( $action ) ) {
+		$html .= '<div class="kt-component-action">' . ktheme_v2_component_action_link( $action ) . '</div>';
+	}
+
+	return $html . '</div>';
+}
+
+function ktheme_v2_component_action_link( array $args ): string {
+	$label  = isset( $args['label'] ) ? (string) $args['label'] : '';
+	$url    = isset( $args['url'] ) ? (string) $args['url'] : '#';
+	$class  = isset( $args['class'] ) ? (string) $args['class'] : 'kt-origin-link';
+	$target = ! empty( $args['external'] ) ? ' target="_blank" rel="noopener"' : '';
+	$icon   = ! empty( $args['icon'] ) ? ktheme_v2_component_icon( (string) $args['icon'], 'kt-icon kt-icon--xs', '2.4' ) : '';
+
+	return '<a class="' . esc_attr( $class ) . '" href="' . esc_url( $url ) . '"' . $target . '>' . esc_html( $label ) . $icon . '</a>';
+}
+
+function ktheme_v2_component_info_card( array $item ): string {
+	return '<article class="kt-info-card">' .
+		'<strong>' . esc_html( (string) ( $item['title'] ?? '' ) ) . '</strong>' .
+		'<span>' . esc_html( (string) ( $item['description'] ?? '' ) ) . '</span>' .
+		'</article>';
+}
+
+function ktheme_v2_component_route_list( array $items ): string {
+	$html = '<ul class="kt-location-route-list">';
+
+	foreach ( $items as $item ) {
+		$steps = isset( $item['steps'] ) && is_array( $item['steps'] ) ? $item['steps'] : array();
+		$html .= '<li><strong>' . esc_html( (string) ( $item['title'] ?? '' ) ) . '</strong>';
+
+		foreach ( $steps as $index => $step ) {
+			if ( $index > 0 ) {
+				$html .= '<i aria-hidden="true"></i>';
+			}
+
+			$is_last = $index === count( $steps ) - 1;
+			$html   .= $is_last ? '<b>' . esc_html( (string) $step ) . '</b>' : '<span>' . esc_html( (string) $step ) . '</span>';
+		}
+
+		$html .= '</li>';
+	}
+
+	return $html . '</ul>';
+}
+
+function ktheme_v2_component_tab_panels( array $args ): string {
+	$prefix = isset( $args['id_prefix'] ) ? (string) $args['id_prefix'] : 'component-tab';
+	$label  = isset( $args['label'] ) ? (string) $args['label'] : '';
+	$tabs   = isset( $args['tabs'] ) && is_array( $args['tabs'] ) ? $args['tabs'] : array();
+
+	$html = '<div class="kt-component-tabs" data-kt-component-tabs><div class="kt-location-tabs" role="tablist" aria-label="' . esc_attr( $label ) . '">';
+	foreach ( $tabs as $index => $tab ) {
+		$key       = (string) ( $tab['key'] ?? 'tab-' . $index );
+		$is_active = 0 === $index;
+		$html     .= '<button class="' . ( $is_active ? 'is-active' : '' ) . '" type="button" id="' . esc_attr( $prefix . '-tab-' . $key ) . '" role="tab" aria-selected="' . ( $is_active ? 'true' : 'false' ) . '" aria-controls="' . esc_attr( $prefix . '-panel-' . $key ) . '" data-kt-component-tab="' . esc_attr( $key ) . '">' . esc_html( (string) ( $tab['label'] ?? '' ) ) . '</button>';
+	}
+	$html .= '</div><div class="kt-location-panels">';
+
+	foreach ( $tabs as $index => $tab ) {
+		$key       = (string) ( $tab['key'] ?? 'tab-' . $index );
+		$is_active = 0 === $index;
+		$html     .= '<div class="kt-location-panel ' . ( $is_active ? 'is-active' : '' ) . '" id="' . esc_attr( $prefix . '-panel-' . $key ) . '" role="tabpanel" aria-labelledby="' . esc_attr( $prefix . '-tab-' . $key ) . '" data-kt-component-panel="' . esc_attr( $key ) . '"' . ( $is_active ? '' : ' hidden' ) . '>';
+		$html     .= '<h3>' . esc_html( (string) ( $tab['title'] ?? '' ) ) . '</h3>';
+		$html     .= ktheme_v2_component_route_list( isset( $tab['routes'] ) && is_array( $tab['routes'] ) ? $tab['routes'] : array() );
+		$html     .= '</div>';
+	}
+
+	return $html . '</div></div>';
+}
+
+function ktheme_v2_location_page_data(): array {
+	$address       = '08512 서울특별시 금천구 가산디지털1로 168';
+	$address_query = rawurlencode( $address );
+
+	return array(
+		'name'          => '가평교회',
+		'address'       => $address,
+		'phone'         => '02-704-3300',
+		'map_url'       => 'https://www.google.com/maps/search/?api=1&query=' . $address_query,
+		'map_embed_url' => 'https://www.google.com/maps?q=' . $address_query . '&output=embed',
+		'direction_url' => 'https://www.google.com/maps/dir/?api=1&destination=' . $address_query,
+		'routes'        => array(
+			array(
+				'key'    => 'car',
+				'label'  => '자가용',
+				'title'  => '자가용을 이용하여 오시는 방법',
+				'routes' => array(
+					array( 'title' => '서부간선도로 이용 시', 'steps' => array( '가산디지털단지 방향 진입', '디지털단지오거리', '가평교회' ) ),
+					array( 'title' => '남부순환로 이용 시', 'steps' => array( '구로IC 방면 진입', '가산디지털1로', '가평교회' ) ),
+					array( 'title' => '네비게이션 검색', 'steps' => array( '가평교회 또는 주소 입력', $address ) ),
+				),
+			),
+			array(
+				'key'    => 'transit',
+				'label'  => '대중교통',
+				'title'  => '대중교통을 이용하여 오시는 방법',
+				'routes' => array(
+					array( 'title' => '지하철', 'steps' => array( '1호선·7호선 가산디지털단지역 하차', '도보 약 10분', '가평교회' ) ),
+					array( 'title' => '버스', 'steps' => array( '가산디지털단지역 또는 디지털단지오거리 정류장 하차', '도보 이동' ) ),
+					array( 'title' => '처음 방문', 'steps' => array( '역 도착 후 교회 사무실로 연락', '안내 지원' ) ),
+				),
+			),
+			array(
+				'key'    => 'parking',
+				'label'  => '주차안내',
+				'title'  => '주차 및 방문 안내',
+				'routes' => array(
+					array( 'title' => '주일예배', 'steps' => array( '교회 주변 지정 공간 이용', '안내 봉사자 안내', '예배실 입장' ) ),
+					array( 'title' => '새가족 방문', 'steps' => array( '도착 후 안내 데스크 문의', '새가족석 안내' ) ),
+					array( 'title' => '단체 방문', 'steps' => array( '방문 전 사무실 연락', '차량 동선 조율' ) ),
+				),
+			),
+		),
+		'guide_cards'   => array(
+			array( 'title' => '예배 시간', 'description' => '주일예배는 오전 11시에 드립니다. 처음 오신 분은 예배 15분 전 도착을 권합니다.' ),
+			array( 'title' => '새가족 안내', 'description' => '안내 데스크에서 등록과 예배실 위치, 새가족 모임을 친절하게 안내해 드립니다.' ),
+			array( 'title' => '문의', 'description' => '방문 전 궁금한 점은 대표전화 또는 문의하기 페이지로 남겨주세요.' ),
+		),
+	);
+}
+
+function ktheme_v2_print_component_tabs_script(): void {
+	?>
+	<script>
+		(() => {
+			document.querySelectorAll('[data-kt-component-tabs]').forEach((root) => {
+				const tabs = Array.from(root.querySelectorAll('[data-kt-component-tab]'));
+				const panels = Array.from(root.querySelectorAll('[data-kt-component-panel]'));
+
+				tabs.forEach((tab) => {
+					tab.addEventListener('click', () => {
+						const target = tab.dataset.ktComponentTab;
+
+						tabs.forEach((item) => {
+							const active = item === tab;
+							item.classList.toggle('is-active', active);
+							item.setAttribute('aria-selected', active ? 'true' : 'false');
+						});
+
+						panels.forEach((panel) => {
+							const active = panel.dataset.ktComponentPanel === target;
+							panel.classList.toggle('is-active', active);
+							panel.hidden = !active;
+						});
+					});
+				});
+			});
+		})();
+	</script>
+	<?php
+}
+
+function ktheme_v2_enqueue_component_tabs_script(): void {
+	static $is_queued = false;
+
+	if ( $is_queued ) {
+		return;
+	}
+
+	$is_queued = true;
+	add_action( 'wp_footer', 'ktheme_v2_print_component_tabs_script', 30 );
+}
+
+function ktheme_v2_render_location_page_shortcode(): string {
+	$data = ktheme_v2_location_page_data();
+	ktheme_v2_enqueue_component_tabs_script();
+
+	$html  = '<div class="kt-origin-page kt-location-page">';
+	$html .= '<section class="kt-origin-section kt-location-map-section" aria-labelledby="kt-location-map-title">';
+	$html .= ktheme_v2_component_section_head(
+		array(
+			'id'          => 'kt-location-map-title',
+			'eyebrow'     => 'Location',
+			'title'       => '예배당 위치',
+			'description' => '처음 오시는 분도 길을 쉽게 찾을 수 있도록 주소와 교통편을 정리했습니다.',
+			'action'      => array(
+				'label'    => '큰 지도 보기',
+				'url'      => $data['map_url'],
+				'external' => true,
+			),
+		)
+	);
+	$html .= '<div class="kt-location-map-card">' .
+		'<div class="kt-location-map-frame"><iframe title="' . esc_attr__( '가평교회 위치 지도', 'ktheme-v2' ) . '" src="' . esc_url( $data['map_embed_url'] ) . '" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>' .
+		'<div class="kt-location-marker-card"><strong>' . esc_html( $data['name'] ) . '</strong><span>' . esc_html( $data['address'] ) . '</span><small>' . esc_html__( '주일예배 전후 안내팀이 예배실과 주차 동선을 도와드립니다.', 'ktheme-v2' ) . '</small></div>' .
+		'</div>';
+	$html .= '<div class="kt-location-info-strip">' .
+		'<div><span class="kt-location-info-icon" aria-hidden="true">' . ktheme_v2_component_icon( 'map-pin' ) . '</span><strong>' . esc_html__( '주소', 'ktheme-v2' ) . '</strong><span>' . esc_html( $data['address'] ) . '</span></div>' .
+		'<div><span class="kt-location-info-icon" aria-hidden="true">' . ktheme_v2_component_icon( 'phone' ) . '</span><strong>' . esc_html__( '대표전화', 'ktheme-v2' ) . '</strong><a href="tel:' . esc_attr( $data['phone'] ) . '">' . esc_html( $data['phone'] ) . '</a></div>' .
+		'<div class="kt-location-info-action">' . ktheme_v2_component_action_link(
+			array(
+				'label'    => '길찾기',
+				'url'      => $data['direction_url'],
+				'class'    => 'kt-button kt-button--brand',
+				'external' => true,
+				'icon'     => 'arrow-right',
+			)
+		) . '</div>' .
+		'</div></section>';
+
+	$html .= '<section class="kt-origin-section kt-location-route-section" aria-labelledby="kt-location-route-title">';
+	$html .= ktheme_v2_component_section_head(
+		array(
+			'id'          => 'kt-location-route-title',
+			'title'       => '오시는 방법',
+			'description' => '방문하시는 교통수단에 맞춰 필요한 정보만 확인하세요.',
+		)
+	);
+	$html .= ktheme_v2_component_tab_panels(
+		array(
+			'id_prefix' => 'location',
+			'label'     => '교통수단별 안내',
+			'tabs'      => $data['routes'],
+		)
+	);
+	$html .= '</section>';
+
+	$html .= '<section class="kt-origin-section kt-location-guide-section" aria-labelledby="kt-location-guide-title">';
+	$html .= ktheme_v2_component_section_head(
+		array(
+			'id'          => 'kt-location-guide-title',
+			'title'       => '방문 전 안내',
+			'description' => '예배와 새가족 안내, 문의 동선을 미리 확인하실 수 있습니다.',
+		)
+	);
+	$html .= '<div class="kt-location-guide-grid">' . implode( '', array_map( 'ktheme_v2_component_info_card', $data['guide_cards'] ) ) . '</div></section>';
+
+	return ktheme_v2_compact_shortcode_html( $html . '</div>' );
+}
+add_shortcode( 'ktheme_location_page', 'ktheme_v2_render_location_page_shortcode' );
 
 function ktheme_v2_sermon_card_items(): array {
 	$image_base = get_template_directory_uri() . '/assets/images/generated/';

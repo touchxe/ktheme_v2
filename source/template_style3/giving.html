@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>온라인 헌금 — 가평교회</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" />
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    darkMode: 'class',
+    theme: {
+      extend: {
+        fontFamily: {
+          sans: ['"Pretendard Variable"', 'Pretendard', 'system-ui', 'sans-serif'],
+        },
+        colors: {
+          ink: { 900: '#0e1320', 800: '#171c2c', 700: '#222a3f', 600: '#384058' },
+          brand: { 500: '#3a64f5', 600: '#2a4fd6', 700: '#1f3eb2' },
+          accent: { red: '#e23b3b' },
+          paper: '#f4f5f7',
+          line: '#e5e7eb',
+        },
+      },
+    },
+  };
+</script>
+<style>
+  html { font-family: 'Pretendard Variable', Pretendard, system-ui, sans-serif; }
+  body { -webkit-font-smoothing: antialiased; letter-spacing: -0.01em; }
+  .news-card-shadow { box-shadow: 0 1px 0 rgba(0,0,0,0.04), 0 18px 36px -24px rgba(14,19,32,0.18); }
+
+  .type-card { border: 1px solid var(--tw-line, #e5e7eb); }
+  .type-card.active { border-color: #0e1320; background: #0e1320; color: #fff; }
+  .type-card.active .type-dot { background: currentColor; }
+  .type-card:not(.active):hover { background: #f4f5f7; }
+
+  .amt-chip.active { background:#0e1320; color:#fff; border-color:#0e1320; }
+
+  .seg-btn.active { background:#0e1320; color:#fff; }
+
+  input[type="checkbox"].chk { appearance:none; width:20px; height:20px; border:1.5px solid #e5e7eb; border-radius:6px; display:inline-grid; place-content:center; cursor:pointer; flex-shrink:0; }
+  input[type="checkbox"].chk::before { content:""; width:11px; height:11px; transform:scale(0); background: #0e1320; clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%); transition: transform .12s ease-out; }
+  input[type="checkbox"].chk:checked { border-color:#0e1320; }
+  input[type="checkbox"].chk:checked::before { transform: scale(1); background:#0e1320; }
+
+  .copy-toast { transition: opacity .2s ease-out, transform .2s ease-out; }
+</style>
+</head>
+<body class="bg-white text-ink-900">
+
+<!-- ============== TOP UTILITY BAR ============== -->
+<div class="hidden md:block border-b border-line text-[12px] text-ink-600">
+  <div class="max-w-[1240px] mx-auto px-6 h-9 flex items-center justify-between">
+    <div class="flex items-center gap-5">
+      <span class="flex items-center gap-1.5">
+        <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+        2026년 4월 26일 주일예배 · 오전 11:00 본당
+      </span>
+    </div>
+    <div class="flex items-center gap-5">
+      <a href="#" class="hover:text-ink-900">새가족 등록</a>
+      <span class="w-px h-3 bg-line"></span>
+      <a href="#" class="hover:text-ink-900">교회오시는길</a>
+      <span class="w-px h-3 bg-line"></span>
+      <a href="#" class="hover:text-ink-900">English</a>
+      <span class="w-px h-3 bg-line"></span>
+      <a href="#" class="hover:text-ink-900">로그인</a>
+    </div>
+  </div>
+</div>
+
+<!-- ============== HEADER / NAV ============== -->
+<header class="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-line">
+  <div class="max-w-[1240px] mx-auto px-6 h-[72px] flex items-center justify-between">
+    <a href="index.html" class="flex items-center gap-2.5">
+      <img src="assets/logo.png" alt="가평교회" class="w-10 h-10 object-contain" />
+      <span class="font-bold text-[19px] tracking-tight">가평교회 <span class="text-ink-600 font-medium text-[13px] tracking-normal ml-0.5">GAPYEONG CHURCH</span></span>
+    </a>
+
+    <nav class="hidden lg:flex items-center gap-9 text-[15px] font-semibold">
+      <a href="worship.html" class="hover:text-brand-600">예배</a>
+      <a href="#" class="hover:text-brand-600">공동체</a>
+      <a href="#" class="hover:text-brand-600">양육</a>
+      <a href="#" class="hover:text-brand-600">미디어</a>
+      <a href="#" class="hover:text-brand-600">교회소개</a>
+      <a href="giving.html" class="relative py-6 text-brand-600">
+        행정
+        <span class="absolute left-0 right-0 -bottom-px h-0.5 bg-brand-600"></span>
+      </a>
+    </nav>
+
+    <div class="flex items-center gap-3">
+      <button class="w-9 h-9 grid place-items-center rounded-full hover:bg-paper">
+        <svg class="w-[18px] h-[18px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      </button>
+      <button class="hidden md:inline-flex items-center gap-1.5 text-[13px] font-semibold px-3.5 h-9 rounded-full border border-ink-900 hover:bg-ink-900 hover:text-white">
+        새가족 등록
+      </button>
+      <button class="lg:hidden w-9 h-9 grid place-items-center rounded-full hover:bg-paper">
+        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- ============== PAGE HEAD ============== -->
+<section class="bg-white border-b border-line">
+  <div class="max-w-[1240px] mx-auto px-6 pt-10 pb-10">
+    <nav class="flex items-center gap-2 text-[12px] text-ink-600">
+      <a href="index.html" class="hover:text-ink-900 inline-flex items-center gap-1.5">
+        <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 11l9-8 9 8M5 10v10h14V10"/></svg>
+        HOME
+      </a>
+      <span class="text-line">›</span>
+      <a href="#" class="hover:text-ink-900">행정</a>
+      <span class="text-line">›</span>
+      <span class="text-ink-900 font-semibold">온라인 헌금</span>
+    </nav>
+
+    <div class="mt-6">
+      <h1 class="text-[40px] md:text-[52px] font-extrabold tracking-tight leading-tight">온라인 헌금</h1>
+      <p class="mt-3 text-ink-600 text-[14px] max-w-xl leading-relaxed">
+        모바일과 PC에서 간편하게 드릴 수 있도록 도와드립니다. 금액과 헌금 종류를 선택하시면
+        입금 계좌를 안내해 드리며, 입금 확인 후 접수가 완료됩니다.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ============== FORM ============== -->
+<section class="bg-white py-14">
+  <div class="max-w-[1240px] mx-auto px-6 grid grid-cols-12 gap-8">
+
+    <!-- LEFT: form -->
+    <div class="col-span-12 lg:col-span-8 space-y-10">
+
+      <!-- 교인 정보 -->
+      <div>
+        <div class="flex items-center gap-2 mb-4">
+          <span class="w-6 h-6 rounded-full bg-ink-900 text-white text-[12px] font-bold grid place-items-center">1</span>
+          <h2 class="text-[18px] font-extrabold tracking-tight">헌금자 정보</h2>
+        </div>
+        <div class="rounded-2xl border border-line p-6 flex items-center justify-between news-card-shadow">
+          <div class="flex items-center gap-4">
+            <div class="w-12 h-12 rounded-full bg-brand-500/10 text-brand-600 grid place-items-center font-bold text-[15px]">정</div>
+            <div>
+              <div class="text-[15px] font-bold">정한결 <span class="text-ink-600 font-medium text-[12.5px] ml-1">1교구 · 안수집사</span></div>
+              <div class="text-[12.5px] text-ink-600 mt-0.5">교인번호 20090142 · 로그인됨</div>
+            </div>
+          </div>
+          <a href="#" class="text-[12.5px] font-semibold text-ink-600 hover:text-ink-900">정보 아님?</a>
+        </div>
+      </div>
+
+      <!-- 헌금 종류 -->
+      <div>
+        <div class="flex items-center gap-2 mb-4">
+          <span class="w-6 h-6 rounded-full bg-ink-900 text-white text-[12px] font-bold grid place-items-center">2</span>
+          <h2 class="text-[18px] font-extrabold tracking-tight">헌금 종류</h2>
+        </div>
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-3" id="typeGrid">
+          <button type="button" data-type="십일조" data-dot="bg-brand-600" class="type-card active rounded-xl p-4 text-left transition">
+            <span class="type-dot w-2 h-2 rounded-full bg-brand-600 inline-block mb-3"></span>
+            <div class="text-[14.5px] font-bold">십일조</div>
+          </button>
+          <button type="button" data-type="주일헌금" data-dot="bg-sky-600" class="type-card rounded-xl p-4 text-left transition">
+            <span class="type-dot w-2 h-2 rounded-full bg-sky-600 inline-block mb-3"></span>
+            <div class="text-[14.5px] font-bold">주일헌금</div>
+          </button>
+          <button type="button" data-type="감사헌금" data-dot="bg-amber-600" class="type-card rounded-xl p-4 text-left transition">
+            <span class="type-dot w-2 h-2 rounded-full bg-amber-600 inline-block mb-3"></span>
+            <div class="text-[14.5px] font-bold">감사헌금</div>
+          </button>
+          <button type="button" data-type="선교헌금" data-dot="bg-violet-600" class="type-card rounded-xl p-4 text-left transition">
+            <span class="type-dot w-2 h-2 rounded-full bg-violet-600 inline-block mb-3"></span>
+            <div class="text-[14.5px] font-bold">선교헌금</div>
+          </button>
+          <button type="button" data-type="건축헌금" data-dot="bg-emerald-600" class="type-card rounded-xl p-4 text-left transition">
+            <span class="type-dot w-2 h-2 rounded-full bg-emerald-600 inline-block mb-3"></span>
+            <div class="text-[14.5px] font-bold">건축헌금</div>
+          </button>
+          <button type="button" data-type="구제헌금" data-dot="bg-rose-600" class="type-card rounded-xl p-4 text-left transition">
+            <span class="type-dot w-2 h-2 rounded-full bg-rose-600 inline-block mb-3"></span>
+            <div class="text-[14.5px] font-bold">구제헌금</div>
+          </button>
+        </div>
+      </div>
+
+      <!-- 금액 -->
+      <div>
+        <div class="flex items-center gap-2 mb-4">
+          <span class="w-6 h-6 rounded-full bg-ink-900 text-white text-[12px] font-bold grid place-items-center">3</span>
+          <h2 class="text-[18px] font-extrabold tracking-tight">헌금 금액</h2>
+        </div>
+        <div class="rounded-2xl border border-line p-6 news-card-shadow">
+          <div class="flex flex-wrap gap-2 mb-5" id="amtChips">
+            <button type="button" data-amt="10000" class="amt-chip px-4 h-10 rounded-full border border-line text-[13.5px] font-semibold hover:bg-paper transition">10,000원</button>
+            <button type="button" data-amt="30000" class="amt-chip px-4 h-10 rounded-full border border-line text-[13.5px] font-semibold hover:bg-paper transition">30,000원</button>
+            <button type="button" data-amt="50000" class="amt-chip active px-4 h-10 rounded-full border border-line text-[13.5px] font-semibold hover:bg-paper transition">50,000원</button>
+            <button type="button" data-amt="100000" class="amt-chip px-4 h-10 rounded-full border border-line text-[13.5px] font-semibold hover:bg-paper transition">100,000원</button>
+            <button type="button" data-amt="300000" class="amt-chip px-4 h-10 rounded-full border border-line text-[13.5px] font-semibold hover:bg-paper transition">300,000원</button>
+          </div>
+          <label class="block text-[13px] font-semibold mb-2">직접 입력</label>
+          <div class="relative">
+            <input id="amtInput" type="text" inputmode="numeric" value="50,000"
+              class="w-full h-14 pl-5 pr-14 text-[22px] font-extrabold tracking-tight rounded-xl border border-line focus:outline-none focus:border-brand-500 focus:ring-4 focus:ring-brand-500/15 transition" />
+            <span class="absolute right-5 top-1/2 -translate-y-1/2 text-[15px] font-bold text-ink-600">원</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 납부 방식 -->
+      <div>
+        <div class="flex items-center gap-2 mb-4">
+          <span class="w-6 h-6 rounded-full bg-ink-900 text-white text-[12px] font-bold grid place-items-center">4</span>
+          <h2 class="text-[18px] font-extrabold tracking-tight">납부 방식</h2>
+        </div>
+        <div class="rounded-2xl border border-line p-6 news-card-shadow">
+          <div class="inline-flex p-1 rounded-full bg-paper" id="segGroup">
+            <button type="button" data-seg="once" class="seg-btn active px-5 h-10 rounded-full text-[13.5px] font-semibold transition">일시납</button>
+            <button type="button" data-seg="recurring" class="seg-btn px-5 h-10 rounded-full text-[13.5px] font-semibold transition">정기 헌금 (매월 자동)</button>
+          </div>
+
+          <div id="recurringOptions" class="hidden mt-6 grid sm:grid-cols-2 gap-5 pt-6 border-t border-line">
+            <div>
+              <label class="block text-[13px] font-semibold mb-2">매월 납부일</label>
+              <div class="relative">
+                <select id="recurDay" class="w-full h-11 pl-4 pr-9 rounded-lg border border-line text-[14px] appearance-none focus:outline-none focus:border-brand-500">
+                  <option>매월 1일</option>
+                  <option selected>매월 5일</option>
+                  <option>매월 15일</option>
+                  <option>매월 25일</option>
+                </select>
+                <svg class="w-4 h-4 absolute right-3 top-1/2 -translate-y-1/2 text-ink-600 pointer-events-none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+              </div>
+            </div>
+            <div>
+              <label class="block text-[13px] font-semibold mb-2">시작 월</label>
+              <div class="relative">
+                <select id="recurStart" class="w-full h-11 pl-4 pr-9 rounded-lg border border-line text-[14px] appearance-none focus:outline-none focus:border-brand-500">
+                  <option selected>2026년 5월</option>
+                  <option>2026년 6월</option>
+                  <option>2026년 7월</option>
+                </select>
+                <svg class="w-4 h-4 absolute right-3 top-1/2 -translate-y-1/2 text-ink-600 pointer-events-none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+              </div>
+            </div>
+            <p class="sm:col-span-2 text-[12.5px] text-ink-600 leading-relaxed">
+              정기 헌금은 매월 입금 안내 문자를 보내드리며, 입금이 확인되면 자동으로 접수됩니다. 담당 사역자에게 문의하시면 언제든 해지하실 수 있습니다.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 입금 안내 -->
+      <div>
+        <div class="flex items-center gap-2 mb-4">
+          <span class="w-6 h-6 rounded-full bg-ink-900 text-white text-[12px] font-bold grid place-items-center">5</span>
+          <h2 class="text-[18px] font-extrabold tracking-tight">입금 계좌 안내</h2>
+        </div>
+        <div class="rounded-2xl bg-ink-900 text-white p-7 md:p-8">
+          <div class="flex items-start justify-between flex-wrap gap-4">
+            <div>
+              <div class="text-[12px] tracking-widest font-bold text-white/60 mb-2">무통장입금</div>
+              <div class="text-[22px] font-extrabold tracking-tight">국민은행 123456-04-789012</div>
+              <div class="mt-1.5 text-[14px] text-white/70">예금주 가평교회</div>
+            </div>
+            <button id="copyBtn" type="button" class="inline-flex items-center gap-1.5 px-4 h-10 rounded-full bg-white/10 hover:bg-white/20 text-[13px] font-semibold transition">
+              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
+              계좌번호 복사
+            </button>
+          </div>
+          <div class="mt-6 pt-6 border-t border-white/10 text-[13px] text-white/70 leading-relaxed">
+            입금자명은 <b class="text-white">헌금자 성함</b>과 동일하게 넣어주세요. 입금 확인은 영업일 기준 1~2일 소요되며,
+            확인 즉시 담당 교구 간사가 접수 문자를 보내드립니다.
+          </div>
+        </div>
+      </div>
+
+      <!-- 영수증 + 동의 -->
+      <div class="space-y-4">
+        <label class="flex items-start gap-3 rounded-2xl border border-line p-5 cursor-pointer hover:bg-paper transition">
+          <input type="checkbox" class="chk mt-0.5" id="receiptChk" />
+          <span>
+            <span class="block text-[14.5px] font-bold">기부금 영수증 신청 (연말정산용)</span>
+            <span class="block text-[12.5px] text-ink-600 mt-1 leading-relaxed">신청 시 연말에 국세청 홈택스 자동 연계 또는 서면 발급이 가능합니다. 발급 내역은 마이페이지에서 확인하실 수 있습니다.</span>
+          </span>
+        </label>
+        <label class="flex items-start gap-3 px-1 cursor-pointer">
+          <input type="checkbox" class="chk mt-0.5" id="agreeChk" checked />
+          <span class="text-[12.5px] text-ink-600 leading-relaxed">
+            입금자 확인을 위한 개인정보(성명, 소속 교구) 수집·이용에 동의합니다.
+            <a href="#" class="text-ink-900 font-semibold underline underline-offset-2">개인정보처리방침 보기</a>
+          </span>
+        </label>
+      </div>
+
+    </div>
+
+    <!-- RIGHT: summary -->
+    <aside class="col-span-12 lg:col-span-4">
+      <div class="sticky top-24 space-y-4">
+        <div class="rounded-2xl border border-line p-7 news-card-shadow">
+          <div class="text-[12px] tracking-widest font-bold text-ink-600 mb-5">헌금 접수 요약</div>
+
+          <div class="space-y-4 text-[14px]">
+            <div class="flex items-center justify-between">
+              <span class="text-ink-600">헌금 종류</span>
+              <span class="font-bold" id="sumType">십일조</span>
+            </div>
+            <div class="flex items-center justify-between">
+              <span class="text-ink-600">납부 방식</span>
+              <span class="font-bold" id="sumMode">일시납</span>
+            </div>
+            <div class="flex items-center justify-between">
+              <span class="text-ink-600">영수증 신청</span>
+              <span class="font-bold" id="sumReceipt">신청 안 함</span>
+            </div>
+          </div>
+
+          <div class="mt-6 pt-6 border-t border-line">
+            <div class="text-[12px] text-ink-600 mb-1">총 헌금액</div>
+            <div class="text-[32px] font-extrabold tracking-tight" id="sumAmount">50,000원</div>
+            <div class="text-[12px] text-ink-600 mt-1" id="sumRecurNote" style="display:none;">매월 5일 자동 반복</div>
+          </div>
+
+          <button id="submitBtn" class="mt-6 w-full h-12 rounded-full bg-ink-900 text-white font-bold text-[14.5px] hover:bg-ink-800 transition">
+            헌금 접수 신청하기
+          </button>
+          <p class="mt-3 text-[11.5px] text-ink-600 leading-relaxed text-center">
+            실제 결제는 진행되지 않으며, 안내된 계좌로 입금 후 접수가 완료됩니다.
+          </p>
+        </div>
+
+        <div class="rounded-2xl bg-paper p-6">
+          <div class="text-[13px] font-bold mb-2">문의가 필요하신가요?</div>
+          <p class="text-[12.5px] text-ink-600 leading-relaxed">평일 9시–18시, 재정부 간사가 도와드립니다.</p>
+          <a href="support.html" class="mt-3 inline-flex items-center gap-1 text-[13px] font-semibold text-brand-600">
+            후원 안내 보기
+            <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M6 9l6 6 6-6"/></svg>
+          </a>
+        </div>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<!-- ============== 헌금 안내 (정보 전용) ============== -->
+<section class="bg-paper py-16">
+  <div class="max-w-[1240px] mx-auto px-6">
+    <div class="mb-9">
+      <div class="text-[12px] tracking-widest font-bold text-ink-600 mb-2">GIVING INFO</div>
+      <h2 class="text-[28px] md:text-[32px] font-extrabold tracking-tight">헌금 안내</h2>
+      <p class="mt-2 text-ink-600 text-[14px] leading-relaxed">헌금 종류별 의미와 입금 계좌를 안내해 드립니다. 온라인 접수 없이 계좌로 바로 보내셔도 됩니다.</p>
+    </div>
+
+    <!-- 헌금 종류 설명 -->
+    <div class="grid grid-cols-2 md:grid-cols-3 gap-4 mb-10">
+      <div class="rounded-2xl bg-white p-6 news-card-shadow">
+        <span class="w-2 h-2 rounded-full bg-brand-600 inline-block mb-3"></span>
+        <div class="text-[15px] font-bold mb-1.5">십일조</div>
+        <p class="text-[12.5px] text-ink-600 leading-relaxed">소득의 십분의 일을 정기적으로 드리는 헌금입니다.</p>
+      </div>
+      <div class="rounded-2xl bg-white p-6 news-card-shadow">
+        <span class="w-2 h-2 rounded-full bg-sky-600 inline-block mb-3"></span>
+        <div class="text-[15px] font-bold mb-1.5">주일헌금</div>
+        <p class="text-[12.5px] text-ink-600 leading-relaxed">매 주일 예배 때 드리는 감사의 헌금입니다.</p>
+      </div>
+      <div class="rounded-2xl bg-white p-6 news-card-shadow">
+        <span class="w-2 h-2 rounded-full bg-amber-600 inline-block mb-3"></span>
+        <div class="text-[15px] font-bold mb-1.5">감사헌금</div>
+        <p class="text-[12.5px] text-ink-600 leading-relaxed">개인의 특별한 감사 제목이 있을 때 드리는 헌금입니다.</p>
+      </div>
+      <div class="rounded-2xl bg-white p-6 news-card-shadow">
+        <span class="w-2 h-2 rounded-full bg-violet-600 inline-block mb-3"></span>
+        <div class="text-[15px] font-bold mb-1.5">선교헌금</div>
+        <p class="text-[12.5px] text-ink-600 leading-relaxed">국내외 선교사와 선교 사역을 후원하는 헌금입니다.</p>
+      </div>
+      <div class="rounded-2xl bg-white p-6 news-card-shadow">
+        <span class="w-2 h-2 rounded-full bg-emerald-600 inline-block mb-3"></span>
+        <div class="text-[15px] font-bold mb-1.5">건축헌금</div>
+        <p class="text-[12.5px] text-ink-600 leading-relaxed">교회 건축과 시설 확충을 위해 드리는 헌금입니다.</p>
+      </div>
+      <div class="rounded-2xl bg-white p-6 news-card-shadow">
+        <span class="w-2 h-2 rounded-full bg-rose-600 inline-block mb-3"></span>
+        <div class="text-[15px] font-bold mb-1.5">구제헌금</div>
+        <p class="text-[12.5px] text-ink-600 leading-relaxed">어려운 이웃과 지역사회를 돕기 위해 드리는 헌금입니다.</p>
+      </div>
+    </div>
+
+    <!-- 계좌 정보 -->
+    <div class="rounded-2xl bg-white border border-line overflow-hidden news-card-shadow">
+      <div class="px-7 md:px-8 pt-7 pb-5 border-b border-line">
+        <h3 class="text-[17px] font-extrabold tracking-tight">입금 계좌 정보</h3>
+      </div>
+      <div class="divide-y divide-line">
+        <div class="px-7 md:px-8 py-5 flex items-center justify-between flex-wrap gap-2">
+          <span class="text-[13px] text-ink-600">은행</span>
+          <span class="text-[14.5px] font-bold">국민은행</span>
+        </div>
+        <div class="px-7 md:px-8 py-5 flex items-center justify-between flex-wrap gap-2">
+          <span class="text-[13px] text-ink-600">계좌번호</span>
+          <span class="text-[14.5px] font-bold tracking-tight">123456-04-789012</span>
+        </div>
+        <div class="px-7 md:px-8 py-5 flex items-center justify-between flex-wrap gap-2">
+          <span class="text-[13px] text-ink-600">예금주</span>
+          <span class="text-[14.5px] font-bold">가평교회</span>
+        </div>
+        <div class="px-7 md:px-8 py-5 flex items-center justify-between flex-wrap gap-2">
+          <span class="text-[13px] text-ink-600">입금자명</span>
+          <span class="text-[14.5px] font-bold">헌금자 성함으로 입금</span>
+        </div>
+      </div>
+      <div class="px-7 md:px-8 py-5 bg-paper text-[12.5px] text-ink-600 leading-relaxed">
+        입금 확인은 영업일 기준 1~2일 소요되며, 확인 후 담당 교구 간사가 접수를 안내해 드립니다. 문의사항은 재정부(02-704-3300)로 연락 주세요.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- copy toast -->
+<div id="toast" class="copy-toast fixed bottom-8 left-1/2 -translate-x-1/2 opacity-0 translate-y-2 pointer-events-none z-[60] bg-ink-900 text-white text-[13px] font-semibold px-5 h-11 rounded-full flex items-center gap-2 shadow-lg">
+  <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>
+  계좌번호가 복사되었습니다
+</div>
+
+<!-- ============== FOOTER ============== -->
+<footer class="bg-ink-900 text-white/70">
+  <div class="max-w-[1240px] mx-auto px-6 py-14">
+    <div class="grid md:grid-cols-12 gap-10">
+      <div class="md:col-span-4">
+        <div class="flex items-center gap-2.5 text-white">
+          <img src="assets/logo.png" alt="가평교회" class="w-9 h-9 object-contain" />
+          <span class="font-bold text-[16px]">가평교회 <span class="text-white/50 font-medium text-[12px] ml-1">GAPYEONG CHURCH</span></span>
+        </div>
+        <p class="mt-5 text-[13px] leading-relaxed">
+          08512 서울특별시 금천구 가산디지털1로 168 (우림라이온스밸리)<br />
+          TEL. 02-704-3300 &nbsp;·&nbsp; FAX. 02-704-3301
+        </p>
+        <p class="mt-4 text-[12px] text-white/40">© 2026 GAPYEONG CHURCH. ALL RIGHTS RESERVED.</p>
+      </div>
+
+      <div class="md:col-span-5 grid grid-cols-3 gap-6 text-[13px]">
+        <div>
+          <div class="text-white font-semibold mb-3">예배</div>
+          <ul class="space-y-2">
+            <li><a href="#" class="hover:text-white">주일예배</a></li>
+            <li><a href="#" class="hover:text-white">수요예배</a></li>
+            <li><a href="#" class="hover:text-white">새벽예배</a></li>
+            <li><a href="#" class="hover:text-white">청년예배</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="text-white font-semibold mb-3">공동체</div>
+          <ul class="space-y-2">
+            <li><a href="#" class="hover:text-white">새가족부</a></li>
+            <li><a href="#" class="hover:text-white">목장 모임</a></li>
+            <li><a href="#" class="hover:text-white">유·초등부</a></li>
+            <li><a href="#" class="hover:text-white">실버사역</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="text-white font-semibold mb-3">바로가기</div>
+          <ul class="space-y-2">
+            <li><a href="#" class="hover:text-white">개인정보처리방침</a></li>
+            <li><a href="#" class="hover:text-white">이메일 무단수집거부</a></li>
+            <li><a href="#" class="hover:text-white">오시는 길</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="md:col-span-3">
+        <div class="text-white font-semibold mb-3 text-[13px]">Family Site</div>
+        <button class="w-full bg-white/5 border border-white/10 rounded-lg px-4 h-11 flex items-center justify-between text-[13px] hover:bg-white/10">
+          관련 사이트 선택
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const typeGrid = document.getElementById('typeGrid');
+  const amtChips = document.getElementById('amtChips');
+  const amtInput = document.getElementById('amtInput');
+  const segGroup = document.getElementById('segGroup');
+  const recurringOptions = document.getElementById('recurringOptions');
+  const recurDay = document.getElementById('recurDay');
+  const receiptChk = document.getElementById('receiptChk');
+  const copyBtn = document.getElementById('copyBtn');
+  const toast = document.getElementById('toast');
+
+  const sumType = document.getElementById('sumType');
+  const sumMode = document.getElementById('sumMode');
+  const sumReceipt = document.getElementById('sumReceipt');
+  const sumAmount = document.getElementById('sumAmount');
+  const sumRecurNote = document.getElementById('sumRecurNote');
+
+  let state = { type: '십일조', amount: 50000, mode: 'once', receipt: false };
+
+  function fmt(n) { return n.toLocaleString('ko-KR'); }
+
+  function renderSummary() {
+    sumType.textContent = state.type;
+    sumMode.textContent = state.mode === 'once' ? '일시납' : '정기 헌금 (매월)';
+    sumReceipt.textContent = state.receipt ? '신청함' : '신청 안 함';
+    sumAmount.textContent = fmt(state.amount) + '원';
+    if (state.mode === 'recurring') {
+      sumRecurNote.style.display = 'block';
+      sumRecurNote.textContent = recurDay.value + ' 자동 반복';
+    } else {
+      sumRecurNote.style.display = 'none';
+    }
+  }
+
+  typeGrid.addEventListener('click', (e) => {
+    const btn = e.target.closest('.type-card');
+    if (!btn) return;
+    typeGrid.querySelectorAll('.type-card').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    state.type = btn.dataset.type;
+    renderSummary();
+  });
+
+  amtChips.addEventListener('click', (e) => {
+    const btn = e.target.closest('.amt-chip');
+    if (!btn) return;
+    amtChips.querySelectorAll('.amt-chip').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    state.amount = parseInt(btn.dataset.amt, 10);
+    amtInput.value = fmt(state.amount);
+    renderSummary();
+  });
+
+  amtInput.addEventListener('input', () => {
+    const digits = amtInput.value.replace(/[^0-9]/g, '');
+    const n = digits ? parseInt(digits, 10) : 0;
+    amtInput.value = digits ? fmt(n) : '';
+    state.amount = n;
+    amtChips.querySelectorAll('.amt-chip').forEach(b => b.classList.toggle('active', parseInt(b.dataset.amt,10) === n));
+    renderSummary();
+  });
+
+  segGroup.addEventListener('click', (e) => {
+    const btn = e.target.closest('.seg-btn');
+    if (!btn) return;
+    segGroup.querySelectorAll('.seg-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    state.mode = btn.dataset.seg;
+    recurringOptions.classList.toggle('hidden', state.mode !== 'recurring');
+    renderSummary();
+  });
+
+  recurDay.addEventListener('change', renderSummary);
+
+  receiptChk.addEventListener('change', () => {
+    state.receipt = receiptChk.checked;
+    renderSummary();
+  });
+
+  copyBtn.addEventListener('click', async () => {
+    try {
+      await navigator.clipboard.writeText('123456-04-789012');
+    } catch (e) {}
+    toast.classList.remove('opacity-0', 'translate-y-2');
+    toast.classList.add('opacity-100', 'translate-y-0');
+    setTimeout(() => {
+      toast.classList.add('opacity-0', 'translate-y-2');
+      toast.classList.remove('opacity-100', 'translate-y-0');
+    }, 1800);
+  });
+
+  document.getElementById('submitBtn').addEventListener('click', () => {
+    if (!document.getElementById('agreeChk').checked) {
+      alert('개인정보 수집·이용에 동의해 주세요.');
+      return;
+    }
+    alert('헌금 접수가 요청되었습니다.\\n안내된 계좌로 입금해 주시면 확인 후 접수가 완료됩니다. (디자인 목업 — 실제 결제 없음)');
+  });
+
+  renderSummary();
+</script>
+
+</body>
+</html>

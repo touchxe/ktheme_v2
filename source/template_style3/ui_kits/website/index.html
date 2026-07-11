@@ -1,0 +1,63 @@
+<!-- @dsCard group="Website" viewport="1240x760" name="가평교회 홈" subtitle="홈 · 예배/새가족 등록 화면 (클릭 전환)" -->
+<!-- @startingPoint section="Website" subtitle="교회 홈페이지 — 헤더·히어로·설교·푸터" viewport="1240x900" -->
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>가평교회 — UI 킷</title>
+<link rel="stylesheet" href="../../styles.css" />
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script src="../../_ds_bundle.js"></script>
+<style>
+  html { font-family: var(--font-sans); letter-spacing: var(--ls-base); }
+  body { margin: 0; background: var(--white); color: var(--text-strong); -webkit-font-smoothing: antialiased; }
+  a { color: inherit; }
+</style>
+</head>
+<body>
+<div id="root"></div>
+
+<template id="__bundler_thumbnail" data-bg-color="#2a4fd6">
+  <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+    <rect width="1200" height="800" fill="#2a4fd6"/>
+    <g fill="none" stroke="#ffffff" stroke-width="14"><circle cx="600" cy="380" r="200"/><circle cx="600" cy="380" r="120"/></g>
+    <circle cx="600" cy="380" r="70" fill="#ffffff"/>
+    <path d="M584 354 v52 l44 -26 z" fill="#2a4fd6"/>
+  </svg>
+</template>
+
+<script type="text/babel" src="Header.jsx"></script>
+<script type="text/babel" src="HomeScreen.jsx"></script>
+<script type="text/babel" src="WorshipScreen.jsx"></script>
+<script type="text/babel" src="Footer.jsx"></script>
+<script type="text/babel">
+  // 번들 네임스페이스 자동 감지 → window.__NS 로 통일
+  window.__NS = window.가평교회 || Object.values(window).find(v => v && v.Button && v.Badge && v.SermonCard) || {};
+
+  function App() {
+    const [view, setView] = React.useState("home");
+    const { TopBar, Header, Hero, SermonSection, WorshipScreen, Footer } = window;
+    return (
+      <div>
+        <TopBar />
+        <Header view={view} setView={setView} />
+        {view === "home" && <><Hero /><SermonSection /></>}
+        {view !== "home" && <WorshipScreen />}
+        <Footer />
+      </div>
+    );
+  }
+
+  function mount() {
+    if (!window.Header || !window.Hero || !window.WorshipScreen || !window.Footer) {
+      return setTimeout(mount, 30);
+    }
+    ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+  }
+  mount();
+</script>
+</body>
+</html>

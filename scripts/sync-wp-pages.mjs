@@ -8,7 +8,7 @@ const ENV_FILE = join(ROOT, '.env.local');
 
 const pages = [
   {
-    title: '예배',
+    title: '예배 안내',
     slug: 'worship',
     excerpt: '예배 시간과 설교, 찬양, 예배 안내를 한 곳에서 확인합니다.',
     body: ['주일예배, 수요예배, 새벽예배, 청년예배 안내를 담는 대표 페이지입니다.', '이후 설교 콘텐츠와 예배 시간표 블록을 연결합니다.'],

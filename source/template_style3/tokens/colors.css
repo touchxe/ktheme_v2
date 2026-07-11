@@ -1,0 +1,55 @@
+/* ============================================================
+   COLORS — 가평교회
+   Ink(중성) · Brand(블루) · Surface(면/경계) · Accent · Category
+   ============================================================ */
+:root {
+  /* --- Ink: 텍스트 · 어두운 배경 --- */
+  --ink-900: #0e1320;
+  --ink-800: #171c2c;
+  --ink-700: #222a3f;
+  --ink-600: #384058;
+
+  /* --- Brand: 강조 · 링크 · 액션 --- */
+  --brand-500: #3a64f5;
+  --brand-600: #2a4fd6;
+  --brand-700: #1f3eb2;
+
+  /* --- Surface: 면 · 경계 --- */
+  --white: #ffffff;
+  --paper: #f4f5f7;
+  --line: #e5e7eb;
+
+  /* --- Accent --- */
+  --accent-red: #e23b3b; /* LIVE / 긴급 표시 */
+
+  /* --- Category: 설교/예배 분류 --- */
+  --cat-sunday: #2a4fd6;  /* 주일 */
+  --cat-wed: #059669;     /* 수요 */
+  --cat-youth: #d97706;   /* 청년 */
+  --cat-dawn: #e11d48;    /* 새벽 */
+  --cat-kids: #7c3aed;    /* 유년부 */
+  --cat-etc: #0284c7;     /* 기타 */
+
+  /* ============================================================
+     SEMANTIC ALIASES — 컴포넌트는 가급적 이 변수를 참조
+     ============================================================ */
+  --text-strong: var(--ink-900);   /* 제목 */
+  --text-body: var(--ink-600);     /* 본문 */
+  --text-muted: #6b7280;           /* 보조 텍스트 */
+  --text-on-dark: #ffffff;
+  --text-on-dark-soft: rgba(255, 255, 255, 0.75);
+
+  --link: var(--brand-600);
+  --link-hover: var(--brand-700);
+
+  --surface-page: var(--white);
+  --surface-card: var(--white);
+  --surface-subtle: var(--paper);  /* 회색 면 */
+  --surface-dark: var(--ink-900);  /* 히어로/푸터 */
+  --border: var(--line);
+  --border-strong: var(--ink-900);
+
+  --action-primary: var(--brand-600);
+  --action-primary-hover: var(--brand-700);
+  --action-dark: var(--ink-900);
+}

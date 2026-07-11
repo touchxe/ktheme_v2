@@ -135,7 +135,7 @@ async function main() {
   const updated = await wpRequest(`${apiUrl}/pages/${page.id}`, {
     method: 'POST',
     body: JSON.stringify({
-      title: '예배',
+      title: '예배 안내',
       excerpt: '예배 시간과 설교, 찬양, 예배 안내를 한 곳에서 확인합니다.',
       content,
       status: 'publish',

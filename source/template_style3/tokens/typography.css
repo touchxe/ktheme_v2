@@ -1,0 +1,41 @@
+/* ============================================================
+   TYPOGRAPHY — 가평교회
+   Pretendard Variable · letter-spacing -0.01em · 한국어 우선
+   ============================================================ */
+:root {
+  /* --- Font size scale --- */
+  --fs-display: 56px;  /* 히어로 대형 카피 */
+  --fs-h1: 44px;       /* 페이지 타이틀 */
+  --fs-h2: 26px;       /* 섹션 헤딩(문서) */
+  --fs-h2-page: 22px;  /* 섹션 헤딩(페이지) */
+  --fs-h3: 20px;       /* 카드 타이틀 */
+  --fs-lead: 17px;     /* 리드 문단 */
+  --fs-body: 15px;     /* 기본 본문 */
+  --fs-body-sm: 14px;  /* 조밀 본문 */
+  --fs-caption: 12px;  /* 캡션/메타 */
+  --fs-overline: 11px; /* 오버라인 라벨 */
+
+  /* --- Weight --- */
+  --fw-regular: 400;
+  --fw-medium: 500;
+  --fw-semibold: 600;
+  --fw-bold: 700;
+  --fw-extrabold: 800;
+
+  /* --- Line height --- */
+  --lh-none: 1.05;     /* display */
+  --lh-tight: 1.15;    /* 헤딩 */
+  --lh-snug: 1.4;
+  --lh-body: 1.85;     /* 본문 */
+
+  /* --- Letter spacing --- */
+  --ls-tight: -0.02em; /* 큰 헤딩 */
+  --ls-base: -0.01em;  /* 기본 */
+  --ls-wide: 0.18em;   /* 오버라인 */
+  --ls-live: 0.05em;   /* LIVE 뱃지 */
+
+  /* --- Semantic --- */
+  --text-display: var(--fw-extrabold) var(--fs-display)/var(--lh-none) var(--font-sans);
+  --text-h1: var(--fw-extrabold) var(--fs-h1)/var(--lh-tight) var(--font-sans);
+  --text-h3: var(--fw-extrabold) var(--fs-h3)/var(--lh-tight) var(--font-sans);
+}

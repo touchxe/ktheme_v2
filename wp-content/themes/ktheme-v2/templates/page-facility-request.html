@@ -1,0 +1,156 @@
+<!-- wp:template-part {"slug":"header","tagName":"header"} /-->
+<!-- wp:group {"tagName":"main","className":"kt-page-shell kt-admin-page","layout":{"type":"constrained"}} -->
+<main class="wp-block-group kt-page-shell kt-admin-page">
+	<!-- wp:template-part {"slug":"page-hero"} /-->
+	<!-- wp:html -->
+	<section class="kt-admin-section">
+		<div class="kt-svc-section-head">
+			<span class="kt-card-label">WHAT YOU CAN RESERVE</span>
+			<h2>예약 가능한 항목</h2>
+		</div>
+		<div class="kt-svc-card-grid">
+			<div class="kt-svc-card">
+				<span class="kt-svc-card__icon is-amber"><svg class="kt-icon kt-icon--md" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 4h7v7H4zM13 4h7v7h-7zM4 13h7v7H4zM13 13h7v7h-7M14 17l1.5 1.5L18 16"/></svg></span>
+				<h3>시설 (장소)</h3>
+				<p>교육관, 소모임실, 카페, 다목적홀 등 정기모임 · 행사 · 세미나에 사용할 공간을 예약합니다.</p>
+				<div class="kt-svc-card__meta">
+					<div><span>본당 소예배실</span><strong>최대 80명</strong></div>
+					<div><span>교육관 다목적홀</span><strong>최대 150명</strong></div>
+					<div><span>소모임실 A/B/C</span><strong>각 15명</strong></div>
+					<div><span>카페 라운지</span><strong>최대 30명</strong></div>
+				</div>
+			</div>
+			<div class="kt-svc-card">
+				<span class="kt-svc-card__icon is-violet"><svg class="kt-icon kt-icon--md" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="2" y="7" width="14" height="10" rx="1.5"/><path d="m16 10 6-3v10l-6-3"/></svg></span>
+				<h3>장비</h3>
+				<p>행사 진행에 필요한 음향 · 영상 · 촬영 장비를 대여해 드립니다. 반납 시 상태 확인 후 서명이 필요합니다.</p>
+				<div class="kt-svc-card__meta">
+					<div><span>이동식 스피커/마이크 세트</span><strong>3세트</strong></div>
+					<div><span>빔프로젝터 · 스크린</span><strong>2세트</strong></div>
+					<div><span>노트북 · 화상카메라</span><strong>2세트</strong></div>
+					<div><span>테이블 · 의자 (대량)</span><strong>문의</strong></div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="kt-admin-section">
+		<div class="kt-svc-section-head">
+			<span class="kt-card-label">HOW IT WORKS</span>
+			<h2>신청 방법</h2>
+		</div>
+		<div class="kt-svc-step-grid">
+			<div class="kt-svc-step"><span class="kt-svc-step__num">1</span><strong>항목 · 일정 선택</strong><p>시설, 장비 중 필요한 항목과 사용 일시를 선택합니다.</p></div>
+			<div class="kt-svc-step"><span class="kt-svc-step__num">2</span><strong>신청서 제출</strong><p>사용 목적과 신청인 정보를 입력해 아래 신청서를 제출합니다.</p></div>
+			<div class="kt-svc-step"><span class="kt-svc-step__num">3</span><strong>일정 확인 · 승인</strong><p>담당 부서가 일정 중복 여부를 확인하고 승인 결과를 안내합니다.</p></div>
+			<div class="kt-svc-step"><span class="kt-svc-step__num">4</span><strong>사용 · 반납</strong><p>승인된 일시에 사용하고, 장비는 상태 확인 후 반납합니다.</p></div>
+		</div>
+	</section>
+
+	<section class="kt-admin-section">
+		<div class="kt-svc-section-head">
+			<span class="kt-card-label">APPLICATION</span>
+			<h2>시설 · 장비 사용 신청서</h2>
+		</div>
+
+		<form class="kt-svc-form" id="kt-facility-form">
+			<div class="kt-svc-form__group">
+				<label class="kt-svc-form__label">1. 신청 구분 <span class="is-required">*</span></label>
+				<div class="kt-svc-form__choice-grid">
+					<label class="kt-svc-form__choice"><input type="radio" name="category" value="시설" data-target="kt-facility-group" checked />시설 예약</label>
+					<label class="kt-svc-form__choice"><input type="radio" name="category" value="장비" data-target="kt-equipment-group" />장비 대여</label>
+				</div>
+			</div>
+
+			<div class="kt-svc-form__group kt-svc-form__conditional" id="kt-facility-group">
+				<label class="kt-svc-form__label" for="kt-facility-select">2. 사용 장소 <span class="is-required">*</span></label>
+				<div class="kt-svc-form__field" style="max-width:420px;">
+					<select id="kt-facility-select" name="facility">
+						<option>본당 소예배실 (최대 80명)</option>
+						<option>교육관 다목적홀 (최대 150명)</option>
+						<option>소모임실 A (15명)</option>
+						<option>소모임실 B (15명)</option>
+						<option>소모임실 C (15명)</option>
+						<option>카페 라운지 (최대 30명)</option>
+					</select>
+				</div>
+			</div>
+
+			<div class="kt-svc-form__group kt-svc-form__conditional" id="kt-equipment-group" hidden>
+				<label class="kt-svc-form__label">2. 대여 장비 <span class="is-required">*</span></label>
+				<div class="kt-svc-form__choice-grid">
+					<label class="kt-svc-form__choice"><input type="checkbox" name="equipment" value="스피커/마이크 세트" />이동식 스피커/마이크 세트</label>
+					<label class="kt-svc-form__choice"><input type="checkbox" name="equipment" value="빔프로젝터/스크린" />빔프로젝터 · 스크린</label>
+					<label class="kt-svc-form__choice"><input type="checkbox" name="equipment" value="노트북/화상카메라" />노트북 · 화상카메라</label>
+					<label class="kt-svc-form__choice"><input type="checkbox" name="equipment" value="테이블/의자" />테이블 · 의자 (대량)</label>
+				</div>
+			</div>
+
+			<div class="kt-svc-form__group">
+				<label class="kt-svc-form__label">3. 사용 일시 <span class="is-required">*</span></label>
+				<div class="kt-svc-form__row">
+					<div class="kt-svc-form__field"><label for="kt-facility-start">시작</label><input id="kt-facility-start" name="start" type="datetime-local" required /></div>
+					<div class="kt-svc-form__field"><label for="kt-facility-end">종료</label><input id="kt-facility-end" name="end" type="datetime-local" required /></div>
+				</div>
+			</div>
+
+			<div class="kt-svc-form__group">
+				<label class="kt-svc-form__label">4. 신청인 정보</label>
+				<div class="kt-svc-form__row">
+					<div class="kt-svc-form__field"><label for="kt-facility-name">이름 <span class="is-required">*</span></label><input id="kt-facility-name" name="name" type="text" required placeholder="홍길동" /></div>
+					<div class="kt-svc-form__field"><label for="kt-facility-dept">소속 (부서 · 모임명)</label><input id="kt-facility-dept" name="dept" type="text" placeholder="예: 청년부, 3구역" /></div>
+					<div class="kt-svc-form__field"><label for="kt-facility-phone">연락처 <span class="is-required">*</span></label><input id="kt-facility-phone" name="phone" type="tel" required placeholder="010-0000-0000" /></div>
+					<div class="kt-svc-form__field"><label for="kt-facility-attendees">예상 인원</label><input id="kt-facility-attendees" name="attendees" type="number" min="1" placeholder="예: 20" /></div>
+				</div>
+			</div>
+
+			<div class="kt-svc-form__group">
+				<label class="kt-svc-form__label" for="kt-facility-purpose">5. 사용 목적</label>
+				<textarea id="kt-facility-purpose" name="purpose" rows="3" placeholder="모임 · 행사 내용을 간단히 적어주세요."></textarea>
+			</div>
+
+			<label class="kt-svc-form__consent">
+				<input type="checkbox" id="kt-facility-agree" required />
+				<span>시설 · 장비 사용 후 상태를 원래대로 유지하고, 파손 · 분실 시 안내에 따라 책임진다는 사항에 동의합니다. <span class="is-required">(필수)</span></span>
+			</label>
+
+			<button type="submit" class="kt-svc-form__submit">신청서 제출하기</button>
+		</form>
+
+		<div class="kt-svc-form__success" id="kt-facility-success" hidden>
+			<svg class="kt-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
+			<div>
+				<strong>신청이 접수되었습니다</strong>
+				<p>담당 부서가 일정을 확인한 뒤 승인 결과를 안내드립니다. 문의사항은 관리팀(02-704-3330)으로 연락 주세요.</p>
+			</div>
+		</div>
+	</section>
+
+	<script>
+	(function () {
+		var radios = document.querySelectorAll('#kt-facility-form input[name="category"]');
+		var groups = {
+			'시설': document.getElementById('kt-facility-group'),
+			'장비': document.getElementById('kt-equipment-group')
+		};
+		radios.forEach(function (r) {
+			r.addEventListener('change', function () {
+				Object.keys(groups).forEach(function (key) {
+					groups[key].hidden = key !== r.value;
+				});
+			});
+		});
+
+		var form = document.getElementById('kt-facility-form');
+		var success = document.getElementById('kt-facility-success');
+		form.addEventListener('submit', function (e) {
+			e.preventDefault();
+			form.hidden = true;
+			success.hidden = false;
+		});
+	})();
+	</script>
+	<!-- /wp:html -->
+</main>
+<!-- /wp:group -->
+<!-- wp:template-part {"slug":"footer","tagName":"footer"} /-->

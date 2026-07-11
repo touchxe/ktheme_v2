@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>가평교회 — 첫 화면 시안</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;500;600;700;900&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&display=swap" />
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        fontFamily: {
+          sans: ['"Pretendard Variable"', 'Pretendard', 'system-ui', 'sans-serif'],
+          serifkr: ['"Noto Serif KR"', 'serif'],
+          fraunces: ['Fraunces', 'serif'],
+        },
+        colors: {
+          ink: { 900: '#0e1320', 800: '#171c2c', 700: '#222a3f', 600: '#384058' },
+          brand: { 500: '#3a64f5', 600: '#2a4fd6', 700: '#1f3eb2' },
+          accent: { red: '#e23b3b' },
+          paper: '#f4f5f7',
+          cream: '#f0ece4',
+          line: '#e5e7eb',
+        },
+      },
+    },
+  };
+</script>
+<style>
+  html, body { font-family: 'Pretendard Variable', Pretendard, system-ui, sans-serif; letter-spacing: -0.01em; -webkit-font-smoothing: antialiased; }
+  .badge-live { background: #e23b3b; color: white; font-size: 10px; font-weight: 700; letter-spacing: 0.05em; padding: 2px 6px; border-radius: 3px; }
+  .hero-fade-r {
+    background: linear-gradient(90deg, rgba(14,19,32,0.92) 0%, rgba(14,19,32,0.78) 38%, rgba(14,19,32,0.35) 72%, rgba(14,19,32,0.1) 100%);
+  }
+  .hero-fade-b {
+    background: linear-gradient(180deg, rgba(14,19,32,0.0) 30%, rgba(14,19,32,0.55) 70%, rgba(14,19,32,0.92) 100%);
+  }
+  @keyframes pulse { 0%{transform:scale(1);opacity:.8} 100%{transform:scale(1.6);opacity:0} }
+  .play-pulse::after { content:''; position:absolute; inset:0; border-radius:9999px; border:2px solid rgba(255,255,255,.6); animation: pulse 2s ease-out infinite; }
+
+  /* shared mini-header used inside every artboard */
+  .mini-header { height: 72px; }
+</style>
+</head>
+<body class="bg-[#eceeef] text-ink-900">
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script type="text/babel" src="design-canvas.jsx"></script>
+<script type="text/babel" src="hero-variations.jsx"></script>
+<script type="text/babel" src="hero-basic.jsx"></script>
+
+<div id="root"></div>
+
+<script type="text/babel">
+  const { DesignCanvas, DCSection, DCArtboard } = window;
+  const {
+    HeroEditorialSplit,
+    HeroScriptureCentered,
+    HeroAsymmetricGrid,
+    HeroCinematicBottom,
+    HeroTypographyBlock,
+    HeroB1Centered,
+    HeroB2Split,
+    HeroB3CardStack,
+    HeroB4SoftImage,
+    HeroB5Video,
+    HeroB6Gradient,
+    HeroB7Pattern,
+    HeroB8PhotoCard,
+    HeroB9Diagonal,
+    HeroB10Collage,
+  } = window;
+
+  function App() {
+    return (
+      <DesignCanvas
+        title="가평교회 — 첫 화면 시안"
+        subtitle="기존 메인 페이지의 히어로 섹션에 적용할 수 있는 5가지 구성안. 헤더는 동일하게 유지, 그 아래 영역만 변형."
+      >
+        <DCSection id="hero" title="HERO 구성 옵션">
+          <DCArtboard id="v1" label="V1 · Editorial Split — 좌측 큰 타이포, 우측 이미지 카드" width={1440} height={780}>
+            <HeroEditorialSplit />
+          </DCArtboard>
+
+          <DCArtboard id="v2" label="V2 · 말씀 중심 — 정적인 묵상형, 크림 톤" width={1440} height={780}>
+            <HeroScriptureCentered />
+          </DCArtboard>
+
+          <DCArtboard id="v3" label="V3 · 비대칭 그리드 — 대시보드형, 정보 밀도 ↑" width={1440} height={780}>
+            <HeroAsymmetricGrid />
+          </DCArtboard>
+
+          <DCArtboard id="v4" label="V4 · 시네마틱 — 풀블리드 사진, 하단 정렬" width={1440} height={780}>
+            <HeroCinematicBottom />
+          </DCArtboard>
+
+          <DCArtboard id="v5" label="V5 · 타이포그래피 블록 — 사진 없이 대담한 글자" width={1440} height={780}>
+            <HeroTypographyBlock />
+          </DCArtboard>
+        </DCSection>
+
+        <DCSection id="basic" title="기본 스타일 · 라이트 컬러셋 — 배경 다양화 10종">
+          <DCArtboard id="b1" label="B1 · 중앙 정렬 클래식 (흰 배경)" width={1440} height={780}>
+            <HeroB1Centered />
+          </DCArtboard>
+          <DCArtboard id="b2" label="B2 · 50:50 분할 (텍스트 + 사진)" width={1440} height={780}>
+            <HeroB2Split />
+          </DCArtboard>
+          <DCArtboard id="b3" label="B3 · 카드 스택 (paper 배경)" width={1440} height={780}>
+            <HeroB3CardStack />
+          </DCArtboard>
+          <DCArtboard id="b4" label="B4 · 페이드 배경 이미지 (흰 그라데이션 오버레이)" width={1440} height={780}>
+            <HeroB4SoftImage />
+          </DCArtboard>
+          <DCArtboard id="b5" label="B5 · 배경 영상 루프 (블러 + 흰 오버레이)" width={1440} height={780}>
+            <HeroB5Video />
+          </DCArtboard>
+          <DCArtboard id="b6" label="B6 · 파스텔 그라데이션 + 글래스 카드" width={1440} height={780}>
+            <HeroB6Gradient />
+          </DCArtboard>
+          <DCArtboard id="b7" label="B7 · 도트 그리드 패턴 배경" width={1440} height={780}>
+            <HeroB7Pattern />
+          </DCArtboard>
+          <DCArtboard id="b8" label="B8 · 풀블리드 사진 + 떠 있는 흰 카드" width={1440} height={780}>
+            <HeroB8PhotoCard />
+          </DCArtboard>
+          <DCArtboard id="b9" label="B9 · 대각선 분할 + 예배 시간 리스트" width={1440} height={780}>
+            <HeroB9Diagonal />
+          </DCArtboard>
+          <DCArtboard id="b10" label="B10 · 사진 콜라주 스트립 (cream 배경)" width={1440} height={780}>
+            <HeroB10Collage />
+          </DCArtboard>
+        </DCSection>
+      </DesignCanvas>
+    );
+  }
+
+  ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+</script>
+
+</body>
+</html>

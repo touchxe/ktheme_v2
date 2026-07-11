@@ -1,0 +1,7 @@
+/* 가평교회 디자인 시스템 — 글로벌 진입점.
+   컨슈머는 이 파일 하나만 링크합니다. @import 라인만 둡니다. */
+@import url("./tokens/fonts.css");
+@import url("./tokens/colors.css");
+@import url("./tokens/typography.css");
+@import url("./tokens/spacing.css");
+@import url("./tokens/effects.css");

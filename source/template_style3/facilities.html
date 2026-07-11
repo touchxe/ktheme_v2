@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>시설 · 장비 · 차량 신청 — 가평교회</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" />
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        fontFamily: { sans: ['"Pretendard Variable"', 'Pretendard', 'system-ui', 'sans-serif'] },
+        colors: {
+          ink: { 900: '#0e1320', 800: '#171c2c', 700: '#222a3f', 600: '#384058' },
+          brand: { 500: '#3a64f5', 600: '#2a4fd6', 700: '#1f3eb2' },
+          accent: { red: '#e23b3b', pink: '#ec4899' },
+          paper: '#f4f5f7',
+          line: '#e5e7eb',
+        },
+      },
+    },
+  };
+</script>
+<style>
+  html { font-family: 'Pretendard Variable', Pretendard, system-ui, sans-serif; }
+  body { -webkit-font-smoothing: antialiased; letter-spacing: -0.01em; }
+  .news-card-shadow { box-shadow: 0 1px 0 rgba(0,0,0,0.04), 0 18px 36px -24px rgba(14,19,32,0.18); }
+  input[type="radio"], input[type="checkbox"] { accent-color: #3a64f5; }
+  .cat-tab.active { background: #0e1320; color: #fff; border-color: #0e1320; }
+  a { color: #2a4fd6; }
+  a:hover { color: #1f3eb2; }
+</style>
+</head>
+<body class="bg-white text-ink-900">
+
+<!-- TOP UTILITY BAR -->
+<div class="hidden md:block border-b border-line text-[12px] text-ink-600">
+  <div class="max-w-[1240px] mx-auto px-6 h-9 flex items-center justify-between">
+    <div class="flex items-center gap-5">
+      <span class="flex items-center gap-1.5">
+        <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+        2026년 5월 25일 주일예배 · 오전 11:00 본당
+      </span>
+    </div>
+    <div class="flex items-center gap-5">
+      <a href="#" class="hover:text-ink-900">새가족 등록</a>
+      <span class="w-px h-3 bg-line"></span>
+      <a href="#" class="hover:text-ink-900">교회오시는길</a>
+      <span class="w-px h-3 bg-line"></span>
+      <a href="#" class="hover:text-ink-900">English</a>
+      <span class="w-px h-3 bg-line"></span>
+      <a href="#" class="hover:text-ink-900">로그인</a>
+    </div>
+  </div>
+</div>
+
+<!-- HEADER / NAV -->
+<header class="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-line">
+  <div class="max-w-[1240px] mx-auto px-6 h-[72px] flex items-center justify-between">
+    <a href="index.html" class="flex items-center gap-2.5">
+      <img src="assets/logo.png" alt="가평교회" class="w-10 h-10 object-contain" />
+      <span class="font-bold text-[19px] tracking-tight">가평교회 <span class="text-ink-600 font-medium text-[13px] tracking-normal ml-0.5">GAPYEONG CHURCH</span></span>
+    </a>
+    <nav class="hidden lg:flex items-center gap-9 text-[15px] font-semibold">
+      <a href="worship.html" class="relative py-6 hover:text-brand-600">예배</a>
+      <a href="lecture.html" class="relative py-6 hover:text-brand-600">강의</a>
+      <a href="#" class="relative py-6 hover:text-brand-600">소모임</a>
+      <a href="training.html" class="relative py-6 hover:text-brand-600">훈련</a>
+      <a href="#" class="relative py-6 hover:text-brand-600">섬김</a>
+      <a href="#" class="relative py-6 hover:text-brand-600">미디어</a>
+      <a href="#" class="relative py-6 hover:text-brand-600">교회소개</a>
+      <a href="admin.html" class="relative py-6 text-brand-600">행정<span class="absolute left-0 right-0 -bottom-px h-0.5 bg-brand-600"></span></a>
+    </nav>
+    <div class="flex items-center gap-3">
+      <button class="w-9 h-9 grid place-items-center rounded-full hover:bg-paper">
+        <svg class="w-[18px] h-[18px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      </button>
+      <div class="hidden md:flex items-center gap-3 text-[13px] text-ink-600">
+        <a href="#" class="hover:text-ink-900">로그인</a>
+        <span class="w-px h-3 bg-line"></span>
+        <a href="#" class="hover:text-ink-900">회원가입</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- PAGE HEAD -->
+<section class="bg-white border-b border-line">
+  <div class="max-w-[1240px] mx-auto px-6 pt-10 pb-10">
+    <nav class="flex items-center gap-2 text-[12px] text-ink-600">
+      <a href="index.html" class="hover:text-ink-900 inline-flex items-center gap-1.5">
+        <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 11l9-8 9 8M5 10v10h14V10"/></svg>
+        HOME
+      </a>
+      <span class="text-line">›</span>
+      <a href="admin.html" class="hover:text-ink-900">행정</a>
+      <span class="text-line">›</span>
+      <span class="text-ink-900 font-semibold">시설 · 장비 · 차량 신청</span>
+    </nav>
+    <div class="mt-6">
+      <h1 class="text-[40px] md:text-[52px] font-extrabold tracking-tight leading-tight">시설 · 장비 · 차량 신청</h1>
+      <p class="mt-3 text-ink-600 text-[14px] max-w-xl leading-relaxed">
+        모임과 행사를 위한 교육관 · 카페 등 교회 시설과 음향 · 영상 장비, 교회 차량을 온라인으로 예약하실 수 있습니다.
+        일정이 겹치지 않도록 담당 부서가 확인 후 최종 승인해 드립니다.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- 안내 -->
+<section class="bg-white py-16">
+  <div class="max-w-[1240px] mx-auto px-6">
+    <div class="mb-9">
+      <div class="text-[12px] tracking-widest font-bold text-ink-600 mb-2">WHAT YOU CAN RESERVE</div>
+      <h2 class="text-[28px] md:text-[32px] font-extrabold tracking-tight">예약 가능한 항목</h2>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-5">
+      <!-- 시설 -->
+      <div class="rounded-2xl border border-line p-7 news-card-shadow">
+        <div class="w-11 h-11 rounded-xl bg-amber-500/10 text-amber-600 grid place-items-center mb-5">
+          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h7v7H4zM13 4h7v7h-7zM4 13h7v7H4zM13 13h7v7h-7M14 17l1.5 1.5L18 16"/></svg>
+        </div>
+        <h3 class="text-[18px] font-extrabold tracking-tight mb-2">시설 (장소)</h3>
+        <p class="text-[13px] text-ink-600 leading-relaxed mb-5">
+          교육관, 소모임실, 카페, 다목적홀 등 정기모임 · 행사 · 세미나에 사용할 공간을 예약합니다.
+        </p>
+        <ul class="text-[13px] space-y-2">
+          <li class="flex items-center justify-between rounded-lg bg-paper px-4 py-2.5"><span>본당 소예배실</span><span class="text-ink-600">최대 80명</span></li>
+          <li class="flex items-center justify-between rounded-lg bg-paper px-4 py-2.5"><span>교육관 다목적홀</span><span class="text-ink-600">최대 150명</span></li>
+          <li class="flex items-center justify-between rounded-lg bg-paper px-4 py-2.5"><span>소모임실 A/B/C</span><span class="text-ink-600">각 15명</span></li>
+          <li class="flex items-center justify-between rounded-lg bg-paper px-4 py-2.5"><span>카페 라운지</span><span class="text-ink-600">최대 30명</span></li>
+        </ul>
+      </div>
+
+      <!-- 장비 -->
+      <div class="rounded-2xl border border-line p-7 news-card-shadow">
+        <div class="w-11 h-11 rounded-xl bg-violet-500/10 text-violet-600 grid place-items-center mb-5">
+          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="14" height="10" rx="1.5"/><path d="m16 10 6-3v10l-6-3"/></svg>
+        </div>
+        <h3 class="text-[18px] font-extrabold tracking-tight mb-2">장비</h3>
+        <p class="text-[13px] text-ink-600 leading-relaxed mb-5">
+          행사 진행에 필요한 음향 · 영상 · 촬영 장비를 대여해 드립니다. 반납 시 상태 확인 후 서명이 필요합니다.
+        </p>
+        <ul class="text-[13px] space-y-2">
+          <li class="flex items-center justify-between rounded-lg bg-paper px-4 py-2.5"><span>이동식 스피커/마이크 세트</span><span class="text-ink-600">3세트</span></li>
+          <li class="flex items-center justify-between rounded-lg bg-paper px-4 py-2.5"><span>빔프로젝터 · 스크린</span><span class="text-ink-600">2세트</span></li>
+          <li class="flex items-center justify-between rounded-lg bg-paper px-4 py-2.5"><span>노트북 · 화상카메라</span><span class="text-ink-600">2세트</span></li>
+          <li class="flex items-center justify-between rounded-lg bg-paper px-4 py-2.5"><span>테이블 · 의자 (대량)</span><span class="text-ink-600">문의</span></li>
+        </ul>
+      </div>
+
+      <!-- 차량 -->
+      <div class="rounded-2xl border border-line p-7 news-card-shadow">
+        <div class="w-11 h-11 rounded-xl bg-sky-500/10 text-sky-600 grid place-items-center mb-5">
+          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 13l1-4h12l1 4M3 17h18M5 17v3M19 17v3M7 13h10"/></svg>
+        </div>
+        <h3 class="text-[18px] font-extrabold tracking-tight mb-2">차량</h3>
+        <p class="text-[13px] text-ink-600 leading-relaxed mb-5">
+          심방, 수련회, 봉사 활동 등에 사용할 교회 차량을 예약합니다. 운전자는 안전교육 이수자여야 합니다.
+        </p>
+        <ul class="text-[13px] space-y-2">
+          <li class="flex items-center justify-between rounded-lg bg-paper px-4 py-2.5"><span>25인승 중형버스</span><span class="text-ink-600">1대</span></li>
+          <li class="flex items-center justify-between rounded-lg bg-paper px-4 py-2.5"><span>12인승 승합차</span><span class="text-ink-600">2대</span></li>
+          <li class="flex items-center justify-between rounded-lg bg-paper px-4 py-2.5"><span>업무용 승용차</span><span class="text-ink-600">1대</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 신청 방법 -->
+<section class="bg-paper py-16">
+  <div class="max-w-[1240px] mx-auto px-6">
+    <div class="mb-9">
+      <div class="text-[12px] tracking-widest font-bold text-ink-600 mb-2">HOW IT WORKS</div>
+      <h2 class="text-[28px] md:text-[32px] font-extrabold tracking-tight">신청 방법</h2>
+    </div>
+    <div class="grid md:grid-cols-4 gap-5">
+      <div class="rounded-2xl bg-white p-6 news-card-shadow">
+        <span class="w-8 h-8 rounded-full bg-ink-900 text-white text-[13px] font-bold grid place-items-center mb-4">1</span>
+        <div class="text-[14.5px] font-bold mb-1.5">항목 · 일정 선택</div>
+        <p class="text-[12.5px] text-ink-600 leading-relaxed">시설, 장비, 차량 중 필요한 항목과 사용 일시를 선택합니다.</p>
+      </div>
+      <div class="rounded-2xl bg-white p-6 news-card-shadow">
+        <span class="w-8 h-8 rounded-full bg-ink-900 text-white text-[13px] font-bold grid place-items-center mb-4">2</span>
+        <div class="text-[14.5px] font-bold mb-1.5">신청서 제출</div>
+        <p class="text-[12.5px] text-ink-600 leading-relaxed">사용 목적과 신청인 정보를 입력해 아래 신청서를 제출합니다.</p>
+      </div>
+      <div class="rounded-2xl bg-white p-6 news-card-shadow">
+        <span class="w-8 h-8 rounded-full bg-ink-900 text-white text-[13px] font-bold grid place-items-center mb-4">3</span>
+        <div class="text-[14.5px] font-bold mb-1.5">일정 확인 · 승인</div>
+        <p class="text-[12.5px] text-ink-600 leading-relaxed">담당 부서가 일정 중복 여부를 확인하고 승인 결과를 안내합니다.</p>
+      </div>
+      <div class="rounded-2xl bg-white p-6 news-card-shadow">
+        <span class="w-8 h-8 rounded-full bg-ink-900 text-white text-[13px] font-bold grid place-items-center mb-4">4</span>
+        <div class="text-[14.5px] font-bold mb-1.5">사용 · 반납</div>
+        <p class="text-[12.5px] text-ink-600 leading-relaxed">승인된 일시에 사용하고, 장비 · 차량은 상태 확인 후 반납합니다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 신청서 -->
+<section class="bg-white py-16">
+  <div class="max-w-[1240px] mx-auto px-6">
+    <div class="mb-9">
+      <div class="text-[12px] tracking-widest font-bold text-ink-600 mb-2">APPLICATION</div>
+      <h2 class="text-[28px] md:text-[32px] font-extrabold tracking-tight">사용 신청서</h2>
+    </div>
+
+    <form id="reserve-form" class="max-w-[760px]">
+
+      <!-- 구분 -->
+      <div class="mb-10">
+        <div class="text-[14px] font-bold mb-4">1. 신청 구분 <span class="text-accent-red">*</span></div>
+        <div class="grid sm:grid-cols-3 gap-3">
+          <label class="flex items-center gap-3 rounded-xl border border-line p-4 has-[:checked]:border-brand-500 has-[:checked]:shadow-[0_0_0_3px_rgba(58,100,245,0.12)] cursor-pointer">
+            <input type="radio" name="category" value="시설" data-target="facility-group" checked class="w-4 h-4 cat-radio" />
+            <span class="text-[13.5px] font-semibold">시설 예약</span>
+          </label>
+          <label class="flex items-center gap-3 rounded-xl border border-line p-4 has-[:checked]:border-brand-500 has-[:checked]:shadow-[0_0_0_3px_rgba(58,100,245,0.12)] cursor-pointer">
+            <input type="radio" name="category" value="장비" data-target="equipment-group" class="w-4 h-4 cat-radio" />
+            <span class="text-[13.5px] font-semibold">장비 대여</span>
+          </label>
+          <label class="flex items-center gap-3 rounded-xl border border-line p-4 has-[:checked]:border-brand-500 has-[:checked]:shadow-[0_0_0_3px_rgba(58,100,245,0.12)] cursor-pointer">
+            <input type="radio" name="category" value="차량" data-target="vehicle-group" class="w-4 h-4 cat-radio" />
+            <span class="text-[13.5px] font-semibold">차량 예약</span>
+          </label>
+        </div>
+      </div>
+
+      <!-- 시설 상세 -->
+      <div id="facility-group" class="mb-10">
+        <label class="block text-[14px] font-bold mb-3" for="facility">2. 사용 장소 <span class="text-accent-red">*</span></label>
+        <select id="facility" name="facility" class="w-full h-12 rounded-xl border border-line px-4 text-[14px] bg-white focus:outline-none focus:border-brand-500">
+          <option>본당 소예배실 (최대 80명)</option>
+          <option>교육관 다목적홀 (최대 150명)</option>
+          <option>소모임실 A (15명)</option>
+          <option>소모임실 B (15명)</option>
+          <option>소모임실 C (15명)</option>
+          <option>카페 라운지 (최대 30명)</option>
+        </select>
+      </div>
+
+      <!-- 장비 상세 -->
+      <div id="equipment-group" class="mb-10 hidden">
+        <label class="block text-[14px] font-bold mb-3">2. 대여 장비 <span class="text-accent-red">*</span></label>
+        <div class="grid sm:grid-cols-2 gap-3">
+          <label class="flex items-center gap-3 rounded-xl border border-line p-4">
+            <input type="checkbox" name="equipment" value="스피커/마이크 세트" class="w-4 h-4" />
+            <span class="text-[13.5px] font-semibold">이동식 스피커/마이크 세트</span>
+          </label>
+          <label class="flex items-center gap-3 rounded-xl border border-line p-4">
+            <input type="checkbox" name="equipment" value="빔프로젝터/스크린" class="w-4 h-4" />
+            <span class="text-[13.5px] font-semibold">빔프로젝터 · 스크린</span>
+          </label>
+          <label class="flex items-center gap-3 rounded-xl border border-line p-4">
+            <input type="checkbox" name="equipment" value="노트북/화상카메라" class="w-4 h-4" />
+            <span class="text-[13.5px] font-semibold">노트북 · 화상카메라</span>
+          </label>
+          <label class="flex items-center gap-3 rounded-xl border border-line p-4">
+            <input type="checkbox" name="equipment" value="테이블/의자" class="w-4 h-4" />
+            <span class="text-[13.5px] font-semibold">테이블 · 의자 (대량)</span>
+          </label>
+        </div>
+      </div>
+
+      <!-- 차량 상세 -->
+      <div id="vehicle-group" class="mb-10 hidden">
+        <div class="grid sm:grid-cols-2 gap-5">
+          <div>
+            <label class="block text-[14px] font-bold mb-3" for="vehicle">2. 차량 종류 <span class="text-accent-red">*</span></label>
+            <select id="vehicle" name="vehicle" class="w-full h-12 rounded-xl border border-line px-4 text-[14px] bg-white focus:outline-none focus:border-brand-500">
+              <option>25인승 중형버스</option>
+              <option>12인승 승합차</option>
+              <option>업무용 승용차</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-[14px] font-bold mb-3" for="destination">목적지</label>
+            <input id="destination" name="destination" type="text" placeholder="예: OO수련원" class="w-full h-12 rounded-xl border border-line px-4 text-[14px] focus:outline-none focus:border-brand-500" />
+          </div>
+          <div class="sm:col-span-2">
+            <label class="block text-[14px] font-bold mb-3" for="driver">운전자 성명</label>
+            <input id="driver" name="driver" type="text" placeholder="안전교육 이수자만 운전 가능" class="w-full h-12 rounded-xl border border-line px-4 text-[14px] focus:outline-none focus:border-brand-500" />
+          </div>
+        </div>
+      </div>
+
+      <!-- 사용 일시 -->
+      <div class="mb-10">
+        <div class="text-[14px] font-bold mb-4">3. 사용 일시 <span class="text-accent-red">*</span></div>
+        <div class="grid sm:grid-cols-2 gap-5">
+          <div>
+            <label class="block text-[12.5px] text-ink-600 mb-1.5" for="start">시작</label>
+            <input id="start" name="start" type="datetime-local" required class="w-full h-12 rounded-xl border border-line px-4 text-[14px] focus:outline-none focus:border-brand-500" />
+          </div>
+          <div>
+            <label class="block text-[12.5px] text-ink-600 mb-1.5" for="end">종료</label>
+            <input id="end" name="end" type="datetime-local" required class="w-full h-12 rounded-xl border border-line px-4 text-[14px] focus:outline-none focus:border-brand-500" />
+          </div>
+        </div>
+      </div>
+
+      <!-- 신청인 정보 -->
+      <div class="mb-10">
+        <div class="text-[14px] font-bold mb-4">4. 신청인 정보</div>
+        <div class="grid sm:grid-cols-2 gap-5">
+          <div>
+            <label class="block text-[12.5px] text-ink-600 mb-1.5" for="name">이름 <span class="text-accent-red">*</span></label>
+            <input id="name" name="name" type="text" required placeholder="홍길동" class="w-full h-12 rounded-xl border border-line px-4 text-[14px] focus:outline-none focus:border-brand-500" />
+          </div>
+          <div>
+            <label class="block text-[12.5px] text-ink-600 mb-1.5" for="dept">소속 (부서 · 모임명)</label>
+            <input id="dept" name="dept" type="text" placeholder="예: 청년부, 3구역" class="w-full h-12 rounded-xl border border-line px-4 text-[14px] focus:outline-none focus:border-brand-500" />
+          </div>
+          <div>
+            <label class="block text-[12.5px] text-ink-600 mb-1.5" for="phone">연락처 <span class="text-accent-red">*</span></label>
+            <input id="phone" name="phone" type="tel" required placeholder="010-0000-0000" class="w-full h-12 rounded-xl border border-line px-4 text-[14px] focus:outline-none focus:border-brand-500" />
+          </div>
+          <div>
+            <label class="block text-[12.5px] text-ink-600 mb-1.5" for="attendees">예상 인원</label>
+            <input id="attendees" name="attendees" type="number" min="1" placeholder="예: 20" class="w-full h-12 rounded-xl border border-line px-4 text-[14px] focus:outline-none focus:border-brand-500" />
+          </div>
+        </div>
+      </div>
+
+      <!-- 사용 목적 -->
+      <div class="mb-10">
+        <label class="block text-[14px] font-bold mb-3" for="purpose">5. 사용 목적</label>
+        <textarea id="purpose" name="purpose" rows="3" placeholder="모임 · 행사 내용을 간단히 적어주세요." class="w-full rounded-xl border border-line px-4 py-3 text-[14px] resize-none focus:outline-none focus:border-brand-500"></textarea>
+      </div>
+
+      <!-- 동의 -->
+      <div class="mb-8 rounded-xl bg-paper p-5">
+        <label class="flex items-start gap-3 cursor-pointer">
+          <input id="agree" type="checkbox" required class="w-4 h-4 mt-0.5" />
+          <span class="text-[12.5px] text-ink-600 leading-relaxed">
+            시설 · 장비 · 차량 사용 후 상태를 원래대로 유지하고, 파손 · 분실 시 안내에 따라 책임진다는 사항에 동의합니다. <span class="text-accent-red">(필수)</span>
+          </span>
+        </label>
+      </div>
+
+      <button type="submit" class="w-full sm:w-auto px-8 h-[52px] rounded-full bg-ink-900 text-white text-[14.5px] font-bold hover:bg-ink-800 transition">
+        신청서 제출하기
+      </button>
+    </form>
+
+    <!-- 제출 완료 메시지 -->
+    <div id="success-msg" class="hidden max-w-[760px] mt-6 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 p-6">
+      <div class="flex items-center gap-3 text-emerald-700 font-bold text-[15px]">
+        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
+        신청이 접수되었습니다
+      </div>
+      <p class="mt-2 text-[13px] text-ink-600 leading-relaxed">담당 부서가 일정을 확인한 뒤 승인 결과를 안내드립니다. 문의사항은 관리팀(02-704-3330)으로 연락 주세요.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-ink-900 text-white/70">
+  <div class="max-w-[1240px] mx-auto px-6 py-14">
+    <div class="grid md:grid-cols-12 gap-10">
+      <div class="md:col-span-4">
+        <div class="flex items-center gap-2.5 text-white">
+          <img src="assets/logo.png" alt="가평교회" class="w-9 h-9 object-contain" />
+          <span class="font-bold text-[16px]">가평교회 <span class="text-white/50 font-medium text-[12px] ml-1">GAPYEONG CHURCH</span></span>
+        </div>
+        <p class="mt-5 text-[13px] leading-relaxed">
+          (우) 12537 경기도 가평군 가평읍 가화로 168<br />
+          TEL. 031-706-3351 &nbsp;·&nbsp; FAX. 031-706-3350
+        </p>
+        <p class="mt-4 text-[12px] text-white/40">© 2026 GAPYEONG CHURCH. ALL RIGHTS RESERVED.</p>
+      </div>
+      <div class="md:col-span-5 grid grid-cols-3 gap-6 text-[13px]">
+        <div>
+          <div class="text-white font-semibold mb-3">예배</div>
+          <ul class="space-y-2">
+            <li><a href="worship.html" class="hover:text-white">주일예배</a></li>
+            <li><a href="#" class="hover:text-white">수요예배</a></li>
+            <li><a href="#" class="hover:text-white">새벽예배</a></li>
+            <li><a href="#" class="hover:text-white">청년예배</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="text-white font-semibold mb-3">행정</div>
+          <ul class="space-y-2">
+            <li><a href="giving.html" class="hover:text-white">온라인 헌금</a></li>
+            <li><a href="certificates.html" class="hover:text-white">제증명 발급</a></li>
+            <li><a href="facilities.html" class="hover:text-white">시설 · 장비 · 차량 신청</a></li>
+            <li><a href="support.html" class="hover:text-white">후원 안내</a></li>
+            <li><a href="contact.html" class="hover:text-white">문의하기</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="text-white font-semibold mb-3">바로가기</div>
+          <ul class="space-y-2">
+            <li><a href="#" class="hover:text-white">개인정보처리방침</a></li>
+            <li><a href="#" class="hover:text-white">오시는 길</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="md:col-span-3">
+        <div class="text-white font-semibold mb-3 text-[13px]">Family Site</div>
+        <button class="w-full bg-white/5 border border-white/10 rounded-lg px-4 h-11 flex items-center justify-between text-[13px] hover:bg-white/10">
+          관련 사이트 선택
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const catRadios = document.querySelectorAll('.cat-radio');
+  const groups = {
+    '시설': document.getElementById('facility-group'),
+    '장비': document.getElementById('equipment-group'),
+    '차량': document.getElementById('vehicle-group'),
+  };
+  catRadios.forEach((r) => {
+    r.addEventListener('change', () => {
+      Object.entries(groups).forEach(([key, el]) => {
+        el.classList.toggle('hidden', key !== r.value);
+      });
+    });
+  });
+
+  const form = document.getElementById('reserve-form');
+  const successMsg = document.getElementById('success-msg');
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    form.classList.add('hidden');
+    successMsg.classList.remove('hidden');
+  });
+</script>
+
+</body>
+</html>

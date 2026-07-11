@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>후원 안내 — 가평교회</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" />
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    darkMode: 'class',
+    theme: {
+      extend: {
+        fontFamily: {
+          sans: ['"Pretendard Variable"', 'Pretendard', 'system-ui', 'sans-serif'],
+        },
+        colors: {
+          ink: { 900: '#0e1320', 800: '#171c2c', 700: '#222a3f', 600: '#384058' },
+          brand: { 500: '#3a64f5', 600: '#2a4fd6', 700: '#1f3eb2' },
+          accent: { red: '#e23b3b' },
+          paper: '#f4f5f7',
+          line: '#e5e7eb',
+        },
+      },
+    },
+  };
+</script>
+<style>
+  html { font-family: 'Pretendard Variable', Pretendard, system-ui, sans-serif; }
+  body { -webkit-font-smoothing: antialiased; letter-spacing: -0.01em; }
+  .news-card-shadow { box-shadow: 0 1px 0 rgba(0,0,0,0.04), 0 18px 36px -24px rgba(14,19,32,0.18); }
+</style>
+</head>
+<body class="bg-white text-ink-900">
+
+<!-- ============== TOP UTILITY BAR ============== -->
+<div class="hidden md:block border-b border-line text-[12px] text-ink-600">
+  <div class="max-w-[1240px] mx-auto px-6 h-9 flex items-center justify-between">
+    <div class="flex items-center gap-5">
+      <span class="flex items-center gap-1.5">
+        <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+        2026년 4월 26일 주일예배 · 오전 11:00 본당
+      </span>
+    </div>
+    <div class="flex items-center gap-5">
+      <a href="#" class="hover:text-ink-900">새가족 등록</a>
+      <span class="w-px h-3 bg-line"></span>
+      <a href="#" class="hover:text-ink-900">교회오시는길</a>
+      <span class="w-px h-3 bg-line"></span>
+      <a href="#" class="hover:text-ink-900">English</a>
+      <span class="w-px h-3 bg-line"></span>
+      <a href="#" class="hover:text-ink-900">로그인</a>
+    </div>
+  </div>
+</div>
+
+<!-- ============== HEADER / NAV ============== -->
+<header class="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-line">
+  <div class="max-w-[1240px] mx-auto px-6 h-[72px] flex items-center justify-between">
+    <a href="index.html" class="flex items-center gap-2.5">
+      <img src="assets/logo.png" alt="가평교회" class="w-10 h-10 object-contain" />
+      <span class="font-bold text-[19px] tracking-tight">가평교회 <span class="text-ink-600 font-medium text-[13px] tracking-normal ml-0.5">GAPYEONG CHURCH</span></span>
+    </a>
+
+    <nav class="hidden lg:flex items-center gap-9 text-[15px] font-semibold">
+      <a href="worship.html" class="hover:text-brand-600">예배</a>
+      <a href="#" class="hover:text-brand-600">공동체</a>
+      <a href="#" class="hover:text-brand-600">양육</a>
+      <a href="#" class="hover:text-brand-600">미디어</a>
+      <a href="#" class="hover:text-brand-600">교회소개</a>
+      <a href="giving.html" class="relative py-6 text-brand-600">
+        행정
+        <span class="absolute left-0 right-0 -bottom-px h-0.5 bg-brand-600"></span>
+      </a>
+    </nav>
+
+    <div class="flex items-center gap-3">
+      <button class="w-9 h-9 grid place-items-center rounded-full hover:bg-paper">
+        <svg class="w-[18px] h-[18px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      </button>
+      <button class="hidden md:inline-flex items-center gap-1.5 text-[13px] font-semibold px-3.5 h-9 rounded-full border border-ink-900 hover:bg-ink-900 hover:text-white">
+        새가족 등록
+      </button>
+      <button class="lg:hidden w-9 h-9 grid place-items-center rounded-full hover:bg-paper">
+        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- ============== PAGE HEAD ============== -->
+<section class="bg-white border-b border-line">
+  <div class="max-w-[1240px] mx-auto px-6 pt-10 pb-10">
+    <nav class="flex items-center gap-2 text-[12px] text-ink-600">
+      <a href="index.html" class="hover:text-ink-900 inline-flex items-center gap-1.5">
+        <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 11l9-8 9 8M5 10v10h14V10"/></svg>
+        HOME
+      </a>
+      <span class="text-line">›</span>
+      <a href="#" class="hover:text-ink-900">행정</a>
+      <span class="text-line">›</span>
+      <span class="text-ink-900 font-semibold">후원 안내</span>
+    </nav>
+
+    <div class="mt-6">
+      <h1 class="text-[40px] md:text-[52px] font-extrabold tracking-tight leading-tight">후원 안내</h1>
+      <p class="mt-3 text-ink-600 text-[14px] max-w-xl leading-relaxed">
+        가평교회는 국내외 선교와 이웃 섬김을 위해 다양한 방식의 후원을 받고 있습니다.
+        후원금뿐 아니라 물품, 재능, 시간을 나누어 함께 섬길 수 있습니다.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ============== 후원 종류 ============== -->
+<section class="bg-white py-16">
+  <div class="max-w-[1240px] mx-auto px-6">
+    <div class="mb-9">
+      <div class="text-[12px] tracking-widest font-bold text-ink-600 mb-2">WAYS TO SUPPORT</div>
+      <h2 class="text-[28px] md:text-[32px] font-extrabold tracking-tight">후원 종류</h2>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-5">
+      <!-- 후원금 / 도네이션 -->
+      <div class="rounded-2xl border border-line p-7 news-card-shadow">
+        <div class="w-11 h-11 rounded-xl bg-brand-500/10 text-brand-600 grid place-items-center mb-5">
+          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7.5-4.9-10-9.3C.4 8.2 2 4.5 5.6 4c2-.3 3.9.7 5 2.3C11.6 4.7 13.5 3.7 15.5 4c3.6.5 5.2 4.2 3.6 7.7C16.5 16.1 12 21 12 21Z"/></svg>
+        </div>
+        <h3 class="text-[18px] font-extrabold tracking-tight mb-2">후원금 · 도네이션</h3>
+        <p class="text-[13px] text-ink-600 leading-relaxed mb-5">
+          선교사 후원, 지역사회 구제, 다음세대 사역 등 특정 사역을 지정해 정기 또는 일시 후원금을 드릴 수 있습니다.
+        </p>
+        <div class="rounded-xl bg-paper p-5 text-[13px] space-y-2">
+          <div class="flex items-center justify-between"><span class="text-ink-600">방법</span><span class="font-bold">계좌 이체</span></div>
+          <div class="flex items-center justify-between"><span class="text-ink-600">계좌</span><span class="font-bold">국민은행 123456-04-789012</span></div>
+          <div class="flex items-center justify-between"><span class="text-ink-600">예금주</span><span class="font-bold">가평교회</span></div>
+        </div>
+      </div>
+
+      <!-- 물품 후원 -->
+      <div class="rounded-2xl border border-line p-7 news-card-shadow">
+        <div class="w-11 h-11 rounded-xl bg-amber-500/10 text-amber-600 grid place-items-center mb-5">
+          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 8 12 3 3 8m18 0-9 5m9-5v9l-9 5m0-9L3 8m9 5v9M3 8v9l9 5"/></svg>
+        </div>
+        <h3 class="text-[18px] font-extrabold tracking-tight mb-2">물품 후원</h3>
+        <p class="text-[13px] text-ink-600 leading-relaxed mb-5">
+          생활용품, 의류, 학용품, 식료품 등을 후원해 주시면 지역 나눔 사역과 해외 선교지로 전달됩니다.
+        </p>
+        <div class="rounded-xl bg-paper p-5 text-[13px] space-y-2">
+          <div class="flex items-center justify-between"><span class="text-ink-600">방법</span><span class="font-bold">교회 사무실 방문 접수</span></div>
+          <div class="flex items-center justify-between"><span class="text-ink-600">접수 시간</span><span class="font-bold">평일 9시–18시</span></div>
+          <div class="flex items-center justify-between"><span class="text-ink-600">문의</span><span class="font-bold">구제부 02-704-3300</span></div>
+        </div>
+      </div>
+
+      <!-- 재능 기부 -->
+      <div class="rounded-2xl border border-line p-7 news-card-shadow">
+        <div class="w-11 h-11 rounded-xl bg-violet-500/10 text-violet-600 grid place-items-center mb-5">
+          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 19V6M5 12l7-7 7 7"/></svg>
+        </div>
+        <h3 class="text-[18px] font-extrabold tracking-tight mb-2">재능 기부 · 봉사</h3>
+        <p class="text-[13px] text-ink-600 leading-relaxed mb-5">
+          전문 기술, 재능, 시간을 나누어 교육·의료·문화 사역 등에 함께 섬길 수 있습니다.
+        </p>
+        <div class="rounded-xl bg-paper p-5 text-[13px] space-y-2">
+          <div class="flex items-center justify-between"><span class="text-ink-600">방법</span><span class="font-bold">신청서 제출</span></div>
+          <div class="flex items-center justify-between"><span class="text-ink-600">접수처</span><span class="font-bold">선교부 사무실</span></div>
+          <div class="flex items-center justify-between"><span class="text-ink-600">문의</span><span class="font-bold">선교부 02-704-3310</span></div>
+        </div>
+      </div>
+
+      <!-- 선교 후원 -->
+      <div class="rounded-2xl border border-line p-7 news-card-shadow">
+        <div class="w-11 h-11 rounded-xl bg-emerald-500/10 text-emerald-600 grid place-items-center mb-5">
+          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 0 1 0 18 15 15 0 0 1 0-18Z"/></svg>
+        </div>
+        <h3 class="text-[18px] font-extrabold tracking-tight mb-2">선교 후원</h3>
+        <p class="text-[13px] text-ink-600 leading-relaxed mb-5">
+          해외 파송 선교사와 협력 선교지를 정기적으로 후원하며, 단기선교팀 파송 비용도 함께 지원할 수 있습니다.
+        </p>
+        <div class="rounded-xl bg-paper p-5 text-[13px] space-y-2">
+          <div class="flex items-center justify-between"><span class="text-ink-600">방법</span><span class="font-bold">정기 계좌이체</span></div>
+          <div class="flex items-center justify-between"><span class="text-ink-600">계좌</span><span class="font-bold">국민은행 123456-04-789012</span></div>
+          <div class="flex items-center justify-between"><span class="text-ink-600">문의</span><span class="font-bold">선교부 02-704-3310</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== 후원 방법 (STEP) ============== -->
+<section class="bg-paper py-16">
+  <div class="max-w-[1240px] mx-auto px-6">
+    <div class="mb-9">
+      <div class="text-[12px] tracking-widest font-bold text-ink-600 mb-2">HOW IT WORKS</div>
+      <h2 class="text-[28px] md:text-[32px] font-extrabold tracking-tight">후원 방법</h2>
+    </div>
+
+    <div class="grid md:grid-cols-4 gap-5">
+      <div class="rounded-2xl bg-white p-6 news-card-shadow">
+        <span class="w-8 h-8 rounded-full bg-ink-900 text-white text-[13px] font-bold grid place-items-center mb-4">1</span>
+        <div class="text-[14.5px] font-bold mb-1.5">후원 종류 선택</div>
+        <p class="text-[12.5px] text-ink-600 leading-relaxed">후원금, 물품, 재능, 선교 후원 중 원하는 방식을 선택합니다.</p>
+      </div>
+      <div class="rounded-2xl bg-white p-6 news-card-shadow">
+        <span class="w-8 h-8 rounded-full bg-ink-900 text-white text-[13px] font-bold grid place-items-center mb-4">2</span>
+        <div class="text-[14.5px] font-bold mb-1.5">담당 부서 문의</div>
+        <p class="text-[12.5px] text-ink-600 leading-relaxed">각 후원 유형의 담당 부서로 전화 또는 방문으로 문의합니다.</p>
+      </div>
+      <div class="rounded-2xl bg-white p-6 news-card-shadow">
+        <span class="w-8 h-8 rounded-full bg-ink-900 text-white text-[13px] font-bold grid place-items-center mb-4">3</span>
+        <div class="text-[14.5px] font-bold mb-1.5">전달 또는 이체</div>
+        <p class="text-[12.5px] text-ink-600 leading-relaxed">계좌이체, 방문 전달, 신청서 제출 등 안내에 따라 후원을 전달합니다.</p>
+      </div>
+      <div class="rounded-2xl bg-white p-6 news-card-shadow">
+        <span class="w-8 h-8 rounded-full bg-ink-900 text-white text-[13px] font-bold grid place-items-center mb-4">4</span>
+        <div class="text-[14.5px] font-bold mb-1.5">확인 및 감사 안내</div>
+        <p class="text-[12.5px] text-ink-600 leading-relaxed">담당 부서가 접수를 확인하고, 필요 시 영수증 발급을 안내해 드립니다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== 문의 ============== -->
+<section class="bg-white py-16">
+  <div class="max-w-[1240px] mx-auto px-6">
+    <div class="rounded-2xl bg-ink-900 text-white p-8 md:p-10 flex items-center justify-between flex-wrap gap-6">
+      <div>
+        <div class="text-[12px] tracking-widest font-bold text-white/60 mb-2">CONTACT</div>
+        <h3 class="text-[22px] font-extrabold tracking-tight">후원 문의</h3>
+        <p class="mt-2 text-[13.5px] text-white/70 leading-relaxed">
+          어떤 방식으로 섬기면 좋을지 고민되신다면 담당 간사가 안내해 드립니다.
+        </p>
+      </div>
+      <div class="flex items-center gap-3">
+        <a href="giving.html" class="inline-flex items-center gap-1.5 px-5 h-11 rounded-full bg-white/10 hover:bg-white/20 text-[13.5px] font-semibold transition">
+          온라인 헌금 바로가기
+        </a>
+        <a href="#" class="inline-flex items-center gap-1.5 px-5 h-11 rounded-full bg-white text-ink-900 hover:bg-white/90 text-[13.5px] font-semibold transition">
+          재정부 문의하기
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== FOOTER ============== -->
+<footer class="bg-ink-900 text-white/70">
+  <div class="max-w-[1240px] mx-auto px-6 py-14">
+    <div class="grid md:grid-cols-12 gap-10">
+      <div class="md:col-span-4">
+        <div class="flex items-center gap-2.5 text-white">
+          <img src="assets/logo.png" alt="가평교회" class="w-9 h-9 object-contain" />
+          <span class="font-bold text-[16px]">가평교회 <span class="text-white/50 font-medium text-[12px] ml-1">GAPYEONG CHURCH</span></span>
+        </div>
+        <p class="mt-5 text-[13px] leading-relaxed">
+          08512 서울특별시 금천구 가산디지털1로 168 (우림라이온스밸리)<br />
+          TEL. 02-704-3300 &nbsp;·&nbsp; FAX. 02-704-3301
+        </p>
+        <p class="mt-4 text-[12px] text-white/40">© 2026 GAPYEONG CHURCH. ALL RIGHTS RESERVED.</p>
+      </div>
+
+      <div class="md:col-span-5 grid grid-cols-3 gap-6 text-[13px]">
+        <div>
+          <div class="text-white font-semibold mb-3">예배</div>
+          <ul class="space-y-2">
+            <li><a href="#" class="hover:text-white">주일예배</a></li>
+            <li><a href="#" class="hover:text-white">수요예배</a></li>
+            <li><a href="#" class="hover:text-white">새벽예배</a></li>
+            <li><a href="#" class="hover:text-white">청년예배</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="text-white font-semibold mb-3">공동체</div>
+          <ul class="space-y-2">
+            <li><a href="#" class="hover:text-white">새가족부</a></li>
+            <li><a href="#" class="hover:text-white">목장 모임</a></li>
+            <li><a href="#" class="hover:text-white">유·초등부</a></li>
+            <li><a href="#" class="hover:text-white">실버사역</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="text-white font-semibold mb-3">바로가기</div>
+          <ul class="space-y-2">
+            <li><a href="giving.html" class="hover:text-white">온라인 헌금</a></li>
+            <li><a href="#" class="hover:text-white">개인정보처리방침</a></li>
+            <li><a href="#" class="hover:text-white">오시는 길</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="md:col-span-3">
+        <div class="text-white font-semibold mb-3 text-[13px]">Family Site</div>
+        <button class="w-full bg-white/5 border border-white/10 rounded-lg px-4 h-11 flex items-center justify-between text-[13px] hover:bg-white/10">
+          관련 사이트 선택
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

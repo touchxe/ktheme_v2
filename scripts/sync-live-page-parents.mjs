@@ -17,7 +17,6 @@ const parentMap = {
   history: 'about',
   'annual-schedule': 'about',
   location: 'about',
-  'worship-guide': 'worship',
   'sunday-worship': 'worship',
   'wednesday-worship': 'worship',
   'dawn-prayer': 'worship',

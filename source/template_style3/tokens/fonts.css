@@ -1,0 +1,8 @@
+/* 본문/제목: Pretendard Variable (한글 가변 폰트, CDN 호스팅).
+   별도 ttf 번들 없이 CDN 구독 방식으로 사용합니다. */
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css");
+
+:root {
+  --font-sans: "Pretendard Variable", Pretendard, system-ui, -apple-system, "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  --font-mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+}
