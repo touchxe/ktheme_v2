@@ -1,0 +1,29 @@
+<!-- wp:html -->
+<div class="kt-library-modal" id="kt-ministry-contact-modal" hidden>
+	<button class="kt-library-modal__backdrop" type="button" data-kt-modal-close aria-label="모달 닫기"></button>
+	<div class="kt-library-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="kt-ministry-contact-modal-title">
+		<button class="kt-library-modal__close" type="button" data-kt-modal-close aria-label="닫기">×</button>
+		<span class="kt-card-label">Contact</span>
+		<h2 id="kt-ministry-contact-modal-title">공동체 문의하기</h2>
+		<p>참여를 원하시는 공동체와 연락처를 남겨주시면 담당자가 확인 후 안내드립니다.</p>
+		<form class="kt-ministry-form" action="#" method="post">
+			<label class="kt-ministry-form__wide"><span>참여희망 공동체</span>
+				<select name="community" data-kt-modal-community-select>
+					<option value="" selected disabled>선택하기</option>
+					<option value="newcomers">새가족</option>
+					<option value="small-groups">소그룹/구역</option>
+					<option value="next-generation">다음세대</option>
+					<option value="youth-ministry">청년부</option>
+					<option value="senior-ministry">장년/시니어</option>
+					<option value="etc">기타 문의</option>
+				</select>
+			</label>
+			<label><span>이름</span><input type="text" name="name" autocomplete="name" /></label>
+			<label><span>연락처</span><input type="tel" name="phone" autocomplete="tel" /></label>
+			<label class="kt-ministry-form__wide"><span>문의 내용</span><textarea name="message" rows="4" placeholder="참여 가능한 시간이나 궁금한 점을 남겨주세요."></textarea></label>
+			<label class="kt-ministry-form__check"><input type="checkbox" name="privacy" /><span>개인정보 수집 및 이용에 동의합니다.</span></label>
+			<button class="kt-button kt-button--dark" type="submit">문의 보내기</button>
+		</form>
+	</div>
+</div>
+<!-- /wp:html -->

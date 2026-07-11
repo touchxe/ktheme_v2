@@ -20,23 +20,39 @@ const menuItems = [
   { slug: 'newcomers', label: '새가족 안내' }
 ];
 
+const footerMenuItems = [
+  { slug: 'worship-guide', label: '예배 안내' },
+  { slug: 'sunday-worship', label: '주일예배' },
+  { slug: 'news', label: '교회소식' },
+  { slug: 'location', label: '오시는 길' },
+  { slug: 'privacy-policy', label: '개인정보처리방침' }
+];
+
+async function buildNavigationContent(items) {
+  let navContent = '';
+
+  for (const item of items) {
+    const res = await fetch(`${API_URL}/pages?slug=${item.slug}`, { headers });
+    const pages = await res.json();
+    if (pages && pages.length > 0) {
+      const pageId = pages[0].id;
+      navContent += `<!-- wp:navigation-link {"label":"${item.label}","type":"page","id":${pageId},"url":"/${item.slug}"} /-->\n`;
+    } else {
+      console.warn(`[WARN] '${item.slug}' 페이지를 찾을 수 없습니다. 메뉴 링크가 깨질 수 있습니다.`);
+      navContent += `<!-- wp:navigation-link {"label":"${item.label}","type":"page","url":"/${item.slug}"} /-->\n`;
+    }
+  }
+
+  return navContent;
+}
+
 async function setupNavigation() {
   console.log('네비게이션 메뉴 생성을 시작합니다...');
 
   try {
     // 1. 페이지 ID 가져오기
-    let navContent = '';
-    for (const item of menuItems) {
-      const res = await fetch(`${API_URL}/pages?slug=${item.slug}`, { headers });
-      const pages = await res.json();
-      if (pages && pages.length > 0) {
-        const pageId = pages[0].id;
-        navContent += `<!-- wp:navigation-link {"label":"${item.label}","type":"page","id":${pageId},"url":"/${item.slug}"} /-->\n`;
-      } else {
-        console.warn(`[WARN] '${item.slug}' 페이지를 찾을 수 없습니다. 메뉴 링크가 깨질 수 있습니다.`);
-        navContent += `<!-- wp:navigation-link {"label":"${item.label}","type":"page","url":"/${item.slug}"} /-->\n`;
-      }
-    }
+    const navContent = await buildNavigationContent(menuItems);
+    const footerNavContent = await buildNavigationContent(footerMenuItems);
 
     // 2. 기존 Navigation 메뉴 확인
     const navRes = await fetch(`${API_URL}/navigation`, { headers });
@@ -79,7 +95,7 @@ async function setupNavigation() {
       await fetch(`${API_URL}/navigation/${footerNavId}`, {
         method: 'POST',
         headers,
-        body: JSON.stringify({ content: navContent, status: 'publish' })
+        body: JSON.stringify({ content: footerNavContent, status: 'publish' })
       });
     } else {
       const createRes = await fetch(`${API_URL}/navigation`, {
@@ -87,7 +103,7 @@ async function setupNavigation() {
         headers,
         body: JSON.stringify({
           title: 'Footer Menu',
-          content: navContent,
+          content: footerNavContent,
           status: 'publish'
         })
       });
