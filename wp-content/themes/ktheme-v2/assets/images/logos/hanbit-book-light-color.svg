@@ -1,0 +1,18 @@
+<svg width="640" height="160" viewBox="0 0 640 160" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">한빛교회 book light horizontal logo</title>
+  <desc id="desc">Horizontal Korean church logo with an open book, light ray, subtle cross symbol, and Hanbit Church wordmark.</desc>
+  <g transform="translate(34 31)">
+    <path d="M22 72C42 63 55 64 69 78V31C54 20 40 18 22 25V72Z" fill="#EAF5F3"/>
+    <path d="M69 78C83 64 96 63 116 72V25C98 18 84 20 69 31V78Z" fill="#EAF5F3"/>
+    <path d="M22 25C40 18 54 20 69 31C84 20 98 18 116 25" stroke="#12324A" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M22 72C42 63 55 64 69 78C83 64 96 63 116 72" stroke="#12324A" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M69 31V89" stroke="#12324A" stroke-width="9" stroke-linecap="round"/>
+    <path d="M84 18L103 5" stroke="#C9A45A" stroke-width="7" stroke-linecap="round"/>
+    <path d="M91 36H115" stroke="#58AFA5" stroke-width="7" stroke-linecap="round"/>
+    <path d="M103 23V48" stroke="#58AFA5" stroke-width="7" stroke-linecap="round"/>
+  </g>
+  <g fill="#0E0E10">
+    <text x="168" y="79" font-family="'Apple SD Gothic Neo', 'Noto Sans CJK KR', 'Pretendard', sans-serif" font-size="48" font-weight="700" letter-spacing="-1">한빛교회</text>
+    <text x="171" y="111" font-family="'Inter', 'Apple SD Gothic Neo', sans-serif" font-size="14" font-weight="600" letter-spacing="3.5" fill="#6B6F76">HANBIT CHURCH</text>
+  </g>
+</svg>

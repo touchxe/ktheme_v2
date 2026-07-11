@@ -10203,7 +10203,11 @@ body:is(.page-id-67,.page-id-69) .kt-nav .wp-block-navigation__container > .wp-b
   max-width: 760px;
 }
 
-.kt-mission-field-grid,
+.kt-mission-field-grid {
+  row-gap: 48px;
+  column-gap: 24px;
+}
+
 .kt-mission-question-grid {
   gap: 20px;
 }

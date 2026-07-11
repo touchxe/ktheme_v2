@@ -1,26 +1,26 @@
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
 import './globals.css'
-
-const inter = Inter({
-  subsets: ['latin'],
-  display: 'swap',
-  variable: '--font-inter',
-})
 
 export const metadata: Metadata = {
   title: {
-    default: '케이테마 교회',
-    template: '%s | 케이테마 교회',
+    default: '샘물교회',
+    template: '%s | 샘물교회',
   },
-  description: '케이테마 교회 공식 웹사이트 - 예배와 말씀, 사역과 공동체',
+  description: '예배하고, 서로를 돌보며, 지역과 다음세대를 섬기는 샘물교회입니다.',
   keywords: ['교회', '예배', '말씀', '사역', '공동체', '새가족'],
-  authors: [{ name: '케이테마 교회' }],
+  authors: [{ name: '샘물교회' }],
   openGraph: {
-    title: '케이테마 교회',
-    description: '케이테마 교회 공식 웹사이트 - 예배와 말씀, 사역과 공동체',
+    title: '샘물교회',
+    description: '예배하고, 서로를 돌보며, 지역과 다음세대를 섬기는 샘물교회입니다.',
     type: 'website',
     locale: 'ko_KR',
+    images: [{ url: '/og.png', width: 1200, height: 630, alt: '샘물교회 — 일상에서 함께 자라는 믿음' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: '샘물교회',
+    description: '일상에서 함께 자라는 믿음',
+    images: ['/og.png'],
   },
 }
 
@@ -30,7 +30,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="ko" className={inter.variable} suppressHydrationWarning>
+    <html lang="ko" suppressHydrationWarning>
       <body className="min-h-screen font-body">
         {children}
       </body>
