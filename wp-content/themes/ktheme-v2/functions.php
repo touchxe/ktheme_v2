@@ -451,7 +451,7 @@ function ktheme_v2_render_header_shortcode(): string {
 	<div class="kt-header">
 		<div class="kt-container kt-header__inner">
 			<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="kt-brand kt-brand--mark-only" aria-label="<?php echo esc_attr__( 'ê°€?‰êµ????', 'ktheme-v2' ); ?>">
-				<img src="<?php echo esc_url( get_theme_file_uri( 'assets/images/logo-mark.svg' ) ); ?>" alt="<?php echo esc_attr__( 'ê°€?‰êµ??', 'ktheme-v2' ); ?>" />
+				<img src="<?php echo esc_url( get_theme_file_uri( 'assets/images/logos/hanbit-book-light-color.svg' ) ); ?>" alt="<?php echo esc_attr__( 'ê°€?‰êµ??', 'ktheme-v2' ); ?>" />
 			</a>
 
 			<?php echo ktheme_v2_render_primary_menu(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
@@ -648,7 +648,7 @@ function ktheme_v2_render_footer_shortcode(): string {
 		<div class="kt-container kt-footer__grid">
 			<div class="kt-footer__brand">
 				<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="kt-brand kt-brand--mark-only" aria-label="<?php echo esc_attr__( 'ê°€?‰êµ????', 'ktheme-v2' ); ?>">
-					<img src="<?php echo esc_url( get_theme_file_uri( 'assets/images/logo-mark-white.svg' ) ); ?>" alt="<?php echo esc_attr__( 'ê°€?‰êµ??', 'ktheme-v2' ); ?>" />
+					<img src="<?php echo esc_url( get_theme_file_uri( 'assets/images/logos/hanbit-book-light-white.svg' ) ); ?>" alt="<?php echo esc_attr__( 'ê°€?‰êµ??', 'ktheme-v2' ); ?>" />
 				</a>
 				<p><?php echo esc_html__( '?¤ìŒ ?¸ë??€ ?¨ê»˜ ?ˆë°°?˜ê³ , ì§€??³¼ ?¼ìƒ???¬ê¸°??êµíšŒ?…ë‹ˆ??', 'ktheme-v2' ); ?></p>
 			</div>
