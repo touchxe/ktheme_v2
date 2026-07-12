@@ -450,8 +450,8 @@ function ktheme_v2_render_header_shortcode(): string {
 
 	<div class="kt-header">
 		<div class="kt-container kt-header__inner">
-			<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="kt-brand kt-brand--mark-only" aria-label="<?php echo esc_attr__( 'Í∞Ä?âÍµê????, 'ktheme-v2' ); ?>">
-				<img src="<?php echo esc_url( get_theme_file_uri( 'assets/images/logo-mark.svg' ) ); ?>" alt="<?php echo esc_attr__( 'Í∞Ä?âÍµê??, 'ktheme-v2' ); ?>" />
+			<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="kt-brand kt-brand--mark-only" aria-label="<?php echo esc_attr__( 'Í∞Ä?âÍµê????', 'ktheme-v2' ); ?>">
+				<img src="<?php echo esc_url( get_theme_file_uri( 'assets/images/logo-mark.svg' ) ); ?>" alt="<?php echo esc_attr__( 'Í∞Ä?âÍµê??', 'ktheme-v2' ); ?>" />
 			</a>
 
 			<?php echo ktheme_v2_render_primary_menu(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
@@ -471,10 +471,10 @@ function ktheme_v2_render_header_shortcode(): string {
 			<div class="kt-container kt-header-search__inner">
 				<form class="kt-header-search__form" role="search" method="get" action="<?php echo esc_url( home_url( '/' ) ); ?>">
 					<label class="screen-reader-text" for="kt-header-search-input"><?php echo esc_html__( 'Í≤Ä?âÏñ¥', 'ktheme-v2' ); ?></label>
-					<input id="kt-header-search-input" type="search" name="s" placeholder="<?php echo esc_attr__( 'Í≤Ä?âÏñ¥Î•??ÖÎ†•?òÏÑ∏??, 'ktheme-v2' ); ?>" autocomplete="off" />
+					<input id="kt-header-search-input" type="search" name="s" placeholder="<?php echo esc_attr__( 'Í≤Ä?âÏñ¥Î•??ÖÎ†•?òÏÑ∏??', 'ktheme-v2' ); ?>" autocomplete="off" />
 					<button type="submit">
 						<svg class="kt-icon kt-icon--sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
-						<span><?php echo esc_html__( 'Í≤Ä??, 'ktheme-v2' ); ?></span>
+						<span><?php echo esc_html__( 'Í≤Ä??', 'ktheme-v2' ); ?></span>
 					</button>
 				</form>
 			</div>
@@ -563,6 +563,7 @@ function ktheme_v2_render_header_shortcode(): string {
 	return ktheme_v2_compact_shortcode_html( (string) ob_get_clean() );
 }
 add_shortcode( 'ktheme_header', 'ktheme_v2_render_header_shortcode' );
+add_shortcode( 'ktheme_site_header', 'ktheme_v2_render_header_shortcode' );
 
 function ktheme_v2_render_dynamic_template_part_block( string $block_content, array $block ): string {
 	if ( 'core/html' !== ( $block['blockName'] ?? '' ) ) {
@@ -646,8 +647,8 @@ function ktheme_v2_render_footer_shortcode(): string {
 	<div class="kt-footer">
 		<div class="kt-container kt-footer__grid">
 			<div class="kt-footer__brand">
-				<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="kt-brand kt-brand--mark-only" aria-label="<?php echo esc_attr__( 'Í∞Ä?âÍµê????, 'ktheme-v2' ); ?>">
-					<img src="<?php echo esc_url( get_theme_file_uri( 'assets/images/logo-mark-white.svg' ) ); ?>" alt="<?php echo esc_attr__( 'Í∞Ä?âÍµê??, 'ktheme-v2' ); ?>" />
+				<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="kt-brand kt-brand--mark-only" aria-label="<?php echo esc_attr__( 'Í∞Ä?âÍµê????', 'ktheme-v2' ); ?>">
+					<img src="<?php echo esc_url( get_theme_file_uri( 'assets/images/logo-mark-white.svg' ) ); ?>" alt="<?php echo esc_attr__( 'Í∞Ä?âÍµê??', 'ktheme-v2' ); ?>" />
 				</a>
 				<p><?php echo esc_html__( '?§Ïùå ?∏Î??Ä ?®Íªò ?àÎ∞∞?òÍ≥†, ÏßÄ??≥º ?ºÏÉÅ???¨Í∏∞??ÍµêÌöå?ÖÎãà??', 'ktheme-v2' ); ?></p>
 			</div>
@@ -665,19 +666,19 @@ function ktheme_v2_render_footer_shortcode(): string {
 			</nav>
 
 			<div class="kt-footer__connect">
-				<h4><?php echo esc_html__( 'Î∞îÎ°úÍ∞ÄÍ∏?, 'ktheme-v2' ); ?></h4>
+				<h4><?php echo esc_html__( 'Î∞îÎ°úÍ∞ÄÍ∏?', 'ktheme-v2' ); ?></h4>
 				<details class="kt-family-dropdown">
 					<summary>
-						<span><?php echo esc_html__( '?®Î?Î¶??¨Ïù¥??, 'ktheme-v2' ); ?></span>
+						<span><?php echo esc_html__( '?®Î?Î¶??¨Ïù¥??', 'ktheme-v2' ); ?></span>
 						<svg class="kt-icon kt-icon--sm kt-family-dropdown__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
 					</summary>
 					<div class="kt-family-dropdown__menu">
-						<a href="#" target="_blank" rel="noopener"><?php echo esc_html__( '?Ä?úÏòà?òÍµê?•Î°ú??, 'ktheme-v2' ); ?></a>
+						<a href="#" target="_blank" rel="noopener"><?php echo esc_html__( '?Ä?úÏòà?òÍµê?•Î°ú??', 'ktheme-v2' ); ?></a>
 						<a href="#" target="_blank" rel="noopener"><?php echo esc_html__( 'Ï¥ùÌöåÍµêÏú°?êÏõêÎ∂Ä', 'ktheme-v2' ); ?></a>
 						<a href="#" target="_blank" rel="noopener"><?php echo esc_html__( '?úÍµ≠Í∏∞ÎèÖÍ≥µÎ≥¥', 'ktheme-v2' ); ?></a>
 					</div>
 				</details>
-				<div class="kt-social-links" aria-label="<?php echo esc_attr__( 'Ï£ºÏöî SNS Î∞îÎ°úÍ∞ÄÍ∏?, 'ktheme-v2' ); ?>">
+				<div class="kt-social-links" aria-label="<?php echo esc_attr__( 'Ï£ºÏöî SNS Î∞îÎ°úÍ∞ÄÍ∏?', 'ktheme-v2' ); ?>">
 					<a href="#" aria-label="YouTube"><svg class="kt-icon kt-icon--sm" viewBox="0 0 24 24" fill="currentColor"><path d="M23 6.2s-.2-1.6-.9-2.3c-.9-.9-1.9-.9-2.3-1C16.6 2.5 12 2.5 12 2.5s-4.6 0-7.8.4c-.5 0-1.5.1-2.3 1-.7.7-.9 2.3-.9 2.3S.7 8 .7 9.9v1.7c0 1.9.3 3.7.3 3.7s.2 1.6.9 2.3c.9.9 2.1.9 2.6 1 1.9.2 8 .3 8 .3s4.6 0 7.8-.4c.5 0 1.5-.1 2.3-1 .7-.7.9-2.3.9-2.3s.3-1.9.3-3.7V9.9C23.3 8 23 6.2 23 6.2zM9.5 13.6V7.7l5.9 3z"/></svg></a>
 					<a href="#" aria-label="Instagram"><svg class="kt-icon kt-icon--sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="4"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/></svg></a>
 					<a href="#" aria-label="Facebook"><svg class="kt-icon kt-icon--sm" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.5 2.9h-2.4v7A10 10 0 0 0 22 12z"/></svg></a>
@@ -1396,52 +1397,36 @@ function ktheme_v2_component_tab_panels( array $args ): string {
 }
 
 function ktheme_v2_location_page_data(): array {
-	$address       = '08512 ?úÏö∏?πÎ≥Ñ??Í∏àÏ≤úÍµ?Í∞Ä?∞ÎîîÏßÄ??Î°?168';
+	$address = "ÏÑúÏö∏ÌäπÎ≥ÑÏãú Í∏àÏ≤úÍµ¨ Í∞ÄÏÇ∞ÎîîÏßÄÌÑ∏1Î°ú 168";
 	$address_query = rawurlencode( $address );
 
 	return array(
-		'name'          => 'Í∞Ä?âÍµê??,
-		'address'       => $address,
-		'phone'         => '02-704-3300',
-		'map_url'       => 'https://www.google.com/maps/search/?api=1&query=' . $address_query,
-		'map_embed_url' => 'https://www.google.com/maps?q=' . $address_query . '&output=embed',
-		'direction_url' => 'https://www.google.com/maps/dir/?api=1&destination=' . $address_query,
-		'routes'        => array(
+		"name" => "Í∞ÄÌèâÍµêÌöå",
+		"address" => $address,
+		"phone" => "02-704-3300",
+		"map_url" => "https://www.google.com/maps/search/?api=1&query=" . $address_query,
+		"map_embed_url" => "https://www.google.com/maps?q=" . $address_query . "&output=embed",
+		"direction_url" => "https://www.google.com/maps/dir/?api=1&destination=" . $address_query,
+		"routes" => array(
 			array(
-				'key'    => 'car',
-				'label'  => '?êÍ???,
-				'title'  => '?êÍ??©ÏùÑ ?¥Ïö©?òÏó¨ ?§Ïãú??Î∞©Î≤ï',
-				'routes' => array(
-					array( 'title' => '?úÎ?Í∞ÑÏÑ†?ÑÎ°ú ?¥Ïö© ??, 'steps' => array( 'Í∞Ä?∞ÎîîÏßÄ?∏Îã®ÏßÄ Î∞©Ìñ• ÏßÑÏûÖ', '?îÏ??∏Îã®ÏßÄ?§Í±∞Î¶?, 'Í∞Ä?âÍµê?? ) ),
-					array( 'title' => '?®Î??úÌôòÎ°??¥Ïö© ??, 'steps' => array( 'Íµ¨Î°úIC Î∞©Î©¥ ÏßÑÏûÖ', 'Í∞Ä?∞ÎîîÏßÄ??Î°?, 'Í∞Ä?âÍµê?? ) ),
-					array( 'title' => '?§ÎπÑÍ≤åÏù¥??Í≤Ä??, 'steps' => array( 'Í∞Ä?âÍµê???êÎäî Ï£ºÏÜå ?ÖÎ†•', $address ) ),
+				"key" => "car",
+				"label" => "ÏûêÍ∞ÄÏö©",
+				"title" => "ÏûêÍ∞ÄÏö©ÏúºÎ°ú Ïò§ÏãúÎäî Í∏∏",
+				"routes" => array(
+					array( "title" => "Í∞ÑÏÑ†ÎèÑÎ°ú Ïù¥Ïö©", "steps" => array( "Í∞ÄÏÇ∞ÎîîÏßÄÌÑ∏Îã®ÏßÄ Î∞©Ìñ•ÏúºÎ°ú ÏßÑÏûÖ", "ÍµêÏ∞®Î°úÎ•º ÏßÄÎÇò ÏßÅÏßÑ", "Í∞ÄÌèâÍµêÌöå ÎèÑÏ∞©" ) ),
+					array( "title" => "ÏàúÌôòÎèÑÎ°ú Ïù¥Ïö©", "steps" => array( "Íµ¨Î°úIC Î∞©Î©¥ÏúºÎ°ú ÏßÑÏûÖ", "Í∞ÄÏÇ∞ÎîîÏßÄÌÑ∏Î°ú Ïù¥Îèô", "Í∞ÄÌèâÍµêÌöå ÎèÑÏ∞©" ) ),
+					array( "title" => "ÎÇ¥ÎπÑÍ≤åÏù¥ÏÖò", "steps" => array( "Í∞ÄÌèâÍµêÌöåÎ•º Í≤ÄÏÉâÌïòÍ±∞ÎÇò Ï£ºÏÜåÎ•º ÏûÖÎ†•", $address ) ),
 				),
 			),
 			array(
-				'key'    => 'transit',
-				'label'  => '?ÄÏ§ëÍµê??,
-				'title'  => '?ÄÏ§ëÍµê?µÏùÑ ?¥Ïö©?òÏó¨ ?§Ïãú??Î∞©Î≤ï',
-				'routes' => array(
-					array( 'title' => 'ÏßÄ?òÏ≤†', 'steps' => array( '1?∏ÏÑ†¬∑7?∏ÏÑ† Í∞Ä?∞ÎîîÏßÄ?∏Îã®ÏßÄ???òÏ∞®', '?ÑÎ≥¥ ??10Î∂?, 'Í∞Ä?âÍµê?? ) ),
-					array( 'title' => 'Î≤ÑÏä§', 'steps' => array( 'Í∞Ä?∞ÎîîÏßÄ?∏Îã®ÏßÄ???êÎäî ?îÏ??∏Îã®ÏßÄ?§Í±∞Î¶??ïÎ•ò???òÏ∞®', '?ÑÎ≥¥ ?¥Îèô' ) ),
-					array( 'title' => 'Ï≤òÏùå Î∞©Î¨∏', 'steps' => array( '???ÑÏ∞© ??ÍµêÌöå ?¨Î¨¥?§Î°ú ?∞ÎùΩ', '?àÎÇ¥ ÏßÄ?? ) ),
+				"key" => "transit",
+				"label" => "ÎåÄÏ§ëÍµêÌÜµ",
+				"title" => "ÎåÄÏ§ëÍµêÌÜµÏúºÎ°ú Ïò§ÏãúÎäî Í∏∏",
+				"routes" => array(
+					array( "title" => "ÏßÄÌïòÏ≤†", "steps" => array( "Í∞ÄÏÇ∞ÎîîÏßÄÌÑ∏Îã®ÏßÄÏó≠ ÌïòÏ∞®", "ÎèÑÎ≥¥ ÏïΩ 10Î∂Ñ", "Í∞ÄÌèâÍµêÌöå ÎèÑÏ∞©" ) ),
+					array( "title" => "Î≤ÑÏä§", "steps" => array( "Í∞ÄÏÇ∞ÎîîÏßÄÌÑ∏Îã®ÏßÄ Ï†ïÎ•òÏû• ÌïòÏ∞®", "ÎèÑÎ≥¥Î°ú Ïù¥Îèô" ) ),
 				),
 			),
-			array(
-				'key'    => 'parking',
-				'label'  => 'Ï£ºÏ∞®?àÎÇ¥',
-				'title'  => 'Ï£ºÏ∞® Î∞?Î∞©Î¨∏ ?àÎÇ¥',
-				'routes' => array(
-					array( 'title' => 'Ï£ºÏùº?àÎ∞∞', 'steps' => array( 'ÍµêÌöå Ï£ºÎ? ÏßÄ??Í≥µÍ∞Ñ ?¥Ïö©', '?àÎÇ¥ Î¥âÏÇ¨???àÎÇ¥', '?àÎ∞∞???ÖÏû•' ) ),
-					array( 'title' => '?àÍ?Ï°?Î∞©Î¨∏', 'steps' => array( '?ÑÏ∞© ???àÎÇ¥ ?∞Ïä§??Î¨∏Ïùò', '?àÍ?Ï°±ÏÑù ?àÎÇ¥' ) ),
-					array( 'title' => '?®Ï≤¥ Î∞©Î¨∏', 'steps' => array( 'Î∞©Î¨∏ ???¨Î¨¥???∞ÎùΩ', 'Ï∞®Îüâ ?ôÏÑ† Ï°∞Ïú®' ) ),
-				),
-			),
-		),
-		'guide_cards'   => array(
-			array( 'title' => '?àÎ∞∞ ?úÍ∞Ñ', 'description' => 'Ï£ºÏùº?àÎ∞∞???§Ï†Ñ 11?úÏóê ?úÎ¶Ω?àÎã§. Ï≤òÏùå ?§Ïã† Î∂ÑÏ? ?àÎ∞∞ 15Î∂????ÑÏ∞©??Í∂åÌï©?àÎã§.' ),
-			array( 'title' => '?àÍ?Ï°??àÎÇ¥', 'description' => '?àÎÇ¥ ?∞Ïä§?¨Ïóê???±Î°ùÍ≥??àÎ∞∞???ÑÏπò, ?àÍ?Ï°?Î™®ÏûÑ??ÏπúÏ†à?òÍ≤å ?àÎÇ¥???úÎ¶Ω?àÎã§.' ),
-			array( 'title' => 'Î¨∏Ïùò', 'description' => 'Î∞©Î¨∏ ??Í∂ÅÍ∏à???êÏ? ?Ä?úÏ†Ñ???êÎäî Î¨∏Ïùò?òÍ∏∞ ?òÏù¥ÏßÄÎ°??®Í≤®Ï£ºÏÑ∏??' ),
 		),
 	);
 }
@@ -1508,15 +1493,15 @@ function ktheme_v2_render_location_page_shortcode(): string {
 		)
 	);
 	$html .= '<div class="kt-location-map-card">' .
-		'<div class="kt-location-map-frame"><iframe title="' . esc_attr__( 'Í∞Ä?âÍµê???ÑÏπò ÏßÄ??, 'ktheme-v2' ) . '" src="' . esc_url( $data['map_embed_url'] ) . '" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>' .
+		'<div class="kt-location-map-frame"><iframe title="' . esc_attr__( 'Í∞Ä?âÍµê???ÑÏπò ÏßÄ??', 'ktheme-v2' ) . '" src="' . esc_url( $data['map_embed_url'] ) . '" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>' .
 		'<div class="kt-location-marker-card"><strong>' . esc_html( $data['name'] ) . '</strong><span>' . esc_html( $data['address'] ) . '</span><small>' . esc_html__( 'Ï£ºÏùº?àÎ∞∞ ?ÑÌõÑ ?àÎÇ¥?Ä???àÎ∞∞?§Í≥º Ï£ºÏ∞® ?ôÏÑ†???ÑÏ??úÎ¶Ω?àÎã§.', 'ktheme-v2' ) . '</small></div>' .
 		'</div>';
 	$html .= '<div class="kt-location-info-strip">' .
 		'<div><span class="kt-location-info-icon" aria-hidden="true">' . ktheme_v2_component_icon( 'map-pin' ) . '</span><strong>' . esc_html__( 'Ï£ºÏÜå', 'ktheme-v2' ) . '</strong><span>' . esc_html( $data['address'] ) . '</span></div>' .
-		'<div><span class="kt-location-info-icon" aria-hidden="true">' . ktheme_v2_component_icon( 'phone' ) . '</span><strong>' . esc_html__( '?Ä?úÏ†Ñ??, 'ktheme-v2' ) . '</strong><a href="tel:' . esc_attr( $data['phone'] ) . '">' . esc_html( $data['phone'] ) . '</a></div>' .
+		'<div><span class="kt-location-info-icon" aria-hidden="true">' . ktheme_v2_component_icon( 'phone' ) . '</span><strong>' . esc_html__( '?Ä?úÏ†Ñ??', 'ktheme-v2' ) . '</strong><a href="tel:' . esc_attr( $data['phone'] ) . '">' . esc_html( $data['phone'] ) . '</a></div>' .
 		'<div class="kt-location-info-action">' . ktheme_v2_component_action_link(
 			array(
-				'label'    => 'Í∏∏Ï∞æÍ∏?,
+				'label'    => 'Í∏∏Ï∞æÍ∏?',
 				'url'      => $data['direction_url'],
 				'class'    => 'kt-button kt-button--brand',
 				'external' => true,
@@ -1563,7 +1548,7 @@ function ktheme_v2_sermon_card_items(): array {
 		array(
 			'image'  => $image_base . 'church-generated-01.jpg',
 			'series' => 'Î®∏Î¨¥Î¶ÑÏùò ?ÅÏÑ±',
-			'title'  => '?ìÏ? ?êÎ¶¨Î°?Î∂ÄÎ•¥Ïãú???òÎÇò??,
+			'title'  => '?ìÏ? ?êÎ¶¨Î°?Î∂ÄÎ•¥Ïãú???òÎÇò??',
 			'date'   => '2026.03.29',
 		),
 		array(
@@ -1587,13 +1572,13 @@ function ktheme_v2_sermon_card_items(): array {
 		array(
 			'image'  => $image_base . 'church-generated-05.jpg',
 			'series' => '?êÏú†Ï£ºÏ†ú',
-			'title'  => '[Ï£ºÏùº?§Íµê] Î∂ÄÎ•¥Ïã¨??Ï£ºÏù∏Í≥?,
+			'title'  => '[Ï£ºÏùº?§Íµê] Î∂ÄÎ•¥Ïã¨??Ï£ºÏù∏Í≥?',
 			'date'   => '2026.03.01',
 		),
 		array(
 			'image'  => $image_base . 'church-generated-06.jpg',
 			'series' => '?êÏú†Ï£ºÏ†ú',
-			'title'  => '[?òÏöî?§Íµê] Í∞Ä????Í∏∏ÏùÑ Î∞îÎùºÎ≥???,
+			'title'  => '[?òÏöî?§Íµê] Í∞Ä????Í∏∏ÏùÑ Î∞îÎùºÎ≥???',
 			'date'   => '2026.02.28',
 		),
 		array(
@@ -1605,13 +1590,13 @@ function ktheme_v2_sermon_card_items(): array {
 		array(
 			'image'  => $image_base . 'church-generated-08.jpg',
 			'series' => '2026 Î≥Ä?îÏÇ∞',
-			'title'  => '[2026 Î≥Ä?îÏÇ∞] Í∏∞Îã§Î¶ºÏ? ?ÅÏ†Å???úÏ¢Ö?ÖÎãà??,
+			'title'  => '[2026 Î≥Ä?îÏÇ∞] Í∏∞Îã§Î¶ºÏ? ?ÅÏ†Å???úÏ¢Ö?ÖÎãà??',
 			'date'   => '2026.02.27',
 		),
 		array(
 			'image'  => $image_base . 'church-generated-09.jpg',
 			'series' => '2026 Î≥Ä?îÏÇ∞',
-			'title'  => '[2026 Î≥Ä?îÏÇ∞] Í∏∞Îã§Î¶ºÏ? ?∏ÎÇ¥Î°??£Îäî ÎßàÏùå?ÖÎãà??,
+			'title'  => '[2026 Î≥Ä?îÏÇ∞] Í∏∞Îã§Î¶ºÏ? ?∏ÎÇ¥Î°??£Îäî ÎßàÏùå?ÖÎãà??',
 			'date'   => '2026.02.26',
 		),
 	);
@@ -1658,7 +1643,7 @@ function ktheme_v2_photo_carousel_presets(): array {
 			'items'       => array(
 				array(
 					'image'   => $image_base . 'church-generated-04.jpg',
-					'label'   => '?åÍ∑∏Î£?,
+					'label'   => '?åÍ∑∏Î£?',
 					'title'   => '?∂ÏùÑ ?òÎàÑ??Î™©Ïû• Î™®ÏûÑ',
 					'caption' => 'ÎßêÏ?Í≥??ùÌÉÅ, Í∏∞ÎèÑÍ∞Ä ?êÏó∞?§ÎüΩÍ≤??¥Ïñ¥ÏßÄ???ëÏ? Í≥µÎèôÏ≤¥Ïùò ?úÍ∞Ñ?ÖÎãà??',
 				),
@@ -1670,14 +1655,14 @@ function ktheme_v2_photo_carousel_presets(): array {
 				),
 				array(
 					'image'   => $image_base . 'church-generated-14.jpg',
-					'label'   => '?àÍ?Ï°?,
+					'label'   => '?àÍ?Ï°?',
 					'title'   => 'Ï≤òÏùå ?§Ïã† Î∂ÑÏùÑ ?òÏòÅ?òÎäî ?êÎ¶¨',
 					'caption' => '??Ñ† Î∞©Î¨∏???∞Îúª??ÎßåÎÇ®?ºÎ°ú ?¥Ïñ¥ÏßÄ?ÑÎ°ù ?®Íªò ?ïÏäµ?àÎã§.',
 				),
 				array(
 					'image'   => $image_base . 'church-generated-02.jpg',
 					'label'   => 'Ï≤?ÖÑÎ∂Ä',
-					'title'   => '?®Íªò Í∏∞ÎèÑ?òÎäî Ï≤?ÖÑ Í≥µÎèôÏ≤?,
+					'title'   => '?®Íªò Í∏∞ÎèÑ?òÎäî Ï≤?ÖÑ Í≥µÎèôÏ≤?',
 					'caption' => 'Ï≤?ÖÑ?§Ïù¥ ÎßêÏ? ?ûÏóê???∂Ïùò Î∞©Ìñ•???òÎàÑÍ≥??úÎ°úÎ•??∏ÏõÅ?àÎã§.',
 				),
 				array(
@@ -1696,13 +1681,13 @@ function ktheme_v2_photo_carousel_presets(): array {
 		),
 		'newcomers' => array(
 			'eyebrow'     => 'Welcome Moments',
-			'title'       => 'Ï≤òÏùå Î∞©Î¨∏Î∂Ä???ïÏ∞©ÍπåÏ? ?®Íªò?©Îãà??,
+			'title'       => 'Ï≤òÏùå Î∞©Î¨∏Î∂Ä???ïÏ∞©ÍπåÏ? ?®Íªò?©Îãà??',
 			'description' => '?àÎ∞∞ ???àÎÇ¥, ?àÍ?Ï°?Í≥ºÏ†ï, ?åÍ∑∏Î£??∞Í≤∞ÍπåÏ? ?àÍ?Ï°±Ïùò Ï≤´Í±∏?åÏùÑ ?ïÎäî ?•Î©¥?§ÏûÖ?àÎã§.',
 			'items'       => array(
 				array(
 					'image'   => $image_base . 'church-generated-14.jpg',
 					'label'   => '?òÏòÅ',
-					'title'   => '?àÎ∞∞ ???àÎÇ¥ ?∞Ïä§??,
+					'title'   => '?àÎ∞∞ ???àÎÇ¥ ?∞Ïä§??',
 					'caption' => '?ÑÏ∞©?òÎ©¥ ?àÎÇ¥?Ä???àÎ∞∞?§Í≥º ?àÍ?Ï°±ÏÑù, ?êÎ? ?àÎ∞∞ ?ôÏÑ†???®Íªò ?àÎÇ¥?©Îãà??',
 				),
 				array(
@@ -1719,7 +1704,7 @@ function ktheme_v2_photo_carousel_presets(): array {
 				),
 				array(
 					'image'   => $image_base . 'church-generated-03.jpg',
-					'label'   => 'Í∞Ä??,
+					'label'   => 'Í∞Ä??',
 					'title'   => '?êÎ? ?ôÎ∞ò Î∞©Î¨∏',
 					'caption' => '?§Ïùå?∏Î? ?àÎ∞∞?Ä ÍµêÏú° Í≥µÍ∞Ñ???àÎÇ¥????Í∞ÄÏ°±Ïù¥ ?∏Ïïà?òÍ≤å ?àÎ∞∞?????àÏäµ?àÎã§.',
 				),
@@ -1745,7 +1730,7 @@ function ktheme_v2_photo_carousel_presets(): array {
 				array(
 					'image'   => $image_base . 'church-generated-14.jpg',
 					'label'   => 'ÍµêÏ†ú',
-					'title'   => '?àÎ∞∞ ???¥Ïñ¥ÏßÄ???ùÌÉÅÍ≥??Ä??,
+					'title'   => '?àÎ∞∞ ???¥Ïñ¥ÏßÄ???ùÌÉÅÍ≥??Ä??',
 					'caption' => 'ÏßßÏ? ?∏ÏÇ¨?êÏÑú ?úÏûë??ÎßåÎÇ®???†Ïïô???ôÌñâ?ºÎ°ú ?êÎûç?àÎã§.',
 				),
 				array(
@@ -1758,7 +1743,7 @@ function ktheme_v2_photo_carousel_presets(): array {
 		),
 		'next-generation' => array(
 			'eyebrow'     => 'Next Generation',
-			'title'       => '?ÑÏù¥?§Ïù¥ ÎßêÏ? ?àÏóê???êÎùºÍ∞ëÎãà??,
+			'title'       => '?ÑÏù¥?§Ïù¥ ÎßêÏ? ?àÏóê???êÎùºÍ∞ëÎãà??',
 			'description' => '?ÅÏú†?ÑÎ???Ï≤?Üå?ÑÍπåÏßÄ ?∞Î†π??ÎßûÎäî ?àÎ∞∞?Ä ÍµêÏú°?ºÎ°ú ?§Ïùå?∏Î???ÎØøÏùå???∏ÏõÅ?àÎã§.',
 			'items'       => array(
 				array(
@@ -1776,13 +1761,13 @@ function ktheme_v2_photo_carousel_presets(): array {
 				array(
 					'image'   => $image_base . 'church-generated-10.jpg',
 					'label'   => 'ÍµêÏÇ¨',
-					'title'   => '?®Íªò Í∏∞ÎèÑ?òÎäî ÍµêÏÇ¨ Í≥µÎèôÏ≤?,
+					'title'   => '?®Íªò Í∏∞ÎèÑ?òÎäî ÍµêÏÇ¨ Í≥µÎèôÏ≤?',
 					'caption' => 'ÍµêÏÇ¨?Ä Î∂ÄÎ™®Í? ?ÑÏù¥?§Ïùò ?†Ïïô ?±Ïû•???ÑÌï¥ ?®Íªò Í∏∞ÎèÑ?©Îãà??',
 				),
 				array(
 					'image'   => $image_base . 'church-generated-15.jpg',
 					'label'   => 'Ï∫†ÌîÑ',
-					'title'   => '?¨Î¶Ñ?±Í≤Ω?ôÍµê?Ä ?òÎ†®??,
+					'title'   => '?¨Î¶Ñ?±Í≤Ω?ôÍµê?Ä ?òÎ†®??',
 					'caption' => 'ÏßëÏ§ë?ÅÏù∏ ?àÎ∞∞?Ä ÍµêÏ†úÎ•??µÌï¥ ?òÎÇò?òÏùÑ ??ÍπäÏù¥ ÎßåÎÇò???úÍ∞Ñ??Í∞ñÏäµ?àÎã§.',
 				),
 			),
@@ -1800,8 +1785,8 @@ function ktheme_v2_photo_carousel_presets(): array {
 				),
 				array(
 					'image'   => $image_base . 'church-generated-04.jpg',
-					'label'   => '?åÍ∑∏Î£?,
-					'title'   => 'Í¥ÄÍ≥ÑÍ? ÍπäÏñ¥ÏßÄ???úÎ™®??,
+					'label'   => '?åÍ∑∏Î£?',
+					'title'   => 'Í¥ÄÍ≥ÑÍ? ÍπäÏñ¥ÏßÄ???úÎ™®??',
 					'caption' => '?ôÍµê?Ä ÏßÅÏû•, ÏßÑÎ°ú?Ä Í¥ÄÍ≥ÑÏùò Í≥†Î???ÎØøÏùå ?àÏóê???òÎàï?àÎã§.',
 				),
 				array(
@@ -1813,7 +1798,7 @@ function ktheme_v2_photo_carousel_presets(): array {
 				array(
 					'image'   => $image_base . 'church-generated-17.jpg',
 					'label'   => '?†Íµê',
-					'title'   => 'ÏßÄ??≥º ?∏ÏÉÅ???•Ìïú Î∞úÍ±∏??,
+					'title'   => 'ÏßÄ??≥º ?∏ÏÉÅ???•Ìïú Î∞úÍ±∏??',
 					'caption' => 'Î¥âÏÇ¨?Ä ?®Í∏∞ ?†ÍµêÎ•??µÌï¥ Î≥µÏùå???∂Ïùò ?êÎ¶¨Î°?Í∞Ä?∏Í∞ë?àÎã§.',
 				),
 			),
@@ -1961,7 +1946,7 @@ function ktheme_v2_customize_register_page_hero( WP_Customize_Manager $wp_custom
 	$wp_customize->add_section(
 		'ktheme_v2_page_hero',
 		array(
-			'title'       => __( 'KTheme Í≥µÏö© ?àÏñ¥Î°?, 'ktheme-v2' ),
+			'title'       => __( 'KTheme Í≥µÏö© ?àÏñ¥Î°?', 'ktheme-v2' ),
 			'description' => __( 'Î™®Îì† ?òÏù¥ÏßÄ ?úÌîåÎ¶øÏóê???¨Ïö©?òÎäî ?åÎßà Ï¢ÖÏÜç Í≥µÏö© ?àÏñ¥Î°??§Ï†ï?ÖÎãà??', 'ktheme-v2' ),
 			'priority'    => 35,
 		)
@@ -1995,7 +1980,7 @@ function ktheme_v2_customize_register_page_hero( WP_Customize_Manager $wp_custom
 	$wp_customize->add_control(
 		'ktheme_v2_page_hero_style',
 		array(
-			'label'   => __( '?àÏñ¥Î°??§Ì???, 'ktheme-v2' ),
+			'label'   => __( '?àÏñ¥Î°??§Ì???', 'ktheme-v2' ),
 			'section' => 'ktheme_v2_page_hero',
 			'type'    => 'select',
 			'choices' => ktheme_v2_page_hero_style_options(),
