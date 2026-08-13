@@ -2,15 +2,12 @@ import { readFileSync } from 'node:fs'
 import { describe, expect, it } from 'vitest'
 
 const locationTemplate = new URL('./page-location.html', import.meta.url)
-const themeFunctions = new URL('../functions.php', import.meta.url)
-
-describe('location page shortcode', () => {
-  it('provides every data set consumed by the location renderer', () => {
+describe('location page template', () => {
+  it('uses a native location pattern instead of a theme shortcode', () => {
     const template = readFileSync(locationTemplate, 'utf8')
-    const functions = readFileSync(themeFunctions, 'utf8')
 
-    expect(template).toContain('[ktheme_location_page]')
-    expect(functions).toContain("'guide_cards'   => array(")
-    expect(functions).toContain("$data['guide_cards']")
+    expect(template).toContain('ktheme-v2/section-location-shell')
+    expect(template).not.toContain('wp:shortcode')
+    expect(template).not.toContain('ktheme_location_page')
   })
 })
