@@ -11,6 +11,10 @@ const formTemplates = [
   'page-vehicle-request.html',
 ]
 
+const headerPart = new URL('./parts/header.html', themeRoot)
+const footerPart = new URL('./parts/footer.html', themeRoot)
+const givingTemplate = new URL('./templates/page-giving.html', themeRoot)
+
 const readThemeFile = (relativePath: string) =>
   readFileSync(new URL(relativePath, themeRoot), 'utf8')
 
@@ -35,5 +39,29 @@ describe('commercial theme release blockers', () => {
       expect(source).not.toContain('kt-svc-form__success')
       expect(source).toContain('ktheme-v2/section-form-shell')
     }
+  })
+
+  it('uses editable, client-neutral header and footer parts', () => {
+    const header = readFileSync(headerPart, 'utf8')
+    const footer = readFileSync(footerPart, 'utf8')
+
+    expect(header).toContain('wp:site-logo')
+    expect(header).toContain('wp:navigation')
+    expect(header).not.toContain('wp:shortcode')
+    expect(footer).toContain('wp:site-title')
+    expect(footer).not.toContain('href="#"')
+    expect(footer).not.toContain('worship-guide')
+    expect(footer).not.toContain('Design Library')
+    expect(footer).not.toContain('GAPYEONG')
+  })
+
+  it('does not ship a simulated donation flow or customer donation data', () => {
+    const giving = readFileSync(givingTemplate, 'utf8')
+
+    expect(giving).toContain('ktheme-v2/section-donation-shell')
+    expect(giving).not.toContain('window.alert')
+    expect(giving).not.toContain('정한결')
+    expect(giving).not.toContain('가평교회')
+    expect(giving).not.toMatch(/\d{6}-\d{2}-\d{6}/)
   })
 })

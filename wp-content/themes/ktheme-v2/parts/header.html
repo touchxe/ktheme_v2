@@ -1,3 +1,15 @@
-<!-- wp:shortcode -->
-[ktheme_site_header]
-<!-- /wp:shortcode -->
+<!-- wp:group {"tagName":"header","className":"kt-site-header","layout":{"type":"constrained"}} -->
+<header class="wp-block-group kt-site-header">
+	<!-- wp:group {"className":"kt-site-header__inner","layout":{"type":"flex","flexWrap":"nowrap","justifyContent":"space-between"}} -->
+	<div class="wp-block-group kt-site-header__inner">
+		<!-- wp:group {"className":"kt-site-header__brand","layout":{"type":"flex","flexWrap":"nowrap"}} -->
+		<div class="wp-block-group kt-site-header__brand">
+			<!-- wp:site-logo {"width":44,"shouldSyncIcon":true} /-->
+			<!-- wp:site-title {"level":0,"isLink":true} /-->
+		</div>
+		<!-- /wp:group -->
+		<!-- wp:navigation {"overlayMenu":"mobile","layout":{"type":"flex","justifyContent":"right"}} /-->
+	</div>
+	<!-- /wp:group -->
+</header>
+<!-- /wp:group -->

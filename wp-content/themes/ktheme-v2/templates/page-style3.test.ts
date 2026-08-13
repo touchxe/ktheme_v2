@@ -25,13 +25,13 @@ describe('Style 3 WordPress page templates', () => {
     expect(functions).not.toContain('kt-header-register__icon')
   })
 
-  it('renders the shortcode header with the requested legacy logo asset', () => {
+  it('renders an editable native block header instead of a legacy shortcode', () => {
     const header = readFileSync(headerTemplate, 'utf8')
-    const functions = readFileSync(themeFunctions, 'utf8')
 
-    expect(header).toContain('[ktheme_site_header]')
-    expect(functions).toContain("assets/images/theme-logo.png")
-    expect(functions).toContain('kt-brand__name')
+    expect(header).toContain('wp:site-logo')
+    expect(header).toContain('wp:site-title')
+    expect(header).toContain('wp:navigation')
+    expect(header).not.toContain('wp:shortcode')
   })
 
   it('initializes the mega menu from a shared header asset', () => {
