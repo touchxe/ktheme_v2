@@ -351,7 +351,7 @@ function ktheme_v2_render_utility_menu(): string {
 		return '';
 	}
 
-	$html = '<nav class="kt-utility-nav" aria-label="' . esc_attr__( '?�단 메뉴', 'ktheme-v2' ) . '">';
+	$html = '<nav class="kt-utility-nav" aria-label="' . esc_attr__( '유틸리티 메뉴', 'ktheme-v2' ) . '">';
 	foreach ( $items as $item ) {
 		$html .= ktheme_v2_menu_link( $item );
 	}
@@ -361,7 +361,7 @@ function ktheme_v2_render_utility_menu(): string {
 }
 
 function ktheme_v2_render_primary_menu(): string {
-	$items = ktheme_v2_get_menu_tree( 'primary', 9, ktheme_v2_default_menu_items() );
+	$items = ktheme_v2_get_menu_tree( 'primary', 0, ktheme_v2_default_menu_items() );
 
 	if ( empty( $items ) ) {
 		return '';
@@ -406,7 +406,7 @@ function ktheme_v2_render_primary_menu(): string {
 }
 
 function ktheme_v2_render_mega_menu(): string {
-	$items = ktheme_v2_get_menu_tree( 'primary', 9, ktheme_v2_default_menu_items() );
+	$items = ktheme_v2_get_menu_tree( 'primary', 0, ktheme_v2_default_menu_items() );
 
 	if ( empty( $items ) ) {
 		return '';
@@ -414,7 +414,7 @@ function ktheme_v2_render_mega_menu(): string {
 
 	$html  = '<div class="kt-mega-menu" id="kt-mega-menu" aria-hidden="true">';
 	$html .= '<div class="kt-container kt-mega-menu__inner">';
-	$html .= '<div class="kt-mega-menu__head"><strong>' . esc_html__( '?�체 메뉴', 'ktheme-v2' ) . '</strong><span>' . esc_html__( '가?�교?�의 ?�배, 공동�? ?�육�??�정 ?�내�??�곳?�서 ?�인?�세??', 'ktheme-v2' ) . '</span></div>';
+	$html .= '<div class="kt-mega-menu__head"><strong>' . esc_html__( '전체 메뉴', 'ktheme-v2' ) . '</strong><span>' . esc_html__( '예배, 공동체, 양육과 행정 안내를 한곳에서 확인하세요.', 'ktheme-v2' ) . '</span></div>';
 	$html .= '<div class="kt-mega-menu__grid">';
 
 	foreach ( $items as $item ) {
@@ -455,22 +455,22 @@ function ktheme_v2_render_header_shortcode(): string {
 
 	<div class="kt-header" data-kt-header>
 		<div class="kt-container kt-header__inner">
-			<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="kt-brand" aria-label="<?php echo esc_attr( ktheme_v2_text( '\uD55C\uBE5B\uAD50\uD68C \uD648' ) ); ?>">
-				<img src="<?php echo esc_url( get_theme_file_uri( 'assets/images/theme-logo.png' ) ); ?>" alt="<?php echo esc_attr( ktheme_v2_text( '\uD55C\uBE5B\uAD50\uD68C \uB85C\uACE0' ) ); ?>" />
-				<span class="kt-brand__name"><?php echo esc_html( ktheme_v2_text( '\uD55C\uBE5B\uAD50\uD68C' ) ); ?></span>
+			<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="kt-brand" aria-label="<?php echo esc_attr__( '우리교회 홈', 'ktheme-v2' ); ?>">
+				<img src="<?php echo esc_url( get_theme_file_uri( 'assets/images/theme-logo.png' ) ); ?>" alt="<?php echo esc_attr__( '우리교회 로고', 'ktheme-v2' ); ?>" />
+				<span class="kt-brand__name"><?php echo esc_html__( '우리교회', 'ktheme-v2' ); ?></span>
 			</a>
 
 			<?php echo ktheme_v2_render_primary_menu(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 
 			<div class="kt-header__actions">
-				<button class="kt-icon-button" type="button" aria-label="<?php echo esc_attr__( '검???�기', 'ktheme-v2' ); ?>" aria-controls="kt-header-search" aria-expanded="false" data-kt-search-toggle>
+				<button class="kt-icon-button" type="button" aria-label="<?php echo esc_attr__( '검색 열기', 'ktheme-v2' ); ?>" aria-controls="kt-header-search" aria-expanded="false" data-kt-search-toggle>
 					<svg class="kt-icon kt-icon--sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
 				</button>
 				<a class="kt-header-register" href="<?php echo esc_url( home_url( '/newcomers/' ) ); ?>">
 					<span class="kt-header-register__label"><?php echo esc_html( ktheme_v2_text( '\uC0C8\uAC00\uC871 \uB4F1\uB85D' ) ); ?></span>
 					<svg class="kt-header-register__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
 				</a>
-				<button class="kt-mega-toggle" type="button" aria-label="<?php echo esc_attr__( '?�체 메뉴 ?�기', 'ktheme-v2' ); ?>" aria-controls="kt-mega-menu" aria-expanded="false" data-kt-mega-toggle>
+				<button class="kt-mega-toggle" type="button" aria-label="<?php echo esc_attr__( '전체 메뉴 열기', 'ktheme-v2' ); ?>" aria-controls="kt-mega-menu" aria-expanded="false" data-kt-mega-toggle>
 					<span></span><span></span><span></span>
 				</button>
 			</div>
@@ -479,11 +479,11 @@ function ktheme_v2_render_header_shortcode(): string {
 		<div class="kt-header-search" id="kt-header-search" aria-hidden="true">
 			<div class="kt-container kt-header-search__inner">
 				<form class="kt-header-search__form" role="search" method="get" action="<?php echo esc_url( home_url( '/' ) ); ?>">
-					<label class="screen-reader-text" for="kt-header-search-input"><?php echo esc_html__( '검?�어', 'ktheme-v2' ); ?></label>
-					<input id="kt-header-search-input" type="search" name="s" placeholder="<?php echo esc_attr__( '검?�어�??�력?�세??', 'ktheme-v2' ); ?>" autocomplete="off" />
+					<label class="screen-reader-text" for="kt-header-search-input"><?php echo esc_html__( '검색어', 'ktheme-v2' ); ?></label>
+					<input id="kt-header-search-input" type="search" name="s" placeholder="<?php echo esc_attr__( '검색어를 입력하세요', 'ktheme-v2' ); ?>" autocomplete="off" />
 					<button type="submit">
 						<svg class="kt-icon kt-icon--sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
-						<span><?php echo esc_html__( '검??', 'ktheme-v2' ); ?></span>
+						<span><?php echo esc_html__( '검색', 'ktheme-v2' ); ?></span>
 					</button>
 				</form>
 			</div>
@@ -580,13 +580,13 @@ function ktheme_v2_render_footer_shortcode(): string {
 	<div class="kt-footer">
 		<div class="kt-container kt-footer__grid">
 			<div class="kt-footer__brand">
-				<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="kt-brand kt-brand--mark-only" aria-label="<?php echo esc_attr__( '가?�교????', 'ktheme-v2' ); ?>">
-					<img src="<?php echo esc_url( get_theme_file_uri( 'assets/images/logos/hanbit-book-light-white.svg' ) ); ?>" alt="<?php echo esc_attr__( '가?�교??', 'ktheme-v2' ); ?>" />
+				<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="kt-brand kt-brand--mark-only" aria-label="<?php echo esc_attr__( '가?교????', 'ktheme-v2' ); ?>">
+					<img src="<?php echo esc_url( get_theme_file_uri( 'assets/images/logos/hanbit-book-light-white.svg' ) ); ?>" alt="<?php echo esc_attr__( '가?교??', 'ktheme-v2' ); ?>" />
 				</a>
-				<p><?php echo esc_html__( '?�음 ?��??� ?�께 ?�배?�고, 지??�� ?�상???�기??교회?�니??', 'ktheme-v2' ); ?></p>
+				<p><?php echo esc_html__( '?음 ??? ?께 ?배?고, 지?? ?상???기??교회?니??', 'ktheme-v2' ); ?></p>
 			</div>
 
-			<nav class="kt-footer-menu-grid" aria-label="<?php echo esc_attr__( '?�터 주요 메뉴', 'ktheme-v2' ); ?>">
+			<nav class="kt-footer-menu-grid" aria-label="<?php echo esc_attr__( '?터 주요 메뉴', 'ktheme-v2' ); ?>">
 				<?php
 				if ( $has_footer_menus ) {
 					echo ktheme_v2_footer_menu_html( 'footer-worship', ktheme_v2_text( '\uC608\uBC30' ), $footer_worship ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
@@ -599,19 +599,19 @@ function ktheme_v2_render_footer_shortcode(): string {
 			</nav>
 
 			<div class="kt-footer__connect">
-				<h4><?php echo esc_html__( '바로가�?', 'ktheme-v2' ); ?></h4>
+				<h4><?php echo esc_html__( '바로가?', 'ktheme-v2' ); ?></h4>
 				<details class="kt-family-dropdown">
 					<summary>
-						<span><?php echo esc_html__( '?��?�??�이??', 'ktheme-v2' ); ?></span>
+						<span><?php echo esc_html__( '????이??', 'ktheme-v2' ); ?></span>
 						<svg class="kt-icon kt-icon--sm kt-family-dropdown__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
 					</summary>
 					<div class="kt-family-dropdown__menu">
-						<a href="#" target="_blank" rel="noopener"><?php echo esc_html__( '?�?�예?�교?�로??', 'ktheme-v2' ); ?></a>
-						<a href="#" target="_blank" rel="noopener"><?php echo esc_html__( '총회교육?�원부', 'ktheme-v2' ); ?></a>
-						<a href="#" target="_blank" rel="noopener"><?php echo esc_html__( '?�국기독공보', 'ktheme-v2' ); ?></a>
+						<a href="#" target="_blank" rel="noopener"><?php echo esc_html__( '??예?교?로??', 'ktheme-v2' ); ?></a>
+						<a href="#" target="_blank" rel="noopener"><?php echo esc_html__( '총회교육?원부', 'ktheme-v2' ); ?></a>
+						<a href="#" target="_blank" rel="noopener"><?php echo esc_html__( '?국기독공보', 'ktheme-v2' ); ?></a>
 					</div>
 				</details>
-				<div class="kt-social-links" aria-label="<?php echo esc_attr__( '주요 SNS 바로가�?', 'ktheme-v2' ); ?>">
+				<div class="kt-social-links" aria-label="<?php echo esc_attr__( '주요 SNS 바로가?', 'ktheme-v2' ); ?>">
 					<a href="#" aria-label="YouTube"><svg class="kt-icon kt-icon--sm" viewBox="0 0 24 24" fill="currentColor"><path d="M23 6.2s-.2-1.6-.9-2.3c-.9-.9-1.9-.9-2.3-1C16.6 2.5 12 2.5 12 2.5s-4.6 0-7.8.4c-.5 0-1.5.1-2.3 1-.7.7-.9 2.3-.9 2.3S.7 8 .7 9.9v1.7c0 1.9.3 3.7.3 3.7s.2 1.6.9 2.3c.9.9 2.1.9 2.6 1 1.9.2 8 .3 8 .3s4.6 0 7.8-.4c.5 0 1.5-.1 2.3-1 .7-.7.9-2.3.9-2.3s.3-1.9.3-3.7V9.9C23.3 8 23 6.2 23 6.2zM9.5 13.6V7.7l5.9 3z"/></svg></a>
 					<a href="#" aria-label="Instagram"><svg class="kt-icon kt-icon--sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="4"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/></svg></a>
 					<a href="#" aria-label="Facebook"><svg class="kt-icon kt-icon--sm" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.5 2.9h-2.4v7A10 10 0 0 0 22 12z"/></svg></a>
@@ -621,7 +621,7 @@ function ktheme_v2_render_footer_shortcode(): string {
 
 		<div class="kt-footer__bottom">
 			<div class="kt-container kt-footer__bottom-inner">
-				<p><?php echo esc_html__( '08512 ?�울?�별??금천�?가?�디지??�?168', 'ktheme-v2' ); ?></p>
+				<p><?php echo esc_html__( '08512 ?울?별??금천?가?디지???168', 'ktheme-v2' ); ?></p>
 				<p><?php echo esc_html__( 'TEL. 02-704-3300 · FAX. 02-704-3301', 'ktheme-v2' ); ?></p>
 				<a class="kt-footer-dev-link" href="<?php echo esc_url( home_url( '/design-library/' ) ); ?>">DEV · Design Library</a>
 				<p><?php echo esc_html__( '© 2026 GAPYEONG CHURCH. ALL RIGHTS RESERVED.', 'ktheme-v2' ); ?></p>
@@ -791,7 +791,8 @@ function ktheme_v2_ensure_required_pages(): void {
 
 	update_option( 'ktheme_v2_required_pages_version', $version );
 }
-add_action( 'admin_init', 'ktheme_v2_ensure_required_pages' );
+// Starter content and page creation belong to the Companion Plugin's opt-in
+// onboarding flow. A theme must never create or mutate site pages on admin load.
 
 function ktheme_v2_flat_child_page_slugs(): array {
 	return array(
@@ -1146,7 +1147,7 @@ function ktheme_v2_render_page_hero_visual( string $style, array $settings ): st
 
 	return '<div class="kt-page-hero__visual" aria-hidden="true">' .
 		'<img src="' . esc_url( $image_url ) . '" alt="" />' .
-		'<div class="kt-page-hero__side-card"><strong>' . esc_html__( '주일 ?�내', 'ktheme-v2' ) . '</strong><span>' . esc_html__( '1부 09:00 · 2부 11:00', 'ktheme-v2' ) . '</span></div>' .
+		'<div class="kt-page-hero__side-card"><strong>' . esc_html__( '주일 ?내', 'ktheme-v2' ) . '</strong><span>' . esc_html__( '1부 09:00 · 2부 11:00', 'ktheme-v2' ) . '</span></div>' .
 		'</div>';
 }
 
@@ -1190,7 +1191,7 @@ function ktheme_v2_render_page_hero_shortcode(): string {
 
 		$tabs = sprintf(
 			'<nav class="kt-page-tabs" aria-label="%s">%s</nav>',
-			esc_attr( $section['title'] . ' ?�위 메뉴' ),
+			esc_attr( $section['title'] . ' ?위 메뉴' ),
 			implode( '', $tab_links )
 		);
 	}
@@ -1219,7 +1220,7 @@ function ktheme_v2_render_page_hero_shortcode(): string {
 
 	return '<section class="' . esc_attr( implode( ' ', $classes ) ) . '" style="' . esc_attr( $style_attr ) . '">' .
 		$media_html .
-		'<nav class="kt-breadcrumb" aria-label="' . esc_attr__( '?�재 ?�치', 'ktheme-v2' ) . '">' . $breadcrumb . '</nav>' .
+		'<nav class="kt-breadcrumb" aria-label="' . esc_attr__( '?재 ?치', 'ktheme-v2' ) . '">' . $breadcrumb . '</nav>' .
 		'<div class="kt-page-hero__body"><div><h1>' . esc_html( $title ) . '</h1>' . $description_html . '</div>' . $visual_html . wp_kses_post( $tabs ) . '</div>' .
 		'</section>';
 }
@@ -1421,8 +1422,8 @@ function ktheme_v2_render_location_page_shortcode(): string {
 		array(
 			'id'          => 'kt-location-map-title',
 			'eyebrow'     => 'Location',
-			'title'       => '?�배???�치',
-			'description' => '처음 ?�시??분도 길을 ?�게 찾을 ???�도�?주소?� 교통?�을 ?�리?�습?�다.',
+			'title'       => '?배???치',
+			'description' => '처음 ?시??분도 길을 ?게 찾을 ???도?주소? 교통?을 ?리?습?다.',
 			'action'      => array(
 				'label'    => '??지??보기',
 				'url'      => $data['map_url'],
@@ -1431,15 +1432,15 @@ function ktheme_v2_render_location_page_shortcode(): string {
 		)
 	);
 	$html .= '<div class="kt-location-map-card">' .
-		'<div class="kt-location-map-frame"><iframe title="' . esc_attr__( '가?�교???�치 지??', 'ktheme-v2' ) . '" src="' . esc_url( $data['map_embed_url'] ) . '" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>' .
-		'<div class="kt-location-marker-card"><strong>' . esc_html( $data['name'] ) . '</strong><span>' . esc_html( $data['address'] ) . '</span><small>' . esc_html__( '주일?�배 ?�후 ?�내?�???�배?�과 주차 ?�선???��??�립?�다.', 'ktheme-v2' ) . '</small></div>' .
+		'<div class="kt-location-map-frame"><iframe title="' . esc_attr__( '가?교???치 지??', 'ktheme-v2' ) . '" src="' . esc_url( $data['map_embed_url'] ) . '" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>' .
+		'<div class="kt-location-marker-card"><strong>' . esc_html( $data['name'] ) . '</strong><span>' . esc_html( $data['address'] ) . '</span><small>' . esc_html__( '주일?배 ?후 ?내????배?과 주차 ?선?????립?다.', 'ktheme-v2' ) . '</small></div>' .
 		'</div>';
 	$html .= '<div class="kt-location-info-strip">' .
 		'<div><span class="kt-location-info-icon" aria-hidden="true">' . ktheme_v2_component_icon( 'map-pin' ) . '</span><strong>' . esc_html__( '주소', 'ktheme-v2' ) . '</strong><span>' . esc_html( $data['address'] ) . '</span></div>' .
-		'<div><span class="kt-location-info-icon" aria-hidden="true">' . ktheme_v2_component_icon( 'phone' ) . '</span><strong>' . esc_html__( '?�?�전??', 'ktheme-v2' ) . '</strong><a href="tel:' . esc_attr( $data['phone'] ) . '">' . esc_html( $data['phone'] ) . '</a></div>' .
+		'<div><span class="kt-location-info-icon" aria-hidden="true">' . ktheme_v2_component_icon( 'phone' ) . '</span><strong>' . esc_html__( '??전??', 'ktheme-v2' ) . '</strong><a href="tel:' . esc_attr( $data['phone'] ) . '">' . esc_html( $data['phone'] ) . '</a></div>' .
 		'<div class="kt-location-info-action">' . ktheme_v2_component_action_link(
 			array(
-				'label'    => '길찾�?',
+				'label'    => '길찾?',
 				'url'      => $data['direction_url'],
 				'class'    => 'kt-button kt-button--brand',
 				'external' => true,
@@ -1452,14 +1453,14 @@ function ktheme_v2_render_location_page_shortcode(): string {
 	$html .= ktheme_v2_component_section_head(
 		array(
 			'id'          => 'kt-location-route-title',
-			'title'       => '?�시??방법',
-			'description' => '방문?�시??교통?�단??맞춰 ?�요???�보�??�인?�세??',
+			'title'       => '?시??방법',
+			'description' => '방문?시??교통?단??맞춰 ?요???보??인?세??',
 		)
 	);
 	$html .= ktheme_v2_component_tab_panels(
 		array(
 			'id_prefix' => 'location',
-			'label'     => '교통?�단�??�내',
+			'label'     => '교통?단??내',
 			'tabs'      => $data['routes'],
 		)
 	);
@@ -1469,8 +1470,8 @@ function ktheme_v2_render_location_page_shortcode(): string {
 	$html .= ktheme_v2_component_section_head(
 		array(
 			'id'          => 'kt-location-guide-title',
-			'title'       => '방문 ???�내',
-			'description' => '?�배?� ?��?�??�내, 문의 ?�선??미리 ?�인?�실 ???�습?�다.',
+			'title'       => '방문 ???내',
+			'description' => '?배? ????내, 문의 ?선??미리 ?인?실 ???습?다.',
 		)
 	);
 	$html .= '<div class="kt-location-guide-grid">' . implode( '', array_map( 'ktheme_v2_component_info_card', $data['guide_cards'] ) ) . '</div></section>';
@@ -1485,56 +1486,56 @@ function ktheme_v2_sermon_card_items(): array {
 	return array(
 		array(
 			'image'  => $image_base . 'church-generated-01.jpg',
-			'series' => '머무름의 ?�성',
-			'title'  => '?��? ?�리�?부르시???�나??',
+			'series' => '머무름의 ?성',
+			'title'  => '?? ?리?부르시???나??',
 			'date'   => '2026.03.29',
 		),
 		array(
 			'image'  => $image_base . 'church-generated-02.jpg',
-			'series' => '머무름의 ?�성',
-			'title'  => '기다리는 믿음???�간',
+			'series' => '머무름의 ?성',
+			'title'  => '기다리는 믿음???간',
 			'date'   => '2026.03.22',
 		),
 		array(
 			'image'  => $image_base . 'church-generated-03.jpg',
-			'series' => '머무름의 ?�성',
-			'title'  => '?�까지 ?�나?�의 ?�름?�로',
+			'series' => '머무름의 ?성',
+			'title'  => '?까지 ?나?의 ?름?로',
 			'date'   => '2026.03.15',
 		),
 		array(
 			'image'  => $image_base . 'church-generated-04.jpg',
-			'series' => '머무름의 ?�성',
-			'title'  => '?�까지 ?�어?????�리',
+			'series' => '머무름의 ?성',
+			'title'  => '?까지 ?어?????리',
 			'date'   => '2026.03.07',
 		),
 		array(
 			'image'  => $image_base . 'church-generated-05.jpg',
-			'series' => '?�유주제',
-			'title'  => '[주일?�교] 부르심??주인�?',
+			'series' => '?유주제',
+			'title'  => '[주일?교] 부르심??주인?',
 			'date'   => '2026.03.01',
 		),
 		array(
 			'image'  => $image_base . 'church-generated-06.jpg',
-			'series' => '?�유주제',
-			'title'  => '[?�요?�교] 가????길을 바라�???',
+			'series' => '?유주제',
+			'title'  => '[?요?교] 가????길을 바라???',
 			'date'   => '2026.02.28',
 		),
 		array(
 			'image'  => $image_base . 'church-generated-07.jpg',
-			'series' => '2026 변?�산',
-			'title'  => '[2026 변?�산] 기다림�? ?�께 걷는 길입?�다',
+			'series' => '2026 변?산',
+			'title'  => '[2026 변?산] 기다림? ?께 걷는 길입?다',
 			'date'   => '2026.02.28',
 		),
 		array(
 			'image'  => $image_base . 'church-generated-08.jpg',
-			'series' => '2026 변?�산',
-			'title'  => '[2026 변?�산] 기다림�? ?�적???�종?�니??',
+			'series' => '2026 변?산',
+			'title'  => '[2026 변?산] 기다림? ?적???종?니??',
 			'date'   => '2026.02.27',
 		),
 		array(
 			'image'  => $image_base . 'church-generated-09.jpg',
-			'series' => '2026 변?�산',
-			'title'  => '[2026 변?�산] 기다림�? ?�내�??�는 마음?�니??',
+			'series' => '2026 변?산',
+			'title'  => '[2026 변?산] 기다림? ?내??는 마음?니??',
 			'date'   => '2026.02.26',
 		),
 	);
@@ -1576,199 +1577,199 @@ function ktheme_v2_photo_carousel_presets(): array {
 	return array(
 		'community' => array(
 			'eyebrow'     => 'Community Life',
-			'title'       => '공동체�? ?�께???�동 ?�진',
-			'description' => '?�배?� 모임, ?�음?��??� ?��????�리?�서 ?�께 ?�라가???�면??모았?�니??',
+			'title'       => '공동체? ?께???동 ?진',
+			'description' => '?배? 모임, ?음??? ?????리?서 ?께 ?라가???면??모았?니??',
 			'items'       => array(
 				array(
 					'image'   => $image_base . 'church-generated-04.jpg',
-					'label'   => '?�그�?',
-					'title'   => '?�을 ?�누??목장 모임',
-					'caption' => '말�?�??�탁, 기도가 ?�연?�럽�??�어지???��? 공동체의 ?�간?�니??',
+					'label'   => '?그?',
+					'title'   => '?을 ?누??목장 모임',
+					'caption' => '말???탁, 기도가 ?연?럽??어지???? 공동체의 ?간?니??',
 				),
 				array(
 					'image'   => $image_base . 'church-generated-03.jpg',
-					'label'   => '?�음?��?',
-					'title'   => '믿음?�로 ?�라???�음?��?',
-					'caption' => '?�이?�과 �?��?�이 ?�배?� 교육 ?�에??복음??배웁?�다.',
+					'label'   => '?음??',
+					'title'   => '믿음?로 ?라???음??',
+					'caption' => '?이?과 ??이 ?배? 교육 ?에??복음??배웁?다.',
 				),
 				array(
 					'image'   => $image_base . 'church-generated-14.jpg',
-					'label'   => '?��?�?',
-					'title'   => '처음 ?�신 분을 ?�영?�는 ?�리',
-					'caption' => '??�� 방문???�뜻??만남?�로 ?�어지?�록 ?�께 ?�습?�다.',
+					'label'   => '???',
+					'title'   => '처음 ?신 분을 ?영?는 ?리',
+					'caption' => '?? 방문???뜻??만남?로 ?어지?록 ?께 ?습?다.',
 				),
 				array(
 					'image'   => $image_base . 'church-generated-02.jpg',
-					'label'   => '�?��부',
-					'title'   => '?�께 기도?�는 �?�� 공동�?',
-					'caption' => '�?��?�이 말�? ?�에???�의 방향???�누�??�로�??�웁?�다.',
+					'label'   => '?부',
+					'title'   => '?께 기도?는 ? 공동?',
+					'caption' => '??이 말? ?에???의 방향???누??로??웁?다.',
 				),
 				array(
 					'image'   => $image_base . 'church-generated-10.jpg',
-					'label'   => '?�육',
-					'title'   => '배�??�로 깊어지???�앙',
-					'caption' => '?��?�?과정�??�경공�?�??�해 믿음??기초�??�집?�다.',
+					'label'   => '?육',
+					'title'   => '배??로 깊어지???앙',
+					'caption' => '???과정??경공???해 믿음??기초??집?다.',
 				),
 				array(
 					'image'   => $image_base . 'church-generated-08.jpg',
-					'label'   => '?��?',
-					'title'   => '?�로???�요�??�보???�길',
-					'caption' => '교회 ?�팎???�요�??�피�??�제?�인 ?�랑???�눕?�다.',
+					'label'   => '??',
+					'title'   => '?로???요??보???길',
+					'caption' => '교회 ?팎???요??피??제?인 ?랑???눕?다.',
 				),
 			),
 		),
 		'newcomers' => array(
 			'eyebrow'     => 'Welcome Moments',
-			'title'       => '처음 방문부???�착까�? ?�께?�니??',
-			'description' => '?�배 ???�내, ?��?�?과정, ?�그�??�결까�? ?��?족의 첫걸?�을 ?�는 ?�면?�입?�다.',
+			'title'       => '처음 방문부???착까? ?께?니??',
+			'description' => '?배 ???내, ???과정, ?그??결까? ??족의 첫걸?을 ?는 ?면?입?다.',
 			'items'       => array(
 				array(
 					'image'   => $image_base . 'church-generated-14.jpg',
-					'label'   => '?�영',
-					'title'   => '?�배 ???�내 ?�스??',
-					'caption' => '?�착?�면 ?�내?�???�배?�과 ?��?족석, ?��? ?�배 ?�선???�께 ?�내?�니??',
+					'label'   => '?영',
+					'title'   => '?배 ???내 ?스??',
+					'caption' => '?착?면 ?내????배?과 ??족석, ?? ?배 ?선???께 ?내?니??',
 				),
 				array(
 					'image'   => $image_base . 'church-generated-10.jpg',
 					'label'   => '과정',
-					'title'   => '?��?�?과정',
-					'caption' => '교회??비전�??�앙??기초�?배우�?공동체�? ?�연?�럽�??�아갑니??',
+					'title'   => '???과정',
+					'caption' => '교회??비전??앙??기초?배우?공동체? ?연?럽??아갑니??',
 				),
 				array(
 					'image'   => $image_base . 'church-generated-04.jpg',
-					'label'   => '?�결',
-					'title'   => '?�그�??�결',
-					'caption' => '?�의 ?�리?� ?�령?��?고려???�께 걸어�?공동체�? ?�개?�니??',
+					'label'   => '?결',
+					'title'   => '?그??결',
+					'caption' => '?의 ?리? ?령??고려???께 걸어?공동체? ?개?니??',
 				),
 				array(
 					'image'   => $image_base . 'church-generated-03.jpg',
 					'label'   => '가??',
-					'title'   => '?��? ?�반 방문',
-					'caption' => '?�음?��? ?�배?� 교육 공간???�내????가족이 ?�안?�게 ?�배?????�습?�다.',
+					'title'   => '?? ?반 방문',
+					'caption' => '?음?? ?배? 교육 공간???내????가족이 ?안?게 ?배?????습?다.',
 				),
 			),
 		),
 		'small-groups' => array(
 			'eyebrow'     => 'Small Group Life',
-			'title'       => '?�을 ?�누�??�로�??�보???�리',
-			'description' => '?�배??고백???�상???�봄?�로 ?�어지?�록 ?�그룹과 구역 모임???�께 걷습?�다.',
+			'title'       => '?을 ?누??로??보???리',
+			'description' => '?배??고백???상???봄?로 ?어지?록 ?그룹과 구역 모임???께 걷습?다.',
 			'items'       => array(
 				array(
 					'image'   => $image_base . 'church-generated-04.jpg',
 					'label'   => '목장',
-					'title'   => '가?�과 ?�상?�서 만나??모임',
-					'caption' => '말�????�누�??�로??기도 ?�목???�는 ?��? 공동체입?�다.',
+					'title'   => '가?과 ?상?서 만나??모임',
+					'caption' => '말????누??로??기도 ?목???는 ?? 공동체입?다.',
 				),
 				array(
 					'image'   => $image_base . 'church-generated-12.jpg',
-					'label'   => '?�봄',
-					'title'   => '?�자 ?��? ?�도�??�피???�결',
-					'caption' => '?��?족과 ?�우, ?��????�요??가?�을 가까운 공동체�? ?�께 ?�봅?�다.',
+					'label'   => '?봄',
+					'title'   => '?자 ?? ?도??피???결',
+					'caption' => '??족과 ?우, ?????요??가?을 가까운 공동체? ?께 ?봅?다.',
 				),
 				array(
 					'image'   => $image_base . 'church-generated-14.jpg',
 					'label'   => '교제',
-					'title'   => '?�배 ???�어지???�탁�??�??',
-					'caption' => '짧�? ?�사?�서 ?�작??만남???�앙???�행?�로 ?�랍?�다.',
+					'title'   => '?배 ???어지???탁????',
+					'caption' => '짧? ?사?서 ?작??만남???앙???행?로 ?랍?다.',
 				),
 				array(
 					'image'   => $image_base . 'church-generated-08.jpg',
-					'label'   => '?��?',
-					'title'   => '?�께 ?�직이???��? ?��?',
-					'caption' => '�?구역??지??�� 교회 ?�의 ?�요�??�피�??�랑???�천?�니??',
+					'label'   => '??',
+					'title'   => '?께 ?직이???? ??',
+					'caption' => '?구역??지?? 교회 ?의 ?요??피??랑???천?니??',
 				),
 			),
 		),
 		'next-generation' => array(
 			'eyebrow'     => 'Next Generation',
-			'title'       => '?�이?�이 말�? ?�에???�라갑니??',
-			'description' => '?�유?��???�?��?�까지 ?�령??맞는 ?�배?� 교육?�로 ?�음?��???믿음???�웁?�다.',
+			'title'       => '?이?이 말? ?에???라갑니??',
+			'description' => '?유??????까지 ?령??맞는 ?배? 교육?로 ?음????믿음???웁?다.',
 			'items'       => array(
 				array(
 					'image'   => $image_base . 'church-generated-03.jpg',
-					'label'   => '?�배',
-					'title'   => '?�령�??�음?��? ?�배',
-					'caption' => '?�이?�이 ?�해?????�는 ?�어�?말�????�고 ?�께 찬양?�니??',
+					'label'   => '?배',
+					'title'   => '?령??음?? ?배',
+					'caption' => '?이?이 ?해?????는 ?어?말????고 ?께 찬양?니??',
 				),
 				array(
 					'image'   => $image_base . 'church-generated-11.jpg',
 					'label'   => '교육',
-					'title'   => '복음??기초�?배우???�간',
-					'caption' => '?�경 ?�야기�? ?�동???�해 믿음??고백???�상�??�결?�니??',
+					'title'   => '복음??기초?배우???간',
+					'caption' => '?경 ?야기? ?동???해 믿음??고백???상??결?니??',
 				),
 				array(
 					'image'   => $image_base . 'church-generated-10.jpg',
 					'label'   => '교사',
-					'title'   => '?�께 기도?�는 교사 공동�?',
-					'caption' => '교사?� 부모�? ?�이?�의 ?�앙 ?�장???�해 ?�께 기도?�니??',
+					'title'   => '?께 기도?는 교사 공동?',
+					'caption' => '교사? 부모? ?이?의 ?앙 ?장???해 ?께 기도?니??',
 				),
 				array(
 					'image'   => $image_base . 'church-generated-15.jpg',
 					'label'   => '캠프',
-					'title'   => '?�름?�경?�교?� ?�련??',
-					'caption' => '집중?�인 ?�배?� 교제�??�해 ?�나?�을 ??깊이 만나???�간??갖습?�다.',
+					'title'   => '?름?경?교? ?련??',
+					'caption' => '집중?인 ?배? 교제??해 ?나?을 ??깊이 만나???간??갖습?다.',
 				),
 			),
 		),
 		'youth-ministry' => array(
 			'eyebrow'     => 'Young Adults',
-			'title'       => '�?��?�이 믿음�??�을 ?�께 ?�웁?�다',
-			'description' => '?�배, ?�그�? 기도?� ?��????�해 �?��??계절???�께 걸어갑니??',
+			'title'       => '??이 믿음??을 ?께 ?웁?다',
+			'description' => '?배, ?그? 기도? ?????해 ???계절???께 걸어갑니??',
 			'items'       => array(
 				array(
 					'image'   => $image_base . 'church-generated-02.jpg',
-					'label'   => '?�배',
-					'title'   => '�?��?�배?� 말�? ?�눔',
-					'caption' => '?�의 질문??말�? ?�에 가?�오�??�께 ?�답?�는 ?�리?�니??',
+					'label'   => '?배',
+					'title'   => '??배? 말? ?눔',
+					'caption' => '?의 질문??말? ?에 가?오??께 ?답?는 ?리?니??',
 				),
 				array(
 					'image'   => $image_base . 'church-generated-04.jpg',
-					'label'   => '?�그�?',
-					'title'   => '관계�? 깊어지???�모??',
-					'caption' => '?�교?� 직장, 진로?� 관계의 고�???믿음 ?�에???�눕?�다.',
+					'label'   => '?그?',
+					'title'   => '관계? 깊어지???모??',
+					'caption' => '?교? 직장, 진로? 관계의 고???믿음 ?에???눕?다.',
 				),
 				array(
 					'image'   => $image_base . 'church-generated-13.jpg',
 					'label'   => '찬양',
-					'title'   => '?�배�??�께 ?�우???��?',
-					'caption' => '찬양�?미디?? ?��????�리?�서 �?��?�이 ?�?��? ?�눕?�다.',
+					'title'   => '?배??께 ?우????',
+					'caption' => '찬양?미디?? ?????리?서 ??이 ??? ?눕?다.',
 				),
 				array(
 					'image'   => $image_base . 'church-generated-17.jpg',
-					'label'   => '?�교',
-					'title'   => '지??�� ?�상???�한 발걸??',
-					'caption' => '봉사?� ?�기 ?�교�??�해 복음???�의 ?�리�?가?�갑?�다.',
+					'label'   => '?교',
+					'title'   => '지?? ?상???한 발걸??',
+					'caption' => '봉사? ?기 ?교??해 복음???의 ?리?가?갑?다.',
 				),
 			),
 		),
 		'senior-ministry' => array(
 			'eyebrow'     => 'Senior Ministry',
-			'title'       => '?�년�??�니?�의 믿음???�음?��?�??�웁?�다',
-			'description' => '?�배, 교제, ?�봄�??��????�해 ?�생??계절마다 ?�께 걷는 공동체입?�다.',
+			'title'       => '?년??니?의 믿음???음????웁?다',
+			'description' => '?배, 교제, ?봄??????해 ?생??계절마다 ?께 걷는 공동체입?다.',
 			'items'       => array(
 				array(
 					'image'   => $image_base . 'church-generated-12.jpg',
-					'label'   => '?�봄',
-					'title'   => '기도?� ?�방?�로 ?�어지???�봄',
-					'caption' => '몸과 마음???�요�??�피�?가까운 공동체�? ?�께 기도?�니??',
+					'label'   => '?봄',
+					'title'   => '기도? ?방?로 ?어지???봄',
+					'caption' => '몸과 마음???요??피?가까운 공동체? ?께 기도?니??',
 				),
 				array(
 					'image'   => $image_base . 'church-generated-14.jpg',
 					'label'   => '교제',
-					'title'   => '?�께 ?�탁???�누??모임',
-					'caption' => '주중 모임�??�기 ?�사�??�해 관계�? 격려가 ?�어집니??',
+					'title'   => '?께 ?탁???누??모임',
+					'caption' => '주중 모임??기 ?사??해 관계? 격려가 ?어집니??',
 				),
 				array(
 					'image'   => $image_base . 'church-generated-10.jpg',
-					'label'   => '배�?',
-					'title'   => '말�??�로 깊어지???�앙',
-					'caption' => '?�경공�??� 기도 모임?�로 ?�생??계절??말�? ?�에???�석?�니??',
+					'label'   => '배?',
+					'title'   => '말??로 깊어지???앙',
+					'caption' => '?경공?? 기도 모임?로 ?생??계절??말? ?에???석?니??',
 				),
 				array(
 					'image'   => $image_base . 'church-generated-08.jpg',
-					'label'   => '?��?',
-					'title'   => '경험�??�?��? ?�누???�리',
-					'caption' => '?�랜 믿음??경험??교회?� ?�음?��?�??�우???��??�로 ?�어집니??',
+					'label'   => '??',
+					'title'   => '경험???? ?누???리',
+					'caption' => '?랜 믿음??경험??교회? ?음????우?????로 ?어집니??',
 				),
 			),
 		),
@@ -1844,7 +1845,7 @@ function ktheme_v2_render_photo_carousel_shortcode( $atts = array() ): string {
 			'</figcaption>' .
 		'</figure>';
 
-		$dots .= '<button class="kt-photo-carousel__dot" type="button" aria-label="' . esc_attr( sprintf( '%d번째 ?�진 보기', $index + 1 ) ) . '" aria-controls="' . esc_attr( $slide_id ) . '" data-kt-carousel-dot="' . esc_attr( (string) $index ) . '"><span></span></button>';
+		$dots .= '<button class="kt-photo-carousel__dot" type="button" aria-label="' . esc_attr( sprintf( '%d번째 ?진 보기', $index + 1 ) ) . '" aria-controls="' . esc_attr( $slide_id ) . '" data-kt-carousel-dot="' . esc_attr( (string) $index ) . '"><span></span></button>';
 	}
 
 	return '<section class="' . esc_attr( implode( ' ', $classes ) ) . '" aria-labelledby="' . esc_attr( $section_id . '-title' ) . '" data-kt-photo-carousel>' .
@@ -1852,15 +1853,15 @@ function ktheme_v2_render_photo_carousel_shortcode( $atts = array() ): string {
 			'<div><span class="kt-card-label">' . esc_html( $eyebrow ) . '</span><h2 id="' . esc_attr( $section_id . '-title' ) . '">' . esc_html( $title ) . '</h2>' .
 			( '' !== $description ? '<p>' . esc_html( $description ) . '</p>' : '' ) . '</div>' .
 			'<div class="kt-photo-carousel__controls">' .
-				'<button class="kt-photo-carousel__button" type="button" aria-label="' . esc_attr__( '?�전 ?�진', 'ktheme-v2' ) . '" data-kt-carousel-prev><svg class="kt-icon kt-icon--sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" aria-hidden="true"><path d="M15 18 9 12l6-6"/></svg></button>' .
-				'<button class="kt-photo-carousel__button" type="button" aria-label="' . esc_attr__( '?�음 ?�진', 'ktheme-v2' ) . '" data-kt-carousel-next><svg class="kt-icon kt-icon--sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></button>' .
+				'<button class="kt-photo-carousel__button" type="button" aria-label="' . esc_attr__( '?전 ?진', 'ktheme-v2' ) . '" data-kt-carousel-prev><svg class="kt-icon kt-icon--sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" aria-hidden="true"><path d="M15 18 9 12l6-6"/></svg></button>' .
+				'<button class="kt-photo-carousel__button" type="button" aria-label="' . esc_attr__( '?음 ?진', 'ktheme-v2' ) . '" data-kt-carousel-next><svg class="kt-icon kt-icon--sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></button>' .
 			'</div>' .
 		'</div>' .
 		'<div class="kt-photo-carousel__viewport" tabindex="0" data-kt-carousel-viewport>' .
 			'<div class="kt-photo-carousel__track" data-kt-carousel-track>' . $slides . '</div>' .
 		'</div>' .
 		'<div class="kt-photo-carousel__footer">' .
-			'<div class="kt-photo-carousel__dots" aria-label="' . esc_attr__( '?�진 ?�택', 'ktheme-v2' ) . '">' . $dots . '</div>' .
+			'<div class="kt-photo-carousel__dots" aria-label="' . esc_attr__( '?진 ?택', 'ktheme-v2' ) . '">' . $dots . '</div>' .
 			'<div class="kt-photo-carousel__count" aria-live="polite"><span data-kt-carousel-current>01</span><span>/</span><span>' . esc_html( str_pad( (string) $total, 2, '0', STR_PAD_LEFT ) ) . '</span></div>' .
 		'</div>' .
 	'</section>';
@@ -1884,8 +1885,8 @@ function ktheme_v2_customize_register_page_hero( WP_Customize_Manager $wp_custom
 	$wp_customize->add_section(
 		'ktheme_v2_page_hero',
 		array(
-			'title'       => __( 'KTheme 공용 ?�어�?', 'ktheme-v2' ),
-			'description' => __( '모든 ?�이지 ?�플릿에???�용?�는 ?�마 종속 공용 ?�어�??�정?�니??', 'ktheme-v2' ),
+			'title'       => __( 'KTheme 공용 ?어?', 'ktheme-v2' ),
+			'description' => __( '모든 ?이지 ?플릿에???용?는 ?마 종속 공용 ?어??정?니??', 'ktheme-v2' ),
 			'priority'    => 35,
 		)
 	);
@@ -1901,7 +1902,7 @@ function ktheme_v2_customize_register_page_hero( WP_Customize_Manager $wp_custom
 	$wp_customize->add_control(
 		'ktheme_v2_page_hero_enabled',
 		array(
-			'label'   => __( '공용 ?�어�??�시', 'ktheme-v2' ),
+			'label'   => __( '공용 ?어??시', 'ktheme-v2' ),
 			'section' => 'ktheme_v2_page_hero',
 			'type'    => 'checkbox',
 		)
@@ -1918,7 +1919,7 @@ function ktheme_v2_customize_register_page_hero( WP_Customize_Manager $wp_custom
 	$wp_customize->add_control(
 		'ktheme_v2_page_hero_style',
 		array(
-			'label'   => __( '?�어�??��???', 'ktheme-v2' ),
+			'label'   => __( '?어?????', 'ktheme-v2' ),
 			'section' => 'ktheme_v2_page_hero',
 			'type'    => 'select',
 			'choices' => ktheme_v2_page_hero_style_options(),
@@ -1936,8 +1937,8 @@ function ktheme_v2_customize_register_page_hero( WP_Customize_Manager $wp_custom
 	$wp_customize->add_control(
 		'ktheme_v2_page_hero_image_url',
 		array(
-			'label'       => __( '배경/?�측 ?��?지 URL', 'ktheme-v2' ),
-			'description' => __( 'Image, Ken Burns, Split ?��??�에 ?�용?�니??', 'ktheme-v2' ),
+			'label'       => __( '배경/?측 ??지 URL', 'ktheme-v2' ),
+			'description' => __( 'Image, Ken Burns, Split ???에 ?용?니??', 'ktheme-v2' ),
 			'section'     => 'ktheme_v2_page_hero',
 			'type'        => 'url',
 		)
@@ -1954,8 +1955,8 @@ function ktheme_v2_customize_register_page_hero( WP_Customize_Manager $wp_custom
 	$wp_customize->add_control(
 		'ktheme_v2_page_hero_youtube_url',
 		array(
-			'label'       => __( '?�튜�?배경 ?�상 URL', 'ktheme-v2' ),
-			'description' => __( 'Video Background ?��??�에 ?�용?�니??', 'ktheme-v2' ),
+			'label'       => __( '?튜?배경 ?상 URL', 'ktheme-v2' ),
+			'description' => __( 'Video Background ???에 ?용?니??', 'ktheme-v2' ),
 			'section'     => 'ktheme_v2_page_hero',
 			'type'        => 'url',
 		)
@@ -1963,9 +1964,9 @@ function ktheme_v2_customize_register_page_hero( WP_Customize_Manager $wp_custom
 
 	foreach (
 		array(
-			'ktheme_v2_page_hero_accent_color'  => array( __( '강조 ?�상', 'ktheme-v2' ), '#3a64f5' ),
-			'ktheme_v2_page_hero_text_color'    => array( __( '?�스???�상', 'ktheme-v2' ), '' ),
-			'ktheme_v2_page_hero_overlay_color' => array( __( '?�버?�이 ?�상', 'ktheme-v2' ), '#0e1320' ),
+			'ktheme_v2_page_hero_accent_color'  => array( __( '강조 ?상', 'ktheme-v2' ), '#3a64f5' ),
+			'ktheme_v2_page_hero_text_color'    => array( __( '?스???상', 'ktheme-v2' ), '' ),
+			'ktheme_v2_page_hero_overlay_color' => array( __( '?버?이 ?상', 'ktheme-v2' ), '#0e1320' ),
 		) as $setting_id => $config
 	) {
 		$wp_customize->add_setting(
@@ -1995,7 +1996,7 @@ function ktheme_v2_normalize_front_content_labels( string $block_content ): stri
 		return $block_content;
 	}
 
-	return str_replace( '?�토갤러�??�체보기', '?�체보기', $block_content );
+	return str_replace( '?토갤러??체보기', '?체보기', $block_content );
 }
 add_filter( 'render_block', 'ktheme_v2_normalize_front_content_labels', 20 );
 
@@ -2044,38 +2045,38 @@ function ktheme_v2_render_home_hero_slider_script(): void {
 	    {
 	      image: '/wp-content/themes/ktheme-v2/assets/images/generated/church-generated-01.jpg',
 	      eyebrow: '2026 SPRING SERIES · VOL. 04',
-	      title: '말�???머무???�리,<br />?�?��? ?�르??공동�?,
-	      copy: '매주 ?�롭�?부?��????�?��? ?�께 ?�립?�다. ?�배?� 말�?, 그리�?공동�??�에???�이 ?�복?�는 ?�리�??�러분을 초�??�니??',
-	      meta: ['머무름의 ?�성', '?�편 23:1-6', '?�한�??�임목사'],
-	      primary: '?�번 �??�교 보기',
-	      secondary: '?�배 ?�간 ?�내'
+	      title: '말씀에 머무는 자리,<br />함께 걸어가는 공동체',
+	      copy: '매주 드려지는 예배와 말씀, 그리고 공동체의 삶 속에서 회복의 자리를 함께 만들어 갑니다.',
+	      meta: ['머무름의 영성', '시편 23:1-6', '담임목사'],
+	      primary: '이번 주 설교 보기',
+	      secondary: '예배 시간 안내'
 	    },
 	    {
 	      image: '/wp-content/themes/ktheme-v2/assets/images/generated/church-generated-08.jpg',
 	      eyebrow: 'WORSHIP TOGETHER · SUNDAY',
-	      title: '?�께 ?�배?�고,<br />?�께 ?�워지???�간',
-	      copy: '주일???�배 ?�리?�서 ?�나?�을 ?�이�??�로�?격려?�니?? 처음 ?�신 분들???�안?�게 참여?????�도�??�내?�니??',
-	      meta: ['주일?�배', '?�전 11:00 본당', '?�배 ?�내'],
-	      primary: '주일?�배 보기',
-	      secondary: '?�시??�?
+	      title: '함께 예배하고,<br />함께 세워지는 시간',
+	      copy: '주일 예배 자리에서 하나님을 예배하고 서로를 격려합니다. 처음 오신 분도 편안하게 참여할 수 있도록 안내합니다.',
+	      meta: ['주일예배', '오전 11:00', '본당'],
+	      primary: '주일예배 보기',
+	      secondary: '오시는 길'
 	    },
 	    {
 	      image: '/wp-content/themes/ktheme-v2/assets/images/generated/church-generated-03.jpg',
 	      eyebrow: 'NEXT GENERATION · FAITH',
-	      title: '?�음 ?��?가 복음 ?�에??br />?�라?�는 교회',
-	      copy: '?�이?�과 �?��?? �?��?�이 믿음�??�을 ?�께 배워갑니?? ?��?�??�는 ?�배?� 교육???�름??만들?�갑?�다.',
-	      meta: ['?�음?��?', '교육�??�배', '공동�??�역'],
-	      primary: '?�음?��? 보기',
-	      secondary: '공동�??�내'
+	      title: '다음 세대가 복음 안에서<br />자라나는 교회',
+	      copy: '아이들과 청소년이 믿음의 언어를 배우고 삶으로 이어갈 수 있도록 예배와 교육의 흐름을 만듭니다.',
+	      meta: ['다음세대', '교육과 예배', '공동체 사역'],
+	      primary: '다음세대 보기',
+	      secondary: '공동체 안내'
 	    },
 	    {
 	      image: '/wp-content/themes/ktheme-v2/assets/images/generated/church-generated-15.jpg',
 	      eyebrow: 'MISSION & SERVE · LOCAL',
-	      title: '지??�� ?�상???�기??br />?��? 발걸??,
-	      copy: '가?�교?�는 복음??마음?�로 ?�웃???�깁?�다. ?�교?� ?��????�리?�서 ?�께 기도?�고 ?�역?�니??',
-	      meta: ['?�교 ?�내', '지???��?', '?�원�??�역'],
-	      primary: '?�교 ?�내 보기',
-	      secondary: '?��? ?�역'
+	      title: '지역의 일상을 섬기는<br />작은 발걸음',
+	      copy: '복음의 마음으로 이웃을 섬기며, 선교와 봉사의 자리에서 함께 기도하고 동역합니다.',
+	      meta: ['선교 안내', '지역 섬김', '후원과 봉사'],
+	      primary: '선교 안내 보기',
+	      secondary: '섬김 사역'
 	    }
 	  ];
 

@@ -1,3 +1,5 @@
+allowBuilds:
+  unrs-resolver: true
 # pnpm workspace configuration
 # enableGlobalVirtualStore: true 는 worktree에서 node_modules 중복 저장을 막는다
 enableGlobalVirtualStore: true
