@@ -2,7 +2,7 @@
 /**
  * Title: Donation Integration Shell
  * Slug: ktheme-v2/section-donation-shell
- * Categories: ktheme-v2-style1
+ * Categories: ktheme-v2-integrations
  * Description: A safe placeholder for a verified donation or payment integration.
  */
 ?>

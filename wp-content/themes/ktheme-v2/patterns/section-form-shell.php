@@ -2,7 +2,7 @@
 /**
  * Title: Form Page Shell
  * Slug: ktheme-v2/section-form-shell
- * Categories: ktheme-v2-style1
+ * Categories: ktheme-v2-integrations
  * Description: Form plugin container with guidance cards for Contact Form 7, WPForms, or Fluent Forms.
  */
 ?>

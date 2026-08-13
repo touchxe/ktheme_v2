@@ -2,7 +2,7 @@
 /**
  * Title: Location Information Shell
  * Slug: ktheme-v2/section-location-shell
- * Categories: ktheme-v2-style1
+ * Categories: ktheme-v2-integrations
  * Description: Editable location, transport, parking, and map integration guidance.
  */
 ?>

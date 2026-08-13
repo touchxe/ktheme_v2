@@ -2,7 +2,7 @@
 /**
  * Title: Subpage Optional CTA
  * Slug: ktheme-v2/section-subpage-cta
- * Categories: ktheme-v2-style1
+ * Categories: ktheme-v2-sections
  * Description: Optional closing call-to-action section for subpages.
  */
 ?>
@@ -19,4 +19,3 @@
   </div>
 </section>
 <!-- /wp:html -->
-

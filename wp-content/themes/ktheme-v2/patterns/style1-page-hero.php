@@ -2,7 +2,7 @@
 /**
  * Title: Style 1 Page Hero
  * Slug: ktheme-v2/style1-page-hero
- * Categories: ktheme-v2-style1
+ * Categories: ktheme-v2-sections, ktheme-v2-style1
  * Description: Theme-owned Style 1 page hero with breadcrumb, title, description, and tabs.
  */
 ?>
