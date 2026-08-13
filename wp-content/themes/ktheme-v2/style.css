@@ -3,7 +3,7 @@ Theme Name: KTheme V2
 Theme URI: https://juswer.mycafe24.com
 Author: KTheme
 Description: WordPress block theme based on the Style 1 church homepage design.
-Version: 0.3.62
+Version: 0.3.71
 Requires at least: 6.5
 Tested up to: 6.5
 Requires PHP: 7.4
@@ -85,9 +85,20 @@ svg {
 }
 
 .kt-topbar {
+  max-height: 36px;
+  overflow: hidden;
   border-bottom: 1px solid var(--kt-line);
   color: var(--kt-ink-600);
   font-size: 12px;
+  opacity: 1;
+  transition: max-height 180ms ease, opacity 140ms ease, border-color 180ms ease;
+}
+
+.kt-site-header-shell.is-scrolled .kt-topbar {
+  max-height: 0;
+  border-bottom-color: transparent;
+  opacity: 0;
+  pointer-events: none;
 }
 
 .kt-topbar__inner {
@@ -96,6 +107,52 @@ svg {
   align-items: center;
   justify-content: space-between;
   gap: 20px;
+}
+
+.kt-topbar__notice {
+  min-width: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: var(--kt-ink-600);
+  line-height: 1;
+}
+
+.kt-topbar__notice:hover,
+.kt-topbar__notice:focus-visible {
+  color: var(--kt-ink-900);
+}
+
+.kt-topbar__notice-label {
+  color: var(--kt-brand-600);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+}
+
+.kt-topbar__notice-title {
+  overflow: hidden;
+  color: var(--kt-ink-700);
+  font-size: 12px;
+  font-weight: 600;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.kt-topbar__notice-more {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-left: 4px;
+  color: var(--kt-ink-600);
+  font-size: 11px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.kt-topbar__notice:hover .kt-topbar__notice-more,
+.kt-topbar__notice:focus-visible .kt-topbar__notice-more {
+  color: var(--kt-brand-600);
 }
 
 .kt-site-header-shell {
@@ -230,16 +287,16 @@ header.wp-block-template-part:has(> .kt-topbar + .kt-header) .kt-header {
 }
 
 .kt-brand--mark-only img {
-  width: 164px;
+  width: 208px;
   height: auto;
-  max-height: 52px;
+  max-height: 58px;
 }
 
 @media (min-width: 1025px) {
   .kt-header.is-scrolled .kt-brand--mark-only img {
-    width: 148px;
+    width: 184px;
     height: auto;
-    max-height: 46px;
+    max-height: 52px;
   }
 }
 
@@ -452,17 +509,32 @@ header.wp-block-template-part:has(> .kt-topbar + .kt-header) .kt-header {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  height: 36px;
-  padding: 0 14px;
+  gap: 7px;
+  height: 38px;
+  padding: 0 14px 0 12px;
   border: 1px solid var(--kt-ink-900);
   border-radius: 999px;
   font-size: 13px;
   font-weight: 700;
+  white-space: nowrap;
 }
 
 .kt-header-register:hover {
   background: var(--kt-ink-900);
   color: white;
+}
+
+
+.kt-header-register__arrow {
+  width: 14px;
+  height: 14px;
+  flex: 0 0 auto;
+  transition: transform 140ms ease;
+}
+
+.kt-header-register:hover .kt-header-register__arrow,
+.kt-header-register:focus-visible .kt-header-register__arrow {
+  transform: translateX(2px);
 }
 
 .kt-mega-toggle {
@@ -596,42 +668,33 @@ header.wp-block-template-part:has(> .kt-topbar + .kt-header) .kt-header {
   transition: opacity 160ms ease, transform 160ms ease, visibility 160ms ease;
 }
 
-.kt-header.is-mega-open .kt-mega-menu {
+.kt-header.is-mega-open .kt-mega-menu,
+.kt-header[data-kt-mega-open="true"] .kt-mega-menu {
   opacity: 1;
   transform: translateY(0);
   pointer-events: auto;
   visibility: visible;
 }
 
+.kt-mega-menu {
+  border-bottom: 1px solid var(--kt-line);
+  background: #fff;
+  box-shadow: var(--kt-shadow-md);
+}
+
 .kt-mega-menu__inner {
-  padding: 28px 0 34px;
+  padding: 0;
 }
 
 .kt-mega-menu__head {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 20px;
-  padding-bottom: 18px;
-  border-bottom: 1px solid var(--kt-line);
-}
-
-.kt-mega-menu__head strong {
-  color: var(--kt-ink-900);
-  font-size: 18px;
-  letter-spacing: -0.02em;
-}
-
-.kt-mega-menu__head span {
-  color: var(--kt-ink-600);
-  font-size: 13px;
+  display: none;
 }
 
 .kt-mega-menu__grid {
   display: grid;
   grid-template-columns: repeat(7, minmax(0, 1fr));
   gap: 22px;
-  padding-top: 22px;
+  padding: 28px 0 34px;
 }
 
 .kt-mega-menu section {
@@ -640,25 +703,98 @@ header.wp-block-template-part:has(> .kt-topbar + .kt-header) .kt-header {
 
 .kt-mega-menu h3 {
   margin: 0 0 12px;
+  border-bottom: 1px solid var(--kt-line);
+  padding-bottom: 12px;
   color: var(--kt-ink-900);
   font-size: 15px;
-  letter-spacing: -0.02em;
+  font-weight: 800;
+  letter-spacing: 0;
+  line-height: 1.2;
 }
 
+.kt-mega-menu h3 > a {
+  display: inline-flex;
+  align-items: center;
+  color: inherit;
+  transition: color 140ms ease;
+}
+
+.kt-mega-menu section > p {
+  display: grid;
+  gap: 0;
+  margin: 0;
+}
+
+.kt-mega-menu section > p > a,
 .kt-mega-menu section > a {
   display: flex;
-  min-height: 28px;
+  min-height: 32px;
   align-items: center;
-  color: var(--kt-ink-600);
-  font-size: 13px;
+  border-radius: 6px;
+  padding: 0 7px;
+  color: var(--kt-ink-700);
+  font-size: 12px;
   font-weight: 700;
+  letter-spacing: 0;
+  line-height: 1.2;
+  white-space: nowrap;
+  transition: background 140ms ease, color 140ms ease;
 }
 
-.kt-mega-menu a:hover,
-.kt-mega-menu a:focus {
+.kt-mega-menu section > p > a:hover,
+.kt-mega-menu section > p > a:focus-visible,
+.kt-mega-menu section > a:hover,
+.kt-mega-menu section > a:focus-visible,
+.kt-mega-menu h3 > a:hover,
+.kt-mega-menu h3 > a:focus-visible {
   color: var(--kt-brand-600);
 }
 
+.kt-mega-menu section > p > a:hover,
+.kt-mega-menu section > p > a:focus-visible,
+.kt-mega-menu section > a:hover,
+.kt-mega-menu section > a:focus-visible {
+  background: var(--kt-paper);
+  color: var(--kt-brand-600);
+}
+
+@media (max-width: 1024px) {
+  .kt-mega-menu__grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 22px;
+    padding: 28px 0 34px;
+  }
+}
+
+@media (max-width: 640px) {
+  .kt-mega-menu__grid {
+    grid-template-columns: 1fr;
+    gap: 0;
+    padding: 28px 0 32px;
+  }
+
+  .kt-mega-menu section {
+    padding: 16px 0;
+    border-bottom: 1px solid var(--kt-line);
+  }
+
+  .kt-mega-menu section:last-child {
+    border-bottom: 0;
+  }
+
+  .kt-mega-menu h3 {
+    margin-bottom: 11px;
+    border-bottom: 0;
+    padding-bottom: 0;
+    font-size: 17px;
+  }
+
+  .kt-mega-menu section > p > a,
+  .kt-mega-menu section > a {
+    min-height: 36px;
+    font-size: 14px;
+  }
+}
 .kt-menu-button {
   display: none;
 }
@@ -12916,9 +13052,9 @@ body:is(.page-id-67,.page-id-69) .kt-nav .wp-block-navigation__container > .wp-b
 }
 
 /* ============================================================
-   ?�정/???�금/?�원 공용 컴포?�트 (kt-svc-*, kt-giving-*)
+   ?�정/???�금/?�원 공용 컴포?�트 (kt-svc-*, kt-giving-*)
    giving / documents / facility-request / vehicle-request /
-   contact / support ?�플릿에??공유?�니??
+   contact / support ?�플릿에??공유?�니??
    ============================================================ */
 
 .kt-admin-section-head .kt-card-label {
@@ -12938,7 +13074,7 @@ body:is(.page-id-67,.page-id-69) .kt-nav .wp-block-navigation__container > .wp-b
   line-height: 1.7;
 }
 
-/* -- Icon info card grid (발급 ?�류 / ?�약 ??�� / ?�락�?/ ?�원 종류) -- */
+/* -- Icon info card grid (발급 ?�류 / ?�약 ??�� / ?�락�?/ ?�원 종류) -- */
 
 .kt-svc-card-grid {
   display: grid;
@@ -13019,7 +13155,7 @@ body:is(.page-id-67,.page-id-69) .kt-nav .wp-block-navigation__container > .wp-b
   text-align: right;
 }
 
-/* -- Step grid (?�청/?�원 방법) -- */
+/* -- Step grid (?�청/?�원 방법) -- */
 
 .kt-svc-step-grid {
   display: grid;
@@ -13063,7 +13199,7 @@ body:is(.page-id-67,.page-id-69) .kt-nav .wp-block-navigation__container > .wp-b
   line-height: 1.65;
 }
 
-/* -- List (부?�별 문의�?/ 계좌 ?�보) -- */
+/* -- List (부?�별 문의�?/ 계좌 ?�보) -- */
 
 .kt-svc-list {
   margin: 0;
@@ -13162,7 +13298,7 @@ body:is(.page-id-67,.page-id-69) .kt-nav .wp-block-navigation__container > .wp-b
   text-align: right;
 }
 
-/* -- Application form (증명???�설/차량/문의 ?�청?? -- */
+/* -- Application form (증명???�설/차량/문의 ?�청?? -- */
 
 .kt-svc-form {
   max-width: 760px;
@@ -13421,7 +13557,7 @@ body:is(.page-id-67,.page-id-69) .kt-nav .wp-block-navigation__container > .wp-b
   line-height: 1.7;
 }
 
-/* -- Giving wizard (?�라???�금) -- */
+/* -- Giving wizard (?�라???�금) -- */
 
 .kt-giving-layout {
   display: grid;
@@ -13991,3 +14127,9 @@ body:is(.page-id-67,.page-id-69) .kt-nav .wp-block-navigation__container > .wp-b
     flex-direction: column;
   }
 }
+
+
+/* Style 3 history and news page templates */
+.kt-style3-page{color:#0e1320;background:#fff}.kt-style3-page *{box-sizing:border-box}.kt-style3-hero{position:relative;min-height:510px;overflow:hidden;color:#fff}.kt-style3-hero__media,.kt-style3-hero__shade{position:absolute;inset:0}.kt-style3-hero__media img{width:100%;height:100%;object-fit:cover}.kt-style3-hero__shade{background:linear-gradient(180deg,rgba(14,19,32,.72),rgba(14,19,32,.52) 44%,rgba(14,19,32,.91))}.kt-style3-hero__inner{position:relative;z-index:1;padding-top:72px;padding-bottom:66px}.kt-style3-breadcrumb{display:flex;gap:9px;align-items:center;color:rgba(255,255,255,.68);font-size:12px}.kt-style3-breadcrumb a:hover{color:#fff}.kt-style3-kicker{margin:0 0 14px;color:#2a4fd6;font-size:11px;font-weight:850;letter-spacing:.18em;text-transform:uppercase}.kt-style3-hero .kt-style3-kicker{margin-top:40px;color:rgba(255,255,255,.68)}.kt-style3-hero h1{max-width:840px;margin:0;color:#fff;font-size:clamp(44px,6vw,72px);font-weight:850;line-height:1.02;letter-spacing:-.055em}.kt-style3-hero__copy{max-width:570px;margin:22px 0 0;color:rgba(255,255,255,.78);font-size:17px;line-height:1.72}.kt-style3-pills{display:flex;flex-wrap:wrap;gap:7px;margin-top:34px}.kt-style3-pills a{min-height:38px;display:inline-flex;align-items:center;justify-content:center;padding:0 16px;border:1px solid rgba(255,255,255,.36);border-radius:999px;color:rgba(255,255,255,.9);font-size:13px;font-weight:750}.kt-style3-pills a:hover,.kt-style3-pills a.is-active{border-color:#fff;color:#0e1320;background:#fff}.kt-style3-intro{padding:100px 24px;text-align:center}.kt-style3-intro h2{max-width:900px;margin:0 auto;font-size:clamp(28px,3.3vw,40px);font-weight:850;line-height:1.36;letter-spacing:-.04em}.kt-style3-intro h2 em{color:#2a4fd6;font-style:normal}.kt-style3-intro>p:last-child{margin:28px 0 0;color:#384058;font-size:13px}.kt-style3-stats{border-top:1px solid #e5e7eb;border-bottom:1px solid #e5e7eb;background:#f4f5f7}.kt-style3-stats dl{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin:0;padding:48px 0}.kt-style3-stats dt{font-size:clamp(30px,3vw,43px);font-weight:850;letter-spacing:-.055em}.kt-style3-stats dd{margin:9px 0 0;color:#384058;font-size:13px}.kt-style3-section{padding:108px 0}.kt-style3-section--paper{background:#f4f5f7}.kt-style3-section-head{max-width:600px;margin-bottom:46px}.kt-style3-section-head h2{margin:0;font-size:clamp(30px,3.5vw,42px);font-weight:850;line-height:1.15;letter-spacing:-.045em}.kt-style3-section-head>p:last-child{margin:14px 0 0;color:#384058;font-size:15px;line-height:1.7}.kt-style3-timeline{padding-top:110px;padding-bottom:120px}.kt-style3-timeline__rail{position:relative}.kt-style3-timeline__rail:before{content:"";position:absolute;top:38px;bottom:38px;left:50%;width:1px;background:#e5e7eb}.kt-style3-timeline article{position:relative;display:grid;grid-template-columns:1fr 1fr;min-height:236px}.kt-style3-timeline article:before{content:"";position:absolute;top:34px;left:50%;z-index:1;width:14px;height:14px;border:4px solid #fff;border-radius:50%;background:#0e1320;transform:translateX(-50%);box-shadow:0 0 0 1px #e5e7eb}.kt-style3-timeline article:last-child:before{background:#3a64f5}.kt-style3-timeline__year{grid-column:1;padding:18px 72px 0 0;text-align:right;font-size:34px;font-weight:850;letter-spacing:-.05em}.kt-style3-timeline__year span{color:#384058}.kt-style3-timeline__events{grid-column:2;display:grid;align-content:start;gap:24px;padding:0 0 46px 72px}.kt-style3-timeline__events div{padding-left:18px;border-left:2px solid #e5e7eb}.kt-style3-timeline time{display:block;color:#2a4fd6;font-size:12px;font-weight:850}.kt-style3-timeline h3{margin:6px 0;font-size:17px;letter-spacing:-.025em}.kt-style3-timeline p{max-width:430px;margin:0;color:#384058;font-size:14px;line-height:1.65}.kt-style3-timeline article.is-reverse .kt-style3-timeline__year{grid-column:2;padding:18px 0 0 72px;text-align:left}.kt-style3-timeline article.is-reverse .kt-style3-timeline__events{grid-column:1;grid-row:1;padding:0 72px 46px 0;text-align:right}.kt-style3-timeline article.is-reverse .kt-style3-timeline__events div{padding:0 18px 0 0;border-right:2px solid #e5e7eb;border-left:0}.kt-style3-timeline article.is-reverse .kt-style3-timeline p{margin-left:auto}.kt-style3-cta{color:#fff;background:#2a4fd6}.kt-style3-cta>.kt-container{display:flex;align-items:end;justify-content:space-between;gap:32px;padding-top:84px;padding-bottom:84px}.kt-style3-cta .kt-style3-kicker{color:rgba(255,255,255,.66)}.kt-style3-cta h2{margin:0;color:#fff;font-size:clamp(32px,4vw,52px);font-weight:850;line-height:1.08;letter-spacing:-.055em}.kt-style3-cta a{min-height:46px;display:inline-flex;align-items:center;gap:14px;padding:0 18px;border-radius:8px;color:#0e1320;background:#fff;font-size:14px;font-weight:800;white-space:nowrap}.kt-style3-schedule{display:grid;grid-template-columns:1.15fr .85fr;gap:28px}.kt-style3-calendar,.kt-style3-agenda{border:1px solid #e5e7eb;border-radius:18px;background:#fff}.kt-style3-calendar{padding:30px}.kt-style3-calendar__head{display:flex;justify-content:space-between;align-items:center;margin-bottom:24px}.kt-style3-calendar__head h3{margin:0;font-size:20px}.kt-style3-calendar__head span{color:#2a4fd6;font-size:12px;font-weight:800}.kt-style3-calendar__week,.kt-style3-calendar__days{display:grid;grid-template-columns:repeat(7,1fr);text-align:center}.kt-style3-calendar__week{margin-bottom:8px;color:#384058;font-size:12px}.kt-style3-calendar__week b:first-child{color:#e23b3b}.kt-style3-calendar__days{gap:4px}.kt-style3-calendar__days span,.kt-style3-calendar__days i{min-height:48px;display:grid;place-items:center;border-radius:10px;font-size:13px;font-style:normal}.kt-style3-calendar__days .is-today{color:#fff;background:#0e1320;box-shadow:0 0 0 2px #0e1320}.kt-style3-calendar__days .has-event:after,.kt-style3-calendar__days .has-prayer:after,.kt-style3-calendar__days .has-education:after{content:"";width:5px;height:5px;margin-top:-10px;border-radius:50%;background:#3a64f5}.kt-style3-calendar__days .has-prayer:after{background:#059669}.kt-style3-calendar__days .has-education:after{background:#7c3aed}.kt-style3-agenda{overflow:hidden}.kt-style3-agenda article{display:flex;gap:14px;padding:20px;border-bottom:1px solid #e5e7eb}.kt-style3-agenda article:last-child{border:0}.kt-style3-agenda time{width:48px;flex:0 0 48px;text-align:center}.kt-style3-agenda time small{display:block;color:#2a4fd6;font-size:11px;font-weight:850}.kt-style3-agenda time b{font-size:24px;line-height:1}.kt-style3-agenda span{color:#2a4fd6;font-size:11px;font-weight:850;letter-spacing:.09em}.kt-style3-agenda .is-amber{color:#c88000}.kt-style3-agenda .is-green{color:#059669}.kt-style3-agenda .is-violet{color:#6d28d9}.kt-style3-agenda h3{margin:5px 0 0;font-size:14px;line-height:1.45}.kt-style3-news-grid{display:grid;grid-template-columns:1fr 1fr;gap:30px}.kt-style3-featured-news{overflow:hidden;border-radius:18px;background:#fff;box-shadow:0 1px 0 rgba(0,0,0,.04),0 18px 36px -24px rgba(14,19,32,.18)}.kt-style3-featured-news img{width:100%;height:240px;object-fit:cover}.kt-style3-featured-news div{padding:26px}.kt-style3-featured-news span,.kt-style3-news-list span{color:#2a4fd6;font-size:11px;font-weight:850;letter-spacing:.1em}.kt-style3-featured-news h3{margin:10px 0;font-size:24px;letter-spacing:-.04em}.kt-style3-featured-news p{margin:0;color:#384058;font-size:14px;line-height:1.7}.kt-style3-featured-news a{display:inline-flex;gap:9px;margin-top:19px;font-size:13px;font-weight:800}.kt-style3-news-list{border-top:1px solid #e5e7eb}.kt-style3-news-list a{min-height:88px;display:grid;grid-template-columns:48px 1fr auto;align-items:center;gap:14px;border-bottom:1px solid #e5e7eb}.kt-style3-news-list a:hover strong{color:#2a4fd6}.kt-style3-news-list strong{font-size:15px;letter-spacing:-.025em}.kt-style3-news-list time{color:#384058;font-size:12px}.kt-style3-gallery{display:grid;grid-template-columns:1.12fr .88fr .88fr;gap:18px}.kt-style3-gallery figure{min-height:300px;position:relative;overflow:hidden;margin:0;border-radius:18px;background:#f4f5f7}.kt-style3-gallery img{width:100%;height:100%;position:absolute;object-fit:cover;transition:transform .35s ease}.kt-style3-gallery figure:hover img{transform:scale(1.04)}.kt-style3-gallery figcaption{position:absolute;right:18px;bottom:15px;left:18px;color:#fff;font-size:14px;font-weight:800}
+@media(max-width:900px){.kt-style3-schedule,.kt-style3-news-grid{grid-template-columns:1fr}.kt-style3-timeline__rail:before{left:25px}.kt-style3-timeline article,.kt-style3-timeline article.is-reverse{display:grid;grid-template-columns:70px 1fr;min-height:0}.kt-style3-timeline article:before{left:25px}.kt-style3-timeline__year,.kt-style3-timeline article.is-reverse .kt-style3-timeline__year{grid-column:1;padding:19px 15px 0 0;text-align:right;font-size:22px}.kt-style3-timeline__events,.kt-style3-timeline article.is-reverse .kt-style3-timeline__events{grid-column:2;grid-row:auto;padding:0 0 42px 26px;text-align:left}.kt-style3-timeline article.is-reverse .kt-style3-timeline__events div{padding:0 0 0 18px;border-right:0;border-left:2px solid #e5e7eb}.kt-style3-timeline article.is-reverse .kt-style3-timeline p{margin-left:0}.kt-style3-gallery{grid-template-columns:1fr 1fr}.kt-style3-gallery figure:first-child{grid-column:1/3}}
+@media(max-width:640px){.kt-style3-hero{min-height:480px}.kt-style3-hero__inner{padding-top:48px;padding-bottom:48px}.kt-style3-hero h1{font-size:43px}.kt-style3-hero__copy{font-size:15px}.kt-style3-intro,.kt-style3-section,.kt-style3-timeline{padding-top:72px;padding-bottom:72px}.kt-style3-stats dl{grid-template-columns:1fr 1fr;gap:28px;padding:37px 0}.kt-style3-stats dt{font-size:31px}.kt-style3-cta>.kt-container{display:grid;align-items:start;padding-top:62px;padding-bottom:62px}.kt-style3-cta a{width:max-content}.kt-style3-calendar{padding:20px 14px}.kt-style3-calendar__days span,.kt-style3-calendar__days i{min-height:40px}.kt-style3-gallery{grid-template-columns:1fr}.kt-style3-gallery figure:first-child{grid-column:auto}.kt-style3-gallery figure{min-height:230px}}

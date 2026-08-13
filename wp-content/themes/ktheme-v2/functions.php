@@ -443,15 +443,21 @@ function ktheme_v2_render_header_shortcode(): string {
 	?>
 	<div class="kt-topbar">
 		<div class="kt-container kt-topbar__inner">
-			<div><span class="kt-dot"></span><?php echo esc_html__( '주일?�배 · ?�전 11:00 본당', 'ktheme-v2' ); ?></div>
+			<a class="kt-topbar__notice" href="<?php echo esc_url( home_url( '/news/' ) ); ?>">
+				<span class="kt-dot" aria-hidden="true"></span>
+				<span class="kt-topbar__notice-label"><?php echo esc_html( ktheme_v2_text( '\uACF5\uC9C0' ) ); ?></span>
+				<span class="kt-topbar__notice-title"><?php echo esc_html( ktheme_v2_text( '2026 \uD558\uBC18\uAE30 \uC591\uC721\uACFC\uC815 \uC2E0\uCCAD \uC548\uB0B4' ) ); ?></span>
+				<span class="kt-topbar__notice-more"><?php echo esc_html( ktheme_v2_text( '\uC18C\uC2DD \uC804\uCCB4\uBCF4\uAE30' ) ); ?><span aria-hidden="true">&rarr;</span></span>
+			</a>
 			<?php echo ktheme_v2_render_utility_menu(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 		</div>
 	</div>
 
-	<div class="kt-header">
+	<div class="kt-header" data-kt-header>
 		<div class="kt-container kt-header__inner">
-			<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="kt-brand kt-brand--mark-only" aria-label="<?php echo esc_attr__( '가?�교????', 'ktheme-v2' ); ?>">
-				<img src="<?php echo esc_url( get_theme_file_uri( 'assets/images/logos/hanbit-book-light-color.svg' ) ); ?>" alt="<?php echo esc_attr__( '가?�교??', 'ktheme-v2' ); ?>" />
+			<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="kt-brand" aria-label="<?php echo esc_attr( ktheme_v2_text( '\uD55C\uBE5B\uAD50\uD68C \uD648' ) ); ?>">
+				<img src="<?php echo esc_url( get_theme_file_uri( 'assets/images/theme-logo.png' ) ); ?>" alt="<?php echo esc_attr( ktheme_v2_text( '\uD55C\uBE5B\uAD50\uD68C \uB85C\uACE0' ) ); ?>" />
+				<span class="kt-brand__name"><?php echo esc_html( ktheme_v2_text( '\uD55C\uBE5B\uAD50\uD68C' ) ); ?></span>
 			</a>
 
 			<?php echo ktheme_v2_render_primary_menu(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
@@ -460,7 +466,10 @@ function ktheme_v2_render_header_shortcode(): string {
 				<button class="kt-icon-button" type="button" aria-label="<?php echo esc_attr__( '검???�기', 'ktheme-v2' ); ?>" aria-controls="kt-header-search" aria-expanded="false" data-kt-search-toggle>
 					<svg class="kt-icon kt-icon--sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
 				</button>
-				<a class="kt-header-register" href="<?php echo esc_url( home_url( '/newcomers/' ) ); ?>"><?php echo esc_html__( '?��?�??�록', 'ktheme-v2' ); ?></a>
+				<a class="kt-header-register" href="<?php echo esc_url( home_url( '/newcomers/' ) ); ?>">
+					<span class="kt-header-register__label"><?php echo esc_html( ktheme_v2_text( '\uC0C8\uAC00\uC871 \uB4F1\uB85D' ) ); ?></span>
+					<svg class="kt-header-register__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+				</a>
 				<button class="kt-mega-toggle" type="button" aria-label="<?php echo esc_attr__( '?�체 메뉴 ?�기', 'ktheme-v2' ); ?>" aria-controls="kt-mega-menu" aria-expanded="false" data-kt-mega-toggle>
 					<span></span><span></span><span></span>
 				</button>
@@ -483,82 +492,6 @@ function ktheme_v2_render_header_shortcode(): string {
 		<?php echo ktheme_v2_render_mega_menu(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 	</div>
 
-	<script>
-	(function () {
-		var header = document.querySelector('.kt-header');
-		if (!header) return;
-		var topbar = header.previousElementSibling && header.previousElementSibling.classList.contains('kt-topbar') ? header.previousElementSibling : null;
-		var headerShell = topbar && header.parentElement !== document.body ? header.parentElement : null;
-		if (headerShell) {
-			headerShell.classList.add('kt-site-header-shell');
-		}
-		var button = header.querySelector('[data-kt-mega-toggle]');
-		var panel = header.querySelector('#kt-mega-menu');
-		var searchButton = header.querySelector('[data-kt-search-toggle]');
-		var searchPanel = header.querySelector('#kt-header-search');
-		var searchInput = header.querySelector('#kt-header-search-input');
-
-		function setMegaMenu(open) {
-			if (!button || !panel) return;
-			if (open) setSearch(false);
-			header.classList.toggle('is-mega-open', open);
-			button.setAttribute('aria-expanded', open ? 'true' : 'false');
-			button.setAttribute('aria-label', open ? '?�체 메뉴 ?�기' : '?�체 메뉴 ?�기');
-			panel.setAttribute('aria-hidden', open ? 'false' : 'true');
-		}
-
-		function setSearch(open) {
-			if (!searchButton || !searchPanel) return;
-			if (open) setMegaMenu(false);
-			header.classList.toggle('is-search-open', open);
-			searchButton.setAttribute('aria-expanded', open ? 'true' : 'false');
-			searchButton.setAttribute('aria-label', open ? '검???�기' : '검???�기');
-			searchPanel.setAttribute('aria-hidden', open ? 'false' : 'true');
-			if (open && searchInput) {
-				window.setTimeout(function () {
-					searchInput.focus();
-				}, 80);
-			}
-		}
-
-		if (button) {
-			button.addEventListener('click', function () {
-				setMegaMenu(!header.classList.contains('is-mega-open'));
-			});
-		}
-
-		if (searchButton) {
-			searchButton.addEventListener('click', function () {
-				setSearch(!header.classList.contains('is-search-open'));
-			});
-		}
-
-		document.addEventListener('click', function (event) {
-			if (!header.contains(event.target)) {
-				setMegaMenu(false);
-				setSearch(false);
-			}
-		});
-
-		document.addEventListener('keydown', function (event) {
-			if (event.key === 'Escape') {
-				setMegaMenu(false);
-				setSearch(false);
-			}
-		});
-
-		function syncHeaderScroll() {
-			var isScrolled = window.scrollY > 8;
-			header.classList.toggle('is-scrolled', isScrolled);
-			if (headerShell) {
-				headerShell.classList.toggle('is-scrolled', isScrolled);
-			}
-		}
-
-		syncHeaderScroll();
-		window.addEventListener('scroll', syncHeaderScroll, { passive: true });
-	})();
-	</script>
 	<?php
 	return ktheme_v2_compact_shortcode_html( (string) ob_get_clean() );
 }
@@ -1428,6 +1361,11 @@ function ktheme_v2_location_page_data(): array {
 				),
 			),
 		),
+		'guide_cards'   => array(
+			array( 'title' => '예배 시간', 'description' => '주일예배는 오전 11시에 드립니다. 처음 방문하시는 분은 예배 15분 전에 오시면 안내를 받으실 수 있습니다.' ),
+			array( 'title' => '처음 방문 안내', 'description' => '안내 데스크에서 예배당 위치와 새가족 모임을 친절하게 안내해 드립니다.' ),
+			array( 'title' => '문의', 'description' => '방문 전 궁금한 점은 전화 또는 문의 페이지를 통해 남겨 주세요.' ),
+		),
 	);
 }
 
@@ -2253,6 +2191,16 @@ function ktheme_v2_enqueue_assets(): void {
 		get_stylesheet_uri(),
 		array( 'ktheme-v2-pretendard' ),
 		wp_get_theme()->get( 'Version' )
+	);
+
+	$header_script_path = get_theme_file_path( 'assets/js/site-header.js' );
+
+	wp_enqueue_script(
+		'ktheme-v2-site-header',
+		get_theme_file_uri( 'assets/js/site-header.js' ),
+		array(),
+		file_exists( $header_script_path ) ? (string) filemtime( $header_script_path ) : wp_get_theme()->get( 'Version' ),
+		true
 	);
 }
 add_action( 'wp_enqueue_scripts', 'ktheme_v2_enqueue_assets' );

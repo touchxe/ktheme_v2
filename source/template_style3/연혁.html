@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>가평교회 — 교회 연혁</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" />
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        fontFamily: { sans: ['"Pretendard Variable"', 'Pretendard', 'system-ui', 'sans-serif'] },
+        colors: {
+          ink: { 900: '#0e1320', 800: '#171c2c', 700: '#222a3f', 600: '#384058' },
+          brand: { 500: '#3a64f5', 600: '#2a4fd6', 700: '#1f3eb2' },
+          accent: { red: '#e23b3b' },
+          paper: '#f4f5f7',
+          line: '#e5e7eb',
+        },
+      },
+    },
+  };
+</script>
+<style>
+  html { font-family: 'Pretendard Variable', Pretendard, system-ui, sans-serif; scroll-behavior: smooth; }
+  body { -webkit-font-smoothing: antialiased; letter-spacing: -0.01em; }
+  .badge-live { background:#e23b3b; color:white; font-size:10px; font-weight:700; letter-spacing:0.05em; padding:2px 6px; border-radius:3px; }
+
+  @keyframes kb { 0% { transform: scale(1) translate(0,0); } 100% { transform: scale(1.12) translate(-1.5%,-1.5%); } }
+  .kenburns img { animation: kb 20s ease-in-out infinite alternate; transform-origin:center; will-change:transform; }
+
+  /* scroll reveal — animate transform ONLY, never opacity, so content is always visible
+     even if the animation engine freezes. Entrance is a pure enhancement. */
+  @keyframes revealUp { from { transform: translateY(16px); } to { transform: none; } }
+  @media (prefers-reduced-motion: no-preference){
+    .reveal.in { animation: revealUp .6s cubic-bezier(.2,.7,.2,1) both; }
+  }
+
+  /* timeline rail */
+  .tl-rail { position: relative; }
+  .tl-rail::before {
+    content: ""; position: absolute; left: 27px; top: 6px; bottom: 6px; width: 1px;
+    background: linear-gradient(to bottom, transparent, #e5e7eb 4%, #e5e7eb 96%, transparent);
+  }
+  @media (min-width: 768px) {
+    .tl-rail::before { left: 50%; margin-left: -0.5px; }
+  }
+  .tl-dot { box-shadow: 0 0 0 5px #fff; }
+</style>
+<template id="__bundler_thumbnail" data-bg-color="#0e1320">
+  <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+    <rect width="1200" height="800" fill="#0e1320"/>
+    <line x1="600" y1="120" x2="600" y2="680" stroke="#3a64f5" stroke-width="4"/>
+    <circle cx="600" cy="200" r="16" fill="#ffffff"/>
+    <circle cx="600" cy="400" r="16" fill="#ffffff"/>
+    <circle cx="600" cy="600" r="16" fill="#3a64f5"/>
+  </svg>
+</template>
+</head>
+<body class="bg-white text-ink-900">
+
+<!-- ============ UTILITY BAR ============ -->
+<div class="border-b border-line text-[12px] text-ink-600 bg-white">
+  <div class="max-w-[1240px] mx-auto px-6 h-9 flex items-center justify-between">
+    <span class="flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>2026년 6월 7일 주일예배 · 오전 11:00 본당</span>
+    <div class="hidden sm:flex items-center gap-4">
+      <a href="#" class="hover:text-ink-900">새가족 등록</a><span class="w-px h-3 bg-line"></span>
+      <a href="#" class="hover:text-ink-900">오시는 길</a><span class="w-px h-3 bg-line"></span>
+      <a href="#" class="hover:text-ink-900">로그인</a>
+    </div>
+  </div>
+</div>
+
+<!-- ============ HEADER ============ -->
+<header class="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-line">
+  <div class="max-w-[1240px] mx-auto px-6 h-[72px] flex items-center justify-between">
+    <a href="worship.html" class="flex items-center gap-2.5"><img src="assets/logo.png" alt="" class="w-10 h-10 object-contain" /><span class="font-bold text-[19px] tracking-tight">가평교회 <span class="text-ink-600 font-medium text-[13px] tracking-normal ml-0.5">GAPYEONG CHURCH</span></span></a>
+    <nav class="hidden lg:flex items-center gap-9 text-[15px] font-semibold">
+      <a href="worship.html" class="relative py-6 hover:text-brand-600">예배<span class="absolute -top-0.5 -right-3 badge-live">LIVE</span></a>
+      <a href="#" class="hover:text-brand-600">공동체</a>
+      <a href="#" class="hover:text-brand-600">양육</a>
+      <a href="#" class="hover:text-brand-600">미디어</a>
+      <a href="교회 비전.html" class="relative py-6 text-brand-600">교회소개<span class="absolute left-0 right-0 -bottom-px h-0.5 bg-brand-600"></span></a>
+    </nav>
+    <div class="flex items-center gap-3">
+      <button class="w-9 h-9 grid place-items-center rounded-full hover:bg-paper"><svg class="w-[18px] h-[18px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></button>
+      <button class="inline-flex items-center gap-1.5 text-[13px] font-semibold px-3.5 h-9 rounded-full border border-ink-900 hover:bg-ink-900 hover:text-white transition">새가족 등록</button>
+    </div>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="relative overflow-hidden bg-ink-900 text-white">
+  <div class="absolute inset-0 kenburns"><img src="https://images.unsplash.com/photo-1445910190042-8ec20fa50581?auto=format&fit=crop&w=2000&q=80" class="w-full h-full object-cover" alt="" /></div>
+  <div class="absolute inset-0" style="background:linear-gradient(180deg, rgba(14,19,32,0.72) 0%, rgba(14,19,32,0.5) 42%, rgba(14,19,32,0.88) 100%)"></div>
+  <div class="relative max-w-[1240px] mx-auto px-6 pt-16 pb-16">
+    <nav class="flex items-center gap-2 text-[12px] text-white/65">
+      <a href="worship.html" class="inline-flex items-center gap-1.5 hover:text-white"><svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 11l9-8 9 8M5 10v10h14V10"/></svg>HOME</a>
+      <span class="text-white/35">›</span><span>교회소개</span>
+      <span class="text-white/35">›</span><span class="font-semibold text-white">연혁</span>
+    </nav>
+    <div class="mt-7 max-w-[820px]">
+      <div class="text-[11px] font-bold tracking-[0.22em] text-white/60 mb-4">OUR HISTORY · SINCE 1973</div>
+      <h1 class="text-[clamp(40px,6vw,72px)] font-extrabold tracking-[-0.03em] leading-[1.02]">은혜로 걸어온<br />53년의 발자취</h1>
+      <p class="mt-6 text-white/75 text-[17px] leading-relaxed max-w-[560px]">작은 예배 처소에서 시작해 다음 세대로 이어지는 공동체까지, 가평교회가 걸어온 길을 소개합니다.</p>
+    </div>
+    <!-- sub tabs -->
+    <div class="mt-10 flex flex-wrap items-center gap-1.5 text-[13px] font-semibold">
+      <a href="교회 비전.html" class="px-4 h-10 rounded-full text-white/85 border border-white/25 hover:bg-white/10 grid place-items-center">비전</a>
+      <a href="#" class="px-4 h-10 rounded-full text-white/85 border border-white/25 hover:bg-white/10 grid place-items-center">섬기는 사람들</a>
+      <a href="#" class="px-4 h-10 rounded-full bg-white text-ink-900 grid place-items-center">연혁</a>
+      <a href="#" class="px-4 h-10 rounded-full text-white/85 border border-white/25 hover:bg-white/10 grid place-items-center">오시는 길</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ INTRO STRIP ============ -->
+<section class="max-w-[1240px] mx-auto px-6 py-20 text-center reveal">
+  <div class="text-[11px] font-bold tracking-[0.2em] text-brand-600 mb-6">A HISTORY OF GRACE</div>
+  <p class="text-[clamp(24px,3.2vw,36px)] font-extrabold tracking-[-0.02em] leading-[1.35] max-w-[880px] mx-auto text-balance">
+    한 알의 밀알로 시작된 예배가 <span class="text-brand-600">세 세대를 잇는 공동체</span>로 자라왔습니다.
+  </p>
+  <div class="mt-9 inline-flex items-center gap-2.5 text-[13.5px] text-ink-600">
+    <span class="w-8 h-px bg-line"></span>
+    “너희 시작은 미약하였으나 네 나중은 심히 창대하리라” · 욥기 8:7
+    <span class="w-8 h-px bg-line"></span>
+  </div>
+</section>
+
+<!-- ============ STATS BAND ============ -->
+<section class="bg-paper border-y border-line">
+  <div class="max-w-[1240px] mx-auto px-6 py-14">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-y-8 gap-x-6 reveal">
+      <div><div class="text-[clamp(32px,4vw,44px)] font-extrabold tracking-tight leading-none">1973<span class="text-[16px] text-ink-600 ml-1 font-bold">년</span></div><div class="mt-2 text-[13px] text-ink-600">설립 연도</div></div>
+      <div><div class="text-[clamp(32px,4vw,44px)] font-extrabold tracking-tight leading-none">53<span class="text-[16px] text-ink-600 ml-1 font-bold">년</span></div><div class="mt-2 text-[13px] text-ink-600">함께한 시간</div></div>
+      <div><div class="text-[clamp(32px,4vw,44px)] font-extrabold tracking-tight leading-none">7<span class="text-[16px] text-ink-600 ml-1 font-bold">대</span></div><div class="mt-2 text-[13px] text-ink-600">역대 담임목사</div></div>
+      <div><div class="text-[clamp(32px,4vw,44px)] font-extrabold tracking-tight leading-none">3<span class="text-[16px] text-ink-600 ml-1 font-bold">회</span></div><div class="mt-2 text-[13px] text-ink-600">성전 건축·이전</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TIMELINE ============ -->
+<section class="bg-white">
+  <div class="max-w-[1240px] mx-auto px-6 py-24">
+    <div class="max-w-[560px] mb-16 reveal">
+      <div class="text-[11px] font-bold tracking-[0.18em] text-ink-600 mb-3">TIMELINE</div>
+      <h2 class="text-[34px] font-extrabold tracking-tight leading-tight">연대별 발자취</h2>
+      <p class="mt-3 text-ink-600 text-[15px] leading-relaxed">※ 아래 연혁은 임시 데이터입니다. 실제 연혁 자료로 교체해 주세요.</p>
+    </div>
+
+    <div class="tl-rail space-y-16 md:space-y-0">
+
+      <!-- DECADE 1970s -->
+      <div class="reveal md:grid md:grid-cols-2 md:gap-x-16 relative">
+        <div class="md:col-start-2 md:pl-16">
+          <div class="flex items-center gap-4 mb-6">
+            <span class="tl-dot w-4 h-4 rounded-full bg-ink-900 shrink-0 relative z-10 ml-[19px] md:ml-0 md:absolute md:left-1/2 md:-translate-x-1/2"></span>
+            <h3 class="text-[26px] font-extrabold tracking-tight">1970<span class="text-ink-600">s</span></h3>
+          </div>
+          <div class="ml-[52px] md:ml-0 space-y-6">
+            <div class="border-l-2 border-line pl-5">
+              <div class="text-[13px] font-bold text-brand-600">1973.03</div>
+              <div class="mt-1 text-[16px] font-bold">가평읍 상가 2층에서 첫 예배</div>
+              <p class="mt-1.5 text-ink-600 text-[14px] leading-relaxed">성도 12명이 모여 첫 주일예배를 드리며 교회가 시작되었습니다. (임시 데이터)</p>
+            </div>
+            <div class="border-l-2 border-line pl-5">
+              <div class="text-[13px] font-bold text-brand-600">1976.09</div>
+              <div class="mt-1 text-[16px] font-bold">초대 담임목사 부임</div>
+              <p class="mt-1.5 text-ink-600 text-[14px] leading-relaxed">초대 담임목사가 부임하며 교회 조직을 정비하고 주일학교를 시작했습니다. (임시 데이터)</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- DECADE 1980s -->
+      <div class="reveal md:grid md:grid-cols-2 md:gap-x-16 relative">
+        <div class="md:col-start-1 md:pr-16 md:text-right">
+          <div class="flex items-center gap-4 mb-6 md:justify-end">
+            <span class="tl-dot w-4 h-4 rounded-full bg-ink-900 shrink-0 relative z-10 ml-[19px] md:ml-0 md:absolute md:left-1/2 md:-translate-x-1/2 order-2 md:order-none"></span>
+            <h3 class="text-[26px] font-extrabold tracking-tight">1980<span class="text-ink-600">s</span></h3>
+          </div>
+          <div class="ml-[52px] md:ml-0 space-y-6">
+            <div class="border-l-2 md:border-l-0 md:border-r-2 border-line pl-5 md:pl-0 md:pr-5">
+              <div class="text-[13px] font-bold text-brand-600">1981.05</div>
+              <div class="mt-1 text-[16px] font-bold">첫 예배당 건축 및 봉헌</div>
+              <p class="mt-1.5 text-ink-600 text-[14px] leading-relaxed">가평읍 인근 부지에 첫 독립 예배당을 세우고 봉헌예배를 드렸습니다. (임시 데이터)</p>
+            </div>
+            <div class="border-l-2 md:border-l-0 md:border-r-2 border-line pl-5 md:pl-0 md:pr-5">
+              <div class="text-[13px] font-bold text-brand-600">1988.11</div>
+              <div class="mt-1 text-[16px] font-bold">교회 설립 등록 및 노회 가입</div>
+              <p class="mt-1.5 text-ink-600 text-[14px] leading-relaxed">교단 노회에 정식 가입하며 교회의 체계를 갖추었습니다. (임시 데이터)</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- DECADE 1990s -->
+      <div class="reveal md:grid md:grid-cols-2 md:gap-x-16 relative">
+        <div class="md:col-start-2 md:pl-16">
+          <div class="flex items-center gap-4 mb-6">
+            <span class="tl-dot w-4 h-4 rounded-full bg-ink-900 shrink-0 relative z-10 ml-[19px] md:ml-0 md:absolute md:left-1/2 md:-translate-x-1/2"></span>
+            <h3 class="text-[26px] font-extrabold tracking-tight">1990<span class="text-ink-600">s</span></h3>
+          </div>
+          <div class="ml-[52px] md:ml-0 space-y-6">
+            <div class="border-l-2 border-line pl-5">
+              <div class="text-[13px] font-bold text-brand-600">1992.04</div>
+              <div class="mt-1 text-[16px] font-bold">2대 담임목사 부임</div>
+              <p class="mt-1.5 text-ink-600 text-[14px] leading-relaxed">2대 담임목사 부임과 함께 목장 중심의 소그룹 사역이 시작되었습니다. (임시 데이터)</p>
+            </div>
+            <div class="border-l-2 border-line pl-5">
+              <div class="text-[13px] font-bold text-brand-600">1997.10</div>
+              <div class="mt-1 text-[16px] font-bold">현 부지로 성전 이전</div>
+              <p class="mt-1.5 text-ink-600 text-[14px] leading-relaxed">성도 수 증가로 현재 부지에 새 성전을 건축하여 이전했습니다. (임시 데이터)</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- DECADE 2000s -->
+      <div class="reveal md:grid md:grid-cols-2 md:gap-x-16 relative">
+        <div class="md:col-start-1 md:pr-16 md:text-right">
+          <div class="flex items-center gap-4 mb-6 md:justify-end">
+            <span class="tl-dot w-4 h-4 rounded-full bg-ink-900 shrink-0 relative z-10 ml-[19px] md:ml-0 md:absolute md:left-1/2 md:-translate-x-1/2 order-2 md:order-none"></span>
+            <h3 class="text-[26px] font-extrabold tracking-tight">2000<span class="text-ink-600">s</span></h3>
+          </div>
+          <div class="ml-[52px] md:ml-0 space-y-6">
+            <div class="border-l-2 md:border-l-0 md:border-r-2 border-line pl-5 md:pl-0 md:pr-5">
+              <div class="text-[13px] font-bold text-brand-600">2003.06</div>
+              <div class="mt-1 text-[16px] font-bold">해외 선교지 첫 파송</div>
+              <p class="mt-1.5 text-ink-600 text-[14px] leading-relaxed">첫 해외 선교사를 파송하며 열방을 향한 섬김을 시작했습니다. (임시 데이터)</p>
+            </div>
+            <div class="border-l-2 md:border-l-0 md:border-r-2 border-line pl-5 md:pl-0 md:pr-5">
+              <div class="text-[13px] font-bold text-brand-600">2008.03</div>
+              <div class="mt-1 text-[16px] font-bold">교육관 증축</div>
+              <p class="mt-1.5 text-ink-600 text-[14px] leading-relaxed">다음 세대 사역 공간 확보를 위해 교육관을 증축했습니다. (임시 데이터)</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- DECADE 2010s -->
+      <div class="reveal md:grid md:grid-cols-2 md:gap-x-16 relative">
+        <div class="md:col-start-2 md:pl-16">
+          <div class="flex items-center gap-4 mb-6">
+            <span class="tl-dot w-4 h-4 rounded-full bg-ink-900 shrink-0 relative z-10 ml-[19px] md:ml-0 md:absolute md:left-1/2 md:-translate-x-1/2"></span>
+            <h3 class="text-[26px] font-extrabold tracking-tight">2010<span class="text-ink-600">s</span></h3>
+          </div>
+          <div class="ml-[52px] md:ml-0 space-y-6">
+            <div class="border-l-2 border-line pl-5">
+              <div class="text-[13px] font-bold text-brand-600">2014.02</div>
+              <div class="mt-1 text-[16px] font-bold">3대 담임목사 부임</div>
+              <p class="mt-1.5 text-ink-600 text-[14px] leading-relaxed">3대 담임목사 부임 이후 미디어 사역과 온라인 예배 기반을 마련했습니다. (임시 데이터)</p>
+            </div>
+            <div class="border-l-2 border-line pl-5">
+              <div class="text-[13px] font-bold text-brand-600">2019.11</div>
+              <div class="mt-1 text-[16px] font-bold">본당 리모델링 완료</div>
+              <p class="mt-1.5 text-ink-600 text-[14px] leading-relaxed">늘어난 성도를 위해 본당을 리모델링하고 시설을 확충했습니다. (임시 데이터)</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- DECADE 2020s -->
+      <div class="reveal md:grid md:grid-cols-2 md:gap-x-16 relative">
+        <div class="md:col-start-1 md:pr-16 md:text-right">
+          <div class="flex items-center gap-4 mb-6 md:justify-end">
+            <span class="tl-dot w-4 h-4 rounded-full bg-brand-600 shrink-0 relative z-10 ml-[19px] md:ml-0 md:absolute md:left-1/2 md:-translate-x-1/2 order-2 md:order-none"></span>
+            <h3 class="text-[26px] font-extrabold tracking-tight">2020<span class="text-ink-600">s</span></h3>
+          </div>
+          <div class="ml-[52px] md:ml-0 space-y-6">
+            <div class="border-l-2 md:border-l-0 md:border-r-2 border-line pl-5 md:pl-0 md:pr-5">
+              <div class="text-[13px] font-bold text-brand-600">2021.09</div>
+              <div class="mt-1 text-[16px] font-bold">온라인 예배 플랫폼 구축</div>
+              <p class="mt-1.5 text-ink-600 text-[14px] leading-relaxed">실시간 온라인 예배와 다시보기 서비스를 정식으로 시작했습니다. (임시 데이터)</p>
+            </div>
+            <div class="border-l-2 md:border-l-0 md:border-r-2 border-line pl-5 md:pl-0 md:pr-5">
+              <div class="text-[13px] font-bold text-brand-600">2026.06</div>
+              <div class="mt-1 text-[16px] font-bold">설립 53주년, 지금 여기</div>
+              <p class="mt-1.5 text-ink-600 text-[14px] leading-relaxed">7대 정한결 담임목사와 함께 다음 세대를 향한 새로운 여정을 이어가고 있습니다. (임시 데이터)</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA BAND ============ -->
+<section class="bg-brand-600 text-white">
+  <div class="max-w-[1240px] mx-auto px-6 py-16 flex flex-col md:flex-row md:items-center justify-between gap-6 reveal">
+    <div>
+      <h2 class="text-[clamp(24px,3vw,32px)] font-extrabold tracking-tight leading-tight">다음 발자취를 함께 남겨주세요</h2>
+      <p class="mt-2.5 text-white/80 text-[15px]">가평교회의 다음 이야기는 여러분과 함께 쓰여집니다.</p>
+    </div>
+    <div class="flex items-center gap-3 shrink-0">
+      <a href="#" class="inline-flex items-center gap-1.5 bg-white text-brand-700 font-bold text-[14px] px-6 h-12 rounded-full hover:bg-white/90 transition">새가족 등록 <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+      <a href="#" class="inline-flex items-center px-6 h-12 rounded-full border border-white/45 text-white font-semibold text-[14px] hover:bg-white/10 transition">오시는 길</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="bg-ink-900 text-white/70">
+  <div class="max-w-[1240px] mx-auto px-6 py-14">
+    <div class="grid md:grid-cols-12 gap-10">
+      <div class="md:col-span-5">
+        <div class="flex items-center gap-2.5 text-white"><img src="assets/logo.png" alt="" class="w-9 h-9 object-contain" /><span class="font-bold text-[16px]">가평교회 <span class="text-white/50 font-medium text-[12px] ml-1">GAPYEONG CHURCH</span></span></div>
+        <p class="mt-5 text-[13px] leading-relaxed">08512 서울특별시 금천구 가산디지털1로 168<br />TEL. 02-704-3300 · FAX. 02-704-3301</p>
+        <p class="mt-4 text-[12px] text-white/40">© 2026 GAPYEONG CHURCH. ALL RIGHTS RESERVED.</p>
+      </div>
+      <div class="md:col-span-4 grid grid-cols-2 gap-6 text-[13px]">
+        <div><div class="text-white font-semibold mb-3">교회소개</div><ul class="space-y-2"><li><a href="교회 비전.html" class="hover:text-white">비전</a></li><li><a href="#" class="hover:text-white">섬기는 사람들</a></li><li><a href="#" class="hover:text-white">연혁</a></li><li><a href="#" class="hover:text-white">오시는 길</a></li></ul></div>
+        <div><div class="text-white font-semibold mb-3">바로가기</div><ul class="space-y-2"><li><a href="worship.html" class="hover:text-white">예배</a></li><li><a href="#" class="hover:text-white">새가족 등록</a></li><li><a href="#" class="hover:text-white">개인정보처리방침</a></li></ul></div>
+      </div>
+      <div class="md:col-span-3">
+        <div class="text-white font-semibold mb-3 text-[13px]">Family Site</div>
+        <button class="w-full bg-white/5 border border-white/10 rounded-lg px-4 h-11 flex items-center justify-between text-[13px] hover:bg-white/10">관련 사이트 선택<svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="mt-5 flex items-center gap-2">
+          <a href="#" class="w-9 h-9 rounded-full grid place-items-center bg-white/5 hover:bg-white/10"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.5 2.9h-2.4v7A10 10 0 0 0 22 12z"/></svg></a>
+          <a href="#" class="w-9 h-9 rounded-full grid place-items-center bg-white/5 hover:bg-white/10"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M23 6.2s-.2-1.6-.9-2.3c-.9-.9-1.9-.9-2.3-1C16.6 2.5 12 2.5 12 2.5s-4.6 0-7.8.4c-.5 0-1.5.1-2.3 1-.7.7-.9 2.3-.9 2.3S.7 8 .7 9.9v1.7c0 1.9.3 3.7.3 3.7s.2 1.6.9 2.3c.9.9 2.1.9 2.6 1 1.9.2 8 .3 8 .3s4.6 0 7.8-.4c.5 0 1.5-.1 2.3-1 .7-.7.9-2.3.9-2.3s.3-1.9.3-3.7V9.9C23.3 8 23 6.2 23 6.2zM9.5 13.6V7.7l5.9 3z"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const reveals = [...document.querySelectorAll('.reveal')];
+  const reveal = el => el.classList.add('in');
+  const revealInView = () => reveals.forEach(el => {
+    const r = el.getBoundingClientRect();
+    if (r.top < window.innerHeight * 0.92 && r.bottom > 0) reveal(el);
+  });
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { reveal(e.target); io.unobserve(e.target); } });
+    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.06 });
+    reveals.forEach(el => io.observe(el));
+    requestAnimationFrame(revealInView);
+    window.addEventListener('scroll', revealInView, { passive: true });
+    setTimeout(() => reveals.forEach(reveal), 600);
+  } else {
+    reveals.forEach(reveal);
+  }
+</script>
+
+</body>
+</html>
