@@ -14,6 +14,7 @@ const formTemplates = [
 const headerPart = new URL('./parts/header.html', themeRoot)
 const footerPart = new URL('./parts/footer.html', themeRoot)
 const givingTemplate = new URL('./templates/page-giving.html', themeRoot)
+const pageHeroPart = new URL('./parts/page-hero.html', themeRoot)
 
 const readThemeFile = (relativePath: string) =>
   readFileSync(new URL(relativePath, themeRoot), 'utf8')
@@ -63,5 +64,14 @@ describe('commercial theme release blockers', () => {
     expect(giving).not.toContain('정한결')
     expect(giving).not.toContain('가평교회')
     expect(giving).not.toMatch(/\d{6}-\d{2}-\d{6}/)
+  })
+
+  it('uses a native, editable page hero without a theme shortcode', () => {
+    const pageHero = readFileSync(pageHeroPart, 'utf8')
+
+    expect(pageHero).toContain('wp:post-title')
+    expect(pageHero).toContain('wp:post-excerpt')
+    expect(pageHero).not.toContain('wp:shortcode')
+    expect(pageHero).not.toContain('ktheme_page_hero')
   })
 })
