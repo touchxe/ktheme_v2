@@ -1,0 +1,94 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ktheme.example/schemas/extension-registry.schema.json",
+  "title": "KTheme Extension Registry",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "version",
+    "product",
+    "namespaces",
+    "extensionTypes",
+    "patternScopes",
+    "genericContentModels",
+    "forbiddenPersistentTerms",
+    "designPolicy",
+    "compatibilityPolicy"
+  ],
+  "properties": {
+    "$schema": { "type": "string" },
+    "version": { "type": "integer", "minimum": 1 },
+    "product": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root", "themeSlug", "enginePluginSlug"],
+      "properties": {
+        "root": { "const": "ktheme" },
+        "themeSlug": { "pattern": "^[a-z][a-z0-9-]+$" },
+        "enginePluginSlug": { "const": "ktheme-engine" }
+      }
+    },
+    "namespaces": {
+      "type": "object",
+      "additionalProperties": { "type": "string", "minLength": 1 }
+    },
+    "extensionTypes": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": { "type": "string", "pattern": "^[a-z][a-z0-9-]+$" }
+    },
+    "patternScopes": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": { "type": "string", "pattern": "^[a-z][a-z0-9-]+$" }
+    },
+    "genericContentModels": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["postTypes", "taxonomies"],
+      "properties": {
+        "postTypes": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": { "type": "string", "maxLength": 20, "pattern": "^ktheme_[a-z0-9_]+$" }
+        },
+        "taxonomies": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": { "type": "string", "maxLength": 32, "pattern": "^ktheme_[a-z0-9_]+$" }
+        }
+      }
+    },
+    "forbiddenPersistentTerms": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": { "type": "string", "minLength": 2 }
+    },
+    "designPolicy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["preserveCurrentDesign", "sourceOfTruth", "tokenSource"],
+      "properties": {
+        "preserveCurrentDesign": { "const": true },
+        "sourceOfTruth": { "const": "docs/DESIGN.md" },
+        "tokenSource": { "type": "string", "minLength": 1 }
+      }
+    },
+    "compatibilityPolicy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "existingCustomerSites",
+        "legacyMigrationRequired",
+        "removeLegacyShortcodesBeforeRelease",
+        "renameVersionedPatternNamespaceBeforeRelease"
+      ],
+      "properties": {
+        "existingCustomerSites": { "const": false },
+        "legacyMigrationRequired": { "const": false },
+        "removeLegacyShortcodesBeforeRelease": { "const": true },
+        "renameVersionedPatternNamespaceBeforeRelease": { "const": true }
+      }
+    }
+  }
+}
