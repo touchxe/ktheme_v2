@@ -1,8 +1,8 @@
 <?php
 /**
  * Title: Subpage Optional CTA
- * Slug: ktheme-v2/section-subpage-cta
- * Categories: ktheme-v2-sections
+ * Slug: ktheme/section-subpage-cta
+ * Categories: ktheme-sections
  * Description: Optional closing call-to-action section for subpages.
  */
 ?>

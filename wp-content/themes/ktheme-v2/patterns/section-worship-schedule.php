@@ -1,8 +1,8 @@
 <?php
 /**
  * Title: Worship Schedule
- * Slug: ktheme-v2/section-worship-schedule
- * Categories: ktheme-v2-sections
+ * Slug: ktheme/section-worship-schedule
+ * Categories: ktheme-sections
  * Description: An editable worship schedule built with native WordPress blocks.
  */
 ?>

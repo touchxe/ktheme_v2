@@ -1,4 +1,4 @@
-import { readFileSync, readdirSync } from 'node:fs'
+import { existsSync, readFileSync, readdirSync } from 'node:fs'
 import { describe, expect, it } from 'vitest'
 
 const themeRoot = new URL('./', import.meta.url)
@@ -35,13 +35,16 @@ describe('commercial theme extension standard', () => {
     const source = readThemeFile('functions.php')
 
     for (const category of [
-      'ktheme-v2-pages',
-      'ktheme-v2-sections',
-      'ktheme-v2-queries',
-      'ktheme-v2-integrations',
+      'ktheme-pages',
+      'ktheme-sections',
+      'ktheme-queries',
+      'ktheme-integrations',
     ]) {
       expect(source).toContain(`'${category}'`)
     }
+
+    expect(source).not.toContain('ktheme-v2-style1')
+    expect(source).not.toContain('ktheme-v2-pages')
   })
 
   it('ships reusable native block patterns with complete metadata', () => {
@@ -49,8 +52,8 @@ describe('commercial theme extension standard', () => {
       const source = readThemeFile(`patterns/${pattern}`)
 
       expect(source).toMatch(/\* Title: .+/)
-      expect(source).toMatch(/\* Slug: ktheme-v2\/.+/)
-      expect(source).toMatch(/\* Categories: ktheme-v2-(sections|queries|integrations)/)
+      expect(source).toMatch(/\* Slug: ktheme\/.+/)
+      expect(source).toMatch(/\* Categories: ktheme-(sections|queries|integrations)/)
       expect(source).toMatch(/\* Description: .+/)
       expect(source).not.toContain('<!-- wp:html -->')
       expect(source).not.toContain('<!-- wp:shortcode -->')
@@ -65,7 +68,7 @@ describe('commercial theme extension standard', () => {
     for (const template of galleryTemplates) {
       const source = readThemeFile(`templates/${template}`)
 
-      expect(source).toContain('ktheme-v2/section-media-gallery')
+      expect(source).toContain('ktheme/section-media-gallery')
       expect(source).not.toContain('wp:shortcode')
       expect(source).not.toContain('ktheme_photo_carousel')
     }
@@ -74,7 +77,7 @@ describe('commercial theme extension standard', () => {
   it('composes the dawn prayer page from the worship schedule pattern', () => {
     const source = readThemeFile('templates/page-dawn-prayer.html')
 
-    expect(source).toContain('ktheme-v2/section-worship-schedule')
+    expect(source).toContain('ktheme/section-worship-schedule')
     expect(source).not.toContain('wp:shortcode')
     expect(source).not.toContain('ktheme_sunday_worship_grid')
   })
@@ -89,6 +92,20 @@ describe('commercial theme extension standard', () => {
         expect(readThemeFile(`${directory}/${file}`)).not.toContain('wp:shortcode')
       }
     }
+  })
+
+  it('uses semantic pattern and skin names without changing design tokens', () => {
+    const homePattern = readThemeFile('patterns/page-home.php')
+    const heroPattern = readThemeFile('patterns/section-page-hero.php')
+    const variationFile = new URL('./styles/skin-foundation.json', themeRoot)
+
+    expect(homePattern).toContain('* Slug: ktheme/page-home')
+    expect(heroPattern).toContain('* Slug: ktheme/section-page-hero')
+    expect(homePattern).not.toMatch(/Style 1|style1/)
+    expect(heroPattern).not.toMatch(/Style 1|style1/)
+    expect(existsSync(variationFile)).toBe(true)
+    expect(readFileSync(variationFile, 'utf8')).toContain('"title": "Foundation"')
+    expect(existsSync(new URL('./styles/style1.json', themeRoot))).toBe(false)
   })
 
   it('does not expand the temporary legacy shortcode surface', () => {

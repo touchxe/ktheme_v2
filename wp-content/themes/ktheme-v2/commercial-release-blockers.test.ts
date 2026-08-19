@@ -38,7 +38,7 @@ describe('commercial theme release blockers', () => {
 
       expect(source).not.toContain('preventDefault()')
       expect(source).not.toContain('kt-svc-form__success')
-      expect(source).toContain('ktheme-v2/section-form-shell')
+      expect(source).toContain('ktheme/section-form-shell')
     }
   })
 
@@ -59,7 +59,7 @@ describe('commercial theme release blockers', () => {
   it('does not ship a simulated donation flow or customer donation data', () => {
     const giving = readFileSync(givingTemplate, 'utf8')
 
-    expect(giving).toContain('ktheme-v2/section-donation-shell')
+    expect(giving).toContain('ktheme/section-donation-shell')
     expect(giving).not.toContain('window.alert')
     expect(giving).not.toContain('정한결')
     expect(giving).not.toContain('가평교회')

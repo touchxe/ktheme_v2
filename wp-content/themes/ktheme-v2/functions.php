@@ -8,11 +8,10 @@ if ( ! function_exists( 'ktheme_v2_setup' ) ) {
 		add_editor_style( 'style.css' );
 
 		$pattern_categories = array(
-			'ktheme-v2-pages'        => __( 'KTheme Pages', 'ktheme-v2' ),
-			'ktheme-v2-sections'     => __( 'KTheme Sections', 'ktheme-v2' ),
-			'ktheme-v2-queries'      => __( 'KTheme Queries', 'ktheme-v2' ),
-			'ktheme-v2-integrations' => __( 'KTheme Integrations', 'ktheme-v2' ),
-			'ktheme-v2-style1'       => __( 'KTheme V2 Style 1', 'ktheme-v2' ),
+			'ktheme-pages'        => __( 'KTheme Pages', 'ktheme-v2' ),
+			'ktheme-sections'     => __( 'KTheme Sections', 'ktheme-v2' ),
+			'ktheme-queries'      => __( 'KTheme Queries', 'ktheme-v2' ),
+			'ktheme-integrations' => __( 'KTheme Integrations', 'ktheme-v2' ),
 		);
 
 		foreach ( $pattern_categories as $category => $label ) {

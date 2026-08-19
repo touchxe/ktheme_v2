@@ -1,9 +1,9 @@
 <?php
 /**
- * Title: Style 1 Homepage
- * Slug: ktheme-v2/style1-home
- * Categories: ktheme-v2-pages, ktheme-v2-style1
- * Description: Homepage layout based on the Style 1 church design source.
+ * Title: Homepage
+ * Slug: ktheme/page-home
+ * Categories: ktheme-pages
+ * Description: A full homepage layout using the Foundation skin.
  */
 ?>
 <!-- wp:html -->

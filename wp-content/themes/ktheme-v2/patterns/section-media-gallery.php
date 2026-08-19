@@ -1,8 +1,8 @@
 <?php
 /**
  * Title: Community Media Gallery
- * Slug: ktheme-v2/section-media-gallery
- * Categories: ktheme-v2-sections
+ * Slug: ktheme/section-media-gallery
+ * Categories: ktheme-sections
  * Description: An editable native gallery section for community and ministry pages.
  */
 

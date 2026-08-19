@@ -1,8 +1,8 @@
 <?php
 /**
  * Title: Location Information Shell
- * Slug: ktheme-v2/section-location-shell
- * Categories: ktheme-v2-integrations
+ * Slug: ktheme/section-location-shell
+ * Categories: ktheme-integrations
  * Description: Editable location, transport, parking, and map integration guidance.
  */
 ?>
