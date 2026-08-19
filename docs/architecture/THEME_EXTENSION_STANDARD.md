@@ -1,7 +1,7 @@
 # K-Theme V2 확장 표준 및 상업화 사전 검토
 
-- 상태: 승인 전 기준안
-- 작성일: 2026-08-13
+- 상태: 필수 적용
+- 작성일: 2026-08-19
 - 적용 대상: `wp-content/themes/ktheme-v2`, 향후 K-Theme 디자인·템플릿·컴포넌트
 - 목표: 새 디자인을 추가해도 기존 템플릿을 복제하거나 테마 기능을 비대하게 만들지 않는 블록 테마 제품 구조
 
@@ -23,11 +23,13 @@ theme.json 토큰
 K-Theme V2 Theme
   표현, 편집 경험, 토큰, 스타일 변형, 패턴, 템플릿
 
-K-Theme Core Plugin
-  CPT, 분류, 폼 연동, 데이터 처리, 마이그레이션, 기능 블록
+KTheme Engine Plugin
+  범용 콘텐츠 모델, 분류, 폼 연동, 데이터 처리, 기능 블록, 확장 레지스트리
 ```
 
-이 경계는 선택 사항이 아니다. Envato의 WordPress 테마 요구사항은 CPT, taxonomy, shortcode, form을 플러그인 영역으로 분류하고, 테마가 별도 블록을 등록하지 않도록 요구한다.
+이 경계는 선택 사항이 아니다. Envato의 WordPress 테마 요구사항은 CPT, taxonomy, shortcode, form을 플러그인 영역으로 분류하고, 테마가 별도 블록을 등록하지 않도록 요구한다. 기존 고객 사이트는 없으므로 호환 계층이나 데이터 마이그레이션을 제품 구조에 남기지 않고 공개 전에 바로 범용 이름으로 전환한다.
+
+모든 공개 이름은 [EXTENSION_NAMING_STANDARD.md](./EXTENSION_NAMING_STANDARD.md)와 [extension-registry.json](./extension-registry.json)을 따른다. 현재 디자인 기준과 시각 표현은 유지하며 이 표준화 과정에서 `docs/DESIGN.md`를 재설계하지 않는다.
 
 ## 2. 현재 구조 감사
 
@@ -54,7 +56,7 @@ K-Theme Core Plugin
 - `functions.php`가 설교, 행사, 앨범 CPT와 설교 시리즈 taxonomy를 등록한다.
 - 헤더, 푸터, 페이지 히어로, 위치, 예배 목록, 사진 캐러셀 shortcode가 테마에 있다.
 - 상업 테마에서 테마 변경 시 사라지면 안 되는 데이터와 기능은 동반 플러그인으로 이동해야 한다.
-- 이전 기간에는 호환 어댑터를 둘 수 있지만 신규 템플릿은 shortcode를 사용하지 않는다.
+- 기존 고객 사이트가 없으므로 이전용 shortcode와 호환 어댑터는 공개 전에 제거한다.
 
 #### P0. 고객 중립성이 부족함
 
@@ -70,12 +72,13 @@ K-Theme Core Plugin
 - 일부 패턴은 코어 블록 대신 하나의 큰 `core/html` 블록으로 구성되어 사이트 편집기에서 부분 편집이 어렵다.
 - 페이지마다 HTML과 클래스가 복제되어 새 디자인 추가 시 회귀 범위가 커진다.
 
-#### P1. 디자인 기준 문서와 실제 테마가 다름
+#### P1. 범용 확장 네이밍이 없음
 
-- 현재 `docs/DESIGN.md`는 Modern SaaS Productivity를 전제로 한다.
-- 실제 테마는 교회·비영리 조직용이며 `theme.json`은 Pretendard와 별도 색상 체계를 사용한다.
-- 향후 UI 작업 전에 교회 상업 테마용 디자인 SSOT로 교체해야 한다.
-- 디자인 방향은 신뢰 중심, 차분한 편집 경험, 중간 수준의 시각 변형, 낮은 모션, 중간 정보 밀도로 고정한다.
+- `sermon`, `worship`, `ministry`, `style1`이 영구 식별자와 파일 이름에 섞여 있다.
+- 블록, 스킨, 위젯, 패턴, 컴포넌트의 의미가 구분되지 않아 신규 항목이 같은 역할을 중복 구현할 수 있다.
+- 공개 식별자는 `ktheme` 제품 어근과 역할 중심 이름으로 고정한다.
+- 교회 용어는 영구 key가 아니라 preset의 표시 이름, taxonomy term, demo data로 이동한다.
+- 현재 디자인 기준과 시각 표현은 변경하지 않는다.
 
 #### P1. 배포 심사 자동화가 부족함
 
@@ -91,8 +94,8 @@ wp-content/
 │     ├─ theme.json
 │     ├─ style.css
 │     ├─ styles/
-│     │  ├─ calm.json
-│     │  └─ contrast.json
+│     │  ├─ skin-foundation.json
+│     │  └─ skin-high-contrast.json
 │     ├─ patterns/
 │     │  ├─ page-*.php
 │     │  ├─ section-*.php
@@ -120,17 +123,24 @@ wp-content/
 │        ├─ setup.php
 │        ├─ assets.php
 │        ├─ pattern-categories.php
-│        └─ compatibility.php
+│        └─ extension-loader.php
 └─ plugins/
-   └─ ktheme-core/
-      ├─ ktheme-core.php
-      ├─ includes/
-      │  ├─ post-types/
-      │  ├─ taxonomies/
-      │  ├─ blocks/
-      │  ├─ integrations/
-      │  └─ migrations/
-      └─ assets/
+   ├─ ktheme-engine/
+   │  ├─ ktheme-engine.php
+   │  ├─ includes/
+   │  │  ├─ class-extension-registry.php
+   │  │  └─ class-plugin.php
+   │  ├─ modules/
+   │  │  ├─ content-types/
+   │  │  ├─ taxonomies/
+   │  │  ├─ blocks/
+   │  │  ├─ integrations/
+   │  │  └─ widgets/
+   │  └─ assets/
+   └─ ktheme-preset-{industry}/
+      ├─ patterns/
+      ├─ terms/
+      └─ demo/
 ```
 
 초기 표준화에서는 파일 이동 자체보다 계약과 검증을 먼저 추가한다. 대규모 파일 분리는 회귀 테스트가 준비된 뒤 단계적으로 진행한다.
@@ -149,7 +159,7 @@ wp-content/
 
 - 가능한 경우 `core/group`, `core/columns`, `core/query`, `core/image`, `core/gallery`, `core/buttons`를 우선 사용한다.
 - 테마는 커스텀 블록을 등록하지 않는다.
-- 콘텐츠 기능용 커스텀 블록이 필요하면 `ktheme-core` 플러그인에 등록한다.
+- 콘텐츠 기능용 커스텀 블록이 필요하면 `ktheme-engine` 또는 기능별 `ktheme-{capability}` 플러그인에 등록한다.
 - 에디터와 프런트엔드의 너비, 글꼴, 색상, 상태 스타일을 일치시킨다.
 
 ### 4.3 패턴
@@ -169,10 +179,10 @@ Description
 
 | 역할 | 파일 | slug | 카테고리 |
 |---|---|---|---|
-| 전체 페이지 조합 | `page-{purpose}.php` | `ktheme-v2/page-{purpose}` | `ktheme-v2-pages` |
-| 일반 섹션 | `section-{purpose}.php` | `ktheme-v2/section-{purpose}` | `ktheme-v2-sections` |
-| 쿼리 섹션 | `query-{content}.php` | `ktheme-v2/query-{content}` | `ktheme-v2-queries` |
-| 외부 기능 자리 | `integration-{purpose}.php` | `ktheme-v2/integration-{purpose}` | `ktheme-v2-integrations` |
+| 전체 페이지 조합 | `page-{purpose}.php` | `ktheme/page-{purpose}` | `ktheme-pages` |
+| 일반 섹션 | `section-{purpose}.php` | `ktheme/section-{purpose}` | `ktheme-sections` |
+| 쿼리 섹션 | `query-{content}.php` | `ktheme/query-{content}` | `ktheme-queries` |
+| 외부 기능 자리 | `integration-{purpose}.php` | `ktheme/integration-{purpose}` | `ktheme-integrations` |
 
 패턴 규칙:
 
@@ -196,28 +206,40 @@ Description
 - 표준 순서는 header, main, hero, content 또는 patterns, footer다.
 - 신규 템플릿에는 shortcode와 기능 처리 코드를 넣지 않는다.
 - 누적 콘텐츠는 `archive + single`, 안내 콘텐츠는 `page`, 입력 처리는 외부 폼 블록을 담는 integration 패턴을 사용한다.
-- slug와 IA는 `docs/SITE_IA_SLUG_RULES.md`를 따른다.
+- 현재 교회 preset의 slug와 IA는 `docs/SITE_IA_SLUG_RULES.md`를 따른다. 범용 theme와 engine은 이 IA에 의존하지 않는다.
 
-### 4.6 동반 플러그인
+### 4.6 범용 엔진과 확장 플러그인
 
-다음 항목은 `ktheme-core` 소유다.
+다음 항목은 `ktheme-engine` 또는 기능별 확장 플러그인 소유다.
 
-- 설교, 행사, 앨범 등 CPT
-- 설교 시리즈 등 taxonomy
+- `ktheme_media`, `ktheme_event`, `ktheme_resource`, `ktheme_profile` 같은 범용 CPT
+- `ktheme_media_type`, `ktheme_collection`, `ktheme_topic`, `ktheme_audience` 같은 범용 taxonomy
 - 폼 제출, 결제, 회원, 데이터 저장
-- 데이터 마이그레이션과 삭제 정책
-- shortcode 호환 계층
+- 데이터 삭제 정책
 - 기능성 커스텀 블록
 
 테마는 플러그인이 없어도 오류 없이 기본 page, post, archive, search를 표현해야 한다.
+
+교회·교육·비영리 같은 업종 구성은 `ktheme-preset-{industry}`가 labels, terms, patterns, demo data로 제공한다. 예를 들어 설교는 별도 post type이 아니라 `ktheme_media`와 `ktheme_media_type` term 조합으로 표현한다.
+
+### 4.7 위젯과 확장 용어
+
+- 코어 블록 조합이면 Pattern을 사용한다.
+- 모양만 다르면 Block style을 사용한다.
+- 초기 설정만 다르면 Block variation을 사용한다.
+- 데이터와 편집 기능이 필요하면 plugin Custom block을 사용한다.
+- `WP_Widget`은 클래식 sidebar 호환이 명시된 경우에만 사용한다.
+- 전체 색상·타입 표현은 Skin, 업종별 구성은 Preset이라 부른다.
+- 모든 신규 항목은 `extension.json` manifest를 갖고 extension registry의 검증을 통과해야 한다.
 
 ## 5. CSS와 JavaScript 표준
 
 ### CSS
 
 - 계층 순서는 foundations, core blocks, patterns, templates, utilities다.
-- 공개 클래스는 `kt-` 접두사를 사용한다.
-- 컴포넌트 클래스는 `kt-{component}`, 요소는 `__`, 변형은 `--`를 사용한다.
+- 기존 공개 클래스는 디자인 유지를 위해 `kt-` 접두사를 유지한다.
+- 신규 독립 모듈은 `ktheme-` 접두사를 사용한다.
+- 기존 컴포넌트는 `kt-{component}`, 신규 컴포넌트는 `ktheme-{component}`를 사용하며 요소는 `__`, 변형은 `--`를 사용한다.
 - 상태는 WordPress 표준 `is-*`, `has-*`를 우선한다.
 - 페이지 slug 기반 선택자보다 컴포넌트 클래스 기반 선택자를 우선한다.
 - 새 CSS는 해당 계층 파일에 작성하고 최종 번들만 enqueue한다.
@@ -235,9 +257,9 @@ Description
 새 디자인, 패턴, 템플릿, 컴포넌트는 아래 검사를 모두 통과해야 한다.
 
 1. 구현 전에 실패 테스트를 추가한다.
-2. 모든 패턴에 필수 헤더와 `ktheme-v2/` namespace가 있는지 검사한다.
+2. 모든 패턴에 필수 헤더와 공개 전환 대상인 `ktheme/` namespace가 있는지 검사한다.
 3. 신규 템플릿에 `wp:shortcode`가 없는지 검사한다.
-4. 테마에 신규 CPT, taxonomy, form handler, shortcode가 추가되지 않는지 검사한다.
+4. 테마에 CPT, taxonomy, form handler, shortcode가 남거나 추가되지 않는지 검사한다.
 5. 하드코딩 설치 경로, 특정 도메인, `href="#"`, 인라인 script를 검사한다.
 6. `theme.json`과 `/styles/*.json` JSON schema를 검사한다.
 7. PHP syntax, WordPress Coding Standards, JS/TS lint, typecheck, unit test를 실행한다.
@@ -264,28 +286,28 @@ Description
 
 - 공동체, 새가족, 다음세대, 청년, 시니어, 소그룹 페이지의 사진 캐러셀을 편집 가능한 갤러리 패턴으로 바꾼다.
 - 새벽기도 페이지의 예배 shortcode를 예배 안내 패턴 또는 Query block으로 바꾼다.
-- 더 이상 참조되지 않는 렌더러를 호환 계층으로 격리한다.
+- 더 이상 참조되지 않는 렌더러와 shortcode 등록을 삭제한다.
 - 완료 조건: `/templates`와 `/parts`에 `wp:shortcode`가 0개다.
 
-### 3단계. 동반 플러그인 분리
+### 3단계. 범용 엔진과 네이밍 전환
 
-- `ktheme-core` 플러그인 골격과 버전 정책을 만든다.
-- CPT와 taxonomy를 플러그인으로 옮긴다.
-- 테마 활성 여부와 무관하게 기존 콘텐츠 URL이 유지되도록 rewrite와 migration을 검증한다.
-- shortcode가 필요한 기존 설치를 위한 기한부 호환 모듈을 플러그인에 둔다.
-- 완료 조건: 테마만 교체해도 설교, 행사, 앨범 데이터가 사라지지 않는다.
+- `ktheme-engine` 플러그인 골격과 extension registry를 만든다.
+- 교회 전용 CPT와 taxonomy를 제거하고 범용 콘텐츠 모델로 구현한다.
+- 기존 고객 데이터가 없으므로 migration과 shortcode 호환 모듈은 만들지 않는다.
+- `ktheme-v2/` pattern namespace와 `style1` 이름을 공개 전 영구 이름으로 전환한다.
+- 완료 조건: 테마에 CPT, taxonomy, shortcode가 없고 모든 공개 이름이 registry와 일치한다.
 
-### 4단계. 디자인 토큰과 스타일 변형 표준화
+### 4단계. 기존 디자인 기준의 구조화
 
-- 교회 상업 테마에 맞게 `docs/DESIGN.md`를 갱신한다.
-- `theme.json`에 간격, 반경, 그림자, 상태 색상, 블록별 기본 스타일을 추가한다.
-- 기본, 차분함, 고대비 등 제한된 스타일 변형을 만든다.
+- 현재 `docs/DESIGN.md`와 시각 결과를 변경하지 않는다.
+- 기존 값을 `theme.json`의 간격, 반경, 그림자, 상태 색상, 블록별 기본 스타일로 구조화한다.
+- 기존 디자인을 `skin-foundation`이라는 의미 기반 이름으로 제공한다.
 - 에디터와 프런트엔드 시각 일치를 검증한다.
-- 완료 조건: 새 섹션은 임의 hex나 임의 spacing 없이 제작할 수 있다.
+- 완료 조건: 현재 화면을 유지하면서 새 섹션을 임의 hex나 임의 spacing 없이 제작할 수 있다.
 
 ### 5단계. CSS와 PHP 모듈화
 
-- `functions.php`에서 setup, assets, patterns, compatibility를 분리한다.
+- `functions.php`에서 setup, assets, patterns, extension loader를 분리한다.
 - `style.css`를 foundations, blocks, patterns, templates로 분리한다.
 - 번들은 WordPress enqueue API로 조건부 로드한다.
 - 완료 조건: 기능별 변경 범위와 enqueue 조건을 테스트로 설명할 수 있다.
@@ -332,7 +354,7 @@ Description
 ### 새 컴포넌트 기능
 
 - 표현인가, 데이터 기능인가?
-- 데이터 기능이면 `ktheme-core`에 두었는가?
+- 데이터 기능이면 `ktheme-engine` 또는 기능별 확장 플러그인에 두었는가?
 - 코어 블록으로 대체할 수 없는 이유가 있는가?
 - 에디터와 프런트엔드 양쪽 상태를 제공하는가?
 
@@ -359,5 +381,7 @@ Description
 
 1. 신규 template과 part에는 shortcode를 추가하지 않는다.
 2. 신규 섹션은 필수 메타데이터를 갖춘 native block pattern으로 만든다.
-3. 신규 데이터 기능은 테마가 아니라 `ktheme-core` 대상으로 설계한다.
+3. 신규 데이터 기능은 테마가 아니라 `ktheme-engine` 또는 기능별 확장 플러그인 대상으로 설계한다.
 4. 신규 스타일은 `theme.json` 토큰과 `kt-` 클래스 계약을 먼저 정의한 뒤 작성한다.
+5. 신규 공개 식별자는 `extension-registry.json`과 `EXTENSION_NAMING_STANDARD.md`를 따른다.
+6. 기존 고객 호환 코드와 migration은 만들지 않는다.

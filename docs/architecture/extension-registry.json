@@ -1,0 +1,79 @@
+{
+  "$schema": "./extension-registry.schema.json",
+  "version": 1,
+  "product": {
+    "root": "ktheme",
+    "themeSlug": "ktheme-v2",
+    "enginePluginSlug": "ktheme-engine"
+  },
+  "namespaces": {
+    "phpFunctionPrefix": "ktheme_",
+    "phpClassPrefix": "KTheme_",
+    "phpNamespace": "KTheme\\",
+    "blockNamespace": "ktheme-engine",
+    "patternNamespace": "ktheme",
+    "legacyCssPrefix": "kt-",
+    "cssPrefix": "ktheme-",
+    "assetHandlePrefix": "ktheme-",
+    "optionPrefix": "ktheme_",
+    "hookPrefix": "ktheme/",
+    "restNamespace": "ktheme/v1",
+    "jsPackageScope": "@ktheme/"
+  },
+  "extensionTypes": [
+    "pattern",
+    "block-style",
+    "block-variation",
+    "block",
+    "widget",
+    "component",
+    "skin",
+    "preset",
+    "integration"
+  ],
+  "patternScopes": [
+    "page",
+    "section",
+    "query",
+    "integration",
+    "header",
+    "footer"
+  ],
+  "genericContentModels": {
+    "postTypes": [
+      "ktheme_media",
+      "ktheme_event",
+      "ktheme_resource",
+      "ktheme_profile"
+    ],
+    "taxonomies": [
+      "ktheme_media_type",
+      "ktheme_collection",
+      "ktheme_topic",
+      "ktheme_audience",
+      "ktheme_location"
+    ]
+  },
+  "forbiddenPersistentTerms": [
+    "church",
+    "sermon",
+    "worship",
+    "ministry",
+    "style1",
+    "style2",
+    "style3",
+    "final",
+    "temp"
+  ],
+  "designPolicy": {
+    "preserveCurrentDesign": true,
+    "sourceOfTruth": "docs/DESIGN.md",
+    "tokenSource": "wp-content/themes/ktheme-v2/theme.json"
+  },
+  "compatibilityPolicy": {
+    "existingCustomerSites": false,
+    "legacyMigrationRequired": false,
+    "removeLegacyShortcodesBeforeRelease": true,
+    "renameVersionedPatternNamespaceBeforeRelease": true
+  }
+}

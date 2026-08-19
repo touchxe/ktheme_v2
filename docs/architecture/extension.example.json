@@ -1,0 +1,18 @@
+{
+  "$schema": "./extension.schema.json",
+  "id": "ktheme-engine/content-grid",
+  "type": "block",
+  "version": "1.0.0",
+  "title": "Content Grid",
+  "description": "Displays a configurable collection of content.",
+  "entry": "block.json",
+  "dependencies": [],
+  "supports": [
+    "editor",
+    "frontend",
+    "responsive",
+    "accessibility",
+    "empty-state"
+  ],
+  "status": "stable"
+}
