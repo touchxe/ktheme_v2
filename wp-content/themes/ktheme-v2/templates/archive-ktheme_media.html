@@ -1,11 +1,11 @@
 <!-- wp:template-part {"slug":"header","tagName":"header"} /-->
 <!-- wp:group {"tagName":"main","className":"kt-page-shell","layout":{"type":"constrained"}} -->
 <main class="wp-block-group kt-page-shell">
-	<!-- wp:template-part {"slug":"archive-hero-sermon"} /-->
-	<!-- wp:query {"query":{"perPage":9,"pages":0,"offset":0,"postType":"ktheme_sermon","order":"desc","orderBy":"date","inherit":true},"className":"kt-content-query kt-sermon-feed"} -->
+	<!-- wp:template-part {"slug":"archive-hero-media"} /-->
+	<!-- wp:query {"query":{"perPage":9,"pages":0,"offset":0,"postType":"ktheme_media","order":"desc","orderBy":"date","inherit":true},"className":"kt-content-query kt-sermon-feed"} -->
 	<div class="wp-block-query kt-content-query kt-sermon-feed">
 		<!-- wp:post-template {"className":"kt-sermon-item-grid"} -->
-			<!-- wp:template-part {"slug":"sermon-item-card"} /-->
+			<!-- wp:template-part {"slug":"media-item-card"} /-->
 		<!-- /wp:post-template -->
 		<!-- wp:query-pagination {"paginationArrow":"chevron","className":"kt-sermon-pagination"} -->
 			<!-- wp:query-pagination-previous /-->

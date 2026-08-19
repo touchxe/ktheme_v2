@@ -8,6 +8,9 @@ require_once KTHEME_ENGINE_PATH . 'includes/class-extension-registry.php';
 require_once KTHEME_ENGINE_PATH . 'includes/class-module-loader.php';
 require_once KTHEME_ENGINE_PATH . 'includes/class-asset-manager.php';
 require_once KTHEME_ENGINE_PATH . 'includes/class-rest-controller.php';
+require_once KTHEME_ENGINE_PATH . 'modules/content-types/class-content-types.php';
+require_once KTHEME_ENGINE_PATH . 'modules/content-types/class-content-meta.php';
+require_once KTHEME_ENGINE_PATH . 'modules/taxonomies/class-taxonomies.php';
 
 final class Plugin {
 \tprivate static ?Plugin $instance = null;
@@ -50,6 +53,9 @@ final class Plugin {
 \t}
 
 \tpublic function register_extensions(): void {
+\t\tModules\Content_Types::register();
+\t\tModules\Taxonomies::register();
+\t\tModules\Content_Meta::register();
 \t\t$this->module_loader->register();
 \t}
 }
