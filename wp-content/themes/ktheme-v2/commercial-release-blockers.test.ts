@@ -38,6 +38,8 @@ describe('commercial theme release blockers', () => {
     expect(source).toContain('function ktheme_v2_resolve_legacy_asset_urls')
     expect(source).toContain("trailingslashit( get_theme_file_uri() )")
     expect(source).toContain("add_filter( 'render_block', 'ktheme_v2_resolve_legacy_asset_urls', 15, 2 )")
+		expect(source).toContain('ktheme-demo-community-01.png')
+		expect(source).toContain('ktheme-demo-community-04.png')
   })
 
   it('does not present fake submission success states in form templates', () => {

@@ -37,6 +37,7 @@ const packageDefinitions = [
     exclusions: [
       'assets/images/logos',
       'assets/images/style1',
+			'assets/images/generated',
       'templates/page-design-library.html',
       'templates/page-lecture.html',
       'templates/page-lecture-style2.html',

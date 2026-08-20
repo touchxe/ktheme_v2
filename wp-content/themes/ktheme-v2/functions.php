@@ -445,6 +445,34 @@ add_filter( 'render_block', 'ktheme_v2_render_dynamic_template_part_block', 10, 
  */
 function ktheme_v2_resolve_legacy_asset_urls( string $block_content, array $block ): string {
 	unset( $block );
+	$legacy_generated_base = '/wp-content/themes/ktheme-v2/assets/images/generated/';
+	$replacement_assets    = array(
+		'church-generated-01.jpg' => 'ktheme-demo-community-01.png',
+		'church-generated-02.jpg' => 'ktheme-demo-community-02.png',
+		'church-generated-03.jpg' => 'ktheme-demo-community-03.png',
+		'church-generated-04.jpg' => 'ktheme-demo-community-04.png',
+		'church-generated-05.jpg' => 'ktheme-demo-community-01.png',
+		'church-generated-06.jpg' => 'ktheme-demo-community-02.png',
+		'church-generated-07.jpg' => 'ktheme-demo-community-03.png',
+		'church-generated-08.jpg' => 'ktheme-demo-community-04.png',
+		'church-generated-09.jpg' => 'ktheme-demo-community-01.png',
+		'church-generated-10.jpg' => 'ktheme-demo-community-02.png',
+		'church-generated-11.jpg' => 'ktheme-demo-community-03.png',
+		'church-generated-12.jpg' => 'ktheme-demo-community-04.png',
+		'church-generated-13.jpg' => 'ktheme-demo-community-01.png',
+		'church-generated-14.jpg' => 'ktheme-demo-community-02.png',
+		'church-generated-15.jpg' => 'ktheme-demo-community-03.png',
+		'church-generated-16.jpg' => 'ktheme-demo-community-04.png',
+		'church-generated-17.jpg' => 'ktheme-demo-community-01.png',
+	);
+
+	foreach ( $replacement_assets as $legacy_file => $replacement_file ) {
+		$block_content = str_replace(
+			$legacy_generated_base . $legacy_file,
+			get_theme_file_uri( 'assets/images/' . $replacement_file ),
+			$block_content
+		);
+	}
 
 	return str_replace(
 		'/wp-content/themes/ktheme-v2/',
@@ -1949,7 +1977,7 @@ function ktheme_v2_render_home_hero_slider_script(): void {
 	if ( is_admin() || ! is_front_page() ) {
 		return;
 	}
-	$generated_asset_base = trailingslashit( get_theme_file_uri( 'assets/images/generated' ) );
+	$demo_asset_base = trailingslashit( get_theme_file_uri( 'assets/images' ) );
 	?>
 	<script>
 	(function () {
@@ -1974,7 +2002,7 @@ function ktheme_v2_render_home_hero_slider_script(): void {
 
 	  var slides = [
 	    {
-	      image: '<?php echo esc_js( $generated_asset_base ); ?>church-generated-01.jpg',
+	      image: '<?php echo esc_js( $demo_asset_base ); ?>ktheme-demo-community-01.png',
 	      eyebrow: '2026 SPRING SERIES · VOL. 04',
 	      title: '말씀에 머무는 자리,<br />함께 걸어가는 공동체',
 	      copy: '매주 드려지는 예배와 말씀, 그리고 공동체의 삶 속에서 회복의 자리를 함께 만들어 갑니다.',
@@ -1983,7 +2011,7 @@ function ktheme_v2_render_home_hero_slider_script(): void {
 	      secondary: '예배 시간 안내'
 	    },
 	    {
-	      image: '<?php echo esc_js( $generated_asset_base ); ?>church-generated-08.jpg',
+	      image: '<?php echo esc_js( $demo_asset_base ); ?>ktheme-demo-community-04.png',
 	      eyebrow: 'WORSHIP TOGETHER · SUNDAY',
 	      title: '함께 예배하고,<br />함께 세워지는 시간',
 	      copy: '주일 예배 자리에서 하나님을 예배하고 서로를 격려합니다. 처음 오신 분도 편안하게 참여할 수 있도록 안내합니다.',
@@ -1992,7 +2020,7 @@ function ktheme_v2_render_home_hero_slider_script(): void {
 	      secondary: '오시는 길'
 	    },
 	    {
-	      image: '<?php echo esc_js( $generated_asset_base ); ?>church-generated-03.jpg',
+	      image: '<?php echo esc_js( $demo_asset_base ); ?>ktheme-demo-community-03.png',
 	      eyebrow: 'NEXT GENERATION · FAITH',
 	      title: '다음 세대가 복음 안에서<br />자라나는 교회',
 	      copy: '아이들과 청소년이 믿음의 언어를 배우고 삶으로 이어갈 수 있도록 예배와 교육의 흐름을 만듭니다.',
@@ -2001,7 +2029,7 @@ function ktheme_v2_render_home_hero_slider_script(): void {
 	      secondary: '공동체 안내'
 	    },
 	    {
-	      image: '<?php echo esc_js( $generated_asset_base ); ?>church-generated-15.jpg',
+	      image: '<?php echo esc_js( $demo_asset_base ); ?>ktheme-demo-community-02.png',
 	      eyebrow: 'MISSION & SERVE · LOCAL',
 	      title: '지역의 일상을 섬기는<br />작은 발걸음',
 	      copy: '복음의 마음으로 이웃을 섬기며, 선교와 봉사의 자리에서 함께 기도하고 동역합니다.',

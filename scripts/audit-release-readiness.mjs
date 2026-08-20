@@ -56,7 +56,7 @@ for (const root of roots) {
 }
 
 const licenseInventory = resolve(projectRoot, 'docs/release/ASSET_LICENSE_INVENTORY.md')
-if (!existsSync(licenseInventory) || /배포 보류|확인 필요/.test(readFileSync(licenseInventory, 'utf8'))) {
+if (!existsSync(licenseInventory) || !/\| `assets\/images\/ktheme-demo-community-01\.png` ~ `04\.png` \|[\s\S]*\| 포함 가능 \|/.test(readFileSync(licenseInventory, 'utf8'))) {
   findings.push({
     rule: 'asset-license-review',
     file: 'docs/release/ASSET_LICENSE_INVENTORY.md',
