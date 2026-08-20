@@ -1,0 +1,33 @@
+{
+  "version": 1,
+  "skins": [
+    {
+      "id": "ktheme/skin-foundation",
+      "file": "styles/skin-foundation.json",
+      "status": "stable"
+    }
+  ],
+  "patterns": [
+    { "id": "ktheme/footer-basic", "file": "patterns/footer-basic.php", "scope": "footer", "status": "stable" },
+    { "id": "ktheme/header-basic", "file": "patterns/header-basic.php", "scope": "header", "status": "stable" },
+    { "id": "ktheme/page-home", "file": "patterns/page-home.php", "scope": "page", "status": "stable" },
+    { "id": "ktheme/query-content-list", "file": "patterns/query-content-list.php", "scope": "query", "status": "stable" },
+    { "id": "ktheme/query-event-list", "file": "patterns/query-event-list.php", "scope": "query", "status": "stable" },
+    { "id": "ktheme/query-profile-grid", "file": "patterns/query-profile-grid.php", "scope": "query", "status": "stable" },
+    { "id": "ktheme/query-resource-list", "file": "patterns/query-resource-list.php", "scope": "query", "status": "stable" },
+    { "id": "ktheme/section-donation-shell", "file": "patterns/section-donation-shell.php", "scope": "integration", "status": "stable" },
+    { "id": "ktheme/section-empty-state", "file": "patterns/section-empty-state.php", "scope": "section", "status": "stable" },
+    { "id": "ktheme/section-feature-story", "file": "patterns/section-feature-story.php", "scope": "section", "status": "stable" },
+    { "id": "ktheme/section-form-shell", "file": "patterns/section-form-shell.php", "scope": "integration", "status": "stable" },
+    { "id": "ktheme/section-location-shell", "file": "patterns/section-location-shell.php", "scope": "integration", "status": "stable" },
+    { "id": "ktheme/section-media-gallery", "file": "patterns/section-media-gallery.php", "scope": "section", "status": "stable" },
+    { "id": "ktheme/section-page-hero", "file": "patterns/section-page-hero.php", "scope": "section", "status": "stable" },
+    { "id": "ktheme/section-subpage-cta", "file": "patterns/section-subpage-cta.php", "scope": "section", "status": "stable" },
+    { "id": "ktheme/section-worship-schedule", "file": "patterns/section-worship-schedule.php", "scope": "section", "status": "preset" }
+  ],
+  "components": [
+    { "id": "ktheme/header-site", "file": "parts/header.html", "status": "stable" },
+    { "id": "ktheme/footer-site", "file": "parts/footer.html", "status": "stable" },
+    { "id": "ktheme/page-hero", "file": "parts/page-hero.html", "status": "stable" }
+  ]
+}
