@@ -21,7 +21,7 @@ const files = (directory) => {
     const stats = statSync(path)
 
     if (stats.isDirectory()) result.push(...files(path))
-    else if (textExtensions.has(`.${entry.split('.').pop()}`)) result.push(path)
+    else if (textExtensions.has(`.${entry.split('.').pop()}`) && !entry.includes('.test.')) result.push(path)
   }
 
   return result
