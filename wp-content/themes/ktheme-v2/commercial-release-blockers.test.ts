@@ -32,6 +32,14 @@ describe('commercial theme release blockers', () => {
     expect(source).not.toContain("add_action( 'admin_init', 'ktheme_v2_ensure_required_pages' )")
   })
 
+  it('resolves legacy demo asset paths against the active theme location', () => {
+    const source = readThemeFile('functions.php')
+
+    expect(source).toContain('function ktheme_v2_resolve_legacy_asset_urls')
+    expect(source).toContain("trailingslashit( get_theme_file_uri() )")
+    expect(source).toContain("add_filter( 'render_block', 'ktheme_v2_resolve_legacy_asset_urls', 15, 2 )")
+  })
+
   it('does not present fake submission success states in form templates', () => {
     for (const template of formTemplates) {
       const source = readThemeFile(`templates/${template}`)

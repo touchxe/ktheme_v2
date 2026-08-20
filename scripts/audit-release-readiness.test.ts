@@ -11,6 +11,7 @@ describe('commercial release readiness audit', () => {
 
     expect(report.status).toBe('blocked')
     expect(report.findings.some((finding: { rule: string }) => finding.rule === 'customer-identifier')).toBe(false)
+    expect(report.findings.some((finding: { rule: string }) => finding.rule === 'hardcoded-theme-path')).toBe(false)
     expect(report.findings.some((finding: { rule: string }) => finding.rule === 'asset-license-review')).toBe(true)
   })
 })

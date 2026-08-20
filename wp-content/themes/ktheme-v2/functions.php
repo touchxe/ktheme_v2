@@ -439,6 +439,21 @@ function ktheme_v2_render_dynamic_template_part_block( string $block_content, ar
 }
 add_filter( 'render_block', 'ktheme_v2_render_dynamic_template_part_block', 10, 2 );
 
+/**
+ * Keep legacy demo markup portable while presets are being extracted.
+ * New templates must use WordPress asset APIs or the preset asset contract.
+ */
+function ktheme_v2_resolve_legacy_asset_urls( string $block_content, array $block ): string {
+	unset( $block );
+
+	return str_replace(
+		'/wp-content/themes/ktheme-v2/',
+		trailingslashit( get_theme_file_uri() ),
+		$block_content
+	);
+}
+add_filter( 'render_block', 'ktheme_v2_resolve_legacy_asset_urls', 15, 2 );
+
 function ktheme_v2_footer_menu_html( string $theme_location, string $fallback_title, array $fallback_items ): string {
 	$items = ktheme_v2_get_menu_tree( $theme_location, 0, $fallback_items );
 	if ( empty( $items ) ) {
@@ -1934,6 +1949,7 @@ function ktheme_v2_render_home_hero_slider_script(): void {
 	if ( is_admin() || ! is_front_page() ) {
 		return;
 	}
+	$generated_asset_base = trailingslashit( get_theme_file_uri( 'assets/images/generated' ) );
 	?>
 	<script>
 	(function () {
@@ -1958,7 +1974,7 @@ function ktheme_v2_render_home_hero_slider_script(): void {
 
 	  var slides = [
 	    {
-	      image: '/wp-content/themes/ktheme-v2/assets/images/generated/church-generated-01.jpg',
+	      image: '<?php echo esc_js( $generated_asset_base ); ?>church-generated-01.jpg',
 	      eyebrow: '2026 SPRING SERIES · VOL. 04',
 	      title: '말씀에 머무는 자리,<br />함께 걸어가는 공동체',
 	      copy: '매주 드려지는 예배와 말씀, 그리고 공동체의 삶 속에서 회복의 자리를 함께 만들어 갑니다.',
@@ -1967,7 +1983,7 @@ function ktheme_v2_render_home_hero_slider_script(): void {
 	      secondary: '예배 시간 안내'
 	    },
 	    {
-	      image: '/wp-content/themes/ktheme-v2/assets/images/generated/church-generated-08.jpg',
+	      image: '<?php echo esc_js( $generated_asset_base ); ?>church-generated-08.jpg',
 	      eyebrow: 'WORSHIP TOGETHER · SUNDAY',
 	      title: '함께 예배하고,<br />함께 세워지는 시간',
 	      copy: '주일 예배 자리에서 하나님을 예배하고 서로를 격려합니다. 처음 오신 분도 편안하게 참여할 수 있도록 안내합니다.',
@@ -1976,7 +1992,7 @@ function ktheme_v2_render_home_hero_slider_script(): void {
 	      secondary: '오시는 길'
 	    },
 	    {
-	      image: '/wp-content/themes/ktheme-v2/assets/images/generated/church-generated-03.jpg',
+	      image: '<?php echo esc_js( $generated_asset_base ); ?>church-generated-03.jpg',
 	      eyebrow: 'NEXT GENERATION · FAITH',
 	      title: '다음 세대가 복음 안에서<br />자라나는 교회',
 	      copy: '아이들과 청소년이 믿음의 언어를 배우고 삶으로 이어갈 수 있도록 예배와 교육의 흐름을 만듭니다.',
@@ -1985,7 +2001,7 @@ function ktheme_v2_render_home_hero_slider_script(): void {
 	      secondary: '공동체 안내'
 	    },
 	    {
-	      image: '/wp-content/themes/ktheme-v2/assets/images/generated/church-generated-15.jpg',
+	      image: '<?php echo esc_js( $generated_asset_base ); ?>church-generated-15.jpg',
 	      eyebrow: 'MISSION & SERVE · LOCAL',
 	      title: '지역의 일상을 섬기는<br />작은 발걸음',
 	      copy: '복음의 마음으로 이웃을 섬기며, 선교와 봉사의 자리에서 함께 기도하고 동역합니다.',

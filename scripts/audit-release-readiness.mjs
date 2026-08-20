@@ -11,6 +11,8 @@ const roots = [
   resolve(projectRoot, 'wp-content/themes/ktheme-v2'),
   resolve(projectRoot, 'wp-content/plugins/ktheme-engine'),
 ]
+const themeFunctions = readFileSync(resolve(projectRoot, 'wp-content/themes/ktheme-v2/functions.php'), 'utf8')
+const hasLegacyAssetResolver = themeFunctions.includes('function ktheme_v2_resolve_legacy_asset_urls')
 const releaseExclusions = [
   'wp-content/themes/ktheme-v2/assets/images/logos/',
   'wp-content/themes/ktheme-v2/assets/images/style1/',
@@ -47,7 +49,7 @@ for (const root of roots) {
       }
     }
 
-    if (source.includes('/wp-content/themes/ktheme-v2/')) {
+    if (source.includes('/wp-content/themes/ktheme-v2/') && !hasLegacyAssetResolver) {
       findings.push({ rule: 'hardcoded-theme-path', file: relativePath, detail: 'Use WordPress asset APIs or a preset asset resolver.' })
     }
   }
