@@ -545,7 +545,6 @@ function ktheme_v2_render_footer_shortcode(): string {
 			<div class="kt-container kt-footer__bottom-inner">
 				<p><?php echo esc_html__( 'Add your address in the Site Editor.', 'ktheme-v2' ); ?></p>
 				<p><?php echo esc_html__( 'Add your contact details in the Site Editor.', 'ktheme-v2' ); ?></p>
-				<a class="kt-footer-dev-link" href="<?php echo esc_url( home_url( '/design-library/' ) ); ?>">DEV · Design Library</a>
 				<p><?php echo esc_html__( '© Your organization. All rights reserved.', 'ktheme-v2' ); ?></p>
 			</div>
 		</div>
@@ -592,7 +591,6 @@ function ktheme_v2_required_pages(): array {
 		array( 'title' => ktheme_v2_text( '\uC7A5\uC18C \uC0AC\uC6A9 \uC2E0\uCCAD' ), 'slug' => 'facility-request' ),
 		array( 'title' => ktheme_v2_text( '\uCC28\uB7C9 \uC0AC\uC6A9 \uC2E0\uCCAD' ), 'slug' => 'vehicle-request' ),
 		array( 'title' => ktheme_v2_text( '\uBB38\uC758\uD558\uAE30' ), 'slug' => 'contact' ),
-		array( 'title' => ktheme_v2_text( '\uB514\uC790\uC778 \uB77C\uC774\uBE0C\uB7EC\uB9AC' ), 'slug' => 'design-library', 'template' => 'page-design-library' ),
 		array( 'title' => ktheme_v2_text( '\uB85C\uADF8\uC778' ), 'slug' => 'login' ),
 		array( 'title' => ktheme_v2_text( '\uD68C\uC6D0\uAC00\uC785' ), 'slug' => 'register' ),
 		array( 'title' => ktheme_v2_text( '\uAC1C\uC778\uC815\uBCF4\uCC98\uB9AC\uBC29\uCE68' ), 'slug' => 'privacy-policy' ),

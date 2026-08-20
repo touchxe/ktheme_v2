@@ -34,6 +34,13 @@ const packageDefinitions = [
     slug: 'ktheme-v2',
     source: resolve(projectRoot, 'wp-content/themes/ktheme-v2'),
     versionFile: resolve(projectRoot, 'wp-content/themes/ktheme-v2/style.css'),
+    exclusions: [
+      'assets/images/logos',
+      'assets/images/style1',
+      'templates/page-design-library.html',
+      'templates/page-lecture.html',
+      'templates/page-lecture-style2.html',
+    ],
   },
   {
     slug: 'ktheme-engine',
@@ -63,7 +70,10 @@ const plan = {
     version,
     archive,
   })),
-  exclusions: ['.git', 'node_modules', '.vite', '*.test.*', '*.map', 'tests', 'docs'],
+  exclusions: [
+    '.git', 'node_modules', '.vite', '*.test.*', '*.map', 'tests', 'docs',
+    ...packageDefinitions.flatMap((definition) => definition.exclusions ?? []),
+  ],
 }
 
 if (dryRun) {
@@ -98,6 +108,8 @@ for (const definition of packageDefinitions) {
       `${sourceName}/docs/*`,
       `${sourceName}/**/*.test.*`,
       `${sourceName}/**/*.map`,
+      ...(definition.exclusions ?? []).map((path) => `${sourceName}/${path}/*`),
+      ...(definition.exclusions ?? []).filter((path) => path.includes('.')).map((path) => `${sourceName}/${path}`),
     ],
     { cwd: sourceParent, encoding: 'utf8' },
   )

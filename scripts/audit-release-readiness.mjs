@@ -11,6 +11,13 @@ const roots = [
   resolve(projectRoot, 'wp-content/themes/ktheme-v2'),
   resolve(projectRoot, 'wp-content/plugins/ktheme-engine'),
 ]
+const releaseExclusions = [
+  'wp-content/themes/ktheme-v2/assets/images/logos/',
+  'wp-content/themes/ktheme-v2/assets/images/style1/',
+  'wp-content/themes/ktheme-v2/templates/page-design-library.html',
+  'wp-content/themes/ktheme-v2/templates/page-lecture.html',
+  'wp-content/themes/ktheme-v2/templates/page-lecture-style2.html',
+]
 
 const files = (directory) => {
   const result = []
@@ -32,6 +39,7 @@ for (const root of roots) {
   for (const file of files(root)) {
     const source = readFileSync(file, 'utf8')
     const relativePath = file.replace(`${projectRoot}/`, '')
+    if (releaseExclusions.some((excluded) => relativePath === excluded || relativePath.startsWith(excluded))) continue
 
     for (const marker of customerMarkers) {
       if (marker.test(source)) {

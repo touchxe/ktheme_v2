@@ -18,5 +18,12 @@ describe('release package plan', () => {
     ])
     expect(plan.packages.every((item: { version: string }) => /^\d+\.\d+\.\d+$/.test(item.version))).toBe(true)
     expect(plan.packages.every((item: { archive: string }) => item.archive.endsWith('.zip'))).toBe(true)
+    expect(plan.exclusions).toEqual(expect.arrayContaining([
+      'assets/images/logos',
+      'assets/images/style1',
+      'templates/page-design-library.html',
+      'templates/page-lecture.html',
+      'templates/page-lecture-style2.html',
+    ]))
   })
 })
