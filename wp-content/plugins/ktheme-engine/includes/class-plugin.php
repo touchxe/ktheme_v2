@@ -13,49 +13,49 @@ require_once KTHEME_ENGINE_PATH . 'modules/content-types/class-content-meta.php'
 require_once KTHEME_ENGINE_PATH . 'modules/taxonomies/class-taxonomies.php';
 
 final class Plugin {
-\tprivate static ?Plugin $instance = null;
+	private static ?Plugin $instance = null;
 
-\tprivate Extension_Registry $registry;
+	private Extension_Registry $registry;
 
-\tprivate Module_Loader $module_loader;
+	private Module_Loader $module_loader;
 
-\tpublic static function boot(): void {
-\t\tif ( null !== self::$instance ) {
-\t\t\treturn;
-\t\t}
+	public static function boot(): void {
+		if ( null !== self::$instance ) {
+			return;
+		}
 
-\t\tself::$instance = new self();
-\t\tadd_action( 'plugins_loaded', array( self::$instance, 'load_textdomain' ) );
-\t\tadd_action( 'init', array( self::$instance, 'register_extensions' ) );
-\t}
+		self::$instance = new self();
+		add_action( 'plugins_loaded', array( self::$instance, 'load_textdomain' ) );
+		add_action( 'init', array( self::$instance, 'register_extensions' ) );
+	}
 
-\tpublic static function activate(): void {
-\t\tif ( version_compare( PHP_VERSION, '8.1', '<' ) ) {
-\t\t\twp_die( esc_html__( 'KTheme Engine requires PHP 8.1 or later.', 'ktheme-engine' ) );
-\t\t}
+	public static function activate(): void {
+		if ( version_compare( PHP_VERSION, '8.1', '<' ) ) {
+			wp_die( esc_html__( 'KTheme Engine requires PHP 8.1 or later.', 'ktheme-engine' ) );
+		}
 
-\t\tif ( version_compare( get_bloginfo( 'version' ), '6.5', '<' ) ) {
-\t\t\twp_die( esc_html__( 'KTheme Engine requires WordPress 6.5 or later.', 'ktheme-engine' ) );
-\t\t}
-\t}
+		if ( version_compare( get_bloginfo( 'version' ), '6.5', '<' ) ) {
+			wp_die( esc_html__( 'KTheme Engine requires WordPress 6.5 or later.', 'ktheme-engine' ) );
+		}
+	}
 
-\tpublic static function deactivate(): void {
-\t\t// Deliberately retain content and settings. Deactivation must be reversible.
-\t}
+	public static function deactivate(): void {
+		// Deliberately retain content and settings. Deactivation must be reversible.
+	}
 
-\tprivate function __construct() {
-\t\t$this->registry      = new Extension_Registry();
-\t\t$this->module_loader = new Module_Loader( $this->registry );
-\t}
+	private function __construct() {
+		$this->registry      = new Extension_Registry();
+		$this->module_loader = new Module_Loader( $this->registry );
+	}
 
-\tpublic function load_textdomain(): void {
-\t\tload_plugin_textdomain( 'ktheme-engine', false, dirname( plugin_basename( KTHEME_ENGINE_FILE ) ) . '/languages' );
-\t}
+	public function load_textdomain(): void {
+		load_plugin_textdomain( 'ktheme-engine', false, dirname( plugin_basename( KTHEME_ENGINE_FILE ) ) . '/languages' );
+	}
 
-\tpublic function register_extensions(): void {
-\t\tModules\Content_Types::register();
-\t\tModules\Taxonomies::register();
-\t\tModules\Content_Meta::register();
-\t\t$this->module_loader->register();
-\t}
+	public function register_extensions(): void {
+		Modules\Content_Types::register();
+		Modules\Taxonomies::register();
+		Modules\Content_Meta::register();
+		$this->module_loader->register();
+	}
 }

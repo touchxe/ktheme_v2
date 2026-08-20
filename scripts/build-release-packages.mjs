@@ -16,6 +16,15 @@ if (!dryRun) {
   if (audit.status !== 0) {
     throw new Error(audit.stdout || audit.stderr || 'Release readiness audit failed.')
   }
+
+	const phpLint = spawnSync(process.execPath, ['scripts/lint-php.mjs'], {
+		cwd: projectRoot,
+		encoding: 'utf8',
+	})
+
+	if (phpLint.status !== 0) {
+		throw new Error(phpLint.stdout || phpLint.stderr || 'PHP syntax validation failed.')
+	}
 }
 
 const versionFromHeader = (file) => {

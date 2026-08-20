@@ -5,7 +5,7 @@ namespace KTheme\Engine\Contracts;
 defined( 'ABSPATH' ) || exit;
 
 interface Extension {
-\tpublic function id(): string;
+	public function id(): string;
 
-\tpublic function register(): void;
+	public function register(): void;
 }

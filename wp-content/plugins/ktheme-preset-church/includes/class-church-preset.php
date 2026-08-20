@@ -5,60 +5,60 @@ namespace KTheme\Preset\Church;
 defined( 'ABSPATH' ) || exit;
 
 final class Church_Preset {
-\t/** @var array<string, array<string, string>> */
-\tprivate static array $content_type_labels = array();
+	/** @var array<string, array<string, string>> */
+	private static array $content_type_labels = array();
 
-\t/** @var array<string, array<string, string>> */
-\tprivate static array $taxonomy_labels = array();
+	/** @var array<string, array<string, string>> */
+	private static array $taxonomy_labels = array();
 
-\tpublic static function boot(): void {
-\t\tif ( ! class_exists( 'KTheme\\Engine\\Plugin' ) ) {
-\t\t\tadd_action( 'admin_notices', array( self::class, 'render_engine_notice' ) );
-\t\t\treturn;
-\t\t}
+	public static function boot(): void {
+		if ( ! class_exists( 'KTheme\\Engine\\Plugin' ) ) {
+			add_action( 'admin_notices', array( self::class, 'render_engine_notice' ) );
+			return;
+		}
 
-\t\tself::$content_type_labels = require KTHEME_PRESET_CHURCH_PATH . 'labels/content-types.php';
-\t\tself::$taxonomy_labels     = require KTHEME_PRESET_CHURCH_PATH . 'labels/taxonomies.php';
+		self::$content_type_labels = require KTHEME_PRESET_CHURCH_PATH . 'labels/content-types.php';
+		self::$taxonomy_labels     = require KTHEME_PRESET_CHURCH_PATH . 'labels/taxonomies.php';
 
-\t\tadd_filter( 'ktheme/content-type/args', array( self::class, 'filter_content_type_args' ), 10, 2 );
-\t\tadd_filter( 'ktheme/taxonomy/args', array( self::class, 'filter_taxonomy_args' ), 10, 2 );
-\t}
+		add_filter( 'ktheme/content-type/args', array( self::class, 'filter_content_type_args' ), 10, 2 );
+		add_filter( 'ktheme/taxonomy/args', array( self::class, 'filter_taxonomy_args' ), 10, 2 );
+	}
 
-\tpublic static function filter_content_type_args( array $args, string $post_type ): array {
-\t\treturn self::replace_labels( $args, self::$content_type_labels[ $post_type ] ?? array() );
-\t}
+	public static function filter_content_type_args( array $args, string $post_type ): array {
+		return self::replace_labels( $args, self::$content_type_labels[ $post_type ] ?? array() );
+	}
 
-\tpublic static function filter_taxonomy_args( array $args, string $taxonomy ): array {
-\t\treturn self::replace_labels( $args, self::$taxonomy_labels[ $taxonomy ] ?? array() );
-\t}
+	public static function filter_taxonomy_args( array $args, string $taxonomy ): array {
+		return self::replace_labels( $args, self::$taxonomy_labels[ $taxonomy ] ?? array() );
+	}
 
-\t/** @param array<string, string> $labels */
-\tprivate static function replace_labels( array $args, array $labels ): array {
-\t\tif ( empty( $labels ) ) {
-\t\t\treturn $args;
-\t\t}
+	/** @param array<string, string> $labels */
+	private static function replace_labels( array $args, array $labels ): array {
+		if ( empty( $labels ) ) {
+			return $args;
+		}
 
-\t\t$singular = $labels['singular'] ?? '';
-\t\t$plural   = $labels['plural'] ?? '';
-\t\t$args['labels'] = array_merge(
-\t\t\t$args['labels'] ?? array(),
-\t\t\tarray(
-\t\t\t\t'name'          => $plural,
-\t\t\t\t'singular_name' => $singular,
-\t\t\t\t'add_new_item'  => sprintf( __( 'Add %s', 'ktheme-preset-church' ), $singular ),
-\t\t\t\t'edit_item'     => sprintf( __( 'Edit %s', 'ktheme-preset-church' ), $singular ),
-\t\t\t\t'all_items'     => sprintf( __( 'All %s', 'ktheme-preset-church' ), $plural ),
-\t\t\t)
-\t\t);
+		$singular = $labels['singular'] ?? '';
+		$plural   = $labels['plural'] ?? '';
+		$args['labels'] = array_merge(
+			$args['labels'] ?? array(),
+			array(
+				'name'          => $plural,
+				'singular_name' => $singular,
+				'add_new_item'  => sprintf( __( 'Add %s', 'ktheme-preset-church' ), $singular ),
+				'edit_item'     => sprintf( __( 'Edit %s', 'ktheme-preset-church' ), $singular ),
+				'all_items'     => sprintf( __( 'All %s', 'ktheme-preset-church' ), $plural ),
+			)
+		);
 
-\t\treturn $args;
-\t}
+		return $args;
+	}
 
-\tpublic static function render_engine_notice(): void {
-\t\tif ( ! current_user_can( 'activate_plugins' ) ) {
-\t\t\treturn;
-\t\t}
+	public static function render_engine_notice(): void {
+		if ( ! current_user_can( 'activate_plugins' ) ) {
+			return;
+		}
 
-\t\techo '<div class="notice notice-warning"><p>' . esc_html__( 'KTheme Church Preset requires KTheme Engine to be active.', 'ktheme-preset-church' ) . '</p></div>';
-\t}
+		echo '<div class="notice notice-warning"><p>' . esc_html__( 'KTheme Church Preset requires KTheme Engine to be active.', 'ktheme-preset-church' ) . '</p></div>';
+	}
 }

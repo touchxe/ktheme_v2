@@ -26,6 +26,12 @@ describe('commercial theme release blockers', () => {
     expect(() => new TextDecoder('utf-8', { fatal: true }).decode(source)).not.toThrow()
   })
 
+	it('matches the PHP 8.1 requirement of its companion plugins', () => {
+		const style = readThemeFile('style.css')
+
+		expect(style).toContain('Requires PHP: 8.1')
+	})
+
   it('does not attach page creation or mutation to admin requests', () => {
     const source = readThemeFile('functions.php')
 

@@ -5,69 +5,69 @@ namespace KTheme\Engine\Modules;
 defined( 'ABSPATH' ) || exit;
 
 final class Content_Meta {
-\tpublic static function register(): void {
-\t\tforeach ( self::definitions() as $post_type => $fields ) {
-\t\t\tforeach ( $fields as $meta_key => $args ) {
-\t\t\t\tregister_post_meta( $post_type, $meta_key, $args );
-\t\t\t}
-\t\t}
-\t}
+	public static function register(): void {
+		foreach ( self::definitions() as $post_type => $fields ) {
+			foreach ( $fields as $meta_key => $args ) {
+				register_post_meta( $post_type, $meta_key, $args );
+			}
+		}
+	}
 
-\t/** @return array<string, array<string, array<string, mixed>>> */
-\tprivate static function definitions(): array {
-\t\treturn array(
-\t\t\t'ktheme_media'    => array(
-\t\t\t\t'ktheme_source_url'      => self::field( 'string', '', array( self::class, 'sanitize_url' ) ),
-\t\t\t\t'ktheme_duration'        => self::field( 'string', '', array( self::class, 'sanitize_text' ) ),
-\t\t\t\t'ktheme_publish_context' => self::field( 'string', '', array( self::class, 'sanitize_text' ) ),
-\t\t\t),
-\t\t\t'ktheme_event'    => array(
-\t\t\t\t'ktheme_event_start'        => self::field( 'string', '', array( self::class, 'sanitize_text' ) ),
-\t\t\t\t'ktheme_event_end'          => self::field( 'string', '', array( self::class, 'sanitize_text' ) ),
-\t\t\t\t'ktheme_event_timezone'     => self::field( 'string', '', array( self::class, 'sanitize_text' ) ),
-\t\t\t\t'ktheme_location_reference' => self::field( 'string', '', array( self::class, 'sanitize_text' ) ),
-\t\t\t),
-\t\t\t'ktheme_resource' => array(
-\t\t\t\t'ktheme_file_id'      => self::field( 'integer', 0, array( self::class, 'sanitize_integer' ) ),
-\t\t\t\t'ktheme_external_url' => self::field( 'string', '', array( self::class, 'sanitize_url' ) ),
-\t\t\t\t'ktheme_resource_type' => self::field( 'string', '', array( self::class, 'sanitize_text' ) ),
-\t\t\t),
-\t\t\t'ktheme_profile'  => array(
-\t\t\t\t'ktheme_role'               => self::field( 'string', '', array( self::class, 'sanitize_text' ) ),
-\t\t\t\t'ktheme_contact_visibility' => self::field( 'boolean', false, array( self::class, 'sanitize_boolean' ) ),
-\t\t\t\t'ktheme_display_order'      => self::field( 'integer', 0, array( self::class, 'sanitize_integer' ) ),
-\t\t\t),
-\t\t);
-\t}
+	/** @return array<string, array<string, array<string, mixed>>> */
+	private static function definitions(): array {
+		return array(
+			'ktheme_media'    => array(
+				'ktheme_source_url'      => self::field( 'string', '', array( self::class, 'sanitize_url' ) ),
+				'ktheme_duration'        => self::field( 'string', '', array( self::class, 'sanitize_text' ) ),
+				'ktheme_publish_context' => self::field( 'string', '', array( self::class, 'sanitize_text' ) ),
+			),
+			'ktheme_event'    => array(
+				'ktheme_event_start'        => self::field( 'string', '', array( self::class, 'sanitize_text' ) ),
+				'ktheme_event_end'          => self::field( 'string', '', array( self::class, 'sanitize_text' ) ),
+				'ktheme_event_timezone'     => self::field( 'string', '', array( self::class, 'sanitize_text' ) ),
+				'ktheme_location_reference' => self::field( 'string', '', array( self::class, 'sanitize_text' ) ),
+			),
+			'ktheme_resource' => array(
+				'ktheme_file_id'      => self::field( 'integer', 0, array( self::class, 'sanitize_integer' ) ),
+				'ktheme_external_url' => self::field( 'string', '', array( self::class, 'sanitize_url' ) ),
+				'ktheme_resource_type' => self::field( 'string', '', array( self::class, 'sanitize_text' ) ),
+			),
+			'ktheme_profile'  => array(
+				'ktheme_role'               => self::field( 'string', '', array( self::class, 'sanitize_text' ) ),
+				'ktheme_contact_visibility' => self::field( 'boolean', false, array( self::class, 'sanitize_boolean' ) ),
+				'ktheme_display_order'      => self::field( 'integer', 0, array( self::class, 'sanitize_integer' ) ),
+			),
+		);
+	}
 
-\tprivate static function field( string $type, mixed $default, callable $sanitize_callback ): array {
-\t\treturn array(
-\t\t\t'type'              => $type,
-\t\t\t'single'            => true,
-\t\t\t'default'           => $default,
-\t\t\t'show_in_rest'      => true,
-\t\t\t'sanitize_callback' => $sanitize_callback,
-\t\t\t'auth_callback'     => array( self::class, 'can_edit' ),
-\t\t);
-\t}
+	private static function field( string $type, mixed $default, callable $sanitize_callback ): array {
+		return array(
+			'type'              => $type,
+			'single'            => true,
+			'default'           => $default,
+			'show_in_rest'      => true,
+			'sanitize_callback' => $sanitize_callback,
+			'auth_callback'     => array( self::class, 'can_edit' ),
+		);
+	}
 
-\tpublic static function can_edit( bool $allowed, string $meta_key, int $post_id ): bool {
-\t\treturn current_user_can( 'edit_post', $post_id );
-\t}
+	public static function can_edit( bool $allowed, string $meta_key, int $post_id ): bool {
+		return current_user_can( 'edit_post', $post_id );
+	}
 
-\tpublic static function sanitize_text( mixed $value ): string {
-\t\treturn sanitize_text_field( (string) $value );
-\t}
+	public static function sanitize_text( mixed $value ): string {
+		return sanitize_text_field( (string) $value );
+	}
 
-\tpublic static function sanitize_url( mixed $value ): string {
-\t\treturn esc_url_raw( (string) $value );
-\t}
+	public static function sanitize_url( mixed $value ): string {
+		return esc_url_raw( (string) $value );
+	}
 
-\tpublic static function sanitize_integer( mixed $value ): int {
-\t\treturn absint( $value );
-\t}
+	public static function sanitize_integer( mixed $value ): int {
+		return absint( $value );
+	}
 
-\tpublic static function sanitize_boolean( mixed $value ): bool {
-\t\treturn (bool) $value;
-\t}
+	public static function sanitize_boolean( mixed $value ): bool {
+		return (bool) $value;
+	}
 }
