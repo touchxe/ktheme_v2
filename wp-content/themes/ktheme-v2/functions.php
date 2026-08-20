@@ -12,6 +12,8 @@ if ( ! function_exists( 'ktheme_v2_setup' ) ) {
 			'ktheme-sections'     => __( 'KTheme Sections', 'ktheme-v2' ),
 			'ktheme-queries'      => __( 'KTheme Queries', 'ktheme-v2' ),
 			'ktheme-integrations' => __( 'KTheme Integrations', 'ktheme-v2' ),
+			'ktheme-headers'      => __( 'KTheme Headers', 'ktheme-v2' ),
+			'ktheme-footers'      => __( 'KTheme Footers', 'ktheme-v2' ),
 		);
 
 		foreach ( $pattern_categories as $category => $label ) {
@@ -417,8 +419,6 @@ function ktheme_v2_render_header_shortcode(): string {
 	<?php
 	return ktheme_v2_compact_shortcode_html( (string) ob_get_clean() );
 }
-add_shortcode( 'ktheme_header', 'ktheme_v2_render_header_shortcode' );
-add_shortcode( 'ktheme_site_header', 'ktheme_v2_render_header_shortcode' );
 
 function ktheme_v2_render_dynamic_template_part_block( string $block_content, array $block ): string {
 	if ( 'core/html' !== ( $block['blockName'] ?? '' ) ) {
@@ -553,7 +553,6 @@ function ktheme_v2_render_footer_shortcode(): string {
 	<?php
 	return ktheme_v2_compact_shortcode_html( (string) ob_get_clean() );
 }
-add_shortcode( 'ktheme_footer', 'ktheme_v2_render_footer_shortcode' );
 
 function ktheme_v2_required_pages(): array {
 	return array(
@@ -1146,7 +1145,6 @@ function ktheme_v2_render_page_hero_shortcode(): string {
 		'<div class="kt-page-hero__body"><div><h1>' . esc_html( $title ) . '</h1>' . $description_html . '</div>' . $visual_html . wp_kses_post( $tabs ) . '</div>' .
 		'</section>';
 }
-add_shortcode( 'ktheme_page_hero', 'ktheme_v2_render_page_hero_shortcode' );
 
 function ktheme_v2_component_icon( string $name, string $class = 'kt-icon kt-icon--sm', string $stroke_width = '1.8' ): string {
 	$paths = array(
@@ -1400,7 +1398,6 @@ function ktheme_v2_render_location_page_shortcode(): string {
 
 	return ktheme_v2_compact_shortcode_html( $html . '</div>' );
 }
-add_shortcode( 'ktheme_location_page', 'ktheme_v2_render_location_page_shortcode' );
 
 function ktheme_v2_sermon_card_items(): array {
 	$image_base = get_template_directory_uri() . '/assets/images/generated/';
@@ -1491,7 +1488,6 @@ function ktheme_v2_render_sunday_worship_grid_shortcode(): string {
 		$pagination .
 		'</section>';
 }
-add_shortcode( 'ktheme_sunday_worship_grid', 'ktheme_v2_render_sunday_worship_grid_shortcode' );
 
 function ktheme_v2_photo_carousel_presets(): array {
 	$image_base = get_template_directory_uri() . '/assets/images/generated/';
@@ -1788,7 +1784,6 @@ function ktheme_v2_render_photo_carousel_shortcode( $atts = array() ): string {
 		'</div>' .
 	'</section>';
 }
-add_shortcode( 'ktheme_photo_carousel', 'ktheme_v2_render_photo_carousel_shortcode' );
 
 function ktheme_v2_body_classes( array $classes ): array {
 	if ( is_page( array( 'sunday-worship', 'wednesday-worship', 'dawn-prayer' ) ) ) {

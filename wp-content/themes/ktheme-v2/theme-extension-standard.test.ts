@@ -20,14 +20,15 @@ const standardPatterns = [
   'section-worship-schedule.php',
 ]
 
-const legacyShortcodes = [
-  'ktheme_footer',
-  'ktheme_header',
-  'ktheme_location_page',
-  'ktheme_page_hero',
-  'ktheme_photo_carousel',
-  'ktheme_site_header',
-  'ktheme_sunday_worship_grid',
+const genericPatternFamilies = [
+  'section-feature-story.php',
+  'query-content-list.php',
+  'query-event-list.php',
+  'query-profile-grid.php',
+  'query-resource-list.php',
+  'section-empty-state.php',
+  'header-basic.php',
+  'footer-basic.php',
 ]
 
 describe('commercial theme extension standard', () => {
@@ -108,13 +109,36 @@ describe('commercial theme extension standard', () => {
     expect(existsSync(new URL('./styles/style1.json', themeRoot))).toBe(false)
   })
 
-  it('does not expand the temporary legacy shortcode surface', () => {
+  it('ships a neutral pattern family for future pages and components', () => {
+    const functions = readThemeFile('functions.php')
+
+    for (const category of ['ktheme-headers', 'ktheme-footers']) {
+      expect(functions).toContain(`'${category}'`)
+    }
+
+    for (const pattern of genericPatternFamilies) {
+      const source = readThemeFile(`patterns/${pattern}`)
+
+      expect(source).toMatch(/\* Title: .+/)
+      expect(source).toMatch(/\* Slug: ktheme\/.+/)
+      expect(source).toMatch(/\* Categories: ktheme-(sections|queries|headers|footers)/)
+      expect(source).toMatch(/\* Description: .+/)
+      expect(source).not.toContain('<!-- wp:html -->')
+      expect(source).not.toContain('<!-- wp:shortcode -->')
+      expect(source).not.toContain('href="#"')
+      expect(source).not.toContain('/wp-content/themes/ktheme-v2')
+      expect(source).not.toContain('<script')
+      expect(source).not.toContain('<style')
+    }
+  })
+
+  it('does not register legacy shortcodes in the presentation theme', () => {
     const source = readThemeFile('functions.php')
     const registeredShortcodes = Array.from(
       source.matchAll(/add_shortcode\(\s*'([^']+)'/g),
       (match) => match[1],
     ).sort()
 
-    expect(registeredShortcodes).toEqual(legacyShortcodes)
+    expect(registeredShortcodes).toEqual([])
   })
 })
