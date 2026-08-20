@@ -7,9 +7,9 @@
  */
 
 $ktheme_v2_gallery_images = array(
-	get_theme_file_uri( 'assets/images/generated/church-generated-04.jpg' ),
-	get_theme_file_uri( 'assets/images/generated/church-generated-13.jpg' ),
-	get_theme_file_uri( 'assets/images/generated/church-generated-15.jpg' ),
+	get_theme_file_uri( 'assets/images/ktheme-demo-community-04.png' ),
+	get_theme_file_uri( 'assets/images/ktheme-demo-community-01.png' ),
+	get_theme_file_uri( 'assets/images/ktheme-demo-community-03.png' ),
 );
 ?>
 <!-- wp:group {"align":"wide","className":"kt-section kt-section--media-gallery","layout":{"type":"constrained"}} -->

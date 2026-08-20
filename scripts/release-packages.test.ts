@@ -21,7 +21,8 @@ describe('release package plan', () => {
     expect(plan.exclusions).toEqual(expect.arrayContaining([
       'assets/images/logos',
       'assets/images/style1',
-			'assets/images/generated',
+      'assets/images/generated',
+			'assets/js/design-library.js',
       'templates/page-design-library.html',
       'templates/page-lecture.html',
       'templates/page-lecture-style2.html',
