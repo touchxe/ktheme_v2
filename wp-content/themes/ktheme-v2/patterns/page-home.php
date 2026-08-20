@@ -58,7 +58,7 @@
 
   <section class="kt-section kt-section--welcome">
     <div class="kt-container">
-      <div class="kt-label">Welcome to Gapyeong</div>
+      <div class="kt-label">Welcome</div>
       <h2 class="kt-section-title">이 곳에 처음 오신 모든 분을<br />진심으로 환영합니다.</h2>
       <p class="kt-section-copy">가평교회는 작은 기도모임에서 출발했습니다. 지금도 그 처음 마음 그대로, 누구나 환대받고 누구든 회복되는 공동체를 꿈꿉니다.</p>
       <div class="kt-quick-grid">

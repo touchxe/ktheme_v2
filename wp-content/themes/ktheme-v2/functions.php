@@ -503,7 +503,7 @@ function ktheme_v2_render_footer_shortcode(): string {
 		<div class="kt-container kt-footer__grid">
 			<div class="kt-footer__brand">
 				<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="kt-brand kt-brand--mark-only" aria-label="<?php echo esc_attr__( '가?교????', 'ktheme-v2' ); ?>">
-					<img src="<?php echo esc_url( get_theme_file_uri( 'assets/images/logos/hanbit-book-light-white.svg' ) ); ?>" alt="<?php echo esc_attr__( '가?교??', 'ktheme-v2' ); ?>" />
+					<img src="<?php echo esc_url( get_theme_file_uri( 'assets/images/theme-logo.png' ) ); ?>" alt="<?php echo esc_attr__( 'Site logo', 'ktheme-v2' ); ?>" />
 				</a>
 				<p><?php echo esc_html__( '?음 ??? ?께 ?배?고, 지?? ?상???기??교회?니??', 'ktheme-v2' ); ?></p>
 			</div>
@@ -543,10 +543,10 @@ function ktheme_v2_render_footer_shortcode(): string {
 
 		<div class="kt-footer__bottom">
 			<div class="kt-container kt-footer__bottom-inner">
-				<p><?php echo esc_html__( '08512 ?울?별??금천?가?디지???168', 'ktheme-v2' ); ?></p>
-				<p><?php echo esc_html__( 'TEL. 02-704-3300 · FAX. 02-704-3301', 'ktheme-v2' ); ?></p>
+				<p><?php echo esc_html__( 'Add your address in the Site Editor.', 'ktheme-v2' ); ?></p>
+				<p><?php echo esc_html__( 'Add your contact details in the Site Editor.', 'ktheme-v2' ); ?></p>
 				<a class="kt-footer-dev-link" href="<?php echo esc_url( home_url( '/design-library/' ) ); ?>">DEV · Design Library</a>
-				<p><?php echo esc_html__( '© 2026 GAPYEONG CHURCH. ALL RIGHTS RESERVED.', 'ktheme-v2' ); ?></p>
+				<p><?php echo esc_html__( '© Your organization. All rights reserved.', 'ktheme-v2' ); ?></p>
 			</div>
 		</div>
 	</div>
@@ -1257,7 +1257,7 @@ function ktheme_v2_location_page_data(): array {
 	return array(
 		"name" => "가평교회",
 		"address" => $address,
-		"phone" => "02-704-3300",
+		"phone" => "",
 		"map_url" => "https://www.google.com/maps/search/?api=1&query=" . $address_query,
 		"map_embed_url" => "https://www.google.com/maps?q=" . $address_query . "&output=embed",
 		"direction_url" => "https://www.google.com/maps/dir/?api=1&destination=" . $address_query,
