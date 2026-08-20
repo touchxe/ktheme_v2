@@ -7,6 +7,17 @@ import { spawnSync } from 'node:child_process'
 const projectRoot = resolve(fileURLToPath(new URL('..', import.meta.url)))
 const dryRun = process.argv.includes('--dry-run')
 
+if (!dryRun) {
+  const audit = spawnSync(process.execPath, ['scripts/audit-release-readiness.mjs', '--strict'], {
+    cwd: projectRoot,
+    encoding: 'utf8',
+  })
+
+  if (audit.status !== 0) {
+    throw new Error(audit.stdout || audit.stderr || 'Release readiness audit failed.')
+  }
+}
+
 const versionFromHeader = (file) => {
   const source = readFileSync(file, 'utf8')
   const match = source.match(/^\s*\*?\s*Version:\s*([^\r\n]+)/m)
