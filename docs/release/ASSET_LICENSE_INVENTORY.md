@@ -9,9 +9,13 @@
 | `assets/images/generated/` | 현재 교회 데모 이미지 | 원본·라이선스 확인 필요 | Church preset 데모 전용으로 격리 전까지 배포 보류 |
 | `assets/images/logos/` | 현재 로고 시안 | 고객·브랜드 권리 확인 필요 | 기본 테마에서 제외 필요 |
 | `assets/images/style1/` | 초기 디자인 참고 이미지 | 원본·재배포 권한 확인 필요 | 배포 보류 |
-| Pretendard CDN | 기본 글꼴 | 별도 라이선스·배포 방식 확인 필요 | 출시 전 고정 버전 및 라이선스 기록 |
+| Pretendard CDN v1.3.9 | 기본 글꼴(외부 로드) | SIL Open Font License 1.1, 공식 저장소의 라이선스 원문 확인 | 외부 로드 유지; 버전과 라이선스 URL을 릴리스 노트에 기록 |
 | WordPress core icons/blocks | 편집기 UI | WordPress 배포 정책 따름 | 포함 가능 여부를 패키지 정책에서 확인 |
 
 ## 완료 조건
 
 각 행에 원저작자, 라이선스, 상업 사용 가능 여부, 재배포 가능 여부, 표기 필요 여부, 포함 위치를 채운 뒤 `출시 가능`으로 변경합니다.
+
+## 확인한 공개 구성요소
+
+- Pretendard v1.3.9: [공식 라이선스 원문](https://github.com/orioncactus/pretendard/blob/main/LICENSE) 기준 SIL Open Font License 1.1입니다. 현재 테마는 글꼴 파일을 ZIP에 넣지 않고 고정 버전 CDN을 외부에서 불러옵니다.
