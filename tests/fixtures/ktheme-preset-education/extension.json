@@ -1,0 +1,12 @@
+{
+  "$schema": "../../../docs/architecture/extension.schema.json",
+  "id": "ktheme-preset-education/education",
+  "type": "preset",
+  "version": "0.1.0",
+  "title": "Education Fixture",
+  "description": "Test fixture proving that an education preset uses the generic KTheme Engine model.",
+  "entry": "preset.php",
+  "dependencies": ["ktheme-engine"],
+  "supports": ["editor", "frontend", "responsive", "accessibility"],
+  "status": "stable"
+}
