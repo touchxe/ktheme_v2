@@ -13,6 +13,8 @@
     "test:watch": "vitest",
     "test:e2e": "playwright test",
     "validate:extensions": "node scripts/validate-extension-registry.mjs docs/architecture/extension-registry.json docs/architecture/extension.example.json wp-content/plugins/ktheme-preset-church/extension.json tests/fixtures/ktheme-preset-education/extension.json",
+    "package:release:dry-run": "node scripts/build-release-packages.mjs --dry-run",
+    "package:release": "node scripts/build-release-packages.mjs",
     "deploy:theme": "node scripts/deploy-theme.mjs",
     "activate:theme": "node scripts/activate-theme.mjs",
     "sync:pages": "node scripts/sync-wp-pages.mjs",
