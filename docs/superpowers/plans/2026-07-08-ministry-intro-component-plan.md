@@ -45,7 +45,7 @@
 ## Tasks
 
 ### T-1: CSS 표준화 — `.kt-ministry-intro__media` 612:390 비율 고정
-- **Files**: `wp-content/themes/ktheme-v2/style.css`
+- **Files**: `wp-content/themes/ktheme-modu/style.css`
 - **Change**:
   1. `.kt-ministry-intro__media`에 `aspect-ratio: 612 / 390;` 추가 (기존 `min-height: 390px`는
      구형 브라우저 폴백 겸용으로 유지 여부 검토 후 정리)
@@ -56,7 +56,7 @@
   뷰 스크린샷으로 비율 육안 확인
 
 ### T-2: 디자인 라이브러리 Intro 컴포넌트 항목 갱신
-- **Files**: `wp-content/themes/ktheme-v2/templates/page-design-library.html` (`#ministry` 블록,
+- **Files**: `wp-content/themes/ktheme-modu/templates/page-design-library.html` (`#ministry` 블록,
   "Intro" 행)
 - **Change**: 데모 마크업의 `<img>`에 `width="612" height="390"` 속성 추가, 행 서브 라벨을
   `message + media (612×390)` 형태로 갱신해 규격을 문서화

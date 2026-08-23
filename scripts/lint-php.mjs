@@ -5,7 +5,7 @@ import { spawnSync } from 'node:child_process'
 
 const projectRoot = resolve(fileURLToPath(new URL('..', import.meta.url)))
 const roots = [
-  'wp-content/themes/ktheme-v2',
+  'wp-content/themes/ktheme-modu',
   'wp-content/plugins/ktheme-engine',
   'wp-content/plugins/ktheme-preset-church',
 ]
@@ -25,7 +25,7 @@ const result = nativeCheck.status === 0
       'docker',
       [
         'run', '--rm', '-v', `${projectRoot}:/app`, '-w', '/app', 'php:8.1-cli', 'sh', '-c',
-        "find wp-content/themes/ktheme-v2 wp-content/plugins/ktheme-engine wp-content/plugins/ktheme-preset-church -name '*.php' -type f -print0 | xargs -0 -n1 php -l",
+        "find wp-content/themes/ktheme-modu wp-content/plugins/ktheme-engine wp-content/plugins/ktheme-preset-church -name '*.php' -type f -print0 | xargs -0 -n1 php -l",
       ],
       { cwd: projectRoot, encoding: 'utf8' },
     )

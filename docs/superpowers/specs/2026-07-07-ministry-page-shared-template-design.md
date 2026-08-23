@@ -55,13 +55,13 @@ As a 교회 방문자/성도, I want 각 공동체 페이지에서 실제 운영
 ## Technical Notes
 
 ### 관련 기존 코드 경로
-- `wp-content/themes/ktheme-v2/templates/page-newcomers.html`
-- `wp-content/themes/ktheme-v2/templates/page-small-groups.html`
-- `wp-content/themes/ktheme-v2/templates/page-next-generation.html`
-- `wp-content/themes/ktheme-v2/templates/page-youth-ministry.html`
-- `wp-content/themes/ktheme-v2/templates/page-senior-ministry.html`
-- `wp-content/themes/ktheme-v2/templates/page-community.html` (허브 페이지, 하위 요약 카드 문구 참조용)
-- `wp-content/themes/ktheme-v2/style.css` 6096~6460행 부근 `.kt-ministry-*` 클래스 정의
+- `wp-content/themes/ktheme-modu/templates/page-newcomers.html`
+- `wp-content/themes/ktheme-modu/templates/page-small-groups.html`
+- `wp-content/themes/ktheme-modu/templates/page-next-generation.html`
+- `wp-content/themes/ktheme-modu/templates/page-youth-ministry.html`
+- `wp-content/themes/ktheme-modu/templates/page-senior-ministry.html`
+- `wp-content/themes/ktheme-modu/templates/page-community.html` (허브 페이지, 하위 요약 카드 문구 참조용)
+- `wp-content/themes/ktheme-modu/style.css` 6096~6460행 부근 `.kt-ministry-*` 클래스 정의
 - 사진 캐러셀: `[ktheme_photo_carousel preset="..."]` 숏코드 (`assets/js/photo-carousel.js`, 등록부는
   functions.php 외부/플러그인 추정 — 신규 섹션과 무관하게 유지)
 

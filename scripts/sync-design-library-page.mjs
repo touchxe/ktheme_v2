@@ -9,7 +9,7 @@ const ENV_FILE = join(ROOT, '.env.local');
 const page = {
   title: '디자인 라이브러리',
   slug: 'design-library',
-  excerpt: 'KTheme V2 테마의 공용 히어로 스타일을 확인합니다.',
+  excerpt: 'KTheme Modu 테마의 공용 히어로 스타일을 확인합니다.',
   content: [
     '<!-- wp:paragraph -->',
     '<p>테마 제작자가 공용 히어로 기준을 확인하기 위한 내부 검토용 페이지입니다.</p>',

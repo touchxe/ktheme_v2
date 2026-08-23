@@ -3,7 +3,7 @@ import { extname, relative, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 
 const projectRoot = resolve(fileURLToPath(new URL('..', import.meta.url)))
-const themeRoot = resolve(projectRoot, 'wp-content/themes/ktheme-v2')
+const themeRoot = resolve(projectRoot, 'wp-content/themes/ktheme-modu')
 const manifestPath = resolve(themeRoot, 'ktheme-library.json')
 const allowedScopes = new Set(['page', 'section', 'query', 'integration', 'header', 'footer'])
 const allowedStatuses = new Set(['stable', 'preset', 'experimental', 'deprecated'])

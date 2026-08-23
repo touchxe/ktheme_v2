@@ -15,7 +15,7 @@ Spec: docs/superpowers/specs/2026-07-07-ministry-page-shared-template-design.md
 ## Tasks
 
 ### T-1: 공용 CSS 최소 확장 (`style.css`)
-- **Files**: `wp-content/themes/ktheme-v2/style.css`
+- **Files**: `wp-content/themes/ktheme-modu/style.css`
 - **Change**: 새 컴포넌트 클래스를 만들지 않고, 기존 라이브러리 컴포넌트를 사역 페이지 풀 너비에
   맞게 조정하는 override만 추가한다.
   1. `.kt-ministry-leadership .kt-people-grid { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); max-width: 720px; }`
@@ -29,10 +29,10 @@ Spec: docs/superpowers/specs/2026-07-07-ministry-page-shared-template-design.md
      640px 블록(8815행 부근)에 `grid-template-columns: 1fr;` 추가. `.kt-data-table`, `.kt-people-grid`는
      이미 전역 반응형 규칙이 있어 추가 작업 불필요
 - **Constraint**: `--kt-*` 기존 CSS 커스텀 프로퍼티만 사용(hex 리터럴 금지), 아이콘-원형 패턴 금지
-- **Verify**: `grep -n "kt-ministry-leadership\|kt-ministry-testimonials" wp-content/themes/ktheme-v2/style.css` 로 추가된 규칙 확인, 중괄호 짝 육안 검토
+- **Verify**: `grep -n "kt-ministry-leadership\|kt-ministry-testimonials" wp-content/themes/ktheme-modu/style.css` 로 추가된 규칙 확인, 중괄호 짝 육안 검토
 
 ### T-2: `page-newcomers.html` — Journey 제거 + 신규 섹션 추가
-- **Files**: `wp-content/themes/ktheme-v2/templates/page-newcomers.html`
+- **Files**: `wp-content/themes/ktheme-modu/templates/page-newcomers.html`
 - **Change**:
   1. 기존 `<section class="kt-ministry-journey" ...>...</section>` 블록 삭제
   2. Overview 섹션 뒤에 `<section class="kt-ministry-programs">`(`.kt-ministry-section-head` +
@@ -44,7 +44,7 @@ Spec: docs/superpowers/specs/2026-07-07-ministry-page-shared-template-design.md
 - **Verify**: `grep -c "kt-ministry-journey" page-newcomers.html` 결과 0, `kt-ministry-programs\|kt-ministry-leadership\|kt-ministry-testimonials` 존재 확인, `<!-- wp:html -->`/`<!-- /wp:html -->` 짝 개수 일치
 
 ### T-3: `page-small-groups.html` — 표준화 + Journey 제거 + 신규 섹션
-- **Files**: `wp-content/themes/ktheme-v2/templates/page-small-groups.html`
+- **Files**: `wp-content/themes/ktheme-modu/templates/page-small-groups.html`
 - **Change**:
   1. 기존 `kt-ministry-journey` 섹션과 `kt-action-cta--split` CTA 섹션 삭제
   2. Overview 뒤에 `kt-ministry-programs`(`.kt-data-table`, 구역 5~8행 — 모임명/대상/요일시간/장소/
@@ -55,20 +55,20 @@ Spec: docs/superpowers/specs/2026-07-07-ministry-page-shared-template-design.md
 - **Verify**: `grep -c "kt-ministry-links\|kt-ministry-faq\|kt-ministry-journey" page-small-groups.html` — links/faq는 1 이상, journey는 0
 
 ### T-4: `page-next-generation.html` — Journey 제거 + 신규 섹션 추가
-- **Files**: `wp-content/themes/ktheme-v2/templates/page-next-generation.html`
+- **Files**: `wp-content/themes/ktheme-modu/templates/page-next-generation.html`
 - **Change**: T-2와 동일 패턴. `kt-ministry-programs` 표는 부서별(영유아/유초등/중고등) 3~4행 +
   담당 교사명, `kt-ministry-leadership`은 다음세대 총괄 교역자 1명, `kt-ministry-testimonials`는
   학부모/교사 후기 3개
 - **Verify**: T-2와 동일 + Overview(부서 요약)와 Programs(표, 상세)가 내용 중복 없이 역할 분담되는지 확인
 
 ### T-5: `page-youth-ministry.html` — Journey 제거 + 신규 섹션 추가
-- **Files**: `wp-content/themes/ktheme-v2/templates/page-youth-ministry.html`
+- **Files**: `wp-content/themes/ktheme-modu/templates/page-youth-ministry.html`
 - **Change**: T-2와 동일 패턴. Programs 표는 팀/부서별 2~3행, Leadership은 청년부 담당 교역자 1명,
   Testimonials는 청년 후기 3개
 - **Verify**: T-2와 동일
 
 ### T-6: `page-senior-ministry.html` — Journey 제거 + 신규 섹션 추가
-- **Files**: `wp-content/themes/ktheme-v2/templates/page-senior-ministry.html`
+- **Files**: `wp-content/themes/ktheme-modu/templates/page-senior-ministry.html`
 - **Change**: T-2와 동일 패턴. Programs 표는 모임/경로회 단위 2~3행, Leadership은 장년/시니어 담당
   교역자 1명, Testimonials는 장년/시니어 성도 후기 3개
 - **Verify**: T-2와 동일

@@ -35,15 +35,15 @@ describe('commercial theme release blockers', () => {
   it('does not attach page creation or mutation to admin requests', () => {
     const source = readThemeFile('functions.php')
 
-    expect(source).not.toContain("add_action( 'admin_init', 'ktheme_v2_ensure_required_pages' )")
+    expect(source).not.toContain("add_action( 'admin_init', 'ktheme_modu_ensure_required_pages' )")
   })
 
   it('resolves legacy demo asset paths against the active theme location', () => {
     const source = readThemeFile('functions.php')
 
-    expect(source).toContain('function ktheme_v2_resolve_legacy_asset_urls')
+    expect(source).toContain('function ktheme_modu_resolve_legacy_asset_urls')
     expect(source).toContain("trailingslashit( get_theme_file_uri() )")
-    expect(source).toContain("add_filter( 'render_block', 'ktheme_v2_resolve_legacy_asset_urls', 15, 2 )")
+    expect(source).toContain("add_filter( 'render_block', 'ktheme_modu_resolve_legacy_asset_urls', 15, 2 )")
 		expect(source).toContain('ktheme-demo-community-01.png')
 		expect(source).toContain('ktheme-demo-community-04.png')
   })

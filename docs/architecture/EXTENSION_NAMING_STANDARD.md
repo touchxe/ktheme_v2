@@ -48,7 +48,7 @@
 | 영역 | 표준 | 예시 |
 |---|---|---|
 | 제품 어근 | `ktheme` | `ktheme` |
-| 테마 slug | `ktheme-v2` | 현재 배포명 유지 |
+| 테마 slug | `ktheme-modu` | 현재 배포명 유지 |
 | 엔진 플러그인 slug | `ktheme-engine` | `wp-content/plugins/ktheme-engine` |
 | text domain | artifact slug와 동일 | `ktheme-engine` |
 | PHP 함수 prefix | `ktheme_` | `ktheme_register_assets()` |
@@ -205,7 +205,7 @@ ktheme-engine/{capability}
 
 ## 8. 패턴 네이밍
 
-기존 `ktheme-v2/`는 버전이 포함된 임시 namespace다. 기존 고객 사이트가 없으므로 제품 공개 전에 `ktheme/`로 일괄 전환한다.
+기존 `ktheme-modu/`는 버전이 포함된 임시 namespace다. 기존 고객 사이트가 없으므로 제품 공개 전에 `ktheme/`로 일괄 전환한다.
 
 ```text
 ktheme/{scope}-{purpose}

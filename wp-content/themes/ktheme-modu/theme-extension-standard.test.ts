@@ -44,8 +44,8 @@ describe('commercial theme extension standard', () => {
       expect(source).toContain(`'${category}'`)
     }
 
-    expect(source).not.toContain('ktheme-v2-style1')
-    expect(source).not.toContain('ktheme-v2-pages')
+    expect(source).not.toContain('ktheme-modu-style1')
+    expect(source).not.toContain('ktheme-modu-pages')
   })
 
   it('ships reusable native block patterns with complete metadata', () => {
@@ -59,7 +59,7 @@ describe('commercial theme extension standard', () => {
       expect(source).not.toContain('<!-- wp:html -->')
       expect(source).not.toContain('<!-- wp:shortcode -->')
       expect(source).not.toContain('href="#"')
-      expect(source).not.toContain('/wp-content/themes/ktheme-v2')
+      expect(source).not.toContain('/wp-content/themes/ktheme-modu')
       expect(source).not.toContain('<script')
       expect(source).not.toContain('<style')
     }
@@ -126,7 +126,7 @@ describe('commercial theme extension standard', () => {
       expect(source).not.toContain('<!-- wp:html -->')
       expect(source).not.toContain('<!-- wp:shortcode -->')
       expect(source).not.toContain('href="#"')
-      expect(source).not.toContain('/wp-content/themes/ktheme-v2')
+      expect(source).not.toContain('/wp-content/themes/ktheme-modu')
       expect(source).not.toContain('<script')
       expect(source).not.toContain('<style')
     }

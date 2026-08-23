@@ -7,7 +7,7 @@ import { basename, join, resolve } from 'node:path';
 const OUT_DIR = resolve(process.argv[2] || 'C:/tmp/style1-static');
 const REF = process.argv[3] || 'origin/main';
 const SOURCE_DIR = 'source/template_style1';
-const THEME_URL = '/wp-content/themes/ktheme-v2';
+const THEME_URL = '/wp-content/themes/ktheme-modu';
 const IMAGE_URL = `${THEME_URL}/assets/images/style1`;
 const GENERATED_IMAGE_URL = `${THEME_URL}/assets/images/generated`;
 

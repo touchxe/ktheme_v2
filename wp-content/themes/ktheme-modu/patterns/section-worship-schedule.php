@@ -11,13 +11,13 @@
 	<!-- wp:group {"className":"kt-section__header","layout":{"type":"constrained"}} -->
 	<div class="wp-block-group kt-section__header">
 		<!-- wp:paragraph {"className":"kt-card-label"} -->
-		<p class="kt-card-label"><?php echo esc_html__( 'Worship Schedule', 'ktheme-v2' ); ?></p>
+		<p class="kt-card-label"><?php echo esc_html__( 'Worship Schedule', 'ktheme-modu' ); ?></p>
 		<!-- /wp:paragraph -->
 		<!-- wp:heading {"level":2} -->
-		<h2 class="wp-block-heading"><?php echo esc_html__( '예배 시간 안내', 'ktheme-v2' ); ?></h2>
+		<h2 class="wp-block-heading"><?php echo esc_html__( '예배 시간 안내', 'ktheme-modu' ); ?></h2>
 		<!-- /wp:heading -->
 		<!-- wp:paragraph -->
-		<p><?php echo esc_html__( '예배 시간과 장소는 사이트 편집기에서 교회 운영 일정에 맞게 수정해 주세요.', 'ktheme-v2' ); ?></p>
+		<p><?php echo esc_html__( '예배 시간과 장소는 사이트 편집기에서 교회 운영 일정에 맞게 수정해 주세요.', 'ktheme-modu' ); ?></p>
 		<!-- /wp:paragraph -->
 	</div>
 	<!-- /wp:group -->
@@ -27,10 +27,10 @@
 		<!-- wp:column -->
 		<div class="wp-block-column">
 			<!-- wp:heading {"level":3} -->
-			<h3 class="wp-block-heading"><?php echo esc_html__( '주일예배', 'ktheme-v2' ); ?></h3>
+			<h3 class="wp-block-heading"><?php echo esc_html__( '주일예배', 'ktheme-modu' ); ?></h3>
 			<!-- /wp:heading -->
 			<!-- wp:list -->
-			<ul class="wp-block-list"><li><?php echo esc_html__( '주일 오전 11:00', 'ktheme-v2' ); ?></li><li><?php echo esc_html__( '본당', 'ktheme-v2' ); ?></li></ul>
+			<ul class="wp-block-list"><li><?php echo esc_html__( '주일 오전 11:00', 'ktheme-modu' ); ?></li><li><?php echo esc_html__( '본당', 'ktheme-modu' ); ?></li></ul>
 			<!-- /wp:list -->
 		</div>
 		<!-- /wp:column -->
@@ -38,10 +38,10 @@
 		<!-- wp:column -->
 		<div class="wp-block-column">
 			<!-- wp:heading {"level":3} -->
-			<h3 class="wp-block-heading"><?php echo esc_html__( '수요예배', 'ktheme-v2' ); ?></h3>
+			<h3 class="wp-block-heading"><?php echo esc_html__( '수요예배', 'ktheme-modu' ); ?></h3>
 			<!-- /wp:heading -->
 			<!-- wp:list -->
-			<ul class="wp-block-list"><li><?php echo esc_html__( '수요일 오후 7:30', 'ktheme-v2' ); ?></li><li><?php echo esc_html__( '본당', 'ktheme-v2' ); ?></li></ul>
+			<ul class="wp-block-list"><li><?php echo esc_html__( '수요일 오후 7:30', 'ktheme-modu' ); ?></li><li><?php echo esc_html__( '본당', 'ktheme-modu' ); ?></li></ul>
 			<!-- /wp:list -->
 		</div>
 		<!-- /wp:column -->
@@ -49,10 +49,10 @@
 		<!-- wp:column -->
 		<div class="wp-block-column">
 			<!-- wp:heading {"level":3} -->
-			<h3 class="wp-block-heading"><?php echo esc_html__( '새벽기도', 'ktheme-v2' ); ?></h3>
+			<h3 class="wp-block-heading"><?php echo esc_html__( '새벽기도', 'ktheme-modu' ); ?></h3>
 			<!-- /wp:heading -->
 			<!-- wp:list -->
-			<ul class="wp-block-list"><li><?php echo esc_html__( '월요일부터 토요일 오전 5:30', 'ktheme-v2' ); ?></li><li><?php echo esc_html__( '기도실', 'ktheme-v2' ); ?></li></ul>
+			<ul class="wp-block-list"><li><?php echo esc_html__( '월요일부터 토요일 오전 5:30', 'ktheme-modu' ); ?></li><li><?php echo esc_html__( '기도실', 'ktheme-modu' ); ?></li></ul>
 			<!-- /wp:list -->
 		</div>
 		<!-- /wp:column -->

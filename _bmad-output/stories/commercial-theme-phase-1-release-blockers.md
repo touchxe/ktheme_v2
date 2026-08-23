@@ -25,7 +25,7 @@
 1. `functions.php`가 유효한 UTF-8이다.
 2. `admin_init`에서 페이지 생성 함수를 실행하지 않는다.
 3. 대상 네 개 템플릿은 `preventDefault()`와 가짜 성공 화면을 포함하지 않는다.
-4. 대상 네 개 템플릿은 `ktheme-v2/section-form-shell` 패턴을 사용한다.
+4. 대상 네 개 템플릿은 `ktheme-modu/section-form-shell` 패턴을 사용한다.
 5. 기본 메뉴 fallback은 특정 메뉴 ID에 의존하지 않는다.
 6. 새 회귀 테스트, 기존 Vitest 및 typecheck가 통과한다.
 
@@ -34,7 +34,7 @@
 ```bash
 pnpm test
 pnpm typecheck
-iconv -f UTF-8 -t UTF-8 wp-content/themes/ktheme-v2/functions.php >/dev/null
+iconv -f UTF-8 -t UTF-8 wp-content/themes/ktheme-modu/functions.php >/dev/null
 ```
 
 ## Follow-up

@@ -1,13 +1,13 @@
-# K-Theme V2 확장 표준 및 상업화 사전 검토
+# KTheme Modu 확장 표준 및 상업화 사전 검토
 
 - 상태: 필수 적용
 - 작성일: 2026-08-19
-- 적용 대상: `wp-content/themes/ktheme-v2`, 향후 K-Theme 디자인·템플릿·컴포넌트
+- 적용 대상: `wp-content/themes/ktheme-modu`, 향후 K-Theme 디자인·템플릿·컴포넌트
 - 목표: 새 디자인을 추가해도 기존 템플릿을 복제하거나 테마 기능을 비대하게 만들지 않는 블록 테마 제품 구조
 
 ## 1. 결론
 
-K-Theme V2는 앞으로 다음 계층을 단일 확장 모델로 사용한다.
+KTheme Modu는 앞으로 다음 계층을 단일 확장 모델로 사용한다.
 
 ```text
 theme.json 토큰
@@ -20,7 +20,7 @@ theme.json 토큰
 콘텐츠 생성, 데이터 저장, 폼 처리, 사용자 기능은 테마가 아니라 동반 플러그인이 담당한다.
 
 ```text
-K-Theme V2 Theme
+KTheme Modu Theme
   표현, 편집 경험, 토큰, 스타일 변형, 패턴, 템플릿
 
 KTheme Engine Plugin
@@ -61,14 +61,14 @@ KTheme Engine Plugin
 #### P0. 고객 중립성이 부족함
 
 - 일부 템플릿과 PHP 데이터에 특정 교회명, 인물, 주소, 일정, 사례 데이터가 남아 있다.
-- 다수 파일이 `/wp-content/themes/ktheme-v2/`를 직접 참조한다.
+- 다수 파일이 `/wp-content/themes/ktheme-modu/`를 직접 참조한다.
 - `href="#"`와 시뮬레이션용 링크가 실제 제품 화면에 남아 있다.
 - 판매 패키지는 고객 데이터, 허위 동작, 특정 설치 경로에 의존하지 않아야 한다.
 
 #### P1. 확장 계층이 일관되지 않음
 
 - `theme.json`은 버전 3을 사용하지만 간격, 반경, 그림자, 상태 색상 등 제품 토큰이 충분히 정의되지 않았다.
-- 패턴 카테고리가 `ktheme-v2-style1` 하나뿐이라 페이지, 섹션, 통합 셸의 역할이 구분되지 않는다.
+- 패턴 카테고리가 `ktheme-modu-style1` 하나뿐이라 페이지, 섹션, 통합 셸의 역할이 구분되지 않는다.
 - 일부 패턴은 코어 블록 대신 하나의 큰 `core/html` 블록으로 구성되어 사이트 편집기에서 부분 편집이 어렵다.
 - 페이지마다 HTML과 클래스가 복제되어 새 디자인 추가 시 회귀 범위가 커진다.
 
@@ -90,7 +90,7 @@ KTheme Engine Plugin
 ```text
 wp-content/
 ├─ themes/
-│  └─ ktheme-v2/
+│  └─ ktheme-modu/
 │     ├─ theme.json
 │     ├─ style.css
 │     ├─ styles/
@@ -294,7 +294,7 @@ Description
 - `ktheme-engine` 플러그인 골격과 extension registry를 만든다.
 - 교회 전용 CPT와 taxonomy를 제거하고 범용 콘텐츠 모델로 구현한다.
 - 기존 고객 데이터가 없으므로 migration과 shortcode 호환 모듈은 만들지 않는다.
-- `ktheme-v2/` pattern namespace와 `style1` 이름을 공개 전 영구 이름으로 전환한다.
+- `ktheme-modu/` pattern namespace와 `style1` 이름을 공개 전 영구 이름으로 전환한다.
 - 완료 조건: 테마에 CPT, taxonomy, shortcode가 없고 모든 공개 이름이 registry와 일치한다.
 
 ### 4단계. 기존 디자인 기준의 구조화

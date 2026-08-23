@@ -9,7 +9,7 @@ import { fileURLToPath } from 'node:url';
 
 const ROOT = resolve(fileURLToPath(new URL('..', import.meta.url)));
 const ENV_FILE = join(ROOT, '.env.local');
-const REMOTE_SCRIPT = 'ktheme-v2-repair-page-ia-once.php';
+const REMOTE_SCRIPT = 'ktheme-modu-repair-page-ia-once.php';
 
 const parentMap = {
   vision: 'about',

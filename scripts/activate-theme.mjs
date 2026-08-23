@@ -8,7 +8,7 @@ import { randomBytes } from 'node:crypto';
 
 const ROOT = resolve(new URL('..', import.meta.url).pathname);
 const ENV_FILE = join(ROOT, '.env.local');
-const REMOTE_ACTIVATOR = 'ktheme-v2-activate-once.php';
+const REMOTE_ACTIVATOR = 'ktheme-modu-activate-once.php';
 
 function parseEnv(content) {
   const env = {};
@@ -79,8 +79,8 @@ const baseUrl = requireEnv(env, 'WP_BASE_URL');
 const apiUrl = requireEnv(env, 'WP_API_URL');
 const wpUser = requireEnv(env, 'WP_USERNAME');
 const wpPassword = requireEnv(env, 'WP_APP_PASSWORD');
-const themeSlug = env.THEME_SLUG || 'ktheme-v2';
-const tempPlugin = join(tmpdir(), 'ktheme-v2-activate-once.php');
+const themeSlug = env.THEME_SLUG || 'ktheme-modu';
+const tempPlugin = join(tmpdir(), 'ktheme-modu-activate-once.php');
 const token = randomBytes(16).toString('hex');
 
 const php = `<?php

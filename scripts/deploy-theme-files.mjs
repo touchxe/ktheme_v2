@@ -7,7 +7,7 @@ import { fileURLToPath } from 'node:url';
 
 const ROOT = resolve(fileURLToPath(new URL('..', import.meta.url)));
 const ENV_FILE = join(ROOT, '.env.local');
-const THEME_ROOT = join(ROOT, 'wp-content/themes/ktheme-v2');
+const THEME_ROOT = join(ROOT, 'wp-content/themes/ktheme-modu');
 
 function parseEnv(content) {
   const env = {};

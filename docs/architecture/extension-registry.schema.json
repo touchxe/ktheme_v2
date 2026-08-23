@@ -21,10 +21,11 @@
     "product": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["root", "themeSlug", "enginePluginSlug"],
+      "required": ["root", "themeSlug", "textDomain", "enginePluginSlug"],
       "properties": {
         "root": { "const": "ktheme" },
         "themeSlug": { "pattern": "^[a-z][a-z0-9-]+$" },
+        "textDomain": { "const": "ktheme-modu" },
         "enginePluginSlug": { "const": "ktheme-engine" }
       }
     },

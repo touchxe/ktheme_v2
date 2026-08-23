@@ -2,7 +2,7 @@ import { readFileSync } from 'node:fs'
 import { describe, expect, it } from 'vitest'
 
 const engineRoot = new URL('../../', import.meta.url)
-const themeRoot = new URL('../../../../themes/ktheme-v2/', import.meta.url)
+const themeRoot = new URL('../../../../themes/ktheme-modu/', import.meta.url)
 
 const readEngineFile = (relativePath: string) =>
   readFileSync(new URL(relativePath, engineRoot), 'utf8')

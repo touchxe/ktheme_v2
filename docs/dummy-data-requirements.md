@@ -5,9 +5,9 @@
 ## 기준
 
 - IA 기준: `docs/SITE_IA_SLUG_RULES.md`
-- 실제 메뉴 기준: `wp-content/themes/ktheme-v2/parts/header.html`, `parts/footer.html`
-- 필수 페이지 자동 생성 기준: `wp-content/themes/ktheme-v2/functions.php`
-- 홈 화면 기준: `wp-content/themes/ktheme-v2/patterns/style1-home.php`
+- 실제 메뉴 기준: `wp-content/themes/ktheme-modu/parts/header.html`, `parts/footer.html`
+- 필수 페이지 자동 생성 기준: `wp-content/themes/ktheme-modu/functions.php`
+- 홈 화면 기준: `wp-content/themes/ktheme-modu/patterns/style1-home.php`
 - 현재 등록된 누적 콘텐츠 타입: `ktheme_sermon`, `ktheme_event`, `ktheme_album`
 
 ## 핵심 결론
@@ -30,7 +30,7 @@
 
 실행 스크립트: `pnpm seed:dummy`
 
-이 스크립트는 `.env.local`의 `WP_API_URL`, `WP_USERNAME`, `WP_APP_PASSWORD`를 사용해 WordPress REST API에 더미 콘텐츠를 생성/업데이트한다. 기존 테마 이미지 `wp-content/themes/ktheme-v2/assets/images/generated/church-generated-01.jpg`부터 `church-generated-17.jpg`까지를 미디어 라이브러리에 업로드하고 featured image로 연결한다.
+이 스크립트는 `.env.local`의 `WP_API_URL`, `WP_USERNAME`, `WP_APP_PASSWORD`를 사용해 WordPress REST API에 더미 콘텐츠를 생성/업데이트한다. 기존 테마 이미지 `wp-content/themes/ktheme-modu/assets/images/generated/church-generated-01.jpg`부터 `church-generated-17.jpg`까지를 미디어 라이브러리에 업로드하고 featured image로 연결한다.
 
 | 우선순위 | 생성 단위 | 현재 구현 | 노출 위치 | 최소 수량 | 핵심 필드 |
 |---|---|---|---|---:|---|

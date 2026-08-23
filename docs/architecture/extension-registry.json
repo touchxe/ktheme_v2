@@ -3,7 +3,8 @@
   "version": 1,
   "product": {
     "root": "ktheme",
-    "themeSlug": "ktheme-v2",
+    "themeSlug": "ktheme-modu",
+    "textDomain": "ktheme-modu",
     "enginePluginSlug": "ktheme-engine"
   },
   "namespaces": {
@@ -68,7 +69,7 @@
   "designPolicy": {
     "preserveCurrentDesign": true,
     "sourceOfTruth": "docs/DESIGN.md",
-    "tokenSource": "wp-content/themes/ktheme-v2/theme.json"
+    "tokenSource": "wp-content/themes/ktheme-modu/theme.json"
   },
   "compatibilityPolicy": {
     "existingCustomerSites": false,

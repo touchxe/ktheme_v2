@@ -39,7 +39,7 @@ describe('Style 3 WordPress page templates', () => {
     const script = readFileSync(headerScript, 'utf8')
 
     expect(functions).toContain('data-kt-header')
-    expect(functions).toContain("ktheme-v2-site-header")
+    expect(functions).toContain("ktheme-modu-site-header")
     expect(script).toContain('[data-kt-header]')
     expect(script).toContain('is-mega-open')
   })

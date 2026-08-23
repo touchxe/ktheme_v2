@@ -14,7 +14,7 @@
 ## 서버 환경 및 배포 설정
 
 - **Live Server**: `https://juswer.mycafe24.com`
-- **Live Theme Path**: `/wp-content/themes/ktheme-v2`
+- **Live Theme Path**: `/wp-content/themes/ktheme-modu`
 - **배포 원칙**: 사용자가 "라이브 반영" 또는 "서버 반영"을 요청하면 `juswer.mycafe24.com`에 반영합니다.
 
 ## 빌드 / 테스트 / 실행 명령어

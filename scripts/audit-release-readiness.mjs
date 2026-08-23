@@ -8,17 +8,17 @@ const strict = process.argv.includes('--strict')
 const textExtensions = new Set(['.css', '.html', '.js', '.json', '.md', '.mjs', '.php', '.svg', '.ts'])
 const customerMarkers = [/gapyeong/i, /hanbit/i, /juswer/i, /mycafe24/i, /08512/, /02-704-3300/]
 const roots = [
-  resolve(projectRoot, 'wp-content/themes/ktheme-v2'),
+  resolve(projectRoot, 'wp-content/themes/ktheme-modu'),
   resolve(projectRoot, 'wp-content/plugins/ktheme-engine'),
 ]
-const themeFunctions = readFileSync(resolve(projectRoot, 'wp-content/themes/ktheme-v2/functions.php'), 'utf8')
-const hasLegacyAssetResolver = themeFunctions.includes('function ktheme_v2_resolve_legacy_asset_urls')
+const themeFunctions = readFileSync(resolve(projectRoot, 'wp-content/themes/ktheme-modu/functions.php'), 'utf8')
+const hasLegacyAssetResolver = themeFunctions.includes('function ktheme_modu_resolve_legacy_asset_urls')
 const releaseExclusions = [
-  'wp-content/themes/ktheme-v2/assets/images/logos/',
-  'wp-content/themes/ktheme-v2/assets/images/style1/',
-  'wp-content/themes/ktheme-v2/templates/page-design-library.html',
-  'wp-content/themes/ktheme-v2/templates/page-lecture.html',
-  'wp-content/themes/ktheme-v2/templates/page-lecture-style2.html',
+  'wp-content/themes/ktheme-modu/assets/images/logos/',
+  'wp-content/themes/ktheme-modu/assets/images/style1/',
+  'wp-content/themes/ktheme-modu/templates/page-design-library.html',
+  'wp-content/themes/ktheme-modu/templates/page-lecture.html',
+  'wp-content/themes/ktheme-modu/templates/page-lecture-style2.html',
 ]
 
 const files = (directory) => {
@@ -49,7 +49,7 @@ for (const root of roots) {
       }
     }
 
-    if (source.includes('/wp-content/themes/ktheme-v2/') && !hasLegacyAssetResolver) {
+    if (source.includes('/wp-content/themes/ktheme-modu/') && !hasLegacyAssetResolver) {
       findings.push({ rule: 'hardcoded-theme-path', file: relativePath, detail: 'Use WordPress asset APIs or a preset asset resolver.' })
     }
   }

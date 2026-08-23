@@ -9,7 +9,7 @@ import { fileURLToPath } from 'node:url';
 
 const ROOT = resolve(fileURLToPath(new URL('..', import.meta.url)));
 const ENV_FILE = join(ROOT, '.env.local');
-const REMOTE_SCRIPT = 'ktheme-v2-fix-page-templates-once.php';
+const REMOTE_SCRIPT = 'ktheme-modu-fix-page-templates-once.php';
 
 function parseEnv(content) {
   const env = {};
@@ -76,7 +76,7 @@ const env = parseEnv(readFileSync(ENV_FILE, 'utf8'));
 const host = requireEnv(env, 'FTP_HOST');
 const user = requireEnv(env, 'FTP_USER');
 const password = requireEnv(env, 'FTP_PASSWORD');
-const themeSlug = env.THEME_SLUG || 'ktheme-v2';
+const themeSlug = env.THEME_SLUG || 'ktheme-modu';
 const baseUrl = (env.WP_BASE_URL || `https://${host}`).replace(/\/+$/, '');
 const token = randomBytes(16).toString('hex');
 const tempScript = join(tmpdir(), REMOTE_SCRIPT);

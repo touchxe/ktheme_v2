@@ -6,7 +6,7 @@ import { fileURLToPath } from 'node:url';
 
 const ROOT = resolve(fileURLToPath(new URL('..', import.meta.url)));
 const ENV_FILE = join(ROOT, '.env.local');
-const IMAGE_DIR = join(ROOT, 'wp-content/themes/ktheme-v2/assets/images/generated');
+const IMAGE_DIR = join(ROOT, 'wp-content/themes/ktheme-modu/assets/images/generated');
 
 const categories = [
   { name: '공지', slug: 'notice', description: '교회의 주요 공지와 신청 안내입니다.' },
@@ -399,7 +399,7 @@ async function uploadImage(apiUrl, authHeader, filePath) {
     body: JSON.stringify({
       title: mediaTitle,
       alt_text: '가평교회 더미 콘텐츠 이미지',
-      caption: 'KTheme V2 더미데이터용 이미지',
+      caption: 'KTheme Modu 더미데이터용 이미지',
     }),
   }, authHeader);
 }

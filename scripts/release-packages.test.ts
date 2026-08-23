@@ -12,7 +12,7 @@ describe('release package plan', () => {
     const plan = JSON.parse(output)
 
     expect(plan.packages.map((item: { slug: string }) => item.slug)).toEqual([
-      'ktheme-v2',
+      'ktheme-modu',
       'ktheme-engine',
       'ktheme-preset-church',
     ])

@@ -40,9 +40,9 @@ const versionFromHeader = (file) => {
 
 const packageDefinitions = [
   {
-    slug: 'ktheme-v2',
-    source: resolve(projectRoot, 'wp-content/themes/ktheme-v2'),
-    versionFile: resolve(projectRoot, 'wp-content/themes/ktheme-v2/style.css'),
+    slug: 'ktheme-modu',
+    source: resolve(projectRoot, 'wp-content/themes/ktheme-modu'),
+    versionFile: resolve(projectRoot, 'wp-content/themes/ktheme-modu/style.css'),
     exclusions: [
       'assets/images/logos',
       'assets/images/style1',

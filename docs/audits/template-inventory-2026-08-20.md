@@ -63,6 +63,6 @@ The `*.test.ts` files found under `templates/` are tests, not WordPress template
 ## Phase 0 decisions
 
 1. No existing customer site requires migration compatibility.
-2. The production folder and text domain remain `ktheme-v2` for this phase; only public pattern/category/style identifiers are stabilized.
+2. The production folder and text domain remain `ktheme-modu` for this phase; only public pattern/category/style identifiers are stabilized.
 3. Church-specific language remains in preset templates until the preset extraction phase. It must not appear in new engine, plugin, widget, or pattern naming.
 4. New additions must follow `docs/architecture/EXTENSION_NAMING_STANDARD.md` and the extension registry before implementation.

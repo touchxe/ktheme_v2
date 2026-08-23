@@ -54,7 +54,7 @@ KTheme Presets
 | 영역 | 확정 이름 |
 |---|---|
 | 제품 어근 | `ktheme` |
-| 테마 slug | 현재 `ktheme-v2`, 공개명 변경은 별도 결정 |
+| 테마 slug | 현재 `ktheme-modu`, 공개명 변경은 별도 결정 |
 | 엔진 플러그인 | `ktheme-engine` |
 | PHP 함수 prefix | `ktheme_` |
 | PHP namespace | `KTheme\` |
@@ -88,7 +88,7 @@ KTheme Presets
 | 테마 등록 CPT | 3개 | 0개 |
 | 테마 등록 taxonomy | 1개 | 0개 |
 | 테마 등록 shortcode | 7개 | 0개 |
-| 패턴 namespace | `ktheme-v2/` | `ktheme/` |
+| 패턴 namespace | `ktheme-modu/` | `ktheme/` |
 | 스타일 이름 | `style1` | `skin-foundation` |
 | 교회 전용 key | 다수 | 범용 key 또는 church preset 데이터 |
 | 실제 PHP 통합 테스트 | 없음 | WordPress PHPUnit 또는 wp-env 기반 |
@@ -254,15 +254,15 @@ viewport:
 변경:
 
 ```text
-ktheme-v2/page-*        -> ktheme/page-*
-ktheme-v2/section-*     -> ktheme/section-*
-ktheme-v2/query-*       -> ktheme/query-*
-ktheme-v2/integration-* -> ktheme/integration-*
+ktheme-modu/page-*        -> ktheme/page-*
+ktheme-modu/section-*     -> ktheme/section-*
+ktheme-modu/query-*       -> ktheme/query-*
+ktheme-modu/integration-* -> ktheme/integration-*
 ```
 
 작업:
 
-1. 실패 테스트에서 `ktheme-v2/` pattern slug를 금지한다.
+1. 실패 테스트에서 `ktheme-modu/` pattern slug를 금지한다.
 2. pattern PHP header를 일괄 수정한다.
 3. template의 `wp:pattern` 참조를 수정한다.
 4. category를 `ktheme-pages`, `ktheme-sections`, `ktheme-queries`, `ktheme-integrations`로 수정한다.
@@ -274,7 +274,7 @@ ktheme-v2/integration-* -> ktheme/integration-*
 
 ```text
 styles/style1.json -> styles/skin-foundation.json
-ktheme-v2-style1   -> 의미 기반 category 또는 제거
+ktheme-modu-style1   -> 의미 기반 category 또는 제거
 style1-* pattern   -> 역할 기반 pattern 이름
 ```
 
@@ -796,7 +796,7 @@ preset이 할 수 없는 일:
 - 계좌와 회원 번호
 - 고정 일정
 - 운영 서버 URL
-- `/wp-content/themes/ktheme-v2/` 하드코딩 경로
+- `/wp-content/themes/ktheme-modu/` 하드코딩 경로
 - `href="#"`
 - 작동하지 않는 button과 form
 
@@ -957,7 +957,7 @@ demo는 theme activation과 분리한다.
 
 ```text
 dist/
-├─ ktheme-v2-{version}.zip
+├─ ktheme-modu-{version}.zip
 ├─ ktheme-engine-{version}.zip
 ├─ ktheme-preset-church-{version}.zip
 ├─ checksums.txt
@@ -1116,7 +1116,7 @@ Phase:
 
 ### 작업 B. stable namespace 테스트
 
-- `ktheme-v2/` pattern namespace 금지 테스트
+- `ktheme-modu/` pattern namespace 금지 테스트
 - `style1` 공개 이름 금지 테스트
 - category와 pattern reference 무결성 테스트
 
