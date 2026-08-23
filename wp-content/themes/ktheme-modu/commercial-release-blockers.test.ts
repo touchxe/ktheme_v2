@@ -15,6 +15,7 @@ const headerPart = new URL('./parts/header.html', themeRoot)
 const footerPart = new URL('./parts/footer.html', themeRoot)
 const givingTemplate = new URL('./templates/page-giving.html', themeRoot)
 const pageHeroPart = new URL('./parts/page-hero.html', themeRoot)
+const themeStyles = new URL('./style.css', themeRoot)
 
 const readThemeFile = (relativePath: string) =>
   readFileSync(new URL(relativePath, themeRoot), 'utf8')
@@ -101,4 +102,13 @@ describe('commercial theme release blockers', () => {
     expect(pageHero).not.toContain('wp:shortcode')
     expect(pageHero).not.toContain('ktheme_page_hero')
   })
+
+	it('provides accessible touch targets for the native mobile navigation controls', () => {
+		const styles = readFileSync(themeStyles, 'utf8')
+
+		expect(styles).toContain('.kt-site-header .wp-block-navigation__responsive-container-open')
+		expect(styles).toContain('.kt-site-header .wp-block-navigation__responsive-container-close')
+		expect(styles).toContain('min-width: 44px')
+		expect(styles).toContain('min-height: 44px')
+	})
 })

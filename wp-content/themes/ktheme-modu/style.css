@@ -200,6 +200,14 @@ header.wp-block-template-part:has(> .kt-topbar + .kt-header) .kt-header {
   .admin-bar header.wp-block-template-part:has(> .kt-topbar + .kt-header) {
     top: 46px;
   }
+
+  .kt-site-header .wp-block-navigation__responsive-container-open,
+  .kt-site-header .wp-block-navigation__responsive-container-close {
+    min-width: 44px;
+    min-height: 44px;
+    align-items: center;
+    justify-content: center;
+  }
 }
 
 .kt-utility-nav,
