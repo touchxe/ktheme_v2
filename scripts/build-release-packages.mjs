@@ -73,6 +73,18 @@ const packageDefinitions = [
   }
 })
 
+const packageVersions = Object.fromEntries(packageDefinitions.map(({ slug, version }) => [slug, version]))
+const dependenciesFor = (slug) => {
+  if (slug === 'ktheme-engine') return { 'ktheme-modu': packageVersions['ktheme-modu'] }
+  if (slug === 'ktheme-preset-church') {
+    return {
+      'ktheme-modu': packageVersions['ktheme-modu'],
+      'ktheme-engine': packageVersions['ktheme-engine'],
+    }
+  }
+  return {}
+}
+
 const plan = {
   generatedAt: dryRun ? 'dry-run' : new Date().toISOString(),
   packages: packageDefinitions.map(({ slug, source, version, archive }) => ({
@@ -80,6 +92,7 @@ const plan = {
     source: source.replace(`${projectRoot}/`, ''),
     version,
     archive,
+    dependencies: dependenciesFor(slug),
   })),
   exclusions: [
     '.git', 'node_modules', '.vite', '*.test.*', '*.map', 'tests', 'docs',

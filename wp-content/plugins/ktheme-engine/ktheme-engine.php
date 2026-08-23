@@ -3,6 +3,7 @@
  * Plugin Name: KTheme Engine
  * Description: Generic content and extension runtime for KTheme products.
  * Version: 0.1.0
+ * Update URI: https://k-thememarket.co.kr/
  * Requires at least: 6.5
  * Requires PHP: 8.1
  * Author: KTheme

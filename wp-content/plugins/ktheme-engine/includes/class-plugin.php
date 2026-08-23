@@ -8,6 +8,7 @@ require_once KTHEME_ENGINE_PATH . 'includes/class-extension-registry.php';
 require_once KTHEME_ENGINE_PATH . 'includes/class-module-loader.php';
 require_once KTHEME_ENGINE_PATH . 'includes/class-asset-manager.php';
 require_once KTHEME_ENGINE_PATH . 'includes/class-rest-controller.php';
+require_once KTHEME_ENGINE_PATH . 'includes/class-market-updater.php';
 require_once KTHEME_ENGINE_PATH . 'modules/content-types/class-content-types.php';
 require_once KTHEME_ENGINE_PATH . 'modules/content-types/class-content-meta.php';
 require_once KTHEME_ENGINE_PATH . 'modules/taxonomies/class-taxonomies.php';
@@ -25,6 +26,7 @@ final class Plugin {
 		}
 
 		self::$instance = new self();
+		Market_Updater::boot();
 		add_action( 'plugins_loaded', array( self::$instance, 'load_textdomain' ) );
 		add_action( 'init', array( self::$instance, 'register_extensions' ) );
 	}

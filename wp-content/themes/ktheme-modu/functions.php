@@ -1,5 +1,8 @@
 <?php
 
+require_once get_template_directory() . '/includes/class-ktheme-modu-updater.php';
+KTheme_Modu_Updater::boot();
+
 if ( ! function_exists( 'ktheme_modu_setup' ) ) {
 	function ktheme_modu_setup(): void {
 		add_theme_support( 'wp-block-styles' );
