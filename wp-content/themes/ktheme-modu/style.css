@@ -6,7 +6,7 @@ Author: KTheme
 Description: Commercial WordPress block theme using the Foundation skin and optional industry presets.
 Version: 1.0.0
 Requires at least: 6.5
-Tested up to: 6.5
+Tested up to: 7.1
 Requires PHP: 8.1
 License: GNU General Public License v2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -6232,6 +6232,11 @@ body.kt-library-modal-open {
   padding: 48px 0 96px;
 }
 
+.kt-ministry-page > *,
+.kt-ministry-intro > * {
+  min-width: 0;
+}
+
 .kt-ministry-page + .kt-photo-carousel {
   padding-top: 0;
 }
@@ -9020,10 +9025,9 @@ body.kt-library-modal-open {
   }
 
   .kt-ministry-intro__media,
-  .kt-ministry-intro__media img,
-  .kt-page-media,
-  .kt-page-media img {
-    min-height: 320px;
+  .kt-page-media {
+    min-height: 0;
+    aspect-ratio: 1 / 1;
   }
   .kt-ministry-overview__grid,
   .kt-ministry-link-grid,
@@ -10400,6 +10404,10 @@ body:is(.page-id-67,.page-id-69) .kt-nav .wp-block-navigation__container > .wp-b
   grid-template-columns: minmax(0, 2fr) minmax(320px, 1fr);
   gap: 28px;
   align-items: start;
+}
+
+.kt-origin-grid--live > * {
+  min-width: 0;
 }
 
 .kt-origin-page .kt-worship-live {
@@ -11904,6 +11912,10 @@ body:is(.page-id-67,.page-id-69) .kt-nav .wp-block-navigation__container > .wp-b
     grid-template-columns: 1fr;
   }
 
+  .kt-origin-grid--live .kt-live-player {
+    min-height: 0;
+  }
+
   .kt-location-info-strip .kt-button {
     justify-self: start;
   }
@@ -12162,7 +12174,8 @@ body:is(.page-id-67,.page-id-69) .kt-nav .wp-block-navigation__container > .wp-b
   }
 
   .kt-live-player {
-    min-height: 360px;
+    min-height: 0;
+    aspect-ratio: 4 / 5;
   }
 
   .kt-live-player__bottom {

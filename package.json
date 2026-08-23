@@ -16,6 +16,7 @@
     "validate:theme-library": "node scripts/validate-theme-library.mjs",
 		"lint:php": "node scripts/lint-php.mjs",
     "audit:release": "node scripts/audit-release-readiness.mjs",
+    "verify:release-packages": "node scripts/verify-release-packages.mjs",
     "package:release:dry-run": "node scripts/build-release-packages.mjs --dry-run",
     "package:release": "node scripts/build-release-packages.mjs",
     "deploy:theme": "node scripts/deploy-theme.mjs",

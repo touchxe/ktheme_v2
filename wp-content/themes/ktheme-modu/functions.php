@@ -493,6 +493,64 @@ function ktheme_modu_resolve_legacy_asset_urls( string $block_content, array $bl
 }
 add_filter( 'render_block', 'ktheme_modu_resolve_legacy_asset_urls', 15, 2 );
 
+/**
+ * Keep root-relative links inside a subdirectory WordPress site.
+ *
+ * Theme patterns intentionally use portable paths such as `/media/`. On a
+ * subdirectory multisite those paths otherwise escape to the network root.
+ * WordPress and infrastructure endpoints remain network-root relative.
+ */
+function ktheme_modu_resolve_root_relative_internal_urls( string $block_content ): string {
+	$home_path = wp_parse_url( home_url( '/' ), PHP_URL_PATH );
+
+	if ( ! is_string( $home_path ) || '/' === $home_path ) {
+		return $block_content;
+	}
+
+	$home_path       = '/' . trim( $home_path, '/' ) . '/';
+	$system_prefixes = array(
+		'/wp-admin',
+		'/wp-content',
+		'/wp-includes',
+		'/wp-json',
+		'/wp-login.php',
+		'/wp-comments-post.php',
+		'/xmlrpc.php',
+		'/.well-known',
+	);
+	$processor       = new WP_HTML_Tag_Processor( $block_content );
+
+	while ( $processor->next_tag() ) {
+		$href = $processor->get_attribute( 'href' );
+
+		if (
+			! is_string( $href ) ||
+			'' === $href ||
+			'/' !== $href[0] ||
+			0 === strpos( $href, '//' ) ||
+			0 === strpos( $href, $home_path )
+		) {
+			continue;
+		}
+
+		foreach ( $system_prefixes as $prefix ) {
+			if (
+				$href === $prefix ||
+				0 === strpos( $href, $prefix . '/' ) ||
+				0 === strpos( $href, $prefix . '?' ) ||
+				0 === strpos( $href, $prefix . '#' )
+			) {
+				continue 2;
+			}
+		}
+
+		$processor->set_attribute( 'href', home_url( $href ) );
+	}
+
+	return $processor->get_updated_html();
+}
+add_filter( 'render_block', 'ktheme_modu_resolve_root_relative_internal_urls', 16 );
+
 function ktheme_modu_footer_menu_html( string $theme_location, string $fallback_title, array $fallback_items ): string {
 	$items = ktheme_modu_get_menu_tree( $theme_location, 0, $fallback_items );
 	if ( empty( $items ) ) {

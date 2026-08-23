@@ -31,6 +31,7 @@ describe('commercial theme release blockers', () => {
 		const style = readThemeFile('style.css')
 
 		expect(style).toContain('Requires PHP: 8.1')
+		expect(style).toContain('Tested up to: 7.1')
 	})
 
   it('does not attach page creation or mutation to admin requests', () => {
@@ -58,6 +59,20 @@ describe('commercial theme release blockers', () => {
 		expect(source).not.toMatch(
 			/return str_replace\(\s*['\"]\/wp-content\/themes\/ktheme-modu\//,
 		)
+	})
+
+	it('keeps rendered internal links inside a multisite subdirectory', () => {
+		const source = readThemeFile('functions.php')
+
+		expect(source).toContain('function ktheme_modu_resolve_root_relative_internal_urls')
+		expect(source).toContain('new WP_HTML_Tag_Processor( $block_content )')
+		expect(source).toContain("$processor->get_attribute( 'href' )")
+		expect(source).toContain("$processor->set_attribute( 'href', home_url( $href ) )")
+		expect(source).toContain("0 === strpos( $href, $home_path )")
+		expect(source).toContain("0 === strpos( $href, '//' )")
+		expect(source).toContain("'/wp-admin'")
+		expect(source).toContain("'/wp-content'")
+		expect(source).toContain("add_filter( 'render_block', 'ktheme_modu_resolve_root_relative_internal_urls', 16 )")
 	})
 
   it('does not present fake submission success states in form templates', () => {
@@ -110,6 +125,29 @@ describe('commercial theme release blockers', () => {
 		expect(styles).toContain('.kt-site-header .wp-block-navigation__responsive-container-close')
 		expect(styles).toContain('min-width: 44px')
 		expect(styles).toContain('min-height: 44px')
+	})
+
+	it('keeps the worship player inside narrow mobile viewports', () => {
+		const styles = readThemeFile('style.css')
+
+		expect(styles).toContain('.kt-origin-grid--live > *')
+		expect(styles).toContain('.kt-origin-grid--live .kt-live-player')
+		expect(styles).toContain('min-width: 0')
+		expect(styles).toContain('aspect-ratio: 4 / 5')
+		expect(styles).not.toMatch(
+			/@media \(max-width: 767px\)[\s\S]*?\.kt-live-player\s*\{[\s\S]*?min-height:\s*360px/,
+		)
+	})
+
+	it('contains ministry media and horizontally scrolling testimonials on mobile', () => {
+		const styles = readThemeFile('style.css')
+
+		expect(styles).toContain('.kt-ministry-page > *')
+		expect(styles).toContain('.kt-ministry-intro > *')
+		expect(styles).toContain('aspect-ratio: 1 / 1')
+		expect(styles).not.toMatch(
+			/@media \(max-width: 640px\)[\s\S]*?\.kt-ministry-intro__media[\s\S]*?min-height:\s*320px/,
+		)
 	})
 
 	it('invalidates cached theme CSS when a same-version hotfix changes the file', () => {
