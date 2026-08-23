@@ -2,7 +2,7 @@
 /**
  * Plugin Name: KTheme Engine
  * Description: Generic content and extension runtime for KTheme products.
- * Version: 0.1.0
+ * Version: 1.0.0
  * Update URI: https://k-thememarket.co.kr/
  * Requires at least: 6.5
  * Requires PHP: 8.1
@@ -13,7 +13,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'KTHEME_ENGINE_VERSION', '0.1.0' );
+define( 'KTHEME_ENGINE_VERSION', '1.0.0' );
 define( 'KTHEME_ENGINE_FILE', __FILE__ );
 define( 'KTHEME_ENGINE_PATH', plugin_dir_path( __FILE__ ) );
 define( 'KTHEME_ENGINE_URL', plugin_dir_url( __FILE__ ) );

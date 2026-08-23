@@ -31,4 +31,18 @@ describe('KTheme Modu permanent product naming', () => {
     expect(registry.product.themeSlug).toBe('ktheme-modu')
     expect(registry.product.textDomain).toBe('ktheme-modu')
   })
+
+  it('starts the commercial Theme, Engine, and Church Preset line at stable 1.0.0', () => {
+    const style = readFileSync(resolve(themeRoot, 'style.css'), 'utf8')
+    const engine = readFileSync(resolve(root, 'wp-content/plugins/ktheme-engine/ktheme-engine.php'), 'utf8')
+    const preset = JSON.parse(readFileSync(resolve(root, 'wp-content/plugins/ktheme-preset-church/extension.json'), 'utf8'))
+    const packageJson = JSON.parse(readFileSync(resolve(root, 'package.json'), 'utf8'))
+
+    expect(style).toMatch(/^Version:\s*1\.0\.0$/m)
+    expect(engine).toMatch(/^ \* Version:\s*1\.0\.0$/m)
+    expect(engine).toContain("KTHEME_ENGINE_VERSION', '1.0.0'")
+    expect(preset.version).toBe('1.0.0')
+    expect(packageJson.version).toBe('1.0.0')
+    expect(packageJson.description).toContain('KTheme Modu')
+  })
 })

@@ -2,7 +2,7 @@
   "$schema": "../../../docs/architecture/extension.schema.json",
   "id": "ktheme-preset-church/church",
   "type": "preset",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "title": "Church Preset",
   "description": "Optional church labels, suggested terms, navigation, and demo guidance.",
   "entry": "ktheme-preset-church.php",
