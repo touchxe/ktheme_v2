@@ -446,6 +446,18 @@ add_filter( 'render_block', 'ktheme_modu_render_dynamic_template_part_block', 10
  * Keep legacy demo markup portable while presets are being extracted.
  * New templates must use WordPress asset APIs or the preset asset contract.
  */
+function ktheme_modu_resolve_root_relative_theme_urls( string $block_content ): string {
+	$legacy_theme_base = '/wp-content/themes/ktheme-modu/';
+	$pattern           = '#(?<![A-Za-z0-9:/._-])' . preg_quote( $legacy_theme_base, '#' ) . '#';
+	$resolved          = preg_replace(
+		$pattern,
+		trailingslashit( get_theme_file_uri() ),
+		$block_content
+	);
+
+	return is_string( $resolved ) ? $resolved : $block_content;
+}
+
 function ktheme_modu_resolve_legacy_asset_urls( string $block_content, array $block ): string {
 	unset( $block );
 	$legacy_generated_base = '/wp-content/themes/ktheme-modu/assets/images/generated/';
@@ -477,11 +489,7 @@ function ktheme_modu_resolve_legacy_asset_urls( string $block_content, array $bl
 		);
 	}
 
-	return str_replace(
-		'/wp-content/themes/ktheme-modu/',
-		trailingslashit( get_theme_file_uri() ),
-		$block_content
-	);
+	return ktheme_modu_resolve_root_relative_theme_urls( $block_content );
 }
 add_filter( 'render_block', 'ktheme_modu_resolve_legacy_asset_urls', 15, 2 );
 

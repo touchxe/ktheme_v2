@@ -48,6 +48,17 @@ describe('commercial theme release blockers', () => {
 		expect(source).toContain('ktheme-demo-community-04.png')
   })
 
+	it('keeps root-relative theme asset resolution idempotent on multisite subdirectories', () => {
+		const source = readThemeFile('functions.php')
+
+		expect(source).toContain('function ktheme_modu_resolve_root_relative_theme_urls')
+		expect(source).toContain("preg_quote( $legacy_theme_base, '#' )")
+		expect(source).toContain("(?<![A-Za-z0-9:/._-])")
+		expect(source).not.toMatch(
+			/return str_replace\(\s*['\"]\/wp-content\/themes\/ktheme-modu\//,
+		)
+	})
+
   it('does not present fake submission success states in form templates', () => {
     for (const template of formTemplates) {
       const source = readThemeFile(`templates/${template}`)
