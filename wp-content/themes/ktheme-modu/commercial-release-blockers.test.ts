@@ -111,4 +111,12 @@ describe('commercial theme release blockers', () => {
 		expect(styles).toContain('min-width: 44px')
 		expect(styles).toContain('min-height: 44px')
 	})
+
+	it('invalidates cached theme CSS when a same-version hotfix changes the file', () => {
+		const source = readThemeFile('functions.php')
+
+		expect(source).toContain("get_stylesheet_directory() . '/style.css'")
+		expect(source).toContain("filemtime( $style_path )")
+		expect(source).toContain("$style_version")
+	})
 })

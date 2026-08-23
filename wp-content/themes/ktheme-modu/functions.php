@@ -2150,6 +2150,11 @@ function ktheme_modu_render_home_hero_slider_script(): void {
 add_action( 'wp_footer', 'ktheme_modu_render_home_hero_slider_script', 20 );
 
 function ktheme_modu_enqueue_assets(): void {
+	$style_path    = get_stylesheet_directory() . '/style.css';
+	$style_version = file_exists( $style_path )
+		? (string) filemtime( $style_path )
+		: wp_get_theme()->get( 'Version' );
+
 	wp_enqueue_style(
 		'ktheme-modu-pretendard',
 		'https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css',
@@ -2161,7 +2166,7 @@ function ktheme_modu_enqueue_assets(): void {
 		'ktheme-modu-style',
 		get_stylesheet_uri(),
 		array( 'ktheme-modu-pretendard' ),
-		wp_get_theme()->get( 'Version' )
+		$style_version
 	);
 
 	$header_script_path = get_theme_file_path( 'assets/js/site-header.js' );
