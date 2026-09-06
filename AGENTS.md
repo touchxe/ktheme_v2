@@ -6,15 +6,16 @@
 
 ## 프로젝트 개요
 
-- **이름**: {{PROJECT_NAME}}
-- **설명**: {{PROJECT_DESCRIPTION}}
+- **이름**: 모두 테마 (ModuTheme)
+- **설명**: 업종별 홈페이지를 공통 런타임과 확장 패키지로 제공하는 WordPress 테마 프로젝트
+- **이름 규칙**: `docs/PROJECT_NAMING.md`를 단일 기준으로 사용
 - **기술 스택**: Next.js 14+ (App Router) / NestJS / PostgreSQL / Tailwind CSS + shadcn/ui / Anthropic Claude API
 - **패키지 매니저**: pnpm (worktree 최적화를 위해 `enableGlobalVirtualStore: true` 필수)
 
 ## 서버 환경 및 배포 설정
 
 - **Live Server**: `https://juswer.mycafe24.com`
-- **Live Theme Path**: `/wp-content/themes/ktheme-v2`
+- **Live Theme Path**: `/wp-content/themes/modu-theme`
 - **배포 원칙**: 사용자가 "라이브 반영" 또는 "서버 반영"을 요청하면 `juswer.mycafe24.com`에 반영합니다.
 
 ## 빌드 / 테스트 / 실행 명령어
@@ -184,7 +185,7 @@ Antigravity: `.agent/skills/` 하위의 13개 스킬 (skainguyen1412 포트 기�
 ## 📁 프로젝트 구조
 
 ```text
-{{PROJECT_NAME}}/
+modu-theme/
 ├── AGENTS.md                    ← 이 파일 (공통 매니페스트)
 ├── docs/
 │   ├── DESIGN.md                ← 디자인 시스템 SSOT

@@ -1,0 +1,56 @@
+{
+  "catalogVersion": "1.0.0",
+  "status": "proposal",
+  "description": "교회/종교기관 manifest가 공통 카탈로그에 추가 요청하는 범용 기능",
+  "features": [
+    {
+      "id": "newcomer-registration",
+      "name": "새가족·새신자 등록",
+      "group": "conversion",
+      "component": "conversion-form",
+      "capabilities": ["방문/등록 구분", "연락처", "연령/가족 선택 입력", "관심 공동체", "개인정보 동의", "담당자 인계"]
+    },
+    {
+      "id": "gathering-schedule",
+      "name": "예배·미사·법회 일정",
+      "group": "operations",
+      "component": "schedule-selector",
+      "capabilities": ["집회 유형", "요일/시간", "장소", "대상/언어", "실시간 변경 안내"]
+    },
+    {
+      "id": "event-calendar-registration",
+      "name": "행사·교육 일정과 신청",
+      "group": "operations",
+      "component": "event-calendar",
+      "capabilities": ["월/목록 보기", "대상/부서 필터", "정원/마감", "외부 또는 내부 신청", "캘린더 추가"]
+    },
+    {
+      "id": "faith-media-library",
+      "name": "설교·강론·법문 미디어",
+      "group": "content",
+      "component": "media-library",
+      "capabilities": ["영상/음성", "본문/주제/연사", "시리즈/절기", "라이브 연결", "아카이브/상세"]
+    },
+    {
+      "id": "prayer-care-request",
+      "name": "기도·상담·돌봄 요청",
+      "group": "conversion",
+      "component": "sensitive-request-form",
+      "capabilities": ["요청 유형", "공개 범위", "익명 선택", "긴급상황 안내", "보유기간", "담당자 접근 제한"]
+    },
+    {
+      "id": "giving-support-guide",
+      "name": "헌금·보시·후원 안내",
+      "group": "support",
+      "component": "giving-guide",
+      "capabilities": ["후원 유형", "납부 방법", "용도 안내", "취소/문의", "영수증 안내", "외부 결제 연결"]
+    },
+    {
+      "id": "receipt-document-request",
+      "name": "기부금 영수증·행정 문서 신청",
+      "group": "operations",
+      "component": "conditional-form",
+      "capabilities": ["문서 유형", "본인 확인 연결", "수령 방식", "처리 상태", "민감정보 최소수집"]
+    }
+  ]
+}

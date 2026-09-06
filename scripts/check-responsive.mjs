@@ -28,14 +28,14 @@ for (const viewport of viewports) {
 
   const metrics = await page.evaluate(() => {
     const selectors = [
-      '.kt-header',
-      '.kt-hero',
-      '.kt-announcements__grid',
-      '.kt-quick-grid',
-      '.kt-newcomer',
-      '.kt-gallery',
-      '.kt-cta-grid',
-      '.kt-footer',
+      '.modu-header',
+      '.modu-hero',
+      '.modu-announcements__grid',
+      '.modu-quick-grid',
+      '.modu-newcomer',
+      '.modu-gallery',
+      '.modu-cta-grid',
+      '.modu-footer',
     ];
 
     const boxes = selectors.map((selector) => {

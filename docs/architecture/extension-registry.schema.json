@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://ktheme.example/schemas/extension-registry.schema.json",
-  "title": "KTheme Extension Registry",
+  "$id": "https://modutheme.example/schemas/extension-registry.schema.json",
+  "title": "ModuTheme Extension Registry",
   "type": "object",
   "additionalProperties": false,
   "required": [
@@ -23,9 +23,9 @@
       "additionalProperties": false,
       "required": ["root", "themeSlug", "enginePluginSlug"],
       "properties": {
-        "root": { "const": "ktheme" },
+        "root": { "const": "modutheme" },
         "themeSlug": { "pattern": "^[a-z][a-z0-9-]+$" },
-        "enginePluginSlug": { "const": "ktheme-engine" }
+        "enginePluginSlug": { "const": "modutheme-engine" }
       }
     },
     "namespaces": {
@@ -50,12 +50,12 @@
         "postTypes": {
           "type": "array",
           "uniqueItems": true,
-          "items": { "type": "string", "maxLength": 20, "pattern": "^ktheme_[a-z0-9_]+$" }
+          "items": { "type": "string", "maxLength": 20, "pattern": "^modutheme_[a-z0-9_]+$" }
         },
         "taxonomies": {
           "type": "array",
           "uniqueItems": true,
-          "items": { "type": "string", "maxLength": 32, "pattern": "^ktheme_[a-z0-9_]+$" }
+          "items": { "type": "string", "maxLength": 32, "pattern": "^modutheme_[a-z0-9_]+$" }
         }
       }
     },

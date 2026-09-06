@@ -1,6 +1,6 @@
-$targetDir = $env:KTHEME_IMAGE_TARGET_DIR
+$targetDir = $env:MODUTHEME_IMAGE_TARGET_DIR
 if (-not $targetDir) {
-    throw "KTHEME_IMAGE_TARGET_DIR is required."
+    throw "MODUTHEME_IMAGE_TARGET_DIR is required."
 }
 if (-not (Test-Path -Path $targetDir)) {
     New-Item -ItemType Directory -Force -Path $targetDir | Out-Null

@@ -1,0 +1,142 @@
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-08-30",
+  "product": {
+    "ko": "모두 테마",
+    "en": "ModuTheme"
+  },
+  "purpose": "Claude Design에서 업종 하나의 전체 페이지 세트를 한 번에 생성하기 위한 독립 프롬프트 카탈로그",
+  "usage": {
+    "oneIndustryPerRun": true,
+    "designRulesAreExternal": true,
+    "priorityOnCapacityLimit": [
+      "keep-all-required-pages",
+      "keep-page-purpose-and-primary-action",
+      "keep-required-states",
+      "reduce-decorative-variants",
+      "reduce-sample-copy"
+    ]
+  },
+  "industries": [
+    {
+      "id": "hospital-clinic",
+      "name": "병원/의원",
+      "promptFile": "docs/prompts/claude-design-industries/hospital-clinic.md",
+      "plannedPages": 12,
+      "approxInputTokens": 1044,
+      "primaryConversion": "진료 예약·상담"
+    },
+    {
+      "id": "legal-tax-labor",
+      "name": "법률/세무/노무",
+      "promptFile": "docs/prompts/claude-design-industries/legal-tax-labor.md",
+      "plannedPages": 12,
+      "approxInputTokens": 882,
+      "primaryConversion": "상담 신청"
+    },
+    {
+      "id": "academy-education",
+      "name": "학원/교육기관",
+      "promptFile": "docs/prompts/claude-design-industries/academy-education.md",
+      "plannedPages": 15,
+      "approxInputTokens": 958,
+      "primaryConversion": "수강 상담·신청"
+    },
+    {
+      "id": "manufacturing-b2b",
+      "name": "제조/B2B",
+      "promptFile": "docs/prompts/claude-design-industries/manufacturing-b2b.md",
+      "plannedPages": 16,
+      "approxInputTokens": 984,
+      "primaryConversion": "자료 다운로드·견적"
+    },
+    {
+      "id": "interior-architecture-construction",
+      "name": "인테리어/건축/시공",
+      "promptFile": "docs/prompts/claude-design-industries/interior-architecture-construction.md",
+      "plannedPages": 12,
+      "approxInputTokens": 865,
+      "primaryConversion": "프로젝트 견적"
+    },
+    {
+      "id": "property-real-estate",
+      "name": "부동산/분양",
+      "promptFile": "docs/prompts/claude-design-industries/property-real-estate.md",
+      "plannedPages": 12,
+      "approxInputTokens": 867,
+      "primaryConversion": "관심고객 등록·방문"
+    },
+    {
+      "id": "restaurant-cafe-franchise",
+      "name": "음식점/카페/프랜차이즈",
+      "promptFile": "docs/prompts/claude-design-industries/restaurant-cafe-franchise.md",
+      "plannedPages": 11,
+      "approxInputTokens": 854,
+      "primaryConversion": "예약·매장 찾기·가맹 문의"
+    },
+    {
+      "id": "beauty-fitness-booking",
+      "name": "미용/피트니스/예약형 매장",
+      "promptFile": "docs/prompts/claude-design-industries/beauty-fitness-booking.md",
+      "plannedPages": 14,
+      "approxInputTokens": 906,
+      "primaryConversion": "서비스 예약"
+    },
+    {
+      "id": "startup-saas-ai",
+      "name": "스타트업/SaaS/문제특화 AI",
+      "promptFile": "docs/prompts/claude-design-industries/startup-saas-ai.md",
+      "plannedPages": 15,
+      "approxInputTokens": 953,
+      "primaryConversion": "데모 신청"
+    },
+    {
+      "id": "portfolio-agency",
+      "name": "포트폴리오/에이전시",
+      "promptFile": "docs/prompts/claude-design-industries/portfolio-agency.md",
+      "plannedPages": 12,
+      "approxInputTokens": 823,
+      "primaryConversion": "프로젝트 문의"
+    },
+    {
+      "id": "local-tourism-experience",
+      "name": "지역관광/체험/문화",
+      "promptFile": "docs/prompts/claude-design-industries/local-tourism-experience.md",
+      "plannedPages": 15,
+      "approxInputTokens": 1030,
+      "primaryConversion": "프로그램 예약·단체 문의"
+    },
+    {
+      "id": "wellness-counseling-care",
+      "name": "웰니스/상담/돌봄",
+      "promptFile": "docs/prompts/claude-design-industries/wellness-counseling-care.md",
+      "plannedPages": 15,
+      "approxInputTokens": 976,
+      "primaryConversion": "상담·방문 예약"
+    },
+    {
+      "id": "professional-consulting-support",
+      "name": "전문서비스/컨설팅/창업지원",
+      "promptFile": "docs/prompts/claude-design-industries/professional-consulting-support.md",
+      "plannedPages": 17,
+      "approxInputTokens": 1020,
+      "primaryConversion": "자가진단·상담"
+    },
+    {
+      "id": "brand-lifestyle-d2c",
+      "name": "브랜드/라이프스타일 D2C",
+      "promptFile": "docs/prompts/claude-design-industries/brand-lifestyle-d2c.md",
+      "plannedPages": 18,
+      "approxInputTokens": 1084,
+      "primaryConversion": "구매·구독"
+    },
+    {
+      "id": "church-religion",
+      "name": "교회/종교기관",
+      "promptFile": "docs/prompts/claude-design-industries/church-religion.md",
+      "plannedPages": 21,
+      "approxInputTokens": 1278,
+      "primaryConversion": "첫 방문·행사·미디어·후원"
+    }
+  ]
+}

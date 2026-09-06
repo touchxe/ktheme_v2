@@ -27,9 +27,9 @@ function upload_image_from_path($file_path, $title) {
     return $attachment_id;
 }
 
-$img_dir = getenv('KTHEME_DEMO_IMAGE_DIR');
+$img_dir = getenv('MODUTHEME_DEMO_IMAGE_DIR');
 if (!$img_dir) {
-    fwrite(STDERR, "KTHEME_DEMO_IMAGE_DIR is required.\n");
+    fwrite(STDERR, "MODUTHEME_DEMO_IMAGE_DIR is required.\n");
     exit(1);
 }
 $img_dir = rtrim($img_dir, '/\\') . DIRECTORY_SEPARATOR;

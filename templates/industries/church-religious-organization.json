@@ -1,0 +1,122 @@
+{
+  "$schema": "./manifest.schema.json",
+  "id": "church-religious-organization",
+  "name": "교회/종교기관",
+  "priority": 15,
+  "status": "planned",
+  "requires": [
+    { "name": "Elementor", "slug": "elementor", "reason": "페이지와 업종 프리셋 편집" },
+    { "name": "ModuTheme Premium", "slug": "modutheme-premium", "reason": "ModuTheme 위젯, 아카이브, 업종 프리셋" },
+    { "name": "Ninja Forms", "slug": "ninja-forms", "reason": "새가족·교육·행사·기도·행정 신청과 개인정보 동의" }
+  ],
+  "recommends": [
+    { "name": "KBoard", "slug": "kboard", "reason": "주보, 공지, 소식, 자료실 게시판" },
+    { "name": "GTranslate", "slug": "gtranslate", "reason": "외국인 예배와 문화 방문객 안내" }
+  ],
+  "pages": [
+    "홈",
+    "기관/공동체 소개",
+    "예배·미사·법회 안내",
+    "말씀·강론·법문",
+    "일정/행사",
+    "새가족/새신자 안내",
+    "교육/수행 프로그램",
+    "부서/공동체",
+    "봉사/사역",
+    "소식/주보",
+    "미디어/자료실",
+    "후원/헌금/보시 안내",
+    "시설/오시는 길",
+    "문의/신청"
+  ],
+  "conversionActions": [
+    "예배·미사·법회 시간 확인",
+    "새가족/새신자 등록",
+    "행사/교육 신청",
+    "설교·강론·법문 시청",
+    "기도/상담 문의",
+    "봉사 참여",
+    "후원 안내 확인",
+    "길찾기"
+  ],
+  "widgetsToVerify": [
+    "ModuTheme Slider",
+    "ModuTheme Title",
+    "Card Box",
+    "ModuTheme Post",
+    "Members",
+    "Process Steps",
+    "Gallery",
+    "FAQ",
+    "Contact",
+    "CTA",
+    "Maps",
+    "Tabs"
+  ],
+  "businessTypes": [
+    "지역 개신교회",
+    "대형/다지점 교회",
+    "천주교 본당/주교좌 성당",
+    "불교 사찰/수행도량",
+    "명상/종교문화센터",
+    "교단/종단 본부",
+    "선교단체/포교기관",
+    "종교재단/복지기관",
+    "종교교육기관"
+  ],
+  "presetIds": [
+    "church-local",
+    "church-media",
+    "catholic-parish",
+    "buddhist-temple",
+    "religious-organization"
+  ],
+  "featureRefs": [
+    "newcomer-registration",
+    "gathering-schedule",
+    "event-calendar-registration",
+    "faith-media-library",
+    "prayer-care-request",
+    "giving-support-guide",
+    "receipt-document-request",
+    "privacy-consent",
+    "program-catalog",
+    "expert-directory",
+    "resource-download",
+    "reviews-gallery",
+    "location-map",
+    "branch-locator",
+    "multilingual-ready",
+    "service-disclosure"
+  ],
+  "sectionRefs": [
+    "hero-welcome",
+    "gathering-schedule",
+    "latest-faith-media",
+    "newcomer-journey",
+    "ministry-community-nav",
+    "event-calendar",
+    "notice-bulletin",
+    "giving-support",
+    "expert-profiles",
+    "facility-gallery",
+    "resource-library",
+    "brand-story",
+    "faq-preparation",
+    "service-disclosure",
+    "conversion-cta"
+  ],
+  "designPriority": {
+    "tier": "P0",
+    "status": "research",
+    "leadPresetId": "church-local",
+    "presetOrder": [
+      "church-local",
+      "church-media",
+      "catholic-parish",
+      "buddhist-temple",
+      "religious-organization"
+    ]
+  },
+  "notes": "현재 ModuTheme 교회 IA와 설교·행사·앨범 콘텐츠 타입을 church-local의 기준 자산으로 재사용한다. 종교별 용어와 운영 절차는 프리셋에서 치환하며, 기도·상담과 후원 정보는 민감정보 최소수집·공개범위·영수증 절차를 별도로 검증한다."
+}

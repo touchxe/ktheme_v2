@@ -1,0 +1,418 @@
+{
+  "catalogVersion": "1.0.0",
+  "status": "ready-for-external-design",
+  "generatedAt": "2026-08-30",
+  "designSource": "docs/DESIGN.md",
+  "planningSource": "docs/analysis/modutheme-home-frame-plans-and-prompts.md",
+  "viewportContract": {
+    "desktopCanvas": 1440,
+    "desktopContent": 1200,
+    "mobileCanvas": 390,
+    "desktopSectionPadding": 96,
+    "mobileSectionPadding": 48
+  },
+  "frames": [
+    {
+      "id": "home-booking",
+      "name": "예약형",
+      "primaryConversion": "가능 시간 확인",
+      "designDials": {
+        "variance": 7,
+        "motion": 5,
+        "density": 4
+      },
+      "requiredSections": [
+        "hero-booking",
+        "availability-strip",
+        "goal-based-navigation",
+        "featured-offerings",
+        "seasonal-recommendations",
+        "experience-process",
+        "expert-profiles",
+        "facility-gallery",
+        "reviews-gallery",
+        "faq-preparation",
+        "conversion-cta"
+      ],
+      "newDesigns": [
+        "hero-booking",
+        "availability-strip",
+        "seasonal-recommendations",
+        "reviews-gallery"
+      ],
+      "requiredStates": [
+        "loading",
+        "available",
+        "low-capacity",
+        "waitlist",
+        "sold-out",
+        "closed",
+        "error",
+        "empty-filter-result",
+        "submitting",
+        "completed"
+      ]
+    },
+    {
+      "id": "home-consultation",
+      "name": "상담형",
+      "primaryConversion": "상담 유형 선택",
+      "designDials": {
+        "variance": 4,
+        "motion": 3,
+        "density": 5
+      },
+      "requiredSections": [
+        "hero-consultation",
+        "problem-solution",
+        "goal-based-navigation",
+        "self-assessment-entry",
+        "expert-profiles",
+        "service-process",
+        "case-studies",
+        "credentials-proof",
+        "pricing-consultation",
+        "service-disclosure",
+        "conversion-cta"
+      ],
+      "newDesigns": [
+        "self-assessment-entry",
+        "case-studies",
+        "credentials-proof"
+      ],
+      "requiredStates": [
+        "available",
+        "closed",
+        "expert-unavailable",
+        "no-matching-service",
+        "sensitive-data-notice",
+        "consent-error",
+        "upload-error",
+        "submitting",
+        "completed",
+        "assessment-paused",
+        "assessment-result",
+        "assessment-unavailable"
+      ]
+    },
+    {
+      "id": "home-quote",
+      "name": "견적형",
+      "primaryConversion": "견적 조건 입력",
+      "designDials": {
+        "variance": 5,
+        "motion": 3,
+        "density": 6
+      },
+      "requiredSections": [
+        "hero-quote",
+        "problem-solution",
+        "product-or-service-category-nav",
+        "featured-products-or-offerings",
+        "case-studies",
+        "technical-process",
+        "metrics-proof",
+        "credentials-proof",
+        "resource-library",
+        "service-disclosure",
+        "conversion-cta"
+      ],
+      "newDesigns": [
+        "hero-quote",
+        "product-category-nav",
+        "featured-products",
+        "case-studies",
+        "credentials-proof"
+      ],
+      "requiredStates": [
+        "default-catalog",
+        "filter-active",
+        "no-results",
+        "comparison-selected",
+        "resource-available",
+        "resource-old-version",
+        "download-error",
+        "file-attached",
+        "file-rejected",
+        "draft-saved",
+        "submitting",
+        "completed",
+        "capacity-closed"
+      ]
+    },
+    {
+      "id": "home-commerce",
+      "name": "구매형",
+      "primaryConversion": "대표 상품 보기",
+      "designDials": {
+        "variance": 7,
+        "motion": 6,
+        "density": 4
+      },
+      "requiredSections": [
+        "hero-commerce",
+        "product-category-nav",
+        "featured-products",
+        "seasonal-recommendations",
+        "recommendation-entry",
+        "material-process",
+        "bundle-promotion",
+        "reviews-gallery",
+        "usage-guide",
+        "faq-preparation",
+        "conversion-cta"
+      ],
+      "newDesigns": [
+        "hero-commerce",
+        "product-category-nav",
+        "featured-products",
+        "seasonal-recommendations",
+        "recommendation-entry",
+        "bundle-promotion",
+        "reviews-gallery"
+      ],
+      "requiredStates": [
+        "option-selected",
+        "in-stock",
+        "low-stock",
+        "sold-out",
+        "sale-ended",
+        "restock-alert-requested",
+        "discount-valid",
+        "coupon-error",
+        "subscription-selected",
+        "recommendation-progress",
+        "recommendation-result",
+        "empty-cart",
+        "add-success",
+        "quantity-error",
+        "network-error"
+      ]
+    },
+    {
+      "id": "home-community-media",
+      "name": "미디어/공동체형",
+      "primaryConversion": "첫 방문 안내 보기",
+      "designDials": {
+        "variance": 5,
+        "motion": 4,
+        "density": 5
+      },
+      "requiredSections": [
+        "hero-welcome",
+        "gathering-schedule",
+        "latest-faith-media",
+        "newcomer-journey",
+        "ministry-community-nav",
+        "event-calendar",
+        "notice-bulletin",
+        "giving-support",
+        "facility-gallery",
+        "conversion-cta"
+      ],
+      "newDesigns": [
+        "live-state-variants",
+        "gathering-change-state",
+        "sensitive-request-privacy-state"
+      ],
+      "requiredStates": [
+        "live-scheduled",
+        "live-now",
+        "live-ended",
+        "replay-processing",
+        "playback-error",
+        "gathering-today",
+        "venue-changed",
+        "online-only",
+        "event-low-capacity",
+        "waitlist",
+        "closed",
+        "request-private",
+        "request-anonymous",
+        "consent-error",
+        "completed"
+      ]
+    },
+    {
+      "id": "home-institution-portal",
+      "name": "기관/포털형",
+      "primaryConversion": "주요 업무 찾기",
+      "designDials": {
+        "variance": 3,
+        "motion": 2,
+        "density": 7
+      },
+      "requiredSections": [
+        "hero-task-portal",
+        "deadline-status-strip",
+        "goal-based-navigation",
+        "featured-offerings",
+        "notice-bulletin",
+        "event-calendar",
+        "resource-library",
+        "institution-directory-preview",
+        "metrics-proof",
+        "service-disclosure",
+        "conversion-cta"
+      ],
+      "newDesigns": [
+        "hero-task-portal",
+        "deadline-status-strip",
+        "institution-directory-preview"
+      ],
+      "requiredStates": [
+        "search-default",
+        "search-suggestions",
+        "search-results",
+        "search-empty",
+        "search-error",
+        "program-scheduled",
+        "program-open",
+        "closing-soon",
+        "closed",
+        "changed",
+        "canceled",
+        "document-current",
+        "document-old-version",
+        "download-error",
+        "directory-empty",
+        "external-site-transition"
+      ]
+    }
+  ],
+  "presetAssignments": [
+    {
+      "frameId": "home-booking",
+      "presetIds": [
+        "academy-course",
+        "academy-instructor",
+        "academy-admission",
+        "beauty-booking",
+        "fitness-trainer",
+        "service-pricing",
+        "multi-branch-store",
+        "local-experience",
+        "local-destination",
+        "local-event",
+        "local-stay"
+      ]
+    },
+    {
+      "frameId": "home-consultation",
+      "presetIds": [
+        "medical-specialty",
+        "medical-local-clinic",
+        "medical-booking",
+        "medical-facility",
+        "professional-practice",
+        "professional-team",
+        "professional-case",
+        "professional-local-office",
+        "property-sales",
+        "residential-complex",
+        "commercial-property",
+        "local-brokerage",
+        "saas-product",
+        "saas-enterprise",
+        "saas-problem-specific-ai",
+        "saas-developer-tool",
+        "wellness-movement",
+        "wellness-counseling",
+        "wellness-senior-care",
+        "wellness-multi-branch",
+        "expert-consulting",
+        "expert-assessment"
+      ]
+    },
+    {
+      "frameId": "home-quote",
+      "presetIds": [
+        "industrial-equipment",
+        "industrial-automation",
+        "industrial-energy",
+        "industrial-inspection",
+        "interior-residential",
+        "interior-commercial",
+        "architecture-project",
+        "construction-quote",
+        "agency-cases",
+        "agency-services",
+        "agency-editorial",
+        "studio-profile",
+        "franchise-recruitment"
+      ]
+    },
+    {
+      "frameId": "home-commerce",
+      "presetIds": [
+        "restaurant-menu",
+        "cafe-space",
+        "local-food-brand",
+        "brand-beauty",
+        "brand-food",
+        "brand-living",
+        "brand-subscription"
+      ]
+    },
+    {
+      "frameId": "home-community-media",
+      "presetIds": [
+        "church-local",
+        "church-media",
+        "catholic-parish",
+        "buddhist-temple"
+      ]
+    },
+    {
+      "frameId": "home-institution-portal",
+      "presetIds": [
+        "education-institution",
+        "expert-startup-support",
+        "expert-public-program",
+        "religious-organization"
+      ]
+    }
+  ],
+  "alternateFrameRules": [
+    {
+      "presetId": "academy-admission",
+      "alternateFrameId": "home-consultation",
+      "condition": "입학 가능성 진단과 보호자 상담이 시간표 선택보다 우선일 때"
+    },
+    {
+      "presetId": "wellness-movement",
+      "alternateFrameId": "home-booking",
+      "condition": "클래스 시간과 강사 선택이 민감 상담보다 우선일 때"
+    },
+    {
+      "presetId": "cafe-space",
+      "alternateFrameId": "home-booking",
+      "condition": "좌석, 대관, 체험 예약이 메뉴 구매보다 우선일 때"
+    },
+    {
+      "presetId": "franchise-recruitment",
+      "alternateFrameId": "home-consultation",
+      "condition": "점포 조건보다 창업 적합성 상담이 우선일 때"
+    },
+    {
+      "presetId": "local-destination",
+      "alternateFrameId": "home-institution-portal",
+      "condition": "단일 사업자가 아니라 지역 전체 관광 정보와 회원기관을 운영할 때"
+    },
+    {
+      "presetId": "local-event",
+      "alternateFrameId": "home-institution-portal",
+      "condition": "행사 예약보다 공지, 참여기관, 교통, 운영정보 제공이 우선일 때"
+    },
+    {
+      "presetId": "expert-startup-support",
+      "alternateFrameId": "home-consultation",
+      "condition": "지원사업 포털보다 개별 멘토링과 진단이 우선일 때"
+    },
+    {
+      "presetId": "religious-organization",
+      "alternateFrameId": "home-community-media",
+      "condition": "산하 조직 행정보다 미디어와 참여 공동체 운영이 우선일 때"
+    }
+  ]
+}

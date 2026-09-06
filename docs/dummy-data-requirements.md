@@ -5,10 +5,10 @@
 ## 기준
 
 - IA 기준: `docs/SITE_IA_SLUG_RULES.md`
-- 실제 메뉴 기준: `wp-content/themes/ktheme-v2/parts/header.html`, `parts/footer.html`
-- 필수 페이지 자동 생성 기준: `wp-content/themes/ktheme-v2/functions.php`
-- 홈 화면 기준: `wp-content/themes/ktheme-v2/patterns/style1-home.php`
-- 현재 등록된 누적 콘텐츠 타입: `ktheme_sermon`, `ktheme_event`, `ktheme_album`
+- 실제 메뉴 기준: `wp-content/themes/modu-theme/parts/header.html`, `parts/footer.html`
+- 필수 페이지 자동 생성 기준: `wp-content/themes/modu-theme/functions.php`
+- 홈 화면 기준: `wp-content/themes/modu-theme/patterns/style1-home.php`
+- 현재 등록된 누적 콘텐츠 타입: `modutheme_sermon`, `modutheme_event`, `modutheme_album`
 
 ## 핵심 결론
 
@@ -26,17 +26,17 @@
 
 ## CPT / 포스트 / 후기 중심 요약
 
-페이지 본문보다 먼저 채워야 하는 것은 실제 목록 화면과 홈/허브 화면에 노출되는 콘텐츠다. 현재 테마 기준으로는 `ktheme_sermon`, `ktheme_event`, `ktheme_album` 3개 CPT가 이미 등록되어 있고, 나머지 반복 콘텐츠는 우선 기본 `post` + 카테고리로 운영하는 편이 가장 빠르다.
+페이지 본문보다 먼저 채워야 하는 것은 실제 목록 화면과 홈/허브 화면에 노출되는 콘텐츠다. 현재 테마 기준으로는 `modutheme_sermon`, `modutheme_event`, `modutheme_album` 3개 CPT가 이미 등록되어 있고, 나머지 반복 콘텐츠는 우선 기본 `post` + 카테고리로 운영하는 편이 가장 빠르다.
 
 실행 스크립트: `pnpm seed:dummy`
 
-이 스크립트는 `.env.local`의 `WP_API_URL`, `WP_USERNAME`, `WP_APP_PASSWORD`를 사용해 WordPress REST API에 더미 콘텐츠를 생성/업데이트한다. 기존 테마 이미지 `wp-content/themes/ktheme-v2/assets/images/generated/church-generated-01.jpg`부터 `church-generated-17.jpg`까지를 미디어 라이브러리에 업로드하고 featured image로 연결한다.
+이 스크립트는 `.env.local`의 `WP_API_URL`, `WP_USERNAME`, `WP_APP_PASSWORD`를 사용해 WordPress REST API에 더미 콘텐츠를 생성/업데이트한다. 기존 테마 이미지 `wp-content/themes/modu-theme/assets/images/generated/church-generated-01.jpg`부터 `church-generated-17.jpg`까지를 미디어 라이브러리에 업로드하고 featured image로 연결한다.
 
 | 우선순위 | 생성 단위 | 현재 구현 | 노출 위치 | 최소 수량 | 핵심 필드 |
 |---|---|---|---|---:|---|
-| P0 | 설교 | `ktheme_sermon` CPT | `/sermons/`, `/worship/`, `/sunday-worship/`, `/media/`, 홈 설교 섹션 | 12 | 제목, 설교자, 본문, 날짜, 예배 유형, 시리즈, 영상 URL, 썸네일, 요약 |
-| P0 | 행사/일정 | `ktheme_event` CPT | `/events/`, `/community/`, 홈 공지/행사 카드 | 9 | 제목, 시작일, 종료일, 장소, 대상, 신청 링크, 요약, 썸네일 |
-| P0 | 행사앨범 | `ktheme_album` CPT | `/albums/`, `/media/`, 홈 갤러리 | 12 | 제목, 날짜, 대표 이미지, 갤러리 이미지, 행사명, 요약 |
+| P0 | 설교 | `modutheme_sermon` CPT | `/sermons/`, `/worship/`, `/sunday-worship/`, `/media/`, 홈 설교 섹션 | 12 | 제목, 설교자, 본문, 날짜, 예배 유형, 시리즈, 영상 URL, 썸네일, 요약 |
+| P0 | 행사/일정 | `modutheme_event` CPT | `/events/`, `/community/`, 홈 공지/행사 카드 | 9 | 제목, 시작일, 종료일, 장소, 대상, 신청 링크, 요약, 썸네일 |
+| P0 | 행사앨범 | `modutheme_album` CPT | `/albums/`, `/media/`, 홈 갤러리 | 12 | 제목, 날짜, 대표 이미지, 갤러리 이미지, 행사명, 요약 |
 | P0 | 교회소식/공지 | 기본 `post` + `notice`/`news` category | `/news/`, 홈 업데이트, 검색 | 4 | 제목, 날짜, 카테고리, 요약, 본문, 고정 여부 |
 | P0 | 후기/간증 포스트 | 기본 `post` + `review` category | `/news/`, 공동체/청년/새가족 연결, 홈 업데이트 | 14 | 제목, 작성자 표시명, 날짜, 관련 사역, 사진, 인용문, 본문 |
 | P0 | 교우소식 | 기본 `post` + `member-news` category | `/news/`, `/admin-guide/` 교우소식 | 5 | 유형, 대상, 일시, 장소, 안내문, 공개 범위 |
@@ -51,14 +51,14 @@
 
 | 콘텐츠 | 지금 바로 권장 | 장기 권장 | 이유 |
 |---|---|---|---|
-| 설교 | `ktheme_sermon` 유지 | CPT 유지 + 예배 유형 taxonomy 추가 검토 | 이미 archive/single 템플릿과 시리즈 taxonomy가 있다. |
-| 행사 | `ktheme_event` 유지 | CPT 유지 + 행사일 custom field 정리 | 공동체 대표 페이지가 이 CPT를 직접 조회한다. |
-| 앨범 | `ktheme_album` 유지 | CPT 유지 + 갤러리 이미지 필드 정리 | 미디어 대표 페이지가 이 CPT를 직접 조회한다. |
-| 후기 | 기본 `post` + `review` category | 필요 시 `ktheme_story` CPT 검토 | IA에 별도 후기 메뉴가 없어서 뉴스 흐름 안에 두는 것이 자연스럽다. |
-| 주보 | 기본 `post` + `bulletin` category | 사용량 많으면 `ktheme_bulletin` CPT | PDF/이미지 첨부와 주차별 archive가 필요하다. |
-| QT/묵상 | 기본 `post` + `qt` category | 매일 운영이면 `ktheme_qt` CPT | 초기에는 글 카테고리로 충분하지만 날짜별 누적이 많다. |
-| 영상 | 기본 `post` + `video` category | 설교 외 영상이 많으면 `ktheme_video` CPT | 설교 영상과 일반 영상을 분리해야 한다. |
-| 자료실 | 기본 `post` + `library` category | 다운로드 관리가 필요하면 `ktheme_resource` CPT | 파일, 분류, 다운로드 버튼이 핵심이다. |
+| 설교 | `modutheme_sermon` 유지 | CPT 유지 + 예배 유형 taxonomy 추가 검토 | 이미 archive/single 템플릿과 시리즈 taxonomy가 있다. |
+| 행사 | `modutheme_event` 유지 | CPT 유지 + 행사일 custom field 정리 | 공동체 대표 페이지가 이 CPT를 직접 조회한다. |
+| 앨범 | `modutheme_album` 유지 | CPT 유지 + 갤러리 이미지 필드 정리 | 미디어 대표 페이지가 이 CPT를 직접 조회한다. |
+| 후기 | 기본 `post` + `review` category | 필요 시 `modutheme_story` CPT 검토 | IA에 별도 후기 메뉴가 없어서 뉴스 흐름 안에 두는 것이 자연스럽다. |
+| 주보 | 기본 `post` + `bulletin` category | 사용량 많으면 `modutheme_bulletin` CPT | PDF/이미지 첨부와 주차별 archive가 필요하다. |
+| QT/묵상 | 기본 `post` + `qt` category | 매일 운영이면 `modutheme_qt` CPT | 초기에는 글 카테고리로 충분하지만 날짜별 누적이 많다. |
+| 영상 | 기본 `post` + `video` category | 설교 외 영상이 많으면 `modutheme_video` CPT | 설교 영상과 일반 영상을 분리해야 한다. |
+| 자료실 | 기본 `post` + `library` category | 다운로드 관리가 필요하면 `modutheme_resource` CPT | 파일, 분류, 다운로드 버튼이 핵심이다. |
 
 ## 포스트 카테고리 제안
 
@@ -89,7 +89,7 @@
 
 ## CPT별 더미데이터 상세
 
-### `ktheme_sermon`
+### `modutheme_sermon`
 
 | 묶음 | 수량 | 예시 |
 |---|---:|---|
@@ -98,9 +98,9 @@
 | 새벽기도 | 2 | 광야에서 부르신 이름 |
 | 다음세대/청년예배 | 1 | 사랑은 가까운 자리부터 시작됩니다 |
 
-필드: `post_title`, `post_content`, `post_excerpt`, featured image, `ktheme_sermon_series`, 설교자 custom field, 성경본문 custom field, 영상 URL custom field, 예배 유형 custom field.
+필드: `post_title`, `post_content`, `post_excerpt`, featured image, `modutheme_sermon_series`, 설교자 custom field, 성경본문 custom field, 영상 URL custom field, 예배 유형 custom field.
 
-### `ktheme_event`
+### `modutheme_event`
 
 | 묶음 | 수량 | 예시 |
 |---|---:|---|
@@ -111,7 +111,7 @@
 
 필드: `post_title`, `post_content`, `post_excerpt`, featured image, 시작일, 종료일, 장소, 대상, 신청 링크.
 
-### `ktheme_album`
+### `modutheme_album`
 
 | 묶음 | 수량 | 예시 |
 |---|---:|---|
@@ -133,9 +133,9 @@
 | 업데이트 리스트 | 카테고리, 제목, 날짜, 링크 | 4 | 공지/선교/행사/교회력 |
 | 사이드 미디어 카드 | 카테고리, 제목, 이미지, 링크 | 2 | 미디어/공동체 성격 |
 | 새가족 단계 | 단계명, 설명, 아이콘, CTA | 4 | 새가족 페이지 본문과 내용 일치 |
-| 설교 메인 카드 | 예배 유형, 시리즈, 제목, 본문, 설교자, 길이, 썸네일, 영상 URL | 2 | `ktheme_sermon` 게시물과 제목 일치 |
+| 설교 메인 카드 | 예배 유형, 시리즈, 제목, 본문, 설교자, 길이, 썸네일, 영상 URL | 2 | `modutheme_sermon` 게시물과 제목 일치 |
 | 설교 썸네일 | 제목, 본문, 예배 유형, 날짜, 길이, 썸네일 | 4 | 주일/수요/새벽/다음세대 혼합 |
-| 갤러리 | 제목, 대표 이미지, 날짜, 설명, 링크 | 7 | `ktheme_album`과 매칭 |
+| 갤러리 | 제목, 대표 이미지, 날짜, 설명, 링크 | 7 | `modutheme_album`과 매칭 |
 | CTA 카드 | 온라인 헌금, 문의하기 제목/본문/링크 | 2 | 실제 헌금/문의 페이지 본문 필요 |
 | 상단바 | 기준 날짜, 예배명, 시간, 장소 | 1 | 현재 `2026년 5월 25일` 고정 |
 
@@ -172,8 +172,8 @@
 | 미디어 | 미디어 대표 | `/media/` | page + album/sermon query | 사진 앨범 4개, 설교 영상 3개 | 7 posts |
 | 미디어 | 교회소식 | `/news/` | archive/single 권장 | 공지/교우소식/후기/선교/행사 카테고리 글 | 12개 |
 | 미디어 | 교단소식 | `/denomination-news/` | archive/single 권장 | 교단 공지, 노회 소식, 교육 자료 링크 | 6개 |
-| 미디어 | 설교 | `/sermons/` | `ktheme_sermon` archive | 설교 제목, 본문, 설교자, 날짜, 시리즈, 영상 URL, 썸네일 | 12개 |
-| 미디어 | 행사앨범 | `/albums/` | `ktheme_album` archive | 앨범 제목, 대표 이미지, 설명, 갤러리 이미지 | 12개 |
+| 미디어 | 설교 | `/sermons/` | `modutheme_sermon` archive | 설교 제목, 본문, 설교자, 날짜, 시리즈, 영상 URL, 썸네일 | 12개 |
+| 미디어 | 행사앨범 | `/albums/` | `modutheme_album` archive | 앨범 제목, 대표 이미지, 설명, 갤러리 이미지 | 12개 |
 | 미디어 | 영상 | `/videos/` | archive/single 권장 | 영상 제목, 유형, embed URL, 썸네일, 설명 | 8개 |
 | 미디어 | 자료실 | `/library/` | page, 누적 콘텐츠 권장 | 자료명, 분류, 파일 URL, 설명, 날짜 | 12개 |
 | 행정 | 행정 대표 | `/admin-guide/` | page, 전용 템플릿 | 행정서비스 8개, 교우소식 5개, FAQ 3개, 자료 6개 | 1 set |
@@ -216,9 +216,9 @@
 
 | 타입 | 현재 구현 | 필요한 더미데이터 | 비고 |
 |---|---|---|---|
-| 설교 | `ktheme_sermon` CPT | 12개, 시리즈 taxonomy 3개, 썸네일/영상 URL | 홈, `/worship/`, `/sermons/`, `/sunday-worship/`에서 사용 |
-| 행사 | `ktheme_event` CPT | 9개, 날짜/장소/대상/신청 링크 | `/community/`, `/events/` archive에서 사용 |
-| 앨범 | `ktheme_album` CPT | 12개, 대표 이미지, 갤러리 이미지 4-8장 | `/media/`, `/albums/`에서 사용 |
+| 설교 | `modutheme_sermon` CPT | 12개, 시리즈 taxonomy 3개, 썸네일/영상 URL | 홈, `/worship/`, `/sermons/`, `/sunday-worship/`에서 사용 |
+| 행사 | `modutheme_event` CPT | 9개, 날짜/장소/대상/신청 링크 | `/community/`, `/events/` archive에서 사용 |
+| 앨범 | `modutheme_album` CPT | 12개, 대표 이미지, 갤러리 이미지 4-8장 | `/media/`, `/albums/`에서 사용 |
 | 일반 글 | 기본 `post` | 공지/후기/교우소식/선교소식 26개 | `/news/`, 검색, 기본 archive 보강 |
 | 주보 | 미구현 | 8주분 PDF/이미지/예배 순서 | CPT 또는 `post` category 결정 필요 |
 | QT/묵상 | 미구현 | 14일분 본문/질문/기도문 | CPT 또는 `post` category 결정 필요 |
@@ -245,7 +245,7 @@
 
 ## 추천 생성 순서
 
-1. P0 `ktheme_sermon` 12개, `ktheme_event` 9개, `ktheme_album` 12개 생성
+1. P0 `modutheme_sermon` 12개, `modutheme_event` 9개, `modutheme_album` 12개 생성
 2. P0 기본 `post`로 공지 4개, 후기 14개, 교우소식 5개, 선교소식 3개 생성
 3. P1 기본 `post`로 주보 8주분, QT 14일분, 교단소식 6개, 영상 8개, 자료실 12개 생성
 4. P1 홈/예배/미디어 페이지의 하드코딩 카드 제목과 실제 CPT/포스트 제목을 맞춤

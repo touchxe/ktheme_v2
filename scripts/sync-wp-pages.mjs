@@ -183,10 +183,10 @@ function pageContent(page) {
     .join('\n\n');
 
   return [
-    '<!-- wp:group {"className":"kt-page-intro","layout":{"type":"constrained"}} -->',
-    '<div class="wp-block-group kt-page-intro">',
+    '<!-- wp:group {"className":"modu-page-intro","layout":{"type":"constrained"}} -->',
+    '<div class="wp-block-group modu-page-intro">',
     `<!-- wp:heading {"level":1} -->\n<h1 class="wp-block-heading">${escapeHtml(page.title)}</h1>\n<!-- /wp:heading -->`,
-    `<!-- wp:paragraph {"className":"kt-page-intro__lead"} -->\n<p class="kt-page-intro__lead">${escapeHtml(page.excerpt)}</p>\n<!-- /wp:paragraph -->`,
+    `<!-- wp:paragraph {"className":"modu-page-intro__lead"} -->\n<p class="modu-page-intro__lead">${escapeHtml(page.excerpt)}</p>\n<!-- /wp:paragraph -->`,
     paragraphs,
     '</div>',
     '<!-- /wp:group -->',

@@ -6,7 +6,7 @@ import { fileURLToPath } from 'node:url';
 
 const ROOT = resolve(fileURLToPath(new URL('..', import.meta.url)));
 const ENV_FILE = join(ROOT, '.env.local');
-const IMAGE_DIR = join(ROOT, 'wp-content/themes/ktheme-v2/assets/images/generated');
+const IMAGE_DIR = join(ROOT, 'wp-content/themes/modu-theme/assets/images/generated');
 
 const categories = [
   { name: '공지', slug: 'notice', description: '교회의 주요 공지와 신청 안내입니다.' },
@@ -399,7 +399,7 @@ async function uploadImage(apiUrl, authHeader, filePath) {
     body: JSON.stringify({
       title: mediaTitle,
       alt_text: '가평교회 더미 콘텐츠 이미지',
-      caption: 'KTheme V2 더미데이터용 이미지',
+      caption: 'ModuTheme 더미데이터용 이미지',
     }),
   }, authHeader);
 }
@@ -526,13 +526,13 @@ async function main() {
     console.log(`media: ${imageNames[index - 1]} -> ${media.id}`);
   }
 
-  const sermonEndpoint = await endpointForType(apiUrl, authHeader, 'ktheme_sermon');
-  const eventEndpoint = await endpointForType(apiUrl, authHeader, 'ktheme_event');
-  const albumEndpoint = await endpointForType(apiUrl, authHeader, 'ktheme_album');
+  const sermonEndpoint = await endpointForType(apiUrl, authHeader, 'modutheme_sermon');
+  const eventEndpoint = await endpointForType(apiUrl, authHeader, 'modutheme_event');
+  const albumEndpoint = await endpointForType(apiUrl, authHeader, 'modutheme_album');
 
   const seriesBySlug = {};
   for (const term of sermonSeries) {
-    const result = await ensureTerm(apiUrl, authHeader, 'ktheme_sermon_series', term);
+    const result = await ensureTerm(apiUrl, authHeader, 'modutheme_sermon_series', term);
     seriesBySlug[term.slug] = result;
     console.log(`sermon-series: ${term.slug}`);
   }
@@ -546,7 +546,7 @@ async function main() {
       excerpt: sermon.excerpt,
       content: sermonContent(sermon),
       featured_media: mediaByNumber[sermon.image].id,
-      ktheme_sermon_series: [seriesBySlug[sermon.series].id],
+      modutheme_sermon_series: [seriesBySlug[sermon.series].id],
     };
     const result = await upsertContent(apiUrl, authHeader, sermonEndpoint, payload);
     console.log(`${result.action}: sermon/${sermon.slug}`);

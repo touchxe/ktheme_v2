@@ -52,41 +52,41 @@ const eras = [
 export default function HistoryPage() {
   return (
     <main>
-      <a className="kt-skip-link" href="#history-content">본문으로 건너뛰기</a>
-      <header className="kt-history-nav">
-        <div className="kt-container">
-          <a className="kt-brand" href="/"><span className="kt-brand__mark" aria-hidden="true"><i /></span><span>샘물교회</span></a>
+      <a className="modu-skip-link" href="#history-content">본문으로 건너뛰기</a>
+      <header className="modu-history-nav">
+        <div className="modu-container">
+          <a className="modu-brand" href="/"><span className="modu-brand__mark" aria-hidden="true"><i /></span><span>샘물교회</span></a>
           <nav aria-label="교회소개 메뉴"><a href="/about">교회소개</a><a className="is-active" href="/history">교회연혁</a><a href="/people">섬기는 사람들</a><a href="/location">오시는 길</a></nav>
-          <a className="kt-history-nav__home" href="/">홈으로 <span aria-hidden="true">↗</span></a>
+          <a className="modu-history-nav__home" href="/">홈으로 <span aria-hidden="true">↗</span></a>
         </div>
       </header>
 
-      <section className="kt-history-hero" id="history-content">
-        <div className="kt-container kt-history-hero__grid">
-          <div className="kt-history-hero__copy">
-            <p className="kt-label">SINCE 1990</p>
+      <section className="modu-history-hero" id="history-content">
+        <div className="modu-container modu-history-hero__grid">
+          <div className="modu-history-hero__copy">
+            <p className="modu-label">SINCE 1990</p>
             <h1>함께 걸어온<br /><em>은혜의 시간</em></h1>
             <p>예배의 자리에서 시작해 서로의 일상을 돌보며, 샘물교회가 지나온 걸음을 한 장씩 돌아봅니다.</p>
-            <div className="kt-history-stats" aria-label="교회 연혁 요약"><span><b>36</b>년의 여정</span><span><b>04</b>개의 시대</span><span><b>01</b>공동체의 마음</span></div>
+            <div className="modu-history-stats" aria-label="교회 연혁 요약"><span><b>36</b>년의 여정</span><span><b>04</b>개의 시대</span><span><b>01</b>공동체의 마음</span></div>
           </div>
-          <div className="kt-history-hero__media"><img src="/images/home/home-fellowship-table-4x3.png" alt="성도들이 식탁에 둘러앉아 교제하는 모습" /><div className="kt-history-hero__stamp"><span>OUR STORY</span><strong>1990 — 2026</strong><i>grace in every season</i></div></div>
+          <div className="modu-history-hero__media"><img src="/images/home/home-fellowship-table-4x3.png" alt="성도들이 식탁에 둘러앉아 교제하는 모습" /><div className="modu-history-hero__stamp"><span>OUR STORY</span><strong>1990 — 2026</strong><i>grace in every season</i></div></div>
         </div>
       </section>
 
-      <nav className="kt-history-years" aria-label="시대별 연혁 바로가기"><div className="kt-container">{eras.map(({ id, era, range }) => <a href={`#${id}`} key={id}><strong>{era}</strong><span>{range}</span></a>)}</div></nav>
+      <nav className="modu-history-years" aria-label="시대별 연혁 바로가기"><div className="modu-container">{eras.map(({ id, era, range }) => <a href={`#${id}`} key={id}><strong>{era}</strong><span>{range}</span></a>)}</div></nav>
 
-      <section className="kt-history-intro-next"><div className="kt-container"><div><h2>한 해의 숫자보다,<br />함께 살아낸 이야기를 기억합니다.</h2><p>작은 기도와 첫 인사, 한 번의 섬김이 모여 교회의 시간이 되었습니다. 샘물교회가 걸어온 네 개의 계절을 만나보세요.</p></div></div></section>
+      <section className="modu-history-intro-next"><div className="modu-container"><div><h2>한 해의 숫자보다,<br />함께 살아낸 이야기를 기억합니다.</h2><p>작은 기도와 첫 인사, 한 번의 섬김이 모여 교회의 시간이 되었습니다. 샘물교회가 걸어온 네 개의 계절을 만나보세요.</p></div></div></section>
 
       {eras.map(({ id, era, range, summary, headline, events }, eraIndex) => (
-        <section className={`kt-history-era ${eraIndex % 2 === 1 ? 'is-paper' : ''}`} id={id} key={id}>
-          <div className="kt-container kt-history-era__grid">
+        <section className={`modu-history-era ${eraIndex % 2 === 1 ? 'is-paper' : ''}`} id={id} key={id}>
+          <div className="modu-container modu-history-era__grid">
             <aside><span>{range}</span><h2>{era}</h2><p>{summary}</p></aside>
-            <div className="kt-history-era__body"><h3>{headline.split('\n').map((line) => <span key={line}>{line}</span>)}</h3><div className="kt-history-events">{events.map(([date, title, description], eventIndex) => <article key={date}><time>{date}</time><i className={eraIndex === 0 && eventIndex === 0 ? 'is-current' : ''} aria-hidden="true" /><div><h4>{title}</h4><p>{description}</p></div></article>)}</div></div>
+            <div className="modu-history-era__body"><h3>{headline.split('\n').map((line) => <span key={line}>{line}</span>)}</h3><div className="modu-history-events">{events.map(([date, title, description], eventIndex) => <article key={date}><time>{date}</time><i className={eraIndex === 0 && eventIndex === 0 ? 'is-current' : ''} aria-hidden="true" /><div><h4>{title}</h4><p>{description}</p></div></article>)}</div></div>
           </div>
         </section>
       ))}
 
-      <section className="kt-history-closing"><div className="kt-container"><div><p className="kt-label">THE NEXT CHAPTER</p><h2>오늘의 예배가<br />내일의 연혁이 됩니다.</h2></div><p>샘물교회는 오늘도 말씀과 기도 안에서<br />새로운 걸음을 함께 만들어 갑니다.</p><a className="kt-button kt-button--dark" href="/newcomers">함께 걸어가기 <span aria-hidden="true">→</span></a></div></section>
+      <section className="modu-history-closing"><div className="modu-container"><div><p className="modu-label">THE NEXT CHAPTER</p><h2>오늘의 예배가<br />내일의 연혁이 됩니다.</h2></div><p>샘물교회는 오늘도 말씀과 기도 안에서<br />새로운 걸음을 함께 만들어 갑니다.</p><a className="modu-button modu-button--dark" href="/newcomers">함께 걸어가기 <span aria-hidden="true">→</span></a></div></section>
     </main>
   )
 }

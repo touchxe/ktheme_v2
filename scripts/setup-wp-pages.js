@@ -75,7 +75,7 @@ async function createPages() {
   }
   
   console.log('\n메뉴(Navigation) 설정 안내:');
-  console.log('현재 ktheme-developer 테마는 header.html에 HTML 기반 메뉴가 하드코딩되어 있습니다.');
+  console.log('현재 modutheme-developer 테마는 header.html에 HTML 기반 메뉴가 하드코딩되어 있습니다.');
   console.log('페이지 슬러그(about, sermons 등)가 일치하므로 생성된 페이지들과 자동으로 연결됩니다.');
 }
 

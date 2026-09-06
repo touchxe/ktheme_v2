@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://ktheme.example/schemas/extension.schema.json",
-  "title": "KTheme Extension Manifest",
+  "$id": "https://modutheme.example/schemas/extension.schema.json",
+  "title": "ModuTheme Extension Manifest",
   "type": "object",
   "additionalProperties": false,
   "required": [
@@ -19,7 +19,7 @@
     "$schema": { "type": "string" },
     "id": {
       "type": "string",
-      "pattern": "^(ktheme|ktheme-engine|ktheme-[a-z0-9-]+)/[a-z][a-z0-9-]+$"
+      "pattern": "^(modutheme|modutheme-engine|modutheme-[a-z0-9-]+)/[a-z][a-z0-9-]+$"
     },
     "type": {
       "enum": [

@@ -9,7 +9,7 @@ import { fileURLToPath } from 'node:url';
 
 const ROOT = resolve(fileURLToPath(new URL('..', import.meta.url)));
 const ENV_FILE = join(ROOT, '.env.local');
-const REMOTE_SCRIPT = 'ktheme-v2-repair-page-ia-once.php';
+const REMOTE_SCRIPT = 'modu-theme-repair-page-ia-once.php';
 
 const parentMap = {
   vision: 'about',
@@ -142,7 +142,7 @@ $top_level_slugs = json_decode( '${JSON.stringify(topLevelSlugs).replace(/'/g, "
 $child_slugs = array_keys( $parent_map );
 $managed_slugs = array_values( array_unique( array_merge( $top_level_slugs, $child_slugs ) ) );
 
-function ktheme_ia_find_candidates( string $slug ): array {
+function modutheme_ia_find_candidates( string $slug ): array {
 \tglobal $wpdb;
 
 \t$pattern = '^' . preg_quote( $slug, '/' ) . '-[0-9]+$';
@@ -169,8 +169,8 @@ function ktheme_ia_find_candidates( string $slug ): array {
 \treturn $pages;
 }
 
-function ktheme_ia_find_canonical( string $slug ): ?WP_Post {
-\t$candidates = ktheme_ia_find_candidates( $slug );
+function modutheme_ia_find_canonical( string $slug ): ?WP_Post {
+\t$candidates = modutheme_ia_find_candidates( $slug );
 
 \tforeach ( $candidates as $candidate ) {
 \t\tif ( 'publish' === $candidate->post_status ) {
@@ -181,7 +181,7 @@ function ktheme_ia_find_canonical( string $slug ): ?WP_Post {
 \treturn ! empty( $candidates ) ? $candidates[0] : null;
 }
 
-function ktheme_ia_snapshot( WP_Post $page ): array {
+function modutheme_ia_snapshot( WP_Post $page ): array {
 \t$parent = $page->post_parent > 0 ? get_post( $page->post_parent ) : null;
 
 \treturn array(
@@ -194,8 +194,8 @@ function ktheme_ia_snapshot( WP_Post $page ): array {
 \t);
 }
 
-function ktheme_ia_rename_duplicate( WP_Post $page, string $slug ): array {
-\t$before = ktheme_ia_snapshot( $page );
+function modutheme_ia_rename_duplicate( WP_Post $page, string $slug ): array {
+\t$before = modutheme_ia_snapshot( $page );
 \t$legacy_slug = $slug . '-legacy-' . (int) $page->ID;
 
 \tif ( $page->post_name !== $legacy_slug ) {
@@ -220,13 +220,13 @@ function ktheme_ia_rename_duplicate( WP_Post $page, string $slug ): array {
 
 \treturn array(
 \t\t'before' => $before,
-\t\t'after' => $after instanceof WP_Post ? ktheme_ia_snapshot( $after ) : null,
+\t\t'after' => $after instanceof WP_Post ? modutheme_ia_snapshot( $after ) : null,
 \t);
 }
 
-function ktheme_ia_apply_page( string $slug, int $target_parent_id, string $target_parent_slug ): array {
-\t$candidates = ktheme_ia_find_candidates( $slug );
-\t$canonical = ktheme_ia_find_canonical( $slug );
+function modutheme_ia_apply_page( string $slug, int $target_parent_id, string $target_parent_slug ): array {
+\t$candidates = modutheme_ia_find_candidates( $slug );
+\t$canonical = modutheme_ia_find_canonical( $slug );
 
 \tif ( ! $canonical instanceof WP_Post ) {
 \t\treturn array(
@@ -241,7 +241,7 @@ function ktheme_ia_apply_page( string $slug, int $target_parent_id, string $targ
 \t\t\tcontinue;
 \t\t}
 
-\t\t$renamed[] = ktheme_ia_rename_duplicate( $candidate, $slug );
+\t\t$renamed[] = modutheme_ia_rename_duplicate( $candidate, $slug );
 \t}
 
 \tclean_post_cache( (int) $canonical->ID );
@@ -254,7 +254,7 @@ function ktheme_ia_apply_page( string $slug, int $target_parent_id, string $targ
 \t\t);
 \t}
 
-\t$before = ktheme_ia_snapshot( $canonical );
+\t$before = modutheme_ia_snapshot( $canonical );
 \t$needs_update = $canonical->post_name !== $slug || (int) $canonical->post_parent !== $target_parent_id;
 
 \tif ( $needs_update ) {
@@ -285,7 +285,7 @@ function ktheme_ia_apply_page( string $slug, int $target_parent_id, string $targ
 \t\t'status' => $needs_update || ! empty( $renamed ) ? 'updated' : 'unchanged',
 \t\t'target_parent_slug' => $target_parent_slug,
 \t\t'before' => $before,
-\t\t'after' => $after instanceof WP_Post ? ktheme_ia_snapshot( $after ) : null,
+\t\t'after' => $after instanceof WP_Post ? modutheme_ia_snapshot( $after ) : null,
 \t\t'renamed_duplicates' => $renamed,
 \t);
 }
@@ -298,11 +298,11 @@ $results = array(
 );
 
 foreach ( $top_level_slugs as $slug ) {
-\t$results['top_level'][ $slug ] = ktheme_ia_apply_page( $slug, 0, '' );
+\t$results['top_level'][ $slug ] = modutheme_ia_apply_page( $slug, 0, '' );
 }
 
 foreach ( $parent_map as $slug => $parent_slug ) {
-\t$parent = ktheme_ia_find_canonical( (string) $parent_slug );
+\t$parent = modutheme_ia_find_canonical( (string) $parent_slug );
 
 \tif ( ! $parent instanceof WP_Post ) {
 \t\t$results['skipped'][ $slug ] = array(
@@ -312,12 +312,12 @@ foreach ( $parent_map as $slug => $parent_slug ) {
 \t\tcontinue;
 \t}
 
-\t$results['children'][ $slug ] = ktheme_ia_apply_page( $slug, (int) $parent->ID, (string) $parent_slug );
+\t$results['children'][ $slug ] = modutheme_ia_apply_page( $slug, (int) $parent->ID, (string) $parent_slug );
 }
 
 foreach ( $managed_slugs as $slug ) {
-\t$page = ktheme_ia_find_canonical( $slug );
-\t$results['final_tree'][ $slug ] = $page instanceof WP_Post ? ktheme_ia_snapshot( $page ) : null;
+\t$page = modutheme_ia_find_canonical( $slug );
+\t$results['final_tree'][ $slug ] = $page instanceof WP_Post ? modutheme_ia_snapshot( $page ) : null;
 }
 
 flush_rewrite_rules( false );

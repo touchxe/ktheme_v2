@@ -1,6 +1,6 @@
 {
   "$schema": "./extension.schema.json",
-  "id": "ktheme-engine/content-grid",
+  "id": "modutheme-engine/content-grid",
   "type": "block",
   "version": "1.0.0",
   "title": "Content Grid",

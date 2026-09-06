@@ -1,13 +1,13 @@
-# K-Theme V2 확장 표준 및 상업화 사전 검토
+# ModuTheme 확장 표준 및 상업화 사전 검토
 
 - 상태: 필수 적용
 - 작성일: 2026-08-19
-- 적용 대상: `wp-content/themes/ktheme-v2`, 향후 K-Theme 디자인·템플릿·컴포넌트
+- 적용 대상: `wp-content/themes/modu-theme`, 향후 ModuTheme 디자인·템플릿·컴포넌트
 - 목표: 새 디자인을 추가해도 기존 템플릿을 복제하거나 테마 기능을 비대하게 만들지 않는 블록 테마 제품 구조
 
 ## 1. 결론
 
-K-Theme V2는 앞으로 다음 계층을 단일 확장 모델로 사용한다.
+ModuTheme는 앞으로 다음 계층을 단일 확장 모델로 사용한다.
 
 ```text
 theme.json 토큰
@@ -20,10 +20,10 @@ theme.json 토큰
 콘텐츠 생성, 데이터 저장, 폼 처리, 사용자 기능은 테마가 아니라 동반 플러그인이 담당한다.
 
 ```text
-K-Theme V2 Theme
+ModuTheme Theme
   표현, 편집 경험, 토큰, 스타일 변형, 패턴, 템플릿
 
-KTheme Engine Plugin
+ModuTheme Engine Plugin
   범용 콘텐츠 모델, 분류, 폼 연동, 데이터 처리, 기능 블록, 확장 레지스트리
 ```
 
@@ -61,14 +61,14 @@ KTheme Engine Plugin
 #### P0. 고객 중립성이 부족함
 
 - 일부 템플릿과 PHP 데이터에 특정 교회명, 인물, 주소, 일정, 사례 데이터가 남아 있다.
-- 다수 파일이 `/wp-content/themes/ktheme-v2/`를 직접 참조한다.
+- 다수 파일이 `/wp-content/themes/modu-theme/`를 직접 참조한다.
 - `href="#"`와 시뮬레이션용 링크가 실제 제품 화면에 남아 있다.
 - 판매 패키지는 고객 데이터, 허위 동작, 특정 설치 경로에 의존하지 않아야 한다.
 
 #### P1. 확장 계층이 일관되지 않음
 
 - `theme.json`은 버전 3을 사용하지만 간격, 반경, 그림자, 상태 색상 등 제품 토큰이 충분히 정의되지 않았다.
-- 패턴 카테고리가 `ktheme-v2-style1` 하나뿐이라 페이지, 섹션, 통합 셸의 역할이 구분되지 않는다.
+- 패턴 카테고리가 `modu-theme-style1` 하나뿐이라 페이지, 섹션, 통합 셸의 역할이 구분되지 않는다.
 - 일부 패턴은 코어 블록 대신 하나의 큰 `core/html` 블록으로 구성되어 사이트 편집기에서 부분 편집이 어렵다.
 - 페이지마다 HTML과 클래스가 복제되어 새 디자인 추가 시 회귀 범위가 커진다.
 
@@ -76,7 +76,7 @@ KTheme Engine Plugin
 
 - `sermon`, `worship`, `ministry`, `style1`이 영구 식별자와 파일 이름에 섞여 있다.
 - 블록, 스킨, 위젯, 패턴, 컴포넌트의 의미가 구분되지 않아 신규 항목이 같은 역할을 중복 구현할 수 있다.
-- 공개 식별자는 `ktheme` 제품 어근과 역할 중심 이름으로 고정한다.
+- 공개 식별자는 `modutheme` 제품 어근과 역할 중심 이름으로 고정한다.
 - 교회 용어는 영구 key가 아니라 preset의 표시 이름, taxonomy term, demo data로 이동한다.
 - 현재 디자인 기준과 시각 표현은 변경하지 않는다.
 
@@ -90,7 +90,7 @@ KTheme Engine Plugin
 ```text
 wp-content/
 ├─ themes/
-│  └─ ktheme-v2/
+│  └─ modu-theme/
 │     ├─ theme.json
 │     ├─ style.css
 │     ├─ styles/
@@ -125,8 +125,8 @@ wp-content/
 │        ├─ pattern-categories.php
 │        └─ extension-loader.php
 └─ plugins/
-   ├─ ktheme-engine/
-   │  ├─ ktheme-engine.php
+   ├─ modutheme-engine/
+   │  ├─ modutheme-engine.php
    │  ├─ includes/
    │  │  ├─ class-extension-registry.php
    │  │  └─ class-plugin.php
@@ -137,7 +137,7 @@ wp-content/
    │  │  ├─ integrations/
    │  │  └─ widgets/
    │  └─ assets/
-   └─ ktheme-preset-{industry}/
+   └─ modutheme-preset-{industry}/
       ├─ patterns/
       ├─ terms/
       └─ demo/
@@ -152,14 +152,14 @@ wp-content/
 - 색상, 글꼴, 글자 크기, 간격, 반경, 그림자는 `theme.json`이 기본 SSOT다.
 - 토큰 slug는 의미 기반 영문 소문자와 하이픈을 사용한다.
 - 새 컴포넌트에서 임의 hex, 임의 간격, 임의 글꼴을 추가하지 않는다.
-- CSS 사용자 정의 속성이 필요하면 `--kt-*` 접두사를 사용하고 `theme.json` 토큰을 참조한다.
+- CSS 사용자 정의 속성이 필요하면 `--modu-*` 접두사를 사용하고 `theme.json` 토큰을 참조한다.
 - 스타일 변형은 `/styles/*.json`에 두며 템플릿 구조를 복제하지 않는다.
 
 ### 4.2 코어 블록
 
 - 가능한 경우 `core/group`, `core/columns`, `core/query`, `core/image`, `core/gallery`, `core/buttons`를 우선 사용한다.
 - 테마는 커스텀 블록을 등록하지 않는다.
-- 콘텐츠 기능용 커스텀 블록이 필요하면 `ktheme-engine` 또는 기능별 `ktheme-{capability}` 플러그인에 등록한다.
+- 콘텐츠 기능용 커스텀 블록이 필요하면 `modutheme-engine` 또는 기능별 `modutheme-{capability}` 플러그인에 등록한다.
 - 에디터와 프런트엔드의 너비, 글꼴, 색상, 상태 스타일을 일치시킨다.
 
 ### 4.3 패턴
@@ -179,10 +179,10 @@ Description
 
 | 역할 | 파일 | slug | 카테고리 |
 |---|---|---|---|
-| 전체 페이지 조합 | `page-{purpose}.php` | `ktheme/page-{purpose}` | `ktheme-pages` |
-| 일반 섹션 | `section-{purpose}.php` | `ktheme/section-{purpose}` | `ktheme-sections` |
-| 쿼리 섹션 | `query-{content}.php` | `ktheme/query-{content}` | `ktheme-queries` |
-| 외부 기능 자리 | `integration-{purpose}.php` | `ktheme/integration-{purpose}` | `ktheme-integrations` |
+| 전체 페이지 조합 | `page-{purpose}.php` | `modutheme/page-{purpose}` | `modutheme-pages` |
+| 일반 섹션 | `section-{purpose}.php` | `modutheme/section-{purpose}` | `modutheme-sections` |
+| 쿼리 섹션 | `query-{content}.php` | `modutheme/query-{content}` | `modutheme-queries` |
+| 외부 기능 자리 | `integration-{purpose}.php` | `modutheme/integration-{purpose}` | `modutheme-integrations` |
 
 패턴 규칙:
 
@@ -210,17 +210,17 @@ Description
 
 ### 4.6 범용 엔진과 확장 플러그인
 
-다음 항목은 `ktheme-engine` 또는 기능별 확장 플러그인 소유다.
+다음 항목은 `modutheme-engine` 또는 기능별 확장 플러그인 소유다.
 
-- `ktheme_media`, `ktheme_event`, `ktheme_resource`, `ktheme_profile` 같은 범용 CPT
-- `ktheme_media_type`, `ktheme_collection`, `ktheme_topic`, `ktheme_audience` 같은 범용 taxonomy
+- `modutheme_media`, `modutheme_event`, `modutheme_resource`, `modutheme_profile` 같은 범용 CPT
+- `modutheme_media_type`, `modutheme_collection`, `modutheme_topic`, `modutheme_audience` 같은 범용 taxonomy
 - 폼 제출, 결제, 회원, 데이터 저장
 - 데이터 삭제 정책
 - 기능성 커스텀 블록
 
 테마는 플러그인이 없어도 오류 없이 기본 page, post, archive, search를 표현해야 한다.
 
-교회·교육·비영리 같은 업종 구성은 `ktheme-preset-{industry}`가 labels, terms, patterns, demo data로 제공한다. 예를 들어 설교는 별도 post type이 아니라 `ktheme_media`와 `ktheme_media_type` term 조합으로 표현한다.
+교회·교육·비영리 같은 업종 구성은 `modutheme-preset-{industry}`가 labels, terms, patterns, demo data로 제공한다. 예를 들어 설교는 별도 post type이 아니라 `modutheme_media`와 `modutheme_media_type` term 조합으로 표현한다.
 
 ### 4.7 위젯과 확장 용어
 
@@ -237,9 +237,9 @@ Description
 ### CSS
 
 - 계층 순서는 foundations, core blocks, patterns, templates, utilities다.
-- 기존 공개 클래스는 디자인 유지를 위해 `kt-` 접두사를 유지한다.
-- 신규 독립 모듈은 `ktheme-` 접두사를 사용한다.
-- 기존 컴포넌트는 `kt-{component}`, 신규 컴포넌트는 `ktheme-{component}`를 사용하며 요소는 `__`, 변형은 `--`를 사용한다.
+- 기존 공개 클래스는 디자인 유지를 위해 `modu-` 접두사를 유지한다.
+- 신규 독립 모듈은 `modutheme-` 접두사를 사용한다.
+- 기존 컴포넌트는 `modu-{component}`, 신규 컴포넌트는 `modutheme-{component}`를 사용하며 요소는 `__`, 변형은 `--`를 사용한다.
 - 상태는 WordPress 표준 `is-*`, `has-*`를 우선한다.
 - 페이지 slug 기반 선택자보다 컴포넌트 클래스 기반 선택자를 우선한다.
 - 새 CSS는 해당 계층 파일에 작성하고 최종 번들만 enqueue한다.
@@ -257,7 +257,7 @@ Description
 새 디자인, 패턴, 템플릿, 컴포넌트는 아래 검사를 모두 통과해야 한다.
 
 1. 구현 전에 실패 테스트를 추가한다.
-2. 모든 패턴에 필수 헤더와 공개 전환 대상인 `ktheme/` namespace가 있는지 검사한다.
+2. 모든 패턴에 필수 헤더와 공개 전환 대상인 `modutheme/` namespace가 있는지 검사한다.
 3. 신규 템플릿에 `wp:shortcode`가 없는지 검사한다.
 4. 테마에 CPT, taxonomy, form handler, shortcode가 남거나 추가되지 않는지 검사한다.
 5. 하드코딩 설치 경로, 특정 도메인, `href="#"`, 인라인 script를 검사한다.
@@ -291,10 +291,10 @@ Description
 
 ### 3단계. 범용 엔진과 네이밍 전환
 
-- `ktheme-engine` 플러그인 골격과 extension registry를 만든다.
+- `modutheme-engine` 플러그인 골격과 extension registry를 만든다.
 - 교회 전용 CPT와 taxonomy를 제거하고 범용 콘텐츠 모델로 구현한다.
 - 기존 고객 데이터가 없으므로 migration과 shortcode 호환 모듈은 만들지 않는다.
-- `ktheme-v2/` pattern namespace와 `style1` 이름을 공개 전 영구 이름으로 전환한다.
+- `modu-theme/` pattern namespace와 `style1` 이름을 공개 전 영구 이름으로 전환한다.
 - 완료 조건: 테마에 CPT, taxonomy, shortcode가 없고 모든 공개 이름이 registry와 일치한다.
 
 ### 4단계. 기존 디자인 기준의 구조화
@@ -354,7 +354,7 @@ Description
 ### 새 컴포넌트 기능
 
 - 표현인가, 데이터 기능인가?
-- 데이터 기능이면 `ktheme-engine` 또는 기능별 확장 플러그인에 두었는가?
+- 데이터 기능이면 `modutheme-engine` 또는 기능별 확장 플러그인에 두었는가?
 - 코어 블록으로 대체할 수 없는 이유가 있는가?
 - 에디터와 프런트엔드 양쪽 상태를 제공하는가?
 
@@ -381,7 +381,7 @@ Description
 
 1. 신규 template과 part에는 shortcode를 추가하지 않는다.
 2. 신규 섹션은 필수 메타데이터를 갖춘 native block pattern으로 만든다.
-3. 신규 데이터 기능은 테마가 아니라 `ktheme-engine` 또는 기능별 확장 플러그인 대상으로 설계한다.
-4. 신규 스타일은 `theme.json` 토큰과 `kt-` 클래스 계약을 먼저 정의한 뒤 작성한다.
+3. 신규 데이터 기능은 테마가 아니라 `modutheme-engine` 또는 기능별 확장 플러그인 대상으로 설계한다.
+4. 신규 스타일은 `theme.json` 토큰과 `modu-` 클래스 계약을 먼저 정의한 뒤 작성한다.
 5. 신규 공개 식별자는 `extension-registry.json`과 `EXTENSION_NAMING_STANDARD.md`를 따른다.
 6. 기존 고객 호환 코드와 migration은 만들지 않는다.

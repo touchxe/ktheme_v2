@@ -53,10 +53,10 @@ $about_intro = str_replace(
 );
 
 // 단축코드를 임시 값으로 대체
-$about_intro = str_replace('[kt_org_year]', '2008', $about_intro);
-$about_intro = str_replace('[kt_org_depts]', '5', $about_intro);
-$about_intro = str_replace('[kt_org_members]', '320', $about_intro);
-$about_intro = str_replace('[kt_org_name]', '만나교회', $about_intro);
+$about_intro = str_replace('[modu_org_year]', '2008', $about_intro);
+$about_intro = str_replace('[modu_org_depts]', '5', $about_intro);
+$about_intro = str_replace('[modu_org_members]', '320', $about_intro);
+$about_intro = str_replace('[modu_org_name]', '만나교회', $about_intro);
 
 // post_content 조합 (about-intro + worship-times)
 $post_content = $about_intro . "\n\n" . $worship_times;

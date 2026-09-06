@@ -88,7 +88,7 @@ const host = requireEnv(env, 'FTP_HOST');
 const user = requireEnv(env, 'FTP_USER');
 const password = requireEnv(env, 'FTP_PASSWORD');
 const remoteThemePath = requireEnv(env, 'REMOTE_THEME_PATH').replace(/\/+$/, '');
-const themeSlug = env.THEME_SLUG || 'ktheme-v2';
+const themeSlug = env.THEME_SLUG || 'modu-theme';
 const themeRoot = join(ROOT, 'wp-content/themes', themeSlug);
 
 if (!existsSync(themeRoot)) {

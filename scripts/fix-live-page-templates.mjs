@@ -9,7 +9,7 @@ import { fileURLToPath } from 'node:url';
 
 const ROOT = resolve(fileURLToPath(new URL('..', import.meta.url)));
 const ENV_FILE = join(ROOT, '.env.local');
-const REMOTE_SCRIPT = 'ktheme-v2-fix-page-templates-once.php';
+const REMOTE_SCRIPT = 'modu-theme-fix-page-templates-once.php';
 
 function parseEnv(content) {
   const env = {};
@@ -76,7 +76,7 @@ const env = parseEnv(readFileSync(ENV_FILE, 'utf8'));
 const host = requireEnv(env, 'FTP_HOST');
 const user = requireEnv(env, 'FTP_USER');
 const password = requireEnv(env, 'FTP_PASSWORD');
-const themeSlug = env.THEME_SLUG || 'ktheme-v2';
+const themeSlug = env.THEME_SLUG || 'modu-theme';
 const baseUrl = (env.WP_BASE_URL || `https://${host}`).replace(/\/+$/, '');
 const token = randomBytes(16).toString('hex');
 const tempScript = join(tmpdir(), REMOTE_SCRIPT);
@@ -95,11 +95,11 @@ $theme_slug = '${themeSlug}';
 $page_updates = array(
 \t'wednesday-worship' => array(
 \t\t'template' => 'page-wednesday-worship',
-\t\t'content'  => "<!-- wp:shortcode -->\\n[ktheme_sunday_worship_grid]\\n<!-- /wp:shortcode -->",
+\t\t'content'  => "<!-- wp:shortcode -->\\n[modutheme_sunday_worship_grid]\\n<!-- /wp:shortcode -->",
 \t),
 \t'dawn-prayer' => array(
 \t\t'template' => 'page-dawn-prayer',
-\t\t'content'  => "<!-- wp:shortcode -->\\n[ktheme_sunday_worship_grid]\\n<!-- /wp:shortcode -->",
+\t\t'content'  => "<!-- wp:shortcode -->\\n[modutheme_sunday_worship_grid]\\n<!-- /wp:shortcode -->",
 \t),
 \t'bulletin' => array(
 \t\t'template' => 'page-bulletin',

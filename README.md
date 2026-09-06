@@ -1,7 +1,7 @@
-# 🚀 FlowWeb v2 Template
-## BMAD × gstack × Superpowers × git-worktree 통합 스켈레톤
+# 모두 테마 (ModuTheme)
+## 업종별 WordPress 홈페이지 테마와 확장 패키지
 
-Claude Code **없이도** Antigravity + Cursor 환경에서 3-레이어 AI 파이프라인을 작동시키는 솔로 개발자용 프로젝트 템플릿.
+공통 런타임과 업종별 프리셋을 기반으로 홈페이지를 제작·운영하는 프로젝트입니다. 프로젝트 전체 이름 표기는 [`docs/PROJECT_NAMING.md`](docs/PROJECT_NAMING.md)를 따릅니다.
 
 ---
 
@@ -23,11 +23,11 @@ Claude Code **없이도** Antigravity + Cursor 환경에서 3-레이어 AI 파�
 
 ```bash
 # 1. 이 디렉터리를 복사
-cp -r flowweb-v2/ my-project/
+cp -r modu-theme/ my-project/
 cd my-project/
 
 # 2. Git 초기화
-git init && git add -A && git commit -m "chore: initial from flowweb-v2 template"
+git init && git add -A && git commit -m "chore: initialize ModuTheme project"
 git branch -M main
 
 # 3. 프로젝트명 치환 (macOS/Linux)
@@ -69,7 +69,7 @@ cd ../wt/story-1.1-auth
 ## 디렉터리 구조
 
 ```
-flowweb-v2/
+modu-theme/
 ├── AGENTS.md                      ← 루트 매니페스트 (모든 AI 도구가 읽음)
 ├── README.md                      ← 이 파일
 ├── bootstrap.sh                   ← 프로젝트명 치환 스크립트
@@ -231,7 +231,7 @@ pnpm wt:ports
 | **Playwright MCP** | `/design-review`, `/qa` | `.cursor/mcp.json`에 등록됨 |
 | **Context7 MCP** | 최신 문서 참조 | `.cursor/mcp.json`에 등록됨 |
 | **OpenAI API** | `/design-shotgun` | `.env.local`에 `OPENAI_API_KEY`, Tier 2+ 권장 |
-| **Anthropic API** | FlowWeb 앱 자체 | `.env.local`에 `ANTHROPIC_API_KEY` |
+| **Anthropic API** | ModuTheme 앱 자체 | `.env.local`에 `ANTHROPIC_API_KEY` |
 
 Antigravity 사용 시 **OpenAI 대신 Gemini Imagen 3** 무료 사용 가능.
 

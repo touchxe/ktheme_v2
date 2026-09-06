@@ -9,7 +9,7 @@ import { fileURLToPath } from 'node:url';
 
 const ROOT = resolve(fileURLToPath(new URL('..', import.meta.url)));
 const ENV_FILE = join(ROOT, '.env.local');
-const REMOTE_SCRIPT = 'ktheme-v2-sync-page-parents-once.php';
+const REMOTE_SCRIPT = 'modu-theme-sync-page-parents-once.php';
 
 const parentMap = {
   vision: 'about',
@@ -141,7 +141,7 @@ $parent_map = json_decode( '${JSON.stringify(parentMap).replace(/'/g, "\\'")}', 
 $top_level_slugs = json_decode( '${JSON.stringify(topLevelSlugs).replace(/'/g, "\\'")}', true );
 $managed_slugs = array_values( array_unique( array_merge( array_keys( $parent_map ), $top_level_slugs ) ) );
 
-function ktheme_sync_find_pages_by_slug( string $slug ): array {
+function modutheme_sync_find_pages_by_slug( string $slug ): array {
 \tglobal $wpdb;
 \t$page_ids = $wpdb->get_col(
 \t\t$wpdb->prepare(
@@ -161,13 +161,13 @@ function ktheme_sync_find_pages_by_slug( string $slug ): array {
 \treturn $pages;
 }
 
-function ktheme_sync_find_page_by_slug( string $slug ): ?WP_Post {
-\t$pages = ktheme_sync_find_pages_by_slug( $slug );
+function modutheme_sync_find_page_by_slug( string $slug ): ?WP_Post {
+\t$pages = modutheme_sync_find_pages_by_slug( $slug );
 
 \treturn ! empty( $pages ) ? $pages[0] : null;
 }
 
-function ktheme_sync_page_snapshot( WP_Post $page ): array {
+function modutheme_sync_page_snapshot( WP_Post $page ): array {
 \t$parent = $page->post_parent > 0 ? get_post( $page->post_parent ) : null;
 
 \treturn array(
@@ -189,7 +189,7 @@ $results = array(
 );
 
 foreach ( $managed_slugs as $slug ) {
-\t$pages = ktheme_sync_find_pages_by_slug( $slug );
+\t$pages = modutheme_sync_find_pages_by_slug( $slug );
 
 \tif ( empty( $pages ) ) {
 \t\t$results['missing'][] = $slug;
@@ -201,13 +201,13 @@ foreach ( $managed_slugs as $slug ) {
 
 \tif ( isset( $parent_map[ $slug ] ) ) {
 \t\t$target_parent_slug = (string) $parent_map[ $slug ];
-\t\t$parent = ktheme_sync_find_page_by_slug( $target_parent_slug );
+\t\t$parent = modutheme_sync_find_page_by_slug( $target_parent_slug );
 
 \t\tif ( ! $parent instanceof WP_Post ) {
 \t\t\t$results['skipped'][ $slug ] = array(
 \t\t\t\t'reason' => 'parent not found',
 \t\t\t\t'target_parent_slug' => $target_parent_slug,
-\t\t\t\t'pages' => array_map( 'ktheme_sync_page_snapshot', $pages ),
+\t\t\t\t'pages' => array_map( 'modutheme_sync_page_snapshot', $pages ),
 \t\t\t);
 \t\t\tcontinue;
 \t\t}
@@ -216,7 +216,7 @@ foreach ( $managed_slugs as $slug ) {
 \t}
 
 \tforeach ( $pages as $page ) {
-\t\t$before = ktheme_sync_page_snapshot( $page );
+\t\t$before = modutheme_sync_page_snapshot( $page );
 
 \t\tif ( (int) $page->post_parent === $target_parent_id ) {
 \t\t\t$results['unchanged'][ $slug ][] = array(
@@ -249,7 +249,7 @@ foreach ( $managed_slugs as $slug ) {
 \t\t$results['updated'][ $slug ][] = array(
 \t\t\t'target_parent_slug' => $target_parent_slug,
 \t\t\t'before' => $before,
-\t\t\t'after' => $after instanceof WP_Post ? ktheme_sync_page_snapshot( $after ) : null,
+\t\t\t'after' => $after instanceof WP_Post ? modutheme_sync_page_snapshot( $after ) : null,
 \t\t);
 \t}
 }
@@ -266,7 +266,7 @@ $all_pages = get_posts(
 
 foreach ( $all_pages as $page ) {
 \tif ( ! in_array( $page->post_name, $managed_slugs, true ) ) {
-\t\t$results['unmapped'][] = ktheme_sync_page_snapshot( $page );
+\t\t$results['unmapped'][] = modutheme_sync_page_snapshot( $page );
 \t}
 }
 

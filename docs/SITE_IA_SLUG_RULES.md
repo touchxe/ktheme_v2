@@ -12,7 +12,7 @@
 - 반복적으로 쌓이는 콘텐츠는 archive + single 구조로 만듭니다.
 - 신청, 문의, 등록, 요청은 contact form 성격의 폼 페이지로 만듭니다.
 - 헤더, 페이지 히어로, 푸터는 공용 템플릿 파트를 사용합니다.
-- 페이지 히어로는 `.kt-page-hero`와 공용 hero 스타일을 우선 사용합니다.
+- 페이지 히어로는 `.modu-page-hero`와 공용 hero 스타일을 우선 사용합니다.
 
 ## 2. 1차 메뉴 IA
 
@@ -219,9 +219,9 @@
 - 기본 archive: `archive.html`
 - 기본 single: `single.html`
 - 검색 결과: `search.html`
-- 설교 archive/single: `archive-ktheme_sermon.html`, `single-ktheme_sermon.html`
-- 행사 archive/single: `archive-ktheme_event.html`, `single-ktheme_event.html`
-- 앨범 archive/single: `archive-ktheme_album.html`, `single-ktheme_album.html`
+- 설교 archive/single: `archive-modutheme_sermon.html`, `single-modutheme_sermon.html`
+- 행사 archive/single: `archive-modutheme_event.html`, `single-modutheme_event.html`
+- 앨범 archive/single: `archive-modutheme_album.html`, `single-modutheme_album.html`
 
 새 템플릿을 만들 때는 기존 공용 헤더/푸터를 재사용하고, 페이지 히어로 스타일을 임의로 복제하지 않습니다.
 

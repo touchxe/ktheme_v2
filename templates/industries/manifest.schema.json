@@ -1,0 +1,96 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/touchxe/modutheme-pack/templates/industries/manifest.schema.json",
+  "title": "ModuTheme Industry Template Manifest",
+  "type": "object",
+  "required": [
+    "id",
+    "name",
+    "priority",
+    "status",
+    "requires",
+    "recommends",
+    "pages",
+    "conversionActions",
+    "widgetsToVerify"
+  ],
+  "properties": {
+    "id": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+    "name": { "type": "string" },
+    "priority": { "type": "integer", "minimum": 1 },
+    "status": {
+      "type": "string",
+      "enum": ["planned", "in-progress", "ready", "released"]
+    },
+    "requires": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/plugin" }
+    },
+    "recommends": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/plugin" }
+    },
+    "pages": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "conversionActions": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "widgetsToVerify": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "businessTypes": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "presetIds": {
+      "type": "array",
+      "items": { "type": "string", "pattern": "^[a-z0-9-]+$" }
+    },
+    "featureRefs": {
+      "type": "array",
+      "items": { "type": "string", "pattern": "^[a-z0-9-]+$" }
+    },
+    "sectionRefs": {
+      "type": "array",
+      "items": { "type": "string", "pattern": "^[a-z0-9-]+$" }
+    },
+    "designPriority": {
+      "type": "object",
+      "required": ["tier", "status", "leadPresetId", "presetOrder"],
+      "properties": {
+        "tier": {
+          "type": "string",
+          "enum": ["P0", "P1", "P2", "backlog"]
+        },
+        "status": {
+          "type": "string",
+          "enum": ["queued", "research", "designing", "qa", "ready"]
+        },
+        "leadPresetId": {
+          "type": "string",
+          "pattern": "^[a-z0-9-]+$"
+        },
+        "presetOrder": {
+          "type": "array",
+          "items": { "type": "string", "pattern": "^[a-z0-9-]+$" }
+        }
+      }
+    },
+    "notes": { "type": "string" }
+  },
+  "$defs": {
+    "plugin": {
+      "type": "object",
+      "required": ["name", "slug", "reason"],
+      "properties": {
+        "name": { "type": "string" },
+        "slug": { "type": "string" },
+        "reason": { "type": "string" }
+      }
+    }
+  }
+}

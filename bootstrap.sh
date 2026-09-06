@@ -14,7 +14,7 @@ if [ -z "$PROJECT_NAME" ]; then
   echo "❌ Usage: ./bootstrap.sh \"<project-name>\" \"<description>\""
   echo ""
   echo "예시:"
-  echo "  ./bootstrap.sh \"flowweb\" \"AI-powered SaaS website builder\""
+  echo "  ./bootstrap.sh \"modu-theme\" \"AI-powered SaaS website builder\""
   exit 1
 fi
 
@@ -101,7 +101,7 @@ if [ -d .git ]; then
 else
   echo ""
   echo "⚠️  Git 저장소가 아닙니다. 다음을 실행하세요:"
-  echo "   git init && git add -A && git commit -m \"chore: initialize from flowweb-v2 template\""
+  echo "   git init && git add -A && git commit -m \"chore: initialize ModuTheme project\""
 fi
 
 # ─── 완료 ──────────────────────────────────────

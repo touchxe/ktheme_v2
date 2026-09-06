@@ -7,7 +7,7 @@ import { basename, join, resolve } from 'node:path';
 const OUT_DIR = resolve(process.argv[2] || 'C:/tmp/style1-static');
 const REF = process.argv[3] || 'origin/main';
 const SOURCE_DIR = 'source/template_style1';
-const THEME_URL = '/wp-content/themes/ktheme-v2';
+const THEME_URL = '/wp-content/themes/modu-theme';
 const IMAGE_URL = `${THEME_URL}/assets/images/style1`;
 const GENERATED_IMAGE_URL = `${THEME_URL}/assets/images/generated`;
 
@@ -197,7 +197,7 @@ function buildSharedPageHero(activeKey) {
   if (!meta) return '';
 
   const tabs = meta.tabs?.length
-    ? `<nav class="kt-page-tabs" aria-label="${meta.title} 하위 메뉴">
+    ? `<nav class="modu-page-tabs" aria-label="${meta.title} 하위 메뉴">
         ${meta.tabs
           .map(([label, url, active]) => `<a class="${active ? 'is-active' : ''}" href="${url}">${label}</a>`)
           .join('\n        ')}
@@ -205,13 +205,13 @@ function buildSharedPageHero(activeKey) {
     : '';
 
   return `<!-- ============== PAGE HERO ============== -->
-<section class="kt-page-hero kt-shared-page-hero">
-  <nav class="kt-breadcrumb" aria-label="현재 위치">
-    <a href="/"><svg class="kt-icon kt-icon--xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 11l9-8 9 8M5 10v10h14V10"/></svg>HOME</a>
+<section class="modu-page-hero modu-shared-page-hero">
+  <nav class="modu-breadcrumb" aria-label="현재 위치">
+    <a href="/"><svg class="modu-icon modu-icon--xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 11l9-8 9 8M5 10v10h14V10"/></svg>HOME</a>
     <span>›</span>
     <strong>${meta.title}</strong>
   </nav>
-  <div class="kt-page-hero__body">
+  <div class="modu-page-hero__body">
     <div>
       <h1>${meta.title}</h1>
       <p>${meta.description}</p>
@@ -277,25 +277,25 @@ function wrapTemplate(sourceName, html, activeKey) {
 .style1-static .badge-live{display:inline-flex;align-items:center;justify-content:center;background:#e23b3b;color:#fff;font-size:10px;font-weight:800;line-height:1;letter-spacing:.05em;padding:3px 6px;border-radius:4px;white-space:nowrap}
 .style1-static header nav a .nav-live{margin-left:5px;transform:translateY(-7px);vertical-align:top}
 .style1-static .page-hero,.style1-static [data-page-hero]{border-bottom:1px solid #e5e7eb}
-.style1-static .kt-page-hero{width:min(1240px,calc(100% - 48px));margin-inline:auto;padding:40px 0 48px;border-bottom:1px solid #e5e7eb}
-.style1-static .kt-breadcrumb{display:flex;align-items:center;gap:8px;color:#384058;font-size:12px}
-.style1-static .kt-breadcrumb a{display:inline-flex;align-items:center;gap:6px;color:inherit}
-.style1-static .kt-breadcrumb strong{color:#0e1320;font-weight:700}
-.style1-static .kt-page-hero__body{display:flex;align-items:flex-end;justify-content:space-between;gap:32px;margin-top:24px}
-.style1-static .kt-page-hero h1{margin:0;font-size:clamp(44px,6vw,56px);line-height:1.05;font-weight:900;letter-spacing:-0.055em}
-.style1-static .kt-page-hero p{margin:14px 0 0;max-width:620px;color:#384058;font-size:14px;line-height:1.75}
-.style1-static .kt-page-tabs{display:flex;align-items:center;gap:4px;font-size:13px;font-weight:700;white-space:nowrap}
-.style1-static .kt-page-tabs a{display:grid;place-items:center;height:40px;padding:0 16px;border-radius:999px;color:#0e1320}
-.style1-static .kt-page-tabs a:hover{background:#f4f5f7}
-.style1-static .kt-page-tabs a.is-active{background:#0e1320;color:#fff}
+.style1-static .modu-page-hero{width:min(1240px,calc(100% - 48px));margin-inline:auto;padding:40px 0 48px;border-bottom:1px solid #e5e7eb}
+.style1-static .modu-breadcrumb{display:flex;align-items:center;gap:8px;color:#384058;font-size:12px}
+.style1-static .modu-breadcrumb a{display:inline-flex;align-items:center;gap:6px;color:inherit}
+.style1-static .modu-breadcrumb strong{color:#0e1320;font-weight:700}
+.style1-static .modu-page-hero__body{display:flex;align-items:flex-end;justify-content:space-between;gap:32px;margin-top:24px}
+.style1-static .modu-page-hero h1{margin:0;font-size:clamp(44px,6vw,56px);line-height:1.05;font-weight:900;letter-spacing:-0.055em}
+.style1-static .modu-page-hero p{margin:14px 0 0;max-width:620px;color:#384058;font-size:14px;line-height:1.75}
+.style1-static .modu-page-tabs{display:flex;align-items:center;gap:4px;font-size:13px;font-weight:700;white-space:nowrap}
+.style1-static .modu-page-tabs a{display:grid;place-items:center;height:40px;padding:0 16px;border-radius:999px;color:#0e1320}
+.style1-static .modu-page-tabs a:hover{background:#f4f5f7}
+.style1-static .modu-page-tabs a.is-active{background:#0e1320;color:#fff}
 @media (max-width:767px){
   .style1-static .grid.grid-cols-12{grid-template-columns:minmax(0,1fr)!important}
   .style1-static [class*="col-span-"]{grid-column:auto!important}
   .style1-static .gap-8,.style1-static .gap-10{gap:1.5rem!important}
-  .style1-static .kt-page-hero{width:min(100% - 32px,1240px);padding:32px 0 36px}
-  .style1-static .kt-page-hero__body{align-items:flex-start;flex-direction:column;margin-top:20px}
-  .style1-static .kt-page-hero h1{font-size:42px}
-  .style1-static .kt-page-tabs{width:100%;overflow-x:auto;padding-bottom:4px}
+  .style1-static .modu-page-hero{width:min(100% - 32px,1240px);padding:32px 0 36px}
+  .style1-static .modu-page-hero__body{align-items:flex-start;flex-direction:column;margin-top:20px}
+  .style1-static .modu-page-hero h1{font-size:42px}
+  .style1-static .modu-page-tabs{width:100%;overflow-x:auto;padding-bottom:4px}
 }
 </style>`;
 

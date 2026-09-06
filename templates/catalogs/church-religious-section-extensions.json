@@ -1,0 +1,55 @@
+{
+  "catalogVersion": "1.0.0",
+  "status": "proposal",
+  "description": "교회/종교기관 manifest가 공통 카탈로그에 추가 요청하는 범용 섹션",
+  "sections": [
+    {
+      "id": "hero-welcome",
+      "name": "첫 방문 환영 히어로",
+      "component": "hero-conversion",
+      "slots": ["seasonOrTheme", "headline", "summary", "primaryCta", "secondaryCta", "media", "nextGathering"]
+    },
+    {
+      "id": "gathering-schedule",
+      "name": "예배·미사·법회 시간표",
+      "component": "schedule-panel",
+      "slots": ["gatheringTypes", "dayAndTime", "venue", "audienceOrLanguage", "liveLink", "changeNotice"]
+    },
+    {
+      "id": "latest-faith-media",
+      "name": "최근 설교·강론·법문",
+      "component": "media-feed",
+      "slots": ["featuredMedia", "title", "speaker", "date", "topicOrText", "duration", "archiveLink"]
+    },
+    {
+      "id": "newcomer-journey",
+      "name": "첫 방문·등록 과정",
+      "component": "process-steps",
+      "slots": ["steps", "estimatedTime", "guidePerson", "preparation", "registrationCta", "faqLink"]
+    },
+    {
+      "id": "ministry-community-nav",
+      "name": "부서·공동체·신행 탐색",
+      "component": "taxonomy-navigation",
+      "slots": ["audiences", "ministriesOrGroups", "meetingInfo", "leaderOrContact", "detailLinks"]
+    },
+    {
+      "id": "event-calendar",
+      "name": "행사·교육 달력",
+      "component": "event-calendar",
+      "slots": ["date", "eventType", "audience", "venue", "availability", "registrationCta"]
+    },
+    {
+      "id": "notice-bulletin",
+      "name": "공지·주보·소식",
+      "component": "content-feed",
+      "slots": ["category", "title", "date", "summary", "attachment", "archiveLink"]
+    },
+    {
+      "id": "giving-support",
+      "name": "헌금·보시·후원 안내",
+      "component": "giving-guide",
+      "slots": ["purpose", "methods", "accountOrExternalLink", "receiptGuide", "privacyNote", "contact"]
+    }
+  ]
+}

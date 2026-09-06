@@ -1,4 +1,4 @@
-# DESIGN.md — {{PROJECT_NAME}} Design System
+# DESIGN.md — ModuTheme Design System
 
 이 파일은 프로젝트의 디자인 토큰과 스타일링 규칙에 대한 **single source of truth**입니다.
 `AGENTS.md`가 "어떻게 빌드할지"라면 이 파일은 "어떻게 보일지"를 정의합니다.

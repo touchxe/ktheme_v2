@@ -1,0 +1,34 @@
+<!-- wp:template-part {"slug":"header","tagName":"header"} /-->
+<!-- wp:group {"tagName":"main","className":"modu-page-shell","layout":{"type":"constrained"}} -->
+<main class="wp-block-group modu-page-shell">
+	<!-- wp:template-part {"slug":"search-hero"} /-->
+	<!-- wp:group {"className":"modu-search-shell","layout":{"type":"constrained"}} -->
+	<div class="wp-block-group modu-search-shell">
+		<!-- wp:search {"label":"검색","showLabel":false,"placeholder":"검색어를 입력하세요","buttonText":"검색","className":"modu-search-form"} /-->
+		<!-- wp:query {"query":{"perPage":10,"pages":0,"offset":0,"postType":"post","order":"desc","orderBy":"date","inherit":true},"className":"modu-content-query"} -->
+		<div class="wp-block-query modu-content-query">
+			<!-- wp:post-template {"className":"modu-query-grid"} -->
+				<!-- wp:group {"className":"modu-query-card","layout":{"type":"constrained"}} -->
+				<div class="wp-block-group modu-query-card">
+					<!-- wp:post-title {"isLink":true,"level":3} /-->
+					<!-- wp:post-excerpt {"moreText":""} /-->
+				</div>
+				<!-- /wp:group -->
+			<!-- /wp:post-template -->
+			<!-- wp:query-pagination {"paginationArrow":"arrow","className":"modu-pagination"} -->
+				<!-- wp:query-pagination-previous /-->
+				<!-- wp:query-pagination-numbers /-->
+				<!-- wp:query-pagination-next /-->
+			<!-- /wp:query-pagination -->
+			<!-- wp:query-no-results -->
+				<!-- wp:paragraph {"className":"modu-empty"} -->
+				<p class="modu-empty">검색 결과가 없습니다.</p>
+				<!-- /wp:paragraph -->
+			<!-- /wp:query-no-results -->
+		</div>
+		<!-- /wp:query -->
+	</div>
+	<!-- /wp:group -->
+</main>
+<!-- /wp:group -->
+<!-- wp:template-part {"slug":"footer","tagName":"footer"} /-->

@@ -1,0 +1,129 @@
+{
+  "catalogVersion": "1.0.0",
+  "industryId": "church-religious-organization",
+  "description": "교회/종교기관 업종의 실제 운영 흐름별 홈페이지 프리셋",
+  "presets": [
+    {
+      "id": "church-local",
+      "name": "지역 교회형",
+      "targetBusinessTypes": ["지역 개신교회", "개척교회", "중소형 교회"],
+      "primaryConversion": "새가족 등록",
+      "secondaryConversions": ["예배시간 확인", "최근 설교 시청", "오시는 길", "기도/문의"],
+      "headerMenu": ["교회소개", "예배 안내", "공동체", "양육", "선교·섬김", "미디어", "행정"],
+      "utilityMenu": ["새가족 등록", "오시는 길", "온라인 헌금"],
+      "homeSectionOrder": [
+        "hero-welcome",
+        "gathering-schedule",
+        "latest-faith-media",
+        "notice-bulletin",
+        "newcomer-journey",
+        "ministry-community-nav",
+        "event-calendar",
+        "facility-gallery",
+        "giving-support",
+        "conversion-cta"
+      ],
+      "contentModel": ["sermon", "event", "album", "bulletin", "notice", "ministry", "person"],
+      "integrations": ["Ninja Forms", "KBoard 또는 WordPress 게시물", "지도", "영상 플랫폼"],
+      "visualDirection": "지역성과 환대를 우선하는 따뜻한 편집형. 예배 현장, 공동체, 지역 섬김 사진을 균형 있게 사용한다.",
+      "riskControls": ["기도·상담 내용 비공개 기본값", "아동·청소년 사진 게시 동의", "헌금 계좌 및 영수증 절차 검수"]
+    },
+    {
+      "id": "church-media",
+      "name": "미디어·다지점 교회형",
+      "targetBusinessTypes": ["대형 교회", "다지점/캠퍼스 교회", "온라인 예배 중심 교회"],
+      "primaryConversion": "실시간/최근 예배 시청",
+      "secondaryConversions": ["캠퍼스 찾기", "대상별 예배 선택", "교육 신청", "새가족 등록"],
+      "headerMenu": ["환영합니다", "교회소개", "예배와 말씀", "공동체와 양육", "선교와 사역", "행사와 소식"],
+      "utilityMenu": ["라이브 예배", "캠퍼스 찾기", "다국어", "검색"],
+      "homeSectionOrder": [
+        "hero-welcome",
+        "latest-faith-media",
+        "gathering-schedule",
+        "ministry-community-nav",
+        "event-calendar",
+        "notice-bulletin",
+        "newcomer-journey",
+        "conversion-cta"
+      ],
+      "contentModel": ["live-broadcast", "sermon-series", "campus", "gathering", "program", "notice", "person"],
+      "integrations": ["영상 플랫폼", "다지점 지도", "검색", "다국어", "교육/행사 신청"],
+      "visualDirection": "영상과 타이포그래피가 주도하는 미디어 포털형. 첫 화면에서 라이브 여부와 다음 예배를 즉시 확인한다.",
+      "riskControls": ["라이브 장애 시 최근 영상 대체", "캠퍼스별 시간·주소 소유자 지정", "저작권 있는 찬양/영상 임베드 정책"]
+    },
+    {
+      "id": "catholic-parish",
+      "name": "천주교 본당형",
+      "targetBusinessTypes": ["천주교 본당", "주교좌 성당", "성지/순례지"],
+      "primaryConversion": "미사시간 확인",
+      "secondaryConversions": ["본당소식/주보 확인", "성사 안내", "단체/교육 신청", "오시는 길"],
+      "headerMenu": ["본당소개", "미사/성사", "신앙생활", "단체/교육", "본당소식", "성지/시설", "사무실 안내"],
+      "utilityMenu": ["미사시간", "주보", "오시는 길", "사무실 문의"],
+      "homeSectionOrder": [
+        "hero-welcome",
+        "gathering-schedule",
+        "notice-bulletin",
+        "event-calendar",
+        "ministry-community-nav",
+        "brand-story",
+        "facility-gallery",
+        "giving-support",
+        "conversion-cta"
+      ],
+      "contentModel": ["mass-schedule", "sacrament-guide", "parish-bulletin", "group", "education", "pilgrimage", "person"],
+      "integrations": ["주보 PDF", "행사/교육 신청", "지도", "본당 사무실 연락"],
+      "visualDirection": "전례력과 건축의 품위를 살리는 절제된 편집형. 절기 색은 장식이 아니라 상태와 기간 표시로 사용한다.",
+      "riskControls": ["미사·고해·성사 시간의 유효일 표시", "교적/세례명 등 민감정보 최소수집", "교구·본당 공식 용어 검수"]
+    },
+    {
+      "id": "buddhist-temple",
+      "name": "불교 사찰형",
+      "targetBusinessTypes": ["전통 사찰", "도심 사찰", "수행도량", "템플스테이 운영 사찰"],
+      "primaryConversion": "법회/기도 또는 체험 일정 확인",
+      "secondaryConversions": ["템플스테이 예약", "사찰 둘러보기", "교육/수행 신청", "보시 안내", "오시는 길"],
+      "headerMenu": ["사찰소개", "법회/기도", "수행/교육", "템플스테이", "문화/성보", "소식", "참여/보시", "오시는 길"],
+      "utilityMenu": ["오늘의 법회", "기도접수 안내", "템플스테이", "오시는 길"],
+      "homeSectionOrder": [
+        "hero-welcome",
+        "gathering-schedule",
+        "event-calendar",
+        "ministry-community-nav",
+        "brand-story",
+        "facility-gallery",
+        "notice-bulletin",
+        "giving-support",
+        "faq-preparation",
+        "conversion-cta"
+      ],
+      "contentModel": ["dharma-talk", "ceremony", "prayer-program", "education", "temple-stay", "cultural-asset", "notice", "monastic-profile"],
+      "integrations": ["외부 템플스테이 예약", "일정/신청", "지도", "다국어"],
+      "visualDirection": "문화재·계절·수행 공간을 중심으로 한 고요한 기록형. 관광 랜딩페이지처럼 과장하지 않고 방문 예절을 명확히 안내한다.",
+      "riskControls": ["법회·기도·체험의 참여 대상 구분", "문화재 촬영/사용 범위 확인", "예약·환불·준비물·숙박 제한 고지"]
+    },
+    {
+      "id": "religious-organization",
+      "name": "교단·종단·선교/종교기관형",
+      "targetBusinessTypes": ["교단/종단 본부", "선교단체/포교기관", "종교재단/복지기관", "종교교육기관"],
+      "primaryConversion": "기관 자료/사업 탐색",
+      "secondaryConversions": ["행사 등록", "소속 기관 찾기", "후원", "자료 다운로드", "사업 문의"],
+      "headerMenu": ["기관소개", "사업/사역", "조직/소속기관", "교육/행사", "뉴스", "자료실", "후원/참여", "문의"],
+      "utilityMenu": ["기관 찾기", "자료 검색", "행사 신청", "후원 안내"],
+      "homeSectionOrder": [
+        "hero-welcome",
+        "problem-solution",
+        "ministry-community-nav",
+        "event-calendar",
+        "notice-bulletin",
+        "resource-library",
+        "expert-profiles",
+        "metrics-proof",
+        "giving-support",
+        "conversion-cta"
+      ],
+      "contentModel": ["program", "organization", "regional-body", "event", "news", "resource", "statement", "person"],
+      "integrations": ["기관 디렉터리", "자료실", "행사 신청", "후원", "다국어"],
+      "visualDirection": "공공성과 신뢰를 우선하는 기관 포털형. 조직도보다 진행 사업, 최신 자료, 일정의 탐색성을 먼저 보여준다.",
+      "riskControls": ["공식 입장/보도자료 승인 흐름", "기관·인물 정보 갱신 주체", "후원금 용도·영수증·문의 절차 고지"]
+    }
+  ]
+}

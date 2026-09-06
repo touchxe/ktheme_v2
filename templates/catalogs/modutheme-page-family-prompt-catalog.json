@@ -1,0 +1,185 @@
+{
+  "catalogVersion": "1.0.0",
+  "status": "ready-for-external-design",
+  "generatedAt": "2026-08-30",
+  "designSource": "docs/DESIGN.md",
+  "planningSource": "docs/analysis/modutheme-page-family-plans-and-prompts.md",
+  "counts": {
+    "pageFamilies": 15,
+    "screenArchetypes": 27,
+    "desktopCanvases": 27,
+    "mobileCanvases": 27
+  },
+  "viewportContract": {
+    "desktopCanvas": 1440,
+    "desktopContent": 1200,
+    "mobileCanvas": 390,
+    "desktopSidePadding": 40,
+    "mobileSidePadding": 16
+  },
+  "pageFamilies": [
+    {
+      "id": "catalog-and-detail",
+      "name": "제품·서비스·프로그램 목록 및 상세",
+      "promptSection": 2,
+      "designDials": { "variance": 5, "motion": 3, "density": 6 },
+      "screens": ["service-catalog", "offering-single", "product-catalog", "product-single"],
+      "currentStatus": "new",
+      "reusableBase": ["training-card", "community-card", "archive", "single"],
+      "requiredStates": ["loading", "default", "filtered", "empty", "error", "available", "waitlist", "closed", "in-stock", "low-stock", "sold-out", "discontinued", "replacement-available", "comparison-maximum", "missing-data", "no-documents", "conversion-unavailable"]
+    },
+    {
+      "id": "profile-single",
+      "name": "전문가·의료진 개별 상세",
+      "promptSection": 3,
+      "designDials": { "variance": 4, "motion": 2, "density": 5 },
+      "screens": ["profile-single"],
+      "currentStatus": "new",
+      "reusableBase": ["page-people", "profile-card"],
+      "requiredStates": ["schedule-available", "schedule-pending", "fully-booked", "unavailable", "alternate-expert", "credential-available", "credential-missing", "credential-expired", "portrait-missing", "no-related-services", "consultation-only"]
+    },
+    {
+      "id": "case-system",
+      "name": "사례·프로젝트 목록 및 상세",
+      "promptSection": 4,
+      "designDials": { "variance": 7, "motion": 4, "density": 4 },
+      "screens": ["case-archive", "case-single"],
+      "currentStatus": "new",
+      "reusableBase": ["gallery-archive", "gallery-single"],
+      "requiredStates": ["loading", "default", "filtered", "empty", "image-missing", "anonymous", "public", "partially-confidential", "no-verified-metrics", "no-related-cases", "media-error", "before-after-unapproved"]
+    },
+    {
+      "id": "booking-availability",
+      "name": "예약 가능 날짜·시간·정원 선택",
+      "promptSection": 5,
+      "designDials": { "variance": 4, "motion": 3, "density": 7 },
+      "screens": ["booking-availability"],
+      "currentStatus": "new",
+      "reusableBase": ["calendar-schedule", "form-shell"],
+      "requiredStates": ["loading", "available", "low-capacity", "full", "closed", "waitlist", "staff-unavailable", "branch-changed", "online-only", "session-expired", "price-changed", "field-error", "submitting", "instant-confirmed", "approval-pending", "completed"]
+    },
+    {
+      "id": "quote-form",
+      "name": "견적 및 파일 첨부 폼",
+      "promptSection": 6,
+      "designDials": { "variance": 3, "motion": 2, "density": 7 },
+      "screens": ["quote-form"],
+      "currentStatus": "new",
+      "reusableBase": ["form-shell", "page-contact"],
+      "requiredStates": ["conditional-closed", "conditional-open", "required-missing", "invalid-value", "file-waiting", "uploading", "upload-success", "wrong-type", "too-large", "duplicate", "security-rejected", "auto-saved", "draft-restored", "session-expired", "submitting", "completed", "failed"]
+    },
+    {
+      "id": "self-assessment",
+      "name": "자가진단과 결과 화면",
+      "promptSection": 7,
+      "designDials": { "variance": 4, "motion": 4, "density": 6 },
+      "screens": ["self-assessment", "assessment-result"],
+      "currentStatus": "new",
+      "reusableBase": ["form-controls", "alert-callout"],
+      "requiredStates": ["before-start", "in-progress", "invalid-answer", "conditional-question", "auto-saved", "paused", "resumed", "session-expired", "urgent-answer", "calculating", "result-available", "insufficient-information", "calculation-unavailable", "no-recommendation", "delete-confirmation", "sharing-restricted"]
+    },
+    {
+      "id": "comparison-page",
+      "name": "제품·서비스·패키지 비교",
+      "promptSection": 8,
+      "designDials": { "variance": 3, "motion": 2, "density": 8 },
+      "screens": ["comparison-page"],
+      "currentStatus": "new",
+      "reusableBase": ["pricing-table", "card"],
+      "requiredStates": ["no-selection", "one-selected", "valid-comparison", "maximum-reached", "duplicate", "value-missing", "not-applicable", "inquiry-required", "unit-mismatch", "price-changed", "sold-out", "recommendation-unavailable", "shared-link-expired"]
+    },
+    {
+      "id": "reviews-and-before-after",
+      "name": "후기·UGC 및 전후 비교",
+      "promptSection": 9,
+      "designDials": { "variance": 6, "motion": 4, "density": 5 },
+      "screens": ["review-archive", "before-after"],
+      "currentStatus": "new",
+      "reusableBase": ["gallery-archive", "media-card"],
+      "requiredStates": ["loading", "default", "filtered", "empty", "no-media", "verified", "unverified", "approval-pending", "private", "reported", "removed", "both-images", "one-image-missing", "conditions-differ", "comparison-unapproved", "caption-missing", "playback-error"]
+    },
+    {
+      "id": "branch-locator",
+      "name": "지점·매장·캠퍼스 찾기",
+      "promptSection": 10,
+      "designDials": { "variance": 3, "motion": 3, "density": 8 },
+      "screens": ["branch-locator"],
+      "currentStatus": "new",
+      "reusableBase": ["location-page"],
+      "requiredStates": ["permission-request", "permission-allowed", "permission-denied", "location-unavailable", "search-default", "results", "empty", "expand-radius", "open", "closing-soon", "closed", "temporary-change", "appointment-only", "map-loading", "map-error", "list-only", "external-map"]
+    },
+    {
+      "id": "route-nearby",
+      "name": "추천 코스·주변 지도",
+      "promptSection": 11,
+      "designDials": { "variance": 6, "motion": 4, "density": 6 },
+      "screens": ["route-nearby"],
+      "currentStatus": "new",
+      "reusableBase": ["location-page", "gallery-card"],
+      "requiredStates": ["route-loading", "normal", "segment-unavailable", "detour", "offline", "place-open", "place-closed", "temporary-change", "reservation-required", "information-unverified", "permission-denied", "map-error", "list-only", "saved", "save-failed", "shared-link-expired"]
+    },
+    {
+      "id": "floor-plan-viewer",
+      "name": "평면·타입 뷰어",
+      "promptSection": 12,
+      "designDials": { "variance": 4, "motion": 3, "density": 8 },
+      "screens": ["floor-plan-viewer"],
+      "currentStatus": "new",
+      "reusableBase": ["facility-gallery"],
+      "requiredStates": ["plan-loading", "ready", "low-resolution", "file-missing", "load-error", "zoomed", "panned", "hotspot-active", "full-screen", "base-option", "expanded-option", "paid-option", "option-unavailable", "type-available", "closed", "information-changed", "comparison-maximum"]
+    },
+    {
+      "id": "certification-library",
+      "name": "인증·특허 라이브러리",
+      "promptSection": 13,
+      "designDials": { "variance": 3, "motion": 2, "density": 7 },
+      "screens": ["certification-library"],
+      "currentStatus": "new",
+      "reusableBase": ["resource-archive", "document-card"],
+      "requiredStates": ["loading", "default", "filtered", "empty", "search-error", "valid", "expiring-soon", "expired", "renewal-pending", "revoked", "superseded", "preview-available", "preview-restricted", "file-missing", "download-error", "external-verification"]
+    },
+    {
+      "id": "commerce-system",
+      "name": "상품·장바구니·결제·계정",
+      "promptSection": 14,
+      "designDials": { "variance": 5, "motion": 4, "density": 7 },
+      "screens": ["commerce-archive", "commerce-single", "commerce-cart", "commerce-checkout", "commerce-account"],
+      "currentStatus": "new",
+      "reusableBase": ["login", "register", "reset-password"],
+      "requiredStates": ["in-stock", "low-stock", "sold-out", "sale-ended", "restock-requested", "cart-empty", "price-changed", "stock-changed", "coupon-success", "coupon-error", "shipping-unavailable", "address-error", "payment-processing", "authentication", "payment-failed", "duplicate-prevented", "order-completed", "preparing", "shipped", "delivered", "canceled", "returned", "subscription-active", "subscription-paused", "subscription-payment-failed", "subscription-ended"]
+    },
+    {
+      "id": "recommendation-flow",
+      "name": "목적별 상품 추천",
+      "promptSection": 15,
+      "designDials": { "variance": 5, "motion": 4, "density": 6 },
+      "screens": ["recommendation-questions", "recommendation-results"],
+      "currentStatus": "new",
+      "reusableBase": ["form-controls", "product-card"],
+      "requiredStates": ["before-start", "in-progress", "required-missing", "contradictory-conditions", "saved", "resumed", "calculating", "recommendation-available", "tied-results", "no-result", "recommended-sold-out", "alternative-available", "answer-changed", "results-updated", "add-success", "network-error"]
+    },
+    {
+      "id": "promotion-bundle-subscription",
+      "name": "프로모션·세트·구독",
+      "promptSection": 16,
+      "designDials": { "variance": 7, "motion": 5, "density": 4 },
+      "screens": ["promotion-campaign", "bundle-subscription-selection"],
+      "currentStatus": "new",
+      "reusableBase": ["conversion-cta", "pricing-card"],
+      "requiredStates": ["scheduled", "active", "closing-soon", "ended", "stock-exhausted", "not-eligible", "coupon-valid", "coupon-expired", "minimum-not-met", "stacking-blocked", "already-used", "technical-error", "bundle-available", "partial-sold-out", "replacement-available", "composition-changed", "subscription-selected", "interval-changed", "paused", "cancellation-terms", "payment-failed"]
+    }
+  ],
+  "sharedNewComponents": [
+    "filter-summary",
+    "result-count",
+    "entity-meta-row",
+    "availability-state",
+    "document-meta",
+    "file-uploader",
+    "selection-summary",
+    "empty-state",
+    "error-recovery",
+    "consent-panel",
+    "money-summary"
+  ]
+}

@@ -2,23 +2,23 @@
   "$schema": "./extension-registry.schema.json",
   "version": 1,
   "product": {
-    "root": "ktheme",
-    "themeSlug": "ktheme-v2",
-    "enginePluginSlug": "ktheme-engine"
+    "root": "modutheme",
+    "themeSlug": "modu-theme",
+    "enginePluginSlug": "modutheme-engine"
   },
   "namespaces": {
-    "phpFunctionPrefix": "ktheme_",
-    "phpClassPrefix": "KTheme_",
-    "phpNamespace": "KTheme\\",
-    "blockNamespace": "ktheme-engine",
-    "patternNamespace": "ktheme",
-    "legacyCssPrefix": "kt-",
-    "cssPrefix": "ktheme-",
-    "assetHandlePrefix": "ktheme-",
-    "optionPrefix": "ktheme_",
-    "hookPrefix": "ktheme/",
-    "restNamespace": "ktheme/v1",
-    "jsPackageScope": "@ktheme/"
+    "phpFunctionPrefix": "modutheme_",
+    "phpClassPrefix": "ModuTheme_",
+    "phpNamespace": "ModuTheme\\",
+    "blockNamespace": "modutheme-engine",
+    "patternNamespace": "modutheme",
+    "legacyCssPrefix": "modu-",
+    "cssPrefix": "modutheme-",
+    "assetHandlePrefix": "modutheme-",
+    "optionPrefix": "modutheme_",
+    "hookPrefix": "modutheme/",
+    "restNamespace": "modutheme/v1",
+    "jsPackageScope": "@modutheme/"
   },
   "extensionTypes": [
     "pattern",
@@ -41,17 +41,17 @@
   ],
   "genericContentModels": {
     "postTypes": [
-      "ktheme_media",
-      "ktheme_event",
-      "ktheme_resource",
-      "ktheme_profile"
+      "modutheme_media",
+      "modutheme_event",
+      "modutheme_resource",
+      "modutheme_profile"
     ],
     "taxonomies": [
-      "ktheme_media_type",
-      "ktheme_collection",
-      "ktheme_topic",
-      "ktheme_audience",
-      "ktheme_location"
+      "modutheme_media_type",
+      "modutheme_collection",
+      "modutheme_topic",
+      "modutheme_audience",
+      "modutheme_location"
     ]
   },
   "forbiddenPersistentTerms": [
@@ -68,7 +68,7 @@
   "designPolicy": {
     "preserveCurrentDesign": true,
     "sourceOfTruth": "docs/DESIGN.md",
-    "tokenSource": "wp-content/themes/ktheme-v2/theme.json"
+    "tokenSource": "wp-content/themes/modu-theme/theme.json"
   },
   "compatibilityPolicy": {
     "existingCustomerSites": false,

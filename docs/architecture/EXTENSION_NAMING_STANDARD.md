@@ -1,4 +1,4 @@
-# KTheme 범용 확장 네이밍 표준
+# ModuTheme 범용 확장 네이밍 표준
 
 - 상태: 필수 적용
 - 작성일: 2026-08-19
@@ -15,11 +15,11 @@
 
 | 목적 | 영구 식별자 | 교회 사용 예 | 일반 사용 예 |
 |---|---|---|---|
-| 미디어 콘텐츠 | `ktheme_media` | 설교 영상 | 강의, 팟캐스트 |
-| 일정 콘텐츠 | `ktheme_event` | 예배, 수련회 | 세미나, 공연 |
-| 자료 콘텐츠 | `ktheme_resource` | 주보, 양육 자료 | 보고서, 다운로드 |
-| 사람 콘텐츠 | `ktheme_profile` | 목회자, 교역자 | 강사, 팀원 |
-| 묶음 분류 | `ktheme_collection` | 설교 시리즈 | 강의 시리즈 |
+| 미디어 콘텐츠 | `modutheme_media` | 설교 영상 | 강의, 팟캐스트 |
+| 일정 콘텐츠 | `modutheme_event` | 예배, 수련회 | 세미나, 공연 |
+| 자료 콘텐츠 | `modutheme_resource` | 주보, 양육 자료 | 보고서, 다운로드 |
+| 사람 콘텐츠 | `modutheme_profile` | 목회자, 교역자 | 강사, 팀원 |
+| 묶음 분류 | `modutheme_collection` | 설교 시리즈 | 강의 시리즈 |
 
 `sermon`, `church`, `worship`은 영구 post type, block namespace, PHP prefix로 사용하지 않는다.
 
@@ -39,7 +39,7 @@
 
 ### 1.3 하나의 제품 어근을 사용한다
 
-제품 어근은 `ktheme`으로 고정한다. 짧은 `kt`는 CSS 호환용 외에는 신규 전역 식별자에 사용하지 않는다.
+제품 어근은 `modutheme`으로 고정한다. 짧은 `kt`는 CSS 호환용 외에는 신규 전역 식별자에 사용하지 않는다.
 
 ## 2. 식별자 레지스트리
 
@@ -47,24 +47,24 @@
 
 | 영역 | 표준 | 예시 |
 |---|---|---|
-| 제품 어근 | `ktheme` | `ktheme` |
-| 테마 slug | `ktheme-v2` | 현재 배포명 유지 |
-| 엔진 플러그인 slug | `ktheme-engine` | `wp-content/plugins/ktheme-engine` |
-| text domain | artifact slug와 동일 | `ktheme-engine` |
-| PHP 함수 prefix | `ktheme_` | `ktheme_register_assets()` |
-| PHP 클래스 prefix | `KTheme_` | `KTheme_Extension_Registry` |
-| PHP namespace | `KTheme\` | `KTheme\Engine\Registry` |
-| 블록 namespace | `ktheme-engine` | `ktheme-engine/content-grid` |
-| 패턴 namespace | `ktheme` | `ktheme/section-media-grid` |
-| CSS prefix | `kt-` | `.kt-component` |
-| CSS 신규 권장 prefix | `ktheme-` | `.ktheme-widget` |
-| asset handle prefix | `ktheme-` | `ktheme-navigation` |
-| option/meta prefix | `ktheme_` | `ktheme_settings` |
-| hook prefix | `ktheme/` | `ktheme/extension/registered` |
-| REST namespace | `ktheme/v1` | `/wp-json/ktheme/v1/extensions` |
-| JS package scope | `@ktheme/` | `@ktheme/registry` |
+| 제품 어근 | `modutheme` | `modutheme` |
+| 테마 slug | `modu-theme` | 현재 배포명 유지 |
+| 엔진 플러그인 slug | `modutheme-engine` | `wp-content/plugins/modutheme-engine` |
+| text domain | artifact slug와 동일 | `modutheme-engine` |
+| PHP 함수 prefix | `modutheme_` | `modutheme_register_assets()` |
+| PHP 클래스 prefix | `ModuTheme_` | `ModuTheme_Extension_Registry` |
+| PHP namespace | `ModuTheme\` | `ModuTheme\Engine\Registry` |
+| 블록 namespace | `modutheme-engine` | `modutheme-engine/content-grid` |
+| 패턴 namespace | `modutheme` | `modutheme/section-media-grid` |
+| CSS prefix | `modu-` | `.modu-component` |
+| CSS 신규 권장 prefix | `modutheme-` | `.modutheme-widget` |
+| asset handle prefix | `modutheme-` | `modutheme-navigation` |
+| option/meta prefix | `modutheme_` | `modutheme_settings` |
+| hook prefix | `modutheme/` | `modutheme/extension/registered` |
+| REST namespace | `modutheme/v1` | `/wp-json/modutheme/v1/extensions` |
+| JS package scope | `@modutheme/` | `@modutheme/registry` |
 
-현재 `.kt-*` 클래스는 디자인 유지와 회귀 방지를 위해 그대로 둔다. 새 독립 모듈은 `.ktheme-*`를 우선하며, 기존 컴포넌트를 확장할 때만 `.kt-*` 체계를 따른다.
+현재 `.modu-*` 클래스는 디자인 유지와 회귀 방지를 위해 그대로 둔다. 새 독립 모듈은 `.modutheme-*`를 우선하며, 기존 컴포넌트를 확장할 때만 `.modu-*` 체계를 따른다.
 
 ## 3. 공통 문법
 
@@ -83,8 +83,8 @@
 ### 4.1 기본 제품
 
 ```text
-wp-content/plugins/ktheme-engine/
-├─ ktheme-engine.php
+wp-content/plugins/modutheme-engine/
+├─ modutheme-engine.php
 ├─ readme.txt
 ├─ languages/
 ├─ includes/
@@ -103,31 +103,31 @@ wp-content/plugins/ktheme-engine/
 └─ build/
 ```
 
-플러그인 header의 `Text Domain`은 폴더 slug와 같은 `ktheme-engine`을 사용한다. `Requires Plugins`에는 WordPress.org 형식의 slug만 사용한다.
+플러그인 header의 `Text Domain`은 폴더 slug와 같은 `modutheme-engine`을 사용한다. `Requires Plugins`에는 WordPress.org 형식의 slug만 사용한다.
 
 ### 4.2 추가 기능 플러그인
 
 큰 기능은 엔진에 계속 넣지 않고 별도 확장 플러그인으로 분리한다.
 
 ```text
-ktheme-{capability}
+modutheme-{capability}
 ```
 
 예시:
 
-- `ktheme-events`
-- `ktheme-forms`
-- `ktheme-commerce`
-- `ktheme-directory`
-- `ktheme-importer`
+- `modutheme-events`
+- `modutheme-forms`
+- `modutheme-commerce`
+- `modutheme-directory`
+- `modutheme-importer`
 
 업종 패키지가 필요하면 엔진과 분리한다.
 
 ```text
-ktheme-preset-{industry}
+modutheme-preset-{industry}
 ```
 
-예시: `ktheme-preset-church`, `ktheme-preset-education`, `ktheme-preset-nonprofit`
+예시: `modutheme-preset-church`, `modutheme-preset-education`, `modutheme-preset-nonprofit`
 
 업종 패키지는 영구 데이터 모델을 새로 만들기보다 범용 모델의 labels, terms, patterns, demo content를 제공한다.
 
@@ -136,32 +136,32 @@ ktheme-preset-{industry}
 ### 5.1 post type
 
 - 최대 20자 제한을 지킨다.
-- `ktheme_` prefix 뒤에 단수 역할명을 붙인다.
+- `modutheme_` prefix 뒤에 단수 역할명을 붙인다.
 - 공개 rewrite slug는 관리 key와 분리하고 설정 또는 번역이 가능하게 한다.
 
 허용 기본 key:
 
-- `ktheme_media`
-- `ktheme_event`
-- `ktheme_resource`
-- `ktheme_profile`
+- `modutheme_media`
+- `modutheme_event`
+- `modutheme_resource`
+- `modutheme_profile`
 
 새 post type은 기존 네 가지 모델로 표현할 수 없는 저장·권한·편집 요구가 있을 때만 추가한다.
 
 ### 5.2 taxonomy
 
 - 최대 32자 제한을 지킨다.
-- `ktheme_` prefix 뒤에 분류 목적을 붙인다.
+- `modutheme_` prefix 뒤에 분류 목적을 붙인다.
 
 허용 기본 key:
 
-- `ktheme_media_type`
-- `ktheme_collection`
-- `ktheme_topic`
-- `ktheme_audience`
-- `ktheme_location`
+- `modutheme_media_type`
+- `modutheme_collection`
+- `modutheme_topic`
+- `modutheme_audience`
+- `modutheme_location`
 
-교회 용어는 term으로 둔다. 예를 들어 설교는 `ktheme_media_type`의 term이 되고, 주일예배는 `ktheme_audience` 또는 별도 사용자 정의 term으로 표현한다.
+교회 용어는 term으로 둔다. 예를 들어 설교는 `modutheme_media_type`의 term이 되고, 주일예배는 `modutheme_audience` 또는 별도 사용자 정의 term으로 표현한다.
 
 ## 6. 블록, 위젯, 컴포넌트 용어
 
@@ -183,16 +183,16 @@ ktheme-preset-{industry}
 ## 7. 블록 네이밍
 
 ```text
-ktheme-engine/{capability}
+modutheme-engine/{capability}
 ```
 
 예시:
 
-- `ktheme-engine/content-grid`
-- `ktheme-engine/event-list`
-- `ktheme-engine/media-player`
-- `ktheme-engine/resource-download`
-- `ktheme-engine/profile-card`
+- `modutheme-engine/content-grid`
+- `modutheme-engine/event-list`
+- `modutheme-engine/media-player`
+- `modutheme-engine/resource-download`
+- `modutheme-engine/profile-card`
 
 규칙:
 
@@ -205,22 +205,22 @@ ktheme-engine/{capability}
 
 ## 8. 패턴 네이밍
 
-기존 `ktheme-v2/`는 버전이 포함된 임시 namespace다. 기존 고객 사이트가 없으므로 제품 공개 전에 `ktheme/`로 일괄 전환한다.
+기존 `modu-theme/`는 버전이 포함된 임시 namespace다. 기존 고객 사이트가 없으므로 제품 공개 전에 `modutheme/`로 일괄 전환한다.
 
 ```text
-ktheme/{scope}-{purpose}
+modutheme/{scope}-{purpose}
 ```
 
 | scope | 의미 | 예시 |
 |---|---|---|
-| `page` | 전체 페이지 조합 | `ktheme/page-landing` |
-| `section` | 일반 섹션 | `ktheme/section-media-grid` |
-| `query` | 목록·검색 조합 | `ktheme/query-content-grid` |
-| `integration` | 외부 블록을 넣는 자리 | `ktheme/integration-form` |
-| `header` | 헤더 변형 | `ktheme/header-centered` |
-| `footer` | 푸터 변형 | `ktheme/footer-columns` |
+| `page` | 전체 페이지 조합 | `modutheme/page-landing` |
+| `section` | 일반 섹션 | `modutheme/section-media-grid` |
+| `query` | 목록·검색 조합 | `modutheme/query-content-grid` |
+| `integration` | 외부 블록을 넣는 자리 | `modutheme/integration-form` |
+| `header` | 헤더 변형 | `modutheme/header-centered` |
+| `footer` | 푸터 변형 | `modutheme/footer-columns` |
 
-패턴 이름에는 업종과 화면 번호를 넣지 않는다. 업종별 패턴은 preset plugin에서 `ktheme-preset-{industry}/` namespace를 사용한다.
+패턴 이름에는 업종과 화면 번호를 넣지 않는다. 업종별 패턴은 preset plugin에서 `modutheme-preset-{industry}/` namespace를 사용한다.
 
 ## 9. 스킨과 디자인 변형
 
@@ -244,13 +244,13 @@ styles/skin-{semantic-name}.json
 - `style-final.json`
 - `new-style.json`
 
-Block style name은 `ktheme-{appearance}`를 사용하고 실제 class는 WordPress 규칙에 따라 `.is-style-ktheme-{appearance}`가 된다.
+Block style name은 `modutheme-{appearance}`를 사용하고 실제 class는 WordPress 규칙에 따라 `.is-style-modutheme-{appearance}`가 된다.
 
 예시:
 
-- `ktheme-framed`
-- `ktheme-borderless`
-- `ktheme-emphasized`
+- `modutheme-framed`
+- `modutheme-borderless`
+- `modutheme-emphasized`
 
 스킨은 구조와 콘텐츠를 포함하지 않는다. 색상, typography, spacing, shadow 등 `theme.json`이 허용하는 표현만 변경한다.
 
@@ -261,44 +261,44 @@ Block style name은 `ktheme-{appearance}`를 사용하고 실제 class는 WordPr
 신규 독립 컴포넌트:
 
 ```css
-.ktheme-content-grid {}
-.ktheme-content-grid__item {}
-.ktheme-content-grid--compact {}
-.ktheme-content-grid.is-loading {}
+.modutheme-content-grid {}
+.modutheme-content-grid__item {}
+.modutheme-content-grid--compact {}
+.modutheme-content-grid.is-loading {}
 ```
 
-기존 디자인 컴포넌트는 기존 `.kt-*` 이름을 유지한다. 같은 요소에 `.kt-*`와 `.ktheme-*` 이름을 중복 추가하지 않는다.
+기존 디자인 컴포넌트는 기존 `.modu-*` 이름을 유지한다. 같은 요소에 `.modu-*`와 `.modutheme-*` 이름을 중복 추가하지 않는다.
 
 ### asset handle
 
 ```text
-ktheme-{scope}-{purpose}
+modutheme-{scope}-{purpose}
 ```
 
 예시:
 
-- `ktheme-theme-foundation`
-- `ktheme-block-content-grid`
-- `ktheme-widget-event-list`
-- `ktheme-admin-settings`
+- `modutheme-theme-foundation`
+- `modutheme-block-content-grid`
+- `modutheme-widget-event-list`
+- `modutheme-admin-settings`
 
 handle은 전역에서 고유해야 하며 WordPress가 제공하는 script를 다시 번들링하지 않는다.
 
 ### JavaScript
 
 - 전역 변수를 만들지 않는다.
-- 공개 package는 `@ktheme/{package}` 형식을 사용한다.
-- DOM data attribute는 `data-ktheme-*`를 사용한다.
-- custom event는 `ktheme:{scope}:{event}`를 사용한다.
+- 공개 package는 `@modutheme/{package}` 형식을 사용한다.
+- DOM data attribute는 `data-modutheme-*`를 사용한다.
+- custom event는 `modutheme:{scope}:{event}`를 사용한다.
 
 ## 11. PHP, option, hook, REST 이름
 
 ### PHP
 
 ```php
-function ktheme_register_assets() {}
-class KTheme_Extension_Registry {}
-namespace KTheme\Engine;
+function modutheme_register_assets() {}
+class ModuTheme_Extension_Registry {}
+namespace ModuTheme\Engine;
 ```
 
 하나의 파일에는 원칙적으로 하나의 class/interface/trait/enum을 두고 class 파일은 `class-extension-registry.php`처럼 작성한다.
@@ -306,14 +306,14 @@ namespace KTheme\Engine;
 ### option과 meta
 
 ```text
-ktheme_{scope}_{name}
+modutheme_{scope}_{name}
 ```
 
 예시:
 
-- `ktheme_engine_version`
-- `ktheme_enabled_modules`
-- `ktheme_media_source_url`
+- `modutheme_engine_version`
+- `modutheme_enabled_modules`
+- `modutheme_media_source_url`
 
 저장 설정은 `register_setting()`으로 type, default, sanitize callback을 선언한다. REST에 노출할 배열·객체는 schema를 함께 등록한다.
 
@@ -322,23 +322,23 @@ ktheme_{scope}_{name}
 public hook은 slash 기반으로 작성한다.
 
 ```text
-ktheme/{scope}/{event}
+modutheme/{scope}/{event}
 ```
 
 예시:
 
-- `ktheme/extension/registered`
-- `ktheme/content/query_args`
-- `ktheme/skin/activated`
+- `modutheme/extension/registered`
+- `modutheme/content/query_args`
+- `modutheme/skin/activated`
 
 ### REST
 
 ```text
-namespace: ktheme/v1
+namespace: modutheme/v1
 route: /{plural-resource}
 ```
 
-예시: `/wp-json/ktheme/v1/extensions`
+예시: `/wp-json/modutheme/v1/extensions`
 
 ## 12. 확장 manifest
 
@@ -347,7 +347,7 @@ route: /{plural-resource}
 ```json
 {
   "$schema": "../../schemas/extension.schema.json",
-  "id": "ktheme-engine/content-grid",
+  "id": "modutheme-engine/content-grid",
   "type": "block",
   "version": "1.0.0",
   "title": "Content Grid",
